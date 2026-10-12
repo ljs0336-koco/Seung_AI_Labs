@@ -49,7 +49,7 @@ export default function AdminPage() {
       setAdminError('관리자 마스터 암호를 입력해 주세요.');
       return;
     }
-    const isMaster = clean === 'EDU2026' || clean === 'EDU2026)';
+    const isMaster = clean === 'dkagh1379' || clean.toLowerCase() === 'dkagh1379' || clean === 'EDU2026' || clean === 'EDU2026)';
 
     if (isMaster) {
       sessionStorage.setItem(ADMIN_AUTH_KEY, 'granted');
