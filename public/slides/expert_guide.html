@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Partner</title>
+<meta name="description" content="옥종고 OKXEN 앱 개발 전문가 협업 안내 — 16:9, 인쇄 대응">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* ==========================================================================
+   L'Éditeur Archival — design tokens
+   (Agentic_AI_Editorial_Deck.html 기준: warm minimalist, 0px radius, hairline rules)
+   ========================================================================== */
+:root{
+  --paper:#FBF9F5;
+  --paper-2:#F5F3EF;
+  --paper-3:#EFEEEA;
+  --paper-4:#EAE8E4;
+  --sheet:#F4EFE6;
+  --white:#FFFFFF;
+  --ink:#1B1C1A;
+  --ink-2:#474741;
+  --ink-3:#777771;
+  --rule:#E4E2DE;
+  --rule-2:#C8C7BF;
+  --accent:#A23E18;       /* 한 장에 한 곳의 강조 */
+  --accent-soft:#FFDBCF;
+  --desk:#E4E0D6;
+
+  --f-display:"Playfair Display","Noto Serif KR",Georgia,serif;
+  --f-serif:"Noto Serif KR","Playfair Display",Georgia,serif;
+  --f-sans:"Pretendard Variable","Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-label:"Inter","Pretendard Variable","Pretendard","Malgun Gothic",sans-serif;
+
+  --pad-x:112px;
+  --folio-h:84px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--desk);overflow:hidden}
+body{
+  font-family:var(--f-sans);color:var(--ink);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  word-break:keep-all;overflow-wrap:break-word;
+}
+::-webkit-scrollbar{display:none}
+::selection{background:var(--accent-soft);color:#390C00}
+b,strong{font-weight:600}
+ol,ul{list-style:none}
+
+/* ---- Stage: 1920×1080 고정 캔버스 ---- */
+.viewport{position:fixed;inset:0;overflow:hidden;background:var(--desk)}
+.stage{
+  position:absolute;left:50%;top:50%;
+  width:1920px;height:1080px;
+  transform:translate(-50%,-50%) scale(var(--scale,.5));
+  transform-origin:center center;
+  background:var(--paper);
+  box-shadow:0 40px 90px -40px rgba(27,28,26,.28),0 0 0 1px rgba(27,28,26,.05);
+}
+.slide{
+  position:absolute;inset:0;overflow:hidden;background:var(--paper);
+  opacity:0;visibility:hidden;
+  transition:opacity .45s ease,visibility 0s linear .45s;
+}
+.slide.is-active{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.sheet{position:absolute;inset:0;display:flex;flex-direction:column;padding:56px var(--pad-x) 0}
+.sheet::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(27,28,26,.9) .7px,transparent .8px);
+  background-size:24px 24px;opacity:.03;
+}
+.sheet>*{position:relative;z-index:2}
+
+/* ---- 공통 에디토리얼 요소 ---- */
+.masthead{
+  flex:none;display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:18px;border-bottom:1px solid var(--rule-2);
+  font:600 14px/1 var(--f-sans);letter-spacing:.04em;color:var(--ink-2);
+}
+.masthead .grp{display:flex;align-items:center;gap:14px}
+.masthead strong{color:var(--ink)}
+.caps{font-family:var(--f-label);font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.sq{display:inline-block;width:8px;height:8px;background:var(--accent);flex:none}
+.sep{color:var(--rule-2);font-weight:400}
+.accent{color:var(--accent)}
+
+.folio{
+  flex:none;margin-top:auto;height:var(--folio-h);border-top:1px solid var(--rule-2);
+  display:grid;grid-template-columns:auto 1fr 360px;align-items:center;gap:48px;
+  font:500 14px/1.4 var(--f-sans);letter-spacing:.02em;color:var(--ink-3);
+}
+.folio b{font:600 13px/1 var(--f-label);letter-spacing:.16em;color:var(--ink);margin-right:8px}
+.folio .src{text-align:center;font-size:13.5px}
+.folio .pg{justify-self:end;visibility:hidden;font:600 14px/1 var(--f-label);letter-spacing:.2em;color:var(--ink)}
+
+.kicker{display:flex;align-items:center;gap:12px;font:600 16px/1.2 var(--f-sans);letter-spacing:.02em;color:var(--accent)}
+.kicker .num{font-family:var(--f-label);letter-spacing:.14em}
+.chip{display:inline-block;padding:8px 14px;background:var(--paper-3);font:600 14px/1 var(--f-sans);letter-spacing:.04em;color:var(--ink-2)}
+.chip--accent{color:var(--accent)}
+.label{font:600 15px/1.35 var(--f-sans);letter-spacing:.02em;color:var(--ink-3)}
+.term{font-family:var(--f-display);font-style:italic;font-weight:400}
+
+.title-block{display:flex;flex-direction:column;gap:14px}
+.headline{font:500 58px/1.22 var(--f-serif);letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
+.headline em{font-style:normal;color:var(--accent)}
+.deck{font:400 22px/1.5 var(--f-serif);letter-spacing:-.03em;color:var(--ink-3)}
+
+/* ---- 본문 레이아웃 ---- */
+.body{flex:1;min-height:0;display:flex;flex-direction:column;padding:32px 0 30px;gap:30px}
+.cols{flex:1;min-height:0;display:grid;gap:64px}
+.col{display:flex;flex-direction:column;min-height:0}
+.col-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--rule-2);margin-bottom:4px}
+.col-head .label{color:var(--ink)}
+.col-head span:last-child{font:400 15px/1 var(--f-sans);color:var(--ink-3)}
+
+/* 인라인: 파일명 · 단축키 */
+.file{display:inline-block;font:600 .9em/1.25 var(--f-label);letter-spacing:.005em;color:var(--ink);background:var(--paper-3);padding:3px 7px;white-space:nowrap}
+.key{display:inline-block;font:600 17px/1 var(--f-label);letter-spacing:.02em;padding:7px 10px;background:var(--white);box-shadow:0 0 0 1px var(--rule-2);color:var(--ink);margin:0 2px}
+.muted{color:var(--ink-3)}
+
+/* 표 */
+.rows{width:100%;border-collapse:collapse}
+.rows th{font:600 16px/1.3 var(--f-sans);letter-spacing:.02em;color:var(--ink-3);text-align:left;padding:0 24px 14px 0;border-bottom:1px solid var(--rule-2)}
+.rows td{font:400 22px/1.5 var(--f-sans);color:var(--ink-2);padding:18px 24px 18px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.rows td.k{font-weight:600;color:var(--ink);white-space:nowrap}
+.rows td.n{font:700 16px/2 var(--f-label);letter-spacing:.14em;color:var(--accent);width:56px}
+.rows tr.hot td.k{color:var(--accent)}
+.rows--tight td{padding:14px 22px 14px 0;font-size:20px}
+
+/* 면 · 패널 */
+.panel{display:flex;flex-direction:column;padding:28px 34px 26px;background:var(--paper-2);box-shadow:0 0 0 1px var(--rule)}
+.panel>.label{color:var(--accent);margin-bottom:12px}
+.panel h3{font:600 32px/1.3 var(--f-serif);letter-spacing:-.045em;color:var(--ink)}
+.panel p{font:400 20px/1.65 var(--f-sans);color:var(--ink-2)}
+.panel--white{background:var(--white);box-shadow:0 0 0 1px var(--rule-2)}
+
+/* 원칙 인용 */
+.principle{border-left:2px solid var(--accent);padding:2px 0 2px 26px}
+.principle .label{color:var(--accent);margin-bottom:12px}
+.principle p{font:500 34px/1.4 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.principle cite{display:block;margin-top:12px;font:normal 400 18px/1.6 var(--f-sans);color:var(--ink-3)}
+
+/* 하단 띠 */
+.imperative{flex:none;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:22px 28px;background:var(--paper-3);box-shadow:0 0 0 1px var(--rule)}
+.imperative .label{color:var(--ink)}
+.imperative p{font:500 24px/1.5 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
+.imperative .next{font:600 16px/1 var(--f-sans);color:var(--accent);white-space:nowrap}
+
+/* 번호 단계 */
+.step{display:grid;grid-template-columns:112px 1fr;padding:32px 0;border-top:1px solid var(--rule-2)}
+.step:last-child{border-bottom:1px solid var(--rule-2)}
+.step .n{font:400 72px/.85 var(--f-display);letter-spacing:-.02em;color:var(--accent)}
+.step h4{font:600 34px/1.3 var(--f-serif);letter-spacing:-.045em;color:var(--ink)}
+.step p{margin-top:10px;font:400 21px/1.6 var(--f-sans);color:var(--ink-2)}
+.step .ref{display:inline-block;margin-top:12px;font:500 18px/1 var(--f-sans);color:var(--ink-3)}
+.step .ref b{color:var(--accent);font-weight:600}
+
+/* 번호 목록 */
+.numlist li{display:grid;grid-template-columns:56px 1fr;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--rule)}
+.numlist li:first-child{border-top:1px solid var(--rule-2)}
+.numlist .qn{font:700 16px/1 var(--f-label);letter-spacing:.1em;color:var(--accent)}
+.numlist b{display:block;font:600 25px/1.45 var(--f-sans);letter-spacing:-.02em;color:var(--ink)}
+.numlist small{display:block;margin-top:6px;font:400 19px/1.55 var(--f-sans);color:var(--ink-3)}
+
+/* 기둥 카드 */
+.pillars{display:grid;gap:22px}
+.pillar{display:flex;flex-direction:column;padding:24px 26px 22px;background:var(--white);border:1px solid var(--rule-2)}
+.pillar-head{padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.pillar-head .idx{font:700 14px/1 var(--f-label);letter-spacing:.16em;color:var(--accent)}
+.pillar-head h3{margin-top:12px;font:500 36px/1.15 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.pillar-head .en{margin-top:8px;font:400 20px/1 var(--f-display);font-style:italic;color:var(--ink-3)}
+.pillar p{margin-top:18px;font:400 20px/1.65 var(--f-sans);color:var(--ink-2)}
+.pillar .use{margin-top:auto;padding-top:14px}
+.pillar .use div{display:grid;grid-template-columns:96px 1fr;align-items:baseline;padding:9px 0;border-top:1px solid var(--rule)}
+.pillar .use dt{font:600 16px/1.5 var(--f-sans);color:var(--ink-3)}
+.pillar .use dd{font:500 18px/1.5 var(--f-sans);color:var(--ink)}
+.pillar .use dd.hot{color:var(--accent);font-weight:600}
+.pillar--hot{border-color:var(--accent);position:relative}
+.pillar--hot::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:3px;background:var(--accent)}
+
+/* 비교 카드 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1;min-height:0}
+.gen-card{position:relative;display:flex;flex-direction:column;padding:30px 38px 28px;background:var(--paper-2)}
+.gen-card--active{background:var(--paper-3)}
+.gen-card--active::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--accent)}
+.badge{display:inline-block;padding:8px 13px;font:600 14px/1 var(--f-sans);letter-spacing:.04em;background:var(--paper-4);color:var(--ink-2)}
+.badge--accent{background:var(--accent);color:#fff}
+.gen-card h3{margin-top:18px;font:600 40px/1.2 var(--f-serif);letter-spacing:-.045em;color:var(--ink)}
+.gen-card .tagline{margin-top:6px;font:400 22px/1.5 var(--f-serif);color:var(--ink-2)}
+.spec{margin-top:18px}
+.spec div{display:grid;grid-template-columns:150px 1fr;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid var(--rule)}
+.spec dt{font:600 17px/1.45 var(--f-sans);color:var(--ink-3)}
+.gen-card--active .spec dt{color:var(--accent)}
+.spec dd{font:500 22px/1.5 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+
+/* 흐름 노드 */
+.flow-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font:500 20px/1.2 var(--f-sans);color:var(--ink)}
+.node{padding:14px 18px;background:var(--paper);box-shadow:0 0 0 1px var(--rule-2)}
+.node--muted{color:var(--ink-3);box-shadow:none;background:transparent;border:1px dashed var(--rule-2)}
+.node--hot{background:var(--accent-soft);box-shadow:none;color:#390C00;font-weight:600}
+.node--done{background:var(--ink);color:var(--paper);box-shadow:none}
+.arr{color:var(--accent);font-size:20px}
+.vflow{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.vflow .arr{margin-left:18px}
+
+/* 프롬프트 */
+.tmpl{background:var(--white);box-shadow:0 0 0 1px var(--rule-2);padding:26px 36px 18px;align-self:start}
+.tmpl>.label{color:var(--accent);padding-bottom:12px;border-bottom:1px solid var(--rule-2)}
+.tmpl>div:not(.label){display:grid;grid-template-columns:92px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--rule)}
+.tmpl>.label+div{border-top:0}
+.tmpl dt{font:700 17px/1.85 var(--f-sans);letter-spacing:.06em;color:var(--accent)}
+.tmpl dd{font:500 23px/1.6 var(--f-sans);color:var(--ink)}
+.tmpl dd .ph{color:var(--ink-3)}
+.tmpl dd ul li{position:relative;padding-left:24px}
+.tmpl dd ul li::before{content:"—";position:absolute;left:0;color:var(--rule-2)}
+
+.prompt{display:flex;flex-direction:column;padding:22px 26px 24px;background:var(--paper-2);box-shadow:0 0 0 1px var(--rule)}
+.prompt .label{color:var(--accent)}
+.prompt h4{margin-top:10px;font:600 27px/1.3 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.prompt .why{margin-top:6px;font:400 15.5px/1.5 var(--f-sans);color:var(--ink-3)}
+.prompt pre{margin-top:16px;white-space:pre-wrap;font:400 19px/1.7 var(--f-sans);color:var(--ink-2);border-left:2px solid var(--rule-2);padding-left:16px}
+
+/* 체크 목록 */
+.checks li{display:grid;grid-template-columns:34px 1fr;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--rule);font:500 21px/1.5 var(--f-sans);color:var(--ink)}
+.checks li::before{content:"";width:16px;height:16px;border:1.5px solid var(--ink-3);transform:translateY(2px)}
+
+/* 규칙 목록 */
+.rules{display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
+.rules li{display:grid;grid-template-columns:84px 1fr;align-items:baseline;padding:36px 0;border-top:1px solid var(--rule)}
+.rules li:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
+.rules .n{font:400 54px/1 var(--f-display);color:var(--accent);letter-spacing:-.02em}
+.rules b{display:block;font:600 31px/1.35 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.rules p{margin-top:10px;font:400 21px/1.6 var(--f-sans);color:var(--ink-2)}
+
+/* 큰 숫자 */
+.big{font:400 112px/.9 var(--f-display);letter-spacing:-.03em;color:var(--ink)}
+.big small{font-size:.38em;letter-spacing:0;margin-left:8px;font-family:var(--f-sans);font-weight:500;color:var(--ink-2)}
+
+/* 코드 조각 (CHANGELOG 등) */
+.snippet{background:var(--white);box-shadow:0 0 0 1px var(--rule-2);padding:24px 28px;font:400 19px/1.75 var(--f-label);color:var(--ink-2);white-space:pre-wrap}
+.snippet b{color:var(--ink)}
+
+/* ---- 표지 ---- */
+.cover-art{position:absolute;right:0;top:0;width:64%;height:100%;z-index:1;pointer-events:none;color:var(--accent);opacity:.17}
+.cover-art svg{display:block;width:100%;height:100%}
+.cover-core{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;max-width:1400px}
+.tag-row{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.tag-row .line{width:64px;height:1px;background:var(--rule-2)}
+.cover-title{font-family:var(--f-display);font-weight:400;font-size:140px;line-height:.96;letter-spacing:-.025em;text-transform:uppercase;color:#000}
+.cover-sub{margin-top:28px;font:500 50px/1.3 var(--f-serif);letter-spacing:-.045em;color:var(--accent)}
+.cover-deck{margin-top:34px;border-left:2px solid rgba(162,62,24,.45);padding-left:26px;font:400 24px/1.7 var(--f-serif);color:var(--ink-2);max-width:1080px}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;padding-bottom:36px}
+.in-volume .label{margin-bottom:14px}
+.in-volume ol{display:flex;flex-direction:column;gap:14px;font:600 19px/1 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+.in-volume ol span{display:inline-block;width:72px;font:600 13px/1 var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.in-volume ol em{font-style:normal;font-weight:400;color:var(--ink-3);margin-left:12px}
+.ledger{width:460px;background:rgba(239,238,234,.8);padding:24px 30px 22px}
+.ledger .label{padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--rule-2);color:var(--ink-2)}
+.ledger dl{display:flex;flex-direction:column;gap:11px}
+.ledger dl div{display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+.ledger dt{font:500 14px/1.3 var(--f-sans);color:var(--ink-3)}
+.ledger dd{font:500 16px/1.3 var(--f-sans);color:var(--ink);text-align:right}
+
+/* ---- 프롤로그 · 목차 ---- */
+.p2-body{flex:1;min-height:0;display:grid;grid-template-columns:640px 1fr;column-gap:128px;padding:40px 0 34px;position:relative}
+.p2-body::after{content:"";position:absolute;top:40px;bottom:34px;left:704px;width:1px;background:var(--rule)}
+.manifesto{display:flex;flex-direction:column}
+.manifesto .headline{margin-top:24px;font-size:52px}
+.prose{margin-top:32px;display:flex;flex-direction:column;gap:18px}
+.prose p{font:400 20px/1.9 var(--f-serif);color:var(--ink-2)}
+.prose b{color:var(--ink);font-weight:600}
+.dropcap::first-letter{float:left;font:500 80px/.9 var(--f-serif);color:var(--accent);margin:8px 14px 0 0}
+.pull{margin-top:auto;border-left:2px solid var(--accent);padding:4px 0 4px 26px}
+.pull p{font:500 34px/1.35 var(--f-serif);letter-spacing:-.03em;color:var(--ink)}
+.pull cite{display:block;margin-top:10px;font:normal 500 14px/1.4 var(--f-sans);color:var(--ink-3)}
+.index{display:flex;flex-direction:column}
+.index-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--rule-2)}
+.index-head h3{font:500 36px/1 var(--f-serif);letter-spacing:-.03em}
+.part-head{display:flex;align-items:center;gap:12px;margin-top:18px;padding-bottom:4px;font:600 16px/1 var(--f-sans);color:var(--ink)}
+.part-head .caps{color:var(--accent);font-weight:700}
+.part-head .status{margin-left:auto;font:500 13px/1 var(--f-label);letter-spacing:.12em;color:var(--ink-3)}
+.toc li{display:grid;grid-template-columns:56px auto 1fr 44px;align-items:center;padding:9px 12px;margin:0 -12px;border-bottom:1px solid var(--rule)}
+.toc .n{font:700 14px/1 var(--f-label);letter-spacing:.14em;color:var(--accent)}
+.toc h4{font:500 23px/1.3 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
+.toc .leader{height:1px;margin:0 16px;border-bottom:2px dotted var(--rule-2);transform:translateY(6px)}
+.toc .pg{justify-self:end;font:500 15px/1 var(--f-label);letter-spacing:.08em;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ---- 네비게이션 (화면 전용) ---- */
+.nav-controls{position:absolute;right:var(--pad-x);bottom:0;height:var(--folio-h);z-index:20;display:flex;align-items:center;gap:22px}
+.dots{display:flex;align-items:center}
+.dot{width:20px;height:28px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.dot::before{content:"";width:7px;height:7px;background:var(--rule-2);transition:width .3s ease,background .3s ease}
+.dot:hover::before{background:var(--ink-3)}
+.dot.is-active{width:38px}
+.dot.is-active::before{width:26px;background:var(--accent)}
+.slide-counter{font:600 14px/1 var(--f-label);letter-spacing:.2em;font-variant-numeric:tabular-nums;color:var(--ink);min-width:78px;text-align:center}
+.slide-counter .total{color:var(--ink-3)}
+.nav-btn{width:40px;height:40px;display:grid;place-items:center;cursor:pointer;background:transparent;border:1px solid var(--rule-2);color:var(--ink);transition:background .15s ease,border-color .15s ease,color .15s ease}
+.nav-btn:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.nav-btn:disabled{opacity:.3;cursor:default}
+.nav-btn svg{width:16px;height:16px}
+.nav-btn:focus-visible,.dot:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+.nav-group{display:flex;gap:8px}
+
+/* ---- 인쇄: 페이지당 16:9 슬라이드 1장 ---- */
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{width:1920px;height:auto!important;overflow:visible!important;background-color:#FBF9F5!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .viewport{position:static!important;overflow:visible!important;background:none!important}
+  .stage{position:static!important;transform:none!important;width:1920px!important;height:auto!important;box-shadow:none!important}
+  .slide{display:block!important;position:relative!important;width:1920px!important;height:1080px!important;opacity:1!important;visibility:visible!important;transition:none!important;page-break-after:always!important;break-after:page!important}
+  .slide:last-of-type{page-break-after:auto!important;break-after:auto!important}
+  .nav-controls,.slide-counter{display:none!important}
+  .folio .pg{visibility:visible}
+}
+
+</style>
+</head>
+<body>
+<div class="viewport">
+<div class="stage" id="stage">
+<!-- ======================================================================
+     01 · 표지
+     ====================================================================== -->
+<section class="slide is-active" aria-roledescription="slide" aria-label="표지">
+  <div class="sheet">
+    <div class="cover-art" aria-hidden="true">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="330" y="70" width="460" height="460" stroke="currentColor" stroke-dasharray="3 3"/>
+        <rect x="400" y="140" width="320" height="320" stroke="currentColor" stroke-width="1.25"/>
+        <rect x="470" y="210" width="180" height="180" stroke="currentColor"/>
+        <rect x="530" y="270" width="60" height="60" stroke="currentColor" stroke-dasharray="2 4"/>
+        <line x1="400" x2="720" y1="300" y2="300" stroke="currentColor" stroke-width=".75" opacity=".6"/>
+        <line x1="560" x2="560" y1="140" y2="460" stroke="currentColor" stroke-width=".75" opacity=".6"/>
+        <line x1="400" x2="470" y1="140" y2="210" stroke="currentColor" opacity=".6"/>
+        <line x1="720" x2="650" y1="140" y2="210" stroke="currentColor" opacity=".6"/>
+        <line x1="400" x2="470" y1="460" y2="390" stroke="currentColor" opacity=".6"/>
+        <line x1="720" x2="650" y1="460" y2="390" stroke="currentColor" opacity=".6"/>
+        <circle cx="560" cy="300" r="3" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>옥종고 OKXEN</span><span class="sep">/</span><span class="accent">전문가 전달용</span></div>
+    </header>
+
+    <div class="cover-core">
+      <div class="tag-row"><span class="chip">앱 개발 전문가 협업 안내</span><span class="line"></span></div>
+      <h1 class="cover-title">Build Partner</h1>
+      <p class="cover-sub">학생의 v1을, 본선의 완성도로</p>
+      <p class="cover-deck">고등학생 팀 OKXEN의 게임형 학습 앱 『STUDY-BUDDY』를 학생 작업본(v1)부터 본선까지, 4회 · 총 8시간의 전문가 멘토링으로 함께 완성해 주십시오.</p>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="in-volume">
+        <div class="label">이 문서</div>
+        <ol>
+          <li><span>01</span>프로젝트<em>팀 · 아이디어 · 역할 범위</em></li>
+          <li><span>02</span>운영<em>4회 일정 · 소통 방식 · 기술 요청</em></li>
+          <li><span>03</span>행정<em>파일 규칙 · 처우와 정산 · 연락처</em></li>
+        </ol>
+      </div>
+      <div class="ledger">
+        <div class="label">발행 정보</div>
+        <dl>
+          <div><dt>수신</dt><dd>팀모노리스 앱 개발 전문가</dd></div>
+          <div><dt>발신</dt><dd>㈜네패스 운영기관</dd></div>
+          <div><dt>본선</dt><dd>2026. 12. 12(토) · DDP 아트홀</dd></div>
+          <div><dt>문서</dt><dd>v1.0 · 2026. 10. 12</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>01</b>표지</span>
+      <span class="src">2026 디지털새싹 문제해결 경진대회 C.O.D.E · 운영기관 ㈜네패스</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     02 · 프로젝트 개요
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="프로젝트 개요">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>01 · 프로젝트</span></div>
+    </header>
+
+    <div class="p2-body">
+      <article class="manifesto">
+        <div><span class="chip chip--accent">한 줄 요약</span></div>
+        <h2 class="headline">정기 미팅 없이,<br><em>완성도</em>만 책임진다</h2>
+        <div class="prose">
+          <p class="dropcap">학생들은 코드를 직접 짜기보다 AI에게 요청해 앱을 고칩니다. 그래서 기능은 빠르게 늘지만, 골격은 쉽게 흔들립니다.</p>
+          <p>전문가님께 부탁드리는 것은 <b>흔들리지 않는 골격</b>과, 학생이 덧붙인 것들을 <b>본선 무대에서 끊김 없이 돌아가게</b> 만드는 일입니다. 학생 피드백은 운영사가 모아서 회차마다 한 번에 전달합니다.</p>
+        </div>
+        <blockquote class="pull">
+          <p>“P1만 처리해도 회차 완료.”</p>
+          <cite>회차별 피드백 패키지의 원칙</cite>
+        </blockquote>
+      </article>
+
+      <div class="index">
+        <div class="index-head"><h3>STUDY-BUDDY</h3><span class="label">트랙2 · 성장</span></div>
+        <dl class="spec" style="margin-top:6px">
+          <div><dt>대회</dt><dd>2026 디지털새싹 문제해결 경진대회 C.O.D.E 본선 (한국과학창의재단)</dd></div>
+          <div><dt>팀</dt><dd>옥종고등학교 OKXEN — 팀장(1학년, 웹 · AI), 팀원(1학년, 디자인 · 발표), 팀원(2학년, 앱 · QA)</dd></div>
+          <div><dt>지도교사</dt><dd>옥종고 지도교사 1명</dd></div>
+          <div><dt>아이디어</dt><dd>오늘 배운 개념을 AI 학생 캐릭터에게 <b>가르치면</b>, AI가 되묻기 · 퀴즈로 이해를 점검하고 학습량에 따라 캐릭터가 성장하는 게임형 복습 앱</dd></div>
+          <div><dt>핵심 루프</dt><dd>성향 검사 → 캐릭터 생성 → 가르치기 → 퀴즈 → 경험치 · 레벨 · 보상 → (선택) 시즌 리그</dd></div>
+          <div><dt>학생 역량</dt><dd>웹 개발 기초. 7월 디지털새싹 「너도 할 수 있어 느낌(Vibe)있는 로봇 공학」 참여</dd></div>
+          <div><dt>본선 형식</dt><dd>12.12(토) DDP 아트홀 — 발표 10분 + 심사 피드백 5분, 결과물 전시</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>02</b>프로젝트 개요</span>
+      <span class="src">출처: OKXEN 활동계획서 (2026. 8. 26 제출)</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     03 · 역할 범위
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="역할 범위">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>01 · 프로젝트</span></div>
+    </header>
+
+    <div class="body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">01</span>역할 범위</div>
+        <h2 class="headline">맡아 주실 일과, <em>맡지 않으셔도 되는 일</em></h2>
+      </div>
+
+      <div class="compare">
+        <article class="gen-card gen-card--active">
+          <div><span class="badge badge--accent">맡아 주실 일</span></div>
+          <h3>골격과 완성도</h3>
+          <p class="tagline">v1을 기반으로 보강합니다. 새로 만들지 않습니다.</p>
+          <dl class="spec">
+            <div><dt>골격 안정화</dt><dd>화면 구조 · 상태 관리 · 저장 · 게임 루프</dd></div>
+            <div><dt>통합</dt><dd>학생이 추가한 기능의 통합 · 버그 수정 · 정리</dd></div>
+            <div><dt>품질</dt><dd>모바일 대응 · 성능 · 예외 처리</dd></div>
+            <div><dt>시연 안정성</dt><dd>네트워크 장애 대비 · 데모 데이터 · 배포</dd></div>
+            <div><dt>수정 친화 구조</dt><dd>학생이 AI로 고쳐도 잘 깨지지 않는 구조 유지</dd></div>
+          </dl>
+        </article>
+        <article class="gen-card">
+          <div><span class="badge">맡지 않으셔도 되는 일</span></div>
+          <h3>운영과 기획</h3>
+          <p class="tagline">운영사와 학생이 맡습니다.</p>
+          <dl class="spec">
+            <div><dt>기획 방향</dt><dd>기능 우선순위와 방향 결정</dd></div>
+            <div><dt>발표</dt><dd>발표 자료 · 스피치 코칭</dd></div>
+            <div><dt>운영</dt><dd>일정 관리 · 학생 개별 연락 응대</dd></div>
+            <div><dt>미팅</dt><dd>회차별 2시간 정기 미팅</dd></div>
+            <div><dt>재개발</dt><dd>처음부터 새로 만들기</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>03</b>역할 범위</span>
+      <span class="src">범위 밖 요청이 들어오면 운영사로 넘겨 주십시오.</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     04 · 4회 일정
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="4회 일정">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>02 · 운영</span></div>
+    </header>
+
+    <div class="body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">02</span>4회 일정</div>
+        <h2 class="headline">첫 만남 한 번, <em>리뷰 세 번</em></h2>
+      </div>
+
+      <div class="pillars" style="grid-template-columns:repeat(4,1fr);flex:1">
+        <article class="pillar pillar--hot">
+          <div class="pillar-head"><span class="idx">R1</span><h3>첫 만남 · 진단</h3><div class="en">Diagnose &amp; reinforce</div></div>
+          <p>10.31(토) 19:30–20:30, 통합 멘토링 현장(라비돌 호텔앤리조트, 화성)에서 학생과 처음 만납니다. 이날 공개되는 본선 문제와의 연결을 먼저 봅니다.</p>
+          <dl class="use">
+            <div><dt>받으실 것</dt><dd>학생 v1 (10.30 사전 공유)</dd></div>
+            <div><dt>주실 것</dt><dd>진단 메모 1쪽 + 골격 보강판 v2</dd></div>
+            <div><dt>마감</dt><dd class="hot">11.6(금)</dd></div>
+          </dl>
+        </article>
+        <article class="pillar">
+          <div class="pillar-head"><span class="idx">R2</span><h3>1차 리뷰</h3><div class="en">Stabilize the loop</div></div>
+          <p>학생이 v2 위에 덧붙인 기능을 통합하고, 핵심 게임 루프가 끊김 없이 반복되게 합니다.</p>
+          <dl class="use">
+            <div><dt>받으실 것</dt><dd>피드백 패키지 #1 · 11.17(화)</dd></div>
+            <div><dt>주실 것</dt><dd>v3 + 회신 메모</dd></div>
+            <div><dt>마감</dt><dd class="hot">11.20(금)</dd></div>
+          </dl>
+        </article>
+        <article class="pillar">
+          <div class="pillar-head"><span class="idx">R3</span><h3>2차 리뷰</h3><div class="en">Feature freeze</div></div>
+          <p>본선용 기능을 확정하는 회차입니다. 이후로는 새 기능을 받지 않습니다.</p>
+          <dl class="use">
+            <div><dt>받으실 것</dt><dd>피드백 패키지 #2 · 12.1(화)</dd></div>
+            <div><dt>주실 것</dt><dd>v4 RC + 회신 메모</dd></div>
+            <div><dt>마감</dt><dd class="hot">12.4(금)</dd></div>
+          </dl>
+        </article>
+        <article class="pillar">
+          <div class="pillar-head"><span class="idx">R4</span><h3>최종 점검</h3><div class="en">Ship it</div></div>
+          <p>리허설에서 나온 버그만 고칩니다. 시연 시나리오가 처음부터 끝까지 도는지 확인합니다.</p>
+          <dl class="use">
+            <div><dt>받으실 것</dt><dd>리허설 버그 목록 · 12.7(월)</dd></div>
+            <div><dt>주실 것</dt><dd>FINAL + 시연 체크</dd></div>
+            <div><dt>마감</dt><dd class="hot">12.9(수)</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="imperative">
+        <span class="label">참고</span>
+        <p>11.1(일) 09:00–12:00 재단 측 1:1 멘토링에 함께하시면 그 피드백도 들으실 수 있습니다 (선택). 현장 교통 · 숙박은 운영사가 따로 안내드립니다.</p>
+        <span class="next">본선 12.12(토)</span>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>04</b>4회 일정</span>
+      <span class="src">R1의 현장 시간은 재단 일정 중 ‘팀별 자율 토의’ 시간을 활용합니다.</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     05 · 소통 방식
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="소통 방식">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>02 · 운영</span></div>
+    </header>
+
+    <div class="body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">03</span>소통 방식</div>
+        <h2 class="headline">창구는 하나, <em>요청은 묶어서</em></h2>
+      </div>
+
+      <div class="cols" style="grid-template-columns:1.2fr 1fr">
+        <div class="col">
+          <table class="rows">
+            <thead><tr><th></th><th>흐름</th><th>시점</th></tr></thead>
+            <tbody>
+              <tr><td class="n">01</td><td>학생 → <b>피드백 · 요청 시트</b>에 기록</td><td>상시 · 매주 일 22:00 마감</td></tr>
+              <tr><td class="n">02</td><td>운영사 → 취합 · 우선순위 정리</td><td>월</td></tr>
+              <tr class="hot"><td class="n">03</td><td>운영사 → 전문가 · <b>피드백 패키지</b> 1건</td><td>2주에 1번 · 화</td></tr>
+              <tr><td class="n">04</td><td>전문가 → 운영사 · <b>결과 버전 + 회신 메모</b></td><td>금 (R4는 12.9 수)</td></tr>
+              <tr><td class="n">05</td><td>운영사 → 학생 · 결과 안내와 이번 주 과제</td><td>결과 수령 직후</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col" style="gap:30px">
+          <div class="principle">
+            <div class="label">피드백 패키지</div>
+            <p>P1은 최대 다섯 건. P1만 처리해도 회차 완료로 봅니다.</p>
+            <cite>P1 필수 · P2 가능하면 · P3 여유 있을 때 · ‘학생이 직접 처리할 항목’은 참고용</cite>
+          </div>
+          <ol class="numlist">
+            <li><span class="qn">01</span><div><b>학생이 직접 연락하면 운영사로</b><small>학생들에게도 같은 규칙을 공지했습니다.</small></div></li>
+            <li><span class="qn">02</span><div><b>질문은 운영사에</b><small>학생 의견을 받아 영업일 1일 안에 회신합니다.</small></div></li>
+            <li><span class="qn">03</span><div><b>예외는 긴급 상황뿐</b><small>앱이 실행되지 않는 경우에만 바로 연락드립니다.</small></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>05</b>소통 방식</span>
+      <span class="src">패키지와 회신 메모는 옥종고 드라이브 「4. 피드백 패키지」에 쌓입니다.</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     06 · 기술 요청
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="기술 요청">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>02 · 운영</span></div>
+    </header>
+
+    <div class="body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">04</span>기술 요청</div>
+        <h2 class="headline">학생이 AI로 고쳐도, <em>깨지지 않게</em></h2>
+      </div>
+
+      <ol class="rules">
+        <li><span class="n">01</span><div><b>빌드 도구 없이 실행</b><p>index.html 더블클릭으로 동작하는 구조를 유지해 주십시오. 프레임워크 · 번들러 도입은 운영사와 협의합니다.</p></div></li>
+        <li><span class="n">02</span><div><b>콘텐츠와 수치를 분리</b><p>data/content.js(퀴즈 · 대사 · AI 지시문), data/config.js(경험치 · 보상). file:// 실행이라 JSON 대신 .js 전역 객체로.</p></div></li>
+        <li><span class="n">03</span><div><b>구역 표시와 짧은 파일</b><p>ENGINE(학생 수정 금지) · EDIT(수정 가능) 주석, 파일당 300–500줄, 함수마다 한국어 한 줄 주석.</p></div></li>
+        <li><span class="n">04</span><div><b>저장 키에 버전 표기</b><p>studybuddy_v2_state처럼 표기하고, 구조가 바뀌면 초기화 또는 마이그레이션.</p></div></li>
+        <li><span class="n">05</span><div><b>AI는 데모 모드가 기본</b><p>미리 쓴 응답을 기본으로 두고 실제 API는 스위치로. API 키가 코드와 드라이브에 남지 않게. 연동 방식은 R1에서 결정합니다.</p></div></li>
+        <li><span class="n">06</span><div><b>시연 안정성과 기록</b><p>오프라인 동작 · 데모 데이터 불러오기와 초기화 버튼 · 배포 URL과 zip 백업. 결과물마다 CHANGELOG.md 갱신.</p></div></li>
+      </ol>
+    </div>
+
+    <footer class="folio">
+      <span><b>06</b>기술 요청</span>
+      <span class="src">학생들은 ChatGPT · Gemini · Claude 등에 파일을 붙여넣어 수정합니다.</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     07 · 파일 규칙 · 처우와 정산
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="파일 규칙과 처우">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>03 · 행정</span></div>
+    </header>
+
+    <div class="body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">05</span>파일 규칙 · 처우와 정산</div>
+        <h2 class="headline">결과물은 드라이브에, <em>증빙은 운영사가</em></h2>
+      </div>
+
+      <div class="cols" style="grid-template-columns:1.15fr 1fr">
+        <div class="col" style="gap:30px">
+          <div>
+            <div class="col-head"><span class="label">파일 이름</span><span>옥종고 드라이브 「3. 프로토타입」</span></div>
+            <table class="rows rows--tight">
+              <tbody>
+                <tr><td class="k">R1</td><td>OKXEN_v2_1106_expert.zip</td></tr>
+                <tr><td class="k">R2</td><td>OKXEN_v3_1120_expert.zip</td></tr>
+                <tr><td class="k">R3</td><td>OKXEN_v4_1204_expert.zip</td></tr>
+                <tr><td class="k">R4</td><td>OKXEN_FINAL_1209_expert.zip</td></tr>
+              </tbody>
+            </table>
+            <p class="label" style="margin-top:12px;font-weight:400">이전 버전은 지우지 말아 주십시오. 편집 권한은 R1 전에 드립니다.</p>
+          </div>
+          <div>
+            <div class="col-head"><span class="label">회신 메모</span><span>5–10줄이면 충분합니다</span></div>
+            <ul class="checks">
+              <li>반영 완료 / 미반영과 그 사유</li>
+              <li>구조 변경점과 새로 생긴 ENGINE 구역</li>
+              <li>학생에게 권하는 다음 과제 (선택)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel panel--white" style="justify-content:space-between">
+          <div>
+            <div class="label">처우</div>
+            <div class="big">800,000<small>원</small></div>
+            <p style="margin-top:14px">전문가 멘토링 4회 · 총 8시간 — 회당 200,000원 (디지털새싹 사업비 전문가활용비)</p>
+          </div>
+          <dl class="spec">
+            <div><dt>시간 기준</dt><dd>회당 2시간 상당. 미팅 시간이 아니라 리뷰 · 보강 작업을 포함한 기준입니다</dd></div>
+            <div><dt>증빙</dt><dd>멘토링 일지는 운영사가 작성합니다. 회차 결과물(버전 zip + 회신 메모)만 주시면 됩니다</dd></div>
+            <div><dt>지급</dt><dd>시점과 필요 서류는 운영사 정산 담당이 따로 안내드립니다</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>07</b>파일 규칙 · 처우와 정산</span>
+      <span class="src">전문가활용비는 외부 인력에만 집행됩니다 — 2026 CODE 운영기관 안내문(한국과학창의재단, 10. 2)</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     08 · 연락처와 다음 단계
+     ====================================================================== -->
+<section class="slide" aria-roledescription="slide" aria-label="연락처와 다음 단계">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>C.O.D.E 2026</span><span class="sep">|</span><strong class="caps">Partner Brief</strong></div>
+      <div class="grp"><span>03 · 행정</span></div>
+    </header>
+
+    <div class="body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">06</span>연락처와 다음 단계</div>
+        <h2 class="headline">10월 31일, <em>현장에서</em> 뵙겠습니다</h2>
+      </div>
+
+      <div class="cols" style="grid-template-columns:1.05fr 1fr;align-items:start">
+        <div class="col">
+          <div class="step"><span class="n">01</span><div><h4>자료 수령</h4><p>활동계획서 · 학생용 AI 앱수정 매뉴얼(옥종고판)을 먼저 보내드립니다.</p><span class="ref">즉시</span></div></div>
+          <div class="step"><span class="n">02</span><div><h4>v0 · v1 공유</h4><p>운영사가 만든 v0와 학생이 고친 v1을 함께 드립니다. 드라이브 편집 권한도 이때 드립니다.</p><span class="ref"><b>10.30(금)</b></span></div></div>
+          <div class="step"><span class="n">03</span><div><h4>R1 — 첫 만남</h4><p>라비돌 호텔앤리조트(경기 화성). 학생 세 명과 v1을 함께 봅니다.</p><span class="ref"><b>10.31(토) 19:30</b></span></div></div>
+        </div>
+
+        <div class="panel">
+          <div class="label">운영사 창구</div>
+          <h3>㈜네패스 운영 총괄</h3>
+          <dl class="spec" style="margin-top:12px">
+            <div><dt>역할</dt><dd>일정 · 피드백 패키지 · 정산의 단일 창구</dd></div>
+            <div><dt>현장 담당</dt><dd>옥종고 담당 직원 (10.31 현장 동행)</dd></div>
+            <div><dt>코디네이터</dt><dd>재단 · 학교 연락 담당</dd></div>
+            <div><dt>연락처</dt><dd>이름 · 전화 · 메일은 메시지로 따로 전달드립니다</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>08</b>연락처와 다음 단계</span>
+      <span class="src">함께해 주셔서 감사합니다.</span>
+      <span class="pg"></span>
+    </footer>
+  </div>
+</section>
+
+<nav class="nav-controls" aria-label="슬라이드 이동">
+  <div class="dots" role="tablist"></div>
+  <div class="slide-counter" aria-live="polite"><span class="cur">01</span> <span class="total">/ 01</span></div>
+  <div class="nav-group">
+    <button class="nav-btn" type="button" data-dir="-1" aria-label="이전 슬라이드">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 3 5 8l5 5"/></svg>
+    </button>
+    <button class="nav-btn" type="button" data-dir="1" aria-label="다음 슬라이드">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m6 3 5 5-5 5"/></svg>
+    </button>
+  </div>
+</nav>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var W = 1920, H = 1080;
+  var stage = document.getElementById("stage");
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var total = slides.length;
+  var dotsWrap = document.querySelector(".dots");
+  var curEl = document.querySelector(".slide-counter .cur");
+  var totalEl = document.querySelector(".slide-counter .total");
+  var prevBtn = document.querySelector('.nav-btn[data-dir="-1"]');
+  var nextBtn = document.querySelector('.nav-btn[data-dir="1"]');
+  var current = 0;
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+  /* ---- 폴리오 쪽번호 (인쇄 시 표시) ---- */
+  slides.forEach(function (s, i) {
+    var pg = s.querySelector(".folio .pg");
+    if (pg) pg.textContent = pad(i + 1) + " / " + pad(total);
+  });
+
+  /* ---- 화면 맞춤 ---- */
+  function fit() {
+    var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.setProperty("--scale", s);
+  }
+
+  /* ---- 도트 ---- */
+  var dots = slides.map(function (s, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "dot";
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-label", pad(i + 1) + " 슬라이드로 이동");
+    b.addEventListener("click", function () { go(i); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+  totalEl.textContent = "/ " + pad(total);
+
+  function go(i) {
+    i = Math.max(0, Math.min(total - 1, i));
+    current = i;
+    slides.forEach(function (s, k) {
+      var on = k === i;
+      s.classList.toggle("is-active", on);
+      s.setAttribute("aria-hidden", on ? "false" : "true");
+      if (on) s.removeAttribute("inert"); else s.setAttribute("inert", "");
+    });
+    dots.forEach(function (d, k) {
+      d.classList.toggle("is-active", k === i);
+      d.setAttribute("aria-selected", k === i ? "true" : "false");
+    });
+    curEl.textContent = pad(i + 1);
+    prevBtn.disabled = i === 0;
+    nextBtn.disabled = i === total - 1;
+    try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
+  }
+  var next = function () { go(current + 1); };
+  var prev = function () { go(current - 1); };
+  prevBtn.addEventListener("click", prev);
+  nextBtn.addEventListener("click", next);
+
+  /* ---- 키보드: → / Space / PageDown · ← / PageUp · Home / End · F ---- */
+  document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var onButton = e.target && e.target.tagName === "BUTTON";
+    switch (e.key) {
+      case "ArrowRight": case "ArrowDown": case "PageDown":
+        e.preventDefault(); next(); break;
+      case "ArrowLeft": case "ArrowUp": case "PageUp":
+        e.preventDefault(); prev(); break;
+      case " ": case "Spacebar":
+        if (onButton) return;
+        e.preventDefault(); e.shiftKey ? prev() : next(); break;
+      case "Home": e.preventDefault(); go(0); break;
+      case "End": e.preventDefault(); go(total - 1); break;
+      case "f": case "F":
+        if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+        else { document.exitFullscreen && document.exitFullscreen(); }
+        break;
+    }
+  });
+
+  /* ---- 터치 스와이프 ---- */
+  var x0 = null;
+  document.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+    x0 = null;
+  });
+
+  /* ---- 딥링크: #1 … #N ---- */
+  function fromHash() {
+    var n = parseInt((location.hash || "").replace("#", ""), 10);
+    return isNaN(n) ? 0 : n - 1;
+  }
+  window.addEventListener("hashchange", function () { go(fromHash()); });
+  window.addEventListener("resize", fit);
+
+  fit();
+  go(fromHash());
+})();
+
+</script>
+</body>
+</html>

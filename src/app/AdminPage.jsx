@@ -498,29 +498,69 @@ export default function AdminPage() {
               </a>
             </div>
 
+            {/* 구일고 돈구리 v0.2 & 매뉴얼 */}
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">🪙</span>
                 <div>
-                  <strong>돈구리 v0.2 (스마트 용돈관리 & 경제 학습 앱)</strong>
-                  <span>목표 역산 일일 소비한도, 퀴즈, 도토리 보상, 상점 시스템 프로토타입</span>
+                  <strong>구일고 0.91 『돈구리 v0.2』 프로토타입 앱</strong>
+                  <span>목표 역산 일일 소비한도, 퀴즈, 도토리 보상, 상점 시스템 정적 엔진</span>
                 </div>
               </div>
-              <a href="./apps/donguri/index.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#7B4B2A', color: '#FFF' }}>
-                실행 ↗
-              </a>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <a href="./slides/manual_guil.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#F59E0B', color: '#FFF' }}>
+                  매뉴얼 슬라이드 ↗
+                </a>
+                <a href="./apps/donguri/index.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#7B4B2A', color: '#FFF' }}>
+                  앱 실행 ↗
+                </a>
+              </div>
             </div>
 
+            {/* 옥종고 STUDY-BUDDY v0.2 & 매뉴얼 */}
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">🤖</span>
                 <div>
-                  <strong>STUDY-BUDDY v0.2 (메타인지 AI 학습 버디)</strong>
+                  <strong>옥종고 OKXEN 『STUDY-BUDDY v0.2』 프로토타입 앱</strong>
                   <span>성향 검사, 소크라테스 반문 루프, 망각곡선 간격 복습, 시즌 리그 프로토타입</span>
                 </div>
               </div>
-              <a href="./apps/studybuddy/index.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#4C5FD5', color: '#FFF' }}>
-                실행 ↗
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <a href="./slides/manual_okjong.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#10B981', color: '#FFF' }}>
+                  매뉴얼 슬라이드 ↗
+                </a>
+                <a href="./apps/studybuddy/index.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#4C5FD5', color: '#FFF' }}>
+                  앱 실행 ↗
+                </a>
+              </div>
+            </div>
+
+            {/* 전문가 협업안내서 */}
+            <div className="admin-service-item">
+              <div className="admin-service-info">
+                <span className="service-emoji">📘</span>
+                <div>
+                  <strong>앱개발전문가 협업안내서 (슬라이드 덱)</strong>
+                  <span>멘토링 역할 분담, 주간 피드백 주기, 코드 리뷰 원칙 및 지원 가이드</span>
+                </div>
+              </div>
+              <a href="./slides/expert_guide.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#0F766E', color: '#FFF' }}>
+                안내서 열람 ↗
+              </a>
+            </div>
+
+            {/* 멘토링 통합 모니터링 관제 데스크 */}
+            <div className="admin-service-item">
+              <div className="admin-service-info">
+                <span className="service-emoji">📊</span>
+                <div>
+                  <strong>C.O.D.E 2026 통합 모니터링 데스크 (Operations Desk)</strong>
+                  <span>D-Day 카운트다운, 학교별 주간 일정, 운영 체크리스트, 멘토링 일지 초안 생성기</span>
+                </div>
+              </div>
+              <a href="./slides/operations_desk.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#A23E18', color: '#FFF' }}>
+                관제 데스크 열기 ↗
               </a>
             </div>
           </div>
