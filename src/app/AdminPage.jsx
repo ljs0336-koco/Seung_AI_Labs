@@ -497,6 +497,32 @@ export default function AdminPage() {
                 실행 ↗
               </a>
             </div>
+
+            <div className="admin-service-item">
+              <div className="admin-service-info">
+                <span className="service-emoji">🪙</span>
+                <div>
+                  <strong>돈구리 v0.2 (스마트 용돈관리 & 경제 학습 앱)</strong>
+                  <span>목표 역산 일일 소비한도, 퀴즈, 도토리 보상, 상점 시스템 프로토타입</span>
+                </div>
+              </div>
+              <a href="./apps/donguri/index.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#7B4B2A', color: '#FFF' }}>
+                실행 ↗
+              </a>
+            </div>
+
+            <div className="admin-service-item">
+              <div className="admin-service-info">
+                <span className="service-emoji">🤖</span>
+                <div>
+                  <strong>STUDY-BUDDY v0.2 (메타인지 AI 학습 버디)</strong>
+                  <span>성향 검사, 소크라테스 반문 루프, 망각곡선 간격 복습, 시즌 리그 프로토타입</span>
+                </div>
+              </div>
+              <a href="./apps/studybuddy/index.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#4C5FD5', color: '#FFF' }}>
+                실행 ↗
+              </a>
+            </div>
           </div>
         </section>
       </main>

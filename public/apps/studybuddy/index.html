@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>STUDY-BUDDY — 내가 가르치며 자라는 AI 학습 버디</title>
+  <meta name="description" content="AI 학생에게 개념을 설명하고 소크라테스 반문에 답하며 함께 성장하는 메타인지 에듀테크 앱 (2026 CODE 옥종고 OKXEN 프로토타입)">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ✏️ EDIT 가능: 화면 뼈대. 실제 내용은 app.js 가 그립니다. -->
+  <div class="device">
+    <div class="app" id="app">
+      <header class="topbar" id="topbar"></header>
+      <main class="screen" id="screen" tabindex="-1"></main>
+      <nav class="tabbar" id="tabbar" aria-label="메뉴"></nav>
+      <div class="sheet-wrap" id="sheet" hidden></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- 순서 중요: 규칙 → 콘텐츠 → 캐릭터 → 엔진 -->
+  <script src="data/config.js"></script>
+  <script src="data/content.js"></script>
+  <script src="assets/character.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
