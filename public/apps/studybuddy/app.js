@@ -195,7 +195,7 @@
         <div class="progress-group">
           <div class="progress-labels">
             <span>성장 경험치</span>
-            <span style="color:#38BDF8;">${p.xp} / ${nextXp} XP</span>
+            <span style="color:var(--brand);">${p.xp} / ${nextXp} XP</span>
           </div>
           <div class="progress-bar">
             <div class="progress-fill" style="width:${progressPct}%;"></div>
@@ -207,7 +207,7 @@
       <div class="card" style="border-left: 4px solid var(--brand);">
         <div class="card-head">
           <div class="card-title">🚀 메타인지 가르치기 세션</div>
-          <span style="font-size:11px; color:#A5B4FC; font-weight:700;">+50 XP</span>
+          <span style="font-size:11px; color:var(--brand); font-weight:700;">+50 XP</span>
         </div>
         <p style="font-size:12.5px; color:var(--ink-2); line-height:1.5; margin-bottom:12px;">
           선생님이 되어 버디에게 교과 개념을 설명해 주세요. 버디가 질문으로 빈틈을 짚어줍니다!
@@ -278,14 +278,15 @@
   }
 
   /* =====================================================================
-     2. 가르치기 세션 화면 (핵심 메타인지 루프)
+     2. 가르치기 세션 화면 (핵심 메타인지 루프 — 정밀 판정 엔진)
      ===================================================================== */
   function renderTeachScreen(screen) {
     const unit = CONTENT.UNITS.find(u => u.id === ui.selectedUnitId) || CONTENT.UNITS[0];
     const p = state.profile;
+    const typeMeta = CONTENT.PERSONALITIES[p.type] || CONTENT.PERSONALITIES.curious;
 
     if (ui.teachStep === 1) {
-      // Step 1: 단원 선택 및 개념 설명 작성
+      // Step 1: 단원 선택 및 개념 설명 작성 (20자 이상)
       screen.innerHTML = `
         <div class="card">
           <div class="card-head">
@@ -293,19 +294,21 @@
           </div>
           <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px;">
             ${CONTENT.UNITS.map(u => `
-              <button class="unit-chip ${u.id === unit.id ? 'active' : ''}" data-unit="${u.id}" style="padding:6px 12px; border-radius:10px; font-size:12px; font-weight:700; background:${u.id === unit.id ? '#6366F1' : 'var(--surface-2)'}; color:#FFF;">
+              <button class="unit-chip ${u.id === unit.id ? 'active' : ''}" data-unit="${u.id}">
                 ${u.icon} ${u.subject}
               </button>
             `).join("")}
           </div>
-          <div style="background:rgba(255,255,255,0.04); padding:12px; border-radius:12px; margin-bottom:14px; border:1px solid var(--line);">
-            <div style="font-size:14px; font-weight:800; margin-bottom:4px;">${unit.title}</div>
-            <div style="font-size:12px; color:var(--ink-2); line-height:1.4;">${unit.summary}</div>
-            <div style="font-size:11px; color:#A5B4FC; margin-top:6px;">권장 핵심 개념: ${unit.required_concepts.join(", ")}</div>
+          <div style="background:var(--surface-2); padding:14px; border-radius:var(--radius-sm); margin-bottom:14px; border:1px solid var(--line);">
+            <div style="font-size:14px; font-weight:800; color:var(--ink); margin-bottom:4px;">${unit.title}</div>
+            <div style="font-size:12.5px; color:var(--ink-2); line-height:1.5;">${unit.summary}</div>
+            <div style="font-size:11.5px; color:var(--brand); font-weight:700; margin-top:8px;">
+              📌 필수 포함 개념: ${unit.required_concepts.join(", ")}
+            </div>
           </div>
 
-          <label style="font-size:13px; font-weight:700; margin-bottom:6px; display:block;">
-            선생님의 말로 버디에게 개념을 설명해 주세요:
+          <label style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:6px; display:block;">
+            선생님의 말로 버디에게 개념을 설명해 주세요 (최소 20자 이상):
           </label>
           <textarea id="teach-input" class="text-input" rows="5" placeholder="예: 일차함수는 y=ax+b로 나타내고, a는 x의 증가량에 대한 y의 증가량인 기울기야. a가 0이면 직선이 평행해져서 일차함수가 아니야..." style="resize:none; margin-bottom:12px;"></textarea>
 
@@ -324,38 +327,45 @@
 
       $("#btn-submit-teach").addEventListener("click", () => {
         const val = $("#teach-input").value.trim();
-        if (val.length < 15) {
-          alert("버디가 충분히 이해할 수 있도록 최소 15자 이상 구체적으로 설명해 주세요!");
+        if (val.length < 20) {
+          alert("버디가 충분히 이해할 수 있도록 최소 20자 이상 구체적으로 설명해 주세요! (현재 " + val.length + "자)");
           return;
         }
 
-        // 키워드 분석 로직 (데모 AI)
+        // 정밀 데모 AI 개념 분석 실행
         analyzeExplanation(val, unit);
       });
 
     } else if (ui.teachStep === 2) {
       // Step 2: 버디의 소크라테스 역질문 응답
       const qData = ui.currentSocratic;
+      const isRetry = qData.attempts > 0;
+
       screen.innerHTML = `
         <div class="buddy-stage" style="margin-bottom:16px;">
-          <div class="buddy-speech" style="color:#0F172A; text-align:left;">
-            🤔 <strong>${p.name}:</strong><br/>
+          <div class="buddy-speech" style="text-align:left;">
+            <strong>${p.name}:</strong><br/>
             "${qData.question}"
           </div>
           <div class="buddy-avatar-wrap">
-            ${window.renderBuddy("confused", p.type, state.equipped)}
+            ${window.renderBuddy(isRetry ? "confused" : "confused", p.type, state.equipped)}
           </div>
-          <div style="font-size:12px; color:#F59E0B; font-weight:700; margin-top:6px;">
-            버디가 설명의 핵심 조건을 확인하고 있어요!
+          <div style="font-size:12px; color:var(--warn); font-weight:700; margin-top:6px;">
+            ${isRetry ? '⚠️ 버디가 아직 헷갈려해요! 힌트를 참고해 한 번 더 답변해 주세요.' : '버디가 설명의 핵심 조건을 확인하고 있어요!'}
           </div>
         </div>
 
         <div class="card">
-          <label style="font-size:13px; font-weight:700; margin-bottom:6px; display:block;">
-            버디의 질문에 답해 주세요:
+          <label style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:6px; display:block;">
+            버디의 질문에 핵심 키워드로 답해 주세요:
           </label>
-          <input type="text" id="answer-input" class="text-input" placeholder="답변을 입력해 주세요..." style="margin-bottom:12px;"/>
-          ${qData.hint ? `<div style="font-size:12px; color:#FBBF24; background:rgba(245,158,11,0.15); padding:8px 12px; border-radius:8px; margin-bottom:12px;">💡 힌트: ${qData.hint}</div>` : ''}
+          <input type="text" id="answer-input" class="text-input" placeholder="답변을 입력해 주세요..." style="margin-bottom:12px;" autofocus/>
+          
+          ${qData.hint ? `
+            <div style="font-size:12px; color:var(--warn); background:var(--warn-soft); padding:10px 14px; border-radius:var(--radius-sm); margin-bottom:12px; line-height:1.4;">
+              💡 <strong>힌트:</strong> ${qData.hint}
+            </div>
+          ` : ''}
 
           <button class="btn-primary" id="btn-submit-answer">
             답변 확인 및 버디 가르치기 →
@@ -373,24 +383,24 @@
       });
 
     } else if (ui.teachStep === 3) {
-      // Step 3: 세션 성공 완료
+      // Step 3: 세션 성공 완료 (완벽 이해)
       screen.innerHTML = `
         <div class="buddy-stage">
           <div class="buddy-speech">
-            🎉 <strong>"와! 완벽하게 이해했어요!"</strong><br/>
+            🎉 <strong>"${typeMeta.correct_msg}"</strong><br/>
             선생님 설명 덕분에 개념이 명쾌하게 정리되었어요! (+50 XP)
           </div>
           <div class="buddy-avatar-wrap is-correct">
             ${window.renderBuddy("understood", p.type, state.equipped)}
           </div>
-          <div style="font-size:15px; font-weight:800; color:#10B981; margin-top:8px;">
+          <div style="font-size:15px; font-weight:800; color:var(--good); margin-top:8px;">
             ✓ '${unit.title}' 가르치기 완료!
           </div>
         </div>
 
         <div class="card" style="text-align:center;">
           <div style="font-size:13px; color:var(--ink-2); margin-bottom:14px; line-height:1.5;">
-            오늘 학습한 개념은 <strong>내일(${addDays(today(), 1)})</strong> 1차 간격 복습 퀴즈로 등록되었습니다.
+            오늘 학습한 개념은 <strong>내일(${addDays(today(), 1)})</strong> 1차 망각곡선 간격 복습 퀴즈로 등록되었습니다.
           </div>
           <button class="btn-primary" id="btn-done-teach">
             홈으로 돌아가기
@@ -404,74 +414,64 @@
         ui.mood = "listening";
         render();
       });
+
+    } else if (ui.teachStep === 4) {
+      // Step 4: 노력 완료 (복습 필요 등록)
+      screen.innerHTML = `
+        <div class="buddy-stage">
+          <div class="buddy-speech">
+            😴 <strong>"선생님, 애써주셔서 감사해요!"</strong><br/>
+            이 부분은 제가 아직 조금 어려운 것 같아요. 노력해 주신 만큼 버디도 성장했어요 (+20 XP)
+          </div>
+          <div class="buddy-avatar-wrap">
+            ${window.renderBuddy("sleepy", p.type, state.equipped)}
+          </div>
+          <div style="font-size:14px; font-weight:800; color:var(--warn); margin-top:8px;">
+            📝 내일 간격 복습 퀴즈에서 다시 만나요!
+          </div>
+        </div>
+
+        <div class="card" style="text-align:center;">
+          <div style="font-size:13px; color:var(--ink-2); margin-bottom:14px; line-height:1.5;">
+            아직 헷갈리는 개념은 내일 복습 퀴즈를 풀며 완벽히 내 것으로 만들 수 있습니다.
+          </div>
+          <button class="btn-secondary" id="btn-done-teach-review">
+            홈으로 돌아가기
+          </button>
+        </div>
+      `;
+
+      $("#btn-done-teach-review").addEventListener("click", () => {
+        ui.tab = "home";
+        ui.teachStep = 1;
+        ui.mood = "listening";
+        render();
+      });
     }
   }
 
+  /* ---------- 데모 AI: 개념 설명 키워드 분석 및 소크라테스 발문 생성 ---------- */
   function analyzeExplanation(text, unit) {
-    let missingSocratic = null;
+    const p = state.profile;
+    const typeMeta = CONTENT.PERSONALITIES[p.type] || CONTENT.PERSONALITIES.curious;
+    const lower = text.toLowerCase();
 
-    // 단원별 누락된 개념 체크
-    if (unit.id === "math_linear") {
-      if (!text.includes("기울기") && !text.includes("a")) {
-        missingSocratic = {
-          question: unit.socratic.missing_slope.q,
-          expected: unit.socratic.missing_slope.expected,
-          hint: "x의 증가량에 대한 y의 증가량 비율을 뜻하는 용어예요."
-        };
-      } else if (!text.includes("0이 아니") && !text.includes("a≠0") && !text.includes("a가 0")) {
-        missingSocratic = {
-          question: unit.socratic.missing_a.q,
-          expected: unit.socratic.missing_a.expected,
-          hint: "a가 0이면 x가 사라져서 상수함수가 돼요!"
-        };
+    // 1. 단원의 필수 개념 목록 순회하며 커버 여부 검사
+    const covered = [];
+    const missing = [];
+
+    (unit.concepts || []).forEach(c => {
+      const isPresent = c.keywords.some(kw => lower.includes(kw.toLowerCase()));
+      if (isPresent) {
+        covered.push(c);
       } else {
-        missingSocratic = {
-          question: unit.socratic.missing_intercept.q,
-          expected: unit.socratic.missing_intercept.expected,
-          hint: "x가 0일 때 y의 값(y축과 만나는 점)이에요."
-        };
+        missing.push(c);
       }
-    } else if (unit.id === "sci_photosyn") {
-      if (!text.includes("빛") && !text.includes("에너지")) {
-        missingSocratic = {
-          question: unit.socratic.missing_energy.q,
-          expected: unit.socratic.missing_energy.expected,
-          hint: "빛은 화학 반응을 일으키는 원동력인 에너지원이에요."
-        };
-      } else if (!text.includes("포도당") && !text.includes("산소")) {
-        missingSocratic = {
-          question: unit.socratic.missing_products.q,
-          expected: unit.socratic.missing_products.expected,
-          hint: "식물이 스스로 만드는 영양분(탄수화물)이에요."
-        };
-      } else {
-        missingSocratic = {
-          question: unit.socratic.missing_materials.q,
-          expected: unit.socratic.missing_materials.expected,
-          hint: "물과 공기 중에서 흡수하는 기체예요."
-        };
-      }
-    } else {
-      // 국어, 사회, 영어 기본 질문 매핑
-      const keys = Object.keys(unit.socratic);
-      const chosen = unit.socratic[keys[0]];
-      missingSocratic = {
-        question: chosen.q,
-        expected: chosen.expected,
-        hint: "개념의 정의나 구체적 예시를 떠올려 보세요!"
-      };
-    }
+    });
 
-    ui.currentSocratic = missingSocratic;
-    ui.teachStep = 2;
-    render();
-  }
-
-  function checkSocraticAnswer(ans, qData, unit) {
-    const isHit = qData.expected.some(kw => ans.includes(kw));
-
-    if (isHit || ans.length >= 8) {
-      // 성공 처리
+    // 2. 만약 모든 핵심 개념이 이미 완벽히 설명된 경우
+    if (missing.length === 0) {
+      showToast("🎉 완벽한 설명! 모든 핵심 개념을 다 짚어주셨어요 (+50 XP)");
       state.profile.xp += CONFIG.REWARD.TEACH_COMPLETE;
       state.profile.level = getLevel(state.profile.xp);
       ui.mood = "understood";
@@ -481,10 +481,98 @@
         id: Date.now(),
         unitId: unit.id,
         unitTitle: unit.title,
-        date: today()
+        date: today(),
+        status: "understood"
       });
 
-      // 복습 큐 등록 (1일 후)
+      // 복습 큐 등록
+      if (!state.reviews.some(r => r.unitId === unit.id)) {
+        state.reviews.push({
+          unitId: unit.id,
+          unitTitle: unit.title,
+          step: 0,
+          nextDate: addDays(today(), 1)
+        });
+      }
+
+      saveState();
+      ui.teachStep = 3;
+      render();
+      return;
+    }
+
+    // 3. 누락된 개념이 있는 경우 -> 버디의 소크라테스식 유도 질문 도출
+    const targetMissing = missing[0];
+    let qItem = null;
+
+    if (unit.id === "math_linear") {
+      if (targetMissing.term.includes("조건") || targetMissing.term.includes("a≠0")) {
+        qItem = unit.socratic.missing_a;
+      } else if (targetMissing.term.includes("기울기")) {
+        qItem = unit.socratic.missing_slope;
+      } else {
+        qItem = unit.socratic.missing_intercept;
+      }
+    } else if (unit.id === "sci_photosyn") {
+      if (targetMissing.term.includes("빛")) {
+        qItem = unit.socratic.missing_energy;
+      } else if (targetMissing.term.includes("생성물")) {
+        qItem = unit.socratic.missing_products;
+      } else {
+        qItem = unit.socratic.missing_materials;
+      }
+    } else {
+      // 국어, 사회, 영어 등
+      const keys = Object.keys(unit.socratic || {});
+      qItem = unit.socratic[keys[0]] || { q: "선생님! 이 개념의 핵심 정의나 예시를 조금 더 설명해 주실 수 있나요?", expected: ["정의", "예시"] };
+    }
+
+    // 버디 타입별 질문 어조 커스텀
+    let questionText = qItem.q;
+    if (p.type === "curious") {
+      questionText = "선생님! 진짜 궁금한 게 생겼어요! " + qItem.q;
+    } else if (p.type === "meticulous") {
+      questionText = "선생님, 정확한 정의를 확인하고 싶어요. " + qItem.q;
+    } else if (p.type === "cheer") {
+      questionText = "선생님 설명 진짜 좋은데요, 이것만 더 짚어주시면 저도 완벽히 알 것 같아요! " + qItem.q;
+    } else if (p.type === "challenger") {
+      questionText = "선생님! 혹시 이 반례 질문에도 답하실 수 있나요? " + qItem.q;
+    }
+
+    ui.currentSocratic = {
+      concept: targetMissing.term,
+      question: questionText,
+      expected: qItem.expected || [],
+      hint: qItem.hint || targetMissing.term + "에 대한 핵심 원리를 떠올려 보세요!",
+      attempts: 0
+    };
+
+    ui.teachStep = 2;
+    render();
+  }
+
+  /* ---------- 답변 판정 로직 (엄격한 기대 키워드 매칭 — v0.1 결함 완전 해결) ---------- */
+  function checkSocraticAnswer(ans, qData, unit) {
+    const lower = ans.toLowerCase();
+
+    // 엄격 검증: expected 키워드 중 하나라도 포함되어 있어야만 정답 인정! (단순 글자 수 통과 금지)
+    const isHit = (qData.expected || []).some(kw => lower.includes(kw.toLowerCase()));
+
+    if (isHit) {
+      // 정답 통과: +50 XP 지급 및 세션 성공 등록
+      showToast("✓ 정답입니다! 버디가 완벽히 깨달았어요 (+50 XP)");
+      state.profile.xp += CONFIG.REWARD.TEACH_COMPLETE;
+      state.profile.level = getLevel(state.profile.xp);
+      ui.mood = "understood";
+
+      state.sessions.push({
+        id: Date.now(),
+        unitId: unit.id,
+        unitTitle: unit.title,
+        date: today(),
+        status: "understood"
+      });
+
       if (!state.reviews.some(r => r.unitId === unit.id)) {
         state.reviews.push({
           unitId: unit.id,
@@ -498,7 +586,42 @@
       ui.teachStep = 3;
       render();
     } else {
-      alert("버디가 아직 조금 헷갈려해요! 힌트를 참고해서 한 번 더 자세히 설명해 주세요.");
+      // 오답 처리
+      qData.attempts = (qData.attempts || 0) + 1;
+
+      if (qData.attempts === 1) {
+        // 1회차 오답: 버디가 confused 상태로 힌트 제공 후 재입력 기회
+        ui.mood = "confused";
+        alert("버디: '음... 아직 잘 이해가 안 돼요! 힌트를 참고해서 한 번 더 자세히 설명해 주세요.'");
+        render();
+      } else {
+        // 2회차 오답: 무조건 넘기지 않고 '복습 필요(needs_review)'로 분류, 노력 보상 +20 XP 지급
+        ui.mood = "sleepy";
+        showToast("복습 필요로 등록되었습니다 (+20 XP)");
+        state.profile.xp += 20;
+        state.profile.level = getLevel(state.profile.xp);
+
+        state.sessions.push({
+          id: Date.now(),
+          unitId: unit.id,
+          unitTitle: unit.title,
+          date: today(),
+          status: "needs_review"
+        });
+
+        if (!state.reviews.some(r => r.unitId === unit.id)) {
+          state.reviews.push({
+            unitId: unit.id,
+            unitTitle: unit.title,
+            step: 0,
+            nextDate: addDays(today(), 1)
+          });
+        }
+
+        saveState();
+        ui.teachStep = 4; // 복습 필요 안내 화면으로 이동
+        render();
+      }
     }
   }
 
@@ -516,8 +639,8 @@
       screen.innerHTML = `
         <div class="card">
           <div class="card-head">
-            <span style="font-size:12px; color:#A5B4FC; font-weight:700;">${unit.subject} · ${unit.title}</span>
-            <span style="font-size:12px; color:#94A3B8;">문제 ${ui.reviewQuizIdx + 1}/2</span>
+            <span style="font-size:12px; color:var(--brand); font-weight:700;">${unit.subject} · ${unit.title}</span>
+            <span style="font-size:12px; color:var(--ink-3);">문제 ${ui.reviewQuizIdx + 1}/2</span>
           </div>
           <div style="font-size:15px; font-weight:800; margin-bottom:16px; line-height:1.4;">${q.q}</div>
 
@@ -631,7 +754,7 @@
       <div class="card">
         <div class="card-head">
           <div class="card-title">🏆 옥종고 메타인지 시즌 리그</div>
-          <span style="font-size:11px; color:#38BDF8; font-weight:700;">주간 XP 기준</span>
+          <span style="font-size:11px; color:var(--brand); font-weight:700;">주간 XP 기준</span>
         </div>
         <p style="font-size:12px; color:var(--ink-3); margin-bottom:14px;">
           개념을 가르치고 복습할수록 랭크가 올라갑니다.
@@ -639,7 +762,7 @@
 
         <div style="display:flex; flex-direction:column; gap:8px;">
           ${allUsers.map(u => `
-            <div style="background:${u.isMe ? 'rgba(99, 102, 241, 0.2)' : 'var(--surface-2)'}; border:${u.isMe ? '1px solid #818CF8' : 'none'}; padding:12px 14px; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:${u.isMe ? 'var(--brand-soft)' : 'var(--surface-2)'}; border:${u.isMe ? '1px solid var(--brand)' : '1px solid var(--line)'}; padding:12px 14px; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
               <div style="display:flex; align-items:center; gap:12px;">
                 <span style="font-size:14px; font-weight:800; width:20px; color:${u.rank <= 3 ? '#FBBF24' : 'var(--ink-3)'}">${u.rank}</span>
                 <div>
@@ -647,7 +770,7 @@
                   <div style="font-size:11px; color:var(--ink-3);">Lv.${u.level} · ${CONTENT.PERSONALITIES[u.type] ? CONTENT.PERSONALITIES[u.type].name : '버디'}</div>
                 </div>
               </div>
-              <div style="font-size:13px; font-weight:800; color:#38BDF8;">
+              <div style="font-size:13px; font-weight:800; color:var(--brand);">
                 ${u.xp} XP
               </div>
             </div>
@@ -679,11 +802,11 @@
             const isUnlocked = p.level >= item.unlockLv;
             const isEquipped = state.equipped[item.slot] === item.id;
             return `
-              <div style="background:var(--surface-2); padding:12px; border-radius:12px; border:1px solid ${isEquipped ? '#818CF8' : 'transparent'}; text-align:center;">
-                <div style="font-size:14px; font-weight:700; margin-bottom:4px;">${item.name}</div>
+              <div style="background:var(--surface-2); padding:12px; border-radius:12px; border:1px solid ${isEquipped ? 'var(--brand)' : 'var(--line)'}; text-align:center;">
+                <div style="font-size:14px; font-weight:700; margin-bottom:4px; color:var(--ink);">${item.name}</div>
                 <div style="font-size:11px; color:var(--ink-3); margin-bottom:8px;">${item.desc}</div>
                 ${isUnlocked ? `
-                  <button class="btn-primary toggle-equip" data-slot="${item.slot}" data-id="${item.id}" style="padding:6px; font-size:12px; background:${isEquipped ? '#EF4444' : '#6366F1'};">
+                  <button class="btn-primary toggle-equip" data-slot="${item.slot}" data-id="${item.id}" style="padding:6px; font-size:12px; background:${isEquipped ? 'var(--danger)' : 'var(--brand)'};">
                     ${isEquipped ? '해제' : '착용'}
                   </button>
                 ` : `
@@ -818,7 +941,7 @@
       const curr = qList[ui.onboardStep];
       screen.innerHTML = `
         <div class="card" style="margin-top:20px;">
-          <div style="font-size:12px; color:#818CF8; font-weight:700; margin-bottom:6px;">
+          <div style="font-size:12px; color:var(--brand); font-weight:700; margin-bottom:6px;">
             버디 성향 검사 (${ui.onboardStep + 1}/${qList.length})
           </div>
           <div style="font-size:16px; font-weight:800; margin-bottom:16px; line-height:1.4;">

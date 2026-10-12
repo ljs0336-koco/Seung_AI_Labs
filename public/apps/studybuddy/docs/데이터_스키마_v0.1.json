@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StudyBuddyCoreDB",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "learningRecords",
+    "aiQuizzes",
+    "characterGrowth"
+  ],
+  "properties": {
+    "learningRecords": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LearningRecord"
+      }
+    },
+    "aiQuizzes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AIQuiz"
+      }
+    },
+    "characterGrowth": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CharacterGrowth"
+      }
+    }
+  },
+  "$defs": {
+    "LearningRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "userId",
+        "subject",
+        "studentExplanation",
+        "coreConcepts",
+        "createdAt",
+        "nextReviewAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "studentExplanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coreConcepts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nextReviewAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AIQuiz": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "learningRecordId",
+        "aiQuestion",
+        "expectedAnswer",
+        "rubric",
+        "origin",
+        "reviewStatus"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "learningRecordId": {
+          "type": "string"
+        },
+        "aiQuestion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedAnswer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rubric": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "origin": {
+          "enum": [
+            "original_mock",
+            "llm_generated"
+          ]
+        },
+        "reviewStatus": {
+          "enum": [
+            "pending",
+            "approved",
+            "rejected"
+          ]
+        }
+      }
+    },
+    "CharacterGrowth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "userId",
+        "totalXp",
+        "reviewDueCount",
+        "reviewCompletedCount",
+        "expression"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "totalXp": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reviewDueCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reviewCompletedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expression": {
+          "enum": [
+            "listening",
+            "confused",
+            "understood",
+            "surprised",
+            "happy",
+            "needs_review"
+          ]
+        }
+      }
+    }
+  }
+}
