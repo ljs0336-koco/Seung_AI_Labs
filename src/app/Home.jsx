@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import geumjjokMain from '../assets/geumjjok/금쪽이_캐릭터_기본_무지개고깔.png';
 import speakerThumb from '../assets/geumjjok/스피커 썸네일.png';
@@ -38,18 +38,44 @@ const modules = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "초등 AI 리터러시 탐험 연구소 · Seung AI Labs";
+  }, []);
+
   return (
     <main className="container home-page">
+      <nav style={{ marginBottom: "20px" }}>
+        <Link
+          to="/"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            fontSize: "14px",
+            fontWeight: 700,
+            color: "var(--color-primary, #27675e)",
+            textDecoration: "none",
+            background: "rgba(255, 255, 255, 0.9)",
+            padding: "8px 16px",
+            borderRadius: "10px",
+            border: "1px solid var(--color-border, #d8d4ca)",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.04)"
+          }}
+        >
+          <span>←</span>
+          <span>통합 포털 메인으로 돌아가기</span>
+        </Link>
+      </nav>
       <header className="home-hero">
-        <img src={geumjjokMain} alt="금쪽이 마스코트" />
+        <img src={geumjjokMain} alt="AI 리터러시 연구원 캐릭터" />
         <div>
-          <span className="home-kicker">AI LITERACY LEARNING LAB</span>
-          <h1>금쪽이 AI 리터러시 탐험대</h1>
-          <p>AI의 작동 원리를 차근차근 살펴보고, 더 나은 질문과 판단을 연습하는 네 가지 학습 활동입니다.</p>
+          <span className="home-kicker">SEUNG AI LABS · AI LITERACY LAB</span>
+          <h1>초등 AI 리터러시 탐험 연구소</h1>
+          <p>AI의 작동 원리를 차근차근 살펴보고, 더 나은 질문과 비판적 사고를 훈련하는 네 가지 실습 활동입니다.</p>
         </div>
       </header>
 
-      <section className="home-module-list" aria-label="AI 리터러시 학습 모듈">
+      <section className="home-module-list" aria-label="AI 리터러시 실습 모듈">
         {modules.map(module => (
           <Link key={module.id} to={module.path} className="home-module-link">
             <article className="card interactive-card home-module-card">
@@ -59,12 +85,12 @@ export default function Home() {
               <div className="home-module-copy">
                 <div className="home-module-meta">
                   <span className="home-module-number">MODULE {module.id}</span>
-                  <span className="home-module-status">학습 가능</span>
+                  <span className="home-module-status">실습 가능</span>
                 </div>
                 <h2>{module.id.replace(/^0/, '')}. {module.title}</h2>
                 <p>{module.description}</p>
               </div>
-              <span className="home-module-action" aria-hidden="true">활동 살펴보기 →</span>
+              <span className="home-module-action" aria-hidden="true">실습 시작하기 →</span>
             </article>
           </Link>
         ))}

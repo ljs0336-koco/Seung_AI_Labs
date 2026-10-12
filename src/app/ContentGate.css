@@ -1,0 +1,204 @@
+/* Content Gate & Modal Styles */
+.content-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: rgba(18, 25, 23, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: fadeInModal 0.25s ease-out;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.content-page-gate-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 30%, #1f2f2b 0%, #111a18 100%);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 30px 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(47, 107, 99, 0.15);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.content-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #f0f4f3;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #556360;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.content-modal-close:hover {
+  background: #e2e8e7;
+  color: #1a2a26;
+}
+
+.content-modal-icon-wrap {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 14px;
+  background: #eef6f4;
+  border: 1px solid rgba(47, 107, 99, 0.25);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.content-modal-badge {
+  display: inline-block;
+  background: rgba(47, 107, 99, 0.1);
+  color: #2f6b63;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.content-modal-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #172622;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.content-modal-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #556360;
+  margin: 0 0 22px;
+}
+
+.content-modal-desc strong {
+  color: #1d433e;
+}
+
+.content-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.content-modal-input {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: 2px solid #ccd8d5;
+  border-radius: 12px;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.content-modal-input:focus {
+  border-color: #2f6b63;
+  box-shadow: 0 0 0 3px rgba(47, 107, 99, 0.15);
+}
+
+.content-modal-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.content-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.content-modal-btn-cancel {
+  flex: 1;
+  padding: 12px;
+  background: #f1f5f4;
+  color: #4b5855;
+  border: 1px solid #d4dedc;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.content-modal-btn-cancel:hover {
+  background: #e2e9e8;
+  color: #1e2a27;
+}
+
+.content-modal-btn-submit {
+  flex: 1.6;
+  padding: 12px;
+  background: #2f6b63;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(47, 107, 99, 0.3);
+  transition: transform 0.15s, background 0.2s;
+}
+
+.content-modal-btn-submit:hover {
+  background: #24554e;
+  transform: translateY(-1px);
+}
+
+.content-modal-hint {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  color: #7d8d89;
+}
+
+.shake-animation {
+  animation: shakeKeyframes 0.45s ease-in-out;
+}
+
+@keyframes shakeKeyframes {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}

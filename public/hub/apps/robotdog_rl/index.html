@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <title>멍멍 RL Playground · 보상에 따라 배우는 로보독의 길찾기</title>
+
+  <!-- Google Fonts & Pretendard -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-title-group">
+        <h1>
+          <span>🐕 멍멍 RL Playground</span>
+          <span class="header-badge">강사 예시</span>
+        </h1>
+        <p class="header-sub">보상에 따라 배우는 로보독의 격자형 강화학습 탐구실</p>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="mode-selector-group">
+        <button id="btn-mode-compare" class="btn-mode compare-mode active">
+          ⚖️ 둘 비교 (Q vs SARSA)
+        </button>
+        <button id="btn-mode-q_learning" class="btn-mode">
+          🟢 Q-Learning 단독
+        </button>
+        <button id="btn-mode-sarsa" class="btn-mode">
+          🟠 SARSA 단독
+        </button>
+      </div>
+    </header>
+
+    <!-- Student Intro Quote Card -->
+    <div style="background:var(--surface); border:1px solid var(--outline-variant); border-radius:var(--radius-md); padding:12px 18px; font-size:0.82rem; line-height:1.6; color:var(--on-surface-variant);">
+      <strong>🐾 학생 안내:</strong> 로보독은 처음부터 정답을 알고 있지 않습니다. 행동의 결과로 받은 보상을 바탕으로 다음 행동을 조금씩 바꿉니다. 좋은 보상을 주는 방법을 설계하는 사람이 바로 여러분입니다.
+    </div>
+
+    <!-- Mission Selector & Description -->
+    <section class="mission-banner">
+      <div class="mission-nav">
+        <span style="font-size:0.8rem; font-weight:700; color:var(--on-surface);">학습 미션:</span>
+        <button id="btn-mission-mission_1" class="btn-mission">미션 1. 간식 배달</button>
+        <button id="btn-mission-mission_2" class="btn-mission active">미션 2. 웅덩이 산책 (비교 기준 맵)</button>
+        <button id="btn-mission-mission_3" class="btn-mission">미션 3. 보상 함수 함정</button>
+      </div>
+
+      <div class="mission-desc-box">
+        <div style="font-weight:700; color:var(--on-surface);" id="mission-title">미션 2. 웅덩이 산책 (Q-Learning vs SARSA 비교)</div>
+        <div id="mission-desc">위험한 웅덩이를 피해 간식 찾기 (Cliff Walking). 짧지만 위험한 지름길과 안전한 우회로가 공존합니다.</div>
+        <div class="mission-question" id="mission-question">💡 탐구 질문: 탐색 중 실수로 빠질 위험이 있을 때, 두 알고리즘 중 누가 더 안전한 우회로를 배울까요?</div>
+      </div>
+    </section>
+
+    <!-- Main Workspace (Dual Arena or Single) -->
+    <main class="workspace-grid dual-view" id="workspace-grid">
+
+      <!-- ARENA 1: Q-Learning -->
+      <section class="arena-card qlearn-card" id="arena-card-qlearn">
+        <div class="arena-header">
+          <div class="arena-algo-tag">
+            <span class="algo-badge q-badge">Q-Learning</span>
+            <span style="font-size:0.75rem; color:var(--on-surface-variant);">Off-policy · 대담한 최적화</span>
+          </div>
+          <span class="arena-metric-pill" id="q-algo-sub">미래의 최대 보상 가정</span>
+        </div>
+
+        <!-- Grid Board Container -->
+        <div class="grid-board-wrapper">
+          <div class="grid-board" id="grid-board-qlearn"></div>
+          
+          <!-- Robodog Agent Sprite -->
+          <div class="robodog-agent facing-right" id="robodog-qlearn" style="width:44px; height:44px;">
+            <div class="comic-bubble" id="bubble-qlearn">멍멍! 준비 완료!</div>
+            <img class="robodog-img" src="assets/robodog_idle.png" alt="Robodog Q-Learning"/>
+          </div>
+        </div>
+
+        <!-- Mini Stats -->
+        <div class="arena-stats-bar">
+          <div class="stat-item">
+            <span class="stat-label">에피소드</span>
+            <span class="stat-val" id="q-episodes">0회</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">누적 보상</span>
+            <span class="stat-val" id="q-reward">0.0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">걸음 수</span>
+            <span class="stat-val" id="q-steps">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">목표 성공률</span>
+            <span class="stat-val" id="q-success">0%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARENA 2: SARSA -->
+      <section class="arena-card sarsa-card" id="arena-card-sarsa">
+        <div class="arena-header">
+          <div class="arena-algo-tag">
+            <span class="algo-badge sarsa-badge">SARSA</span>
+            <span style="font-size:0.75rem; color:var(--on-surface-variant);">On-policy · 신중한 안전제일</span>
+          </div>
+          <span class="arena-metric-pill" id="s-algo-sub">실제 탐색 위험까지 감안</span>
+        </div>
+
+        <!-- Grid Board Container -->
+        <div class="grid-board-wrapper">
+          <div class="grid-board" id="grid-board-sarsa"></div>
+          
+          <!-- Robodog Agent Sprite -->
+          <div class="robodog-agent facing-right" id="robodog-sarsa" style="width:44px; height:44px;">
+            <div class="comic-bubble" id="bubble-sarsa">조심조심 산책 준비!</div>
+            <img class="robodog-img" src="assets/robodog_idle.png" alt="Robodog SARSA"/>
+          </div>
+        </div>
+
+        <!-- Mini Stats -->
+        <div class="arena-stats-bar">
+          <div class="stat-item">
+            <span class="stat-label">에피소드</span>
+            <span class="stat-val" id="s-episodes">0회</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">누적 보상</span>
+            <span class="stat-val" id="s-reward">0.0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">걸음 수</span>
+            <span class="stat-val" id="s-steps">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">목표 성공률</span>
+            <span class="stat-val" id="s-success">0%</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Execution & Speed Controls -->
+    <section class="controls-card">
+      <div class="control-btn-row">
+        <button id="btn-run-visual" class="btn-primary">
+          <span>▶</span> 1회 콩콩 주행
+        </button>
+        <button id="btn-train-10" class="btn-secondary">
+          <span>⚡</span> 10회 빠른 학습
+        </button>
+        <button id="btn-stop" class="btn-danger" disabled>
+          <span>⏹</span> 중지
+        </button>
+        <button id="btn-reset" class="btn-secondary">
+          <span>🔄</span> 학습 초기화
+        </button>
+
+        <!-- Speed control -->
+        <div style="margin-left:auto; display:flex; align-items:center; gap:4px; font-size:0.75rem;">
+          <span style="color:var(--outline); margin-right:4px;">속도:</span>
+          <button id="btn-spd-slow" class="btn-mission btn-spd">느림</button>
+          <button id="btn-spd-normal" class="btn-mission btn-spd active">보통</button>
+          <button id="btn-spd-fast" class="btn-mission btn-spd">빠름</button>
+        </div>
+      </div>
+
+      <!-- Policy Display & Q-Value Inspect Row -->
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:4px; border-top:1px solid var(--outline-variant);">
+        <label style="display:flex; align-items:center; gap:6px; font-size:0.8rem; cursor:pointer;">
+          <input type="checkbox" id="toggle-policy" checked/>
+          <span>정책 화살표 (Policy Arrows) 표시</span>
+        </label>
+
+        <!-- Tile Palette for Custom Editing -->
+        <div class="palette-bar">
+          <span class="palette-label">🎨 맵 편집 도구:</span>
+          <button class="btn-palette-tool" data-tool="obstacle">🚧 벽</button>
+          <button class="btn-palette-tool" data-tool="hazard">💧 웅덩이</button>
+          <button class="btn-palette-tool" data-tool="battery">🔋 배터리</button>
+          <button class="btn-palette-tool" data-tool="empty">⬜ 지우개</button>
+          <button class="btn-palette-tool" data-tool="start">🏠 집</button>
+          <button class="btn-palette-tool" data-tool="goal">🍖 간식</button>
+        </div>
+      </div>
+
+      <!-- Cell Q-Inspector Card -->
+      <div id="inspect-box" style="background:var(--surface-low); border:1px solid var(--outline-variant); border-radius:var(--radius-sm); padding:8px 12px; font-size:0.75rem; color:var(--on-surface-variant);">
+        ℹ️ 격자 칸을 클릭하면 해당 위치의 Up/Right/Down/Left Q-값(행동가치)을 상세 확인합니다.
+      </div>
+    </section>
+
+    <!-- Tunable Reward Sliders -->
+    <section class="controls-card">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <h3 style="font-size:0.9rem; font-weight:700;">⚙️ 보상 함수 (Reward Function) 조절기</h3>
+        <span style="font-size:0.75rem; color:var(--outline);">슬라이더를 조작하면 다음 에피소드부터 즉시 반영됩니다.</span>
+      </div>
+
+      <div class="reward-settings-grid">
+        <div class="reward-input-item">
+          <div class="reward-label-row">
+            <span>🍖 목표 도착 보상:</span>
+            <span class="reward-val-pill" id="val-goal">+10.0</span>
+          </div>
+          <input type="range" id="rew-goal" min="1" max="30" step="1" value="10"/>
+        </div>
+
+        <div class="reward-input-item">
+          <div class="reward-label-row">
+            <span>💧 물웅덩이 벌점:</span>
+            <span class="reward-val-pill" id="val-hazard">-10.0</span>
+          </div>
+          <input type="range" id="rew-hazard" min="-30" max="-1" step="1" value="-10"/>
+        </div>
+
+        <div class="reward-input-item">
+          <div class="reward-label-row">
+            <span>🐾 1칸 이동 비용:</span>
+            <span class="reward-val-pill" id="val-step">-0.2</span>
+          </div>
+          <input type="range" id="rew-step" min="-2.0" max="0.5" step="0.1" value="-0.2"/>
+        </div>
+
+        <div class="reward-input-item">
+          <div class="reward-label-row">
+            <span>🚧 장애물 충돌 벌점:</span>
+            <span class="reward-val-pill" id="val-obstacle">-3.0</span>
+          </div>
+          <input type="range" id="rew-obstacle" min="-10" max="0" step="0.5" value="-3.0"/>
+        </div>
+
+        <div class="reward-input-item">
+          <div class="reward-label-row">
+            <span>🔋 배터리 충전 보너스:</span>
+            <span class="reward-val-pill" id="val-battery">+2.0</span>
+          </div>
+          <input type="range" id="rew-battery" min="0" max="10" step="0.5" value="2.0"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Curve Chart -->
+    <section class="chart-card">
+      <div class="chart-header">
+        <span class="chart-title">📈 에피소드별 누적 보상 곡선 (Learning Curve)</span>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#52634c;"></span>
+            <span>Q-Learning</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#99462a;"></span>
+            <span>SARSA</span>
+          </div>
+        </div>
+      </div>
+      <div class="canvas-container">
+        <canvas id="reward-chart"></canvas>
+      </div>
+    </section>
+
+    <!-- Educational Explanation & Reflection Card -->
+    <section class="explanation-card">
+      <div class="exp-header">
+        <span>🤔 알고리즘 차이 탐구 노트</span>
+        <button id="btn-export-json" class="btn-secondary" style="margin-left:auto; padding:4px 10px; font-size:0.75rem;">
+          📋 실행 결과 JSON 복사
+        </button>
+      </div>
+      <div class="exp-body">
+        <p><strong>왜 Q-Learning과 SARSA는 같은 맵에서 다른 길을 갈까요?</strong></p>
+        <div class="exp-quotes">
+          • <strong>Q-Learning (Off-policy)</strong>: 다음 상태에서 미래에 선택할 수 있는 <em>가장 높은 Q값</em>을 기준으로 갱신합니다. 로보독이 탐색 과정에서 실수할 가능성을 무시하므로, 웅덩이 바로 옆의 <strong>최단 지름길(행 4)</strong>을 과감하게 선택합니다.<br/>
+          • <strong>SARSA (On-policy)</strong>: 로보독이 $\epsilon$-탐색(무작위 시도) 중 실수로 웅덩이에 풍덩 빠질 위험까지 <em>실제 다음 행동($a'$)</em>에 반영해 갱신합니다. 따라서 위험 구역에서 몇 칸 떨어진 <strong>안전한 우회로(행 2~3)</strong>를 배우게 됩니다.
+        </div>
+        <p style="font-size:0.75rem; color:var(--outline); margin-top:6px;">
+          ※ 본 시뮬레이션은 로봇개의 실제 보행이나 다리 관절 물리를 계산하는 것이 아니며, 보상 규칙에 따른 <strong>경로 선택 정책(Policy)</strong>을 학습하는 격자 강화학습 교육 도구입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- Attribution & Footer -->
+    <footer class="app-footer">
+      <p>
+        Based on <a href="https://github.com/awjuliani/web-rl-playground" target="_blank" rel="noopener">web-rl-playground</a> by Arthur Juliani.<br/>
+        Modified for the RoboDog RL Playground educational prototype (Team 06 Physical AI & Maker). MIT License.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="algorithms.js"></script>
+  <script src="environment.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
