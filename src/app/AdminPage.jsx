@@ -285,8 +285,8 @@ export default function AdminPage() {
               <div className="admin-service-info">
                 <span className="service-emoji">🏛️</span>
                 <div>
-                  <strong>에듀테크 허브 관리자 콘솔</strong>
-                  <span>에듀테크 허브 및 프로젝트 데이터 관리</span>
+                  <strong>대학 에듀테크 연계 융합 프로젝트 (상시 공개)</strong>
+                  <span>5주차 프로젝트 데이터 및 특강 자료 모음</span>
                 </div>
               </div>
               <a href="./hub/snu/index.html" target="_blank" rel="noreferrer" className="admin-service-btn">
