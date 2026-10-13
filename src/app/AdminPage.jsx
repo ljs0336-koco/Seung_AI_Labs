@@ -3,11 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { securityService } from '../utils/securityService';
 import './AdminPage.css';
 
-// Admin Passcode Hashes for "EDU2026" and "EDU2026)"
-const ADMIN_HASH_1 = "27ed6f3f98ed92edaade0ef482aee7cf13b16d68d38ab4a975d687412410300a";
-const ADMIN_HASH_2 = "d0e53315da98db3a8d0eea56db8ef802833c4108ffeca3387950aab8b9cf8d57";
 const ADMIN_AUTH_KEY = "seung_admin_auth_v2";
-const GH_TOKEN_KEY = "seung_gh_pat_v1";
 
 export default function AdminPage() {
   const navigate = useNavigate();
@@ -18,14 +14,7 @@ export default function AdminPage() {
 
   // Content security config state
   const [config, setConfig] = useState(securityService.getConfig());
-  const [newCodeInput, setNewCodeInput] = useState(config.defaultCode || 'EDU2026');
   const [noticeMsg, setNoticeMsg] = useState('');
-
-
-  // GitHub Remote Sync state
-  const [ghToken, setGhToken] = useState(localStorage.getItem(GH_TOKEN_KEY) || '');
-  const [isSyncingGh, setIsSyncingGh] = useState(false);
-  const [ghSyncResult, setGhSyncResult] = useState('');
 
   useEffect(() => {
     if (sessionStorage.getItem(ADMIN_AUTH_KEY) === 'granted') {
@@ -37,9 +26,6 @@ export default function AdminPage() {
   const loadConfig = () => {
     const current = securityService.getConfig();
     setConfig(current);
-    if (current.defaultCode) {
-      setNewCodeInput(current.defaultCode);
-    }
   };
 
   const handleAdminLogin = async (e) => {
@@ -71,11 +57,11 @@ export default function AdminPage() {
   // Toggle Content Lock
   const handleToggleLock = async () => {
     const nextLocked = !config.isLocked;
-    const updated = await securityService.setContentLockMode(nextLocked, newCodeInput);
+    const updated = await securityService.setContentLockMode(nextLocked);
     setConfig(updated);
     if (nextLocked) {
       setNoticeMsg(
-        '🔒 [콘텐츠 잠금 모드]가 즉시 적용되었습니다. (모든 인증 세션 초기화 완료 — 포털 메인으로 나가서 실습 카드를 클릭하면 즉시 인증 코드(SNU1002) 팝업이 뜹니다.)'
+        '🔒 [콘텐츠 잠금 모드]가 즉시 적용되었습니다. (모든 인증 세션 초기화 완료 — 포털 메인으로 나가서 실습 카드를 클릭하면 즉시 인증 코드(koco2027) 팝업이 뜹니다.)'
       );
     } else {
       setNoticeMsg(
@@ -85,108 +71,10 @@ export default function AdminPage() {
     setTimeout(() => setNoticeMsg(''), 5000);
   };
 
-  // Save Custom Code
-  const handleSaveCode = async (e) => {
-    if (e) e.preventDefault();
-    const clean = newCodeInput.trim().toUpperCase();
-    if (!clean) {
-      setNoticeMsg('⚠️ 인증 코드를 비워둘 수 없습니다.');
-      return;
-    }
-    const updated = await securityService.setContentLockMode(config.isLocked, clean);
-    setConfig(updated);
-    setNoticeMsg(`✅ 인증 코드가 [${clean}] (으)로 변경 및 저장되었습니다.`);
-    setTimeout(() => setNoticeMsg(''), 4000);
-  };
-
   // Reset visitor authentication and immediately test
   const handleTestLock = () => {
     securityService.revokeContentAuth();
     navigate('/');
-  };
-
-  // Save GitHub Token locally for one-click API sync
-  const handleSaveGhToken = (e) => {
-    if (e) e.preventDefault();
-    const clean = ghToken.trim();
-    if (clean) {
-      localStorage.setItem(GH_TOKEN_KEY, clean);
-      setGhSyncResult('✅ GitHub 토큰이 이 브라우저에 안전하게 저장되었습니다.');
-    } else {
-      localStorage.removeItem(GH_TOKEN_KEY);
-      setGhSyncResult('ℹ️ GitHub 토큰이 삭제되었습니다.');
-    }
-    setTimeout(() => setGhSyncResult(''), 4000);
-  };
-
-  // Sync to GitHub Pages via GitHub REST API
-  const handleSyncToGitHub = async () => {
-    const token = (ghToken || localStorage.getItem(GH_TOKEN_KEY) || '').trim();
-    if (!token) {
-      setGhSyncResult('⚠️ 깃허브 토큰(Personal Access Token)을 먼저 입력해 주세요.');
-      return;
-    }
-
-    setIsSyncingGh(true);
-    setGhSyncResult('⏳ GitHub 원격 저장소로 설정을 전송하는 중...');
-
-    try {
-      const repo = 'ljs0336-koco/Seung_AI_Labs';
-      const path = 'public/security-config.json';
-      const getUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
-
-      // 1. Get current file sha
-      const getRes = await fetch(getUrl, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github+json'
-        }
-      });
-
-      let sha = '';
-      if (getRes.ok) {
-        const fileData = await getRes.json();
-        sha = fileData.sha;
-      }
-
-      // 2. Prepare new content
-      const newConfig = {
-        isLocked: config.isLocked,
-        mode: config.isLocked ? 'restricted' : 'public',
-        defaultCode: config.defaultCode || 'EDU2026',
-        targetHash: config.targetHash,
-        updatedAt: new Date().toISOString()
-      };
-
-      const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(newConfig, null, 2))));
-
-      // 3. Put to GitHub
-      const putRes = await fetch(getUrl, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: `chore: update security-config.json (isLocked: ${config.isLocked}) from admin console`,
-          content: contentBase64,
-          sha: sha || undefined
-        })
-      });
-
-      if (putRes.ok) {
-        setGhSyncResult('🎉 GitHub 저장소에 성공적으로 원격 동기화되었습니다! (모든 학생 기기에 적용)');
-      } else {
-        const errJson = await putRes.json();
-        setGhSyncResult(`❌ GitHub API 오류: ${errJson.message || '토큰 권한(repo)을 확인해 주세요.'}`);
-      }
-    } catch (err) {
-      setGhSyncResult(`❌ 동기화 실패: ${err.message}`);
-    } finally {
-      setIsSyncingGh(false);
-      setTimeout(() => setGhSyncResult(''), 7000);
-    }
   };
 
   // Login Screen
@@ -249,7 +137,7 @@ export default function AdminPage() {
         <div className="admin-header-left">
           <span className="admin-pill">ADMIN CONSOLE</span>
           <h2>Seung AI Labs 통합 관리자 콘솔</h2>
-          <p>첫 화면(포털)은 상시 공개되며, 세부 실습 콘텐츠의 잠금 여부 및 인증 코드를 제어합니다.</p>
+          <p>첫 화면(포털)은 상시 공개되며, 세부 실습 콘텐츠의 잠금 여부를 제어합니다.</p>
         </div>
         <div className="admin-header-right">
           <Link to="/" className="admin-btn-secondary">
@@ -268,13 +156,13 @@ export default function AdminPage() {
       )}
 
       <main className="admin-main-grid">
-        {/* Card 1: Content Security Mode Toggle */}
+        {/* Card 1: Content Security Mode Toggle & Fixed Passcode Info */}
         <section className="admin-card">
           <div className="admin-card-head">
             <span className="admin-card-icon">🔒</span>
             <div>
               <h3>실습 콘텐츠 잠금 제어</h3>
-              <p>첫 화면 포털은 언제나 공개되며, 세부 실습 콘텐츠 입장 시에만 인증 코드를 요구합니다.</p>
+              <p>첫 화면 포털은 언제나 공개되며, 세부 실습 콘텐츠 입장 시에만 참여자 인증 코드를 요구합니다.</p>
             </div>
           </div>
 
@@ -289,7 +177,7 @@ export default function AdminPage() {
             </div>
             <p className="status-sub">
               {config.isLocked
-                ? '방문자가 포털에서 리터러시 실험실, 융합 허브, 매거진 입장 클릭 시 인증 코드를 요구합니다.'
+                ? '방문자가 포털에서 리터러시 실험실, 융합 허브, 매거진 입장 클릭 시 고정 인증 코드(koco2027)를 요구합니다.'
                 : '비밀번호 없이 누구나 포털의 모든 실습 도구와 매거진에 자유롭게 입장할 수 있습니다.'}
             </p>
           </div>
@@ -304,24 +192,17 @@ export default function AdminPage() {
             </button>
           </div>
 
-          <form onSubmit={handleSaveCode} className="admin-passcode-field">
-            <label className="admin-input-label">방문자/학생용 인증 코드 설정:</label>
-            <div className="admin-code-row">
-              <input
-                type="text"
-                value={newCodeInput}
-                onChange={(e) => setNewCodeInput(e.target.value.toUpperCase())}
-                placeholder="예: ABC1234"
-                className="admin-code-input"
-              />
-              <button type="submit" className="admin-code-save-btn">
-                코드 저장
-              </button>
+          <div className="admin-fixed-code-banner">
+            <div className="admin-fixed-code-header">
+              <span className="admin-fixed-icon">🔑</span>
+              <div>
+                <strong>콘텐츠 참여자 고정 인증 코드: <span className="admin-fixed-highlight">koco2027</span></strong>
+                <p className="admin-fixed-sub">
+                  ※ 시스템 전역에 단일 코드로 고정되어 있습니다. 수강생 및 참여자는 영문 대소문자 구분 없이 (koco2027 또는 KOCO2027) 입력하면 입장할 수 있습니다.
+                </p>
+              </div>
             </div>
-            <span className="admin-code-hint">
-              ※ 현재 설정된 코드: <strong>{config.defaultCode || 'EDU2026'}</strong> (대소문자 구분 없음)
-            </span>
-          </form>
+          </div>
 
           <div className="admin-test-tool-box">
             <button
@@ -332,84 +213,12 @@ export default function AdminPage() {
               🧪 잠금 팝업 작동 즉시 테스트 (인증 해제 후 포털로 이동)
             </button>
             <span className="admin-test-hint">
-              클릭 시 인증이 해제된 상태로 포털 메인으로 이동합니다. 실습 카드를 클릭하여 잠금 팝업이 바로 뜨는지 확인해 보세요!
+              클릭 시 인증이 해제된 상태로 포털 메인으로 이동합니다. 실습 카드를 클릭하여 koco2027 잠금 팝업이 바로 뜨는지 확인해 보세요!
             </span>
           </div>
         </section>
 
-        {/* Card 2: Remote Cloud / GitHub Sync (Solves static hosting limitations) */}
-        <section className="admin-card">
-          <div className="admin-card-head">
-            <span className="admin-card-icon">🌐</span>
-            <div>
-              <h3>원격 서버(GitHub Pages) 전역 동기화</h3>
-              <p>GitHub Pages(정적 호스팅) 환경에서 모든 수강생 기기에 실시간 잠금을 배포하는 방법입니다.</p>
-            </div>
-          </div>
-
-          <div style={{ background: '#f8faf9', border: '1px solid #dbe6e3', borderRadius: '14px', padding: '16px 20px', marginBottom: '18px' }}>
-            <h4 style={{ margin: '0 0 8px', fontSize: '0.98rem', color: '#1a332d', fontWeight: 700 }}>
-              📌 현재 배포 상태 안내
-            </h4>
-            <p style={{ margin: 0, fontSize: '0.88rem', lineHeight: '1.6', color: '#4d5d59' }}>
-              현재 원격 저장소(GitHub Pages)는 <strong>[콘텐츠 잠금 모드 ON / 인증코드: {config.defaultCode || 'EDU2026'}]</strong>로 기본 배포되어 있습니다.<br />
-              처음 접속하는 모든 수강생은 실습 콘텐츠 클릭 시 무조건 인증 코드를 입력해야 입장할 수 있습니다.
-            </p>
-          </div>
-
-          <form onSubmit={handleSaveGhToken} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <label className="admin-input-label">
-              ⚡ 브라우저에서 원클릭 원격 동기화 (선택 사항):
-            </label>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <input
-                type="password"
-                value={ghToken}
-                onChange={(e) => setGhToken(e.target.value)}
-                placeholder="GitHub Personal Access Token (PAT)"
-                className="admin-code-input"
-                style={{ flex: 1, fontFamily: 'monospace', fontSize: '0.85rem' }}
-              />
-              <button type="submit" className="admin-code-save-btn" style={{ padding: '0 16px' }}>
-                토큰 저장
-              </button>
-            </div>
-            <span className="admin-code-hint">
-              GitHub 토큰(repo 권한)을 등록해 두시면, 콘솔에서 버튼 하나로 GitHub Pages 저장소 설정을 즉시 갱신할 수 있습니다. (토큰은 본인 브라우저에만 저장됨)
-            </span>
-          </form>
-
-          {ghToken && (
-            <div style={{ marginTop: '14px' }}>
-              <button
-                type="button"
-                onClick={handleSyncToGitHub}
-                disabled={isSyncingGh}
-                style={{
-                  width: '100%',
-                  padding: '13px',
-                  background: isSyncingGh ? '#94a3b8' : '#1e3a34',
-                  color: '#ffffff',
-                  border: 'none',
-                  borderRadius: '12px',
-                  fontWeight: 700,
-                  fontSize: '0.95rem',
-                  cursor: isSyncingGh ? 'not-allowed' : 'pointer'
-                }}
-              >
-                {isSyncingGh ? '동기화 중...' : '⚡ 현재 설정을 GitHub Pages 원격 서버에 즉시 배포하기'}
-              </button>
-            </div>
-          )}
-
-          {ghSyncResult && (
-            <div style={{ marginTop: '12px', padding: '10px 14px', borderRadius: '10px', fontSize: '0.88rem', fontWeight: 600, background: ghSyncResult.includes('❌') ? '#fef2f2' : '#f0fdf4', color: ghSyncResult.includes('❌') ? '#dc2626' : '#16a34a', border: '1px solid ' + (ghSyncResult.includes('❌') ? '#fecaca' : '#bbf7d0') }}>
-              {ghSyncResult}
-            </div>
-          )}
-        </section>
-
-        {/* Card 3: Quick Links & Services */}
+        {/* Card 2: Quick Links & Services */}
         <section className="admin-card">
           <div className="admin-card-head">
             <span className="admin-card-icon">📊</span>
@@ -420,7 +229,6 @@ export default function AdminPage() {
           </div>
 
           <div className="admin-service-list">
-
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">🧠</span>
@@ -461,7 +269,8 @@ export default function AdminPage() {
             </div>
           </div>
         </section>
-        {/* Card 4: Experimental Lab Apps (Hidden from Students) */}
+
+        {/* Card 3: Experimental Lab Apps (Hidden from Students) */}
         <section className="admin-card">
           <div className="admin-card-head">
             <span className="admin-card-icon">🧪</span>
@@ -498,7 +307,6 @@ export default function AdminPage() {
               </a>
             </div>
 
-            {/* 구일고 돈구리 v0.2 & 매뉴얼 */}
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">🪙</span>
@@ -517,7 +325,6 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* 옥종고 STUDY-BUDDY v0.2 & 매뉴얼 */}
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">🤖</span>
@@ -536,7 +343,6 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* 전문가 협업안내서 */}
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">📘</span>
@@ -550,7 +356,6 @@ export default function AdminPage() {
               </a>
             </div>
 
-            {/* 멘토링 통합 모니터링 관제 데스크 */}
             <div className="admin-service-item">
               <div className="admin-service-info">
                 <span className="service-emoji">📊</span>

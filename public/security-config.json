@@ -1,8 +1,7 @@
 {
   "isLocked": true,
   "mode": "restricted",
-  "defaultCode": "EDU2026",
-  "targetHash": "056e80685d351592864b35ce2e7af49cddc202409d907046173565445b780387",
-  "updatedAt": "2026-10-01T17:10:00Z",
-  "codeSecretCode": "2026CODE"
+  "defaultCode": "koco2027",
+  "targetHash": "4a8e76d21579bfc1856c18bfeeaf2f72b736afa9f90785e5414f2f13116c8744",
+  "updatedAt": "2026-10-13T00:00:00Z"
 }

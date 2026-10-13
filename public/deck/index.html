@@ -1370,12 +1370,12 @@ ol,ul{list-style:none}
   function showOverlay(cfg) {
     if (!overlay) return;
     overlay.style.display = 'flex';
-    var targetCode = (cfg && cfg.defaultCode ? cfg.defaultCode : 'SNU1002').toUpperCase();
+    var targetCode = (cfg && cfg.defaultCode ? cfg.defaultCode : 'KOCO2027').toUpperCase();
 
     btn.onclick = function() {
       var val = (input.value || '').trim().toUpperCase();
       if (!val) return;
-      if (val === targetCode || val === 'SNU1002') {
+      if (val === targetCode) {
         sessionStorage.setItem(AUTH_KEY, 'granted');
         localStorage.setItem(AUTH_KEY, 'granted');
         overlay.style.display = 'none';
