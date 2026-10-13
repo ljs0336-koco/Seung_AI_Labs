@@ -45,15 +45,14 @@
 }
 
 .portal-hero-layout {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 36px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 32px;
 }
 
 .portal-hero-text {
-  flex: 1 1 520px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,7 +103,7 @@
    Serialized Magazine Clip Tab (Right Column)
    ========================================================================== */
 .portal-magazine-clip-wrap {
-  flex: 0 0 360px;
+  min-width: 0;
   max-width: 100%;
   position: relative;
   display: flex;
@@ -141,6 +140,8 @@
 
 /* Clip Card */
 .magazine-clip-card {
+  height: 100%;
+  box-sizing: border-box;
   background: #fdfaf6;
   border: 1.5px solid #dfd8cc;
   border-top: 5px solid var(--portal-terracotta);
@@ -235,6 +236,83 @@
 
 .magazine-clip-card:hover .magazine-read-btn {
   transform: translateX(3px);
+}
+
+/* Two compact publications share the same paper-and-clip treatment. */
+.portal-publications {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-width: 0;
+}
+
+.briefing-clip-card {
+  background: #f6faf7;
+  border-top-color: var(--portal-primary);
+  text-decoration: none;
+  color: var(--portal-text);
+  box-shadow: 0 10px 28px -6px rgba(39, 103, 94, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.briefing-clip-card:hover,
+.briefing-clip-card:focus-visible {
+  border-color: var(--portal-primary);
+  box-shadow: 0 16px 36px -8px rgba(39, 103, 94, 0.2);
+  transform: translateY(-4px) rotate(0.5deg);
+  text-decoration: none;
+}
+
+.briefing-clip-card:focus-visible {
+  outline: 3px solid var(--portal-primary);
+  outline-offset: 4px;
+}
+
+.briefing-clip-card .magazine-clip-header {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.briefing-badge-pill {
+  color: var(--portal-primary);
+  background: var(--portal-primary-light);
+  border-color: rgba(39, 103, 94, 0.2);
+}
+
+.briefing-edition {
+  color: var(--portal-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.briefing-read-btn {
+  color: var(--portal-primary);
+}
+
+.briefing-paper-clip {
+  left: auto;
+  right: 28px;
+}
+
+@media (max-width: 1100px) {
+  .portal-hero-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .portal-publications {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-publications .magazine-clip-card,
+  .portal-publications .magazine-read-btn {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* ==========================================================================
@@ -533,12 +611,6 @@
 @media (max-width: 900px) {
   .portal-cards-2col-grid {
     grid-template-columns: 1fr;
-  }
-  .portal-hero-layout {
-    flex-direction: column;
-  }
-  .portal-magazine-clip-wrap {
-    flex: 1 1 100%;
   }
 }
 

@@ -74,7 +74,8 @@ export default function Portal() {
             </p>
           </div>
 
-          {/* Right Column: Serialized Magazine Tab Clip */}
+          {/* Publications: magazine and latest public briefing */}
+          <div className="portal-publications">
           <aside className="portal-magazine-clip-wrap" aria-label="매거진 탭">
             <div className="magazine-brass-clip" aria-hidden="true"></div>
             <div
@@ -100,6 +101,23 @@ export default function Portal() {
               </div>
             </div>
           </aside>
+          <aside className="portal-magazine-clip-wrap" aria-label="AI·교육 브리핑">
+            <div className="magazine-brass-clip briefing-paper-clip" aria-hidden="true"></div>
+            <a className="magazine-clip-card briefing-clip-card" href="./briefing/index.html">
+              <div className="magazine-clip-header">
+                <span className="magazine-badge-pill briefing-badge-pill">모루의 브리핑</span>
+                <time className="briefing-edition" dateTime="2026-10-13">2026.10.13</time>
+              </div>
+              <h2 className="magazine-clip-title">AI·교육 브리핑</h2>
+              <p className="magazine-clip-desc">
+                교육 사업 기회와 AI 뉴스, 오늘 눈여겨볼 소식을 한눈에
+              </p>
+              <div className="magazine-clip-footer">
+                <span className="magazine-read-btn briefing-read-btn">브리핑 읽기 →</span>
+              </div>
+            </a>
+          </aside>
+          </div>
         </div>
       </header>
 
