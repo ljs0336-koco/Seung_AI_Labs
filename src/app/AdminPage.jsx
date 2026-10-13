@@ -275,8 +275,8 @@ export default function AdminPage() {
           <div className="admin-card-head">
             <span className="admin-card-icon">🧪</span>
             <div>
-              <h3>오픈 랩 & 멘토링 프로젝트 (Open Labs)</h3>
-              <p>참여자 인증(koco2027) 후 자유롭게 열람 가능한 오픈소스 랩</p>
+              <h3>C.O.D.E 2026 비공개 멘토링 랩 & 도구</h3>
+              <p>포털 메인에는 비노출되며 관리자 콘솔에서 실행하거나 개별 링크로 접근하는 비공개 랩</p>
             </div>
           </div>
 
@@ -311,7 +311,7 @@ export default function AdminPage() {
               <div className="admin-service-info">
                 <span className="service-emoji">🪙</span>
                 <div>
-                  <strong>구일고 0.91 『돈구리 v0.2』 프로토타입 앱</strong>
+                  <strong>구일고 『돈구리 v0.3』 프로토타입 앱</strong>
                   <span>목표 역산 일일 소비한도, 퀴즈, 도토리 보상, 상점 시스템 정적 엔진</span>
                 </div>
               </div>
@@ -329,7 +329,7 @@ export default function AdminPage() {
               <div className="admin-service-info">
                 <span className="service-emoji">🤖</span>
                 <div>
-                  <strong>옥종고 OKXEN 『STUDY-BUDDY v0.2』 프로토타입 앱</strong>
+                  <strong>옥종고 『STUDY-BUDDY v0.3』 프로토타입 앱</strong>
                   <span>성향 검사, 소크라테스 반문 루프, 망각곡선 간격 복습, 시즌 리그 프로토타입</span>
                 </div>
               </div>
