@@ -224,7 +224,7 @@ export const hallucinationCases = [
   {
     id: "hal_10",
     prompt: "초등학생 스마트폰 사용에 대한 김민준 교수의 2025년 논문을 요약해줘.",
-    aiResponse: "서울대학교 아동학과 김민준 교수가 2025년에 발표한 '디지털 스크린 타임과 뇌 발달' 논문에 따르면, 하루 1시간 스마트폰 사용이 창의성을 300% 높인다고 밝혔습니다.",
+    aiResponse: "한국대학교 아동학과 김민준 교수가 2025년에 발표한 '디지털 스크린 타임과 뇌 발달' 논문에 따르면, 하루 1시간 스마트폰 사용이 창의성을 300% 높인다고 밝혔습니다.",
     hasHallucination: true,
     hallucinatedPart: "존재하지 않는 가상의 논문과 과장된 수치 인용",
     factCheckSource: "RISS 학술연구정보서비스 및 한국학술지인용색인(KCI)",

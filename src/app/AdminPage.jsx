@@ -275,8 +275,8 @@ export default function AdminPage() {
           <div className="admin-card-head">
             <span className="admin-card-icon">🧪</span>
             <div>
-              <h3>비공개 실험실 앱 (Experimental Labs)</h3>
-              <p>수강생 화면에서 은닉된 연구·개발 단계의 전용 앱 런처</p>
+              <h3>오픈 랩 & 멘토링 프로젝트 (Open Labs)</h3>
+              <p>참여자 인증(koco2027) 후 자유롭게 열람 가능한 오픈소스 랩</p>
             </div>
           </div>
 
@@ -285,8 +285,8 @@ export default function AdminPage() {
               <div className="admin-service-info">
                 <span className="service-emoji">🏛️</span>
                 <div>
-                  <strong>서울대 허브 관리자 콘솔</strong>
-                  <span>암호화된 서울대 에듀테크 허브 및 팀 데이터 관리</span>
+                  <strong>에듀테크 허브 관리자 콘솔</strong>
+                  <span>에듀테크 허브 및 프로젝트 데이터 관리</span>
                 </div>
               </div>
               <a href="./hub/snu/index.html" target="_blank" rel="noreferrer" className="admin-service-btn">
@@ -364,6 +364,7 @@ export default function AdminPage() {
                   <span>D-Day 카운트다운, 학교별 주간 일정, 운영 체크리스트, 멘토링 일지 초안 생성기</span>
                 </div>
               </div>
+              <a href="./slides/masterplan.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#1F2937', color: '#FFF' }}>마스터플랜 ↗</a>
               <a href="./slides/operations_desk.html" target="_blank" rel="noreferrer" className="admin-service-btn" style={{ background: '#A23E18', color: '#FFF' }}>
                 관제 데스크 열기 ↗
               </a>

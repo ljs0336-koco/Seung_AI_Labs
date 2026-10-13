@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 C.O.D.E 멘토링 운영 마스터플랜 (10월~12월)</title>
+<meta name="description" content="2026 C.O.D.E 본선 멘토링 운영 마스터플랜 — 일정, 역할, 피드백 주기 및 프로토타입 제작 표준">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --paper:#FBF9F5;
+  --paper-2:#F5F3EF;
+  --paper-3:#EFEEEA;
+  --paper-4:#EAE8E4;
+  --white:#FFFFFF;
+  --ink:#1B1C1A;
+  --ink-2:#474741;
+  --ink-3:#777771;
+  --rule:#E4E2DE;
+  --rule-2:#C8C7BF;
+  --accent:#A23E18;
+  --accent-soft:#FFDBCF;
+  --desk:#EAE7DE;
+  --green:#15803D;
+  --green-soft:#DCFCE7;
+  --blue:#1D4ED8;
+  --blue-soft:#DBEAFE;
+
+  --f-display:"Playfair Display","Noto Serif KR",Georgia,serif;
+  --f-serif:"Noto Serif KR","Playfair Display",Georgia,serif;
+  --f-sans:"Pretendard Variable","Pretendard",-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono","Fira Code",monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--desk);
+  color:var(--ink);
+  font-family:var(--f-sans);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  padding:40px 20px 80px;
+}
+
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  background:var(--paper);
+  box-shadow:0 12px 48px rgba(0,0,0,0.08);
+  border:1px solid var(--rule-2);
+  padding:64px 80px;
+}
+
+@media (max-width:860px){
+  .wrap{padding:36px 24px}
+  body{padding:16px 10px 40px}
+}
+
+/* Nav Bar */
+.top-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--rule-2);
+  margin-bottom:48px;
+}
+.nav-back{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  font-size:14px;
+  color:var(--accent);
+  text-decoration:none;
+  padding:8px 16px;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  transition:all .15s ease;
+}
+.nav-back:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nav-links{display:flex;gap:12px;flex-wrap:wrap}
+.nav-link{
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink-2);
+  text-decoration:none;
+  padding:6px 12px;
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:4px;
+}
+.nav-link:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Header */
+.kicker{
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  color:var(--accent);
+  background:var(--accent-soft);
+  padding:4px 12px;
+  border-radius:3px;
+  margin-bottom:16px;
+}
+h1.headline{
+  font-family:var(--f-serif);
+  font-size:38px;
+  font-weight:700;
+  line-height:1.3;
+  letter-spacing:-.03em;
+  color:var(--ink);
+  margin-bottom:18px;
+}
+.meta-banner{
+  background:var(--paper-2);
+  border-left:4px solid var(--accent);
+  padding:16px 20px;
+  font-size:14.5px;
+  color:var(--ink-2);
+  margin-bottom:48px;
+  line-height:1.6;
+}
+.meta-banner strong{color:var(--ink)}
+
+/* Section */
+section.block{margin-bottom:56px}
+h2.sec-title{
+  font-family:var(--f-serif);
+  font-size:26px;
+  font-weight:700;
+  color:var(--ink);
+  border-bottom:2px solid var(--ink);
+  padding-bottom:12px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+h2.sec-title .num{
+  font-family:var(--f-display);
+  font-size:22px;
+  color:var(--accent);
+}
+
+h3.sub-title{
+  font-size:19px;
+  font-weight:700;
+  color:var(--ink);
+  margin:28px 0 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+p{margin-bottom:16px;color:var(--ink-2);font-size:15.5px}
+
+/* Tables */
+.table-wrap{
+  overflow-x:auto;
+  margin:20px 0 28px;
+  border:1px solid var(--rule);
+  background:var(--white);
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14.5px;
+  text-align:left;
+}
+th{
+  background:var(--paper-3);
+  font-weight:700;
+  color:var(--ink);
+  padding:14px 16px;
+  border-bottom:1px solid var(--rule-2);
+  border-right:1px solid var(--rule);
+  white-space:nowrap;
+}
+td{
+  padding:13px 16px;
+  border-bottom:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+  color:var(--ink-2);
+  vertical-align:top;
+}
+tr:last-child td{border-bottom:none}
+th:last-child, td:last-child{border-right:none}
+tr:hover td{background:var(--paper-2)}
+
+/* Callout */
+.callout{
+  background:var(--paper-2);
+  border:1px solid var(--rule-2);
+  padding:18px 22px;
+  margin:20px 0;
+  font-size:14.5px;
+  color:var(--ink-2);
+}
+.callout.alert{
+  background:#fff8f6;
+  border-color:#fecaca;
+  color:#991b1b;
+}
+
+/* Code block */
+pre{
+  background:#1a202c;
+  color:#f7fafc;
+  padding:20px 24px;
+  border-radius:6px;
+  font-family:var(--f-mono);
+  font-size:13.5px;
+  line-height:1.6;
+  overflow-x:auto;
+  margin:20px 0;
+}
+
+/* Version flow diagram */
+.flow-box{
+  background:var(--white);
+  border:1px solid var(--rule-2);
+  padding:24px;
+  font-family:var(--f-mono);
+  font-size:13.5px;
+  line-height:1.7;
+  color:var(--ink);
+  overflow-x:auto;
+  margin:20px 0;
+}
+
+.badge-tag{
+  display:inline-block;
+  padding:2px 8px;
+  font-size:12px;
+  font-weight:700;
+  border-radius:4px;
+}
+.badge-tag.orange{background:var(--accent-soft);color:var(--accent)}
+.badge-tag.green{background:var(--green-soft);color:var(--green)}
+.badge-tag.blue{background:var(--blue-soft);color:var(--blue)}
+
+/* Checklist */
+.check-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid var(--rule);
+  font-size:14.5px;
+}
+.check-box{
+  width:18px;
+  height:18px;
+  border:2px solid var(--rule-2);
+  border-radius:4px;
+  margin-top:4px;
+  flex-shrink:0;
+}
+
+/* Footer */
+footer.doc-footer{
+  margin-top:64px;
+  padding-top:24px;
+  border-top:1px solid var(--rule-2);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+  font-size:13px;
+  color:var(--ink-3);
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- Nav -->
+  <nav class="top-nav">
+    <a href="./operations_desk.html" class="nav-back">
+      ← 멘토링 관제 데스크 (Operations Desk)로 복귀
+    </a>
+    <div class="nav-links">
+      <a href="./manual_guil.html" class="nav-link" target="_blank">구일고 매뉴얼 ↗</a>
+      <a href="./manual_okjong.html" class="nav-link" target="_blank">옥종고 매뉴얼 ↗</a>
+      <a href="./expert_guide.html" class="nav-link" target="_blank">전문가 협업안내서 ↗</a>
+      <a href="./10_운영마스터플랜_10월-12월.md" class="nav-link" target="_blank">원본 Markdown(.md) ↗</a>
+    </div>
+  </nav>
+
+  <!-- Title -->
+  <header>
+    <span class="kicker">SINGLE SOURCE OF TRUTH</span>
+    <h1 class="headline">2026 C.O.D.E 본선 멘토링 운영 마스터플랜 (10월~12월)</h1>
+    <div class="meta-banner">
+      <strong>운영기관:</strong> ㈜네패스 | <strong>기준 버전:</strong> 초안 v1.0 (2026-10-12)<br>
+      📌 <strong>이 문서가 일정·역할·규칙의 단일 기준(Single Source of Truth)입니다.</strong> 날짜나 일정이 바뀌면 이 문서부터 갱신하고 관제 데스크, 매뉴얼, 일지를 동기화합니다.
+    </div>
+  </header>
+
+  <!-- Section 1 -->
+  <section class="block" id="sec-1">
+    <h2 class="sec-title"><span class="num">01</span> 한눈에 보기</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>구일고 <span class="badge-tag orange">0.91 『돈구리』</span></th>
+            <th>옥종고 <span class="badge-tag green">OKXEN 『STUDY-BUDDY』</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>트랙 / 본선일</strong></td>
+            <td>트랙1 도전 / <strong>12.11(금)</strong> DDP 아트홀</td>
+            <td>트랙2 성장 / <strong>12.12(토)</strong> DDP 아트홀</td>
+          </tr>
+          <tr>
+            <td><strong>앱 성격</strong></td>
+            <td>목표 역산 일일 소비한도 + 게임형 경제 학습</td>
+            <td>AI 캐릭터를 가르치며 함께 성장하는 게임형 학습 앱</td>
+          </tr>
+          <tr>
+            <td><strong>학생 구성</strong></td>
+            <td>3명 — 팀장(AI) · 디자인 · 글·발표 (모두 2학년)</td>
+            <td>3명 — 팀장(웹·AI) · 디자인·발표 (1학년), 앱·QA (2학년)</td>
+          </tr>
+          <tr>
+            <td><strong>1차 온라인</strong></td>
+            <td><strong>10.19(월) 15:20</strong> Zoom (확정)</td>
+            <td><strong>10.20~22 중 확정 필요</strong></td>
+          </tr>
+          <tr>
+            <td><strong>운영사 v0 전달</strong></td>
+            <td><strong>10.23(금) 18:00</strong></td>
+            <td><strong>10.26(월) 18:00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>학생 v1 업로드</strong></td>
+            <td><strong>10.29(목) 23:59</strong></td>
+            <td><strong>10.29(목) 23:59</strong></td>
+          </tr>
+          <tr>
+            <td><strong>오프라인 담당</strong></td>
+            <td><strong>운영 총괄 직접 케어</strong></td>
+            <td><strong>담당 직원 1명 + 팀모노리스 앱 개발 전문가</strong></td>
+          </tr>
+          <tr>
+            <td><strong>완성도 책임</strong></td>
+            <td>운영 총괄 (운영사 리뷰)</td>
+            <td>앱 개발 전문가 (4회 · 8시간 · 80만원)</td>
+          </tr>
+          <tr>
+            <td><strong>최종본 동결</strong></td>
+            <td><strong>12.9(수)</strong></td>
+            <td><strong>12.10(목)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">버전 흐름 (두 팀 공통)</h3>
+    <div class="flow-box">
+v0 운영사 제공 ─▶ v1 학생 수정 ─▶ [오프라인 R1] ─▶ v2 골격 보강 ─▶ v2.x 학생 추가
+                                                                     │
+FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v3.x 학생 ◀─ v3 ◀─ [R2]
+    </div>
+    <p>※ <strong>R1~R4:</strong> 리뷰 회차. 옥종고는 앱 개발 전문가가, 구일고는 운영 총괄이 수행합니다.</p>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="block" id="sec-2">
+    <h2 class="sec-title"><span class="num">02</span> 전체 타임라인 (Phase 0 ~ Phase 6)</h2>
+    
+    <h3 class="sub-title">Phase 0 — 사전 준비 (10.12 ~ 10.18)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>기한</th><th>할 일</th><th>담당</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>10.13(화)</td><td>옥종고 지도교사 연락 → 1차 온라인 일정 확정 (후보: 10.20 화 / 10.21 수 / 10.22 목 방과후)</td><td>운영 총괄</td></tr>
+          <tr><td>10.13(화)</td><td>옥종고 사전 준비사항 시트(8문항) 작성 요청 → 미팅 전날 23:59 마감</td><td>운영 총괄</td></tr>
+          <tr><td>10.16(금)</td><td>팀모노리스 전문가 섭외 확정 + 배포본/전문가 협업안내서 전달</td><td>운영 총괄</td></tr>
+          <tr><td>10.16(금)</td><td>10.31 기관 인솔자 1인 지정 + 담당 직원 확정</td><td>운영 총괄</td></tr>
+          <tr><td>10.18(일) 23:59</td><td>구일고 사전 질문지 마감 → 다음날 오전 검토</td><td>학생 / 운영 총괄</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Phase 1 — 1차 온라인 멘토링 (10.19 ~ 10.22)</h3>
+    <p><strong>진행 순서 (60분 기준):</strong> ① 인사 및 소개(5분) → ② 전체 일정·버전 흐름(10분) → ③ v0 요구사항 확정(30분) → ④ AI 매뉴얼 및 드라이브 규칙(10분) → ⑤ Q&A 및 다음 일정(5분)</p>
+
+    <h3 class="sub-title">Phase 2 — 운영사 v0 프로토타입 제작</h3>
+    <p>구일고는 10.23(금) 18:00, 옥종고는 10.26(월) 18:00에 v0 zip + 학생용 AI 앱 수정 매뉴얼 + 과제 카드를 함께 전달합니다.</p>
+
+    <h3 class="sub-title">Phase 3 — 학생 v1 작업 (v0 수령 ~ 10.29)</h3>
+    <p>학생 매뉴얼에 따라 AI로 보완하여 <strong>10.29(목) 23:59</strong>까지 드라이브에 업로드합니다.</p>
+
+    <h3 class="sub-title">Phase 4 — 오프라인 통합 멘토링 (10.31 토 ~ 11.1 일, 라비돌 리조트)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>시간</th><th>재단 일정</th><th>우리 운영 포인트</th></tr></thead>
+        <tbody>
+          <tr><td>10.31 13:30~18:00</td><td>등록·개회·본선 문제 공개·특강</td><td><strong>본선 과제 공개 내용 기록</strong> → 프로젝트 방향 점검</td></tr>
+          <tr><td>10.31 19:30~20:30</td><td>팀별 자율 토의</td><td>구일고: 운영 총괄 v1 리뷰 / 옥종고: 직원+전문가 R1 진단</td></tr>
+          <tr><td>11.1 09:00~12:00</td><td>1:1 전문가 멘토링</td><td>재단 멘토 피드백 취합 시트 등록</td></tr>
+          <tr><td>11.1 13:30~15:00</td><td>스피치 교육, 정리·해산</td><td>다음 주 개발 스프린트 일정 재안내</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">Phase 5 — 개발 스프린트 (11.2 ~ 12.10)</h3>
+    <h3 class="sub-title">Phase 6 — 본선 커넥트데이 (DDP 아트홀, 12.11~12)</h3>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="block" id="sec-3">
+    <h2 class="sec-title"><span class="num">03</span> 주간 사이클 & 피드백 취합 주기</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>요일</th><th>학생</th><th>운영사</th><th>전문가 (옥종고)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>상시</strong></td><td>수정 작업 + 피드백·요청 시트 기록</td><td>—</td><td>—</td></tr>
+          <tr><td><strong>일 22:00</strong></td><td>이번 주 버전 업로드 + 시트 정리 마감</td><td>—</td><td>—</td></tr>
+          <tr><td><strong>월</strong></td><td>—</td><td>취합 및 분류 (학생 수정 / 운영사 / 전문가)</td><td>—</td></tr>
+          <tr><td><strong>화</strong></td><td>운영사 회신 확인 → 이번 주 과제 시작</td><td>'이번 주 과제' 카드 회신 / 전문가에게 패키지 전달</td><td>패키지 수령</td></tr>
+          <tr><td><strong>금</strong></td><td>—</td><td>전문가 결과물 확인 → 학생 안내</td><td>결과 버전 업로드</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      📌 <strong>원칙:</strong> 학생의 전문가 직접 요청은 금지되며, 운영사가 2주 단위로 모아서 <strong>'피드백 패키지 1건'</strong>으로 정제해 전달합니다.
+    </div>
+
+    <h3 class="sub-title">리뷰 회차 일정</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>회차</th><th>학생 마감</th><th>패키지 전달</th><th>리뷰·보강</th><th>결과 버전</th></tr></thead>
+        <tbody>
+          <tr><td><strong>R1</strong></td><td>v1: 10.29(목)</td><td>오프라인 현장 (10.31)</td><td>10.31 ~ 11.6(금)</td><td><strong>v2 (골격 보강)</strong></td></tr>
+          <tr><td><strong>R2</strong></td><td>11.15(일) 22:00</td><td>11.17(화) 패키지 #1</td><td>11.17 ~ 11.20(금)</td><td><strong>v3</strong></td></tr>
+          <tr><td><strong>R3</strong></td><td>11.29(일) 22:00</td><td>12.1(화) 패키지 #2</td><td>12.1 ~ 12.4(금)</td><td><strong>v4 RC (기능 동결)</strong></td></tr>
+          <tr><td><strong>R4</strong></td><td>12.6(일) 22:00</td><td>12.7(월) 패키지 #3</td><td>12.7 ~ 12.9(수)</td><td><strong>FINAL 최종본</strong></td></tr>
+          <tr><td><strong>동결</strong></td><td>—</td><td>구일고 12.9(수) / 옥종고 12.10(목)</td><td>이후 버그 외 수정 금지</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section class="block" id="sec-4">
+    <h2 class="sec-title"><span class="num">04</span> 프로토타입 제작 표준 (v0 기준)</h2>
+    <p>학생이 <strong>AI로 안전하게 고칠 수 있는 순수 정적 웹 구조</strong>를 채택합니다.</p>
+    <pre>
+팀명_v0_1023/
+├── index.html        화면 뼈대 (HTML5)
+├── style.css         디자인 (:root CSS 변수)
+├── app.js            동작 및 이벤트 로직
+├── data/
+│   ├── content.js    콘텐츠: 퀴즈·대사·프롬프트 (학생 집중 수정 구역)
+│   └── config.js     규칙 숫자: 보상·경험치·한도 계산 파라미터
+├── assets/           이미지·아이콘·효과음
+├── README.md         실행 방법 및 구역 안내
+└── CHANGELOG.md      버전별 변경 기록
+    </pre>
+    <div class="callout">
+      1. 빌드 도구 없이 Chrome 브라우저에서 <code>index.html</code> 더블클릭만으로 실행<br>
+      2. <code>localStorage</code> 저장 시 버전 접두어(예: <code>studybuddy_v2_state</code>) 필수 적용<br>
+      3. 코드 구역 표시: <code>/* 🔒 ENGINE */</code> vs <code>/* ✏️ EDIT */</code> 명확 분리<br>
+      4. AI 기능은 기본적으로 '데모 모드'로 시작 (API 키 노출 금지)
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section class="block" id="sec-5">
+    <h2 class="sec-title"><span class="num">05</span> 버전 및 드라이브 관리 규칙</h2>
+    <p>파일명: <code>팀명_v버전_MMDD[_작성주체].zip</code> (예: <code>091_v0_1023_nepes.zip</code>, <code>OKXEN_v1_1029.zip</code>, <code>OKXEN_FINAL_1210.zip</code>)</p>
+    <p>이전 버전은 덮어쓰거나 지우지 않고 복구용으로 영구 보관합니다.</p>
+  </section>
+
+  <!-- Section 6 -->
+  <section class="block" id="sec-6">
+    <h2 class="sec-title"><span class="num">06</span> 앱 개발 전문가 운영 (옥종고 전담)</h2>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><th>소속</th><td>팀모노리스 전문가 1인</td></tr>
+          <tr><th>명목</th><td>전문가 멘토링 <strong>4회 (총 8시간)</strong> — 회당 2시간 상당 (리뷰 및 보강 작업 기준)</td></tr>
+          <tr><th>금액</th><td>전문가활용비 <strong>200,000원 × 4회 = 800,000원</strong></td></tr>
+          <tr><th>책임 범위</th><td>게임 앱 완성도 (골격 안정화, 학생 추가분 통합, 버그 수정, 무대 시연 안정성)</td></tr>
+          <tr><th>소통</th><td>운영사 단일 창구 (회차별 정제된 피드백 패키지 1건으로 소통)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 7 & 8 -->
+  <section class="block" id="sec-7">
+    <h2 class="sec-title"><span class="num">07</span> 멘토링 일지 회차 계획</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>회차</th><th>구일고</th><th>옥종고</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>10.19(월) 온라인 Zoom</td><td>10.20~22 온라인 Zoom</td></tr>
+          <tr><td><strong>2</strong></td><td>10.31~11.1 오프라인 (운영 총괄)</td><td>10.31~11.1 오프라인 (직원 + 전문가 R1)</td></tr>
+          <tr><td><strong>3</strong></td><td>11.18(수) 온라인 중간점검 (교사 협의)</td><td>11.17~20 전문가 R2 (서면자문) + 운영사 결과 공유</td></tr>
+          <tr><td><strong>4</strong></td><td>12.3(목) 온라인 최종 발표 리허설</td><td>12.1~4 전문가 R3 (서면자문)</td></tr>
+          <tr><td><strong>5</strong></td><td>—</td><td>12.7~9 전문가 R4 + 12.8(화) 최종 리허설</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 9 -->
+  <section class="block" id="sec-9">
+    <h2 class="sec-title"><span class="num">08</span> 리스크 및 대응 전략</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>리스크</th><th>대응 전략</th></tr></thead>
+        <tbody>
+          <tr><td><strong>본선 과제 10.31 공개</strong></td><td>v0/v1은 핵심 루프만 탄탄하게 제작. R1에서 본선 과제 연결을 1순위로 점검.</td></tr>
+          <tr><td><strong>옥종고 1차 일정 지연</strong></td><td>10.22 넘기면 v1 마감을 10.30 12:00로 조정하고 v0 제작 범위 축소.</td></tr>
+          <tr><td><strong>학생의 AI 코드 파손</strong></td><td>원본 보존 + 한 번에 1개씩 수정 + 3회 실패 시 롤백 및 요청 시트 등록.</td></tr>
+          <tr><td><strong>본선 현장 네트워크 장애</strong></td><td>데모 모드 + 완전 오프라인 실행 파일 + 시연 영상 백업 이중화.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <span>© 2026 C.O.D.E 멘토링 운영단 · ㈜네패스</span>
+    <span>문서 기준: 2026-10-12 (v1.0) · Single Source of Truth</span>
+  </footer>
+</div>
+
+</body>
+</html>
