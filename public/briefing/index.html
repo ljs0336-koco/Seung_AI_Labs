@@ -4,188 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>AI 교육 업무 브리핑 · 2026-10-13</title>
+<title>AI 교육 업무 브리핑 · 2026-10-14</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
-<style>
-/* Published snapshot of Moru's briefing, styled for Seung AI Labs. */
-:root {
-  color-scheme: light;
-  --desk: #f7f6f2; --paper: #fffefa; --line: #e2ded5; --line-soft: #ece9e2;
-  --ink: #182622; --ink-soft: #596763; --green: #27675e; --green-tint: #e8f3f1; --terracotta: #ad4b31;
-  --serif: "Noto Serif KR", "Nanum Myeongjo", serif;
-  --sans: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  padding: 0 24px 56px; background: var(--desk); color: var(--ink);
-  font-family: var(--sans); font-size: 15px; line-height: 1.65; letter-spacing: -.015em;
-  font-feature-settings: "tnum"; -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; text-decoration: none; }
-a:hover { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
-a:focus-visible { outline: 3px solid var(--green); outline-offset: 5px; border-radius: 4px; }
-h1, h2, h3, h4, p, .meta { overflow-wrap: anywhere; word-break: keep-all; }
-.site-bar {
-  max-width: 1200px; min-height: 90px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; gap: 20px;
-}
-.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 750; letter-spacing: -.04em; }
-.brand-mark {
-  display: grid; place-items: center; width: 32px; height: 32px;
-  border-radius: 10px; background: var(--green); color: white; font-size: 18px;
-}
-.brand:hover { text-decoration: none; }
-.portal-link {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-height: 38px; padding: 7px 14px; border: 1px solid var(--line);
-  border-radius: 999px; background: var(--paper); color: var(--ink-soft);
-  font-size: 13px; font-weight: 600; white-space: nowrap;
-}
-.portal-link:hover { text-decoration: none; border-color: var(--green); }
-.sheet {
-  max-width: 1200px; margin: 0 auto; padding: 44px 42px 30px;
-  border: 1px solid var(--line); border-radius: 24px;
-  background: var(--paper); box-shadow: 0 12px 40px rgba(24, 38, 34, .035);
-}
-.masthead {
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 28px;
-  padding-bottom: 30px; border-bottom: 1px solid var(--line);
-}
-.kicker { margin-bottom: 10px; color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .02em; }
-h1 { font-family: var(--serif); font-size: clamp(28px, 3.2vw, 36px); font-weight: 600; letter-spacing: -.045em; line-height: 1.35; }
-.updated { max-width: 380px; color: var(--ink-soft); font-size: 12px; line-height: 1.8; text-align: right; }
-.columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; margin-top: 30px; }
-.part { min-width: 0; }
-.part + .part { padding-left: 36px; border-left: 1px solid var(--line); }
-.part-head { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 10px; margin-bottom: 20px; }
-.part-no { display: inline-grid; place-items: center; width: 29px; height: 29px; border-radius: 9px; background: var(--green-tint); color: var(--green); font-size: 12px; font-weight: 700; }
-h2 { font-size: 20px; font-weight: 700; letter-spacing: -.04em; line-height: 1.4; }
-.part-note { margin-left: auto; color: var(--ink-soft); font-size: 12px; }
-.label { margin-bottom: 7px; color: var(--green); font-size: 12px; font-weight: 700; }
-.meta { color: var(--ink-soft); font-size: 12px; }
-.tag { display: inline-block; margin-bottom: 5px; color: var(--green); font-size: 12px; font-weight: 650; }
-.empty { padding: 15px 0 0; color: var(--ink-soft); font-size: 13px; }
-.pick { padding: 23px; margin-bottom: 10px; border: 1px solid #d4e6e1; border-radius: 18px; background: var(--green-tint); }
-.pick h3 { margin-bottom: 7px; font-size: 19px; font-weight: 700; line-height: 1.5; letter-spacing: -.035em; }
-.why { margin-top: 14px; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
-.pick-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; font-size: 13px; }
-.pick-foot > span { min-width: 0; }
-.dday { color: var(--green); font-size: 13px; font-weight: 750; white-space: nowrap; }
-.dday.soon { color: var(--terracotta); }
-.dday.closed { color: var(--ink-soft); font-weight: 500; }
-.rows { list-style: none; }
-.rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 12px; padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
-.rows li:last-child { border-bottom: 0; }
-.rows li > div { min-width: 0; }
-.row-title { margin-bottom: 5px; font-size: 15px; font-weight: 650; line-height: 1.55; word-break: keep-all; overflow-wrap: anywhere; }
-.fit { color: var(--ink-soft); font-size: 11px; font-weight: 500; margin-right: 6px; white-space: nowrap; }
-.fit::before { content: ""; display: inline-block; width: 5px; height: 5px; margin-right: 4px; border-radius: 50%; background: #a2b7af; vertical-align: 2px; }
-.fit.high::before { background: var(--green); }
-.row-due { text-align: right; }
-.row-due .date { display: block; color: var(--ink-soft); font-size: 11px; white-space: nowrap; }
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; min-height: 36px;
-  padding: 6px 12px; border: 1px solid var(--line); border-radius: 10px;
-  color: var(--green); background: var(--paper); font-size: 12px; font-weight: 650; line-height: 1.4; white-space: nowrap;
-}
-.btn:hover { background: var(--green); border-color: var(--green); color: #fff; text-decoration: none; }
-.pick .btn { border-color: #bfd7d0; }
-.lead { padding-bottom: 20px; border-bottom: 1px solid var(--line-soft); }
-.lead h3 { margin: 2px 0 8px; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.5; letter-spacing: -.035em; }
-.lead p { color: var(--ink-soft); font-size: 14px; }
-.src { display: inline-block; margin-top: 9px; color: var(--ink-soft); font-size: 12px; }
-.news { list-style: none; }
-.news li { padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
-.news li.with-thumb { display: grid; grid-template-columns: minmax(0, 1fr) 96px; align-items: start; gap: 18px; }
-.news h4 { margin: 1px 0 5px; font-size: 15px; font-weight: 650; line-height: 1.55; }
-.news p { color: var(--ink-soft); font-size: 13px; }
-.img { display: block; width: 100%; height: auto; object-fit: cover; border: 1px solid var(--line); border-radius: 12px; background: var(--line-soft); filter: saturate(.75); }
-.lead-fig { margin-bottom: 18px; }
-.lead-fig .img { aspect-ratio: 5 / 2.4; border-radius: 16px; }
-.credit { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 10px; text-align: right; }
-.news .img { aspect-ratio: 4 / 3; margin-top: 5px; }
-.watch-card { display: grid; grid-template-columns: 124px minmax(0, 1fr); align-items: center; gap: 16px; margin-top: 18px; padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: var(--desk); }
-a.watch-card:hover { text-decoration: none; border-color: #b7cec6; }
-a.watch-card:hover h4 { text-decoration: underline; text-underline-offset: 4px; }
-.watch-thumb { position: relative; }
-.watch-thumb .img { aspect-ratio: 16 / 9; }
-.watch-thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: translate(-35%, -50%); border-left: 10px solid rgba(255, 254, 250, .94); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
-.watch-card h4 { margin: 1px 0 4px; font-size: 14px; font-weight: 650; line-height: 1.5; }
-.briefs { padding-top: 18px; list-style: none; }
-.briefs li { position: relative; padding: 5px 0 5px 15px; color: var(--ink-soft); font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; word-break: keep-all; }
-.briefs li::before { content: "·"; position: absolute; left: 2px; color: var(--green); font-weight: 700; }
-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px 24px; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 11px; }
-footer a { color: var(--green); font-weight: 600; }
-@media (max-width: 1000px) {
-  .sheet { padding: 32px 28px 26px; }
-  .columns { gap: 26px; }
-  .part + .part { padding-left: 26px; }
-  .part-note { flex-basis: 100%; margin-left: 39px; }
-  .rows li { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
-  .rows li > div:first-child { grid-column: 1 / -1; }
-  .row-due { display: flex; align-items: center; gap: 8px; text-align: left; }
-  .rows .btn { justify-self: end; }
-}
-@media (max-width: 760px) {
-  .site-bar { min-height: 78px; }
-  .sheet { padding: 30px 26px 24px; }
-  .masthead { flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 24px; }
-  .updated { text-align: left; }
-  .columns { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 26px; }
-  .part + .part { padding: 28px 0 0; border-left: 0; border-top: 1px solid var(--line); }
-  .part-note { flex-basis: auto; margin-left: auto; }
-}
-@media (max-width: 480px) {
-  body { padding: 0 14px 30px; }
-  .site-bar { min-height: 72px; gap: 10px; }
-  .brand { gap: 7px; font-size: 15px; }
-  .brand-mark { width: 27px; height: 27px; font-size: 15px; border-radius: 8px; }
-  .portal-link { min-height: 36px; padding: 6px 11px; font-size: 11px; }
-  .sheet { padding: 26px 18px 22px; border-radius: 20px; }
-  h1 { font-size: 28px; }
-  h2 { font-size: 19px; }
-  .updated { font-size: 11px; overflow-wrap: anywhere; }
-  .part-head { gap: 7px 9px; }
-  .part-note { flex-basis: 100%; margin-left: 38px; }
-  .pick { padding: 19px 16px; border-radius: 16px; }
-  .pick h3 { font-size: 17px; }
-  .pick-foot { align-items: flex-start; gap: 10px; }
-  .pick-foot > span { flex-basis: 100%; }
-  .pick-foot .btn { margin-left: auto; }
-  .btn { min-height: 40px; }
-  .news li.with-thumb { grid-template-columns: minmax(0, 1fr) 76px; gap: 12px; }
-  .watch-card { grid-template-columns: 80px minmax(0, 1fr); gap: 12px; padding: 12px; }
-  .watch-card h4 { font-size: 13px; }
-  .watch-card .meta { font-size: 11px; }
-  footer { margin-top: 28px; line-height: 1.8; }
-}
-@media print {
-  body { padding: 0; background: white; }
-  .site-bar { display: none; }
-  .sheet { max-width: none; padding: 0; border: 0; border-radius: 0; box-shadow: none; }
-  .pick, .lead, .news li, .watch-card, .rows li { break-inside: avoid; }
-  a { color: inherit; }
-}
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <nav class="site-bar" aria-label="포털 이동">
   <a class="brand" href="../#/"><span class="brand-mark" aria-hidden="true">S</span><span>Seung AI Labs</span></a>
-  <a class="portal-link" href="../#/">← 포털 돌아가기</a>
+  <div class="site-actions">
+    <a class="portal-link" href="archive/index.html">📚 지난 브리핑</a>
+    <a class="portal-link" href="../#/">← 포털 돌아가기</a>
+  </div>
 </nav>
 <div class="sheet">
 
   <header class="masthead">
     <div>
       <div class="kicker">AI 교육 업무 브리핑</div>
-      <h1>10월 13일 화요일</h1>
+      <h1>10월 14일 수요일</h1>
     </div>
     <div class="updated">
-      오후 4:27 갱신<br>
-      사업공고 10/13(화) 15:41 · AI 뉴스 10/13(화) 15:40 수집
+      오전 11:03 갱신<br>
+      사업공고 10/14(수) 10:30 · AI 뉴스 10/14(수) 11:05 수집
     </div>
   </header>
 
@@ -199,110 +42,175 @@ footer a { color: var(--green); font-weight: 600; }
       
       <article class="pick">
         <div class="label">이번 주 눈여겨볼 공고</div>
-        <h3>2026년 디지털새싹 우수프로그램 인증제 공모</h3>
-        <div class="meta">한국과학창의재단 · 인증 마크·인증서 · 심사 10월~2027년 1월</div>
-        <p class="why">2026 디지털새싹 운영 기관이라면 해커톤·앱 멘토링 산출물로 &#x27;특화&#x27; 부문에 도전할 수 있습니다.</p>
+        <h3>2026 전국민 AI 페스티벌 부스 참여 기업·기관 모집</h3>
+        <div class="meta">한국과학창의재단 · 부스 지원 조건은 원문 확인 · 행사 일정은 원문 확인</div>
+        <p class="why">로봇·블록코딩·AI 스피커 체험 부스로 교원과 학부모에게 교육 프로그램을 알릴 수 있습니다.</p>
         <div class="pick-foot">
-          <span><span class="dday " data-deadline="2026-10-26">D-13</span> <span class="meta">· 10/26(월) 마감</span></span>
-          <a class="btn" href="https://apply.kosac.re.kr/onlnRcpt/getBscInfo.do?pbancNo=2026-S740" target="_blank" rel="noopener">공고 보기 ↗</a>
+          <span><span class="dday soon" data-deadline="2026-10-20">D-6</span> <span class="meta">· 10/20(화) 마감</span></span>
+          <a class="btn" href="https://apply.kosac.re.kr/onlnRcpt/getBscInfo.do?pbancNo=2026-S714" target="_blank" rel="noopener">공고 보기 ↗</a>
         </div>
       </article>
 <ul class="rows">
         <li>
           <div>
-            <div class="row-title"><span class="fit ">검토</span>2026 전국민 AI 페스티벌 부스 참여 기업·기관 모집</div>
-            <div class="meta">한국과학창의재단 · 부스 조건 원문 확인</div>
+            <div class="row-title"><span class="fit ">검토</span>KYWA 청소년 현장 맞춤형 디지털 특화 강사 모집</div>
+            <div class="meta">한국청소년활동진흥원 · 보수 언급 없음(양성 과정)</div>
           </div>
-          <div class="row-due"><span class="dday soon" data-deadline="2026-10-20">D-7</span><span class="date">10/20(화)</span></div>
-          <a class="btn" href="https://apply.kosac.re.kr/onlnRcpt/getBscInfo.do?pbancNo=2026-S714" target="_blank" rel="noopener">공고 ↗</a>
+          <div class="row-due"><span class="dday soon" data-deadline="2026-10-21">D-7</span><span class="date">10/21(수)</span></div>
+          <a class="btn" href="https://www.newspim.com/news/view/20261013000258" target="_blank" rel="noopener">공고 ↗</a>
         </li>
         <li>
           <div>
-            <div class="row-title"><span class="fit ">검토</span>청소년 현장 맞춤형 디지털 특화 강사 모집</div>
-            <div class="meta">한국청소년활동진흥원 · 개인 지원 · 5명 이내</div>
+            <div class="row-title"><span class="fit ">검토</span>2026년 디지털새싹 우수프로그램 인증제 공모</div>
+            <div class="meta">한국과학창의재단 · 인증 마크·인증서</div>
           </div>
-          <div class="row-due"><span class="dday " data-deadline="2026-10-21">D-8</span><span class="date">10/21(수)</span></div>
-          <a class="btn" href="https://www.newspim.com/news/view/20261013000258" target="_blank" rel="noopener">공고 ↗</a>
+          <div class="row-due"><span class="dday " data-deadline="2026-10-26">D-12</span><span class="date">10/26(월)</span></div>
+          <a class="btn" href="https://apply.kosac.re.kr/onlnRcpt/getBscInfo.do?pbancNo=2026-S740" target="_blank" rel="noopener">공고 ↗</a>
         </li>
       </ul>
-<p class="empty">이번 주 적합도 &#x27;상&#x27; 공고는 없었습니다.</p>
+<p class="empty">이번 실행에서 새로 찾은 공고는 없고, 적합도 &#x27;상&#x27; 공고도 없습니다.</p>
     </section>
 
     <section class="part" aria-labelledby="news">
       <div class="part-head">
         <span class="part-no">02</span>
         <h2 id="news">AI 이슈와 뉴스</h2>
-        <span class="part-note">10/12 오후 ~ 10/13 오후</span>
+        <span class="part-note">10/13 오후 ~ 10/14 오전</span>
+        <button class="btn btn-read" type="button" data-read-open>요약 읽기</button>
       </div>
       
       <article class="lead">
-        <figure class="lead-fig"><img class="img" src="https://techcrunch.com/wp-content/uploads/2026/10/Screenshot-2026-10-12-at-1.09.43-PM.jpg?resize=1200,676" alt="Meta, 첫 프런티어 모델 &#x27;Muse Wonder&#x27; 공개" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><figcaption class="credit">이미지: TechCrunch</figcaption></figure>
-        <span class="tag">모델</span>
-        <h3>Meta, 첫 프런티어 모델 &#x27;Muse Wonder&#x27; 공개</h3>
-        <p>장기 기억을 핵심 기능으로 내세웠고 API로 바로 쓸 수 있습니다. 성능 수치는 Meta 자체 평가입니다.</p>
-        <a class="src" href="https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/" target="_blank" rel="noopener">TechCrunch · 10/12(월) ↗</a>
+        <figure class="lead-fig"><img class="img" src="https://thumb.mt.co.kr/cdn-cgi/image/f=avif/21/2026/10/2026101312305683816_1.jpg" alt="카카오, 카톡 AI 비서 &#x27;카나나 스페이스&#x27;와 에이전트 팀 도구 &#x27;칸바스&#x27; 공개" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><figcaption class="credit">이미지: 머니투데이</figcaption></figure>
+        <span class="tag">코딩 도구</span>
+        <h3>카카오, 카톡 AI 비서 &#x27;카나나 스페이스&#x27;와 에이전트 팀 도구 &#x27;칸바스&#x27; 공개</h3>
+        <p>if(kakao)26에서 카카오톡 AI 비서와 PC용 에이전트 팀 도구를 공개했고, 두 제품 모두 연내 비공개 베타가 목표입니다.</p>
+        <span class="src">머니투데이 · 10/13(화) · <a href="https://www.mt.co.kr/tech/2026/10/13/2026101312305683816" target="_blank" rel="noopener">원문 ↗</a> · <button class="link-read" type="button" data-read="read-0">요약</button></span>
       </article>
 <ul class="news">
         <li class="with-thumb">
           <div>
-            <span class="tag">교육 정책</span>
-            <h4><a href="https://www.seoul.co.kr/news/spotlight/ggc-gyeonggi/2026/10/12/20261012500125" target="_blank" rel="noopener">AI 활용 선도교사 연수, 교원 AI 역량 22.4% 상승</a></h4>
-            <p>교육부·KERIS 연수 경기 2권역에서 2,135명이 이수했습니다. 도구 비교 실습과 마이크로티칭으로 꾸렸습니다.</p>
-            <span class="src">서울신문 · 10/12(월)</span>
+            <span class="tag">기기</span>
+            <h4>Apple, Siri AI 스마트홈 허브 HomeView($299) 공개</h4>
+            <p>얼굴로 가구원을 구분하는 7인치 허브로 11월 13일에 출시합니다. Siri AI는 베타이고 영어만 지원합니다.</p>
+            <span class="src">Engadget · 영문 · 10/13(화) · <a href="https://www.engadget.com/2285079/everything-apple-announced-home-view-homepod-mini-2-event/" target="_blank" rel="noopener">원문 ↗</a> · <button class="link-read" type="button" data-read="read-1">요약</button></span>
           </div>
-          <img class="img" src="https://img.seoul.co.kr/img/upload/2026/10/12/SSC_20261012135315_O2.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+          <img class="img" src="https://www.engadget.com/img/gallery/everything-apple-announced-home-view-homepod-mini-2-event/l-intro-1791916070.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
         </li>
         <li class="with-thumb">
           <div>
-            <span class="tag">모델</span>
-            <h4><a href="https://www.anthropic.com/claude-haiku-5-5" target="_blank" rel="noopener">Anthropic, 소형 모델 Claude Haiku 5.5 출시</a></h4>
-            <p>이전 Haiku보다 평균 약 75% 저렴해 교육용 챗봇과 학생 실습 비용 부담이 줄어듭니다.</p>
-            <span class="src">Anthropic · 10/7(수)</span>
+            <span class="tag">코딩 도구</span>
+            <h4>Google Play, 바이브코딩으로 만든 &#x27;나만 쓰는 앱&#x27; 실행 지원</h4>
+            <p>Google AI Studio로 만든 앱을 공개 출시 없이 자기 Android 폰에서 돌릴 수 있습니다. 미국, 18세 이상부터 시작합니다.</p>
+            <span class="src">TechCrunch · 영문 · 10/13(화) · <a href="https://techcrunch.com/2026/10/13/google-play-now-supports-private-vibe-coded-apps-built-just-for-you/" target="_blank" rel="noopener">원문 ↗</a> · <button class="link-read" type="button" data-read="read-2">요약</button></span>
           </div>
-          <img class="img" src="https://www-cdn.anthropic.com/images/4zrzovbb/website/89e9b0fbfe0181f6ca565d913686ce8e49b5e9c2-1200x630.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+          <img class="img" src="https://techcrunch.com/wp-content/uploads/2026/10/PersonalApps_desktop_16x9_Static.png?resize=1200,675" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
         </li>
       </ul>
-
-      <a class="watch-card" href="https://www.youtube.com/watch?v=Fls_onRviPM" target="_blank" rel="noopener">
-        <div class="watch-thumb"><img class="img" src="https://img.youtube.com/vi/Fls_onRviPM/hqdefault.jpg" alt="영상 썸네일" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
-        <div>
-          <span class="tag">볼 만한 영상</span>
-          <h4>OpenAI DevDay 2026 키노트 (전체)</h4>
-          <span class="meta">OpenAI DevDay · 9/29(화)</span>
-        </div>
-      </a>
 <ul class="briefs">
-        <li><a href="https://www.anthropic.com/news/claude-frontier-academy" target="_blank" rel="noopener">Anthropic, 엔지니어 1만 명 양성 &#x27;Claude Frontier Academy&#x27; 출범</a></li>
-        <li><a href="https://techcrunch.com/2026/10/12/microsoft-president-says-uk-is-best-placed-to-drive-ai-regulation/" target="_blank" rel="noopener">Microsoft 사장 &quot;AI 규제를 이끌 최적지는 영국&quot;</a></li>
-        <li><a href="https://techcrunch.com/2026/10/11/these-execs-think-voice-ai-hasnt-reached-its-chatgpt-moment-yet/" target="_blank" rel="noopener">음성 AI 업계 &quot;아직 ChatGPT 모먼트는 오지 않았다&quot;</a></li>
+        <li><a href="https://techcrunch.com/2026/10/13/just-5-years-in-interactive-chatbot-platform-character-ai-files-for-bankruptcy/" target="_blank" rel="noopener">Character.AI, 서비스 5년 만에 파산보호 신청… 미성년자 안전 소송이 배경</a></li>
+        <li><a href="https://techcrunch.com/2026/10/13/spacexsi-bundles-x-premium-grok-and-cursor-into-one-subscription/" target="_blank" rel="noopener">SpaceXSI, X Premium·Grok·Cursor를 하나로 묶은 구독 출시</a></li>
+        <li><a href="https://techcrunch.com/2026/10/13/amex-introduces-a-framework-to-prevent-ai-agents-from-making-unauthorized-purchases/" target="_blank" rel="noopener">Amex, AI 에이전트의 무단 결제를 막는 프레임워크 공개</a></li>
       </ul>
     </section>
   </div>
 
   <footer>
-    <span>모루가 정리한 2026년 10월 13일 브리핑 · <a href="../#/">Seung AI Labs</a></span>
+    <span>모루 루틴이 평일마다 자동으로 정리합니다 · <a href="archive/index.html">지난 브리핑</a> · <a href="../#/">Seung AI Labs</a></span>
     <span>공고 자격·일정과 기사 내용은 원문에서 확인해 주세요</span>
   </footer>
 </div>
 
+<div class="reader-backdrop" data-read-close></div>
+<aside class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title" inert>
+  <div class="reader-head">
+    <div>
+      <div class="kicker">AI 이슈와 뉴스 · 10/13 오후 ~ 10/14 오전</div>
+      <h2 id="reader-title">요약 읽기</h2>
+    </div>
+    <button class="btn reader-close" type="button" data-read-close>닫기</button>
+  </div>
+  
+      <article class="reader-item" id="read-0">
+        <div class="meta">코딩 도구 · 머니투데이 · 10/13(화)</div>
+        <h3>카카오, 카톡 AI 비서 &#x27;카나나 스페이스&#x27;와 에이전트 팀 도구 &#x27;칸바스&#x27; 공개</h3>
+        <ul class="digest">
+          <li>카카오가 10월 13~14일 용인 카카오 AI 캠퍼스에서 개발자 행사 if(kakao)26을 열고 AI 에이전트 전략을 발표했습니다.</li>
+          <li>카나나 스페이스는 카카오톡 화면을 두 손가락으로 쓸면 열리는 AI 비서로, 메시지 전송·일정 관리·검색을 하고 앞으로 주문·예약·송금까지 넓힐 계획입니다.</li>
+          <li>칸바스는 PC에서 개인 에이전트 팀을 만들어 실행하는 도구로, 기사는 Codex·Claude Code와 비슷한 도구라고 설명했습니다.</li>
+          <li>자체 모델 &#x27;카나나&#x27;는 간단한 요청을 기기 안에서, 복잡한 작업을 대형 모델에서 처리합니다.</li>
+          <li>두 제품 모두 연내 비공개 베타(CBT)가 목표이며, 아직 일반 공개 전입니다.</li>
+        </ul>
+        <p class="reader-note"><span>우리 팀 메모</span>칸바스가 베타로 나오면 국내 AI 코딩·에이전트 도구로서 수업 비교 대상이 됩니다.</p>
+        <a class="btn" href="https://www.mt.co.kr/tech/2026/10/13/2026101312305683816" target="_blank" rel="noopener">원문 보기 ↗</a>
+      </article>
+      <article class="reader-item" id="read-1">
+        <div class="meta">기기 · Engadget · 영문 기사 · 10/13(화)</div>
+        <h3>Apple, Siri AI 스마트홈 허브 HomeView($299) 공개</h3>
+        <ul class="digest">
+          <li>Apple이 10월 13일 뉴욕 &#x27;Welcome Home&#x27; 행사에서 스마트홈 허브 HomeView를 공개했습니다.</li>
+          <li>가격은 299달러이고 A18 칩과 7인치 화면을 갖췄으며, 11월 13일에 출시합니다.</li>
+          <li>가구원 최대 6명을 얼굴로 구분해 사람마다 다른 화면을 보여 줍니다.</li>
+          <li>149달러짜리 HomePod mini 2도 나왔지만, Siri AI는 이후 업데이트로 들어옵니다.</li>
+          <li>Siri AI는 베타이고 영어권 일부 국가에서만 쓸 수 있어, 한국어는 아직 지원하지 않습니다.</li>
+        </ul>
+        <a class="btn" href="https://www.engadget.com/2285079/everything-apple-announced-home-view-homepod-mini-2-event/" target="_blank" rel="noopener">원문 보기 ↗</a>
+      </article>
+      <article class="reader-item" id="read-2">
+        <div class="meta">코딩 도구 · TechCrunch · 영문 기사 · 10/13(화)</div>
+        <h3>Google Play, 바이브코딩으로 만든 &#x27;나만 쓰는 앱&#x27; 실행 지원</h3>
+        <ul class="digest">
+          <li>Google이 AI로 대화하듯 만든(바이브코딩) 앱을 Play 스토어에 공개하지 않고 자기 Android 기기에서 실행할 수 있게 했습니다.</li>
+          <li>앱은 Google AI Studio로 만들고, 만든 사람에게만 보이며 Play 정책은 그대로 지켜야 합니다.</li>
+          <li>미국에서 먼저 시작하고 18세 이상만 쓸 수 있습니다.</li>
+          <li>몇 달 안에 가까운 사람과 공유하는 기능이 추가되고, 심사를 거치면 공개 스토어로 옮길 수도 있습니다.</li>
+        </ul>
+        <p class="reader-note"><span>우리 팀 메모</span>학생이 AI로 만든 앱을 자기 폰에서 바로 돌려 보는 흐름의 사례로, 바이브코딩 수업 예시로 쓸 수 있습니다.</p>
+        <a class="btn" href="https://techcrunch.com/2026/10/13/google-play-now-supports-private-vibe-coded-apps-built-just-for-you/" target="_blank" rel="noopener">원문 보기 ↗</a>
+      </article>
+  <p class="reader-foot">원문을 읽고 우리말로 정리한 요약입니다. 정확한 내용은 원문에서 확인해 주세요.</p>
+</aside>
+
 <script>
-// 한국 날짜를 기준으로 마감까지 남은 일수를 계산한다.
+// 페이지를 늦게 열어도 D-day가 맞도록 오늘 날짜로 다시 계산한다
 (function () {
-  var parts = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
-  }).formatToParts(new Date());
-  var today = {};
-  parts.forEach(function (part) {
-    if (part.type !== 'literal') today[part.type] = Number(part.value);
-  });
-  var t = Date.UTC(today.year, today.month - 1, today.day);
+  var t = new Date(); t.setHours(0, 0, 0, 0);
   document.querySelectorAll('[data-deadline]').forEach(function (el) {
-    var p = el.dataset.deadline.split('-');
-    var d = Date.UTC(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    var p = el.dataset.deadline.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
     var n = Math.round((d - t) / 86400000);
     el.textContent = n < 0 ? '마감' : (n === 0 ? 'D-day' : 'D-' + n);
     el.classList.toggle('soon', n >= 0 && n <= 7);
     el.classList.toggle('closed', n < 0);
+  });
+})();
+// 요약 읽기 창 열고 닫기
+(function () {
+  var r = document.getElementById('reader');
+  if (!r) return;
+  var bg = document.querySelector('.reader-backdrop'), last = null;
+  function open(id) {
+    last = document.activeElement;
+    r.inert = false; r.classList.add('open'); bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var t = id ? document.getElementById(id) : null;
+    r.scrollTop = t ? t.offsetTop - 24 : 0;
+    r.querySelector('.reader-close').focus({ preventScroll: true });
+  }
+  function close() {
+    r.classList.remove('open'); bg.classList.remove('open'); r.inert = true;
+    document.body.style.overflow = '';
+    if (last) last.focus();
+  }
+  document.querySelectorAll('[data-read]').forEach(function (el) {
+    el.addEventListener('click', function () { open(el.dataset.read); });
+  });
+  document.querySelectorAll('[data-read-open]').forEach(function (el) {
+    el.addEventListener('click', function () { open(null); });
+  });
+  document.querySelectorAll('[data-read-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && r.classList.contains('open')) close();
   });
 })();
 </script>
