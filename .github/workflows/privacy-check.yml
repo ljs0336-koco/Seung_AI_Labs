@@ -1,0 +1,22 @@
+name: Check publication privacy
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:privacy
+      - run: npm run test:privacy
+      - run: npm test -- --run src/utils/privacyGuard.test.js src/app/AdminPage.test.jsx src/app/routes.test.jsx src/app/memoPrivacy.test.js

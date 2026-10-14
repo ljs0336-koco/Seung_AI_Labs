@@ -1,0 +1,3 @@
+#!/bin/sh
+# Inspect staged blobs before they enter this public repository.
+node scripts/check-public-privacy.mjs --staged

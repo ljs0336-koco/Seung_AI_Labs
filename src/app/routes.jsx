@@ -1,13 +1,14 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Portal from './Portal';
 import Home from './Home';
 import FairnessLabPage from '../features/fairness/FairnessLabPage';
 import VerificationLabPage from '../features/verification/VerificationLabPage';
 import RoleLabPage from '../features/role/RoleLabPage';
 import AgentLabPage from '../features/agent/AgentLabPage';
-import AdminPage from './AdminPage';
-import ContentProtected from './ContentProtected';
+import { MATERIALS_PATH } from './materialsRoute';
+
+const AdminPage = lazy(() => import('./AdminPage'));
 
 export default function AppRoutes() {
   return (
@@ -15,50 +16,42 @@ export default function AppRoutes() {
       {/* 1. Main Portal: ALWAYS 100% PUBLIC (Zero passcode gate) */}
       <Route path="/" element={<Portal />} />
 
-      {/* 2. Admin Console: Separate admin route (Protected by admin master code) */}
-      <Route path="/admin" element={<AdminPage />} />
+      {/* Unlisted materials; public-safe content only. */}
+      <Route path={MATERIALS_PATH} element={<Suspense fallback={<p role="status">자료실을 불러오는 중입니다.</p>}><AdminPage /></Suspense>} />
+      <Route path="/admin" element={<Navigate to="/" replace />} />
 
-      {/* 3. Educational Labs: Protected by Content Lock when admin enables it */}
+      {/* Educational activities stay publicly available. */}
       <Route
         path="/literacy"
         element={
-          <ContentProtected contentName="초등 AI 리터러시 실험 연구실">
-            <Home />
-          </ContentProtected>
+          <Home />
         }
       />
       <Route
         path="/fairness"
         element={
-          <ContentProtected contentName="공정성 실험실">
-            <FairnessLabPage />
-          </ContentProtected>
+          <FairnessLabPage />
         }
       />
       <Route
         path="/verification"
         element={
-          <ContentProtected contentName="팩트체크 실험실">
-            <VerificationLabPage />
-          </ContentProtected>
+          <VerificationLabPage />
         }
       />
       <Route
         path="/role"
         element={
-          <ContentProtected contentName="역할과 통제 실험실">
-            <RoleLabPage />
-          </ContentProtected>
+          <RoleLabPage />
         }
       />
       <Route
         path="/agent"
         element={
-          <ContentProtected contentName="자율 에이전트 실험실">
-            <AgentLabPage />
-          </ContentProtected>
+          <AgentLabPage />
         }
       />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
