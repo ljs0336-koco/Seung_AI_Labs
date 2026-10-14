@@ -380,12 +380,12 @@
 
           <div class="grid grid-cols-2 gap-2 text-xs">
             <div>
-              <label class="text-[10px] text-outline font-medium block mb-0.5">작성자 이름/닉네임:</label>
-              <input id="note-author-input" type="text" placeholder="예: 김민준 / 참여자"
+              <label for="note-author-input" class="text-[10px] text-outline font-medium block mb-0.5">작성자 닉네임:</label>
+              <input id="note-author-input" type="text" placeholder="예: 학생 A / 교사 B" aria-describedby="note-privacy-help note-privacy-status"
                      class="w-full px-2.5 py-1.5 bg-surface-container-low rounded-lg border border-outline-variant/50 text-xs text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:bg-white" />
             </div>
             <div>
-              <label class="text-[10px] text-outline font-medium block mb-0.5">대상 팀 지정:</label>
+              <label for="note-team-select" class="text-[10px] text-outline font-medium block mb-0.5">대상 팀 지정:</label>
               <select id="note-team-select" class="w-full px-2 py-1.5 bg-surface-container-low rounded-lg border border-outline-variant/50 text-xs text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:bg-white">
                 <option value="all">전체 공유 (모든 팀)</option>
                 <option value="01">팀 01. 질문과 사고력</option>
@@ -408,8 +408,14 @@
             <button type="button" onclick="insertTag('#일정공유 ')" class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface">#일정공유</button>
           </div>
 
+          <p id="note-privacy-help" class="text-[11px] text-on-surface-variant leading-relaxed">공개돼도 괜찮은 내용만 공유해 주세요. 연락처·실명·학생 사진·주소·계정키는 넣지 마세요. <a href="../../privacy-guidelines.html" class="text-primary underline underline-offset-2">개인정보 게시 가이드</a></p>
+          <div id="note-privacy-feedback" class="hidden rounded-lg border border-outline-variant/50 bg-surface-container-low p-2.5 space-y-2">
+            <p id="note-privacy-status" role="status" aria-live="polite" aria-atomic="true" class="text-xs text-on-surface leading-relaxed"></p>
+            <button id="note-mask-button" type="button" onclick="maskNoteDraft()" class="hidden px-3 py-2 rounded-lg border border-primary text-primary text-xs font-bold hover:bg-surface-container">개인정보 가리고 다시 확인</button>
+          </div>
           <div class="flex gap-2">
-            <textarea id="note-input" rows="2" placeholder="팀원 및 연수생들과 함께 나눌 메모를 적어보세요..." 
+            <label for="note-input" class="sr-only">공동 메모 내용</label>
+            <textarea id="note-input" rows="2" placeholder="팀원 및 연수생들과 함께 나눌 메모를 적어보세요..." aria-describedby="note-privacy-help note-privacy-status"
                       class="flex-1 p-2.5 bg-surface-container-low rounded-lg border border-outline-variant/50 text-xs text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary focus:bg-white resize-none"></textarea>
             <button type="button" onclick="handleAddNote()" class="px-4 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center shrink-0 shadow-sm">
               공유 등록
@@ -920,6 +926,7 @@ const INITIAL_NOTES_DATA = [
 </script>
   
   <!-- SPA Routing & Logic Controller -->
+  <script src="../../shared/privacy-guard.js"></script>
   <script>
     // State management
     let currentRoute = "#projects";
@@ -956,7 +963,7 @@ const INITIAL_NOTES_DATA = [
     try {
       const savedAuthor = localStorage.getItem("seung_memo_author");
       const authorInp = document.getElementById("note-author-input");
-      if (savedAuthor && authorInp) authorInp.value = savedAuthor;
+      if (savedAuthor && authorInp && getNotePrivacyGuard()) authorInp.value = maskNoteText(savedAuthor);
     } catch(e) {}
     loadCloudNotes(true);
 
@@ -1044,7 +1051,7 @@ const INITIAL_NOTES_DATA = [
     try {
       const savedAuthor = localStorage.getItem("seung_memo_author");
       const authorInp = document.getElementById("note-author-input");
-      if (savedAuthor && authorInp) authorInp.value = savedAuthor;
+      if (savedAuthor && authorInp && getNotePrivacyGuard()) authorInp.value = maskNoteText(savedAuthor);
     } catch(e) {}
     loadCloudNotes(true);
 
@@ -1819,7 +1826,8 @@ function renderTeamCarouselChips() {
           isLoadingCloudNotes = false;
           if (Array.isArray(data)) {
             cloudNotes = data.map(item => {
-              let formattedTime = item.time || "";
+              item = item && typeof item === "object" ? item : {};
+              let formattedTime = String(item.time || "");
               if (formattedTime.includes("T")) {
                 try {
                   const d = new Date(formattedTime);
@@ -1871,31 +1879,35 @@ function renderTeamCarouselChips() {
         return;
       }
 
-      container.innerHTML = filtered.map(n => `
+      container.innerHTML = filtered.map((n, noteIndex) => `
         <div class="bg-surface-container-lowest p-4 rounded-xl border ${n.isPinned ? 'border-secondary/40 bg-secondary-fixed/10' : 'border-outline-variant/50'} shadow-sm space-y-2.5">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <span class="text-xs font-bold text-on-surface">${n.author}</span>
-              ${n.teamId && n.teamId !== 'all' ? `<span class="text-[10px] font-mono px-1.5 py-0.5 bg-primary/10 text-primary rounded font-bold">팀 ${n.teamId}</span>` : `<span class="text-[10px] font-mono px-1.5 py-0.5 bg-surface-container text-outline rounded">전체 공유</span>`}
-              <span class="text-[10px] font-mono px-1.5 py-0.5 bg-surface-container text-outline rounded">${n.authorBadge || '참여자'}</span>
+              <span class="text-xs font-bold text-on-surface">${escapeHTML(maskNoteText(n.author))}</span>
+              ${n.teamId && n.teamId !== 'all' ? `<span class="text-[10px] font-mono px-1.5 py-0.5 bg-primary/10 text-primary rounded font-bold">팀 ${escapeHTML(maskNoteText(n.teamId))}</span>` : `<span class="text-[10px] font-mono px-1.5 py-0.5 bg-surface-container text-outline rounded">전체 공유</span>`}
+              <span class="text-[10px] font-mono px-1.5 py-0.5 bg-surface-container text-outline rounded">${escapeHTML(maskNoteText(n.authorBadge || '참여자'))}</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <span class="text-[11px] font-mono text-outline">${n.time}</span>
+              <span class="text-[11px] font-mono text-outline">${escapeHTML(maskNoteText(n.time))}</span>
               <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">클라우드 공유됨</span>
             </div>
           </div>
 
-          <p class="text-sm text-on-surface leading-relaxed">${n.content}</p>
+          <p class="text-sm text-on-surface leading-relaxed whitespace-pre-wrap">${escapeHTML(maskNoteText(n.content))}</p>
 
           <div class="flex items-center justify-between pt-1 border-t border-outline-variant/20 text-[11px] text-outline">
-            <button type="button" onclick="toggleLike('${n.id}')" class="flex items-center gap-1 hover:text-secondary transition-colors">
+            <button type="button" data-note-index="${noteIndex}" class="note-like-button flex items-center gap-1 hover:text-secondary transition-colors">
               <span class="material-symbols-outlined text-[15px]">favorite</span>
-              <span>공감 ${n.likes || 0}</span>
+              <span>공감 ${escapeHTML(Number.isFinite(Number(n.likes)) ? Math.max(0, Number(n.likes)) : 0)}</span>
             </button>
             <span class="text-[10px] text-outline">※ 수정·삭제는 관리자 구글 시트에서 관리</span>
           </div>
         </div>
       `).join("");
+      container.querySelectorAll(".note-like-button").forEach(button => {
+        const note = filtered[Number(button.dataset.noteIndex)];
+        if (note) button.addEventListener("click", () => toggleLike(note.id));
+      });
     }
 
     function setNotesTeamFilter(teamId) {
@@ -1934,6 +1946,67 @@ function renderTeamCarouselChips() {
       }
     }
 
+    function getNotePrivacyGuard() {
+      const guard = globalThis.SeungPrivacy;
+      return guard && typeof guard.findPrivacyIssues === "function" && typeof guard.maskPrivateText === "function" ? guard : null;
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      })[char]);
+    }
+
+    function maskNoteText(value) {
+      try {
+        const guard = getNotePrivacyGuard();
+        return guard ? guard.maskPrivateText(String(value ?? "")) : "[메모 표시를 위해 새로고침해 주세요]";
+      } catch (error) {
+        return "[메모 표시를 위해 새로고침해 주세요]";
+      }
+    }
+
+    function showNotePrivacyStatus(message, canMask = false) {
+      const feedback = document.getElementById("note-privacy-feedback");
+      const status = document.getElementById("note-privacy-status");
+      const maskButton = document.getElementById("note-mask-button");
+      if (feedback) feedback.classList.remove("hidden");
+      if (status) status.textContent = message;
+      if (maskButton) maskButton.classList.toggle("hidden", !canMask);
+    }
+
+    function checkNoteDraftPrivacy(author, content) {
+      const guard = getNotePrivacyGuard();
+      if (!guard) throw new Error("Privacy guard unavailable");
+      const authorIssues = guard.findPrivacyIssues(author);
+      const contentIssues = guard.findPrivacyIssues(content);
+      const authorInput = document.getElementById("note-author-input");
+      const contentInput = document.getElementById("note-input");
+      if (authorInput) authorInput.setAttribute("aria-invalid", String(authorIssues.length > 0));
+      if (contentInput) contentInput.setAttribute("aria-invalid", String(contentIssues.length > 0));
+      return [...authorIssues, ...contentIssues];
+    }
+
+    function maskNoteDraft() {
+      const authorInput = document.getElementById("note-author-input");
+      const contentInput = document.getElementById("note-input");
+      try {
+        const guard = getNotePrivacyGuard();
+        if (!guard) throw new Error("Privacy guard unavailable");
+        const maskedAuthor = guard.maskPrivateText(authorInput ? authorInput.value : "");
+        const maskedContent = guard.maskPrivateText(contentInput ? contentInput.value : "");
+        if (authorInput) authorInput.value = maskedAuthor;
+        if (contentInput) contentInput.value = maskedContent;
+        const remaining = checkNoteDraftPrivacy(maskedAuthor, maskedContent);
+        showNotePrivacyStatus(remaining.length
+          ? "아직 개인정보로 보이는 내용이 있습니다. 입력란에서 지우거나 가상 데이터로 바꾼 뒤 다시 확인해 주세요."
+          : "입력란에 가린 내용을 표시했습니다. 실명·주소 등 남은 개인정보를 직접 확인한 뒤 공유 등록을 다시 눌러주세요.", remaining.length > 0);
+        if (contentInput) contentInput.focus();
+      } catch (error) {
+        showNotePrivacyStatus("개인정보 검사 기능을 불러오지 못해 메모를 전송할 수 없습니다. 새로고침 후 다시 시도해 주세요.");
+      }
+    }
+
     let isSubmittingNote = false;
     function handleAddNote() {
       const ta = document.getElementById("note-input");
@@ -1945,15 +2018,28 @@ function renderTeamCarouselChips() {
         return;
       }
       if (isSubmittingNote) return;
-      isSubmittingNote = true;
 
       const val = ta.value.trim();
       const author = (authorInput && authorInput.value.trim()) ? authorInput.value.trim() : "참여자";
+      try {
+        const issues = checkNoteDraftPrivacy(author, val);
+        if (issues.length) {
+          const labels = [...new Set(issues.map(issue => issue.label))].join("·");
+          showNotePrivacyStatus(`${labels}로 보이는 내용이 있어 전송하지 않았습니다. 직접 지우거나 아래 버튼으로 가린 뒤 내용을 확인해 주세요.`, true);
+          return;
+        }
+      } catch (error) {
+        showNotePrivacyStatus("개인정보 검사 기능을 불러오지 못해 메모를 전송할 수 없습니다. 새로고침 후 다시 시도해 주세요.");
+        return;
+      }
+      isSubmittingNote = true;
+      const feedback = document.getElementById("note-privacy-feedback");
+      if (feedback) feedback.classList.add("hidden");
       const teamId = teamSelect ? teamSelect.value : (activeNotesTeam === "all" ? activeTeamId : activeNotesTeam);
       const tag = val.includes("#오류") ? "tech" : (val.includes("#아이디어") ? "idea" : (val.includes("#질문") ? "notice" : "notice"));
 
       // Remember author in localStorage
-      localStorage.setItem("seung_memo_author", author);
+      try { localStorage.setItem("seung_memo_author", author); } catch (error) {}
 
       // Optimistic update
       const nowStr = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });

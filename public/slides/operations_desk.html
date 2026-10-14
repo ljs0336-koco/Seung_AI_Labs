@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operations Desk</title>
 <meta name="description" content="2026 C.O.D.E 본선 멘토링 운영 관제 — 일정 · 체크리스트 · 멘토링 일지 초안 (㈜네패스)">
@@ -316,40 +318,22 @@ a{color:inherit;text-decoration:none}
   </footer>
 </div>
 
-<!-- 로컬 전용 개인정보·링크 (GitHub에는 없음). 파일이 없으면 역할 이름만 표시된다 -->
-<script src="_private/private.js"></script>
+<!-- Published content contains role placeholders only. -->
+<!-- This published page does not load personal-data companion files. -->
 <script>
 (function () {
   "use strict";
   var pad = function (n) { return String(n).padStart(2, "0"); };
   var WD = ["일", "월", "화", "수", "목", "금", "토"];
-  var PRIV = window.OPS_PRIVATE || null;
+  var PRIV = null; // Public-safe role placeholders only.
 
-  /* ---- 로컬 전용 정보 채우기 ---- */
   function applyPrivate() {
-    var links = (PRIV && PRIV.links) || {};
     document.querySelectorAll("[data-private]").forEach(function (a) {
-      var url = links[a.dataset.private];
-      if (url) {
-        a.href = url;
-        if (a.dataset.label && links[a.dataset.label]) a.querySelector(".d").textContent = links[a.dataset.label];
-      } else {
-        a.removeAttribute("href");
-        a.setAttribute("aria-disabled", "true");
-        a.style.opacity = ".45";
-        a.querySelector(".d").textContent = "로컬 전용 링크 — _private/ 필요";
-      }
+      a.removeAttribute("href");
+      a.setAttribute("aria-disabled", "true");
+      a.style.opacity = ".45";
+      if (a.querySelector(".d")) a.querySelector(".d").textContent = "연락처·개인 링크는 이 사이트에 게시하지 않습니다";
     });
-    if (!PRIV) return;
-    document.querySelectorAll("[data-person]").forEach(function (el) {
-      var p = (PRIV.people || {})[el.dataset.person];
-      if (p && p.name) el.textContent = [p.name, p.phone, p.email].filter(Boolean).join(" · ");
-    });
-    document.querySelectorAll("[data-students]").forEach(function (el) {
-      var list = (PRIV.students || {})[el.dataset.students] || [];
-      if (list.length) el.textContent = list.map(function (s) { return s.name + "(" + s.role + ")"; }).join(", ");
-    });
-    document.getElementById("private-note").textContent = "이름·연락처·링크는 이 PC의 _private/ 에서 불러왔습니다 · 체크 상태는 이 브라우저에만 저장";
   }
 
   /* ---- 시계 ---- */

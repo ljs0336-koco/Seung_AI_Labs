@@ -1,48 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { securityService } from '../utils/securityService';
-import ContentLockModal from './ContentLockModal';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Portal.css';
 
 export default function Portal() {
   const navigate = useNavigate();
-  const [isLocked, setIsLocked] = useState(securityService.isContentLocked());
-  const [modalTarget, setModalTarget] = useState(null);
 
   useEffect(() => {
     document.title = "Seung AI Labs · 에듀테크 통합 포털";
 
-    const handleConfigChange = () => {
-      setIsLocked(securityService.isContentLocked());
-    };
-    window.addEventListener('seung_security_config_changed', handleConfigChange);
-    securityService.syncRemoteConfig().then(() => {
-      setIsLocked(securityService.isContentLocked());
-    });
-    return () => {
-      window.removeEventListener('seung_security_config_changed', handleConfigChange);
-    };
   }, []);
 
   const handleCardClick = (title, targetPath, isExternal = false) => {
-    // 허브는 공개 페이지이며, 에듀테크 특강 자료 연결
-    const requiresPasscode = securityService.isContentLocked();
-
-    if (requiresPasscode && !securityService.isContentAuthed()) {
-      setModalTarget({
-        title,
-        onSuccess: () => {
-          setModalTarget(null);
-          if (isExternal) {
-            window.location.href = targetPath;
-          } else {
-            navigate(targetPath);
-          }
-        }
-      });
-      return;
-    }
-
     if (isExternal) {
       window.location.href = targetPath;
     } else {
@@ -52,13 +20,6 @@ export default function Portal() {
 
   return (
     <div className="portal-container">
-      {/* Content Lock Modal */}
-      <ContentLockModal
-        isOpen={Boolean(modalTarget)}
-        contentTitle={modalTarget ? modalTarget.title : ''}
-        onClose={() => setModalTarget(null)}
-        onSuccess={modalTarget ? modalTarget.onSuccess : () => {}}
-      />
 
       {/* Main Hero Section */}
       <header className="portal-hero">
@@ -272,14 +233,7 @@ export default function Portal() {
           </div>
 
           <div className="footer-right">
-            <div className={`footer-security-pill ${isLocked ? 'pill-locked' : 'pill-open'}`}>
-              <span className="pill-dot"></span>
-              <span>{isLocked ? '🔒 콘텐츠 잠금 모드 활성' : '🔓 콘텐츠 전체 공개 중'}</span>
-            </div>
-
-            <Link to="/admin" className="footer-admin-link">
-              ⚙️ 관리자 콘솔
-            </Link>
+            <a href="./privacy-guidelines.html" className="footer-admin-link">개인정보 게시 원칙</a>
           </div>
         </div>
       </footer>

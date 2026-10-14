@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run check:privacy && vite build && node scripts/check-public-privacy.mjs dist",
+    "check:privacy": "node scripts/check-public-privacy.mjs public src index.html",
+    "test:privacy": "node --test scripts/check-public-privacy.test.mjs",
+    "privacy:install-hook": "git config core.hooksPath .githooks",
     "lint": "oxlint src",
     "preview": "vite preview",
     "test": "vitest"
