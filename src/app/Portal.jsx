@@ -67,7 +67,7 @@ export default function Portal() {
             <a className="magazine-clip-card briefing-clip-card" href="./briefing/index.html">
               <div className="magazine-clip-header">
                 <span className="magazine-badge-pill briefing-badge-pill">모루의 브리핑</span>
-                <time className="briefing-edition" dateTime="2026-10-14">2026.10.14</time>
+                <time className="briefing-edition" dateTime="2026-10-19">2026.10.19</time>
               </div>
               <h2 className="magazine-clip-title">AI·교육 브리핑</h2>
               <p className="magazine-clip-desc">

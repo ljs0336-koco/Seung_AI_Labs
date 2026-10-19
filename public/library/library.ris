@@ -1,0 +1,293 @@
+TY  - UNPB
+AU  - Eastwood, Madeleine
+AU  - Narne, Harshith
+AU  - Hilby, Joseph
+AU  - Denny, Paul
+AU  - Aggarwal, Ashish
+AU  - Kapoor, Amanpreet
+TI  - Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming
+PY  - 2026
+DA  - 2026/09/24
+PB  - arXiv
+M3  - arXiv:2609.29995
+DO  - 10.48550/arXiv.2609.29995
+UR  - https://arxiv.org/abs/2609.29995
+KW  - AI 조교
+KW  - 소크라테스식 질문
+KW  - 맥락 인식
+KW  - 프로그래밍 교육
+KW  - RCT
+N1  - 연구 서고 C-01 · 프리프린트 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Chung, Angel Tsai-Hsuan
+AU  - Zhang, Botong
+AU  - Kung, Ling-Chieh
+AU  - Bastani, Hamsa
+AU  - Bastani, Osbert
+TI  - Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning
+PY  - 2026
+DA  - 2026/07/10
+PB  - arXiv
+M3  - arXiv:2608.16907
+DO  - 10.48550/arXiv.2608.16907
+UR  - https://arxiv.org/abs/2608.16907
+KW  - 개인화 AI 튜터
+KW  - 강화학습
+KW  - 적응형 문제 순서
+KW  - 파이썬 교육
+N1  - 연구 서고 C-02 · 프리프린트 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Song, Yukyeong
+AU  - Choi, Seoyeon
+AU  - Kim, Jinhee
+AU  - Kim, Yeongje
+AU  - Weisberg, Lauren
+AU  - Moon, Jewoong
+TI  - A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding
+PY  - 2026
+DA  - 2026/06/09
+PB  - arXiv
+M3  - arXiv:2607.05406
+DO  - 10.48550/arXiv.2607.05406
+UR  - https://arxiv.org/abs/2607.05406
+KW  - 바이브코딩
+KW  - 교사 연수
+KW  - AI 학습 도구 제작
+KW  - 디자인 씽킹
+KW  - INTERACT 모형
+N1  - 연구 서고 B-01 · 프리프린트 · 교사 AI 역량·연수
+ER  - 
+
+TY  - CPAPER
+AU  - Sato, Arissa J.
+AU  - Kim, Callie Y.
+AU  - White, Nathan Thomas
+AU  - Maneesh, Abhinav
+AU  - Wang, Yuqing
+AU  - Ho, Hui-Ru
+AU  - Mutlu, Bilge
+TI  - Robo-Blocks: Generative Scaffolding in End-User Design and Programming of Social Robots
+T2  - Proceedings of the 2026 Designing Interactive Systems Conference
+PY  - 2026
+DA  - 2026/06/12
+PB  - Association for Computing Machinery
+SP  - 3763
+EP  - 3779
+M3  - arXiv:2605.28154
+DO  - 10.1145/3800645.3812997
+UR  - https://arxiv.org/abs/2605.28154
+KW  - 소셜 로봇
+KW  - 블록코딩
+KW  - 생성형 스캐폴딩
+KW  - LLM
+KW  - 최종사용자 프로그래밍
+N1  - 연구 서고 E-01 · 동료심사 학회 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - CPAPER
+AU  - Thorgeirsson, Sverrir
+AU  - Weidmann, Theo B.
+AU  - Su, Zhendong
+TI  - Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency
+T2  - Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems
+PY  - 2026
+DA  - 2026/04/13
+PB  - Association for Computing Machinery
+SP  - 1
+EP  - 17
+M3  - arXiv:2603.14133
+DO  - 10.1145/3772318.3791666
+UR  - https://arxiv.org/abs/2603.14133
+KW  - 바이브코딩
+KW  - 컴퓨터과학 성취도
+KW  - 글쓰기 능력
+KW  - 프롬프트 작성
+N1  - 연구 서고 D-01 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - RPRT
+AU  - Oreopoulos, Philip
+AU  - Liut, Michael
+AU  - Sungu, Alp
+AU  - Low, Nina
+TI  - Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
+T2  - NBER Working Paper
+PY  - 2026
+DA  - 2026/08/17
+PB  - National Bureau of Economic Research
+M1  - 35621
+DO  - 10.3386/w35621
+UR  - https://www.nber.org/papers/w35621
+KW  - AI 튜터
+KW  - 숙달 학습
+KW  - 컴퓨터 보조 학습(CAL)
+KW  - 수학
+KW  - 현장실험
+N1  - 연구 서고 C-03 · 워킹페이퍼 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Van Mullem, Thomas
+AU  - Mesuere, Bart
+AU  - Dawyndt, Peter
+TI  - Evaluating LLMs for Answering Student Questions in Introductory Programming Courses
+PY  - 2026
+DA  - 2026/03/30
+PB  - arXiv
+M3  - arXiv:2603.28295
+DO  - 10.48550/arXiv.2603.28295
+UR  - https://arxiv.org/abs/2603.28295
+KW  - LLM 평가
+KW  - 학생 질문 응답
+KW  - LLM-as-a-Judge
+KW  - CS1
+KW  - teacher-in-the-loop
+N1  - 연구 서고 C-04 · 프리프린트 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Chen, Ashley J.
+AU  - Cao, Yijia
+AU  - Shao, Minghao
+AU  - Karri, Ramesh
+AU  - Shafique, Muhammad
+TI  - Code for All: Educational Applications of the "Vibe Coding" Hackathon in Programming Education across All Skill Levels
+PY  - 2026
+DA  - 2026/04/24
+PB  - arXiv
+M3  - arXiv:2604.22747
+DO  - 10.48550/arXiv.2604.22747
+UR  - https://arxiv.org/abs/2604.22747
+KW  - 바이브코딩
+KW  - 해커톤
+KW  - 프롬프트 작성
+KW  - 디버깅
+KW  - 평가 설계
+N1  - 연구 서고 D-02 · 프리프린트 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Gama, Kiev
+AU  - Calegario, Filipe
+AU  - Jackson, Victoria
+AU  - Nolte, Alexander
+AU  - Morais, Luiz Augusto
+AU  - Garcia, Vinicius
+TI  - "Can you feel the vibes?": An exploration of novice programmer engagement with vibe coding
+PY  - 2025
+DA  - 2025/12/02
+PB  - arXiv
+M3  - arXiv:2512.02750
+DO  - 10.48550/arXiv.2512.02750
+UR  - https://arxiv.org/abs/2512.02750
+KW  - 바이브코딩
+KW  - 초보 프로그래머
+KW  - 해커톤
+KW  - 질적 연구
+KW  - 소프트웨어공학 교육
+N1  - 연구 서고 D-03 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Clerc, O.
+AU  - Abdelghani, R.
+AU  - Desvaux, C.
+AU  - Poisson, E.
+AU  - Oudeyer, P. Y.
+AU  - Sauzéon, H.
+TI  - Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students' Regulation of LLM Use in a Science Task
+PY  - 2026
+DA  - 2026/04/02
+PB  - arXiv
+M3  - arXiv:2604.01955
+DO  - 10.48550/arXiv.2604.01955
+UR  - https://arxiv.org/abs/2604.01955
+KW  - AI 리터러시
+KW  - LLM 과신
+KW  - 메타인지
+KW  - 과학 탐구
+KW  - 아동 안전
+N1  - 연구 서고 A-01 · 학회 워크숍 · AI 리터러시·윤리
+ER  - 
+
+TY  - RPRT
+AU  - Lopez, Carolina
+AU  - Glave, Carla Z.
+AU  - Molina, Ezequiel
+AU  - Zárate, Román Andrés
+TI  - Not Faster, But Better: Generative AI and Teacher Skill in Peru
+PY  - 2026
+DA  - 2026/07/13
+PB  - World Bank Reproducible Research Repository
+M1  - RR_PER_2026_695
+UR  - https://reproducibility.worldbank.org/catalog/608
+KW  - 교사 AI 연수
+KW  - 생성형 AI
+KW  - RCT
+KW  - 프롬프트 역량
+KW  - 개발도상국
+N1  - 연구 서고 B-02 · 워킹페이퍼 · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Hossain, Shahin
+AU  - Ahmadi, Sima
+AU  - Li, Leqi
+AU  - Awoyemi, Idowu David
+AU  - Huang, Wei
+AU  - Zhou, Chenxi
+AU  - Li, Jujia
+AU  - Haniya, Samaa
+AU  - Khanam, Shapla
+AU  - Subaha, Tasbirun Mashreka
+TI  - Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education
+PY  - 2026
+DA  - 2026/08/03
+PB  - arXiv
+M3  - arXiv:2608.01705
+DO  - 10.48550/arXiv.2608.01705
+UR  - https://arxiv.org/abs/2608.01705
+KW  - 생성형 AI 리터러시
+KW  - RAIL-Ed
+KW  - 교사교육
+KW  - AI 윤리
+KW  - 루브릭
+N1  - 연구 서고 A-02 · 프리프린트 · AI 리터러시·윤리
+ER  - 
+
+TY  - BOOK
+AU  - OECD
+TI  - OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education
+PY  - 2026
+DA  - 2026/01/19
+PB  - OECD Publishing
+DO  - 10.1787/062a7394-en
+UR  - https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html
+KW  - 생성형 AI
+KW  - 교육 정책
+KW  - 메타인지적 게으름
+KW  - TALIS 2024
+KW  - 아동 안전
+N1  - 연구 서고 F-01 · 정책 보고서 · 교육 정책·효과 연구
+ER  - 
+
+TY  - UNPB
+AU  - Huntington-Klein, Nick
+TI  - Little Impact of ChatGPT on High School Test Scores
+PY  - 2026
+DA  - 2026/05/09
+PB  - arXiv
+M3  - arXiv:2605.08812
+DO  - 10.48550/arXiv.2605.08812
+UR  - https://arxiv.org/abs/2605.08812
+KW  - ChatGPT
+KW  - 시험 점수
+KW  - 관찰 연구
+KW  - 학습 효과
+KW  - 교육경제학
+N1  - 연구 서고 F-02 · 프리프린트 · 교육 정책·효과 연구
+ER  - 
