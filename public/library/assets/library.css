@@ -107,9 +107,24 @@ h3 { font-size: 13px; font-weight: 600; color: var(--ink); }
 .legend { list-style: none; margin-top: 6px; display: grid; gap: 3px; }
 .legend li { font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
 .swatch { width: 10px; height: 18px; border-radius: 2px 2px 0 0; display: inline-block; }
-.newin { background: var(--orange-tint); border-left: 2px solid var(--orange); padding: 14px 18px; align-self: start; }
-.newin h3 span { font-weight: 500; color: var(--brown); margin-left: 6px; font-size: 12px; }
-.newin ul { list-style: none; margin-top: 6px; }
+.newin { background: var(--orange-tint); border-left: 2px solid var(--orange); padding: 12px 18px; align-self: start; }
+.newin summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.newin summary::-webkit-details-marker { display: none; }
+.newin summary h3 { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+.newin h3 span { font-weight: 500; color: var(--brown); font-size: 12px; }
+.newin summary::after {
+  content: "열기 ▾"; font-size: 12px; font-weight: 600; color: var(--brown); white-space: nowrap;
+}
+.newin[open] > summary::after { content: "닫기 ▴"; }
+.newin summary:hover, .newin summary:hover h3, .newin summary:hover::after { color: var(--orange); }
+.newin ul {
+  list-style: none; margin-top: 10px; padding-top: 6px;
+  border-top: 1px dashed #DFCBB5;
+  max-height: 280px; overflow-y: auto; padding-right: 4px; scrollbar-width: thin;
+}
 .newin li { font-size: 13px; line-height: 1.5; padding: 4px 0; border-bottom: 1px solid #E8D9C8; }
 .newin li:last-child { border-bottom: 0; }
 .newin b { font-weight: 600; color: var(--orange); margin-right: 4px; font-variant-numeric: tabular-nums; }
