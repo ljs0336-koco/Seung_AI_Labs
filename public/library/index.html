@@ -21,7 +21,14 @@
     <div>
       <div class="kicker">AI 교육 연구 서고 · Research Stacks</div>
       <h1>연구 서고</h1>
-      <p class="lede">AI 교육 논문·학회 발표·정책 보고서를 서가별로 모아 둡니다. 논문과 학술지 원고에 인용할 수 있도록 서지 정보를 확인하고, 연구 설계와 근거 수준, 인용 형식을 함께 적었습니다.</p>
+      <p class="lede">AI 교육 논문·학회 발표·정책 보고서를 서가별로 모아 둡니다. 논문과 학술지 원고에 인용할 수 있도록 서지 정보를 확인하고, 연구 설계와 출판 유형·심사 상태, 인용 형식을 함께 적었습니다.</p>
+      <form class="quick-find" id="quick-find" role="search" action="#catalog">
+        <label for="qq">자료 바로 찾기</label>
+        <div class="qf-row">
+          <input type="search" id="qq" placeholder="제목·저자·키워드·arXiv 번호" autocomplete="off">
+          <button class="btn" type="submit">목록에서 보기 ↓</button>
+        </div>
+      </form>
     </div>
     <dl class="stats">
       <div><dt>소장</dt><dd>14<small>편</small></dd></div>
@@ -33,8 +40,9 @@
 
   <section class="desk" aria-label="열람 안내">
     <div class="guide">
-      <div><h3>청구기호</h3><p>서가 기호와 그 서가에 들어온 순서입니다(예: C-02). 등록번호(No.)는 서고 전체에 들어온 순서입니다.</p></div>
-      <div><h3>근거 수준</h3><ul class="legend"><li><span class="swatch k-conference"></span>동료심사 학회</li><li><span class="swatch k-workshop"></span>학회 워크숍</li><li><span class="swatch k-working-paper"></span>워킹페이퍼</li><li><span class="swatch k-report"></span>정책 보고서</li><li><span class="swatch k-preprint"></span>프리프린트</li></ul></div>
+      <div><h3>청구기호</h3><p>서가 기호와 그 서가에 들어온 순서입니다(예: C-02). 등록번호(No.)는 서고 전체에 들어온 순서입니다.</p>
+        <h3 class="mt">확인 범위</h3><p>카드의 <span class="badge basis partial">초록 기준</span>은 초록만 읽고 요약했다는 뜻이고, <span class="badge basis full">원문 확인</span>은 본문까지 읽었다는 뜻입니다.</p></div>
+      <div><h3>출판 유형·심사 상태</h3><ul class="legend"><li><span class="swatch k-conference"></span>동료심사 학회</li><li><span class="swatch k-workshop"></span>학회 워크숍</li><li><span class="swatch k-working-paper"></span>워킹페이퍼(심사 전)</li><li><span class="swatch k-report"></span>정책 보고서</li><li><span class="swatch k-preprint"></span>프리프린트(심사 전)</li></ul></div>
       <div><h3>인용</h3><p>카드의 <b>인용</b>에서 APA 7·BibTeX를 복사합니다. 여러 편은 <b>담기</b>로 모아 한 번에 복사하거나 전체 목록을 내려받습니다.</p>
         <p class="dl"><a class="btn" href="library.bib" download>BibTeX 전체 (.bib)</a> <a class="btn" href="library.ris" download>RIS 전체 (.ris)</a></p></div>
     </div>
@@ -47,27 +55,27 @@
   <section class="stacks" aria-labelledby="stacks-title">
     <div class="section-head">
       <h2 id="stacks-title">서가 안내도</h2>
-      <p>책등을 누르면 목록 카드로 갑니다. 색은 근거 수준입니다.</p>
+      <p>책등을 누르면 목록 카드로 갑니다. 색은 출판 유형·심사 상태입니다.</p>
     </div>
     <div class="shelves">
       <div class="shelf">
         <div class="plate"><span class="plate-code">A</span><span class="plate-name">AI 리터러시·윤리</span><span class="plate-count">2편</span></div>
-        <div class="books"><a class="spine k-workshop" href="#no-010" data-no="010" style="--h:84%;--w:57px" title="Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students&#x27; Regulation of LLM Use in a Science Task" aria-label="A-01 Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students&#x27; Regulation of LLM Use in a Science Task (2026), 학회 워크숍"><span class="spine-title">Question the Machine</span><span class="spine-year">2026</span><span class="spine-call">A-01</span></a><a class="spine k-preprint" href="#no-012" data-no="012" style="--h:93%;--w:59px" title="Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education" aria-label="A-02 Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education (2026), 프리프린트"><span class="spine-title">Rethinking GenAI Literacy</span><span class="spine-year">2026</span><span class="spine-call">A-02</span></a><span class="bookend" aria-hidden="true"></span></div>
+        <div class="books"><a class="spine k-workshop" href="#no-010" data-no="010" style="--h:84%;--w:57px" title="Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students&#x27; Regulation of LLM Use in a Science Task" aria-label="A-01 Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students&#x27; Regulation of LLM Use in a Science Task (2026), 학회 워크숍"><span class="spine-title">Question the Machine</span><span class="spine-year">2026</span><span class="spine-call">A-01</span></a><a class="spine k-preprint" href="#no-012" data-no="012" style="--h:93%;--w:59px" title="Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education" aria-label="A-02 Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education (2026), 프리프린트(심사 전)"><span class="spine-title">Rethinking GenAI Literacy</span><span class="spine-year">2026</span><span class="spine-call">A-02</span></a><span class="bookend" aria-hidden="true"></span></div>
         <div class="board" aria-hidden="true"></div>
       </div>
       <div class="shelf">
         <div class="plate"><span class="plate-code">B</span><span class="plate-name">교사 AI 역량·연수</span><span class="plate-count">2편</span></div>
-        <div class="books"><a class="spine k-preprint" href="#no-003" data-no="003" style="--h:94%;--w:56px" title="A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding" aria-label="B-01 A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding (2026), 프리프린트"><span class="spine-title">GAIDE · Teachers Vibe Coding</span><span class="spine-year">2026</span><span class="spine-call">B-01</span></a><a class="spine k-working-paper" href="#no-011" data-no="011" style="--h:95%;--w:58px" title="Not Faster, But Better: Generative AI and Teacher Skill in Peru" aria-label="B-02 Not Faster, But Better: Generative AI and Teacher Skill in Peru (2026), 워킹페이퍼"><span class="spine-title">Not Faster, But Better</span><span class="spine-year">2026</span><span class="spine-call">B-02</span></a><span class="bookend" aria-hidden="true"></span></div>
+        <div class="books"><a class="spine k-preprint" href="#no-003" data-no="003" style="--h:94%;--w:56px" title="A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding" aria-label="B-01 A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding (2026), 프리프린트(심사 전)"><span class="spine-title">GAIDE · Teachers Vibe Coding</span><span class="spine-year">2026</span><span class="spine-call">B-01</span></a><a class="spine k-working-paper" href="#no-011" data-no="011" style="--h:95%;--w:58px" title="Not Faster, But Better: Generative AI and Teacher Skill in Peru" aria-label="B-02 Not Faster, But Better: Generative AI and Teacher Skill in Peru (2026), 워킹페이퍼(심사 전)"><span class="spine-title">Not Faster, But Better</span><span class="spine-year">2026</span><span class="spine-call">B-02</span></a><span class="bookend" aria-hidden="true"></span></div>
         <div class="board" aria-hidden="true"></div>
       </div>
       <div class="shelf">
         <div class="plate"><span class="plate-code">C</span><span class="plate-name">AI 튜터링·학습 지원</span><span class="plate-count">4편</span></div>
-        <div class="books"><a class="spine k-preprint" href="#no-001" data-no="001" style="--h:96%;--w:58px" title="Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming" aria-label="C-01 Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming (2026), 프리프린트"><span class="spine-title">Guardrails or Roadblocks?</span><span class="spine-year">2026</span><span class="spine-call">C-01</span></a><a class="spine k-preprint" href="#no-002" data-no="002" style="--h:97%;--w:59px" title="Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning" aria-label="C-02 Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning (2026), 프리프린트"><span class="spine-title">Personalized AI Tutors</span><span class="spine-year">2026</span><span class="spine-call">C-02</span></a><a class="spine k-working-paper" href="#no-006" data-no="006" style="--h:90%;--w:56px" title="Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment" aria-label="C-03 Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment (2026), 워킹페이퍼"><span class="spine-title">Making AI Tutoring Productive</span><span class="spine-year">2026</span><span class="spine-call">C-03</span></a><a class="spine k-preprint" href="#no-007" data-no="007" style="--h:88%;--w:57px" title="Evaluating LLMs for Answering Student Questions in Introductory Programming Courses" aria-label="C-04 Evaluating LLMs for Answering Student Questions in Introductory Programming Courses (2026), 프리프린트"><span class="spine-title">LLMs Answering Student Questions</span><span class="spine-year">2026</span><span class="spine-call">C-04</span></a><span class="bookend" aria-hidden="true"></span></div>
+        <div class="books"><a class="spine k-preprint" href="#no-001" data-no="001" style="--h:96%;--w:58px" title="Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming" aria-label="C-01 Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming (2026), 프리프린트(심사 전)"><span class="spine-title">Guardrails or Roadblocks?</span><span class="spine-year">2026</span><span class="spine-call">C-01</span></a><a class="spine k-preprint" href="#no-002" data-no="002" style="--h:97%;--w:59px" title="Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning" aria-label="C-02 Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning (2026), 프리프린트(심사 전)"><span class="spine-title">Personalized AI Tutors</span><span class="spine-year">2026</span><span class="spine-call">C-02</span></a><a class="spine k-working-paper" href="#no-006" data-no="006" style="--h:90%;--w:56px" title="Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment" aria-label="C-03 Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment (2026), 워킹페이퍼(심사 전)"><span class="spine-title">Making AI Tutoring Productive</span><span class="spine-year">2026</span><span class="spine-call">C-03</span></a><a class="spine k-preprint" href="#no-007" data-no="007" style="--h:88%;--w:57px" title="Evaluating LLMs for Answering Student Questions in Introductory Programming Courses" aria-label="C-04 Evaluating LLMs for Answering Student Questions in Introductory Programming Courses (2026), 프리프린트(심사 전)"><span class="spine-title">LLMs Answering Student Questions</span><span class="spine-year">2026</span><span class="spine-call">C-04</span></a><span class="bookend" aria-hidden="true"></span></div>
         <div class="board" aria-hidden="true"></div>
       </div>
       <div class="shelf">
         <div class="plate"><span class="plate-code">D</span><span class="plate-name">바이브코딩·AI 협업 코딩</span><span class="plate-count">3편</span></div>
-        <div class="books"><a class="spine k-conference" href="#no-005" data-no="005" style="--h:92%;--w:60px" title="Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency" aria-label="D-01 Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency (2026), 동료심사 학회"><span class="spine-title">CS Skills &amp; Vibe Coding</span><span class="spine-year">2026</span><span class="spine-call">D-01</span></a><a class="spine k-preprint" href="#no-008" data-no="008" style="--h:98%;--w:43px" title="Code for All: Educational Applications of the &quot;Vibe Coding&quot; Hackathon in Programming Education across All Skill Levels" aria-label="D-02 Code for All: Educational Applications of the &quot;Vibe Coding&quot; Hackathon in Programming Education across All Skill Levels (2026), 프리프린트"><span class="spine-title">Code for All</span><span class="spine-year">2026</span><span class="spine-call">D-02</span></a><a class="spine k-conference" href="#no-009" data-no="009" style="--h:98%;--w:60px" title="&quot;Can you feel the vibes?&quot;: An exploration of novice programmer engagement with vibe coding" aria-label="D-03 &quot;Can you feel the vibes?&quot;: An exploration of novice programmer engagement with vibe coding (2025), 동료심사 학회"><span class="spine-title">Can You Feel the Vibes?</span><span class="spine-year">2025</span><span class="spine-call">D-03</span></a><span class="bookend" aria-hidden="true"></span></div>
+        <div class="books"><a class="spine k-conference" href="#no-005" data-no="005" style="--h:92%;--w:60px" title="Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency" aria-label="D-01 Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency (2026), 동료심사 학회"><span class="spine-title">CS Skills &amp; Vibe Coding</span><span class="spine-year">2026</span><span class="spine-call">D-01</span></a><a class="spine k-preprint" href="#no-008" data-no="008" style="--h:98%;--w:43px" title="Code for All: Educational Applications of the &quot;Vibe Coding&quot; Hackathon in Programming Education across All Skill Levels" aria-label="D-02 Code for All: Educational Applications of the &quot;Vibe Coding&quot; Hackathon in Programming Education across All Skill Levels (2026), 프리프린트(심사 전)"><span class="spine-title">Code for All</span><span class="spine-year">2026</span><span class="spine-call">D-02</span></a><a class="spine k-conference" href="#no-009" data-no="009" style="--h:98%;--w:60px" title="&quot;Can you feel the vibes?&quot;: An exploration of novice programmer engagement with vibe coding" aria-label="D-03 &quot;Can you feel the vibes?&quot;: An exploration of novice programmer engagement with vibe coding (2025), 동료심사 학회"><span class="spine-title">Can You Feel the Vibes?</span><span class="spine-year">2025</span><span class="spine-call">D-03</span></a><span class="bookend" aria-hidden="true"></span></div>
         <div class="board" aria-hidden="true"></div>
       </div>
       <div class="shelf">
@@ -77,13 +85,13 @@
       </div>
       <div class="shelf">
         <div class="plate"><span class="plate-code">F</span><span class="plate-name">교육 정책·효과 연구</span><span class="plate-count">2편</span></div>
-        <div class="books"><a class="spine k-report" href="#no-013" data-no="013" style="--h:93%;--w:59px" title="OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education" aria-label="F-01 OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education (2026), 정책 보고서"><span class="spine-title">OECD Digital Education Outlook 2026</span><span class="spine-year">2026</span><span class="spine-call">F-01</span></a><a class="spine k-preprint" href="#no-014" data-no="014" style="--h:85%;--w:56px" title="Little Impact of ChatGPT on High School Test Scores" aria-label="F-02 Little Impact of ChatGPT on High School Test Scores (2026), 프리프린트"><span class="spine-title">Little Impact of ChatGPT</span><span class="spine-year">2026</span><span class="spine-call">F-02</span></a><span class="bookend" aria-hidden="true"></span></div>
+        <div class="books"><a class="spine k-report" href="#no-013" data-no="013" style="--h:93%;--w:59px" title="OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education" aria-label="F-01 OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education (2026), 정책 보고서"><span class="spine-title">OECD Digital Education Outlook 2026</span><span class="spine-year">2026</span><span class="spine-call">F-01</span></a><a class="spine k-preprint" href="#no-014" data-no="014" style="--h:85%;--w:56px" title="Little Impact of ChatGPT on High School Test Scores" aria-label="F-02 Little Impact of ChatGPT on High School Test Scores (2026), 프리프린트(심사 전)"><span class="spine-title">Little Impact of ChatGPT</span><span class="spine-year">2026</span><span class="spine-call">F-02</span></a><span class="bookend" aria-hidden="true"></span></div>
         <div class="board" aria-hidden="true"></div>
       </div>
     </div>
   </section>
 
-  <section class="catalog" aria-labelledby="catalog-title">
+  <section class="catalog" id="catalog" aria-labelledby="catalog-title">
     <div class="section-head">
       <h2 id="catalog-title">목록</h2>
       <p>발표 2025–2026 · 서지 확인 10/19(월)</p>
@@ -92,15 +100,26 @@
       <label class="search"><span class="sr">자료 찾기</span>
         <input type="search" id="q" placeholder="제목·저자·키워드·arXiv 번호로 찾기" autocomplete="off"></label>
       <label><span class="sr">서가</span><select id="f-shelf"><option value="">모든 서가</option><option value="A">A AI 리터러시·윤리</option><option value="B">B 교사 AI 역량·연수</option><option value="C">C AI 튜터링·학습 지원</option><option value="D">D 바이브코딩·AI 협업 코딩</option><option value="E">E 교육용 로봇·피지컬 컴퓨팅</option><option value="F">F 교육 정책·효과 연구</option></select></label>
-      <label><span class="sr">근거 수준</span><select id="f-kind"><option value="">모든 근거 수준</option><option value="conference">동료심사 학회</option><option value="workshop">학회 워크숍</option><option value="working-paper">워킹페이퍼</option><option value="report">정책 보고서</option><option value="preprint">프리프린트</option></select></label>
+      <label><span class="sr">출판 유형·심사 상태</span><select id="f-kind"><option value="">모든 출판 유형</option><option value="conference">동료심사 학회</option><option value="workshop">학회 워크숍</option><option value="working-paper">워킹페이퍼(심사 전)</option><option value="report">정책 보고서</option><option value="preprint">프리프린트(심사 전)</option></select></label>
       <label><span class="sr">대상</span><select id="f-pop"><option value="">모든 대상</option><option value="초등학교">초등학교</option><option value="중학교">중학교</option><option value="고등학교">고등학교</option><option value="대학">대학</option><option value="교사">교사</option><option value="일반">일반</option><option value="정책">정책</option></select></label>
+      
       <label><span class="sr">정렬</span><select id="sort">
-        <option value="call">청구기호순</option><option value="added">최근 입고순</option>
-        <option value="date">발표 최신순</option><option value="author">제1저자순</option></select></label>
-      <span class="count" id="count" aria-live="polite">전체 14편</span>
+        <option value="call">서가별 · 청구기호순</option><option value="date">전체 · 발표 최신순</option>
+        <option value="added">전체 · 최근 입고순</option><option value="author">전체 · 제1저자순</option></select></label>
+      <span class="count" id="count" aria-live="polite">소장 14편 전체</span>
       <button class="btn" type="button" id="reset" hidden>조건 지우기</button>
     </div>
     <p class="none" id="none" hidden>조건에 맞는 자료가 없습니다.</p>
+    <section class="flat-list" id="flat" hidden aria-labelledby="flat-title">
+      <div class="group-head">
+        <div>
+          <h2 id="flat-title">전체 목록</h2>
+          <p class="group-desc">서가 구분 없이 한 줄로 정렬했습니다. 청구기호의 앞 글자가 서가입니다.</p>
+        </div>
+        <span class="group-count" id="flat-count"></span>
+      </div>
+      <div class="cards"></div>
+    </section>
     
     <section class="shelf-group" aria-labelledby="shelf-A">
       <div class="group-head">
@@ -114,12 +133,13 @@
       <div class="cards">
       <article class="card" id="no-010" data-no="010" data-call="A-01" data-kind="workshop"
         data-shelves="A" data-pop="중학교" data-added="2026-10-19"
-        data-date="2026-04-02" data-author="clerc" data-text="teaching students to question the machine: an ai literacy intervention improves students&#x27; regulation of llm use in a science task 기계에 질문하는 법 가르치기: ai 리터러시 개입이 과학 과제에서 학생의 llm 사용 조절을 개선하다 alit4all 2026 (aied 2026 워크숍) 통제집단 비교 교실 연구 a-01 010 o. clerc r. abdelghani c. desvaux e. poisson p. y. oudeyer h. sauzéon ai 리터러시 llm 과신 메타인지 과학 탐구 아동 안전 2604.01955 ">
+        data-source="routine"
+        data-date="2026-04-02" data-author="clerc" data-text="teaching students to question the machine: an ai literacy intervention improves students&#x27; regulation of llm use in a science task 기계에 질문하는 법 가르치기: ai 리터러시 개입이 과학 과제에서 학생의 llm 사용 조절을 개선하다 alit4all 2026 (aied 2026 워크숍) 통제집단 비교 교실 연구 a-01 010 o. clerc r. abdelghani c. desvaux e. poisson p. y. oudeyer h. sauzéon ai 리터러시 llm 과신 메타인지 과학 탐구 아동 안전 2604.01955  ">
         <header class="card-head">
           <span class="call">A-01</span>
           <span class="acc">등록 No.010 · 10/19(월) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-workshop">학회 워크숍</span><span class="badge new">신착</span><span class="badge pop">중학교</span></div>
+        <div class="badges"><span class="badge k-workshop">학회 워크숍</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge new">신착</span><span class="badge pop">중학교</span></div>
         <h3 class="card-title" lang="en">Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students&#x27; Regulation of LLM Use in a Science Task</h3>
         <p class="title-ko">기계에 질문하는 법 가르치기: AI 리터러시 개입이 과학 과제에서 학생의 LLM 사용 조절을 개선하다</p>
         <p class="byline"><span lang="en">O. Clerc, R. Abdelghani, C. Desvaux 외 3명</span> <span class="year">(2026)</span></p>
@@ -159,12 +179,13 @@
       </article>
       <article class="card" id="no-012" data-no="012" data-call="A-02" data-kind="preprint"
         data-shelves="A B" data-pop="교사" data-added="2026-10-19"
-        data-date="2026-08-03" data-author="hossain" data-text="rethinking generative ai literacy: an integrative, developmental, and dialectical framework for k-12 teacher education 생성형 ai 리터러시 다시 보기: k-12 교사교육을 위한 통합적·발달적·변증법적 프레임워크 arxiv 프리프린트 체계적 문헌고찰(2023~2025년 연구 67편) + 질적 프레임워크 분석 a-02 012 shahin hossain sima ahmadi leqi li idowu david awoyemi wei huang chenxi zhou jujia li samaa haniya shapla khanam tasbirun mashreka subaha 생성형 ai 리터러시 rail-ed 교사교육 ai 윤리 루브릭 2608.01705 ">
+        data-source="routine"
+        data-date="2026-08-03" data-author="hossain" data-text="rethinking generative ai literacy: an integrative, developmental, and dialectical framework for k-12 teacher education 생성형 ai 리터러시 다시 보기: k-12 교사교육을 위한 통합적·발달적·변증법적 프레임워크 arxiv 프리프린트 체계적 문헌고찰(2023~2025년 연구 67편) + 질적 프레임워크 분석 a-02 012 shahin hossain sima ahmadi leqi li idowu david awoyemi wei huang chenxi zhou jujia li samaa haniya shapla khanam tasbirun mashreka subaha 생성형 ai 리터러시 rail-ed 교사교육 ai 윤리 루브릭 2608.01705  ">
         <header class="card-head">
           <span class="call">A-02</span>
           <span class="acc">등록 No.012 · 10/19(월) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge new">신착</span><span class="badge pop">교사</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge new">신착</span><span class="badge pop">교사</span></div>
         <h3 class="card-title" lang="en">Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education</h3>
         <p class="title-ko">생성형 AI 리터러시 다시 보기: K-12 교사교육을 위한 통합적·발달적·변증법적 프레임워크</p>
         <p class="byline"><span lang="en">Shahin Hossain, Sima Ahmadi, Leqi Li 외 7명</span> <span class="year">(2026)</span></p>
@@ -215,12 +236,13 @@
       <div class="cards">
       <article class="card" id="no-003" data-no="003" data-call="B-01" data-kind="preprint"
         data-shelves="B D" data-pop="교사" data-added="2026-10-13"
-        data-date="2026-06-09" data-author="song" data-text="a guiding framework for k-12 teachers in creating ai-powered learning technologies through vibe coding k-12 교사가 바이브코딩으로 ai 학습 도구를 만들기 위한 안내 프레임워크(gaide) arxiv 프리프린트 설계 기반 연구, 8주 워크숍(cordtra 상호작용 분석, 사전·사후 인터뷰) b-01 003 yukyeong song seoyeon choi jinhee kim yeongje kim lauren weisberg jewoong moon 바이브코딩 교사 연수 ai 학습 도구 제작 디자인 씽킹 interact 모형 2607.05406 ">
+        data-source="routine"
+        data-date="2026-06-09" data-author="song" data-text="a guiding framework for k-12 teachers in creating ai-powered learning technologies through vibe coding k-12 교사가 바이브코딩으로 ai 학습 도구를 만들기 위한 안내 프레임워크(gaide) arxiv 프리프린트 설계 기반 연구, 8주 워크숍(cordtra 상호작용 분석, 사전·사후 인터뷰) b-01 003 yukyeong song seoyeon choi jinhee kim yeongje kim lauren weisberg jewoong moon 바이브코딩 교사 연수 ai 학습 도구 제작 디자인 씽킹 interact 모형 2607.05406  ">
         <header class="card-head">
           <span class="call">B-01</span>
           <span class="acc">등록 No.003 · 10/13(화) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge pop">교사</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge pop">교사</span></div>
         <h3 class="card-title" lang="en">A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding</h3>
         <p class="title-ko">K-12 교사가 바이브코딩으로 AI 학습 도구를 만들기 위한 안내 프레임워크(GAIDE)</p>
         <p class="byline"><span lang="en">Yukyeong Song, Seoyeon Choi, Jinhee Kim 외 3명</span> <span class="year">(2026)</span></p>
@@ -259,12 +281,13 @@
       </article>
       <article class="card" id="no-011" data-no="011" data-call="B-02" data-kind="working-paper"
         data-shelves="B" data-pop="교사 초등학교" data-added="2026-10-19"
-        data-date="2026-07-13" data-author="lopez" data-text="not faster, but better: generative ai and teacher skill in peru 더 빠르게가 아니라 더 잘: 페루의 생성형 ai와 교사 역량 world bank policy research working papers 무작위 통제실험(rct): 하루 연수 + microsoft copilot 라이선스 + 8개월 whatsapp 후속 지원 b-02 011 carolina lopez carla z. glave ezequiel molina román andrés zárate 교사 ai 연수 생성형 ai rct 프롬프트 역량 개발도상국  ">
+        data-source="routine"
+        data-date="2026-07-13" data-author="lopez" data-text="not faster, but better: generative ai and teacher skill in peru 더 빠르게가 아니라 더 잘: 페루의 생성형 ai와 교사 역량 world bank policy research working papers 무작위 통제실험(rct): 하루 연수 + microsoft copilot 라이선스 + 8개월 whatsapp 후속 지원 b-02 011 carolina lopez carla z. glave ezequiel molina román andrés zárate 교사 ai 연수 생성형 ai rct 프롬프트 역량 개발도상국   ">
         <header class="card-head">
           <span class="call">B-02</span>
           <span class="acc">등록 No.011 · 10/19(월) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-working-paper">워킹페이퍼</span><span class="badge new">신착</span><span class="badge pop">교사</span><span class="badge pop">초등학교</span></div>
+        <div class="badges"><span class="badge k-working-paper">워킹페이퍼(심사 전)</span><span class="badge basis partial" title="요약 페이지 기준(세계은행 재현 연구 저장소)">요약 기준</span><span class="badge new">신착</span><span class="badge pop">교사</span><span class="badge pop">초등학교</span></div>
         <h3 class="card-title" lang="en">Not Faster, But Better: Generative AI and Teacher Skill in Peru</h3>
         <p class="title-ko">더 빠르게가 아니라 더 잘: 페루의 생성형 AI와 교사 역량</p>
         <p class="byline"><span lang="en">Carolina Lopez, Carla Z. Glave, Ezequiel Molina, Román Andrés Zárate</span> <span class="year">(2026)</span></p>
@@ -313,12 +336,13 @@
       <div class="cards">
       <article class="card" id="no-001" data-no="001" data-call="C-01" data-kind="preprint"
         data-shelves="C" data-pop="대학" data-added="2026-10-13"
-        data-date="2026-09-24" data-author="eastwood" data-text="guardrails or roadblocks? effects of pedagogical style and context awareness in ai teaching assistants for programming 가드레일인가 걸림돌인가? 프로그래밍 ai 조교의 교수 스타일과 맥락 인식이 미치는 효과 arxiv 프리프린트 무작위 통제실험, 2×2 설계(소크라테스식/직접 설명 × 맥락 없음/문제·학생 코드 전체 제공) c-01 001 madeleine eastwood harshith narne joseph hilby paul denny ashish aggarwal amanpreet kapoor ai 조교 소크라테스식 질문 맥락 인식 프로그래밍 교육 rct 2609.29995 ">
+        data-source="routine"
+        data-date="2026-09-24" data-author="eastwood" data-text="guardrails or roadblocks? effects of pedagogical style and context awareness in ai teaching assistants for programming 가드레일인가 걸림돌인가? 프로그래밍 ai 조교의 교수 스타일과 맥락 인식이 미치는 효과 arxiv 프리프린트 무작위 통제실험, 2×2 설계(소크라테스식/직접 설명 × 맥락 없음/문제·학생 코드 전체 제공) c-01 001 madeleine eastwood harshith narne joseph hilby paul denny ashish aggarwal amanpreet kapoor ai 조교 소크라테스식 질문 맥락 인식 프로그래밍 교육 rct 2609.29995  ">
         <header class="card-head">
           <span class="call">C-01</span>
           <span class="acc">등록 No.001 · 10/13(화) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge pop">대학</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge pop">대학</span></div>
         <h3 class="card-title" lang="en">Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming</h3>
         <p class="title-ko">가드레일인가 걸림돌인가? 프로그래밍 AI 조교의 교수 스타일과 맥락 인식이 미치는 효과</p>
         <p class="byline"><span lang="en">Madeleine Eastwood, Harshith Narne, Joseph Hilby 외 3명</span> <span class="year">(2026)</span></p>
@@ -357,12 +381,13 @@
       </article>
       <article class="card" id="no-002" data-no="002" data-call="C-02" data-kind="preprint"
         data-shelves="C" data-pop="고등학교" data-added="2026-10-13"
-        data-date="2026-07-10" data-author="chung" data-text="effective personalized ai tutors via llm-guided reinforcement learning llm 기반 강화학습으로 만든 효과적인 개인화 ai 튜터 arxiv 프리프린트 무작위 실험, 5개월 파이썬 수업 c-02 002 angel tsai-hsuan chung botong zhang ling-chieh kung hamsa bastani osbert bastani 개인화 ai 튜터 강화학습 적응형 문제 순서 파이썬 교육 2608.16907 ">
+        data-source="routine"
+        data-date="2026-07-10" data-author="chung" data-text="effective personalized ai tutors via llm-guided reinforcement learning llm 기반 강화학습으로 만든 효과적인 개인화 ai 튜터 arxiv 프리프린트 무작위 실험, 5개월 파이썬 수업 c-02 002 angel tsai-hsuan chung botong zhang ling-chieh kung hamsa bastani osbert bastani 개인화 ai 튜터 강화학습 적응형 문제 순서 파이썬 교육 2608.16907  ">
         <header class="card-head">
           <span class="call">C-02</span>
           <span class="acc">등록 No.002 · 10/13(화) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge pop">고등학교</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge pop">고등학교</span></div>
         <h3 class="card-title" lang="en">Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning</h3>
         <p class="title-ko">LLM 기반 강화학습으로 만든 효과적인 개인화 AI 튜터</p>
         <p class="byline"><span lang="en">Angel Tsai-Hsuan Chung, Botong Zhang, Ling-Chieh Kung 외 2명</span> <span class="year">(2026)</span></p>
@@ -401,12 +426,13 @@
       </article>
       <article class="card" id="no-006" data-no="006" data-call="C-03" data-kind="working-paper"
         data-shelves="C" data-pop="중학교" data-added="2026-10-14"
-        data-date="2026-08-17" data-author="oreopoulos" data-text="making ai tutoring productive: evidence from a mastery-based math practice experiment ai 튜터링을 생산적으로 만들기: 숙달 기반 수학 연습 실험의 근거 nber working paper 35621 무작위 현장실험(ai 지원 여부 × 숙달 진행 여부 × 수학 주제 2개), 1주 뒤 지연 평가 c-03 006 philip oreopoulos michael liut alp sungu nina low ai 튜터 숙달 학습 컴퓨터 보조 학습(cal) 수학 현장실험  10.3386/w35621">
+        data-source="routine"
+        data-date="2026-08-17" data-author="oreopoulos" data-text="making ai tutoring productive: evidence from a mastery-based math practice experiment ai 튜터링을 생산적으로 만들기: 숙달 기반 수학 연습 실험의 근거 nber working paper 35621 무작위 현장실험(ai 지원 여부 × 숙달 진행 여부 × 수학 주제 2개), 1주 뒤 지연 평가 c-03 006 philip oreopoulos michael liut alp sungu nina low ai 튜터 숙달 학습 컴퓨터 보조 학습(cal) 수학 현장실험  10.3386/w35621 ">
         <header class="card-head">
           <span class="call">C-03</span>
           <span class="acc">등록 No.006 · 10/14(수) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-working-paper">워킹페이퍼</span><span class="badge pop">중학교</span></div>
+        <div class="badges"><span class="badge k-working-paper">워킹페이퍼(심사 전)</span><span class="badge basis partial" title="초록 기준(NBER 초록 페이지)">초록 기준</span><span class="badge pop">중학교</span></div>
         <h3 class="card-title" lang="en">Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment</h3>
         <p class="title-ko">AI 튜터링을 생산적으로 만들기: 숙달 기반 수학 연습 실험의 근거</p>
         <p class="byline"><span lang="en">Philip Oreopoulos, Michael Liut, Alp Sungu, Nina Low</span> <span class="year">(2026)</span></p>
@@ -445,12 +471,13 @@
       </article>
       <article class="card" id="no-007" data-no="007" data-call="C-04" data-kind="preprint"
         data-shelves="C" data-pop="대학" data-added="2026-10-14"
-        data-date="2026-03-30" data-author="van mullem" data-text="evaluating llms for answering student questions in introductory programming courses 입문 프로그래밍 강좌에서 학생 질문 응답용 llm 평가 arxiv 프리프린트 벤치마크 구축·평가 연구(llm-as-a-judge 지표 검증) c-04 007 thomas van mullem bart mesuere peter dawyndt llm 평가 학생 질문 응답 llm-as-a-judge cs1 teacher-in-the-loop 2603.28295 ">
+        data-source="routine"
+        data-date="2026-03-30" data-author="van mullem" data-text="evaluating llms for answering student questions in introductory programming courses 입문 프로그래밍 강좌에서 학생 질문 응답용 llm 평가 arxiv 프리프린트 벤치마크 구축·평가 연구(llm-as-a-judge 지표 검증) c-04 007 thomas van mullem bart mesuere peter dawyndt llm 평가 학생 질문 응답 llm-as-a-judge cs1 teacher-in-the-loop 2603.28295  ">
         <header class="card-head">
           <span class="call">C-04</span>
           <span class="acc">등록 No.007 · 10/14(수) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge pop">대학</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge pop">대학</span></div>
         <h3 class="card-title" lang="en">Evaluating LLMs for Answering Student Questions in Introductory Programming Courses</h3>
         <p class="title-ko">입문 프로그래밍 강좌에서 학생 질문 응답용 LLM 평가</p>
         <p class="byline"><span lang="en">Thomas Van Mullem, Bart Mesuere, Peter Dawyndt</span> <span class="year">(2026)</span></p>
@@ -501,12 +528,13 @@
       <div class="cards">
       <article class="card" id="no-005" data-no="005" data-call="D-01" data-kind="conference"
         data-shelves="D" data-pop="대학" data-added="2026-10-13"
-        data-date="2026-04-13" data-author="thorgeirsson" data-text="computer science achievement and writing skills predict vibe coding proficiency 컴퓨터과학 성취도와 글쓰기 능력이 바이브코딩 숙련도를 예측한다 chi 2026 (acm) 사전등록 횡단 연구 d-01 005 sverrir thorgeirsson theo b. weidmann zhendong su 바이브코딩 컴퓨터과학 성취도 글쓰기 능력 프롬프트 작성 2603.14133 10.1145/3772318.3791666">
+        data-source="routine"
+        data-date="2026-04-13" data-author="thorgeirsson" data-text="computer science achievement and writing skills predict vibe coding proficiency 컴퓨터과학 성취도와 글쓰기 능력이 바이브코딩 숙련도를 예측한다 chi 2026 (acm) 사전등록 횡단 연구 d-01 005 sverrir thorgeirsson theo b. weidmann zhendong su 바이브코딩 컴퓨터과학 성취도 글쓰기 능력 프롬프트 작성 2603.14133 10.1145/3772318.3791666 ">
         <header class="card-head">
           <span class="call">D-01</span>
           <span class="acc">등록 No.005 · 10/13(화) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-conference">동료심사 학회</span><span class="badge pop">대학</span></div>
+        <div class="badges"><span class="badge k-conference">동료심사 학회</span><span class="badge basis partial" title="초록 기준 · 발표처는 arXiv 주석과 Crossref(DOI)로 확인">초록 기준</span><span class="badge pop">대학</span></div>
         <h3 class="card-title" lang="en">Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency</h3>
         <p class="title-ko">컴퓨터과학 성취도와 글쓰기 능력이 바이브코딩 숙련도를 예측한다</p>
         <p class="byline"><span lang="en">Sverrir Thorgeirsson, Theo B. Weidmann, Zhendong Su</span> <span class="year">(2026)</span></p>
@@ -545,12 +573,13 @@
       </article>
       <article class="card" id="no-008" data-no="008" data-call="D-02" data-kind="preprint"
         data-shelves="D" data-pop="일반" data-added="2026-10-14"
-        data-date="2026-04-24" data-author="chen" data-text="code for all: educational applications of the &quot;vibe coding&quot; hackathon in programming education across all skill levels 모두를 위한 코드: 전 수준 대상 &#x27;바이브코딩&#x27; 해커톤의 프로그래밍 교육적 활용 arxiv 프리프린트 한 달 온라인 해커톤 사례 연구(프로젝트 점수·설문·주제 분석) d-02 008 ashley j. chen yijia cao minghao shao ramesh karri muhammad shafique 바이브코딩 해커톤 프롬프트 작성 디버깅 평가 설계 2604.22747 ">
+        data-source="routine"
+        data-date="2026-04-24" data-author="chen" data-text="code for all: educational applications of the &quot;vibe coding&quot; hackathon in programming education across all skill levels 모두를 위한 코드: 전 수준 대상 &#x27;바이브코딩&#x27; 해커톤의 프로그래밍 교육적 활용 arxiv 프리프린트 한 달 온라인 해커톤 사례 연구(프로젝트 점수·설문·주제 분석) d-02 008 ashley j. chen yijia cao minghao shao ramesh karri muhammad shafique 바이브코딩 해커톤 프롬프트 작성 디버깅 평가 설계 2604.22747  ">
         <header class="card-head">
           <span class="call">D-02</span>
           <span class="acc">등록 No.008 · 10/14(수) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge pop">일반</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge pop">일반</span></div>
         <h3 class="card-title" lang="en">Code for All: Educational Applications of the &quot;Vibe Coding&quot; Hackathon in Programming Education across All Skill Levels</h3>
         <p class="title-ko">모두를 위한 코드: 전 수준 대상 &#x27;바이브코딩&#x27; 해커톤의 프로그래밍 교육적 활용</p>
         <p class="byline"><span lang="en">Ashley J. Chen, Yijia Cao, Minghao Shao 외 2명</span> <span class="year">(2026)</span></p>
@@ -589,12 +618,13 @@
       </article>
       <article class="card" id="no-009" data-no="009" data-call="D-03" data-kind="conference"
         data-shelves="D" data-pop="대학" data-added="2026-10-14"
-        data-date="2025-12-02" data-author="gama" data-text="&quot;can you feel the vibes?&quot;: an exploration of novice programmer engagement with vibe coding &quot;바이브가 느껴지나요?&quot;: 초보 프로그래머의 바이브코딩 참여 탐색 icse 2026 seet 채택 질적 연구, 9시간 1일 해커톤 d-03 009 kiev gama filipe calegario victoria jackson alexander nolte luiz augusto morais vinicius garcia 바이브코딩 초보 프로그래머 해커톤 질적 연구 소프트웨어공학 교육 2512.02750 ">
+        data-source="routine"
+        data-date="2025-12-02" data-author="gama" data-text="&quot;can you feel the vibes?&quot;: an exploration of novice programmer engagement with vibe coding &quot;바이브가 느껴지나요?&quot;: 초보 프로그래머의 바이브코딩 참여 탐색 icse 2026 seet 채택 질적 연구, 9시간 1일 해커톤 d-03 009 kiev gama filipe calegario victoria jackson alexander nolte luiz augusto morais vinicius garcia 바이브코딩 초보 프로그래머 해커톤 질적 연구 소프트웨어공학 교육 2512.02750  ">
         <header class="card-head">
           <span class="call">D-03</span>
           <span class="acc">등록 No.009 · 10/14(수) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-conference">동료심사 학회</span><span class="badge pop">대학</span></div>
+        <div class="badges"><span class="badge k-conference">동료심사 학회</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge pop">대학</span></div>
         <h3 class="card-title" lang="en">&quot;Can you feel the vibes?&quot;: An exploration of novice programmer engagement with vibe coding</h3>
         <p class="title-ko">&quot;바이브가 느껴지나요?&quot;: 초보 프로그래머의 바이브코딩 참여 탐색</p>
         <p class="byline"><span lang="en">Kiev Gama, Filipe Calegario, Victoria Jackson 외 3명</span> <span class="year">(2025)</span></p>
@@ -646,12 +676,13 @@
       <div class="cards">
       <article class="card" id="no-004" data-no="004" data-call="E-01" data-kind="conference"
         data-shelves="E" data-pop="일반" data-added="2026-10-13"
-        data-date="2026-06-12" data-author="sato" data-text="robo-blocks: generative scaffolding in end-user design and programming of social robots robo-blocks: 소셜 로봇 최종사용자 설계·프로그래밍을 위한 생성형 스캐폴딩 dis &#x27;26 (acm) research through design, 초보 사용자 배포 연구 e-01 004 arissa j. sato callie y. kim nathan thomas white abhinav maneesh yuqing wang hui-ru ho bilge mutlu 소셜 로봇 블록코딩 생성형 스캐폴딩 llm 최종사용자 프로그래밍 2605.28154 10.1145/3800645.3812997">
+        data-source="routine"
+        data-date="2026-06-12" data-author="sato" data-text="robo-blocks: generative scaffolding in end-user design and programming of social robots robo-blocks: 소셜 로봇 최종사용자 설계·프로그래밍을 위한 생성형 스캐폴딩 dis &#x27;26 (acm) research through design, 초보 사용자 배포 연구 e-01 004 arissa j. sato callie y. kim nathan thomas white abhinav maneesh yuqing wang hui-ru ho bilge mutlu 소셜 로봇 블록코딩 생성형 스캐폴딩 llm 최종사용자 프로그래밍 2605.28154 10.1145/3800645.3812997 ">
         <header class="card-head">
           <span class="call">E-01</span>
           <span class="acc">등록 No.004 · 10/13(화) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-conference">동료심사 학회</span><span class="badge pop">일반</span></div>
+        <div class="badges"><span class="badge k-conference">동료심사 학회</span><span class="badge basis partial" title="초록 기준 · 발표처와 쪽수는 Crossref(DOI)로 확인">초록 기준</span><span class="badge pop">일반</span></div>
         <h3 class="card-title" lang="en">Robo-Blocks: Generative Scaffolding in End-User Design and Programming of Social Robots</h3>
         <p class="title-ko">Robo-Blocks: 소셜 로봇 최종사용자 설계·프로그래밍을 위한 생성형 스캐폴딩</p>
         <p class="byline"><span lang="en">Arissa J. Sato, Callie Y. Kim, Nathan Thomas White 외 4명</span> <span class="year">(2026)</span></p>
@@ -702,12 +733,13 @@
       <div class="cards">
       <article class="card" id="no-013" data-no="013" data-call="F-01" data-kind="report"
         data-shelves="F" data-pop="정책" data-added="2026-10-19"
-        data-date="2026-01-19" data-author="oecd" data-text="oecd digital education outlook 2026: exploring effective uses of generative ai in education oecd 디지털 교육 전망 2026: 교육에서 생성형 ai의 효과적 활용 탐색 oecd publishing 정책 보고서(기존 실증 연구 종합 + talis 2024 교사 조사) f-01 013  oecd 생성형 ai 교육 정책 메타인지적 게으름 talis 2024 아동 안전  10.1787/062a7394-en">
+        data-source="routine"
+        data-date="2026-01-19" data-author="oecd" data-text="oecd digital education outlook 2026: exploring effective uses of generative ai in education oecd 디지털 교육 전망 2026: 교육에서 생성형 ai의 효과적 활용 탐색 oecd publishing 정책 보고서(기존 실증 연구 종합 + talis 2024 교사 조사) f-01 013  oecd 생성형 ai 교육 정책 메타인지적 게으름 talis 2024 아동 안전  10.1787/062a7394-en ">
         <header class="card-head">
           <span class="call">F-01</span>
           <span class="acc">등록 No.013 · 10/19(월) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-report">정책 보고서</span><span class="badge new">신착</span><span class="badge pop">정책</span></div>
+        <div class="badges"><span class="badge k-report">정책 보고서</span><span class="badge basis partial" title="요약 기준(EU 디지털 스킬 포털 소개 글) · 서지는 Crossref(DOI)로 확인">요약 기준</span><span class="badge new">신착</span><span class="badge pop">정책</span></div>
         <h3 class="card-title" lang="en">OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education</h3>
         <p class="title-ko">OECD 디지털 교육 전망 2026: 교육에서 생성형 AI의 효과적 활용 탐색</p>
         <p class="byline"><span lang="en">OECD</span> <span class="year">(2026)</span></p>
@@ -745,12 +777,13 @@
       </article>
       <article class="card" id="no-014" data-no="014" data-call="F-02" data-kind="preprint"
         data-shelves="F" data-pop="고등학교" data-added="2026-10-19"
-        data-date="2026-05-09" data-author="huntington-klein" data-text="little impact of chatgpt on high school test scores chatgpt가 고등학교 시험 점수에 미친 영향은 작다 arxiv 프리프린트 지역 단위 관찰 연구(여름방학 chatgpt 사용 감소폭으로 교육용 사용이 많은 지역을 식별) f-02 014 nick huntington-klein chatgpt 시험 점수 관찰 연구 학습 효과 교육경제학 2605.08812 ">
+        data-source="routine"
+        data-date="2026-05-09" data-author="huntington-klein" data-text="little impact of chatgpt on high school test scores chatgpt가 고등학교 시험 점수에 미친 영향은 작다 arxiv 프리프린트 지역 단위 관찰 연구(여름방학 chatgpt 사용 감소폭으로 교육용 사용이 많은 지역을 식별) f-02 014 nick huntington-klein chatgpt 시험 점수 관찰 연구 학습 효과 교육경제학 2605.08812  ">
         <header class="card-head">
           <span class="call">F-02</span>
           <span class="acc">등록 No.014 · 10/19(월) 입고</span>
         </header>
-        <div class="badges"><span class="badge k-preprint">프리프린트</span><span class="badge new">신착</span><span class="badge pop">고등학교</span></div>
+        <div class="badges"><span class="badge k-preprint">프리프린트(심사 전)</span><span class="badge basis partial" title="초록 기준">초록 기준</span><span class="badge new">신착</span><span class="badge pop">고등학교</span></div>
         <h3 class="card-title" lang="en">Little Impact of ChatGPT on High School Test Scores</h3>
         <p class="title-ko">ChatGPT가 고등학교 시험 점수에 미친 영향은 작다</p>
         <p class="byline"><span lang="en">Nick Huntington-Klein</span> <span class="year">(2026)</span></p>
@@ -792,8 +825,13 @@
   </section>
 
   <footer>
-    <p>서지 정보(저자·발표처·날짜·DOI)는 arXiv, Crossref, 발행처 페이지에서 확인했고 카드마다 확인일을 적었습니다. 요약은 대부분 초록 기준이니 논문에 인용하기 전에 원문을 확인해 주세요.</p>
-    <p>모루 루틴이 연구 다이제스트(월·수·금)를 마친 뒤 새 자료를 서고에 들입니다 · 2026-10-19 09:17 갱신</p>
+    
+    <aside class="ai-notice" aria-label="AI 작성 자료 안내">
+      <h3>AI 작성 자료 안내</h3>
+      <p>이 서고의 요약·번역·분류는 AI(ChatGPT, Gemini, Claude 등)가 작성한 자료입니다. 서지 정보는 원문 페이지와 대조했지만 틀린 곳이 있을 수 있고, 요약은 대부분 초록만 읽고 썼습니다. <b>올바른 인용을 위해 반드시 원문을 직접 확인하고, 이 페이지가 아니라 원문을 인용해 주세요.</b></p>
+    </aside>
+    <p>서지 정보(저자·발표처·날짜·DOI)는 arXiv, Crossref, 발행처 페이지에서 확인했고 카드마다 확인일을 적었습니다.</p>
+    <p>모루 루틴이 연구 다이제스트(월·수·금)를 마친 뒤 새 자료를 서고에 들입니다 · 2026-10-19 10:13 갱신</p>
   </footer>
 
 <div class="tray" id="tray" hidden role="region" aria-label="담은 자료">
@@ -810,10 +848,17 @@
   'use strict';
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var groups = Array.prototype.slice.call(document.querySelectorAll('.shelf-group'));
-  var q = document.getElementById('q'), fs = document.getElementById('f-shelf'),
+  var flat = document.getElementById('flat'), flatList = flat.querySelector('.cards'),
+      flatTitle = document.getElementById('flat-title'), flatCount = document.getElementById('flat-count');
+  cards.forEach(function (c) { c.homeList = c.parentNode; });   // 서가별 보기로 돌아갈 자리
+  var SORT_NAMES = { added: '최근 입고순', date: '발표 최신순', author: '제1저자순' };
+  var q = document.getElementById('q'), qq = document.getElementById('qq'), fs = document.getElementById('f-shelf'),
       fk = document.getElementById('f-kind'), fp = document.getElementById('f-pop'),
+      fsrc = document.getElementById('f-src'),   // 특별리서치가 있을 때만 있다
       sortEl = document.getElementById('sort'), count = document.getElementById('count'),
       none = document.getElementById('none'), reset = document.getElementById('reset');
+  var selects = [fs, fk, fp, fsrc].filter(Boolean);
+  function clearFilters() { q.value = ''; qq.value = ''; selects.forEach(function (s) { s.value = ''; }); }
 
   function norm(s) { return (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').trim(); }
   cards.forEach(function (c) { c.dataset.norm = norm(c.dataset.text); });
@@ -821,8 +866,8 @@
   var sorters = {
     call: function (a, b) { return a.dataset.call.localeCompare(b.dataset.call); },
     added: function (a, b) { return b.dataset.added.localeCompare(a.dataset.added) || b.dataset.no.localeCompare(a.dataset.no); },
-    date: function (a, b) { return b.dataset.date.localeCompare(a.dataset.date); },
-    author: function (a, b) { return a.dataset.author.localeCompare(b.dataset.author); }
+    date: function (a, b) { return b.dataset.date.localeCompare(a.dataset.date) || a.dataset.call.localeCompare(b.dataset.call); },
+    author: function (a, b) { return a.dataset.author.localeCompare(b.dataset.author) || b.dataset.date.localeCompare(a.dataset.date); }
   };
 
   function apply() {
@@ -831,30 +876,56 @@
       var ok = words.every(function (w) { return c.dataset.norm.indexOf(w) >= 0; }) &&
         (!fs.value || (' ' + c.dataset.shelves + ' ').indexOf(' ' + fs.value + ' ') >= 0) &&
         (!fk.value || c.dataset.kind === fk.value) &&
-        (!fp.value || (' ' + c.dataset.pop + ' ').indexOf(' ' + fp.value + ' ') >= 0);
+        (!fp.value || (' ' + c.dataset.pop + ' ').indexOf(' ' + fp.value + ' ') >= 0) &&
+        (!fsrc || !fsrc.value || c.dataset.source === fsrc.value);
       c.hidden = !ok;
       if (ok) n += 1;
     });
-    var by = sorters[sortEl.value] || sorters.call;
-    groups.forEach(function (g) {
-      var list = g.querySelector('.cards');
-      Array.prototype.slice.call(list.children).sort(by).forEach(function (c) { list.appendChild(c); });
-      g.hidden = !list.querySelector('.card:not([hidden])');
-    });
-    var filtered = words.length || fs.value || fk.value || fp.value;
-    count.textContent = filtered ? n + '편 찾음' : '전체 ' + cards.length + '편';
+    var filtered = words.length || selects.some(function (s) { return s.value; });
+    var mode = SORT_NAMES[sortEl.value] ? sortEl.value : 'call';
+    var by = sorters[mode];
+    if (mode === 'call') {
+      // 서가별 보기: 카드를 제 서가로 돌려놓고, 걸러졌으면 '표시/소장' 편수를 함께 보여 준다
+      flat.hidden = true;
+      groups.forEach(function (g) {
+        var list = g.querySelector('.cards');
+        var mine = cards.filter(function (c) { return c.homeList === list; }).sort(by);
+        mine.forEach(function (c) { list.appendChild(c); });
+        var shown = mine.filter(function (c) { return !c.hidden; }).length;
+        g.hidden = shown === 0;
+        g.querySelector('.group-count').textContent =
+          filtered && shown !== mine.length ? '표시 ' + shown + '편 · 소장 ' + mine.length + '편' : mine.length + '편';
+      });
+    } else {
+      // 전체 정렬: 서가를 풀고 한 목록으로 보여 준다
+      groups.forEach(function (g) { g.hidden = true; });
+      cards.slice().sort(by).forEach(function (c) { flatList.appendChild(c); });
+      flat.hidden = n === 0;
+      flatTitle.textContent = '전체 목록 · ' + SORT_NAMES[mode];
+      flatCount.textContent = filtered ? '표시 ' + n + '편 · 소장 ' + cards.length + '편' : cards.length + '편';
+    }
+    count.textContent = filtered ? n + '편 표시 · 소장 ' + cards.length + '편' : '소장 ' + cards.length + '편 전체';
     none.hidden = n > 0;
     reset.hidden = !filtered;
   }
-  [q, fs, fk, fp, sortEl].forEach(function (el) { el.addEventListener('input', apply); });
-  reset.addEventListener('click', function () { q.value = ''; fs.value = ''; fk.value = ''; fp.value = ''; apply(); q.focus(); });
+  [q, sortEl].concat(selects).forEach(function (el) { el.addEventListener('input', apply); });
+  q.addEventListener('input', function () { qq.value = q.value; });
+  reset.addEventListener('click', function () { clearFilters(); apply(); q.focus(); });
+
+  // 머리의 '자료 바로 찾기': 목록 검색창과 같은 값을 쓰고, Enter를 누르면 목록으로 내려간다
+  qq.addEventListener('input', function () { q.value = qq.value; apply(); });
+  document.getElementById('quick-find').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    q.value = qq.value; apply();
+    document.getElementById('catalog').scrollIntoView();
+  });
 
   // 책등이나 '함께 볼 자료'를 눌렀는데 검색으로 숨겨진 카드면 검색을 풀고 보여 준다
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('a[href^="#no-"]');
     if (!a) return;
     var target = document.getElementById(a.getAttribute('href').slice(1));
-    if (target && target.hidden) { q.value = ''; fs.value = ''; fk.value = ''; fp.value = ''; apply(); }
+    if (target && target.hidden) { clearFilters(); apply(); }
   });
 
   // 복사: APA는 기울임까지 함께(서식 붙여넣기), 안 되면 글자만
