@@ -17,7 +17,6 @@ html{font-size:17px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.6;word-break:keep-all}
 .wrap{max-width:1040px;margin:0 auto;padding:20px 20px 64px}
 
-/* 상단 */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .top .date{font-size:.85rem;color:var(--sub);font-weight:600}
 .top nav a{font-size:.8rem;color:var(--sub);text-decoration:none;margin-left:12px}
@@ -29,7 +28,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Vari
 .tab[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .tab[aria-selected="true"] span{color:var(--accent-ink)}
 
-/* 팀 헤더 */
 .hero{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin-bottom:18px}
 .hero h1{margin:0 0 4px;font-size:1.7rem;line-height:1.3}
 .hero p{margin:0;color:var(--sub)}
@@ -37,68 +35,61 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Vari
 .pill{font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--sub)}
 .pill.hot{background:var(--accent);color:#fff}
 
-/* 진행 순서 */
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:26px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .step b{display:block;font-size:.78rem;color:var(--accent-ink);font-variant-numeric:tabular-nums}
 .step span{font-size:.88rem;line-height:1.45;display:block}
 
-h2{font-size:1.25rem;margin:30px 0 4px;display:flex;align-items:baseline;gap:10px}
+h2{font-size:1.25rem;margin:32px 0 4px;display:flex;align-items:baseline;gap:10px}
 h2 .n{font-size:.85rem;color:var(--accent);font-weight:800}
 .lead{margin:0 0 14px;color:var(--sub);font-size:.92rem}
 
-/* 질문 카드 */
-.q{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:18px 20px;margin-bottom:12px}
-.q-head{display:flex;gap:12px;align-items:flex-start}
-.q-no{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.9rem;margin-top:2px}
-.q-text{font-size:1.18rem;font-weight:700;line-height:1.5;margin:0}
-.q-tag{font-size:.78rem;color:var(--accent-ink);font-weight:700;margin-bottom:2px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0 42px}
-.chip{appearance:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font:inherit;font-size:.9rem;cursor:pointer;color:var(--ink)}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-.memo{display:block;width:calc(100% - 42px);margin:10px 0 0 42px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;font-size:.95rem;background:#FCFBF8;resize:vertical;min-height:44px}
-.memo:focus,.add input:focus,.dec textarea:focus{outline:2px solid var(--accent);outline-offset:1px;background:#fff}
-details.fb{margin:12px 0 0 42px}
-details.fb summary{cursor:pointer;font-size:.88rem;font-weight:700;color:var(--accent-ink);list-style:none}
-details.fb summary::-webkit-details-marker{display:none}
-details.fb summary::before{content:"▸ ";}
-details.fb[open] summary::before{content:"▾ ";}
-details.fb div{margin-top:8px;background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:.95rem;color:var(--ink)}
-details.fb div p{margin:0 0 6px}
-details.fb div p:last-child{margin:0}
+/* 00 사전 응답 요약 */
+.survey{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.srow{display:grid;grid-template-columns:34px 170px 1fr;gap:12px;padding:11px 18px;border-bottom:1px solid var(--soft);align-items:baseline}
+.srow:last-child{border-bottom:0}
+.srow .no{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.srow .qq{font-weight:700;font-size:.92rem;color:var(--sub)}
+.srow .aa{font-size:.98rem}
+.srow.empty .aa{color:#A39E95}
 
-/* 의견 보드 */
+/* 01 v0 의견 */
+.v0bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--accent-soft);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:.92rem;color:var(--accent-ink)}
+.v0bar a{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:6px 12px;border-radius:10px;font-size:.88rem}
 .board{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-height:150px;display:flex;flex-direction:column}
-.cell h3{margin:0 0 8px;font-size:1rem}
-.cell h3 small{font-weight:600;color:var(--sub);font-size:.8rem;margin-left:4px}
-.cell ul{list-style:none;margin:0 0 8px;padding:0;flex:1}
-.cell li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
-.cell li .t{flex:1}
-.cell li select{font:inherit;font-size:.78rem;border:1px solid var(--line);border-radius:8px;padding:2px 4px;background:var(--soft);color:var(--sub)}
-.cell li select.c1{background:#E3ECFA;color:#1E4A8A;border-color:#C9D9F2}
-.cell li select.c2{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent-soft)}
-.cell li select.c3{background:#EEE;color:#777}
-.cell li .x{appearance:none;border:0;background:none;color:#A39E95;cursor:pointer;font-size:1rem;padding:0 2px}
-.add{display:flex;gap:6px}
-.add input{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:.92rem;background:#FCFBF8}
-.add button{appearance:none;border:0;border-radius:10px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:.9rem;padding:0 14px;cursor:pointer}
-.legend{font-size:.82rem;color:var(--sub);margin:10px 0 0}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.cell h3{margin:0 0 8px;font-size:1.05rem}
+.cell h3 small{font-weight:500;color:var(--sub);font-size:.82rem;margin-left:6px}
 
-/* 결정 메모 */
-.dec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 18px}
-.dec label{display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--soft)}
-.dec label:last-child{border-bottom:0}
-.dec label span{font-weight:700;font-size:.95rem;padding-top:6px}
-.dec label span small{display:block;font-weight:500;color:var(--sub);font-size:.8rem}
-.dec textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit;font-size:.95rem;background:#FCFBF8;resize:vertical;min-height:42px}
+textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:.95rem;background:#FCFBF8;resize:vertical;line-height:1.55}
+textarea:focus{outline:2px solid var(--accent);outline-offset:1px;background:#fff}
+.cell textarea{min-height:180px}
+
+/* 02 항목 카드 */
+.item{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.item h3{margin:0 0 12px;font-size:1.12rem;display:flex;gap:10px;align-items:baseline}
+.item h3 .no{color:var(--accent);font-weight:800;font-size:.95rem;flex:none}
+.part{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:8px 0;border-top:1px dashed var(--line)}
+.part:first-of-type{border-top:0}
+.part .lab{font-size:.8rem;font-weight:800;color:var(--sub);padding-top:3px;letter-spacing:.02em}
+.part ul{margin:0;padding-left:18px}
+.part li{margin:2px 0}
+.part.fb .lab{color:var(--accent-ink)}
+.part.fb .body{background:var(--accent-soft);border-radius:10px;padding:10px 12px}
+.part.fb .body p{margin:0 0 6px}
+.part.fb .body p:last-child{margin:0}
+.part.ask .body{font-weight:700;font-size:1.05rem}
+.part.memo textarea{min-height:64px}
+.empty-note{color:#A39E95}
+
+/* 03 정리 프롬프트 */
+.extra textarea{min-height:110px;background:var(--card)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .btn{appearance:none;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer;background:var(--ink);color:#fff}
 .btn.ghost{background:transparent;color:var(--sub);border:1px solid var(--line)}
 .toast{font-size:.88rem;color:var(--accent-ink);align-self:center}
-.out{display:block;width:100%;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;font-size:.88rem;background:#FCFBF8;min-height:220px}
+.out{margin-top:12px;min-height:280px;font-size:.86rem}
 
-/* 다음 일정 */
 .next{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
 .next div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .next b{display:block;font-size:.8rem;color:var(--accent-ink)}
@@ -110,11 +101,11 @@ details.fb div p:last-child{margin:0}
   .wrap{padding:16px 16px 48px}
   .steps{grid-template-columns:1fr 1fr}
   .board,.next{grid-template-columns:1fr}
-  .chips,.memo,details.fb{margin-left:0}
-  .memo{width:100%}
-  .dec label{grid-template-columns:1fr;gap:4px}
+  .srow{grid-template-columns:28px 1fr}
+  .srow .aa{grid-column:2}
+  .part{grid-template-columns:1fr;gap:4px}
 }
-@media print{.tabs,.top nav,.actions,.add,.cell li .x{display:none}}
+@media print{.tabs,.top nav,.actions,.v0bar a{display:none}}
 </style>
 </head>
 <body data-team="guil">
@@ -131,50 +122,63 @@ details.fb div p:last-child{margin:0}
 
   <main id="app"></main>
 
-  <p class="foot">메모는 이 브라우저에만 저장됩니다. 학생 이름·연락처는 적지 마세요. 끝나면 [일지용 메모 복사]로 옮겨 두세요.</p>
+  <p class="foot">메모는 이 브라우저에만 저장됩니다. 학생 이름·연락처는 적지 마세요. 끝나면 ③의 정리 프롬프트를 복사해 모루나 미르에게 주세요.</p>
 </div>
 
 <script>
 (function(){
+  var Q = ['누가·어떤 상황', '첫 버전 필수 기능', '이용 과정', '참고 앱', '화면 강조점', 'AI 역할', '입력·저장 정보', '제작 도구·필요한 도움'];
+
   var TEAMS = {
     guil: {
       name: '구일고 0.91 · 돈구리',
       sub: '목표를 정하면 오늘 쓸 수 있는 돈을 알려주고, 저축을 게임처럼 이어가게 돕는 앱',
       time: '10.19(월) 15:20 · Zoom',
       roles: ['팀장(AI)', '디자인', '글·발표'],
-      file: '091_v1_1029.zip',
+      file: '091_v1_1029.zip', final: '12.11(금)',
+      app: '../apps/donguri/index.html',
       steps: [
         ['0~3분', '사고 싶은 물건 하나와 사용 상황 듣기'],
-        ['3~10분', 'v0 써 본 의견 모으기 (기능·UI)'],
-        ['10~20분', '핵심 질문 1~4'],
-        ['20~26분', 'AI 한마디·도구·역할 정하기'],
-        ['26~30분', '오늘의 결정 확인']
+        ['3~10분', 'v0 써 본 의견 (기능·UI)'],
+        ['10~20분', '사전 질문 항목별 피드백'],
+        ['20~26분', '비어 있던 AI·저장·도구 정하기'],
+        ['26~30분', '정리 프롬프트로 마무리']
       ],
-      qs: [
-        { tag: '누가 쓰나', q: '어떤 학생이 어떤 물건을 사려다 실패하나요? 돈구리를 일주일 쓰면 무엇이 달라지면 좋겠어요?',
-          fb: ['대상이 넓으면 첫 장면이 흐려져요. "정기 용돈을 받는 고등학생이 목표 물품 1개를 모으는 장면" 하나로 시작해요.'] },
-        { tag: '저축 버튼', q: '"5천 원 저축"을 누르면 모의 지갑은 5천 원 줄고, 목표 저축통은 5천 원 늘어나요. 생각한 기능과 같나요?',
-          choices: ['네, 같아요', '조금 달라요', '완전히 달라요'],
+      survey: [
+        '목표는 있지만 돈 관리를 못 해서 이루지 못하는 10~20대',
+        '① "N원 저축할게요" 버튼 → 바로 목표 물품 저축  ② 퀴즈 오답 확인 버튼 (가장 중요한 하나는 안 고름)',
+        '퀴즈·출석·경제 활동 기록 → AI 분석·피드백 → 포인트 → 캐릭터 보상 → 계속 사용',
+        '밝고 귀여운 분위기, 듀오링고처럼 필요한 기능만, 직관적이고 조작이 간단하게',
+        '캐릭터 상점 강조. 모으고 꾸미는 재미로 계속 쓰게',
+        '', '', ''
+      ],
+      items: [
+        { no: '1', title: '누가·어떤 상황에서 쓰나',
+          ans: ['돈 관리를 원하고 목표가 있는데 이루지 못하는 10~20대'],
+          fb: ['대상이 넓으면 첫 장면이 흐려져요. "정기 용돈을 받는 고등학생이 목표 물품 1개를 모으는 장면" 하나로 좁혀서 시작해요.'],
+          ask: '어떤 학생이 어떤 물건을 사려다 실패하나요? 돈구리를 일주일 쓰면 무엇이 달라지면 좋겠어요?' },
+        { no: '2', title: '첫 버전 필수 기능',
+          ans: ['"(N원만큼) 저축할게요" 버튼을 누르면 바로 계좌에서 돈이 빠져나가 목표 물품을 위해 저축', '퀴즈 오답 확인 버튼', '가장 중요한 기능 하나는 고르지 않음'],
           fb: ['저축을 기록만 하지 않고, 버튼을 눌러 목표 쪽으로 옮기게 하려는 점이 좋아요. 누르기 전과 후에 잔액과 오늘 쓸 수 있는 돈이 어떻게 바뀌는지 보여주면 돈구리의 특징이 드러나요.',
-               '실제 돈은 움직이지 않는 "모의 금액"이에요. 돈(원)과 도토리(보상 점수)는 따로 셉니다. 도토리를 써도 저축액은 줄지 않아요.',
-               '지금 v0는 저축한 금액을 직접 적는 방식이에요. 버튼으로 옮기는 기능은 새로 만드는 부분이에요.'] },
-        { tag: '오답 확인', q: '틀린 문제는 바로 해설을 보고 다시 풀면 충분한가요, 며칠 뒤 틀린 문제만 모아 보고 싶나요?',
-          choices: ['바로 해설·다시 풀기', '틀린 문제 모아 보기', '둘 다'],
-          fb: ['바로 해설·다시 풀기는 v0에 이미 있어요. 모아 보기(오답노트)는 새 기능이라, 필요하면 v1 이후로 순서를 정해요.'] },
-        { tag: '캐릭터', q: '옷을 입히는 재미와 새 캐릭터를 모으는 재미 중, 어느 것을 먼저 보여주고 싶나요?',
-          choices: ['한 캐릭터 꾸미기', '여러 캐릭터 모으기'],
-          fb: ['상점은 꾸준히 쓰게 만드는 좋은 장치예요. 다만 상점이 앞서면 돈 관리가 뒤로 밀려요. 첫 버전은 하나만 골라요.'] },
-        { tag: 'AI 한마디', q: '내 지출을 보고 AI가 해줬으면 하는 말 한 가지를 예로 들어줄래요? 그때 필요한 정보와 지금 쓰는 제작 도구도 알려주세요.',
-          fb: ['사전 질문지의 AI 역할·데이터·도구 칸이 비어 있었어요. 오늘 입력 예시 1개와 AI 답 예시 1개만 정해요.',
-               'v1은 API 없이 정해진 규칙으로 답하는 데모로 먼저 만들어요.'] }
-      ],
-      dec: [
-        ['scene', '가장 먼저 보여줄 장면', '예: 목표 물품을 정하고 "저축할게요"를 누르는 장면'],
-        ['top3', '첫 기능 3개', '1. 2. 3.'],
-        ['later', '나중으로 미룰 것', ''],
-        ['ai', 'AI 입력 → 답 예시', ''],
-        ['todo', '역할별 다음 작업', '팀장(AI): \n디자인: \n글·발표: '],
-        ['help', '운영사가 도울 것', '']
+               '실제 계좌 대신 앱 안의 "모의 지갑 → 목표 저축통"으로 옮기는 방식이에요. 실제 돈은 움직이지 않아요. 지금 v0는 저축한 금액을 직접 적는 방식이라, 버튼으로 옮기는 건 새로 만드는 기능이에요.',
+               '오답을 바로 해설 보고 다시 푸는 건 v0에 이미 있어요. 틀린 문제를 모아 보는 오답노트는 새 기능이에요.'],
+          ask: '"5천 원 저축"을 누르면 모의 지갑은 5천 원 줄고 저축통은 5천 원 늘어나요. 생각한 기능과 같나요? 오답은 바로 해설이면 충분한가요, 모아 보기도 필요한가요? 둘 중 가장 중요한 하나는?' },
+        { no: '3', title: '이용 과정',
+          ans: ['퀴즈·출석·경제 활동 작성 → AI 분석/피드백 → 포인트 → 캐릭터 보상 → 지속적인 이용'],
+          fb: ['계속 쓰게 만드는 흐름이 잘 잡혀 있어요. 다만 출석·퀴즈·상점이 앞에 나오면 돈 관리가 뒤로 밀려요.',
+               '중심은 "목표를 위해 오늘 얼마를 쓰고 얼마를 옮길지 정하는 것"이에요. 나머지는 그걸 돕는 장치로 둬요.'],
+          ask: '앱을 열면 가장 먼저 무엇을 하게 될까요? 하루에 한 번 쓴다면 어떤 순서예요?' },
+        { no: '4·5', title: '참고 앱과 화면 강조점',
+          ans: ['밝고 귀여운 분위기, 듀오링고처럼 필요한 기능만 배치, 직관적·간단한 조작', '캐릭터 상점 강조: 모으는 재미, 꾸미기, 쓸수록 더 많은 캐릭터'],
+          fb: ['원하는 분위기가 분명해요. v0도 밝은 카드형 화면과 아래 탭(홈·내역·퀴즈·상점)으로 되어 있어요.',
+               '상점은 꾸준히 쓰게 만드는 좋은 장치예요. 첫 버전은 "한 캐릭터 꾸미기"와 "여러 캐릭터 모으기" 중 하나만 골라요.'],
+          ask: '옷을 입히는 재미와 새 캐릭터를 모으는 재미 중 어느 것을 먼저 보여주고 싶나요?' },
+        { no: '6~8', title: 'AI 역할 · 저장할 정보 · 제작 도구',
+          ans: [],
+          fb: ['세 칸이 비어 있었어요. 오늘 같이 정해요. AI는 입력 예시 1개와 답 예시 1개만 있으면 충분해요.',
+               '저장할 것: 목표·기한·용돈·지출·저축·퀴즈 결과 중 무엇이 꼭 필요한지 골라요.',
+               'v1은 API 없이 정해진 규칙으로 답하는 데모로 먼저 만들어요.'],
+          ask: '내 지출을 보고 AI가 해줬으면 하는 말 한 가지를 예로 들어줄래요? 그때 필요한 정보는? 지금 쓰는 제작 도구는?' }
       ]
     },
     okjong: {
@@ -182,52 +186,65 @@ details.fb div p:last-child{margin:0}
       sub: '학생이 AI 버디를 가르치고, 버디가 배운 만큼 기억하고 응용하는 학습 앱',
       time: '10.19(월) 21:00 · Zoom',
       roles: ['팀장(웹·AI)', '디자인·발표', '앱·QA'],
-      file: 'OKXEN_v1_1029.zip',
+      file: 'OKXEN_v1_1029.zip', final: '12.12(토)',
+      app: '../apps/studybuddy/index.html',
       steps: [
         ['0~3분', '지금 만든 화면·코드 2분 시연'],
-        ['3~10분', 'v0 써 본 의견 모으기 (기능·UI)'],
-        ['10~20분', '핵심 질문 2~4'],
+        ['3~10분', 'v0 써 본 의견 (기능·UI)'],
+        ['10~20분', '사전 질문 항목별 피드백'],
         ['20~26분', 'Godot 작은 시도·도울 범위'],
-        ['26~30분', '오늘의 결정 확인']
+        ['26~30분', '정리 프롬프트로 마무리']
       ],
-      qs: [
-        { tag: '2분 시연', q: '지금 실행되는 것을 2분만 보여주세요. 직접 만든 부분과, 바꿀 수 있는 부분 하나를 설명해 줄래요?',
-          fb: ['Godot과 OpenRouter를 직접 시도해 본 점이 좋아요. 오늘은 실력을 평가하는 게 아니라, 어디를 도우면 되는지 찾는 시간이에요.'] },
-        { tag: '시험은 누가', q: '"시험"은 버디가 문제를 풀고 우리가 채점한다는 뜻인가요, 우리가 문제를 다시 푼다는 뜻인가요?',
-          choices: ['버디가 풀고 우리가 채점', '우리가 다시 풀기', '둘 다 (중심은 하나)'],
-          fb: ['AI가 답을 알려주는 앱은 많지만, 내가 가르친 만큼 버디가 달라지는 장면은 여러분만의 특징이 될 수 있어요.',
-               '지금 v0의 복습은 "학생이 다시 푸는" 쪽이에요. "버디가 기억하고 새 문제를 푸는" 쪽은 새로 만드는 부분이에요. 둘 다 할 수 있지만, 첫 버전은 중심을 하나로 정해요.'] },
-        { tag: '한 단원', q: '한 단원만 고른다면 무엇을 할까요? 가르치기 전과 후에 버디가 어떻게 달라지면 성공인가요?',
-          fb: ['한 과목·한 단원·개념 3개·새 문제 2개로 시작해요. 전 과목 성적 분석, 사진 인식, 순위, 음성, 3D는 나중으로 미뤄요.'] },
-        { tag: '틀리게 가르치면', q: '틀리게 가르치거나 앱을 껐다 켜면 어떻게 되어야 할까요? "기억 완료"를 누르기 전에 누가 내용을 확인하나요?',
-          fb: ['잘못 가르쳤을 때 버디가 그대로 믿어버리지 않게 하는 기준이 필요해요. 확인된 설명만 저장하고, 틀린 설명은 버디가 다시 물어보게 해요.',
-               '(사전 질문 답) 안 배운 내용을 잠그는 건 모델 내부에 마스크를 씌우는 게 아니라, 앱이 "배운 것 목록"을 저장하고 다음 질문 때 그 목록만 전달하는 구조로 해요.',
-               '(사전 질문 답) seed는 답을 덜 흔들리게 하는 설정일 뿐, 기억 장치가 아니에요. 기억은 앱이 파일로 저장하고 다시 불러와야 해요.'] },
-        { tag: 'Godot', q: 'Godot을 쓰고 싶은 가장 큰 이유는 무엇인가요? 다음 일주일 동안 각자 맡을 부분과 필요한 도움을 하나씩 말해 주세요.',
+      survey: [
+        'AI에게 설명하며 이해도를 확인하는 학생. 성적·오답으로 약한 개념을 찾고 다음 공부 방향 제안',
+        '① 학습시키기 (가장 중요)  ② 기억하게 하기  ③ 응용하게 하기',
+        '가르치기 → 질문 받기 → 대답 (하루 최대 1시간) → "AI 복습시키기"로 완전기억 → 며칠마다 시험',
+        '듀오링고(귀여운 그림·말투), GPAI·Thetawave(AI 학습 기능)',
+        '재미있되 과한 리액션은 싫음. 캐릭터가 움직이며 모르는 부분을 되묻기',
+        '성적·오답 분석으로 부족한 개념 찾기, 설명하면 추가 질문·맞춤 문제',
+        '내신·모의고사 성적, 질문, 학습 기록 저장. 사용자별로 따로, 비공개',
+        'Godot 4 + GDScript(C# 고민). OpenRouter 키로 "배울 때 열리는" 잠금 시험 중. 궁금: 마스크 vs 프롬프트, 같은 seed?, 시험 검증'
+      ],
+      items: [
+        { no: '1', title: '누가·어떤 상황에서 쓰나',
+          ans: ['AI에게 지식을 설명하고 가르치며 자신의 이해도를 확인하는 학생', '성적·오답으로 약한 개념을 찾고, 설명하면 AI가 추가 문제·질문으로 확인, 다음 학습 방향 제안'],
+          fb: ['학생이 AI를 가르치는 관계가 서비스의 중심이라는 점이 강해요.',
+               '성적 분석, 가르치기, 학습 추천을 다 하면 첫 버전이 너무 커져요. 첫 버전은 "가르치기" 장면을 중심에 둬요.'],
+          ask: '성적을 넣지 않아도 바로 가르치기부터 시작할 수 있으면 좋을까요?' },
+        { no: '2', title: '첫 버전 필수 기능',
+          ans: ['① 학습시키기 (가장 중요)', '② 기억하게 하기', '③ 응용하게 하기'],
+          fb: ['우선순위가 분명해서 좋아요. AI가 답을 알려주는 앱은 많지만, 내가 가르친 만큼 버디가 달라지는 장면은 여러분만의 특징이 될 수 있어요.',
+               '지금 v0의 복습은 "학생이 다시 푸는" 구조예요. "버디가 기억하고 응용하는" 건 새로 만드는 부분이에요.',
+               '잘못 가르쳤을 때 버디가 그대로 믿어버리지 않게 하는 기준이 필요해요. 확인된 설명만 저장하고, 틀린 설명은 버디가 다시 물어보게 해요.'],
+          ask: '한 단원만 고른다면 무엇을 할까요? 가르치기 전과 후에 버디가 어떻게 달라지면 성공인가요?' },
+        { no: '3', title: '이용 과정',
+          ans: ['가르치기 → 질문 받기 → 대답하기 (하루 최대 1시간)', '"AI 복습시키기" 버튼으로 완전기억', '며칠 주기로 시험 (주기는 직접 설정)'],
+          fb: ['"시험"이 누구를 말하는지 아직 분명하지 않아요. 버디가 문제를 풀고 학생이 채점하는 건지, 학생이 다시 푸는 건지에 따라 만들 게 달라져요. 둘 다 할 수 있지만 첫 버전은 중심을 하나로 정해요.',
+               '"완전기억"은 앱 안에서 통과했다는 표시로 보여줘요. 실제로 오래 기억한다는 증거는 아니에요.'],
+          ask: '"시험"은 버디가 문제를 풀고 우리가 채점한다는 뜻인가요, 우리가 다시 푼다는 뜻인가요? 틀리게 가르치거나 앱을 껐다 켜면 어떻게 되어야 할까요?' },
+        { no: '4·5', title: '참고 앱과 화면 강조점',
+          ans: ['듀오링고의 귀여운 그림과 말투, GPAI·Thetawave의 AI 학습 기능', '재미는 있되 과한 리액션은 싫음. 캐릭터가 움직이며 모르는 부분을 되묻기'],
+          fb: ['과하지 않게, 모를 때 되묻는 연출은 학습 목적과 잘 맞아요. v0 버디도 대기·끄덕임·갸웃·점프 정도로만 움직여요.'],
+          ask: '버디가 되물을 때 어떤 말투면 좋을까요? 어떤 순간에 움직이면 좋겠어요?' },
+        { no: '6·7', title: 'AI 역할과 저장할 정보',
+          ans: ['성적·오답을 분석해 부족한 개념과 먼저 공부할 내용 찾기', '설명하면 추가 질문·맞춤 문제로 이해도 확인', '내신·모의고사 성적, 질문, 학습 기록 저장. 사용자별로 따로 관리, 다른 사람에게 비공개'],
+          fb: ['성적 총점 하나로 약한 개념을 판단하지 않아요. 문항별로 틀린 문제와 개념을 연결하고, 자료가 적으면 "추가 확인 필요"로 둬요.',
+               '사용자별 비공개 저장은 계정·로그인이 필요한 다음 단계예요. 지금 v0는 그 기기 브라우저에만 저장돼요. 실제 성적은 넣지 않고 예시 데이터로 시작해요.'],
+          ask: '성적표 총점만 보고 추천받고 싶나요, 문제별로 틀린 이유와 개념까지 연결하고 싶나요?' },
+        { no: '8', title: '제작 도구와 필요한 도움',
+          ans: ['Godot 4, GDScript 위주 (C#/.NET도 고민). 기초는 알지만 응용이 약함', 'OpenRouter API 키로 "배울 때 열리는" 잠금을 시험해 봄. 도구는 손 + ChatGPT', '궁금한 점: RNN처럼 마스크 vs 프롬프트? 같은 seed로 계속해야 하나? 시험 검증은?'],
           fb: ['Godot은 열어 둘 만한 선택이에요. 먼저 작게 해 봐요. ① 설명 입력 → 버디 반응 바뀜 ② 개념 하나 읽어 표시 ③ 저장하고 다시 켜면 복원 ④ 인터넷 없이 정해진 답으로 한 바퀴. 다 못 해도 괜찮아요. 막힌 곳이 곧 도울 곳이에요.',
                '언어는 GDScript 하나로 가요(C#은 웹 내보내기가 안 돼요). API 키는 코드나 씬 파일에 넣지 않아요.',
-               '전체를 대신 만들어 주기보다, 직접 바꿔 보고 설명할 수 있는 작은 흐름부터 같이 만들 거예요. Godot을 어디까지 도울 수 있는지는 지금 만든 것을 보고 담당자와 확인해서 알려줄게요. Godot과 웹 앱을 동시에 두 개 만들지는 않아요.'] }
-      ],
-      dec: [
-        ['scene', '가장 먼저 보여줄 장면', '예: 가르치기 전 버디가 되묻고, 가르친 뒤 새 문제를 푸는 장면'],
-        ['who', '시험 중심', '버디가 풀기 / 학생이 풀기'],
-        ['unit', '첫 단원과 개념 3개', ''],
-        ['platform', '플랫폼과 결정 조건', '예: Godot 작은 시도 ①~③까지 되면 유지'],
-        ['todo', '역할별 다음 작업', '팀장(웹·AI): \n디자인·발표: \n앱·QA: '],
-        ['help', '운영사가 도울 것', '']
+               '마스크: 모델 내부를 바꾸는 게 아니라, 앱이 "배운 것 목록"을 저장하고 다음 질문 때 그 목록만 전달해요. 프롬프트만으로는 모르는 척을 보장하지 못하니, 안 배운 개념엔 앱이 정해 둔 되묻기 문장을 내보내요.',
+               'seed: 답을 덜 흔들리게 하는 설정일 뿐 기억 장치가 아니에요. 기억은 앱이 파일로 저장하고 다시 불러와요.',
+               '시험 검증: AI가 "알겠어"라고 하는 걸로 끝내지 않아요. 틀린 설명, 안 배운 개념, 새 문제, 다시 켰을 때 복원을 하나씩 확인해요.',
+               '전체를 대신 만들어 주기보다 직접 바꿔 보고 설명할 수 있는 작은 흐름부터 같이 만들 거예요. Godot을 어디까지 도울 수 있는지는 지금 만든 것을 보고 담당자와 확인해서 알려줄게요.'],
+          ask: 'Godot을 쓰고 싶은 가장 큰 이유는 무엇인가요? 다음 일주일 동안 각자 맡을 부분과 필요한 도움을 하나씩 말해 주세요.' }
       ]
     }
   };
 
-  var BOARD = [
-    ['fnNew', '기능', '새로 만들고 싶은 것'],
-    ['fnFix', '기능', '고치고 싶은 것'],
-    ['uiNew', 'UI', '새로 만들고 싶은 것'],
-    ['uiFix', 'UI', '고치고 싶은 것']
-  ];
-  var CATS = ['분류 전', '운영사 보완', 'v1 학생 과제', '나중에'];
-  var PREFIX = 'code_round1_v2_';
-
+  var PREFIX = 'code_round1_v3_';
   var MEM = {};
   function load(t){
     if (MEM[t]) return MEM[t];
@@ -246,9 +263,14 @@ details.fb div p:last-child{margin:0}
   var current, state;
   var app = document.getElementById('app');
 
+  function bindText(ta, obj, key){
+    ta.value = obj[key] || '';
+    ta.addEventListener('input', function(){ obj[key] = ta.value; save(current, state); });
+  }
+
   function render(t){
     current = t; state = load(t);
-    state.q = state.q || {}; state.b = state.b || {}; state.d = state.d || {};
+    state.v0 = state.v0 || {}; state.m = state.m || {};
     var T = TEAMS[t];
     document.body.setAttribute('data-team', t);
     document.querySelectorAll('.tab').forEach(function(b){ b.setAttribute('aria-selected', b.getAttribute('data-t') === t ? 'true' : 'false'); });
@@ -266,96 +288,67 @@ details.fb div p:last-child{margin:0}
     T.steps.forEach(function(s){ steps.appendChild(el('div', {class:'step'}, '<b>' + s[0] + '</b><span>' + esc(s[1]) + '</span>')); });
     app.appendChild(steps);
 
-    // 1. v0 의견
+    // 00 사전 질문 요약
+    app.appendChild(el('h2', null, '<span class="n">00</span>사전 질문에 이렇게 답해 줬어요'));
+    app.appendChild(el('p', {class:'lead'}, '미팅 전에 적어 준 8문항의 핵심이에요.'));
+    var sv = el('div', {class:'survey'});
+    T.survey.forEach(function(a, i){
+      sv.appendChild(el('div', {class:'srow' + (a ? '' : ' empty')},
+        '<span class="no">' + (i + 1) + '</span><span class="qq">' + esc(Q[i]) + '</span><span class="aa">' + (a ? esc(a) : '비어 있음 · 오늘 같이 정해요') + '</span>'));
+    });
+    app.appendChild(sv);
+
+    // 01 v0 의견
     app.appendChild(el('h2', null, '<span class="n">01</span>v0 써 보니 어땠어요?'));
-    app.appendChild(el('p', {class:'lead'}, '생각나는 대로 전부 받아요. 분류는 나중에 해도 돼요.'));
+    var bar = el('div', {class:'v0bar'});
+    bar.innerHTML = '<span>아직 안 써 봤다면 화면 공유로 같이 열어 보고 이야기해요.</span><a href="' + T.app + '" target="_blank" rel="noopener">v0 열기 ↗</a>';
+    app.appendChild(bar);
     var board = el('div', {class:'board'});
-    BOARD.forEach(function(b){
-      var key = b[0]; state.b[key] = state.b[key] || [];
+    [['fn', '기능', '되는 것·안 되는 것·더 있으면 좋겠는 것'], ['ui', 'UI', '화면·캐릭터·글자·색·버튼']].forEach(function(b){
       var cell = el('div', {class:'cell'});
-      cell.appendChild(el('h3', null, b[1] + ' <small>' + b[2] + '</small>'));
-      var ul = el('ul'); cell.appendChild(ul);
-      function draw(){
-        ul.innerHTML = '';
-        state.b[key].forEach(function(item, i){
-          var li = el('li');
-          li.appendChild(el('span', {class:'t'}, esc(item.t)));
-          var sel = el('select', {'aria-label':'분류', class: item.c ? 'c' + item.c : ''});
-          CATS.forEach(function(c, ci){ var o = el('option', {value: ci}, c); if (ci === (item.c || 0)) o.selected = true; sel.appendChild(o); });
-          sel.addEventListener('change', function(){ item.c = +sel.value; sel.className = item.c ? 'c' + item.c : ''; save(current, state); });
-          li.appendChild(sel);
-          var x = el('button', {class:'x', 'aria-label':'삭제', title:'삭제'}, '×');
-          x.addEventListener('click', function(){ state.b[key].splice(i, 1); save(current, state); draw(); });
-          li.appendChild(x);
-          ul.appendChild(li);
-        });
-      }
-      draw();
-      var add = el('form', {class:'add'});
-      var inp = el('input', {type:'text', placeholder:'의견 입력 후 Enter'});
-      add.appendChild(inp); add.appendChild(el('button', {type:'submit'}, '추가'));
-      add.addEventListener('submit', function(e){
-        e.preventDefault(); var v = inp.value.trim(); if (!v) return;
-        state.b[key].push({t:v, c:0}); save(current, state); inp.value = ''; draw(); inp.focus();
-      });
-      cell.appendChild(add);
+      cell.appendChild(el('h3', null, b[1] + '<small>' + b[2] + '</small>'));
+      var ta = el('textarea', {placeholder:'학생들이 말하는 대로 받아 적기'});
+      bindText(ta, state.v0, b[0]);
+      cell.appendChild(ta);
       board.appendChild(cell);
     });
     app.appendChild(board);
-    app.appendChild(el('p', {class:'legend'}, '분류: <b>운영사 보완</b>(우리가 고쳐 줄 것) · <b>v1 학생 과제</b>(10.29까지 직접 할 것) · <b>나중에</b>(이후 회차)'));
 
-    // 2. 핵심 질문
-    app.appendChild(el('h2', null, '<span class="n">02</span>오늘 꼭 물어볼 질문'));
-    app.appendChild(el('p', {class:'lead'}, '학생 답을 먼저 듣고, 그다음 ▸ 멘토 피드백을 열어 이야기해요.'));
-    T.qs.forEach(function(q, i){
-      var id = 'q' + i; var s = state.q[id] = state.q[id] || {};
-      var card = el('div', {class:'q'});
-      card.appendChild(el('div', {class:'q-head'}, '<span class="q-no">' + (i + 1) + '</span><div><div class="q-tag">' + esc(q.tag) + '</div><p class="q-text">' + esc(q.q) + '</p></div>'));
-      if (q.choices){
-        var chips = el('div', {class:'chips'});
-        q.choices.forEach(function(c){
-          var b = el('button', {class:'chip', type:'button', 'aria-pressed': s.c === c ? 'true' : 'false'}, esc(c));
-          b.addEventListener('click', function(){
-            s.c = (s.c === c) ? '' : c; save(current, state);
-            chips.querySelectorAll('.chip').forEach(function(x){ x.setAttribute('aria-pressed', x.textContent === s.c ? 'true' : 'false'); });
-          });
-          chips.appendChild(b);
-        });
-        card.appendChild(chips);
-      }
-      var memo = el('textarea', {class:'memo', rows:'1', placeholder:'학생 답 메모'});
-      memo.value = s.m || '';
-      memo.addEventListener('input', function(){ s.m = memo.value; save(current, state); });
-      card.appendChild(memo);
-      var d = el('details', {class:'fb'});
-      d.appendChild(el('summary', null, '멘토 피드백'));
-      d.appendChild(el('div', null, q.fb.map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('')));
-      card.appendChild(d);
+    // 02 항목별 피드백
+    app.appendChild(el('h2', null, '<span class="n">02</span>사전 질문 항목별 피드백'));
+    app.appendChild(el('p', {class:'lead'}, '학생 답 → 멘토 피드백 → 물어볼 것 → 학생 의견 순서로 이야기해요.'));
+    T.items.forEach(function(it, i){
+      var card = el('section', {class:'item'});
+      card.appendChild(el('h3', null, '<span class="no">' + esc(it.no) + '</span>' + esc(it.title)));
+      card.appendChild(el('div', {class:'part ans'}, '<span class="lab">학생 답</span><div class="body">' +
+        (it.ans.length ? '<ul>' + it.ans.map(function(a){ return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' : '<span class="empty-note">비어 있음</span>') + '</div>'));
+      card.appendChild(el('div', {class:'part fb'}, '<span class="lab">멘토 피드백</span><div class="body">' + it.fb.map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('') + '</div>'));
+      card.appendChild(el('div', {class:'part ask'}, '<span class="lab">물어볼 것</span><div class="body">' + esc(it.ask) + '</div>'));
+      var mp = el('div', {class:'part memo'});
+      mp.appendChild(el('span', {class:'lab'}, '학생 의견'));
+      var ta = el('textarea', {placeholder:'학생 답과 오늘 정해진 것을 받아 적기'});
+      bindText(ta, state.m, 'i' + i);
+      mp.appendChild(ta);
+      card.appendChild(mp);
       app.appendChild(card);
     });
 
-    // 3. 결정
-    app.appendChild(el('h2', null, '<span class="n">03</span>오늘의 결정'));
-    app.appendChild(el('p', {class:'lead'}, '실제로 정해진 것만 적어요. 안 정해졌으면 비워 둬요.'));
-    var dec = el('div', {class:'dec'});
-    T.dec.forEach(function(row){
-      var lab = el('label');
-      lab.appendChild(el('span', null, esc(row[1])));
-      var ta = el('textarea', {rows: row[0] === 'todo' ? '3' : '1', placeholder: row[2]});
-      ta.value = state.d[row[0]] || '';
-      ta.addEventListener('input', function(){ state.d[row[0]] = ta.value; save(current, state); });
-      lab.appendChild(ta);
-      dec.appendChild(lab);
-    });
-    app.appendChild(dec);
+    // 03 정리 프롬프트
+    app.appendChild(el('h2', null, '<span class="n">03</span>정리 프롬프트'));
+    app.appendChild(el('p', {class:'lead'}, '그 밖에 적어 둘 것을 넣고, 버튼을 누르면 위 기록 전체가 프롬프트로 묶여요. 모루나 미르에게 그대로 붙여 넣으세요.'));
+    var ex = el('div', {class:'extra'});
+    var exTa = el('textarea', {placeholder:'예: 역할 분담, 다음에 볼 결과물, 시간이 모자라 못 다룬 것, 미팅 실제 시간'});
+    bindText(exTa, state, 'extra');
+    ex.appendChild(exTa);
+    app.appendChild(ex);
 
     var act = el('div', {class:'actions'});
-    var copyBtn = el('button', {class:'btn', type:'button'}, '📋 일지용 메모 복사');
+    var copyBtn = el('button', {class:'btn', type:'button'}, '📋 정리 프롬프트 복사');
     var resetBtn = el('button', {class:'btn ghost', type:'button'}, '이 팀 메모 지우기');
     var toast = el('span', {class:'toast', role:'status'});
-    var out = el('textarea', {class:'out', readonly:'', 'aria-label':'일지용 메모'}); out.hidden = true;
+    var out = el('textarea', {class:'out', readonly:'', 'aria-label':'정리 프롬프트'}); out.hidden = true;
     copyBtn.addEventListener('click', function(){
-      out.value = summary(); out.hidden = false;
+      out.value = buildPrompt(); out.hidden = false;
       copy(out.value, toast, function(){ out.focus(); out.select(); });
     });
     resetBtn.addEventListener('click', function(){
@@ -367,42 +360,57 @@ details.fb div p:last-child{margin:0}
     app.appendChild(act);
     app.appendChild(out);
 
-    // 4. 다음 일정
+    // 04 다음 일정
     app.appendChild(el('h2', null, '<span class="n">04</span>다음 일정'));
     var nx = el('div', {class:'next'});
     nx.innerHTML = '<div><b>10.29(목) 23:59</b><span>v1 드라이브 업로드<br>' + esc(T.file) + '</span></div>' +
       '<div><b>10.31(토) ~ 11.1(일)</b><span>오프라인 통합 멘토링<br>v1 함께 리뷰</span></div>' +
-      '<div><b>' + (t === 'guil' ? '12.11(금)' : '12.12(토)') + '</b><span>본선 · DDP 아트홀</span></div>';
+      '<div><b>' + T.final + '</b><span>본선 · DDP 아트홀</span></div>';
     app.appendChild(nx);
     document.title = '1차 온라인 멘토링 보드 · ' + T.name;
   }
 
-  function summary(){
+  function buildPrompt(){
     var T = TEAMS[current], L = [];
-    L.push('[' + T.name + '] 1차 온라인 멘토링 ' + T.time);
-    L.push('', '■ v0 써 본 의견');
-    BOARD.forEach(function(b){
-      var items = state.b[b[0]] || [];
-      if (!items.length) return;
-      L.push('[' + b[1] + ' · ' + b[2] + ']');
-      items.forEach(function(it){ L.push('- ' + it.t + (it.c ? ' (' + CATS[it.c] + ')' : '')); });
+    var log = current === 'guil' ? '일지/구일고_1회차_1019.md' : '일지/옥종고_1회차_1019.md';
+    L.push('아래는 오늘 진행한 2026 C.O.D.E ' + T.name + ' 1차 온라인 멘토링(' + T.time + ') 기록이야. 멘토가 미팅 중에 직접 받아 적은 내용이니, 이 기록을 근거로 정리해줘.');
+    L.push('');
+    L.push('[정리할 것]');
+    L.push('1. 오늘 정해진 것 / 아직 정하지 않은 것');
+    L.push('2. 첫 버전 기능 3개와 나중으로 미룰 것 (기록에 근거가 있을 때만)');
+    L.push('3. v1(10.29(목) 23:59, ' + T.file + ')까지 학생 역할별 할 일: ' + T.roles.join(' / '));
+    L.push('4. 운영사가 할 일 (v0 보완, 자료·예시 준비, 확인할 것)');
+    L.push('5. 재단 멘토링 일지 초안: 멘토링 주제 / 멘토링 내용 / 질문 및 고민 / 멘토 피드백 및 조언 / 다음 멘토링까지 할 일 / 다음 일정(10.31~11.1 오프라인 통합 멘토링)');
+    L.push('');
+    L.push('[규칙]');
+    L.push('- 기록에 없는 합의를 지어내지 말고, 기록이 없으면 "미정"으로 둬. 추측은 [추측]으로 따로 표시해.');
+    L.push('- 학생·교사 이름은 쓰지 말고 역할명만 써.');
+    L.push('- 실제 진행 시간은 기록에 있으면 그대로 쓰고, 없으면 [ ]로 비워 둬.');
+    L.push('- 고등학교_온라인_멘토링_작업 폴더의 AGENTS.md와 10_운영마스터플랜_10월-12월.md를 따르고, 결과는 ' + log + '에 저장한 뒤 _작업로그.md에 남겨줘.');
+    L.push('');
+    L.push('==== 기록 ====');
+    L.push('');
+    L.push('■ v0 써 본 의견');
+    L.push('[기능] ' + ((state.v0.fn || '').trim() || '(기록 없음)'));
+    L.push('[UI] ' + ((state.v0.ui || '').trim() || '(기록 없음)'));
+    L.push('');
+    L.push('■ 사전 질문 항목별');
+    T.items.forEach(function(it, i){
+      L.push('');
+      L.push('[' + it.no + '. ' + it.title + ']');
+      L.push('- 사전 답: ' + (it.ans.length ? it.ans.join(' / ') : '(비어 있음)'));
+      L.push('- 멘토 피드백(미리 준비): ' + it.fb.join(' '));
+      L.push('- 물어본 것: ' + it.ask);
+      L.push('- 학생 의견·오늘 정한 것: ' + (((state.m['i' + i]) || '').trim() || '(기록 없음)'));
     });
-    L.push('', '■ 핵심 질문');
-    T.qs.forEach(function(q, i){
-      var s = state.q['q' + i] || {};
-      var a = [s.c, (s.m || '').trim()].filter(Boolean).join(' / ');
-      L.push((i + 1) + '. ' + q.tag + ': ' + (a || '(미정)'));
-    });
-    L.push('', '■ 오늘의 결정');
-    T.dec.forEach(function(r){
-      var v = (state.d[r[0]] || '').trim();
-      L.push('- ' + r[1] + ': ' + (v ? (v.indexOf('\n') > -1 ? '\n  ' + v.replace(/\n/g, '\n  ') : v) : '(미정)'));
-    });
+    L.push('');
+    L.push('■ 그 밖의 메모');
+    L.push((state.extra || '').trim() || '(기록 없음)');
     return L.join('\n');
   }
 
   function copy(text, toast, onFail){
-    function done(ok){ toast.textContent = ok ? '복사했어요. 일지에 붙여 넣으세요.' : '자동 복사가 안 됐어요. 아래 내용을 Ctrl+C로 복사해 주세요.'; if (!ok && onFail) onFail(); setTimeout(function(){ toast.textContent = ''; }, 5000); }
+    function done(ok){ toast.textContent = ok ? '복사했어요. 모루나 미르에게 붙여 넣으세요.' : '자동 복사가 안 됐어요. 아래 내용을 Ctrl+C로 복사해 주세요.'; if (!ok && onFail) onFail(); setTimeout(function(){ toast.textContent = ''; }, 5000); }
     if (navigator.clipboard && window.isSecureContext){
       navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ fallback(); });
     } else fallback();
