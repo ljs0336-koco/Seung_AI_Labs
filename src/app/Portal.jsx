@@ -195,13 +195,6 @@ export default function Portal() {
                     <p>차시별 수업 지도 가이드라인 및 워크시트 완비</p>
                   </div>
                 </div>
-                <div className="feature-item">
-                  <span className="feature-icon">🏛️</span>
-                  <div>
-                    <strong>대학 에듀테크 융합 프로젝트</strong>
-                    <p>5주차 프로젝트 전체 데이터 및 강의 허브 상시 공개</p>
-                  </div>
-                </div>
               </div>
 
               <div className="card-action-box">

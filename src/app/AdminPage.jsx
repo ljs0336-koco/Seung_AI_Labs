@@ -8,7 +8,6 @@ const materials = [
   ['마스터플랜 (v1.3)', '운영 일정과 역할 분담', './slides/masterplan.html'],
   ['관제 데스크 (v1.3)', '체크리스트와 멘토링 일지', './slides/operations_desk.html'],
   ['협업 안내서', '앱 개발 협업과 피드백 안내', './slides/expert_guide.html'],
-  ['대학 프로젝트 허브', '특강 자료와 프로젝트 도구', './hub/snu/index.html'],
   ['Logo Studio', '브랜드 디자인 실습', './hub/apps/logo_studio/index.html'],
   ['돈구리', '학생용 앱', './apps/donguri/index.html'],
   ['돈구리 매뉴얼', '앱 사용 안내', './slides/manual_guil.html'],

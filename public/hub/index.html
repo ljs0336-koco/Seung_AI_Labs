@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI 교육 특강 허브</title>
   <meta name="description" content="고등학생 로보독 특강과 제주대학교 예비교원 특강의 공개 안내와 참고 자료"/>
-  <!-- 공개 배포용. 대학 에듀테크 연계 융합교육 프로젝트 상시 공개 허브 -->Google
+  <!-- 공개 배포용. AI 교육 특강 허브 -->
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -62,9 +62,6 @@
           <h1 id="bar-title" class="text-base font-bold leading-tight mt-0.5 truncate">강의 허브</h1>
         </div>
       </div>
-      <a href="snu/" class="p-1.5 rounded-full hover:bg-surface-container text-outline hover:text-primary" title="관리자 전용 자료" aria-label="관리자 전용 자료">
-        <span class="material-symbols-outlined text-[19px]">lock</span>
-      </a>
     </header>
 
     <main class="flex-1 pb-10">
@@ -244,15 +241,7 @@
           <h2 class="text-sm font-bold">공개 특강</h2>
           <span class="text-[11px] text-outline">${LECTURES.length}개</span>
         </div>
-        <div class="space-y-3">${cards}</div>
-        <a href="snu/" class="flex items-center gap-3 p-3.5 rounded-xl border border-dashed border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-all">
-          <span class="material-symbols-outlined text-[20px] text-outline">lock</span>
-          <span class="flex-1 min-w-0">
-            <span class="block text-[13px] font-semibold">대학 에듀테크 연계 융합교육 프로젝트</span>
-            <span class="block text-[11px] text-outline">지난 강의 · 관리자 전용</span>
-          </span>
-          <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
-        </a>`;
+        <div class="space-y-3">${cards}</div>`;
     }
 
     function section(title, body) {
