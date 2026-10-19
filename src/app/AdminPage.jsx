@@ -4,7 +4,7 @@ import './AdminPage.css';
 
 const CONFIRM_KEY = 'seung_materials_guideline_seen_v1';
 const materials = [
-  ['1차 멘토링 워크숍 보드', '10.19 사전작성 요약 · 더미데이터 · 결정 메모', './slides/mentoring_round1.html'],
+  ['1차 멘토링 워크숍 보드', '10.19 사전질문 요약 · 항목별 피드백 · 정리 프롬프트', './slides/mentoring_round1.html'],
   ['마스터플랜 (v1.3)', '운영 일정과 역할 분담', './slides/masterplan.html'],
   ['관제 데스크 (v1.3)', '체크리스트와 멘토링 일지', './slides/operations_desk.html'],
   ['협업 안내서', '앱 개발 협업과 피드백 안내', './slides/expert_guide.html'],
