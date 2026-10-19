@@ -21,6 +21,8 @@
   --k-working-paper: #7A4A43;
   --k-report: #80652C;
   --k-preprint: #3D4C66;
+  --k-book: #574766;
+  --k-magazine: #5C6857;
   --ribbon: #A63D38;            /* 특별리서치 책갈피 */
   --ribbon-tint: #F6E4E1;
   --serif: "Noto Serif KR", "Nanum Myeongjo", serif;
@@ -184,6 +186,8 @@ h3 { font-size: 13px; font-weight: 600; color: var(--ink); }
 .k-working-paper { --c: var(--k-working-paper); }
 .k-report { --c: var(--k-report); }
 .k-preprint { --c: var(--k-preprint); }
+.k-book { --c: var(--k-book); }
+.k-magazine { --c: var(--k-magazine); }
 .spine[class*="k-"], .swatch[class*="k-"] { background: var(--c); }
 
 /* 특별리서치: 책 위로 삐져나온 책갈피 */

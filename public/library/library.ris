@@ -369,3 +369,476 @@ KW  - 과의존
 KW  - 교사 AI 리터러시
 N1  - 연구 서고 F-03 · 동료심사 저널 · 교육 정책·효과 연구
 ER  - 
+
+TY  - JOUR
+AU  - Hur, Jung Won
+AU  - Bhuyan, Jay
+AU  - Wu, Fan
+AU  - Thomas, Cassandra
+AU  - Koong, Kai
+TI  - Cultivating AI literacy among high school students through generative AI as a collaborative partner
+T2  - Discover Education
+PY  - 2026
+DA  - 2026/08/29
+PB  - Springer Science and Business Media LLC
+SP  - 805
+DO  - 10.1007/s44217-026-02092-7
+UR  - https://link.springer.com/article/10.1007/s44217-026-02092-7
+KW  - AI 리터러시
+KW  - 생성형 AI 협업
+KW  - 모바일 앱 설계
+KW  - 고등학생
+KW  - MIT App Inventor
+N1  - 연구 서고 A-03 · 동료심사 저널 · AI 리터러시·윤리
+ER  - 
+
+TY  - CPAPER
+AU  - Kazemitabaar, Majeed
+AU  - Chow, Justin
+AU  - Ma, Carl Ka To
+AU  - Ericson, Barbara J.
+AU  - Weintrop, David
+AU  - Grossman, Tovi
+TI  - Studying the effect of AI Code Generators on Supporting Novice Learners in Introductory Programming
+T2  - Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems
+PY  - 2023
+DA  - 2023/04/19
+PB  - ACM
+SP  - 1
+EP  - 23
+DO  - 10.1145/3544548.3580919
+UR  - https://dl.acm.org/doi/10.1145/3544548.3580919
+KW  - AI 코드 생성기
+KW  - 초보 프로그래머
+KW  - 수동 코드 수정
+KW  - 파지검사
+KW  - OpenAI Codex
+N1  - 연구 서고 D-04 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - CPAPER
+AU  - Kazemitabaar, Majeed
+AU  - Hou, Xinying
+AU  - Henley, Austin
+AU  - Ericson, Barbara Jane
+AU  - Weintrop, David
+AU  - Grossman, Tovi
+TI  - How Novices Use LLM-based Code Generators to Solve CS1 Coding Tasks in a Self-Paced Learning Environment
+T2  - Proceedings of the 23rd Koli Calling International Conference on Computing Education Research
+PY  - 2023
+DA  - 2023/11/13
+PB  - ACM
+SP  - 1
+EP  - 12
+DO  - 10.1145/3631802.3631806
+UR  - https://dl.acm.org/doi/10.1145/3631802.3631806
+KW  - 과정 로그 분석
+KW  - 프롬프트 행동
+KW  - 코드 수정·검증
+KW  - 혼합 코딩 방식
+KW  - 초보 프로그래머
+N1  - 연구 서고 D-05 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - CPAPER
+AU  - Prather, James
+AU  - Reeves, Brent N.
+AU  - Leinonen, Juho
+AU  - MacNeil, Stephen
+AU  - Randrianasolo, Arisoa S.
+AU  - Becker, Brett A.
+AU  - Kimmel, Bailey
+AU  - Wright, Jared
+AU  - Briggs, Ben
+TI  - The Widening Gap: The Benefits and Harms of Generative AI for Novice Programmers
+T2  - Proceedings of the 2024 ACM Conference on International Computing Education Research - Volume 1
+PY  - 2024
+DA  - 2024/08/12
+PB  - ACM
+SP  - 469
+EP  - 486
+DO  - 10.1145/3632620.3671116
+UR  - https://dl.acm.org/doi/10.1145/3632620.3671116
+KW  - 초보 프로그래머
+KW  - 메타인지적 어려움
+KW  - 이해의 착각
+KW  - GitHub Copilot
+KW  - ChatGPT
+N1  - 연구 서고 D-06 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - JOUR
+AU  - Buendía-García, Félix
+AU  - Piris-Ruano, Javier
+TI  - Using Generative AI to Support UX Design Students in Web Development Courses
+T2  - Applied Sciences
+PY  - 2025
+DA  - 2025/06/30
+PB  - MDPI AG
+SP  - 7389
+DO  - 10.3390/app15137389
+UR  - https://www.mdpi.com/2076-3417/15/13/7389
+KW  - 생성형 AI
+KW  - 웹 개발 교육
+KW  - UX 디자인
+KW  - 대화 로그 분석
+KW  - GitHub Copilot
+N1  - 연구 서고 D-07 · 동료심사 저널 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - JOUR
+AU  - Wood, David
+AU  - Bruner, Jerome S.
+AU  - Ross, Gail
+TI  - The role of tutoring in problem solving
+T2  - Journal of Child Psychology and Psychiatry
+PY  - 1976
+DA  - 1976/04
+PB  - Wiley
+SP  - 89
+EP  - 100
+DO  - 10.1111/j.1469-7610.1976.tb00381.x
+UR  - https://acamh.onlinelibrary.wiley.com/doi/10.1111/j.1469-7610.1976.tb00381.x
+KW  - 스캐폴딩
+KW  - 튜터링
+KW  - 문제 해결
+KW  - 자유도 축소
+KW  - 중요 특징 부각
+N1  - 연구 서고 I-01 · 동료심사 저널 · 이론적 기반
+ER  - 
+
+TY  - MGZN
+AU  - Collins, Allan
+AU  - Brown, John Seely
+AU  - Holum, Ann
+TI  - Cognitive apprenticeship: Making thinking visible
+T2  - American Educator
+PY  - 1991
+DA  - 1991/12
+PB  - American Federation of Teachers
+SP  - 6
+EP  - 11, 38–46
+UR  - https://www.aft.org/ae/winter1991/collins_brown_holum
+KW  - 인지적 도제
+KW  - 사고의 가시화
+KW  - 모델링·코칭·스캐폴딩
+KW  - 명료화·성찰·탐구
+KW  - 책임 이양
+N1  - 연구 서고 I-02 · 실무 잡지 · 이론적 기반
+ER  - 
+
+TY  - JOUR
+AU  - Hadwin, Allyson
+AU  - Oshige, Mika
+TI  - Self-Regulation, Coregulation, and Socially Shared Regulation: Exploring Perspectives of Social in Self-Regulated Learning Theory
+T2  - Teachers College Record
+PY  - 2011
+DA  - 2011/02/01
+PB  - SAGE Publications
+SP  - 240
+EP  - 264
+DO  - 10.1177/016146811111300204
+UR  - https://journals.sagepub.com/doi/10.1177/016146811111300204
+KW  - 자기조절학습(SRL)
+KW  - 공동조절(CoRL)
+KW  - 사회적으로 공유된 조절(SSRL)
+KW  - 사회적 맥락
+KW  - 학습 과정 조절
+N1  - 연구 서고 I-03 · 동료심사 저널 · 이론적 기반
+ER  - 
+
+TY  - JOUR
+AU  - Bandura, Albert
+TI  - Social Cognitive Theory: An Agentic Perspective
+T2  - Annual Review of Psychology
+PY  - 2001
+DA  - 2001/02
+PB  - Annual Reviews
+SP  - 1
+EP  - 26
+DO  - 10.1146/annurev.psych.52.1.1
+UR  - https://www.annualreviews.org/content/journals/10.1146/annurev.psych.52.1.1
+KW  - 사회인지이론
+KW  - 인간 행위주체성
+KW  - 의도성·미래지향적 사고
+KW  - 자기반응성·자기성찰
+KW  - 개인·대리·집합적 주체성
+N1  - 연구 서고 I-04 · 동료심사 저널 · 이론적 기반
+ER  - 
+
+TY  - BOOK
+AU  - Yin, Robert K.
+TI  - Applications of Case Study Research
+PY  - 2012
+DA  - 2011/06/21
+PB  - SAGE Publications
+UR  - https://study.sagepub.com/sites/default/files/a_very_brief_refresher_on_the_case_study_method.pdf
+KW  - 사례연구 설계
+KW  - 단일·다중사례
+KW  - 전체적·내재적 분석단위
+KW  - 분석적 일반화
+KW  - 자료 삼각검증
+N1  - 연구 서고 J-01 · 단행본·장 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Levitt, Heidi M.
+AU  - Bamberg, Michael
+AU  - Creswell, John W.
+AU  - Frost, David M.
+AU  - Josselson, Ruthellen
+AU  - Suárez-Orozco, Carola
+TI  - Journal article reporting standards for qualitative primary, qualitative meta-analytic, and mixed methods research in psychology: The APA Publications and Communications Board task force report
+T2  - American Psychologist
+PY  - 2018
+DA  - 2018/01
+PB  - American Psychological Association (APA)
+SP  - 26
+EP  - 46
+DO  - 10.1037/amp0000151
+UR  - https://www.apa.org/pubs/journals/releases/amp-amp0000151.pdf
+KW  - JARS-Qual
+KW  - 질적 연구 보고 기준
+KW  - 방법론적 진실성
+KW  - 연구자-참여자 관계
+KW  - 분석 단위
+N1  - 연구 서고 J-02 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Malterud, Kirsti
+AU  - Siersma, Volkert Dirk
+AU  - Guassora, Ann Dorrit
+TI  - Sample Size in Qualitative Interview Studies: Guided by Information Power
+T2  - Qualitative Health Research
+PY  - 2016
+DA  - 2016/07/10
+PB  - SAGE Publications
+SP  - 1753
+EP  - 1760
+DO  - 10.1177/1049732315617444
+UR  - https://journals.sagepub.com/doi/10.1177/1049732315617444
+KW  - 질적 면담
+KW  - 표본 크기
+KW  - 정보력(information power)
+KW  - 연구 목적의 범위
+KW  - 대화의 질
+N1  - 연구 서고 J-03 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Marsden, Emma
+AU  - Torgerson, Carole J.
+TI  - Single group, pre- and post-test research designs: Some methodological concerns
+T2  - Oxford Review of Education
+PY  - 2012
+DA  - 2012/10/02
+PB  - Informa UK Limited
+SP  - 583
+EP  - 616
+DO  - 10.1080/03054985.2012.731208
+UR  - https://www.tandfonline.com/doi/full/10.1080/03054985.2012.731208
+KW  - 단일집단 사전·사후 설계
+KW  - 내적 타당도 위협
+KW  - 평균으로의 회귀
+KW  - 성숙·검사 효과
+KW  - 인과 추론 한계
+N1  - 연구 서고 J-04 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Adler, Kristin
+AU  - Salanterä, Sanna
+AU  - Zumstein-Shaha, Maya
+TI  - Focus Group Interviews in Child, Youth, and Parent Research: An Integrative Literature Review
+T2  - International Journal of Qualitative Methods
+PY  - 2019
+DA  - 2019/11/10
+PB  - SAGE Publications
+SP  - 1609406919887274
+DO  - 10.1177/1609406919887274
+UR  - https://journals.sagepub.com/doi/10.1177/1609406919887274
+KW  - 포커스 그룹 면담(FGI)
+KW  - 청소년 질적 연구
+KW  - 발언 편중 관리
+KW  - 진행자·관찰자 분리
+KW  - 연구 윤리
+N1  - 연구 서고 J-05 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Lyle, John
+TI  - Stimulated recall: a report on its use in naturalistic research
+T2  - British Educational Research Journal
+PY  - 2003
+DA  - 2003/12
+PB  - Wiley
+SP  - 861
+EP  - 878
+DO  - 10.1080/0141192032000137349
+UR  - https://www.tandfonline.com/doi/abs/10.1080/0141192032000137349
+KW  - 자극회상 면담
+KW  - 내성적 절차
+KW  - 의사결정 과정
+KW  - 사후 재구성 위험
+KW  - 회상의 즉시성
+N1  - 연구 서고 J-06 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Braun, Virginia
+AU  - Clarke, Victoria
+TI  - Reflecting on reflexive thematic analysis
+T2  - Qualitative Research in Sport, Exercise and Health
+PY  - 2019
+DA  - 2019/06/13
+PB  - Informa UK Limited
+SP  - 589
+EP  - 597
+DO  - 10.1080/2159676X.2019.1628806
+UR  - https://www.tandfonline.com/doi/full/10.1080/2159676X.2019.1628806
+KW  - 반성적 주제분석
+KW  - 코드북·신뢰도 접근 구분
+KW  - 공유된 의미 패턴
+KW  - 영역 요약 경계
+KW  - 연구자 반성성
+N1  - 연구 서고 J-07 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Yu, Sen-Chi
+AU  - Liu, An-Chia
+AU  - Sheu, Hung-Bin
+TI  - Development and validation of the Generative AI Self-Efficacy Scale (GAI-SES): psychometric properties, gender differences, and well-being associations
+T2  - AI & Society
+PY  - 2026
+DA  - 2026/02/07
+PB  - Springer Science and Business Media LLC
+SP  - 6077
+EP  - 6087
+DO  - 10.1007/s00146-026-02895-0
+UR  - https://link.springer.com/article/10.1007/s00146-026-02895-0
+KW  - 생성형 AI 자기효능감
+KW  - GAI-SES
+KW  - 척도 타당화
+KW  - 과제 자기효능감
+KW  - 사회적 자기효능감
+N1  - 연구 서고 J-08 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Korkmaz, Özgen
+AU  - Çakir, Recep
+AU  - Özden, M. Yaşar
+TI  - A validity and reliability study of the computational thinking scales (CTS)
+T2  - Computers in Human Behavior
+PY  - 2017
+DA  - 2017/07
+PB  - Elsevier BV
+SP  - 558
+EP  - 569
+DO  - 10.1016/j.chb.2017.01.005
+UR  - https://openaccess.amasya.edu.tr/xmlui/handle/20.500.12450/1041
+KW  - 컴퓨팅 사고 척도(CTS)
+KW  - 알고리즘적 사고
+KW  - 문제해결·비판적 사고
+KW  - 창의성·협력
+KW  - 자기보고 척도
+N1  - 연구 서고 J-09 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Carolus, Astrid
+AU  - Koch, Martin J.
+AU  - Straka, Samantha
+AU  - Latoschik, Marc Erich
+AU  - Wienrich, Carolin
+TI  - MAILS - Meta AI literacy scale: Development and testing of an AI literacy questionnaire based on well-founded competency models and psychological change- and meta-competencies
+T2  - Computers in Human Behavior: Artificial Humans
+PY  - 2023
+DA  - 2023/08
+PB  - Elsevier BV
+SP  - 100014
+DO  - 10.1016/j.chbah.2023.100014
+UR  - https://www.sciencedirect.com/science/article/pii/S2949882123000142
+KW  - 메타 AI 리터러시(MAILS)
+KW  - AI 문제해결 효능감
+KW  - AI 학습 효능감
+KW  - 모듈형 척도
+KW  - 자기보고 설문
+N1  - 연구 서고 J-10 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - Kaya, Ismet
+AU  - Meylani, Rusen
+TI  - AI literacy for self-regulated learning among pre-service teachers: development and validation of a scale of ethical use, monitoring, motivation, regulation, and evaluation
+T2  - Frontiers in Psychology
+PY  - 2026
+DA  - 2026/08/27
+PB  - Frontiers Media SA
+SP  - 1948694
+DO  - 10.3389/fpsyg.2026.1948694
+UR  - https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1948694/full
+KW  - 자기조절 AI 리터러시
+KW  - 비판적 평가
+KW  - 이해·학습상태 점검
+KW  - 예비교사
+KW  - 척도 타당화
+N1  - 연구 서고 J-11 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - 김, 성원
+AU  - 이, 영준
+TI  - 한국 중학생의 컴퓨팅 사고력 분석
+T2  - 한국컴퓨터정보학회논문지
+PY  - 2020
+DA  - 2020/05
+PB  - 한국컴퓨터정보학회
+SP  - 229
+EP  - 241
+DO  - 10.9708/jksci.2020.25.05.229
+UR  - https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART002588864
+KW  - 컴퓨팅 사고력
+KW  - 척도 재구성
+KW  - 한국 중학생
+KW  - 탐색적 요인분석
+KW  - 자기보고 설문
+N1  - 연구 서고 J-12 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - BOOK
+AU  - Miao, Fengchun
+AU  - Holmes, Wayne
+TI  - Guidance for generative AI in education and research
+PY  - 2023
+DA  - 2023/09/07
+PB  - UNESCO
+DO  - 10.54675/EWZM9535
+UR  - https://unesdoc.unesco.org/ark:/48223/pf0000386693
+KW  - 생성형 AI 지침
+KW  - 인간 중심 접근
+KW  - 학습자 행위주체성
+KW  - 오류 인식 한계
+KW  - UNESCO
+N1  - 연구 서고 H-01 · 정책 보고서 · 책임 있는 AI·거버넌스
+ER  - 
+
+TY  - BOOK
+AU  - Miao, Fengchun
+AU  - Shiohira, Kelly
+AU  - Lao, Natalie
+TI  - AI competency framework for students
+PY  - 2024
+DA  - 2024/09/02
+PB  - UNESCO
+DO  - 10.54675/JKJB9835
+UR  - https://unesdoc.unesco.org/ark:/48223/pf0000391105
+KW  - 학생 AI 역량 프레임워크
+KW  - 인간 중심 마인드셋
+KW  - AI 윤리·시스템 설계
+KW  - 이해·적용·창조
+KW  - 능동적 의사결정자
+N1  - 연구 서고 A-04 · 정책 보고서 · AI 리터러시·윤리
+ER  - 
