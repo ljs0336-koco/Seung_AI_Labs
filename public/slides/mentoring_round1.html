@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026 CODE · 1차 온라인 멘토링 워크숍 보드 (구일고 0.91 · 하동옥종고 OKXEN)</title>
+  <meta name="description" content="사전 준비사항 요약, 오늘 함께 정할 핵심 선택지, 합성 더미데이터 시각표, 오늘의 결정 메모 및 1차 일지 생성기" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #FBF9F5;
+      --paper-2: #F5F3EF;
+      --paper-3: #EFECE6;
+      --card: #FFFFFF;
+      --ink: #1B1C1A;
+      --ink-2: #3F3E3B;
+      --muted: #56534E;
+      --faint: #8A857E;
+      --hairline: rgba(27, 28, 26, 0.11);
+      --hairline-strong: rgba(27, 28, 26, 0.22);
+
+      --accent: #A23E18;
+      --accent-soft: #F9EBE4;
+      --amber: #B45309;
+      --amber-soft: #FEF3C7;
+      --green: #15803D;
+      --green-soft: #DCFCE7;
+      --blue: #1D4ED8;
+      --blue-soft: #DBEAFE;
+      --purple: #6D28D9;
+      --purple-soft: #EDE9FE;
+      --rose: #BE123C;
+      --rose-soft: #FFE4E6;
+
+      --serif: 'Noto Serif KR', Georgia, serif;
+      --sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-card: 0 2px 6px rgba(27, 28, 26, 0.04), 0 12px 28px -10px rgba(27, 28, 26, 0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+    }
+
+    /* Top Bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 249, 245, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .topbar-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+    .brand-badge {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.22rem 0.55rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+    .nav-links a:hover {
+      color: var(--ink);
+      background: var(--paper-3);
+    }
+    .nav-links a.nav-portal {
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-weight: 700;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F6F3EC 100%);
+      border: 1px solid var(--hairline-strong);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+    .pill-accent { background: var(--accent-soft); color: var(--accent); }
+    .pill-green { background: var(--green-soft); color: var(--green); }
+    .pill-blue { background: var(--blue-soft); color: var(--blue); }
+    .pill-amber { background: var(--amber-soft); color: var(--amber); }
+    .pill-purple { background: var(--purple-soft); color: var(--purple); }
+    .pill-rose { background: var(--rose-soft); color: var(--rose); }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.55rem;
+    }
+    .hero-sub {
+      color: var(--ink-2);
+      font-size: 0.96rem;
+      max-width: 920px;
+    }
+
+    /* 25-min Progress Bar */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--hairline-strong);
+    }
+    .flow-step {
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.95rem;
+    }
+    .flow-step-time {
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .flow-step-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 0.15rem;
+    }
+    .flow-step-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Team Switcher */
+    .team-switcher {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+      background: var(--paper-2);
+      padding: 0.55rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--hairline);
+    }
+    .team-tab {
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--ink-2);
+      padding: 0.85rem 1.1rem;
+      border-radius: 9px;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+    .team-tab:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+    .team-tab.active {
+      background: var(--card);
+      color: var(--ink);
+      border-color: var(--hairline-strong);
+      box-shadow: 0 2px 8px rgba(27, 28, 26, 0.06);
+    }
+    .team-tab-meta {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      background: var(--paper-3);
+      color: var(--muted);
+    }
+    .team-tab.active .team-tab-meta {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* Section Header */
+    .section-block {
+      margin-bottom: 2.5rem;
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--ink);
+    }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .section-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Grid & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.45rem;
+      box-shadow: var(--shadow-card);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    /* Pre-survey table */
+    .survey-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    .survey-table th,
+    .survey-table td {
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--hairline);
+      text-align: left;
+      vertical-align: top;
+    }
+    .survey-table th {
+      width: 135px;
+      font-weight: 700;
+      color: var(--ink-2);
+      background: var(--paper-2);
+      font-size: 0.8rem;
+    }
+    .survey-table tr:last-child th,
+    .survey-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Interactive Question / Choice Cards */
+    .choice-box {
+      background: var(--paper);
+      border: 1px solid var(--hairline-strong);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      margin-top: 0.85rem;
+    }
+    .choice-box-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .choice-box-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .choice-chip {
+      border: 1px solid var(--hairline-strong);
+      background: var(--card);
+      color: var(--ink-2);
+      padding: 0.42rem 0.75rem;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.81rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .choice-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .choice-chip.selected {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    /* Q&A Accordion / Cards for Okjong */
+    .qa-card {
+      background: var(--paper-2);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.7rem;
+    }
+    .qa-q {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .qa-a {
+      font-size: 0.83rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    /* Dummy Data Tables */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .kpi-mini {
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 0.7rem 0.85rem;
+    }
+    .kpi-mini-label {
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .kpi-mini-val {
+      font-family: var(--mono);
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-top: 0.15rem;
+    }
+    .kpi-mini-sub {
+      font-size: 0.72rem;
+      color: var(--faint);
+      margin-top: 0.1rem;
+    }
+
+    .data-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      background: var(--card);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.81rem;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid var(--hairline);
+      text-align: left;
+      vertical-align: middle;
+    }
+    .data-table th {
+      background: var(--paper-2);
+      font-weight: 700;
+      color: var(--ink-2);
+      font-size: 0.76rem;
+      white-space: nowrap;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .mono { font-family: var(--mono); }
+    .num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+
+    /* Interactive Memo Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink-2);
+    }
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      border: 1px solid var(--hairline-strong);
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .form-textarea {
+      min-height: 76px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #FFFFFF;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+    .btn {
+      border: 1px solid var(--hairline-strong);
+      background: var(--card);
+      color: var(--ink);
+      padding: 0.55rem 0.95rem;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.83rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--paper-3);
+    }
+    .btn-primary {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    .btn-primary:hover {
+      background: #333531;
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+    .btn-accent:hover {
+      background: #8B3312;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.75rem 1.15rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: all 0.2s ease;
+      z-index: 100;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-team-panel] {
+      display: block;
+    }
+    body[data-active-team="091"] [data-team-panel="OKXEN"] {
+      display: none !important;
+    }
+    body[data-active-team="OKXEN"] [data-team-panel="091"] {
+      display: none !important;
+    }
+    body[data-active-team="091"] .grid-2.team-split,
+    body[data-active-team="OKXEN"] .grid-2.team-split {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 980px) {
+      .flow-steps, .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .grid-3, .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-active-team="ALL">
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-badge">CODE 2026 · ROUND 1</span>
+        <span>1차 온라인 멘토링 워크숍 보드 (Zoom 화면공유용)</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../" class="nav-portal">← 메인 포털</a>
+        <a href="#sec-survey">1. 사전 작성 & 오늘의 선택</a>
+        <a href="#sec-dummy">2. 더미데이터 시각표</a>
+        <a href="#sec-memo">3. 오늘의 결정 메모 & 일지 복사</a>
+        <a href="./masterplan.html">마스터플랜 v1.3 ↗</a>
+        <a href="./operations_desk.html">운영 데스크 ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span class="pill pill-accent">2026. 10. 19.(월) 1차 온라인 멘토링</span>
+        <span class="pill pill-green">구일고 0.91 · 15:20 Zoom</span>
+        <span class="pill pill-blue">하동옥종고 OKXEN · 21:00 Zoom</span>
+        <span class="pill pill-amber">학생 친화형 공동 설계 보드 (개인정보 0건)</span>
+      </div>
+      <h1>우리 팀 아이디어로 첫 버전(v1) 설계도 함께 완성하기</h1>
+      <p class="hero-sub">
+        사전 준비사항 시트에 여러분이 적어준 아이디어를 바탕으로, <strong>오늘 함께 결정할 핵심 질문</strong>과 <strong>바로 실험해 볼 수 있는 합성 더미데이터</strong>를 준비했어요. 화면의 선택 버튼을 함께 고르면 맨 아래 <strong>「오늘의 결정 메모」</strong>가 자동으로 채워집니다!
+      </p>
+
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-time">STEP 1 · 00~05분</div>
+          <div class="flow-step-title">반가운 인사 & 일정 확인</div>
+          <div class="flow-step-desc">10/14 전달된 기본 앱(v0) 확인 · 10/29(목) 우리 팀 v1 제출 · 10/31~11/1 화성 라비돌 통합멘토링 안내</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-time">STEP 2 · 05~12분</div>
+          <div class="flow-step-title">사전 작성표 & 현재 화면 보기</div>
+          <div class="flow-step-desc">여러분이 작성한 1~8번 아이디어 확인 · (옥종고) 지금 만들어 본 Godot/API 실험 화면 2분 함께 보기</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-time">STEP 3 · 12~20분</div>
+          <div class="flow-step-title">핵심 흐름 & 더미데이터 선택</div>
+          <div class="flow-step-desc">모의 지갑↔저축통 이체 규칙(구일고) · 버디 기억 승인/응용 시험 및 Godot 1단원 작은 시도(옥종고) 합의</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-time">STEP 4 · 20~25분+</div>
+          <div class="flow-step-title">다음 주 역할 분담 & 캡처</div>
+          <div class="flow-step-desc">10/29까지 팀원 3명이 하나씩 해 볼 작은 목표 3개 메모 · Zoom 기념 화면 캡처 2장 촬영</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- School Switcher -->
+    <div class="team-switcher" role="tablist" aria-label="학교별 워크숍 화면 전환">
+      <button type="button" class="team-tab active" onclick="setTeamView('ALL', this)">
+        <span>✨ 두 팀 한눈에 보기 (전체)</span>
+        <span class="team-tab-meta">0.91 + OKXEN</span>
+      </button>
+      <button type="button" class="team-tab" onclick="setTeamView('091', this)">
+        <span>🐿️ 구일고 0.91 · 돈구리</span>
+        <span class="team-tab-meta">10/19 15:20 Zoom</span>
+      </button>
+      <button type="button" class="team-tab" onclick="setTeamView('OKXEN', this)">
+        <span>🦉 하동옥종고 OKXEN · STUDY-BUDDY</span>
+        <span class="team-tab-meta">10/19 21:00 Zoom</span>
+      </button>
+    </div>
+
+    <!-- =========================================================
+         SECTION 1: 사전 준비사항 요약 & 오늘 함께 정할 핵심 질문·선택지
+         ========================================================= -->
+    <section id="sec-survey" class="section-block">
+      <div class="section-head">
+        <div>
+          <span class="section-num">SECTION 01 · PRE-SURVEY & TODAY'S CHOICES</span>
+          <h2 class="section-title">학생 사전 작성 요약 & 오늘 함께 정할 핵심 선택지</h2>
+        </div>
+        <p class="section-desc">선택지 칩(버튼)을 클릭하면 하단 「오늘의 결정 메모」에 자동으로 반영됩니다.</p>
+      </div>
+
+      <div class="grid-2 team-split">
+
+        <!-- 구일고 0.91 카드 -->
+        <article class="card" data-team-panel="091">
+          <div class="card-header">
+            <div class="card-title">🐿️ 구일고 <span class="mono">0.91</span> · 『돈구리』 사전 작성 요약</div>
+            <span class="pill pill-green">1~5번 작성 완료 · 6~8번 오늘 함께 결정</span>
+          </div>
+
+          <table class="survey-table">
+            <tbody>
+              <tr>
+                <th>1. 누구를 위한 앱인가요?</th>
+                <td>돈 관리를 원하고 목표 물품이 있는데 쉽게 이루지 못하는 <strong>10~20대 청소년·청년</strong></td>
+              </tr>
+              <tr>
+                <th>2. 첫 버전 필수 기능</th>
+                <td>
+                  ① <strong>"(N원만큼) 저축할게요" 버튼</strong>을 누르면 바로 돈이 빠져나가 목표 물품을 위해 저축되는 기능<br/>
+                  ② <strong>"퀴즈 확인하기(오답 확인)" 버튼</strong>으로 틀린 문제를 다시 확인하는 기능
+                </td>
+              </tr>
+              <tr>
+                <th>3. 이용 흐름</th>
+                <td>퀴즈 · 출석 · 경제 활동 작성 → <strong>AI 분석/피드백</strong> → 도토리 포인트 → <strong>캐릭터 보상</strong> → 지속적인 이용</td>
+              </tr>
+              <tr>
+                <th>4·5. 디자인 & 강조점</th>
+                <td>
+                  • <strong>듀오링고</strong>처럼 필요한 핵심 기능만 깔끔하고 친근하게 배치<br/>
+                  • <strong>캐릭터 상점 강조!</strong> "이 캐릭터/아이템을 얻고 싶다"는 수집·꾸미기 욕구로 저축 습관 유지
+                </td>
+              </tr>
+              <tr>
+                <th>6~8. 오늘 채울 칸</th>
+                <td>💬 <strong>AI 코치의 한마디 역할</strong> · <strong>모의 지갑/도토리 저장 데이터</strong> · <strong>팀원 3명 역할 분담</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Interactive Choices for 0.91 -->
+          <div class="choice-box">
+            <div class="choice-box-title">
+              <span>Q1. '저축할게요' 버튼 이체 방식을 어떻게 만들까요?</span>
+              <span class="pill pill-amber">모의 지갑 → 목표 저축통</span>
+            </div>
+            <div class="choice-box-sub">실제 은행 계좌 대신 <strong>내 모의 지갑(가상 원화)에서 목표 저축통으로 돈이 바로 이동</strong>하게 만들어요!</div>
+            <div class="chip-group" data-choice-group="091-transfer">
+              <button type="button" class="choice-chip selected" onclick="selectChip('091', 'transfer', '금액 버튼(1,000원/5,000원/직접입력) 클릭 시 모의 지갑에서 목표 저축통으로 즉시 이체', this)">① 금액 버튼 클릭 즉시 이체 (추천)</button>
+              <button type="button" class="choice-chip" onclick="selectChip('091', 'transfer', '저축할게요 클릭 후 이체 확인 팝업을 거쳐 목표 저축통으로 이체', this)">② 이체 확인 팝업 후 이체</button>
+              <button type="button" class="choice-chip" onclick="selectChip('091', 'transfer', '중간에 목표 물품·목표 금액 변경 가능하도록 허용', this)">③ 중간에 목표 물품 변경 허용</button>
+            </div>
+          </div>
+
+          <div class="choice-box">
+            <div class="choice-box-title">
+              <span>Q2. 가상 원화(원)와 도토리 포인트(개)는 어떻게 나눌까요?</span>
+              <span class="pill pill-green">원장 분리 원칙</span>
+            </div>
+            <div class="choice-box-sub">지갑에서 저축통으로 돈을 옮겨도 내 전체 현금은 그대로이고, <strong>도토리는 저축·퀴즈 성공 보상으로 따로 적립</strong>해요.</div>
+            <div class="chip-group" data-choice-group="091-currency">
+              <button type="button" class="choice-chip selected" onclick="selectChip('091', 'currency', '가상 원화(모의지갑↔저축통)와 도토리 포인트(상점 꾸미기 보상) 별도 원장 분리 + 중복 클릭 방지', this)">① 가상 원화 · 도토리 원장 완전 분리 (추천)</button>
+              <button type="button" class="choice-chip" onclick="selectChip('091', 'currency', '일일 첫 저축(+5 도토리) 및 목표 달성(+20 도토리) 시 보너스 지급', this)">② 첫 저축·목표 달성 보너스 도토리 강조</button>
+            </div>
+          </div>
+
+          <div class="choice-box">
+            <div class="choice-box-title">
+              <span>Q3. 퀴즈 오답 확인 & AI 코치 한마디는 무엇을 강조할까요?</span>
+              <span class="pill pill-blue">문항 2-② · 6번 확정</span>
+            </div>
+            <div class="chip-group" data-choice-group="091-quizcoach">
+              <button type="button" class="choice-chip selected" onclick="selectChip('091', 'quizcoach', '오답 선택 시 즉시 왜 틀렸는지 해설 + 내 소비/저축 기록 연결 피드백 + 다시 풀기 버튼', this)">① 즉시 오답 해설 + 내 기록 연결 + 다시 풀기 (추천)</button>
+              <button type="button" class="choice-chip" onclick="selectChip('091', 'quizcoach', '틀린 문제만 따로 모아 보는 오답노트 칸 추가', this)">② 틀린 문제 모아보기(오답노트) 추가</button>
+              <button type="button" class="choice-chip" onclick="selectChip('091', 'quizcoach', 'AI 코치: 오늘 추천 한도 역산 + 지출 습관 응원 피드백 우선 표시', this)">③ AI 코치: 하루 추천 한도 + 습관 피드백</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 하동옥종고 OKXEN 카드 -->
+        <article class="card" data-team-panel="OKXEN">
+          <div class="card-header">
+            <div class="card-title">🦉 하동옥종고 <span class="mono">OKXEN</span> · 『STUDY-BUDDY』 사전 작성 요약</div>
+            <span class="pill pill-blue">1~8번 전 문항 상세 작성 완료!</span>
+          </div>
+
+          <table class="survey-table">
+            <tbody>
+              <tr>
+                <th>1·2. 핵심 3단계</th>
+                <td>
+                  <strong>① 버디 학습시키기(가장 중요!)</strong> → <strong>② 배운 내용 기억하게 하기</strong> → <strong>③ 기억한 내용 응용·시험하기</strong>
+                </td>
+              </tr>
+              <tr>
+                <th>3. 이용 흐름</th>
+                <td><code>(가르치기 → 질문 받기 → 대답하기)</code> (하루 최대 1시간) → <strong>'AI 복습시키기' 버튼으로 완전기억</strong> → <strong>며칠 주기로 시험</strong> (주기 설정 가능)</td>
+              </tr>
+              <tr>
+                <th>4·5. 참고 앱 & 연출</th>
+                <td>
+                  • <strong>듀오링고 · GPAI · Thetawave</strong> 참고<br/>
+                  • 과도한 리액션은 빼고, <strong>캐릭터가 자연스럽게 움직이며 모르는 부분을 되묻는 연출</strong> 희망
+                </td>
+              </tr>
+              <tr>
+                <th>8. 개발 환경 고민</th>
+                <td>
+                  • <strong>Godot 4 (GDScript / C# 고민)</strong> + <strong>OpenRouter API 키</strong>로 잠가두고 배울 때 열리는 기초 테스트 중<br/>
+                  • <strong>궁금한 점 3가지:</strong> ① RNN처럼 마스크 vs 프롬프트? ② 같은 <code>seed</code> 유지 필요? ③ 시험 시 검증 방법?
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Technical Q&A Box for OKXEN -->
+          <div style="margin-top: 0.9rem;">
+            <div class="qa-card">
+              <div class="qa-q">💡 질문 1. "안 배운 내용을 잠가두려면 RNN처럼 마스크를 씌워야 하나요, 프롬프트로 해야 하나요?"</div>
+              <div class="qa-a">
+                신경망 가중치 마스킹이 아니라 <strong>「개념 상태 잠금표(JSON) + 프롬프트 지식 범위 제한」</strong>으로 구현합니다! 특히 학생이 잘못된 설명을 했을 때 버디가 그대로 외우지 않도록 <strong>검증을 통과한 문장(<code>SIM-MEM-01</code>)만 승인·저장</strong>하고, 오개념 후보(<code>SIM-MEM-02</code>)는 거절 후 다시 질문하게 만들면 완벽합니다.
+              </div>
+            </div>
+            <div class="qa-card">
+              <div class="qa-q">💡 질문 2. "AI가 배운 걸 유지하려면 같은 시드(seed)로 계속 해야 하나요?"</div>
+              <div class="qa-a">
+                <strong><code>seed</code>는 기억 유지와 무관합니다!</strong> <code>seed</code>는 같은 입력에 대한 출력 흔들림만 줄여줄 뿐 이전 대화를 저장하지 않아요. 버디가 다음 실행에서도 기억하려면 <strong>승인된 기억 목록(<code>approved_memories</code> JSON)을 파일/저장소에 기록해 두고 다음 대화와 시험에 다시 불러와야 합니다.</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Choices for OKXEN -->
+          <div class="choice-box">
+            <div class="choice-box-title">
+              <span>Q1. 주기적 시험에서 '누가' 시험을 보나요? (기존 복습 퀴즈와의 차이 확인!)</span>
+              <span class="pill pill-purple">핵심 차별점</span>
+            </div>
+            <div class="choice-box-sub">학생이 문제를 푸는 일반 문제집 앱과 달리, <strong>내가 가르친 만큼 버디가 달라지는 모습</strong>을 어떻게 보여줄지 골라보세요.</div>
+            <div class="chip-group" data-choice-group="OKXEN-exam">
+              <button type="button" class="choice-chip selected" onclick="selectChip('OKXEN', 'exam', '버디가 승인된 기억(SIM-MEM)만 사용해 새 문제를 풀고, 학생이 버디의 풀이를 채점·검증하기', this)">① 버디가 시험 문제를 풀고 학생이 채점하기 (추천)</button>
+              <button type="button" class="choice-chip" onclick="selectChip('OKXEN', 'exam', '1단계는 버디가 새 문제 풀기(학생 채점) + 2단계는 학생도 취약 개념 복습 퀴즈 풀기 결합', this)">② 버디 풀이 채점 + 학생 복습 시험 둘 다 하기</button>
+              <button type="button" class="choice-chip" onclick="selectChip('OKXEN', 'exam', '학생이 주기적으로 복습 시험을 풀어 완전기억으로 올리기', this)">③ 학생이 주기적 복습 시험 풀기</button>
+            </div>
+          </div>
+
+          <div class="choice-box">
+            <div class="choice-box-title">
+              <span>Q2. Godot 4 개발 환경, 다음 주까지 '작은 시도'로 먼저 검증해 볼까요?</span>
+              <span class="pill pill-blue">개발자 멘토 지원 가능</span>
+            </div>
+            <div class="choice-box-sub">Godot 4를 바로 포기하지 않고, <strong>한 단원(예: 일차함수)에서 입력·반응·로컬 저장</strong>이 되는지 작은 시도로 먼저 확인해요!</div>
+            <div class="chip-group" data-choice-group="OKXEN-platform">
+              <button type="button" class="choice-chip selected" onclick="selectChip('OKXEN', 'platform', 'Godot 4 (GDScript 단일, C# 제외)로 1개 단원 [입력→버디 반응→로컬 JSON 저장·복원→고정 응답] 작은 시도 진행 + 개발자 멘토 지원 연계', this)">① Godot 4 (GDScript) 1단원 작은 시도 + 개발자 멘토 지원 (추천)</button>
+              <button type="button" class="choice-chip" onclick="selectChip('OKXEN', 'platform', '공통 JSON(STUDYBUDDY_학습기록.json)을 공유하며 Godot 4 화면과 웹 프로토타입(v0) 병행 비교 후 결정', this)">② 공통 JSON 기반 Godot 4 + 웹 프로토타입 병행 비교</button>
+              <button type="button" class="choice-chip" onclick="selectChip('OKXEN', 'platform', '웹 프로토타입(v0) 위에서 OpenRouter 프롬프트·개념 잠금 실험 결합', this)">③ 웹 프로토타입(v0) 중심으로 빠른 결합</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2: 미팅 설계용 합성 더미데이터 시각표
+         ========================================================= -->
+    <section id="sec-dummy" class="section-block">
+      <div class="section-head">
+        <div>
+          <span class="section-num">SECTION 02 · SYNTHETIC DUMMY DATA TABLES</span>
+          <h2 class="section-title">미팅 설계용 합성 더미데이터 시각표 (계산·참조·개인정보 검증 완료)</h2>
+        </div>
+        <p class="section-desc">실제 학생 정보가 아닌 <code>SIM-</code> 접두어 기반 가상 데이터로, 오늘 합의한 규칙이 실제로 어떻게 돌아가는지 바로 확인합니다.</p>
+      </div>
+
+      <div class="grid-2 team-split">
+
+        <!-- 구일고 더미데이터 시각표 -->
+        <article class="card" data-team-panel="091">
+          <div class="card-header">
+            <div class="card-title">🐿️ 『돈구리』 모의 지갑 & 도토리 분리 원장 (<span class="mono">돈구리_모의지갑.json</span>)</div>
+            <span class="pill pill-green">10건 거래 · 5건 도토리 검증 통과</span>
+          </div>
+
+          <div class="kpi-strip">
+            <div class="kpi-mini">
+              <div class="kpi-mini-label">주 지갑 (SIM-WALLET-A)</div>
+              <div class="kpi-mini-val">50,000 → 44,000원</div>
+              <div class="kpi-mini-sub">일상 용돈·지출·저축 출금</div>
+            </div>
+            <div class="kpi-mini">
+              <div class="kpi-mini-label">보조 지갑 (SIM-WALLET-B)</div>
+              <div class="kpi-mini-val">20,000 → 16,000원</div>
+              <div class="kpi-mini-sub">준비물·비상금 분리 보관</div>
+            </div>
+            <div class="kpi-mini">
+              <div class="kpi-mini-label">목표 저축통 (SIM-JAR-A)</div>
+              <div class="kpi-mini-val" style="color:var(--green);">10,000 → 23,000원</div>
+              <div class="kpi-mini-sub">🎯 무선 이어폰(23,000원) 달성!</div>
+            </div>
+            <div class="kpi-mini">
+              <div class="kpi-mini-label">도토리 포인트 (별도 원장)</div>
+              <div class="kpi-mini-val" style="color:var(--amber);">20 → 55개</div>
+              <div class="kpi-mini-sub">현금(총 83,000원)과 완전 분리</div>
+            </div>
+          </div>
+
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:0.65rem;">
+            📌 <strong>핵심 포인트:</strong> <code>저축 이체(E03, E10)</code>를 해도 내 <strong>전체 보유 현금(주 지갑+보조 지갑+저축통)은 변하지 않고</strong>, 잔액 부족(<code>E05</code>)·중복 클릭(<code>E06</code>)·중복 취소(<code>E09</code>)를 안전하게 막아줍니다.
+          </p>
+
+          <div class="data-table-wrap" style="margin-bottom: 1rem;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>순서 / ID</th>
+                  <th>유형</th>
+                  <th class="num">금액(원)</th>
+                  <th>결과 상태</th>
+                  <th class="num">주 지갑</th>
+                  <th class="num">보조 지갑</th>
+                  <th class="num">목표 저축통</th>
+                  <th>설계 확인 포인트</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono">0. 시작</td>
+                  <td>초기 잔액</td>
+                  <td class="num">-</td>
+                  <td><span class="pill pill-green">기준</span></td>
+                  <td class="num">50,000</td>
+                  <td class="num">20,000</td>
+                  <td class="num">10,000</td>
+                  <td>총 보유 현금 <strong>80,000원</strong></td>
+                </tr>
+                <tr>
+                  <td class="mono">E01 · E02</td>
+                  <td>주간 용돈 / 간식 지출</td>
+                  <td class="num">+10,000 / -3,000</td>
+                  <td><span class="pill pill-green">applied</span></td>
+                  <td class="num">57,000</td>
+                  <td class="num">20,000</td>
+                  <td class="num">10,000</td>
+                  <td>용돈 입금 후 분식점 지출 반영 (총 87,000원)</td>
+                </tr>
+                <tr style="background: #F0FDF4;">
+                  <td class="mono"><strong>E03</strong></td>
+                  <td><strong>'저축할게요' 이체</strong></td>
+                  <td class="num"><strong>5,000</strong></td>
+                  <td><span class="pill pill-green">applied</span></td>
+                  <td class="num"><strong>52,000</strong></td>
+                  <td class="num">20,000</td>
+                  <td class="num"><strong>15,000</strong></td>
+                  <td>주 지갑 → 저축통 이동 (총 현금 87,000원 유지!)</td>
+                </tr>
+                <tr>
+                  <td class="mono">E04</td>
+                  <td>보조 지갑 이동</td>
+                  <td class="num">7,000</td>
+                  <td><span class="pill pill-green">applied</span></td>
+                  <td class="num">45,000</td>
+                  <td class="num">27,000</td>
+                  <td class="num">15,000</td>
+                  <td>준비물 예산 분리 보관</td>
+                </tr>
+                <tr style="background: #FFF1F2;">
+                  <td class="mono"><strong>E05</strong></td>
+                  <td>과도한 저축 시도</td>
+                  <td class="num">50,000</td>
+                  <td><span class="pill pill-rose">rejected</span></td>
+                  <td class="num">45,000</td>
+                  <td class="num">27,000</td>
+                  <td class="num">15,000</td>
+                  <td>주 지갑 잔액(45,000원) 부족 → <strong>잔액 불변</strong></td>
+                </tr>
+                <tr style="background: #FEF3C7;">
+                  <td class="mono"><strong>E06</strong></td>
+                  <td>저축 버튼 두 번 클릭</td>
+                  <td class="num">5,000</td>
+                  <td><span class="pill pill-amber">duplicate</span></td>
+                  <td class="num">45,000</td>
+                  <td class="num">27,000</td>
+                  <td class="num">15,000</td>
+                  <td>같은 <code>request_id(REQ-103)</code> 중복 차단!</td>
+                </tr>
+                <tr>
+                  <td class="mono">E07 · E08 · E09</td>
+                  <td>준비물 지출 / 이동 취소</td>
+                  <td class="num">-4,000 / +7,000</td>
+                  <td><span class="pill pill-blue">reverse</span></td>
+                  <td class="num">52,000</td>
+                  <td class="num">16,000</td>
+                  <td class="num">15,000</td>
+                  <td>취소는 삭제 대신 <strong>반대 거래(E08)</strong> 기록, 중복 취소(E09) 거절</td>
+                </tr>
+                <tr style="background: #F0FDF4;">
+                  <td class="mono"><strong>E10</strong></td>
+                  <td><strong>목표 달성 마무리 저축</strong></td>
+                  <td class="num"><strong>8,000</strong></td>
+                  <td><span class="pill pill-green">applied</span></td>
+                  <td class="num"><strong>44,000</strong></td>
+                  <td class="num">16,000</td>
+                  <td class="num"><strong>23,000</strong></td>
+                  <td>🎉 <strong>목표 금액 23,000원 달성!</strong> (총 현금 83,000원)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 도토리 원장 미니 표 -->
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>도토리 원장 ID</th>
+                  <th>보상 사유 (가상 원화와 별도 관리)</th>
+                  <th class="num">변동</th>
+                  <th>상태</th>
+                  <th class="num">도토리 잔액</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono">SIM-ACORN-01</td>
+                  <td>금융 퀴즈 Q01 최초 정답 보상</td>
+                  <td class="num">+10개</td>
+                  <td><span class="pill pill-green">applied</span></td>
+                  <td class="num">30개</td>
+                </tr>
+                <tr>
+                  <td class="mono">SIM-ACORN-02 · 03</td>
+                  <td>일일 첫 저축 성공 보상 (+5개) / 같은 날 중복 요청 차단 (+0개)</td>
+                  <td class="num">+5개 / 0개</td>
+                  <td><span class="pill pill-amber">duplicate 차단</span></td>
+                  <td class="num">35개</td>
+                </tr>
+                <tr>
+                  <td class="mono">SIM-ACORN-04 · 05</td>
+                  <td>목표 저축통 최초 달성 보상 (+20개) / 중복 달성 요청 차단 (+0개)</td>
+                  <td class="num">+20개 / 0개</td>
+                  <td><span class="pill pill-green">최종 55개</span></td>
+                  <td class="num"><strong>55개</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- 하동옥종고 더미데이터 시각표 -->
+        <article class="card" data-team-panel="OKXEN">
+          <div class="card-header">
+            <div class="card-title">🦉 『STUDY-BUDDY』 가상 학습자 3명 & 승인 기억 게이트 (<span class="mono">STUDYBUDDY_학습기록.json</span>)</div>
+            <span class="pill pill-blue">단원: 수학 일차함수 (기울기·y절편·x절편)</span>
+          </div>
+
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:0.65rem;">
+            📌 <strong>핵심 포인트 1 (가상 학습자 A·B·C):</strong> 성적표가 있는 학생뿐 아니라 <strong>성적을 입력하지 않은 학생(C)도 바로 버디 가르치기를 시작</strong>할 수 있고, 문항 수가 1개뿐인 개념(B의 x절편)은 성급히 판정하지 않고 <strong>판단 보류(<code>insufficient_sample</code>)</strong>로 처리합니다.
+          </p>
+
+          <div class="data-table-wrap" style="margin-bottom: 1rem;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>가상 학습자</th>
+                  <th>시험지 점수</th>
+                  <th>기울기</th>
+                  <th>y절편</th>
+                  <th>x절편</th>
+                  <th>학생 설명 및 버디 반응 흐름</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>가상 학습자 A</strong><br/><span class="mono" style="font-size:0.73rem;">SIM-STU-A</span></td>
+                  <td class="mono">기초 30 / 60점</td>
+                  <td><span class="pill pill-green">sufficient (20/20)</span></td>
+                  <td><span class="pill pill-amber">복습 후보 (10/20)</span></td>
+                  <td><span class="pill pill-rose">복습 후보 (0/20)</span></td>
+                  <td>"y=2x+3에서 y절편은 3(사실 확인), <strong>x절편도 3(오개념 후보!)</strong>" → 버디가 <code>y=0</code>을 대입해 보라고 역질문</td>
+                </tr>
+                <tr>
+                  <td><strong>가상 학습자 B</strong><br/><span class="mono" style="font-size:0.73rem;">SIM-STU-B</span></td>
+                  <td class="mono">확장 10 / 25점</td>
+                  <td><span class="pill pill-rose">복습 후보 (0/10)</span></td>
+                  <td><span class="pill pill-green">sufficient (10/10)</span></td>
+                  <td><span class="pill pill-purple">보류 (0/5 · 1문항)</span></td>
+                  <td><strong>x절편은 1문항뿐이라 판단 보류(<code>insufficient_sample</code>)</strong> · 기울기 부호 오류를 버디가 먼저 질문</td>
+                </tr>
+                <tr style="background:#EFF6FF;">
+                  <td><strong>가상 학습자 C</strong><br/><span class="mono" style="font-size:0.73rem;">SIM-STU-C</span></td>
+                  <td class="mono">성적 미입력 (null)</td>
+                  <td><span class="pill pill-blue">unknown</span></td>
+                  <td><span class="pill pill-blue">unknown</span></td>
+                  <td><span class="pill pill-blue">unknown</span></td>
+                  <td><strong>성적 입력 없이 바로 가르치기 시작!</strong> → 아래 <strong>승인 기억 게이트(SIM-MEM)</strong>로 이어짐</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:0.65rem;">
+            📌 <strong>핵심 포인트 2 (승인 기억 게이트 & 새 문제 응용):</strong> 학생이 가르친 내용 중 <strong>검증된 문장(<code>SIM-MEM-01</code>)만 저장(<code>saved: true</code>)</strong>하고, 다음 실행과 새 적용 문제(<code>SIM-APPLY-C</code>)에 반영합니다.
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>기억 후보 ID</th>
+                  <th>학생 설명에서 추출한 문장</th>
+                  <th>판정 상태</th>
+                  <th>저장 여부</th>
+                  <th>다음 실행 & 새 적용 문제(SIM-APPLY-C) 반영 결과</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#F0FDF4;">
+                  <td class="mono"><strong>SIM-MEM-01</strong></td>
+                  <td>"일차함수의 기울기는 x 변화량이 0이 아닐 때 y 변화량을 x 변화량으로 나눈 값이다."</td>
+                  <td><span class="pill pill-green">approved (승인)</span></td>
+                  <td class="mono"><strong>saved: true</strong></td>
+                  <td><strong>새 문제:</strong> <code>(0,3)과 (2,7)을 지나는 직선의 기울기는?</code><br/>👉 버디가 <code>SIM-MEM-01</code>을 불러와 <code>(7-3)/(2-0) = 2</code>로 정확히 풀이!</td>
+                </tr>
+                <tr style="background:#FFF1F2;">
+                  <td class="mono"><strong>SIM-MEM-02</strong></td>
+                  <td>"x절편은 항상 b다."</td>
+                  <td><span class="pill pill-rose">rejected (거절)</span></td>
+                  <td class="mono">saved: false</td>
+                  <td>y절편(<code>x=0</code>)과 혼동한 오개념! <strong>기억 저장 차단</strong> 후 "y=0일 때 x값을 다시 확인해 볼까요?" 질문</td>
+                </tr>
+                <tr style="background:#FEF3C7;">
+                  <td class="mono"><strong>SIM-MEM-03</strong></td>
+                  <td>"학습자가 일차함수를 완전히 숙달했다."</td>
+                  <td><span class="pill pill-amber">deferred (보류)</span></td>
+                  <td class="mono">saved: false</td>
+                  <td>한 번의 대화만으로 전체 단원 숙달로 과장하지 않도록 저장 보류</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3: 오늘의 결정 메모 & 1차 멘토링 일지 자동 생성기
+         ========================================================= -->
+    <section id="sec-memo" class="section-block">
+      <div class="section-head">
+        <div>
+          <span class="section-num">SECTION 03 · LIVE DECISION MEMO & LOG GENERATOR</span>
+          <h2 class="section-title">오늘의 결정 메모 & 1차 멘토링 일지 초안 (브라우저 자동 저장 · 원클릭 복사)</h2>
+        </div>
+        <p class="section-desc">미팅 중 함께 수정하면 브라우저(<code>localStorage</code>)에 자동 저장되며, 버튼 하나로 학생 공유용 메모와 활동일지 표를 복사할 수 있습니다.</p>
+      </div>
+
+      <div class="grid-2 team-split">
+
+        <!-- 구일고 결정 메모 폼 -->
+        <article class="card" data-team-panel="091">
+          <div class="card-header">
+            <div class="card-title">🐿️ 구일고 <span class="mono">0.91</span> · 오늘의 결정 메모</div>
+            <span class="pill pill-green">2026. 10. 19.(월) 15:20 Zoom</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label class="form-label" for="memo-091-transfer">1. '저축할게요' 이체 & 통화 분리 규칙</label>
+              <input id="memo-091-transfer" class="form-input" type="text" oninput="saveMemo('091')" value="금액 버튼 클릭 시 모의 지갑(SIM-WALLET-A)에서 목표 저축통(SIM-JAR-A)으로 즉시 이체 · 가상 원화(원)와 도토리 포인트(개) 별도 원장 분리" />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="memo-091-quizcoach">2. 퀴즈 오답 확인 & AI 코치 한마디</label>
+              <input id="memo-091-quizcoach" class="form-input" type="text" oninput="saveMemo('091')" value="오답 선택 시 즉시 해설 + 내 소비/저축 기록 연결 피드백 + 다시 풀기 버튼 제공 · AI 코치는 하루 추천 한도와 습관 응원 표시" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="memo-091-role1">3-① 팀장(AI 실현) 다음 주 작은 목표</label>
+              <input id="memo-091-role1" class="form-input" type="text" oninput="saveMemo('091')" value="모의지갑→저축통 이체 규칙(잔액부족·중복방지) 확인 및 AI 코치 응원 문구 다듬기" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="memo-091-role2">3-② 디자인 담당 다음 주 작은 목표</label>
+              <input id="memo-091-role2" class="form-input" type="text" oninput="saveMemo('091')" value="돈구리 캐릭터 표정 4종(기본·기쁨·응원·뿌듯) 및 상점 꾸미기 아이템 구상" />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="memo-091-role3">3-③ 글·발표 담당 다음 주 작은 목표</label>
+              <input id="memo-091-role3" class="form-input" type="text" oninput="saveMemo('091')" value="10~20대 눈높이 경제 퀴즈 5~10문항 및 오답 해설 문구 작성 (10/29 목 091_v1_1029.zip 제출)" />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="memo-091-note">4. 오늘 미팅 추가 메모 (자유 입력)</label>
+              <textarea id="memo-091-note" class="form-textarea" oninput="saveMemo('091')" placeholder="미팅 중 학생들이 추가로 이야기한 아이디어나 질문을 적어주세요."></textarea>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" onclick="copyStudentMemo('091')">📋 구일고 결정 메모 복사 (학생 공유용)</button>
+            <button type="button" class="btn btn-accent" onclick="copyOfficialLog('091')">📑 1차 멘토링 일지 표 복사 (시트/HWPX용)</button>
+            <button type="button" class="btn" onclick="downloadMemoJson('091')">💾 JSON 저장</button>
+          </div>
+        </article>
+
+        <!-- 하동옥종고 결정 메모 폼 -->
+        <article class="card" data-team-panel="OKXEN">
+          <div class="card-header">
+            <div class="card-title">🦉 하동옥종고 <span class="mono">OKXEN</span> · 오늘의 결정 메모</div>
+            <span class="pill pill-blue">2026. 10. 19.(월) 21:00 Zoom</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label class="form-label" for="memo-OKXEN-exam">1. 시험 보는 주체 & 승인 기억(SIM-MEM) 규칙</label>
+              <input id="memo-OKXEN-exam" class="form-input" type="text" oninput="saveMemo('OKXEN')" value="검증을 통과한 설명(SIM-MEM-01)만 승인·저장하고 오개념(SIM-MEM-02)은 역질문 보류 · 버디가 승인된 기억으로 새 문제를 풀고 학생이 채점" />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="memo-OKXEN-platform">2. 개발 환경 (Godot 4 작은 시도 & 개발자 멘토 지원)</label>
+              <input id="memo-OKXEN-platform" class="form-input" type="text" oninput="saveMemo('OKXEN')" value="Godot 4 (GDScript 단일, C# 제외)로 1개 단원(일차함수) [입력→버디 반응→로컬 JSON 저장·복원→고정 응답] 작은 시도 구현 + 개발자 멘토 지원 연계" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="memo-OKXEN-role1">3-① 팀장(웹·AI) 다음 주 작은 목표</label>
+              <input id="memo-OKXEN-role1" class="form-input" type="text" oninput="saveMemo('OKXEN')" value="승인 기억 JSON 구조(STUDYBUDDY_학습기록.json) 연결 및 고정 응답/프롬프트 규칙 정리" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="memo-OKXEN-role2">3-② 디자인·발표 담당 다음 주 작은 목표</label>
+              <input id="memo-OKXEN-role2" class="form-input" type="text" oninput="saveMemo('OKXEN')" value="과하지 않고 자연스럽게 움직이며 되묻는 버디 상태 표현(대기·끄덕임·갸웃·정답) 및 화면 구성" />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="memo-OKXEN-role3">3-③ 앱·QA 담당 다음 주 작은 목표</label>
+              <input id="memo-OKXEN-role3" class="form-input" type="text" oninput="saveMemo('OKXEN')" value="1개 단원(일차함수 기울기·y절편·x절편) 입력창·로컬 저장/불러오기 작은 시도 구현 및 예외 점검 (10/29 목 OKXEN_v1_1029.zip 제출)" />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="memo-OKXEN-note">4. 오늘 2분 시연 확인 내용 & 추가 메모 (자유 입력)</label>
+              <textarea id="memo-OKXEN-note" class="form-textarea" oninput="saveMemo('OKXEN')" placeholder="오늘 학생이 보여준 Godot/OpenRouter 실험 화면 내용과 개발자 멘토에게 요청할 사항을 적어주세요."></textarea>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" onclick="copyStudentMemo('OKXEN')">📋 옥종고 결정 메모 복사 (학생 공유용)</button>
+            <button type="button" class="btn btn-accent" onclick="copyOfficialLog('OKXEN')">📑 1차 멘토링 일지 표 복사 (시트/HWPX용)</button>
+            <button type="button" class="btn" onclick="downloadMemoJson('OKXEN')">💾 JSON 저장</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">복사되었습니다!</div>
+
+  <script>
+    const STORAGE_KEY = 'code2026_round1_workshop_v13';
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+    }
+
+    function setTeamView(team, btn) {
+      document.body.setAttribute('data-active-team', team);
+      document.querySelectorAll('.team-tab').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function selectChip(team, field, text, btn) {
+      const group = btn.parentElement;
+      group.querySelectorAll('.choice-chip').forEach(c => c.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      if (team === '091') {
+        if (field === 'transfer' || field === 'currency') {
+          const tChip = document.querySelector('[data-choice-group="091-transfer"] .choice-chip.selected');
+          const cChip = document.querySelector('[data-choice-group="091-currency"] .choice-chip.selected');
+          const tVal = tChip ? tChip.getAttribute('onclick').split("'")[5] : text;
+          const cVal = cChip ? cChip.getAttribute('onclick').split("'")[5] : '';
+          document.getElementById('memo-091-transfer').value = [tVal, cVal].filter(Boolean).join(' · ');
+        } else if (field === 'quizcoach') {
+          document.getElementById('memo-091-quizcoach').value = text;
+        }
+      } else if (team === 'OKXEN') {
+        if (field === 'exam') {
+          document.getElementById('memo-OKXEN-exam').value = text + ' (승인된 기억 SIM-MEM-01만 저장·활용)';
+        } else if (field === 'platform') {
+          document.getElementById('memo-OKXEN-platform').value = text;
+        }
+      }
+      saveMemo(team);
+      showToast('선택 내용이 아래 결정 메모에 반영되었습니다.');
+    }
+
+    function getTeamData(team) {
+      if (team === '091') {
+        return {
+          team: '구일고 0.91 (돈구리)',
+          schedule: '2026. 10. 19.(월) 15:20 ~ 16:20 / 온라인 Zoom',
+          transfer: document.getElementById('memo-091-transfer').value,
+          quizcoach: document.getElementById('memo-091-quizcoach').value,
+          role1: document.getElementById('memo-091-role1').value,
+          role2: document.getElementById('memo-091-role2').value,
+          role3: document.getElementById('memo-091-role3').value,
+          note: document.getElementById('memo-091-note').value
+        };
+      }
+      return {
+        team: '하동옥종고 OKXEN (STUDY-BUDDY)',
+        schedule: '2026. 10. 19.(월) 21:00 ~ 22:00 / 온라인 Zoom',
+        exam: document.getElementById('memo-OKXEN-exam').value,
+        platform: document.getElementById('memo-OKXEN-platform').value,
+        role1: document.getElementById('memo-OKXEN-role1').value,
+        role2: document.getElementById('memo-OKXEN-role2').value,
+        role3: document.getElementById('memo-OKXEN-role3').value,
+        note: document.getElementById('memo-OKXEN-note').value
+      };
+    }
+
+    function saveMemo(team) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const state = raw ? JSON.parse(raw) : {};
+        state[team] = getTeamData(team);
+        state.updatedAt = new Date().toISOString();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn('localStorage save skipped', e);
+      }
+    }
+
+    function loadMemos() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        if (state['091']) {
+          const d = state['091'];
+          if (d.transfer) document.getElementById('memo-091-transfer').value = d.transfer;
+          if (d.quizcoach) document.getElementById('memo-091-quizcoach').value = d.quizcoach;
+          if (d.role1) document.getElementById('memo-091-role1').value = d.role1;
+          if (d.role2) document.getElementById('memo-091-role2').value = d.role2;
+          if (d.role3) document.getElementById('memo-091-role3').value = d.role3;
+          if (d.note !== undefined) document.getElementById('memo-091-note').value = d.note;
+        }
+        if (state['OKXEN']) {
+          const d = state['OKXEN'];
+          if (d.exam) document.getElementById('memo-OKXEN-exam').value = d.exam;
+          if (d.platform) document.getElementById('memo-OKXEN-platform').value = d.platform;
+          if (d.role1) document.getElementById('memo-OKXEN-role1').value = d.role1;
+          if (d.role2) document.getElementById('memo-OKXEN-role2').value = d.role2;
+          if (d.role3) document.getElementById('memo-OKXEN-role3').value = d.role3;
+          if (d.note !== undefined) document.getElementById('memo-OKXEN-note').value = d.note;
+        }
+      } catch (e) {
+        console.warn('localStorage load skipped', e);
+      }
+    }
+
+    function copyText(text, label) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(label + ' 복사 완료!'));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast(label + ' 복사 완료!');
+      }
+    }
+
+    function copyStudentMemo(team) {
+      const d = getTeamData(team);
+      let text = '';
+      if (team === '091') {
+        text = [
+          '🐿️ [구일고 0.91 · 돈구리] 1차 온라인 멘토링 결정 메모 (2026-10-19)',
+          '────────────────────────────────────────────',
+          '1. 모의 지갑 → 목표 저축통 이체 & 통화 분리:',
+          '   • ' + d.transfer,
+          '2. 퀴즈 오답 확인 & AI 코치:',
+          '   • ' + d.quizcoach,
+          '3. 다음 주(10/29 목 v1)까지 우리 팀 작은 목표 3가지:',
+          '   • 팀장(AI 실현): ' + d.role1,
+          '   • 디자인 담당: ' + d.role2,
+          '   • 글·발표 담당: ' + d.role3,
+          d.note ? ('4. 추가 메모:\n   • ' + d.note) : '',
+          '────────────────────────────────────────────',
+          '📌 다음 일정: 10/29(목) 091_v1_1029.zip 제출 → 10/31(토)~11/1(일) 화성 라비돌 오프라인 통합 멘토링'
+        ].filter(Boolean).join('\n');
+      } else {
+        text = [
+          '🦉 [하동옥종고 OKXEN · STUDY-BUDDY] 1차 온라인 멘토링 결정 메모 (2026-10-19)',
+          '────────────────────────────────────────────',
+          '1. 시험 보는 주체 & 버디 승인 기억(SIM-MEM) 규칙:',
+          '   • ' + d.exam,
+          '2. 개발 환경 (Godot 4 작은 시도 & 개발자 멘토 지원):',
+          '   • ' + d.platform,
+          '3. 다음 주(10/29 목 v1)까지 우리 팀 작은 목표 3가지:',
+          '   • 팀장(웹·AI): ' + d.role1,
+          '   • 디자인·발표 담당: ' + d.role2,
+          '   • 앱·QA 담당: ' + d.role3,
+          d.note ? ('4. 오늘 시연 & 추가 메모:\n   • ' + d.note) : '',
+          '────────────────────────────────────────────',
+          '📌 다음 일정: 10/29(목) OKXEN_v1_1029.zip 제출 → 10/31(토)~11/1(일) 화성 라비돌 오프라인 통합 멘토링'
+        ].filter(Boolean).join('\n');
+      }
+      copyText(text, '학생 공유용 결정 메모');
+    }
+
+    function copyOfficialLog(team) {
+      const d = getTeamData(team);
+      let text = '';
+      if (team === '091') {
+        text = [
+          '[1차 멘토링 활동일지 — 구일고 0.91 (돈구리)]',
+          '• 운영기관명 / 참가팀명: 네패스 / 0.91 (구일고등학교)',
+          '• 멘토링 일시 / 장소: ' + d.schedule,
+          '• 참석자: 운영기관(코디네이터, 운영 총괄), 학생팀(팀장[AI 실현], 디자인 담당, 글·발표 담당)',
+          '• 멘토링 주제: 돈구리 사전 질문지 기반 핵심 기능(모의지갑→목표저축통 이체·도토리 분리·오답 해설·캐릭터 상점) 확정 및 v1 역할 분담',
+          '• 질문 및 고민: ① "(N원만큼) 저축할게요" 버튼 클릭 시 계좌에서 바로 돈이 빠져나가 목표 물품을 위해 저축되는 기능 희망, ② 퀴즈 오답 확인 버튼 및 듀오링고풍 직관적 UI·캐릭터 상점 보상 강조 희망',
+          '• 멘토 피드백 및 조언: ① ' + d.transfer + ', ② ' + d.quizcoach + (d.note ? (', ③ 추가 협의: ' + d.note) : ''),
+          '• 다음 멘토링까지 할 일(10/29 v1): ① 팀장(AI 실현): ' + d.role1 + ' / ② 디자인 담당: ' + d.role2 + ' / ③ 글·발표 담당: ' + d.role3,
+          '• 다음 일정: 2026. 10. 31.(토) ~ 11. 01.(일) 오프라인 통합 멘토링 (화성 라비돌)'
+        ].join('\n');
+      } else {
+        text = [
+          '[1차 멘토링 활동일지 — 하동옥종고 OKXEN (STUDY-BUDDY)]',
+          '• 운영기관명 / 참가팀명: 네패스 / OKXEN (하동옥종고등학교)',
+          '• 멘토링 일시 / 장소: ' + d.schedule,
+          '• 참석자: 운영기관(코디네이터, 운영 총괄 및 개발자 멘토 지원 연계), 학생팀(팀장[웹·AI], 디자인·발표 담당, 앱·QA 담당)',
+          '• 멘토링 주제: STUDY-BUDDY 핵심 루프(가르치기·승인기억·응용시험) 확정 및 Godot 4 작은 시도·API 상태 제어 자문',
+          '• 질문 및 고민: ① 가르치기→기억하기→응용/주기적 시험 구현 및 자연스럽게 움직이며 되묻는 캐릭터 연출 희망, ② 개념 잠금(RNN 마스크 vs 프롬프트), 기억 유지와 seed 관계, 시험 검증 방식 및 Godot 4 개발 범위 고민',
+          '• 멘토 피드백 및 조언: ① ' + d.exam + ', ② ' + d.platform + ', ③ API 키 코드 내 직접 삽입 금지 및 공통 JSON 더미데이터 기반 설계 안내' + (d.note ? (' / 추가 협의: ' + d.note) : ''),
+          '• 다음 멘토링까지 할 일(10/29 v1): ① 팀장(웹·AI): ' + d.role1 + ' / ② 디자인·발표 담당: ' + d.role2 + ' / ③ 앱·QA 담당: ' + d.role3,
+          '• 다음 일정: 2026. 10. 31.(토) ~ 11. 01.(일) 오프라인 통합 멘토링 (화성 라비돌)'
+        ].join('\n');
+      }
+      copyText(text, '1차 멘토링 활동일지 표');
+    }
+
+    function downloadMemoJson(team) {
+      const data = getTeamData(team);
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `mentoring_round1_${team}_20261019.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('JSON 파일이 저장되었습니다.');
+    }
+
+    window.addEventListener('DOMContentLoaded', loadMemos);
+  </script>
+</body>
+</html>

@@ -291,6 +291,7 @@ footer.doc-footer{
       ← 멘토링 관제 데스크 (Operations Desk)로 복귀
     </a>
     <div class="nav-links">
+      <a href="./mentoring_round1.html" class="nav-link" target="_blank" style="background:var(--accent-soft);color:var(--accent);border-color:var(--accent);">1차 멘토링 워크숍 보드 ↗</a>
       <a href="./manual_guil.html" class="nav-link" target="_blank">구일고 매뉴얼 ↗</a>
       <a href="./manual_okjong.html" class="nav-link" target="_blank">옥종고 매뉴얼 ↗</a>
       <a href="./expert_guide.html" class="nav-link" target="_blank">전문가 협업안내서 ↗</a>
@@ -303,7 +304,7 @@ footer.doc-footer{
     <span class="kicker">SINGLE SOURCE OF TRUTH</span>
     <h1 class="headline">2026 C.O.D.E 본선 멘토링 운영 마스터플랜 (10월~12월)</h1>
     <div class="meta-banner">
-      <strong>운영기관:</strong> ㈜네패스 | <strong>기준 버전:</strong> v1.2 (2026-10-14 갱신 — 옥종고 1차 일정 확정, v0 전달 10.14로 앞당김)<br>
+      <strong>운영기관:</strong> ㈜네패스 | <strong>기준 버전:</strong> v1.3 (2026-10-19 갱신 — 1차 멘토링 사전 작성 분석·합성 더미데이터 및 옥종고 Godot 4 조건부 지원 반영)<br>
       📌 <strong>이 문서가 일정·역할·규칙의 단일 기준(Single Source of Truth)입니다.</strong> 날짜나 일정이 바뀌면 이 문서부터 갱신하고 관제 데스크, 매뉴얼, 일지를 동기화합니다.
     </div>
   </header>
@@ -328,43 +329,43 @@ footer.doc-footer{
           </tr>
           <tr>
             <td><strong>앱 성격</strong></td>
-            <td>목표 역산 일일 소비한도 + 게임형 경제 학습</td>
-            <td>AI 캐릭터를 가르치며 함께 성장하는 게임형 학습 앱</td>
+            <td>목표 역산 일일 소비한도 + 모의 지갑→목표 저축통 이체·보상</td>
+            <td>내가 가르친 만큼 버디가 기억·응용하는 게임형 학습 앱</td>
           </tr>
           <tr>
             <td><strong>학생 구성</strong></td>
-            <td>3명 — 팀장(AI) · 디자인 · 글·발표 (모두 2학년)</td>
+            <td>3명 — 팀장(AI 실현) · 디자인 · 글·발표 (모두 2학년)</td>
             <td>3명 — 팀장(웹·AI) · 디자인·발표 (1학년), 앱·QA (2학년)</td>
           </tr>
           <tr>
             <td><strong>1차 온라인</strong></td>
-            <td><strong>10.19(월) 15:20</strong> Zoom (확정)</td>
-            <td><strong>10.19(월) 21:00</strong> Zoom (확정)</td>
+            <td><strong>10.19(월) 15:20</strong> Zoom (<a href="./mentoring_round1.html" target="_blank">워크숍 보드 ↗</a>)</td>
+            <td><strong>10.19(월) 21:00</strong> Zoom (<a href="./mentoring_round1.html" target="_blank">워크숍 보드 ↗</a>)</td>
           </tr>
           <tr>
             <td><strong>현재 프로토타입</strong></td>
-            <td><a href="../apps/donguri/index.html" target="_blank">돈구리 열기 ↗</a> (구현 완료)</td>
-            <td><a href="../apps/studybuddy/index.html" target="_blank">STUDY-BUDDY 열기 ↗</a> (구현 완료)</td>
+            <td><a href="../apps/donguri/index.html" target="_blank">돈구리 열기 ↗</a> (v0.3 구현 완료)</td>
+            <td><a href="../apps/studybuddy/index.html" target="_blank">STUDY-BUDDY 열기 ↗</a> (v0.3 구현 완료)</td>
           </tr>
           <tr>
             <td><strong>운영사 v0 전달</strong></td>
-            <td><strong>10.14(수)</strong> (앞당김)</td>
-            <td><strong>10.14(수)</strong> (앞당김)</td>
+            <td><strong>10.14(수)</strong> (사전 전달 완료)</td>
+            <td><strong>10.14(수)</strong> (사전 전달 완료)</td>
           </tr>
           <tr>
             <td><strong>학생 v1 업로드</strong></td>
             <td><strong>10.29(목) 23:59</strong></td>
-            <td><strong>10.29(목) 23:59</strong></td>
+            <td><strong>10.29(목) 23:59</strong> (1단원 작은 시도 결과 포함)</td>
           </tr>
           <tr>
-            <td><strong>오프라인 담당</strong></td>
+            <td><strong>오프라인·개발 지원</strong></td>
             <td><strong>운영 총괄 직접 케어</strong></td>
-            <td><strong>담당 직원 1명 + 팀모노리스 앱 개발 전문가</strong></td>
+            <td><strong>담당 직원 1명 + 개발자 멘토(Godot 4·웹 지원) + 전문가 멘토링</strong></td>
           </tr>
           <tr>
-            <td><strong>완성도 책임</strong></td>
-            <td>운영 총괄 (운영사 리뷰)</td>
-            <td>앱 개발 전문가 (4회 · 8시간 · 80만원)</td>
+            <td><strong>1차 핵심 합의점</strong></td>
+            <td>모의 지갑(<code>sim_won</code>)↔저축통 이체, 도토리(<code>acorn_points</code>) 분리, 오답 해설</td>
+            <td>승인 기억(<code>SIM-MEM-01</code>) 저장·응용, 시험 주체 확인, Godot 4 1단원 작은 시도</td>
           </tr>
           <tr>
             <td><strong>최종본 동결</strong></td>
@@ -381,7 +382,7 @@ v0 운영사 제공 ─▶ v1 학생 수정 ─▶ [오프라인 R1] ─▶ v2 �
                                                                      │
 FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v3.x 학생 ◀─ v3 ◀─ [R2]
     </div>
-    <p>※ <strong>R1~R4:</strong> 리뷰 회차. 옥종고는 앱 개발 전문가가, 구일고는 운영 총괄이 수행합니다.</p>
+    <p>※ <strong>R1~R4:</strong> 리뷰 회차. 옥종고는 앱 개발 전문가 및 개발자 멘토가, 구일고는 운영 총괄이 수행합니다.</p>
   </section>
 
   <!-- Section 2 -->
@@ -398,17 +399,18 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
           <tr><td>10.13(화)</td><td>옥종고 지도교사 연락 → 1차 온라인 일정 확정 ✅ <strong>10.19(월) 21:00</strong></td><td>운영 총괄</td></tr>
           <tr><td>10.14(수)</td><td>두 팀 <strong>v0 프로토타입 전달</strong> (돈구리 · STUDY-BUDDY, 기능 단순 버전) → 1차 미팅 전에 미리 써 보기</td><td>운영 총괄</td></tr>
           <tr><td>10.13(화)</td><td>옥종고 사전 준비사항 시트(8문항) 작성 요청 → 미팅 전날(10.18 일 23:59) 마감</td><td>운영 총괄</td></tr>
-          <tr><td>10.16(금)</td><td>팀모노리스 전문가 섭외 확정 + 배포본/전문가 협업안내서 전달</td><td>운영 총괄</td></tr>
+          <tr><td>10.16(금)</td><td>전문가·개발자 멘토 지원 연계 확인 + 배포본/전문가 협업안내서 전달</td><td>운영 총괄</td></tr>
           <tr><td>10.16(금)</td><td>10.31 기관 인솔자 1인 지정 + 담당 직원 확정</td><td>운영 총괄</td></tr>
-          <tr><td>10.18(일) 23:59</td><td>구일고 사전 질문지 마감 → 다음날 오전 검토</td><td>학생 / 운영 총괄</td></tr>
+          <tr><td>10.18(일) 23:59</td><td>구일고·옥종고 사전 준비사항 시트 마감 → 10.19 오전 검토 및 합성 더미데이터 준비 완료</td><td>학생 / 운영 총괄</td></tr>
         </tbody>
       </table>
     </div>
 
     <h3 class="sub-title">Phase 1 — 1차 온라인 멘토링 (10.19 월 · 구일고 15:20 / 옥종고 21:00)</h3>
-    <p><strong>진행 순서 (60분 기준):</strong> ① 인사 및 소개(5분) → ② 전체 일정·버전 흐름(10분) → ③ <strong>프로토타입 시연 + 학생 의견 수렴(30분)</strong> → ④ AI 매뉴얼 및 드라이브 규칙(10분) → ⑤ Q&A 및 다음 일정(5분)</p>
+    <p><strong>진행 순서 (25분 압축~60분):</strong> ① 인사 및 일정 공유 → ② 사전 작성표 확인 및 현재 작업 2분 시연(옥종고) → ③ <strong>워크숍 보드(<a href="./mentoring_round1.html" target="_blank">mentoring_round1.html</a>) 및 합성 더미데이터 기반 핵심 흐름 3가지 합의</strong> → ④ 다음 주(v1, 10/29)까지 역할별 작은 목표 3개 확정</p>
     <div class="callout">
-      📌 <strong>③ 의견 수렴 방식:</strong> 10.14에 미리 받은 v0 프로토타입(<a href="../apps/donguri/index.html" target="_blank">돈구리</a> / <a href="../apps/studybuddy/index.html" target="_blank">STUDY-BUDDY</a>)을 함께 보며, <strong>기능</strong>과 <strong>UI</strong> 각각에 대해 "새로 만들고 싶은 것"과 "고치고 싶은 것"을 제한 없이 모두 받습니다. 받은 의견은 현장에서 <strong>운영사 보완 / v1 학생 과제 / 이후 회차 보류</strong>로 분류합니다.
+      📌 <strong>구일고(0.91 · 돈구리) 핵심 합의:</strong> 실제 계좌 출금 대신 <strong>모의 지갑(<code>SIM-WALLET-A</code>) → 목표 저축통(<code>SIM-JAR-A</code>) 가상 이체</strong>로 구현하며, <strong>가상 원화(<code>sim_won</code>, 총 현금 보존)와 도토리 포인트(<code>acorn_points</code>, 상점 보상)를 별도 원장으로 분리</strong>합니다. (잔액 부족 거절·중복 클릭 방지·취소 반대거래 검증)<br>
+      📌 <strong>옥종고(OKXEN · STUDY-BUDDY) 핵심 합의:</strong> 기존 복습 퀴즈와 학생이 원하는 <strong>'내가 가르친 만큼 버디가 기억·응용하는 구조'</strong>의 차이를 명확히 하고, ① <strong>시험을 보는 주체(버디 vs 학생)</strong> 확인, ② 검증 통과 문장(<code>SIM-MEM-01</code>)만 승인·저장 후 새 문제(<code>SIM-APPLY-C</code>)에 반영하는 <strong>승인 기억 게이트</strong>, ③ <strong>Godot 4(GDScript 단일, C# 제외) 1개 단원 작은 시도(입력→반응→로컬 JSON 저장·복원→고정 응답)</strong> + 개발자 멘토 지원 범위를 합의합니다.
     </div>
 
     <h3 class="sub-title">Phase 2 — v0 선행 전달 (10.14) 및 미팅 후 보완</h3>
@@ -473,8 +475,8 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
 
   <!-- Section 4 -->
   <section class="block" id="sec-4">
-    <h2 class="sec-title"><span class="num">04</span> 프로토타입 제작 표준 (v0 기준)</h2>
-    <p>학생이 <strong>AI로 안전하게 고칠 수 있는 순수 정적 웹 구조</strong>를 채택합니다.</p>
+    <h2 class="sec-title"><span class="num">04</span> 프로토타입 제작 표준 & 옥종고 Godot 4 조건부 지원</h2>
+    <p>기본 베이스는 학생이 <strong>AI로 안전하게 고칠 수 있는 순수 정적 웹 구조</strong>를 채택하며, 옥종고(<code>OKXEN</code>)가 희망하는 <strong>Godot 4(GDScript)</strong>는 개발자 멘토 지원 아래 <strong>공통 JSON 데이터 스키마(<code>STUDYBUDDY_학습기록.json</code>)를 공유하는 조건부 작은 시도</strong>로 검증합니다.</p>
     <pre>
 팀명_v0_1014/
 ├── index.html        화면 뼈대 (HTML5)
@@ -488,10 +490,9 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
 └── CHANGELOG.md      버전별 변경 기록
     </pre>
     <div class="callout">
-      1. 빌드 도구 없이 Chrome 브라우저에서 <code>index.html</code> 더블클릭만으로 실행<br>
-      2. <code>localStorage</code> 저장 시 버전 접두어(예: <code>studybuddy_v2_state</code>) 필수 적용<br>
-      3. 코드 구역 표시: <code>/* 🔒 ENGINE */</code> vs <code>/* ✏️ EDIT */</code> 명확 분리<br>
-      4. AI 기능은 기본적으로 '데모 모드'로 시작 (API 키 노출 금지)
+      1. <strong>구일고(돈구리):</strong> 가상 원화(<code>sim_won</code>, 모의 지갑↔목표 저축통)와 도토리(<code>acorn_points</code>, 보상 원장)를 분리하고, 잔액 부족 거절·중복 요청(<code>request_id</code>) 차단·반대 거래(<code>reverse</code>) 취소를 적용합니다.<br>
+      2. <strong>옥종고(STUDY-BUDDY):</strong> 사실 검증을 통과한 기억(<code>SIM-MEM-01</code>)만 승인·저장(<code>saved: true</code>)하고, Godot 4 시도 시 C# 혼용 없이 <strong>GDScript 단일 언어</strong>로 1개 단원(일차함수)에서 <code>[설명 입력 → 버디 반응 → 로컬 JSON 저장·복원 → 고정 응답 연결]</code>을 먼저 검증합니다.<br>
+      3. <strong>API 키 보안:</strong> 코드·씬 파일 안에 OpenRouter 등 실제 API 키를 직접 넣지 않으며, 기본 시연은 안전한 고정 응답/데모 모드로 동작합니다.
     </div>
   </section>
 
@@ -504,14 +505,14 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
 
   <!-- Section 6 -->
   <section class="block" id="sec-6">
-    <h2 class="sec-title"><span class="num">06</span> 앱 개발 전문가 운영 (옥종고 전담)</h2>
+    <h2 class="sec-title"><span class="num">06</span> 앱 개발 전문가 & 개발자 멘토 운영 (옥종고 지원)</h2>
     <div class="table-wrap">
       <table>
         <tbody>
-          <tr><th>소속</th><td>팀모노리스 전문가 1인</td></tr>
-          <tr><th>명목</th><td>전문가 멘토링 <strong>4회 (총 8시간)</strong> — 회당 2시간 상당 (리뷰 및 보강 작업 기준)</td></tr>
+          <tr><th>지원 구성</th><td>팀모노리스 앱 개발 전문가 + 옥종고 추가 배정 개발자 멘토 (Godot 4 · 웹 지원 가능)</td></tr>
+          <tr><th>명목</th><td>전문가 멘토링 <strong>4회 (총 8시간)</strong> — 회당 2시간 상당 (리뷰 및 보강 작업 기준, 계획과 실제 확보 시간 구분 관리)</td></tr>
           <tr><th>금액</th><td>전문가활용비 <strong>200,000원 × 4회 = 800,000원</strong></td></tr>
-          <tr><th>책임 범위</th><td>게임 앱 완성도 (골격 안정화, 학생 추가분 통합, 버그 수정, 무대 시연 안정성)</td></tr>
+          <tr><th>책임 범위</th><td>1단원 작은 시도(Godot 4 GDScript / 웹) 검증, 학습 기억·응용 루프 안정화, 씬·내보내기 점검 및 무대 시연 안정성</td></tr>
           <tr><th>소통</th><td>운영사 단일 창구 (회차별 정제된 피드백 패키지 1건으로 소통)</td></tr>
         </tbody>
       </table>
@@ -525,7 +526,7 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
       <table>
         <thead><tr><th>회차</th><th>구일고</th><th>옥종고</th></tr></thead>
         <tbody>
-          <tr><td><strong>1</strong></td><td>10.19(월) 15:20 온라인 Zoom</td><td>10.19(월) 21:00 온라인 Zoom</td></tr>
+          <tr><td><strong>1</strong></td><td>10.19(월) 15:20 온라인 Zoom (<a href="./mentoring_round1.html" target="_blank">1차 워크숍 보드 ↗</a>)</td><td>10.19(월) 21:00 온라인 Zoom (<a href="./mentoring_round1.html" target="_blank">1차 워크숍 보드 ↗</a>)</td></tr>
           <tr><td><strong>2</strong></td><td>10.31~11.1 오프라인 (운영 총괄)</td><td>10.31~11.1 오프라인 (직원 + 전문가 R1)</td></tr>
           <tr><td><strong>3</strong></td><td>11.18(수) 온라인 중간점검 (교사 협의)</td><td>11.17~20 전문가 R2 (서면자문) + 운영사 결과 공유</td></tr>
           <tr><td><strong>4</strong></td><td>12.3(목) 온라인 최종 발표 리허설</td><td>12.1~4 전문가 R3 (서면자문)</td></tr>
@@ -543,8 +544,8 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
         <thead><tr><th>리스크</th><th>대응 전략</th></tr></thead>
         <tbody>
           <tr><td><strong>본선 과제 10.31 공개</strong></td><td>v0/v1은 핵심 루프만 탄탄하게 제작. R1에서 본선 과제 연결을 1순위로 점검.</td></tr>
-          <tr><td><strong>학생 의견 과다로 범위 확장</strong></td><td>의견은 모두 받되 현장에서 운영사 보완 / v1 학생 과제 / 보류로 분류. 운영사 보완은 핵심 루프에 닿는 항목만.</td></tr>
-          <tr><td><strong>학생의 AI 코드 파손</strong></td><td>원본 보존 + 한 번에 1개씩 수정 + 3회 실패 시 롤백 및 요청 시트 등록.</td></tr>
+          <tr><td><strong>옥종고 Godot 4 범위 과열</strong></td><td>처음부터 포기시키지 않고 10.29(v1)까지 1개 단원(일차함수) 입력·반응·로컬 저장 작은 시도로 검증 후 개발자 멘토와 최종 결정. 공통 JSON 구조로 전환 안전망 확보.</td></tr>
+          <tr><td><strong>학생의 AI 코드 파손 · API 키 유출</strong></td><td>원본 보존 + 한 번에 1개씩 수정 + 코드 내 실제 API 키 삽입 금지(고정 응답/데모 모드 기본).</td></tr>
           <tr><td><strong>본선 현장 네트워크 장애</strong></td><td>데모 모드 + 완전 오프라인 실행 파일 + 시연 영상 백업 이중화.</td></tr>
         </tbody>
       </table>
@@ -553,7 +554,7 @@ FINAL ◀─ [R4] 최종 점검 ◀─ v4 RC(기능 동결) ◀─ [R3] ◀─ v
 
   <footer class="doc-footer">
     <span>© 2026 C.O.D.E 멘토링 운영단 · ㈜네패스</span>
-    <span>문서 기준: 2026-10-14 (v1.2) · Single Source of Truth</span>
+    <span>문서 기준: 2026-10-19 (v1.3) · Single Source of Truth</span>
   </footer>
 </div>
 
