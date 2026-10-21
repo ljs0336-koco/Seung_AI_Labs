@@ -842,3 +842,78 @@ KW  - 이해·적용·창조
 KW  - 능동적 의사결정자
 N1  - 연구 서고 A-04 · 정책 보고서 · AI 리터러시·윤리
 ER  - 
+
+TY  - UNPB
+AU  - Manikonda, Lydia
+AU  - Si, Mei
+AU  - Munira, Sirajam
+AU  - Seneviratne, Oshani
+AU  - Bennett, Kristin
+TI  - The Uneven Impact of Generative AI on Student Learning: Examining the Roles of Reliance, Evaluation Literacy, and Course Policy in AI-related Courses
+PY  - 2026
+DA  - 2026/09/16
+PB  - arXiv
+M3  - arXiv:2609.18676
+DO  - 10.48550/arXiv.2609.18676
+UR  - https://arxiv.org/abs/2609.18676
+KW  - 생성형 AI 의존
+KW  - 평가 리터러시
+KW  - 수업 정책
+KW  - 학습 격차
+N1  - 연구 서고 G-03 · 프리프린트(심사 전) · AI의 학습 영향
+ER  - 
+
+TY  - CPAPER
+AU  - Padiyath, Aadarsh
+AU  - Shen, Jessica
+AU  - Ericson, Barbara
+TI  - Self-Regulated Personal Contracts as a Harm Reduction Approach to Generative AI in Undergraduate Programming Education
+T2  - Proceedings of the 31st ACM Conference on Innovation and Technology in Computer Science Education V. 1
+PY  - 2026
+DA  - 2026/07/09
+PB  - Association for Computing Machinery
+SP  - 331
+EP  - 337
+M3  - arXiv:2604.03256
+DO  - 10.1145/3803400.3809314
+UR  - https://arxiv.org/abs/2604.03256
+KW  - 자기조절학습
+KW  - 피해 줄이기
+KW  - 생성형 AI 사용 지침
+KW  - 프로그래밍 교육
+N1  - 연구 서고 D-08 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Lepp, Marina
+AU  - Kaimre, Joosep
+TI  - Revisiting the Performance of Generative Artificial Intelligence on Introductory Object-Oriented Programming Assessments: Insights from 2026
+PY  - 2026
+DA  - 2026/08/17
+PB  - arXiv
+M3  - arXiv:2608.16318
+DO  - 10.48550/arXiv.2608.16318
+UR  - https://arxiv.org/abs/2608.16318
+KW  - 생성형 AI 성능
+KW  - 프로그래밍 평가
+KW  - 객체지향
+KW  - 평가 설계
+N1  - 연구 서고 D-09 · 프리프린트(심사 전) · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Taveter, Heidi
+AU  - Lepp, Marina
+TI  - From Idea to Classroom in Days: Using "Vibe Coding" to Create a Programming Process Visualizer from IDE Activity Logs
+PY  - 2026
+DA  - 2026/05/26
+PB  - arXiv
+M3  - arXiv:2607.24757
+DO  - 10.48550/arXiv.2607.24757
+UR  - https://arxiv.org/abs/2607.24757
+KW  - 바이브코딩
+KW  - 학습 분석
+KW  - 프로그래밍 과정
+KW  - 교사 도구 개발
+N1  - 연구 서고 D-10 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
