@@ -599,3 +599,46 @@
   line-height: 1.5;
   color: #4b5563;
 }
+
+
+.admin-columns-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.admin-service-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.admin-service-btn-ghost {
+  padding: 8px 12px;
+  background: #f1f6f4;
+  border: 1px solid #c9d6d2;
+  border-radius: 8px;
+  color: #245a50;
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.admin-service-btn-ghost:hover {
+  background: #e1ede9;
+}
+
+.admin-share-footer {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed #d8e2df;
+}
+
+@media (max-width: 900px) {
+  .admin-columns-grid {
+    grid-template-columns: 1fr;
+  }
+}

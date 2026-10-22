@@ -15,12 +15,19 @@ const materials = [
   ['STUDY-BUDDY 매뉴얼', '앱 사용 안내', './slides/manual_okjong.html'],
 ];
 
+const travelGuides = [
+  ['KANSAI NOTES · 통합 선택 화면', '취향으로 고르는 겨울 간사이 3박 4일 입구', './kansai-travel-guide/index.html'],
+  ['01. 느긋한 커플편', '오사카 3연박 + 교토 하루 버스투어 · 휴식 중심', './kansai-travel-guide/couple.html'],
+  ['02. 포켓몬 원정대편', '오사카·교토 2일씩 · 포켓몬센터 3곳과 카드·피규어 매장', './kansai-travel-guide/pokemon.html'],
+];
+
 export default function AdminPage() {
   const [confirmed, setConfirmed] = useState(() => {
     try { return sessionStorage.getItem(CONFIRM_KEY) === 'yes'; } catch { return false; }
   });
   const [draft, setDraft] = useState('');
   const [notice, setNotice] = useState('');
+  const [shareNotice, setShareNotice] = useState('');
   const privacy = globalThis.SeungPrivacy;
   const issues = privacy?.findPrivacyIssues(draft) || [];
   const labels = [...new Set(issues.map(issue => issue.label))].join(', ');
@@ -47,6 +54,33 @@ export default function AdminPage() {
     if (!privacy || !draft.trim() || privacy.findPrivacyIssues(draft).length) return;
     try { await navigator.clipboard.writeText(draft); setNotice('확인한 글을 복사했습니다. 게시 전 내용도 한 번 더 확인해 주세요.'); }
     catch { setNotice('복사 권한이 없습니다. 글을 선택해 직접 복사해 주세요.'); }
+  }
+  function resolveShareUrl(href) {
+    try { return new URL(href, globalThis.location?.href || 'https://ljs0336-koco.github.io/Seung_AI_Labs/').href; }
+    catch { return href; }
+  }
+  async function copyGuideLink(title, href) {
+    const url = resolveShareUrl(href);
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareNotice(`'${title}' 공유 링크를 복사했습니다.`);
+    } catch {
+      setShareNotice(`복사 권한이 없습니다. 직접 복사해 주세요: ${url}`);
+    }
+  }
+  async function copyAllTravelLinks() {
+    const lines = [
+      '[KANSAI NOTES · 겨울 간사이 3박 4일 여행가이드]',
+      `- 통합 선택 화면: ${resolveShareUrl('./kansai-travel-guide/index.html')}`,
+      `- 느긋한 커플편: ${resolveShareUrl('./kansai-travel-guide/couple.html')}`,
+      `- 포켓몬 원정대편: ${resolveShareUrl('./kansai-travel-guide/pokemon.html')}`,
+    ].join('\n');
+    try {
+      await navigator.clipboard.writeText(lines);
+      setShareNotice('여행가이드 3종 전체 공유 링크를 복사했습니다.');
+    } catch {
+      setShareNotice('복사 권한이 없습니다. 각 가이드를 열어 주소를 복사해 주세요.');
+    }
   }
 
   if (!confirmed) return (
@@ -80,12 +114,41 @@ export default function AdminPage() {
           <p role="status" className="materials-hint">{notice}</p>
           <p id="privacy-check-limit" className="materials-hint">이름·얼굴·주소·학생을 특정하는 조합은 자동으로 찾지 못할 수 있습니다. <a href="./privacy-guidelines.html">게시 원칙 확인하기</a></p>
         </section>
-        <section className="admin-card" aria-labelledby="materials-heading">
-          <div className="admin-card-head"><h2 id="materials-heading">자료와 도구</h2></div>
-          <div className="admin-service-list">{materials.map(([title, description, href]) => (
-            <div key={href} className="admin-service-item"><div className="admin-service-info"><div><strong>{title}</strong><span>{description}</span></div></div><a href={href} target="_blank" rel="noreferrer" className="admin-service-btn">열기 ↗</a></div>
-          ))}</div>
-        </section>
+        <div className="admin-columns-grid">
+          <section className="admin-card" aria-labelledby="materials-heading">
+            <div className="admin-card-head"><h2 id="materials-heading">자료와 도구</h2></div>
+            <div className="admin-service-list">{materials.map(([title, description, href]) => (
+              <div key={href} className="admin-service-item"><div className="admin-service-info"><div><strong>{title}</strong><span>{description}</span></div></div><a href={href} target="_blank" rel="noreferrer" className="admin-service-btn">열기 ↗</a></div>
+            ))}</div>
+          </section>
+          <section className="admin-card admin-side-card" aria-labelledby="travel-guides-heading">
+            <div className="admin-card-head">
+              <div>
+                <span className="admin-pill">TRAVEL GUIDE · SHARE</span>
+                <h2 id="travel-guides-heading" style={{ marginTop: '8px' }}>겨울 간사이 여행가이드</h2>
+                <p>첫날 정오 도착 · 마지막 날 19시 이후 귀국편 기준 (개인 이력·지출 제외 공개본)</p>
+              </div>
+            </div>
+            <div className="admin-service-list">{travelGuides.map(([title, description, href]) => (
+              <div key={href} className="admin-service-item">
+                <div className="admin-service-info">
+                  <div>
+                    <strong>{title}</strong>
+                    <span>{description}</span>
+                  </div>
+                </div>
+                <div className="admin-service-actions">
+                  <button type="button" className="admin-service-btn-ghost" onClick={() => copyGuideLink(title, href)}>링크 복사</button>
+                  <a href={href} target="_blank" rel="noreferrer" className="admin-service-btn">열기 ↗</a>
+                </div>
+              </div>
+            ))}</div>
+            <div className="admin-share-footer">
+              <button type="button" className="admin-login-btn" onClick={copyAllTravelLinks}>전체 공유 링크 한 번에 복사</button>
+              {shareNotice && <p role="status" className="materials-hint" style={{ marginTop: '10px', marginBottom: 0 }}>{shareNotice}</p>}
+            </div>
+          </section>
+        </div>
       </main>
     </div>
   );

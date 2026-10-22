@@ -36,4 +36,18 @@ describe('public-safe materials room', () => {
     fireEvent.click(screen.getByRole('button', { name: '확인한 글 복사' }));
     expect(writeText).toHaveBeenCalledWith('학생 A 연락 [휴대전화번호 가림]');
   });
+
+  it('displays the Kansai travel guides side section and copies shareable links', async () => {
+    sessionStorage.setItem('seung_materials_guideline_seen_v1', 'yes');
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } });
+    render(<MemoryRouter><AdminPage /></MemoryRouter>);
+    expect(screen.getByRole('heading', { name: '겨울 간사이 여행가이드' })).toBeInTheDocument();
+    expect(screen.getByText('01. 느긋한 커플편')).toBeInTheDocument();
+    expect(screen.getByText('02. 포켓몬 원정대편')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: '전체 공유 링크 한 번에 복사' }));
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('kansai-travel-guide/index.html'));
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('kansai-travel-guide/couple.html'));
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('kansai-travel-guide/pokemon.html'));
+  });
 });
