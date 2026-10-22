@@ -4,1148 +4,1223 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="3박은 한 숙소에 · 교토는 하루만 · 쉬는 시간도 일정">
-  <meta name="theme-color" content="#f6f4ec">
+  <meta name="theme-color" content="#F4EFE6">
   <meta name="referrer" content="no-referrer">
-  <title>느긋한 두 사람 | 겨울 간사이 3박 4일</title>
+  <title>KANSAI WINTER JOURNAL | 우리 속도로, 오사카와 교토</title>
   <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Noto+Serif+KR:wght@500;700;900&display=swap');
+
 :root {
-  --bg: #f6f4ec;
-  --card: #ffffff;
-  --ink: #1f3330;
-  --muted: #61716d;
-  --line: #dce2df;
-  --line-lip: #c3ceca;
-  --primary: #e0533c;
-  --primary-lip: #ad3724;
-  --primary-soft: #fff0ed;
-  --accent: #2b7a69;
-  --accent-lip: #1c5448;
-  --accent-soft: #e8f5f1;
-  --green: #58cc02;
-  --green-lip: #46a302;
-  --green-soft: #eefbe3;
-  --yellow: #ffc800;
-  --yellow-lip: #cca000;
-  --yellow-soft: #fff9db;
-  --sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, -apple-system, sans-serif;
-}
-body.collector {
-  --bg: #f2f6f9;
-  --ink: #172b3a;
-  --muted: #586f82;
-  --line: #d5e1ea;
-  --line-lip: #b8cad8;
-  --primary: #1cb0f6;
-  --primary-lip: #1185bd;
-  --primary-soft: #e6f6fe;
-  --accent: #f5b800;
-  --accent-lip: #c28e00;
-  --accent-soft: #fff8de;
+  --bg: #F4EFE6;
+  --paper: #FBF9F4;
+  --ink: #181615;
+  --muted: #665F56;
+  --line: #D8CFC2;
+  --line-dark: #181615;
+  --vermilion: #B63A2A;
+  --vermilion-soft: #F9ECE9;
+  --moss: #264E46;
+  --moss-soft: #E9F1EE;
+  --brass: #9C7A44;
+  --brass-soft: #F7F1E3;
+  --serif-en: "Cormorant Garamond", Georgia, serif;
+  --serif-kr: "Noto Serif KR", "Batang", Georgia, serif;
+  --sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body {
   margin: 0; padding: 0;
   background: var(--bg); color: var(--ink);
-  font-family: var(--sans); font-size: 15px; line-height: 1.55;
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
   word-break: keep-all; overflow-wrap: anywhere;
 }
 a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
+button, input { font: inherit; color: inherit; }
 button { cursor: pointer; background: none; border: none; padding: 0; }
 [hidden] { display: none !important; }
 
-/* App Shell */
 .app-shell {
-  max-width: 720px;
-  margin: 0 auto;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 88px;
+  max-width: 740px; margin: 0 auto; min-height: 100dvh;
+  display: flex; flex-direction: column; padding-bottom: 88px;
 }
 
-/* Top Status Bar (Duolingo Header) */
+/* Magazine Masthead Topbar */
 .app-topbar {
   position: sticky; top: 0; z-index: 40;
-  background: var(--bg);
+  background: rgba(244, 239, 230, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid var(--line-dark);
   padding: 10px 16px;
-  border-bottom: 2px solid var(--line);
 }
 .topbar-inner {
-  max-width: 720px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.course-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px; border-radius: 14px;
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 3px 0 var(--line-lip);
-  font-weight: 800; font-size: 13px; white-space: nowrap;
+.masthead-brand {
+  display: flex; align-items: center; gap: 10px;
 }
-.course-badge:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line-lip); }
+.masthead-kicker {
+  font-family: var(--serif-en); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--vermilion); display: block;
+}
+.masthead-title {
+  font-family: var(--serif-kr); font-size: 16px; font-weight: 900;
+  letter-spacing: -0.02em; line-height: 1.15;
+}
+.reading-gauge {
+  flex: 1; max-width: 180px; display: flex; align-items: center; gap: 8px;
+}
+.gauge-track {
+  flex: 1; height: 5px; background: var(--line); position: relative; overflow: hidden;
+}
+.gauge-fill {
+  height: 100%; width: 0%; background: var(--vermilion);
+  transition: width 0.3s ease;
+}
+.gauge-label {
+  font-family: var(--serif-en); font-size: 13px; font-weight: 700; color: var(--ink);
+  min-width: 34px; text-align: right;
+}
+.editorial-chip-btn {
+  padding: 6px 11px; border: 1px solid var(--line-dark);
+  background: var(--paper); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.04em; transition: background 0.15s;
+}
+.editorial-chip-btn:hover { background: var(--ink); color: var(--paper); }
 
-.xp-track-wrap {
-  flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0;
-}
-.xp-bar {
-  flex: 1; height: 14px; background: #e2e8e6;
-  border-radius: 999px; overflow: hidden; padding: 2px;
-}
-.xp-fill {
-  height: 100%; width: 0%;
-  background: var(--green); border-radius: 999px;
-  transition: width 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: inset 0 3px 0 rgba(255,255,255,0.35);
-}
-.xp-count {
-  font-weight: 800; font-size: 12px; color: var(--ink); white-space: nowrap;
-  background: var(--yellow-soft); border: 2px solid var(--yellow);
-  padding: 3px 8px; border-radius: 999px;
-}
-.top-icon-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  height: 36px; padding: 0 10px; border-radius: 12px;
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 3px 0 var(--line-lip);
-  font-size: 12px; font-weight: 800; white-space: nowrap;
-}
-.top-icon-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line-lip); }
-
-/* Main Viewport Container */
-.app-viewport {
-  flex: 1; padding: 14px 16px 24px;
-}
-.view-panel { display: none; animation: popIn 0.16s ease-out; }
+.app-viewport { flex: 1; padding: 14px 16px 24px; }
+.view-panel { display: none; animation: fadeIn 0.2s ease-out; }
 .view-panel.is-active { display: block; }
-@keyframes popIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Tactile 3D Buttons & Pills */
-.btn-3d {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 11px 16px; border-radius: 14px;
-  font-weight: 800; font-size: 13px; text-align: center;
-  border: 2px solid transparent;
-  transition: transform 0.08s, filter 0.12s;
-  user-select: none;
-}
-.btn-3d:active { transform: translateY(3px); }
-.btn-primary {
-  background: var(--primary); color: #ffffff;
-  border-color: var(--primary); box-shadow: 0 4px 0 var(--primary-lip);
-}
-.btn-primary:active { box-shadow: 0 1px 0 var(--primary-lip); }
-.btn-green {
-  background: var(--green); color: #ffffff;
-  border-color: var(--green); box-shadow: 0 4px 0 var(--green-lip);
-}
-.btn-green:active { box-shadow: 0 1px 0 var(--green-lip); }
-.btn-secondary {
-  background: var(--card); color: var(--ink);
-  border-color: var(--line); box-shadow: 0 4px 0 var(--line-lip);
-}
-.btn-secondary:active { box-shadow: 0 1px 0 var(--line-lip); }
-.btn-accent {
-  background: var(--accent-soft); color: var(--ink);
-  border-color: var(--accent); box-shadow: 0 4px 0 var(--accent-lip);
-}
-.btn-accent:active { box-shadow: 0 1px 0 var(--accent-lip); }
-
-/* Day Selector Tabs (4 Days) */
+/* Magazine Issue Chapter Strip */
 .day-tabs {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
-  margin-bottom: 12px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1.5px solid var(--line-dark); background: var(--paper);
+  margin-bottom: 14px;
 }
 .day-pill {
-  padding: 9px 6px; border-radius: 14px;
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 4px 0 var(--line-lip);
-  text-align: center; transition: all 0.1s;
+  padding: 10px 6px; text-align: center;
+  border-right: 1px solid var(--line);
+  transition: all 0.15s;
 }
-.day-pill b { display: block; font-size: 13px; font-weight: 900; }
-.day-pill span { display: block; font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 1px; }
+.day-pill:last-child { border-right: none; }
+.day-pill b {
+  display: block; font-family: var(--serif-en); font-size: 13px;
+  letter-spacing: 0.14em; color: var(--muted);
+}
+.day-pill span {
+  display: block; font-family: var(--serif-kr); font-size: 13px;
+  font-weight: 700; margin-top: 2px;
+}
 .day-pill[aria-selected="true"] {
-  background: var(--primary); color: #ffffff;
-  border-color: var(--primary-lip); box-shadow: 0 4px 0 var(--primary-lip);
+  background: var(--ink); color: var(--paper);
 }
-.day-pill[aria-selected="true"] span { color: rgba(255,255,255,0.9); }
-.day-pill:active { transform: translateY(2px); }
+.day-pill[aria-selected="true"] b { color: #E8C587; }
 
-/* Unit Header Banner (Duolingo Unit Banner) */
-.unit-banner {
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 4px 0 var(--line-lip);
-  border-radius: 18px; padding: 14px 16px; margin-bottom: 14px;
+/* Editorial Feature Card with Osaka/Kyoto Illustration */
+.editorial-hero {
+  background: var(--paper); border: 1.5px solid var(--line-dark);
+  margin-bottom: 14px; overflow: hidden;
 }
-.unit-top {
+.editorial-art-frame {
+  height: 154px; width: 100%; border-bottom: 1.5px solid var(--line-dark);
+  background: #181615; overflow: hidden; position: relative;
+}
+.editorial-hero-body { padding: 14px 16px; }
+.editorial-hero-top {
   display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
 }
-.unit-eyebrow {
-  font-size: 11px; font-weight: 900; color: var(--primary); letter-spacing: 0.06em;
+.chapter-tag {
+  font-family: var(--serif-en); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.16em; color: var(--vermilion);
 }
-.unit-title {
-  font-size: 18px; font-weight: 900; margin: 2px 0 4px; line-height: 1.3;
+.chapter-headline {
+  font-family: var(--serif-kr); font-size: 21px; font-weight: 900;
+  margin: 3px 0 4px; letter-spacing: -0.02em; line-height: 1.3;
 }
-.unit-meta {
-  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+.chapter-sub { font-size: 12px; color: var(--muted); }
+.chapter-meta-row {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+  padding-top: 10px; border-top: 1px solid var(--line);
+  font-size: 11px; color: var(--muted);
 }
-.meta-chip {
-  font-size: 11px; font-weight: 700; padding: 3px 9px;
-  border-radius: 999px; background: var(--bg); color: var(--ink);
-  border: 1.5px solid var(--line);
+.chapter-meta-item {
+  padding: 2px 8px; background: var(--bg); border: 1px solid var(--line); font-weight: 600;
 }
-.unit-tip-drawer {
+.editorial-note-drawer {
   margin-top: 10px; padding: 11px 13px;
-  border-radius: 12px; background: var(--yellow-soft);
-  border: 2px solid var(--yellow); font-size: 12px; line-height: 1.6;
+  background: var(--brass-soft); border-left: 3px solid var(--vermilion);
+  font-size: 12px; line-height: 1.65;
 }
 
-/* Duolingo Step Nodes Path */
+/* Step Nodes (Magazine Sequence Index 01 — 04) */
 .step-nodes-bar {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 6px; margin: 14px 0; padding: 6px 4px;
-  overflow-x: auto; scrollbar-width: none;
+  gap: 6px; margin: 12px 0; padding: 4px 0;
 }
-.step-nodes-bar::-webkit-scrollbar { display: none; }
-.step-node-wrap {
-  display: flex; align-items: center; flex: 1; min-width: 0;
-}
+.step-node-wrap { display: flex; align-items: center; flex: 1; }
 .step-node {
-  width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
-  background: var(--card); border: 3px solid var(--line-lip);
-  box-shadow: 0 4px 0 var(--line-lip);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 14px; color: var(--ink);
-  position: relative; transition: all 0.15s;
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--paper); border: 1.5px solid var(--line-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif-en); font-weight: 700; font-size: 16px;
+  transition: all 0.15s;
 }
 .step-node.is-current {
-  background: var(--primary); color: #ffffff;
-  border-color: var(--primary-lip); box-shadow: 0 4px 0 var(--primary-lip), 0 0 0 4px var(--primary-soft);
-  transform: scale(1.08);
+  background: var(--vermilion); color: var(--paper);
+  border-color: var(--line-dark); transform: translateY(-2px);
+  box-shadow: 3px 3px 0 var(--line-dark);
 }
 .step-node.is-done {
-  background: var(--green); color: #ffffff;
-  border-color: var(--green-lip); box-shadow: 0 4px 0 var(--green-lip);
+  background: var(--moss); color: var(--paper);
 }
 .step-connector {
-  flex: 1; height: 4px; background: var(--line); margin: 0 4px; border-radius: 2px; min-width: 10px;
+  flex: 1; height: 1.5px; background: var(--line-dark); margin: 0 6px; opacity: 0.35;
 }
-.step-connector.is-done { background: var(--green); }
+.step-connector.is-done { background: var(--moss); opacity: 1; height: 2px; }
 
-/* Focused Step Mission Card */
+/* Focused Editorial Stop Card */
 .mission-card {
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 6px 0 var(--line-lip);
-  border-radius: 22px; padding: 20px 18px;
-  margin-bottom: 12px;
+  background: var(--paper); border: 1.5px solid var(--line-dark);
+  box-shadow: 4px 4px 0 rgba(24, 22, 21, 0.12);
+  padding: 20px 18px; margin-bottom: 12px;
 }
 .mission-header {
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
-  margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;
 }
 .mission-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--primary-soft); color: var(--primary-lip);
-  border: 1.5px solid var(--primary);
-  font-size: 12px; font-weight: 900; padding: 4px 10px; border-radius: 999px;
+  font-family: var(--serif-en); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--vermilion);
 }
 .mission-time {
-  font-size: 12px; font-weight: 800; color: var(--muted);
+  font-size: 12px; font-weight: 700; color: var(--muted);
 }
 .mission-title {
-  font-size: 21px; font-weight: 900; margin: 0 0 8px; line-height: 1.35;
+  font-family: var(--serif-kr); font-size: 22px; font-weight: 900;
+  margin: 0 0 10px; line-height: 1.35; letter-spacing: -0.02em;
 }
 .mission-desc {
-  font-size: 14px; color: var(--ink); margin: 0 0 16px; line-height: 1.65;
+  font-size: 14px; color: var(--ink); margin: 0 0 16px; line-height: 1.75;
 }
 .mission-links {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 8px; margin-bottom: 16px;
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+}
+.mag-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 15px; font-size: 12px; font-weight: 700;
+  border: 1.5px solid var(--line-dark); transition: all 0.12s;
+}
+.mag-btn-primary {
+  background: var(--ink); color: var(--paper);
+}
+.mag-btn-primary:hover { background: var(--vermilion); border-color: var(--vermilion); }
+.mag-btn-accent {
+  background: var(--vermilion-soft); color: var(--vermilion); border-color: var(--vermilion);
+}
+.mag-btn-outline {
+  background: var(--paper); color: var(--ink);
 }
 .mission-footer {
   display: flex; align-items: center; gap: 8px;
-  padding-top: 14px; border-top: 2px dashed var(--line);
+  padding-top: 14px; border-top: 1px solid var(--line);
 }
 .mission-nav-btn {
-  padding: 11px 14px; border-radius: 14px;
-  background: var(--bg); border: 2px solid var(--line);
-  box-shadow: 0 3px 0 var(--line-lip);
-  font-weight: 800; font-size: 13px;
+  padding: 10px 14px; border: 1px solid var(--line-dark);
+  background: var(--bg); font-size: 12px; font-weight: 700;
 }
-.mission-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
-.mission-done-btn { flex: 1; }
+.mission-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.mission-done-btn {
+  flex: 1; padding: 11px 14px; border: 1.5px solid var(--line-dark);
+  background: var(--moss); color: var(--paper); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.mission-done-btn.is-checked {
+  background: var(--bg); color: var(--ink);
+}
 
-/* Compact List Mode inside Day */
+/* Compact List Mode */
 .day-list-view { display: grid; gap: 10px; }
 .compact-step-card {
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 3px 0 var(--line-lip);
-  border-radius: 16px; padding: 14px;
-  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--paper); border: 1px solid var(--line-dark);
+  padding: 14px; display: flex; align-items: flex-start; gap: 12px;
 }
 .compact-step-num {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--primary-soft); color: var(--primary-lip);
-  font-weight: 900; font-size: 13px;
-  display: grid; place-items: center; flex-shrink: 0;
+  width: 28px; height: 28px; border: 1px solid var(--line-dark);
+  font-family: var(--serif-en); font-weight: 700; font-size: 14px;
+  display: grid; place-items: center; flex-shrink: 0; background: var(--bg);
 }
 
-/* Sub-navigation Segments & Filter Chips */
+/* Sub-navigation Segments & Chips */
 .seg-tabs {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-  background: var(--card); padding: 6px; border-radius: 16px;
-  border: 2px solid var(--line); margin-bottom: 12px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--line-dark); background: var(--paper); margin-bottom: 12px;
 }
 .seg-btn {
-  padding: 10px; border-radius: 12px; font-weight: 900; font-size: 13px;
-  color: var(--muted); transition: all 0.12s;
+  padding: 10px; font-family: var(--serif-kr); font-weight: 700; font-size: 13px;
+  color: var(--muted); border-right: 1px solid var(--line);
 }
-.seg-btn.is-active {
-  background: var(--primary); color: #ffffff;
-  box-shadow: 0 3px 0 var(--primary-lip);
-}
+.seg-btn:last-child { border-right: none; }
+.seg-btn.is-active { background: var(--ink); color: var(--paper); }
 
 .chip-bar {
   display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 12px;
-  scrollbar-width: none;
 }
-.chip-bar::-webkit-scrollbar { display: none; }
 .filter-chip {
-  padding: 7px 13px; border-radius: 999px; white-space: nowrap;
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 2px 0 var(--line-lip);
-  font-size: 12px; font-weight: 800; color: var(--muted);
+  padding: 6px 13px; white-space: nowrap;
+  background: var(--paper); border: 1px solid var(--line);
+  font-size: 12px; font-weight: 700; color: var(--muted);
 }
 .filter-chip.is-active {
-  background: var(--ink); color: #ffffff; border-color: var(--ink);
-  box-shadow: 0 2px 0 #000;
+  background: var(--vermilion); color: var(--paper); border-color: var(--vermilion);
 }
 
-/* Cards Grid for Food / Hotels / Bookings / Places */
+/* Magazine Article Cards */
 .card-deck {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px;
 }
 .deck-card {
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 4px 0 var(--line-lip);
-  border-radius: 18px; padding: 16px;
-  display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
+  background: var(--paper); border: 1px solid var(--line-dark);
+  padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
 }
-.deck-card h3 { font-size: 16px; font-weight: 900; margin: 2px 0; }
-.deck-card .sub { font-size: 11px; font-weight: 800; color: var(--primary); }
-.deck-card p { font-size: 13px; color: var(--ink); margin: 4px 0; line-height: 1.5; }
-.deck-card .meta-line { font-size: 11px; color: var(--muted); background: var(--bg); padding: 6px 10px; border-radius: 10px; }
+.deck-card h3 {
+  font-family: var(--serif-kr); font-size: 17px; font-weight: 900; margin: 3px 0;
+}
+.deck-card .sub {
+  font-size: 11px; font-weight: 700; color: var(--vermilion); letter-spacing: 0.04em;
+}
+.deck-card p { font-size: 13px; color: var(--ink); margin: 6px 0; line-height: 1.65; }
+.deck-card .meta-line {
+  font-size: 11px; color: var(--muted); background: var(--bg);
+  padding: 8px 10px; border-left: 2px solid var(--line-dark);
+}
 
-/* Stamp Passport & Quests */
-.stamp-board {
-  background: var(--yellow-soft); border: 2px solid var(--yellow);
-  box-shadow: 0 4px 0 var(--yellow-lip);
-  border-radius: 18px; padding: 14px; margin-bottom: 14px;
-}
-.stamp-board h3 { font-size: 14px; font-weight: 900; margin: 0 0 10px; }
-.stamp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.stamp-card {
-  background: var(--card); border: 2px dashed var(--yellow-lip);
-  border-radius: 14px; padding: 10px 8px; text-align: center;
-  cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px;
-}
-.stamp-card:has(input:checked) {
-  background: var(--green-soft); border: 2px solid var(--green);
-  box-shadow: 0 3px 0 var(--green-lip);
-}
-.stamp-card input { width: 18px; height: 18px; accent-color: var(--green); margin: 0; }
-.stamp-card b { font-size: 12px; font-weight: 900; }
-.stamp-card small { font-size: 10px; color: var(--muted); }
-
+/* Checklist */
 .quest-list { display: grid; gap: 8px; }
 .quest-item {
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 3px 0 var(--line-lip);
-  border-radius: 16px; padding: 12px 14px;
-  display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
+  background: var(--paper); border: 1px solid var(--line-dark);
+  padding: 12px 14px; display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
 }
 .quest-item:has(input:checked) {
-  background: var(--green-soft); border-color: var(--green);
+  background: var(--moss-soft); border-color: var(--moss);
 }
-.quest-item input { width: 20px; height: 20px; accent-color: var(--green); margin-top: 2px; flex-shrink: 0; }
-.quest-item strong { display: block; font-size: 14px; font-weight: 800; }
+.quest-item input { width: 18px; height: 18px; accent-color: var(--moss); margin-top: 3px; flex-shrink: 0; }
+.quest-item strong { display: block; font-family: var(--serif-kr); font-size: 14px; font-weight: 700; }
 .quest-item small { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-/* Bottom Tab Bar (Duolingo 5-Tab Navigation) */
+/* Bottom Editorial Index Bar */
 .bottom-tabbar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-  background: var(--card); border-top: 2px solid var(--line);
+  background: var(--paper); border-top: 1.5px solid var(--line-dark);
   padding: 6px 8px max(8px, env(safe-area-inset-bottom));
 }
 .bottom-tabbar-inner {
-  max-width: 720px; margin: 0 auto;
+  max-width: 740px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;
 }
 .nav-tab {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 2px; padding: 6px 4px; border-radius: 14px;
-  color: var(--muted); font-size: 11px; font-weight: 800;
-  border: 2px solid transparent;
+  gap: 2px; padding: 6px 2px; color: var(--muted); font-size: 11px; font-weight: 700;
 }
-.nav-tab .tab-ico { font-size: 18px; line-height: 1.1; }
+.nav-tab .tab-num {
+  font-family: var(--serif-en); font-size: 11px; letter-spacing: 0.1em; color: var(--vermilion);
+}
 .nav-tab[aria-selected="true"] {
-  background: var(--primary-soft); color: var(--primary-lip);
-  border-color: var(--primary);
+  background: var(--ink); color: var(--paper);
 }
+.nav-tab[aria-selected="true"] .tab-num { color: #E8C587; }
 
-/* Info Modal */
 .modal-backdrop {
   position: fixed; inset: 0; z-index: 90;
-  background: rgba(15, 25, 23, 0.55);
+  background: rgba(24, 22, 21, 0.6);
   display: flex; align-items: center; justify-content: center; padding: 16px;
 }
 .modal-card {
-  background: var(--card); border: 2px solid var(--line);
-  box-shadow: 0 8px 0 var(--line-lip);
-  border-radius: 22px; max-width: 520px; width: 100%;
-  max-height: 82dvh; overflow-y: auto; padding: 20px;
+  background: var(--paper); border: 1.5px solid var(--line-dark);
+  max-width: 520px; width: 100%; max-height: 82dvh; overflow-y: auto; padding: 22px;
 }
 
-/* Landing Choice Screen (1-Viewport App Launcher) */
-.launcher-shell {
-  max-width: 760px; margin: 0 auto; min-height: 100dvh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 20px 16px;
-}
-.launcher-head { text-align: center; margin-bottom: 18px; }
-.launcher-head h1 { font-size: clamp(24px, 5vw, 34px); font-weight: 900; margin: 6px 0; }
-.launcher-head p { font-size: 13px; color: var(--muted); margin: 0; }
-.launcher-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-}
-.launcher-card {
-  background: var(--card); border: 3px solid var(--line);
-  box-shadow: 0 6px 0 var(--line-lip);
-  border-radius: 22px; padding: 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  transition: transform 0.1s;
-}
-.launcher-card:hover { transform: translateY(-2px); }
-.launcher-card:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--line-lip); }
-.launcher-card.poke {
-  background: #fffdf2; border-color: #f5b800; box-shadow: 0 6px 0 #c28e00;
-}
-.launcher-avatar {
-  width: 52px; height: 52px; border-radius: 16px;
-  display: grid; place-items: center; font-size: 28px;
-  background: var(--primary-soft); border: 2px solid var(--primary);
-  margin-bottom: 10px;
-}
-.launcher-card.poke .launcher-avatar {
-  background: #fff4bd; border-color: #f5b800;
-}
-@media (max-width: 600px) {
-  .launcher-grid { grid-template-columns: 1fr; }
-  .mission-title { font-size: 19px; }
-}
-
-/* Print Fallback: Expand Everything Cleanly */
 @media print {
-  .app-topbar, .bottom-tabbar, .step-nodes-bar, .mission-footer, .seg-tabs, .chip-bar, .only-js { display: none !important; }
+  .app-topbar, .bottom-tabbar, .step-nodes-bar, .mission-footer, .seg-tabs, .chip-bar { display: none !important; }
   .app-shell { max-width: none; padding: 0; }
-  .view-panel, .day-list-view, [data-subpanel], [data-day-wrap] { display: block !important; }
+  .view-panel, .day-list-view, [data-subpanel], [data-bookpanel], [data-preppanel], [data-day-wrap] { display: block !important; }
   .mission-card { display: none !important; }
 }
 </style>
 </head>
-<body class="slow" data-guide="couple">
+<body data-guide="couple">
   <div class="app-shell">
-    <!-- Top App Status Bar -->
     <header class="app-topbar">
       <div class="topbar-inner">
-        <a href="index.html" class="course-badge" title="코스 선택 화면으로">
-          <span>💑</span>
-          <span>느긋한 두 사람</span>
-        </a>
-        <div class="xp-track-wrap" aria-label="여행 준비 및 코스 진행도">
-          <div class="xp-bar"><div class="xp-fill" data-xp-fill></div></div>
-          <span class="xp-count" data-xp-text>0%</span>
+        <div class="masthead-brand">
+          <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="32" cy="32" r="30" stroke="#181615" stroke-width="1.2"/>
+    <circle cx="32" cy="32" r="26" stroke="#B63A2A" stroke-width="0.8" stroke-dasharray="2 2"/>
+    <path d="M16 40 C24 32, 40 32, 48 40" stroke="#181615" stroke-width="1.4" fill="none"/>
+    <path d="M12 44 H52" stroke="#181615" stroke-width="1.2"/>
+    <path d="M22 24 H42 M25 20 H39 M27 24 V36 M37 24 V36" stroke="#B63A2A" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="44" cy="18" r="3.5" fill="#B63A2A"/>
+  </svg>
+          <div>
+            <span class="masthead-kicker">KANSAI WINTER ISSUE · 3N4D</span>
+            <div class="masthead-title">우리 속도로, 오사카와 교토</div>
+          </div>
         </div>
-        <button type="button" class="top-icon-btn" data-open-info>💡 안내</button>
-        <a href="pokemon.html" class="top-icon-btn">⚡ 포켓몬편 전환</a>
+        <div class="reading-gauge" aria-label="여정 진행률">
+          <div class="gauge-track"><div class="gauge-fill" data-xp-fill></div></div>
+          <span class="gauge-label" data-xp-text>0%</span>
+        </div>
+        <button type="button" class="editorial-chip-btn" data-open-info>발행 노트</button>
       </div>
     </header>
 
-    <!-- Main Single-Screen Viewport -->
     <main class="app-viewport" id="main">
-      <!-- VIEW 1: ITINERARY (코스) -->
+      <!-- VIEW 1: CURATED ITINERARY -->
       <section class="view-panel is-active" id="view-itinerary" data-view="itinerary">
-        <div class="day-tabs" role="tablist" aria-label="여행 일자 선택">
+        <div class="day-tabs" role="tablist" aria-label="챕터별 여정">
           
             <button type="button" class="day-pill" role="tab" id="tab-1" data-day="1" aria-selected="true">
-              <b>DAY 1</b>
+              <b>DAY 01</b>
               <span>오사카</span>
             </button>
           
             <button type="button" class="day-pill" role="tab" id="tab-2" data-day="2" aria-selected="false">
-              <b>DAY 2</b>
+              <b>DAY 02</b>
               <span>오사카만</span>
             </button>
           
             <button type="button" class="day-pill" role="tab" id="tab-3" data-day="3" aria-selected="false">
-              <b>DAY 3</b>
+              <b>DAY 03</b>
               <span>교토투어</span>
             </button>
           
             <button type="button" class="day-pill" role="tab" id="tab-4" data-day="4" aria-selected="false">
-              <b>DAY 4</b>
+              <b>DAY 04</b>
               <span>귀국</span>
             </button>
           
         </div>
         
-  <div class="day-workspace" id="day-1" data-day-wrap="1" >
-    <div class="unit-banner">
-      <div class="unit-top">
-        <div>
-          <div class="unit-eyebrow">DAY 1 · OSAKA</div>
-          <h2 class="unit-title">도착한 날은, 동네만.</h2>
-          <div style="font-size:12px;color:var(--muted)">공항 → 난바 → 철판요리 → 도톤보리</div>
-        </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <button type="button" class="top-icon-btn" data-toggle-tip="1">💡 팁·대안</button>
-          <button type="button" class="top-icon-btn" data-toggle-list="1">📋 전체</button>
+    <div class="day-workspace" id="day-1" data-day-wrap="1" >
+      <div class="editorial-hero">
+        <div class="editorial-art-frame"><svg viewBox="0 0 680 170" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="오사카 도톤보리 운하와 에비스바시 야경 일러스트">
+    <defs>
+      <linearGradient id="c-d1-sky" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1E242B"/>
+        <stop offset="60%" stop-color="#2C353D"/>
+        <stop offset="100%" stop-color="#3B2F2F"/>
+      </linearGradient>
+      <linearGradient id="c-d1-glow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#D96B43" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#D96B43" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="680" height="170" fill="url(#c-d1-sky)"/>
+    <!-- Warm Evening Moon & Cloud Line -->
+    <circle cx="560" cy="42" r="22" fill="#E8C587" opacity="0.9"/>
+    <path d="M510 52 H620 M490 60 H570" stroke="#F5F1E8" stroke-width="0.9" opacity="0.35"/>
+    <!-- Architectural Silhouettes along Dotonbori -->
+    <g stroke="#F5F1E8" stroke-width="1" fill="#161A1E" opacity="0.92">
+      <rect x="28" y="26" width="58" height="84"/>
+      <rect x="92" y="38" width="48" height="72"/>
+      <rect x="148" y="18" width="66" height="92"/>
+      <rect x="222" y="42" width="52" height="68"/>
+      <rect x="410" y="30" width="62" height="80"/>
+      <rect x="480" y="22" width="70" height="88"/>
+      <rect x="595" y="36" width="56" height="74"/>
+    </g>
+    <!-- Retro Neon Sign Frames & Warm Lanterns -->
+    <rect x="158" y="28" width="46" height="58" fill="none" stroke="#E06D53" stroke-width="1.5"/>
+    <circle cx="181" cy="48" r="14" fill="none" stroke="#E8C587" stroke-width="1.2"/>
+    <path d="M175 52 L181 38 L187 52 M173 45 H189" stroke="#F5F1E8" stroke-width="1.2" fill="none"/>
+    <rect x="492" y="34" width="46" height="44" fill="none" stroke="#E8C587" stroke-width="1.2"/>
+    <line x1="48" y1="42" x2="68" y2="42" stroke="#E06D53" stroke-width="2"/>
+    <line x1="48" y1="52" x2="68" y2="52" stroke="#E8C587" stroke-width="2"/>
+    <line x1="48" y1="62" x2="68" y2="62" stroke="#E06D53" stroke-width="2"/>
+    <!-- Ebisubashi Bridge Arch -->
+    <ellipse cx="340" cy="112" rx="190" ry="44" fill="url(#c-d1-glow)"/>
+    <path d="M0 110 H680" stroke="#E8C587" stroke-width="1.4"/>
+    <path d="M180 110 Q340 78 500 110" fill="#181615" stroke="#F5F1E8" stroke-width="1.5"/>
+    <path d="M205 104 V92 M235 99 V88 M265 95 V84 M295 93 V82 M325 92 V81 M355 92 V81 M385 93 V82 M415 95 V84 M445 99 V88 M475 104 V92" stroke="#E8C587" stroke-width="1" opacity="0.75"/>
+    <!-- Canal Water & Shimmering Reflections -->
+    <rect x="0" y="110" width="680" height="60" fill="#12171B"/>
+    <g stroke-linecap="round" opacity="0.75">
+      <path d="M155 122 H205 M162 130 H198 M168 138 H192 M174 146 H188" stroke="#E06D53" stroke-width="2"/>
+      <path d="M488 124 H536 M496 133 H528 M502 142 H522" stroke="#E8C587" stroke-width="1.8"/>
+      <path d="M300 126 H380 M315 135 H365 M325 144 H355" stroke="#F5F1E8" stroke-width="1.2" opacity="0.6"/>
+      <path d="M60 128 H110 M540 130 H600" stroke="#4A6B78" stroke-width="1.2"/>
+    </g>
+    <text x="24" y="22" fill="#E8C587" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="3">FIG. 01 — DOTONBORI CANAL &amp; EBISUBASHI, DUSK</text>
+  </svg></div>
+        <div class="editorial-hero-body">
+          <div class="editorial-hero-top">
+            <div>
+              <div class="chapter-tag">CHAPTER 01 — OSAKA</div>
+              <h2 class="chapter-headline">도착한 날은, 동네만.</h2>
+              <div class="chapter-sub">공항 → 난바 → 철판요리 → 도톤보리</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0">
+              <button type="button" class="editorial-chip-btn" data-toggle-tip="1">노트·대안</button>
+              <button type="button" class="editorial-chip-btn" data-toggle-list="1">전체 일정</button>
+            </div>
+          </div>
+          <div class="chapter-meta-row">
+            <span class="chapter-meta-item">리듬 · 산책 20–30분</span>
+            <span class="chapter-meta-item">도보 · 약 2–4km</span>
+            <span class="chapter-meta-item">숙박 · 오사카 1박째</span>
+          </div>
+          <div class="editorial-note-drawer" id="tip-drawer-1" hidden>
+            <strong>에디터 노트:</strong> 도착이 늦으면 저녁 한 끼만 남겨요. 첫날의 성공 기준은 무사히 체크인하고 푹 쉬는 것.<br>
+            <strong>우천·한파 대안:</strong> 비가 오면 도톤보리 산책을 생략하고 식당→호텔로 바로 이동해요.
+          </div>
         </div>
       </div>
-      <div class="unit-meta">
-        <span class="meta-chip">🏃 산책 20–30분</span>
-        <span class="meta-chip">👟 도보 약 2–4km</span>
-        <span class="meta-chip">🛏️ 오사카 1박째</span>
+
+      <div class="step-nodes-bar" role="tablist" aria-label="DAY 1 코스 순서">
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node is-current" data-step-btn="1-0" data-day="1" data-step="0" aria-label="01 간사이공항 도착">
+              <span>01</span>
+            </button>
+            <div class="step-connector" data-conn="1-0"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="1-1" data-day="1" data-step="1" aria-label="02 난바 이동 · 체크인">
+              <span>02</span>
+            </button>
+            <div class="step-connector" data-conn="1-1"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="1-2" data-day="1" data-step="2" aria-label="03 따뜻한 철판요리 저녁">
+              <span>03</span>
+            </button>
+            <div class="step-connector" data-conn="1-2"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="1-3" data-day="1" data-step="3" aria-label="04 도톤보리 야경, 딱 한 바퀴">
+              <span>04</span>
+            </button>
+            
+          </div>
+        
       </div>
-      <div class="unit-tip-drawer" id="tip-drawer-1" hidden>
-        <strong>💡 오늘의 기준:</strong> 도착이 늦으면 저녁 한 끼만 남겨요. 첫날의 성공 기준은 무사히 체크인하고 푹 쉬는 것.<br>
-        <strong>☔ 추위·비·지연 대안:</strong> 비가 오면 도톤보리 산책을 생략하고 식당→호텔로 바로 이동해요.
+
+      <article class="mission-card" id="mission-card-1" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;12:00 가정&quot;,&quot;title&quot;:&quot;간사이공항 도착&quot;,&quot;desc&quot;:&quot;입국·수하물·역 이동에 1.5–2시간을 비워요. 바로 출발하는 열차를 고정 예약하지 말고 지연 여유를 둬요.&quot;,&quot;type&quot;:&quot;✈️ 이동&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 난카이 난바역&quot;,&quot;extUrl&quot;:&quot;https://www.nankai.co.jp/en_railway/ticket/rapit/&quot;,&quot;extLabel&quot;:&quot;라피트 공식 티켓&quot;,&quot;checkId&quot;:&quot;step-1-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;14:00–15:30&quot;,&quot;title&quot;:&quot;난바 이동 · 체크인&quot;,&quot;desc&quot;:&quot;난카이 라피트 또는 공항급행으로 난바. 호텔에 짐을 맡기고 체크인 시각까지 늦은 점심이나 커피로 쉬어요.&quot;,&quot;type&quot;:&quot;🏨 휴식&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 난카이 난바역&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-1-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;17:30&quot;,&quot;title&quot;:&quot;따뜻한 철판요리 저녁&quot;,&quot;desc&quot;:&quot;치보를 기본으로, 미즈노는 대안으로 선택해요. 식당 두 곳을 도장 깨기 할 필요는 없어요.&quot;,&quot;type&quot;:&quot;🍽️ 식사&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%83%E6%88%BF%20%E9%81%93%E9%A0%93%E5%A0%80%E3%83%93%E3%83%AB%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-5-5&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 치보 도톤보리 빌딩점&quot;,&quot;extUrl&quot;:&quot;https://shop.chibo.com/detail/28/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-1-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;19:00&quot;,&quot;title&quot;:&quot;도톤보리 야경, 딱 한 바퀴&quot;,&quot;desc&quot;:&quot;에비스바시에서 사진 한 장. 강변을 20–30분만 걷고 춥거나 피곤하면 바로 숙소로 돌아와요.&quot;,&quot;type&quot;:&quot;🌙 산책&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 도톤보리 · 에비스바시&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-1-3&quot;}]'>
+        <div class="mission-header">
+          <span class="mission-badge" data-m-type>STOP 01 / 04</span>
+          <span class="mission-time" data-m-time>12:00 가정</span>
+        </div>
+        <h3 class="mission-title" data-m-title>간사이공항 도착</h3>
+        <p class="mission-desc" data-m-desc>입국·수하물·역 이동에 1.5–2시간을 비워요. 바로 출발하는 열차를 고정 예약하지 말고 지연 여유를 둬요.</p>
+        <div class="mission-links" data-m-links></div>
+        <div class="mission-footer">
+          <button type="button" class="mission-nav-btn" data-m-prev="1">◀ 이전</button>
+          <button type="button" class="mission-done-btn" data-m-done="1">방문 기록 후 다음 코스로 →</button>
+          <button type="button" class="mission-nav-btn" data-m-next="1">다음 ▶</button>
+        </div>
+      </article>
+
+      <div class="day-list-view" id="list-view-1" hidden>
+        <div class="compact-step-card">
+            <div class="compact-step-num">01</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">12:00 가정 · ✈️ 이동</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">간사이공항 도착</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">입국·수하물·역 이동에 1.5–2시간을 비워요. 바로 출발하는 열차를 고정 예약하지 말고 지연 여유를 둬요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">구글지도 · 난카이 난바역 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-accent" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">라피트 공식 티켓 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">02</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">14:00–15:30 · 🏨 휴식</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">난바 이동 · 체크인</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">난카이 라피트 또는 공항급행으로 난바. 호텔에 짐을 맡기고 체크인 시각까지 늦은 점심이나 커피로 쉬어요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">구글지도 · 난카이 난바역 <span aria-hidden="true">↗</span></a>
+                
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">03</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">17:30 · 🍽️ 식사</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">따뜻한 철판요리 저녁</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">치보를 기본으로, 미즈노는 대안으로 선택해요. 식당 두 곳을 도장 깨기 할 필요는 없어요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%83%E6%88%BF%20%E9%81%93%E9%A0%93%E5%A0%80%E3%83%93%E3%83%AB%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-5-5" target="_blank" rel="noopener noreferrer">구글지도 · 치보 도톤보리 빌딩점 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://shop.chibo.com/detail/28/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">04</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">19:00 · 🌙 산책</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">도톤보리 야경, 딱 한 바퀴</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">에비스바시에서 사진 한 장. 강변을 20–30분만 걷고 춥거나 피곤하면 바로 숙소로 돌아와요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener noreferrer">구글지도 · 도톤보리 · 에비스바시 <span aria-hidden="true">↗</span></a>
+                
+              </div>
+            </div>
+          </div>
       </div>
     </div>
+    <div class="day-workspace" id="day-2" data-day-wrap="2" hidden>
+      <div class="editorial-hero">
+        <div class="editorial-art-frame"><svg viewBox="0 0 680 170" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="오사카 가이유칸 고래상어와 덴포잔 대관람차 일러스트">
+    <defs>
+      <linearGradient id="c-d2-sea" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#173742"/>
+        <stop offset="55%" stop-color="#1F4E5B"/>
+        <stop offset="100%" stop-color="#28646F"/>
+      </linearGradient>
+    </defs>
+    <rect width="680" height="170" fill="url(#c-d2-sea)"/>
+    <!-- Aquarium Glass Grid Lines -->
+    <g stroke="#F5F1E8" stroke-width="0.6" opacity="0.18">
+      <line x1="170" y1="0" x2="170" y2="170"/>
+      <line x1="340" y1="0" x2="340" y2="170"/>
+      <line x1="510" y1="0" x2="510" y2="170"/>
+      <line x1="0" y1="56" x2="680" y2="56"/>
+      <line x1="0" y1="112" x2="680" y2="112"/>
+    </g>
+    <!-- Sunbeams through water -->
+    <polygon points="80,0 160,0 240,170 110,170" fill="#F5F1E8" opacity="0.06"/>
+    <polygon points="280,0 350,0 430,170 310,170" fill="#F5F1E8" opacity="0.05"/>
+    <!-- Tempozan Ferris Wheel Architectural Line Art (Right) -->
+    <g transform="translate(565, 88)" stroke="#E8C587" fill="none" opacity="0.75">
+      <circle cx="0" cy="0" r="56" stroke-width="1.4"/>
+      <circle cx="0" cy="0" r="48" stroke-width="0.8" stroke-dasharray="3 3"/>
+      <circle cx="0" cy="0" r="6" stroke-width="1.5"/>
+      <line x1="-56" y1="0" x2="56" y2="0" stroke-width="0.8"/>
+      <line x1="0" y1="-56" x2="0" y2="56" stroke-width="0.8"/>
+      <line x1="-40" y1="-40" x2="40" y2="40" stroke-width="0.8"/>
+      <line x1="-40" y1="40" x2="40" y2="-40" stroke-width="0.8"/>
+      <path d="M-28 76 L0 0 L28 76" stroke-width="1.6"/>
+    </g>
+    <!-- Graceful Whale Shark Silhouette & Constellation Dots -->
+    <g transform="translate(55, 32)">
+      <path d="M20 58 C65 26, 175 20, 265 42 C310 52, 355 46, 395 22 C382 46, 384 62, 402 82 C358 64, 312 64, 265 72 C220 80, 195 102, 168 112 C174 90, 165 78, 140 76 C92 74, 48 70, 20 58 Z" fill="#0E242C" stroke="#E8EFF0" stroke-width="1.3"/>
+      <!-- Whale shark pattern dots -->
+      <g fill="#E8EFF0" opacity="0.75">
+        <circle cx="95" cy="48" r="1.8"/><circle cx="115" cy="44" r="1.6"/><circle cx="135" cy="42" r="2"/><circle cx="155" cy="43" r="1.7"/><circle cx="175" cy="45" r="1.9"/><circle cx="195" cy="47" r="1.6"/><circle cx="215" cy="49" r="1.8"/><circle cx="235" cy="52" r="1.5"/>
+        <circle cx="105" cy="56" r="1.6"/><circle cx="125" cy="53" r="1.9"/><circle cx="145" cy="52" r="1.7"/><circle cx="165" cy="53" r="2"/><circle cx="185" cy="55" r="1.6"/><circle cx="205" cy="57" r="1.8"/><circle cx="225" cy="59" r="1.5"/>
+        <circle cx="135" cy="61" r="1.5"/><circle cx="155" cy="62" r="1.6"/><circle cx="175" cy="63" r="1.5"/><circle cx="195" cy="64" r="1.6"/>
+      </g>
+      <!-- Manta Ray & Small Fish -->
+      <path d="M310 16 Q335 4 358 18 Q338 24 328 36 Q320 22 310 16 Z" fill="#0E242C" stroke="#E8C587" stroke-width="1"/>
+    </g>
+    <text x="24" y="22" fill="#E8C587" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="3">FIG. 02 — KAIYUKAN PACIFIC TANK &amp; TEMPOZAN HARBOR</text>
+  </svg></div>
+        <div class="editorial-hero-body">
+          <div class="editorial-hero-top">
+            <div>
+              <div class="chapter-tag">CHAPTER 02 — OSAKA BAY</div>
+              <h2 class="chapter-headline">바다보다, 수조 앞에서 오래.</h2>
+              <div class="chapter-sub">늦은 조식 → 가이유칸 → 실내 점심 → 호텔 휴식</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0">
+              <button type="button" class="editorial-chip-btn" data-toggle-tip="2">노트·대안</button>
+              <button type="button" class="editorial-chip-btn" data-toggle-list="2">전체 일정</button>
+            </div>
+          </div>
+          <div class="chapter-meta-row">
+            <span class="chapter-meta-item">리듬 · 실내 관람 중심</span>
+            <span class="chapter-meta-item">도보 · 약 3–5km</span>
+            <span class="chapter-meta-item">숙박 · 오사카 2박째</span>
+          </div>
+          <div class="editorial-note-drawer" id="tip-drawer-2" hidden>
+            <strong>에디터 노트:</strong> 관람차나 유람선까지 미리 묶지 않아요. 오늘은 가이유칸 하나만으로 충분해요.<br>
+            <strong>우천·한파 대안:</strong> 추위가 심하면 항구 산책은 생략. 가이유칸 휴관이면 D3와 날짜를 바꾸고 투어 예약도 함께 조정해요.
+          </div>
+        </div>
+      </div>
 
-    <!-- Duolingo Step Nodes Path -->
-    <div class="step-nodes-bar" role="tablist" aria-label="DAY 1 코스 단계">
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node is-current" data-step-btn="1-0" data-day="1" data-step="0" aria-label="1단계 간사이공항 도착">
-            <span>1</span>
-          </button>
-          <div class="step-connector" data-conn="1-0"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="1-1" data-day="1" data-step="1" aria-label="2단계 난바 이동 · 체크인">
-            <span>2</span>
-          </button>
-          <div class="step-connector" data-conn="1-1"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="1-2" data-day="1" data-step="2" aria-label="3단계 따뜻한 철판요리 저녁">
-            <span>3</span>
-          </button>
-          <div class="step-connector" data-conn="1-2"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="1-3" data-day="1" data-step="3" aria-label="4단계 도톤보리 야경, 딱 한 바퀴">
-            <span>4</span>
-          </button>
-          
-        </div>
-      
-    </div>
+      <div class="step-nodes-bar" role="tablist" aria-label="DAY 2 코스 순서">
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node is-current" data-step-btn="2-0" data-day="2" data-step="0" aria-label="01 느긋하게 아침">
+              <span>01</span>
+            </button>
+            <div class="step-connector" data-conn="2-0"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="2-1" data-day="2" data-step="1" aria-label="02 난바 → 오사카코">
+              <span>02</span>
+            </button>
+            <div class="step-connector" data-conn="2-1"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="2-2" data-day="2" data-step="2" aria-label="03 가이유칸, 천천히 보기">
+              <span>03</span>
+            </button>
+            <div class="step-connector" data-conn="2-2"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="2-3" data-day="2" data-step="3" aria-label="04 덴포잔 실내 점심 · 쉬기">
+              <span>04</span>
+            </button>
+            <div class="step-connector" data-conn="2-3"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="2-4" data-day="2" data-step="4" aria-label="05 호텔에서 쉬었다가 저녁">
+              <span>05</span>
+            </button>
+            
+          </div>
+        
+      </div>
 
-    <!-- Active Step Mission Card (1 Card at a time!) -->
-    <article class="mission-card" id="mission-card-1" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;12:00 가정&quot;,&quot;title&quot;:&quot;간사이공항 도착&quot;,&quot;desc&quot;:&quot;입국·수하물·역 이동에 1.5–2시간을 비워요. 바로 출발하는 열차를 고정 예약하지 말고 지연 여유를 둬요.&quot;,&quot;type&quot;:&quot;✈️ 이동&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 난카이 난바역&quot;,&quot;extUrl&quot;:&quot;https://www.nankai.co.jp/en_railway/ticket/rapit/&quot;,&quot;extLabel&quot;:&quot;라피트 공식 티켓&quot;,&quot;checkId&quot;:&quot;step-1-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;14:00–15:30&quot;,&quot;title&quot;:&quot;난바 이동 · 체크인&quot;,&quot;desc&quot;:&quot;난카이 라피트 또는 공항급행으로 난바. 호텔에 짐을 맡기고 체크인 시각까지 늦은 점심이나 커피로 쉬어요.&quot;,&quot;type&quot;:&quot;🏨 휴식&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 난카이 난바역&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-1-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;17:30&quot;,&quot;title&quot;:&quot;따뜻한 철판요리 저녁&quot;,&quot;desc&quot;:&quot;치보를 기본으로, 미즈노는 대안으로 선택해요. 식당 두 곳을 도장 깨기 할 필요는 없어요.&quot;,&quot;type&quot;:&quot;🍽️ 식사&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%83%E6%88%BF%20%E9%81%93%E9%A0%93%E5%A0%80%E3%83%93%E3%83%AB%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-5-5&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 치보 도톤보리 빌딩점&quot;,&quot;extUrl&quot;:&quot;https://shop.chibo.com/detail/28/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-1-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;19:00&quot;,&quot;title&quot;:&quot;도톤보리 야경, 딱 한 바퀴&quot;,&quot;desc&quot;:&quot;에비스바시에서 사진 한 장. 강변을 20–30분만 걷고 춥거나 피곤하면 바로 숙소로 돌아와요.&quot;,&quot;type&quot;:&quot;🌙 산책&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 도톤보리 · 에비스바시&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-1-3&quot;}]'>
-      <div class="mission-header">
-        <span class="mission-badge" data-m-type>✈️ 이동 · STEP 1/4</span>
-        <span class="mission-time" data-m-time>⏰ 12:00 가정</span>
-      </div>
-      <h3 class="mission-title" data-m-title>간사이공항 도착</h3>
-      <p class="mission-desc" data-m-desc>입국·수하물·역 이동에 1.5–2시간을 비워요. 바로 출발하는 열차를 고정 예약하지 말고 지연 여유를 둬요.</p>
-      <div class="mission-links" data-m-links></div>
-      <div class="mission-footer">
-        <button type="button" class="mission-nav-btn" data-m-prev="1">◀ 이전</button>
-        <button type="button" class="btn-3d btn-green mission-done-btn" data-m-done="1">✓ 완료하고 다음 코스로</button>
-        <button type="button" class="mission-nav-btn" data-m-next="1">다음 ▶</button>
-      </div>
-    </article>
+      <article class="mission-card" id="mission-card-2" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;09:30&quot;,&quot;title&quot;:&quot;느긋하게 아침&quot;,&quot;desc&quot;:&quot;조식 후에도 바로 나가지 말고 커피 한 잔. 오늘 예약할 것은 가이유칸 시간 지정권 하나예요.&quot;,&quot;type&quot;:&quot;☕ 휴식&quot;,&quot;mapUrl&quot;:&quot;&quot;,&quot;mapLabel&quot;:&quot;&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;&quot;,&quot;checkId&quot;:&quot;step-2-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;10:30–11:30&quot;,&quot;title&quot;:&quot;난바 → 오사카코&quot;,&quot;desc&quot;:&quot;Metro 미도스지선으로 혼마치, 주오선으로 갈아타 오사카코. 역부터 도보를 포함해 약 45–60분을 잡아요.&quot;,&quot;type&quot;:&quot;🚇 이동&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 가이유칸&quot;,&quot;extUrl&quot;:&quot;https://www.kaiyukan.com/info/ticket/kaiyukan/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-2-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;11:30–13:30&quot;,&quot;title&quot;:&quot;가이유칸, 천천히 보기&quot;,&quot;desc&quot;:&quot;고래상어 수조 앞에서 오래 머물러요. 날짜별 시간과 요금은 공식 달력으로 확인하고, 관람 후 실내에서 점심을 먹어요.&quot;,&quot;type&quot;:&quot;🦈 핵심&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 가이유칸&quot;,&quot;extUrl&quot;:&quot;https://www.kaiyukan.com/info/ticket/kaiyukan/&quot;,&quot;extLabel&quot;:&quot;공식 입장권 안내&quot;,&quot;checkId&quot;:&quot;step-2-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;13:30–15:00&quot;,&quot;title&quot;:&quot;덴포잔 실내 점심 · 쉬기&quot;,&quot;desc&quot;:&quot;마켓플레이스에서 끌리는 식당 한 곳. 항구 산책은 바람이 약할 때만 10–15분, 대관람차는 체력이 남을 때의 선택이에요.&quot;,&quot;type&quot;:&quot;🍽️ 식사&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 덴포잔 마켓플레이스&quot;,&quot;extUrl&quot;:&quot;https://www.kaiyukan.com/thv/marketplace/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-2-3&quot;},{&quot;idx&quot;:4,&quot;time&quot;:&quot;16:00 이후&quot;,&quot;title&quot;:&quot;호텔에서 쉬었다가 저녁&quot;,&quot;desc&quot;:&quot;난바로 돌아와 한 시간 이상 쉬어요. 이마이의 우동 또는 하리쥬 그릴 중 휴무·기분에 맞는 한 곳을 골라요.&quot;,&quot;type&quot;:&quot;🍜 휴식·저녁&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E9%81%93%E9%A0%93%E5%A0%80%20%E4%BB%8A%E4%BA%95%20%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-7-22&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 도톤보리 이마이 본점&quot;,&quot;extUrl&quot;:&quot;https://www.d-imai.com/shops/honten/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-2-4&quot;}]'>
+        <div class="mission-header">
+          <span class="mission-badge" data-m-type>STOP 01 / 05</span>
+          <span class="mission-time" data-m-time>09:30</span>
+        </div>
+        <h3 class="mission-title" data-m-title>느긋하게 아침</h3>
+        <p class="mission-desc" data-m-desc>조식 후에도 바로 나가지 말고 커피 한 잔. 오늘 예약할 것은 가이유칸 시간 지정권 하나예요.</p>
+        <div class="mission-links" data-m-links></div>
+        <div class="mission-footer">
+          <button type="button" class="mission-nav-btn" data-m-prev="2">◀ 이전</button>
+          <button type="button" class="mission-done-btn" data-m-done="2">방문 기록 후 다음 코스로 →</button>
+          <button type="button" class="mission-nav-btn" data-m-next="2">다음 ▶</button>
+        </div>
+      </article>
 
-    <!-- Optional Compact List View (Hidden unless toggled or printed) -->
-    <div class="day-list-view" id="list-view-1" hidden>
-      <div class="compact-step-card">
-          <div class="compact-step-num">1</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">12:00 가정 · ✈️ 이동</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">간사이공항 도착</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">입국·수하물·역 이동에 1.5–2시간을 비워요. 바로 출발하는 열차를 고정 예약하지 말고 지연 여유를 둬요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">📍 지도 · 난카이 난바역 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">🎫 라피트 공식 티켓 <span aria-hidden="true">↗</span></a>
+      <div class="day-list-view" id="list-view-2" hidden>
+        <div class="compact-step-card">
+            <div class="compact-step-num">01</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">09:30 · ☕ 휴식</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">느긋하게 아침</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">조식 후에도 바로 나가지 말고 커피 한 잔. 오늘 예약할 것은 가이유칸 시간 지정권 하나예요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                
+                
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">02</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">10:30–11:30 · 🚇 이동</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">난바 → 오사카코</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">Metro 미도스지선으로 혼마치, 주오선으로 갈아타 오사카코. 역부터 도보를 포함해 약 45–60분을 잡아요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">구글지도 · 가이유칸 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">03</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">11:30–13:30 · 🦈 핵심</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">가이유칸, 천천히 보기</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">고래상어 수조 앞에서 오래 머물러요. 날짜별 시간과 요금은 공식 달력으로 확인하고, 관람 후 실내에서 점심을 먹어요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">구글지도 · 가이유칸 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-accent" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">공식 입장권 안내 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">04</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">13:30–15:00 · 🍽️ 식사</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">덴포잔 실내 점심 · 쉬기</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">마켓플레이스에서 끌리는 식당 한 곳. 항구 산책은 바람이 약할 때만 10–15분, 대관람차는 체력이 남을 때의 선택이에요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">구글지도 · 덴포잔 마켓플레이스 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.kaiyukan.com/thv/marketplace/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">05</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">16:00 이후 · 🍜 휴식·저녁</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">호텔에서 쉬었다가 저녁</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">난바로 돌아와 한 시간 이상 쉬어요. 이마이의 우동 또는 하리쥬 그릴 중 휴무·기분에 맞는 한 곳을 골라요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%81%93%E9%A0%93%E5%A0%80%20%E4%BB%8A%E4%BA%95%20%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-7-22" target="_blank" rel="noopener noreferrer">구글지도 · 도톤보리 이마이 본점 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.d-imai.com/shops/honten/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">2</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">14:00–15:30 · 🏨 휴식</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">난바 이동 · 체크인</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">난카이 라피트 또는 공항급행으로 난바. 호텔에 짐을 맡기고 체크인 시각까지 늦은 점심이나 커피로 쉬어요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">📍 지도 · 난카이 난바역 <span aria-hidden="true">↗</span></a>
-              
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">3</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">17:30 · 🍽️ 식사</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">따뜻한 철판요리 저녁</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">치보를 기본으로, 미즈노는 대안으로 선택해요. 식당 두 곳을 도장 깨기 할 필요는 없어요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%83%E6%88%BF%20%E9%81%93%E9%A0%93%E5%A0%80%E3%83%93%E3%83%AB%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-5-5" target="_blank" rel="noopener noreferrer">📍 지도 · 치보 도톤보리 빌딩점 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://shop.chibo.com/detail/28/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">4</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">19:00 · 🌙 산책</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">도톤보리 야경, 딱 한 바퀴</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">에비스바시에서 사진 한 장. 강변을 20–30분만 걷고 춥거나 피곤하면 바로 숙소로 돌아와요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener noreferrer">📍 지도 · 도톤보리 · 에비스바시 <span aria-hidden="true">↗</span></a>
-              
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
-  <div class="day-workspace" id="day-2" data-day-wrap="2" hidden>
-    <div class="unit-banner">
-      <div class="unit-top">
-        <div>
-          <div class="unit-eyebrow">DAY 2 · OSAKA BAY</div>
-          <h2 class="unit-title">바다보다, 수조 앞에서 오래.</h2>
-          <div style="font-size:12px;color:var(--muted)">늦은 조식 → 가이유칸 → 실내 점심 → 호텔 휴식</div>
-        </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <button type="button" class="top-icon-btn" data-toggle-tip="2">💡 팁·대안</button>
-          <button type="button" class="top-icon-btn" data-toggle-list="2">📋 전체</button>
-        </div>
-      </div>
-      <div class="unit-meta">
-        <span class="meta-chip">🏃 실내 관람 중심</span>
-        <span class="meta-chip">👟 도보 약 3–5km</span>
-        <span class="meta-chip">🛏️ 오사카 2박째</span>
-      </div>
-      <div class="unit-tip-drawer" id="tip-drawer-2" hidden>
-        <strong>💡 오늘의 기준:</strong> 관람차나 유람선까지 미리 묶지 않아요. 오늘은 가이유칸 하나만으로 충분해요.<br>
-        <strong>☔ 추위·비·지연 대안:</strong> 추위가 심하면 항구 산책은 생략. 가이유칸 휴관이면 D3와 날짜를 바꾸고 투어 예약도 함께 조정해요.
-      </div>
-    </div>
-
-    <!-- Duolingo Step Nodes Path -->
-    <div class="step-nodes-bar" role="tablist" aria-label="DAY 2 코스 단계">
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node is-current" data-step-btn="2-0" data-day="2" data-step="0" aria-label="1단계 느긋하게 아침">
-            <span>1</span>
-          </button>
-          <div class="step-connector" data-conn="2-0"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="2-1" data-day="2" data-step="1" aria-label="2단계 난바 → 오사카코">
-            <span>2</span>
-          </button>
-          <div class="step-connector" data-conn="2-1"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="2-2" data-day="2" data-step="2" aria-label="3단계 가이유칸, 천천히 보기">
-            <span>3</span>
-          </button>
-          <div class="step-connector" data-conn="2-2"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="2-3" data-day="2" data-step="3" aria-label="4단계 덴포잔 실내 점심 · 쉬기">
-            <span>4</span>
-          </button>
-          <div class="step-connector" data-conn="2-3"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="2-4" data-day="2" data-step="4" aria-label="5단계 호텔에서 쉬었다가 저녁">
-            <span>5</span>
-          </button>
-          
-        </div>
-      
-    </div>
-
-    <!-- Active Step Mission Card (1 Card at a time!) -->
-    <article class="mission-card" id="mission-card-2" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;09:30&quot;,&quot;title&quot;:&quot;느긋하게 아침&quot;,&quot;desc&quot;:&quot;조식 후에도 바로 나가지 말고 커피 한 잔. 오늘 예약할 것은 가이유칸 시간 지정권 하나예요.&quot;,&quot;type&quot;:&quot;☕ 휴식&quot;,&quot;mapUrl&quot;:&quot;&quot;,&quot;mapLabel&quot;:&quot;&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;&quot;,&quot;checkId&quot;:&quot;step-2-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;10:30–11:30&quot;,&quot;title&quot;:&quot;난바 → 오사카코&quot;,&quot;desc&quot;:&quot;Metro 미도스지선으로 혼마치, 주오선으로 갈아타 오사카코. 역부터 도보를 포함해 약 45–60분을 잡아요.&quot;,&quot;type&quot;:&quot;🚇 이동&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 가이유칸&quot;,&quot;extUrl&quot;:&quot;https://www.kaiyukan.com/info/ticket/kaiyukan/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-2-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;11:30–13:30&quot;,&quot;title&quot;:&quot;가이유칸, 천천히 보기&quot;,&quot;desc&quot;:&quot;고래상어 수조 앞에서 오래 머물러요. 날짜별 시간과 요금은 공식 달력으로 확인하고, 관람 후 실내에서 점심을 먹어요.&quot;,&quot;type&quot;:&quot;🦈 핵심&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 가이유칸&quot;,&quot;extUrl&quot;:&quot;https://www.kaiyukan.com/info/ticket/kaiyukan/&quot;,&quot;extLabel&quot;:&quot;공식 입장권 안내&quot;,&quot;checkId&quot;:&quot;step-2-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;13:30–15:00&quot;,&quot;title&quot;:&quot;덴포잔 실내 점심 · 쉬기&quot;,&quot;desc&quot;:&quot;마켓플레이스에서 끌리는 식당 한 곳. 항구 산책은 바람이 약할 때만 10–15분, 대관람차는 체력이 남을 때의 선택이에요.&quot;,&quot;type&quot;:&quot;🍽️ 식사&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 덴포잔 마켓플레이스&quot;,&quot;extUrl&quot;:&quot;https://www.kaiyukan.com/thv/marketplace/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-2-3&quot;},{&quot;idx&quot;:4,&quot;time&quot;:&quot;16:00 이후&quot;,&quot;title&quot;:&quot;호텔에서 쉬었다가 저녁&quot;,&quot;desc&quot;:&quot;난바로 돌아와 한 시간 이상 쉬어요. 이마이의 우동 또는 하리쥬 그릴 중 휴무·기분에 맞는 한 곳을 골라요.&quot;,&quot;type&quot;:&quot;🍜 휴식·저녁&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E9%81%93%E9%A0%93%E5%A0%80%20%E4%BB%8A%E4%BA%95%20%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-7-22&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 도톤보리 이마이 본점&quot;,&quot;extUrl&quot;:&quot;https://www.d-imai.com/shops/honten/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-2-4&quot;}]'>
-      <div class="mission-header">
-        <span class="mission-badge" data-m-type>☕ 휴식 · STEP 1/5</span>
-        <span class="mission-time" data-m-time>⏰ 09:30</span>
-      </div>
-      <h3 class="mission-title" data-m-title>느긋하게 아침</h3>
-      <p class="mission-desc" data-m-desc>조식 후에도 바로 나가지 말고 커피 한 잔. 오늘 예약할 것은 가이유칸 시간 지정권 하나예요.</p>
-      <div class="mission-links" data-m-links></div>
-      <div class="mission-footer">
-        <button type="button" class="mission-nav-btn" data-m-prev="2">◀ 이전</button>
-        <button type="button" class="btn-3d btn-green mission-done-btn" data-m-done="2">✓ 완료하고 다음 코스로</button>
-        <button type="button" class="mission-nav-btn" data-m-next="2">다음 ▶</button>
-      </div>
-    </article>
-
-    <!-- Optional Compact List View (Hidden unless toggled or printed) -->
-    <div class="day-list-view" id="list-view-2" hidden>
-      <div class="compact-step-card">
-          <div class="compact-step-num">1</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">09:30 · ☕ 휴식</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">느긋하게 아침</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">조식 후에도 바로 나가지 말고 커피 한 잔. 오늘 예약할 것은 가이유칸 시간 지정권 하나예요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              
-              
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">2</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">10:30–11:30 · 🚇 이동</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">난바 → 오사카코</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">Metro 미도스지선으로 혼마치, 주오선으로 갈아타 오사카코. 역부터 도보를 포함해 약 45–60분을 잡아요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">📍 지도 · 가이유칸 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">3</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">11:30–13:30 · 🦈 핵심</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">가이유칸, 천천히 보기</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">고래상어 수조 앞에서 오래 머물러요. 날짜별 시간과 요금은 공식 달력으로 확인하고, 관람 후 실내에서 점심을 먹어요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">📍 지도 · 가이유칸 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">🎫 공식 입장권 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">4</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">13:30–15:00 · 🍽️ 식사</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">덴포잔 실내 점심 · 쉬기</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">마켓플레이스에서 끌리는 식당 한 곳. 항구 산책은 바람이 약할 때만 10–15분, 대관람차는 체력이 남을 때의 선택이에요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">📍 지도 · 덴포잔 마켓플레이스 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.kaiyukan.com/thv/marketplace/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">5</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">16:00 이후 · 🍜 휴식·저녁</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">호텔에서 쉬었다가 저녁</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">난바로 돌아와 한 시간 이상 쉬어요. 이마이의 우동 또는 하리쥬 그릴 중 휴무·기분에 맞는 한 곳을 골라요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%81%93%E9%A0%93%E5%A0%80%20%E4%BB%8A%E4%BA%95%20%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-7-22" target="_blank" rel="noopener noreferrer">📍 지도 · 도톤보리 이마이 본점 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.d-imai.com/shops/honten/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
-  <div class="day-workspace" id="day-3" data-day-wrap="3" hidden>
-    <div class="unit-banner">
-      <div class="unit-top">
-        <div>
-          <div class="unit-eyebrow">DAY 3 · KYOTO / DAY TRIP</div>
-          <h2 class="unit-title">교토는 하루, 버스에 기대어.</h2>
-          <div style="font-size:12px;color:var(--muted)">오사카 집결 → 아라시야마 → 기요미즈데라 → 오사카</div>
-        </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <button type="button" class="top-icon-btn" data-toggle-tip="3">💡 팁·대안</button>
-          <button type="button" class="top-icon-btn" data-toggle-list="3">📋 전체</button>
-        </div>
-      </div>
-      <div class="unit-meta">
-        <span class="meta-chip">🏃 가장 긴 날</span>
-        <span class="meta-chip">👟 도보 약 4–7km · 언덕</span>
-        <span class="meta-chip">🛏️ 오사카 3박째</span>
-      </div>
-      <div class="unit-tip-drawer" id="tip-drawer-3" hidden>
-        <strong>💡 오늘의 기준:</strong> 2곳 상품은 더 느긋한 1순위 후보이지만 겨울 판매일·출발 확정은 미확인. 예약이 되는 3곳 상품은 약 11시간 안내라 체력 부담을 비교해요.<br>
-        <strong>☔ 추위·비·지연 대안:</strong> 폭설·결빙 또는 투어 취소 시에는 교토를 무리해서 자력 완주하지 않고 오사카 실내 휴식일로 바꿔요.
       </div>
     </div>
+    <div class="day-workspace" id="day-3" data-day-wrap="3" hidden>
+      <div class="editorial-hero">
+        <div class="editorial-art-frame"><svg viewBox="0 0 680 170" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="교토 오중탑과 아라시야마 도게츠교·대나무숲 에디토리얼 일러스트">
+    <rect width="680" height="170" fill="#EDE5D5"/>
+    <!-- Vermilion Rising Sun (Kyoto Editorial Motif) -->
+    <circle cx="485" cy="74" r="52" fill="#B63A2A" opacity="0.88"/>
+    <!-- Misty Higashiyama & Arashiyama Mountain Ridges -->
+    <path d="M0 118 Q120 68 250 106 T510 92 T680 108 V170 H0 Z" fill="#D8CEBE" opacity="0.7"/>
+    <path d="M0 134 Q160 98 320 124 T680 118 V170 H0 Z" fill="#C4B8A5" opacity="0.8"/>
+    <!-- Arashiyama Bamboo Stalks (Left) -->
+    <g stroke="#264E46" stroke-linecap="round">
+      <line x1="38" y1="0" x2="38" y2="170" stroke-width="4"/>
+      <line x1="58" y1="0" x2="54" y2="170" stroke-width="3"/>
+      <line x1="78" y1="0" x2="82" y2="170" stroke-width="4.5"/>
+      <line x1="102" y1="0" x2="98" y2="170" stroke-width="2.5"/>
+      <path d="M38 42 L22 34 M38 88 L50 78 M78 56 L96 46 M78 104 L62 96" stroke-width="1.5"/>
+    </g>
+    <!-- Togetsukyo Wooden Bridge (Center-Left) -->
+    <g stroke="#181615" fill="none">
+      <path d="M130 138 Q245 114 360 138" stroke-width="2.2"/>
+      <path d="M135 133 Q245 109 355 133" stroke-width="1"/>
+      <line x1="165" y1="131" x2="165" y2="158" stroke-width="1.6"/>
+      <line x1="205" y1="125" x2="205" y2="158" stroke-width="1.6"/>
+      <line x1="245" y1="122" x2="245" y2="158" stroke-width="1.6"/>
+      <line x1="285" y1="125" x2="285" y2="158" stroke-width="1.6"/>
+      <line x1="325" y1="131" x2="325" y2="158" stroke-width="1.6"/>
+    </g>
+    <!-- Kyoto Five-Story Pagoda (Hokan-ji / Yasaka Silhouette, Right) -->
+    <g transform="translate(485, 16)" fill="#181615" stroke="#181615">
+      <line x1="0" y1="0" x2="0" y2="24" stroke-width="1.8"/>
+      <path d="M-18 28 Q0 22 18 28 L12 33 H-12 Z"/>
+      <path d="M-22 44 Q0 37 22 44 L15 50 H-15 Z"/>
+      <path d="M-26 61 Q0 53 26 61 L18 68 H-18 Z"/>
+      <path d="M-31 79 Q0 70 31 79 L22 87 H-22 Z"/>
+      <path d="M-36 98 Q0 88 36 98 L26 108 H-26 Z"/>
+      <rect x="-14" y="108" width="28" height="22"/>
+    </g>
+    <!-- Kiyomizu-dera Wooden Stage Columns (Far Right) -->
+    <g stroke="#181615" stroke-width="1.2" opacity="0.75">
+      <line x1="575" y1="92" x2="655" y2="92"/>
+      <line x1="585" y1="92" x2="585" y2="145"/>
+      <line x1="600" y1="92" x2="600" y2="145"/>
+      <line x1="615" y1="92" x2="615" y2="145"/>
+      <line x1="630" y1="92" x2="630" y2="145"/>
+      <line x1="645" y1="92" x2="645" y2="145"/>
+      <line x1="580" y1="112" x2="650" y2="112"/>
+      <line x1="580" y1="130" x2="650" y2="130"/>
+    </g>
+    <text x="132" y="24" fill="#181615" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="3">FIG. 03 — ARASHIYAMA TOGETSUKYO &amp; HIGASHIYAMA PAGODA</text>
+  </svg></div>
+        <div class="editorial-hero-body">
+          <div class="editorial-hero-top">
+            <div>
+              <div class="chapter-tag">CHAPTER 03 — KYOTO / DAY TRIP</div>
+              <h2 class="chapter-headline">교토는 하루, 버스에 기대어.</h2>
+              <div class="chapter-sub">오사카 집결 → 아라시야마 → 기요미즈데라 → 오사카</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0">
+              <button type="button" class="editorial-chip-btn" data-toggle-tip="3">노트·대안</button>
+              <button type="button" class="editorial-chip-btn" data-toggle-list="3">전체 일정</button>
+            </div>
+          </div>
+          <div class="chapter-meta-row">
+            <span class="chapter-meta-item">리듬 · 가장 긴 날</span>
+            <span class="chapter-meta-item">도보 · 약 4–7km · 언덕</span>
+            <span class="chapter-meta-item">숙박 · 오사카 3박째</span>
+          </div>
+          <div class="editorial-note-drawer" id="tip-drawer-3" hidden>
+            <strong>에디터 노트:</strong> 2곳 상품은 더 느긋한 1순위 후보이지만 겨울 판매일·출발 확정은 미확인. 예약이 되는 3곳 상품은 약 11시간 안내라 체력 부담을 비교해요.<br>
+            <strong>우천·한파 대안:</strong> 폭설·결빙 또는 투어 취소 시에는 교토를 무리해서 자력 완주하지 않고 오사카 실내 휴식일로 바꿔요.
+          </div>
+        </div>
+      </div>
 
-    <!-- Duolingo Step Nodes Path -->
-    <div class="step-nodes-bar" role="tablist" aria-label="DAY 3 코스 단계">
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node is-current" data-step-btn="3-0" data-day="3" data-step="0" aria-label="1단계 집결지는 전날 확인">
-            <span>1</span>
-          </button>
-          <div class="step-connector" data-conn="3-0"></div>
+      <div class="step-nodes-bar" role="tablist" aria-label="DAY 3 코스 순서">
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node is-current" data-step-btn="3-0" data-day="3" data-step="0" aria-label="01 집결지는 전날 확인">
+              <span>01</span>
+            </button>
+            <div class="step-connector" data-conn="3-0"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="3-1" data-day="3" data-step="1" aria-label="02 아라시야마에서 산책 하나">
+              <span>02</span>
+            </button>
+            <div class="step-connector" data-conn="3-1"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="3-2" data-day="3" data-step="2" aria-label="03 오즈루 우동 또는 가까운 식당">
+              <span>03</span>
+            </button>
+            <div class="step-connector" data-conn="3-2"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="3-3" data-day="3" data-step="3" aria-label="04 기요미즈데라와 짧은 골목 산책">
+              <span>04</span>
+            </button>
+            <div class="step-connector" data-conn="3-3"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="3-4" data-day="3" data-step="4" aria-label="05 오사카로 돌아와 가볍게">
+              <span>05</span>
+            </button>
+            
+          </div>
+        
+      </div>
+
+      <article class="mission-card" id="mission-card-3" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;아침 · 바우처 기준&quot;,&quot;title&quot;:&quot;집결지는 전날 확인&quot;,&quot;desc&quot;:&quot;2곳 상품을 먼저 살펴보고, 판매일이 없으면 3곳 상품을 비교해요. 두 상품 모두 츠루통탄 소에몬쵸점 집결 안내가 있으나 최종 바우처가 기준이에요.&quot;,&quot;type&quot;:&quot;🚌 예약&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 교토 투어 집결지 후보&quot;,&quot;extUrl&quot;:&quot;https://www.klook.com/ko/activity/140184-kyoto-arashiyama-kiyomizu-dera-bus-tour-from-osaka/&quot;,&quot;extLabel&quot;:&quot;2곳 투어 · 날짜 확인&quot;,&quot;checkId&quot;:&quot;step-3-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;오전 · 순서 변동&quot;,&quot;title&quot;:&quot;아라시야마에서 산책 하나&quot;,&quot;desc&quot;:&quot;도게츠교 또는 대나무숲 입구를 짧게 골라요. 모든 사찰을 걸으려 하지 말고 자유시간 절반은 점심과 휴식에 써요.&quot;,&quot;type&quot;:&quot;🎋 핵심&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%A1%E6%9C%88%E6%A9%8B%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E4%B8%AD%E3%83%8E%E5%B3%B6%E7%94%BA&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 아라시야마 · 도게츠교&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-3-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;자유시간&quot;,&quot;title&quot;:&quot;오즈루 우동 또는 가까운 식당&quot;,&quot;desc&quot;:&quot;오즈루·요지야는 후보일 뿐이에요. 대기와 집결지까지 왕복 시간을 보고, 멀어지면 가까운 식당으로 바꿔요.&quot;,&quot;type&quot;:&quot;🍜 식사&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%B5%90%E5%B1%B1%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%8A%E3%81%A5%E3%82%8B%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA22-4&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 아라시야마 우동 오즈루&quot;,&quot;extUrl&quot;:&quot;https://tabelog.com/en/kyoto/A2601/A260403/26014273/&quot;,&quot;extLabel&quot;:&quot;매장 게시 Tabelog 정보&quot;,&quot;checkId&quot;:&quot;step-3-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;오후 · 순서 변동&quot;,&quot;title&quot;:&quot;기요미즈데라와 짧은 골목 산책&quot;,&quot;desc&quot;:&quot;청수사 목조 무대를 보고 내려오며 니넨자카를 조금만. 버스 주차장에서 절까지 언덕을 걸으므로 보행 부담은 남아요.&quot;,&quot;type&quot;:&quot;⛩️ 핵심&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E6%B0%B4%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%B8%85%E6%B0%B41%E4%B8%81%E7%9B%AE294&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 기요미즈데라 · 청수사&quot;,&quot;extUrl&quot;:&quot;https://www.kiyomizudera.or.jp/en/visit/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-3-3&quot;},{&quot;idx&quot;:4,&quot;time&quot;:&quot;저녁 · 귀환 확인&quot;,&quot;title&quot;:&quot;오사카로 돌아와 가볍게&quot;,&quot;desc&quot;:&quot;3곳 대안을 고르면 금각사도 들어가고 하루가 길어져요. 귀환 교통 정체를 고려해 시간 지정 저녁 예약은 잡지 않아요.&quot;,&quot;type&quot;:&quot;🏨 휴식&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 도톤보리 · 에비스바시&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-3-4&quot;}]'>
+        <div class="mission-header">
+          <span class="mission-badge" data-m-type>STOP 01 / 05</span>
+          <span class="mission-time" data-m-time>아침 · 바우처 기준</span>
         </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="3-1" data-day="3" data-step="1" aria-label="2단계 아라시야마에서 산책 하나">
-            <span>2</span>
-          </button>
-          <div class="step-connector" data-conn="3-1"></div>
+        <h3 class="mission-title" data-m-title>집결지는 전날 확인</h3>
+        <p class="mission-desc" data-m-desc>2곳 상품을 먼저 살펴보고, 판매일이 없으면 3곳 상품을 비교해요. 두 상품 모두 츠루통탄 소에몬쵸점 집결 안내가 있으나 최종 바우처가 기준이에요.</p>
+        <div class="mission-links" data-m-links></div>
+        <div class="mission-footer">
+          <button type="button" class="mission-nav-btn" data-m-prev="3">◀ 이전</button>
+          <button type="button" class="mission-done-btn" data-m-done="3">방문 기록 후 다음 코스로 →</button>
+          <button type="button" class="mission-nav-btn" data-m-next="3">다음 ▶</button>
         </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="3-2" data-day="3" data-step="2" aria-label="3단계 오즈루 우동 또는 가까운 식당">
-            <span>3</span>
-          </button>
-          <div class="step-connector" data-conn="3-2"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="3-3" data-day="3" data-step="3" aria-label="4단계 기요미즈데라와 짧은 골목 산책">
-            <span>4</span>
-          </button>
-          <div class="step-connector" data-conn="3-3"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="3-4" data-day="3" data-step="4" aria-label="5단계 오사카로 돌아와 가볍게">
-            <span>5</span>
-          </button>
-          
-        </div>
-      
+      </article>
+
+      <div class="day-list-view" id="list-view-3" hidden>
+        <div class="compact-step-card">
+            <div class="compact-step-num">01</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">아침 · 바우처 기준 · 🚌 예약</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">집결지는 전날 확인</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">2곳 상품을 먼저 살펴보고, 판매일이 없으면 3곳 상품을 비교해요. 두 상품 모두 츠루통탄 소에몬쵸점 집결 안내가 있으나 최종 바우처가 기준이에요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17" target="_blank" rel="noopener noreferrer">구글지도 · 교토 투어 집결지 후보 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-accent" href="https://www.klook.com/ko/activity/140184-kyoto-arashiyama-kiyomizu-dera-bus-tour-from-osaka/" target="_blank" rel="noopener noreferrer">2곳 투어 · 날짜 확인 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">02</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">오전 · 순서 변동 · 🎋 핵심</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">아라시야마에서 산책 하나</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">도게츠교 또는 대나무숲 입구를 짧게 골라요. 모든 사찰을 걸으려 하지 말고 자유시간 절반은 점심과 휴식에 써요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%A1%E6%9C%88%E6%A9%8B%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E4%B8%AD%E3%83%8E%E5%B3%B6%E7%94%BA" target="_blank" rel="noopener noreferrer">구글지도 · 아라시야마 · 도게츠교 <span aria-hidden="true">↗</span></a>
+                
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">03</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">자유시간 · 🍜 식사</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">오즈루 우동 또는 가까운 식당</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">오즈루·요지야는 후보일 뿐이에요. 대기와 집결지까지 왕복 시간을 보고, 멀어지면 가까운 식당으로 바꿔요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B5%90%E5%B1%B1%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%8A%E3%81%A5%E3%82%8B%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA22-4" target="_blank" rel="noopener noreferrer">구글지도 · 아라시야마 우동 오즈루 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://tabelog.com/en/kyoto/A2601/A260403/26014273/" target="_blank" rel="noopener noreferrer">매장 게시 Tabelog 정보 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">04</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">오후 · 순서 변동 · ⛩️ 핵심</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">기요미즈데라와 짧은 골목 산책</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">청수사 목조 무대를 보고 내려오며 니넨자카를 조금만. 버스 주차장에서 절까지 언덕을 걸으므로 보행 부담은 남아요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E6%B0%B4%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%B8%85%E6%B0%B41%E4%B8%81%E7%9B%AE294" target="_blank" rel="noopener noreferrer">구글지도 · 기요미즈데라 · 청수사 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.kiyomizudera.or.jp/en/visit/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">05</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">저녁 · 귀환 확인 · 🏨 휴식</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">오사카로 돌아와 가볍게</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">3곳 대안을 고르면 금각사도 들어가고 하루가 길어져요. 귀환 교통 정체를 고려해 시간 지정 저녁 예약은 잡지 않아요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener noreferrer">구글지도 · 도톤보리 · 에비스바시 <span aria-hidden="true">↗</span></a>
+                
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
-
-    <!-- Active Step Mission Card (1 Card at a time!) -->
-    <article class="mission-card" id="mission-card-3" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;아침 · 바우처 기준&quot;,&quot;title&quot;:&quot;집결지는 전날 확인&quot;,&quot;desc&quot;:&quot;2곳 상품을 먼저 살펴보고, 판매일이 없으면 3곳 상품을 비교해요. 두 상품 모두 츠루통탄 소에몬쵸점 집결 안내가 있으나 최종 바우처가 기준이에요.&quot;,&quot;type&quot;:&quot;🚌 예약&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 교토 투어 집결지 후보&quot;,&quot;extUrl&quot;:&quot;https://www.klook.com/ko/activity/140184-kyoto-arashiyama-kiyomizu-dera-bus-tour-from-osaka/&quot;,&quot;extLabel&quot;:&quot;2곳 투어 · 날짜 확인&quot;,&quot;checkId&quot;:&quot;step-3-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;오전 · 순서 변동&quot;,&quot;title&quot;:&quot;아라시야마에서 산책 하나&quot;,&quot;desc&quot;:&quot;도게츠교 또는 대나무숲 입구를 짧게 골라요. 모든 사찰을 걸으려 하지 말고 자유시간 절반은 점심과 휴식에 써요.&quot;,&quot;type&quot;:&quot;🎋 핵심&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%A1%E6%9C%88%E6%A9%8B%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E4%B8%AD%E3%83%8E%E5%B3%B6%E7%94%BA&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 아라시야마 · 도게츠교&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-3-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;자유시간&quot;,&quot;title&quot;:&quot;오즈루 우동 또는 가까운 식당&quot;,&quot;desc&quot;:&quot;오즈루·요지야는 후보일 뿐이에요. 대기와 집결지까지 왕복 시간을 보고, 멀어지면 가까운 식당으로 바꿔요.&quot;,&quot;type&quot;:&quot;🍜 식사&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%B5%90%E5%B1%B1%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%8A%E3%81%A5%E3%82%8B%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA22-4&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 아라시야마 우동 오즈루&quot;,&quot;extUrl&quot;:&quot;https://tabelog.com/en/kyoto/A2601/A260403/26014273/&quot;,&quot;extLabel&quot;:&quot;매장 게시 Tabelog 정보&quot;,&quot;checkId&quot;:&quot;step-3-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;오후 · 순서 변동&quot;,&quot;title&quot;:&quot;기요미즈데라와 짧은 골목 산책&quot;,&quot;desc&quot;:&quot;청수사 목조 무대를 보고 내려오며 니넨자카를 조금만. 버스 주차장에서 절까지 언덕을 걸으므로 보행 부담은 남아요.&quot;,&quot;type&quot;:&quot;⛩️ 핵심&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E6%B0%B4%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%B8%85%E6%B0%B41%E4%B8%81%E7%9B%AE294&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 기요미즈데라 · 청수사&quot;,&quot;extUrl&quot;:&quot;https://www.kiyomizudera.or.jp/en/visit/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-3-3&quot;},{&quot;idx&quot;:4,&quot;time&quot;:&quot;저녁 · 귀환 확인&quot;,&quot;title&quot;:&quot;오사카로 돌아와 가볍게&quot;,&quot;desc&quot;:&quot;3곳 대안을 고르면 금각사도 들어가고 하루가 길어져요. 귀환 교통 정체를 고려해 시간 지정 저녁 예약은 잡지 않아요.&quot;,&quot;type&quot;:&quot;🏨 휴식&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 도톤보리 · 에비스바시&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-3-4&quot;}]'>
-      <div class="mission-header">
-        <span class="mission-badge" data-m-type>🚌 예약 · STEP 1/5</span>
-        <span class="mission-time" data-m-time>⏰ 아침 · 바우처 기준</span>
-      </div>
-      <h3 class="mission-title" data-m-title>집결지는 전날 확인</h3>
-      <p class="mission-desc" data-m-desc>2곳 상품을 먼저 살펴보고, 판매일이 없으면 3곳 상품을 비교해요. 두 상품 모두 츠루통탄 소에몬쵸점 집결 안내가 있으나 최종 바우처가 기준이에요.</p>
-      <div class="mission-links" data-m-links></div>
-      <div class="mission-footer">
-        <button type="button" class="mission-nav-btn" data-m-prev="3">◀ 이전</button>
-        <button type="button" class="btn-3d btn-green mission-done-btn" data-m-done="3">✓ 완료하고 다음 코스로</button>
-        <button type="button" class="mission-nav-btn" data-m-next="3">다음 ▶</button>
-      </div>
-    </article>
-
-    <!-- Optional Compact List View (Hidden unless toggled or printed) -->
-    <div class="day-list-view" id="list-view-3" hidden>
-      <div class="compact-step-card">
-          <div class="compact-step-num">1</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">아침 · 바우처 기준 · 🚌 예약</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">집결지는 전날 확인</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">2곳 상품을 먼저 살펴보고, 판매일이 없으면 3곳 상품을 비교해요. 두 상품 모두 츠루통탄 소에몬쵸점 집결 안내가 있으나 최종 바우처가 기준이에요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17" target="_blank" rel="noopener noreferrer">📍 지도 · 교토 투어 집결지 후보 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.klook.com/ko/activity/140184-kyoto-arashiyama-kiyomizu-dera-bus-tour-from-osaka/" target="_blank" rel="noopener noreferrer">🎫 2곳 투어 · 날짜 확인 <span aria-hidden="true">↗</span></a>
+    <div class="day-workspace" id="day-4" data-day-wrap="4" hidden>
+      <div class="editorial-hero">
+        <div class="editorial-art-frame"><svg viewBox="0 0 680 170" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="오사카 복고풍 찻집 모닝커피와 라피트 특급열차 일러스트">
+    <rect width="680" height="170" fill="#EAE2D3"/>
+    <!-- Editorial Grid Framing -->
+    <line x1="310" y1="16" x2="310" y2="154" stroke="#181615" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.4"/>
+    <!-- Left Scene: Kissaten Porcelain Cup & Hotcake -->
+    <g transform="translate(55, 42)" stroke="#181615" fill="none">
+      <!-- Steam wisps -->
+      <path d="M42 18 Q36 8 44 0 M58 14 Q52 4 60 -4" stroke="#B63A2A" stroke-width="1.3" stroke-linecap="round"/>
+      <!-- Cup & Saucer -->
+      <path d="M22 30 H78 L72 68 C70 78 30 78 28 68 Z" fill="#FCFBF7" stroke-width="1.6"/>
+      <path d="M76 38 C90 38 90 58 74 58" stroke-width="1.6"/>
+      <ellipse cx="50" cy="78" rx="42" ry="7" fill="#FCFBF7" stroke-width="1.5"/>
+      <!-- Double Hotcake Stack -->
+      <g transform="translate(115, 28)">
+        <ellipse cx="48" cy="48" rx="46" ry="9" fill="#FCFBF7" stroke-width="1.4"/>
+        <path d="M14 34 C14 42 82 42 82 34 V44 C82 52 14 52 14 44 Z" fill="#D59B58" stroke-width="1.4"/>
+        <path d="M14 22 C14 30 82 30 82 22 V32 C82 40 14 40 14 32 Z" fill="#D59B58" stroke-width="1.4"/>
+        <ellipse cx="48" cy="22" rx="34" ry="8" fill="#E3B372" stroke-width="1.4"/>
+        <rect x="42" y="17" width="12" height="7" fill="#FCFBF7" stroke-width="1.2"/>
+      </g>
+    </g>
+    <!-- Right Scene: Nankai Rapi:t Retro-Futuristic Blue Train & KIX Bridge -->
+    <g transform="translate(345, 44)">
+      <path d="M0 92 H310" stroke="#181615" stroke-width="1.6"/>
+      <path d="M20 92 L45 34 C62 18 95 14 140 14 H295 V84 H20 Z" fill="#1F3A56" stroke="#181615" stroke-width="1.6"/>
+      <!-- Rapi:t iconic oval windows -->
+      <ellipse cx="72" cy="44" rx="14" ry="11" fill="#E8C587" stroke="#FCFBF7" stroke-width="1.4"/>
+      <circle cx="118" cy="48" r="11" fill="#FCFBF7" opacity="0.9"/>
+      <circle cx="152" cy="48" r="11" fill="#FCFBF7" opacity="0.9"/>
+      <circle cx="186" cy="48" r="11" fill="#FCFBF7" opacity="0.9"/>
+      <circle cx="220" cy="48" r="11" fill="#FCFBF7" opacity="0.9"/>
+      <circle cx="254" cy="48" r="11" fill="#FCFBF7" opacity="0.9"/>
+      <line x1="32" y1="68" x2="295" y2="68" stroke="#B63A2A" stroke-width="3"/>
+      <!-- Airplane ascending in distance -->
+      <path d="M240 2 L272 -6 L258 8 L248 6 Z" fill="#B63A2A"/>
+    </g>
+    <text x="24" y="22" fill="#181615" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="3">FIG. 04 — SENNICHIMAE KISSATEN &amp; NANKAI RAPI:T TO KIX</text>
+  </svg></div>
+        <div class="editorial-hero-body">
+          <div class="editorial-hero-top">
+            <div>
+              <div class="chapter-tag">CHAPTER 04 — OSAKA → KIX</div>
+              <h2 class="chapter-headline">마지막 날도, 여유를 챙겨서.</h2>
+              <div class="chapter-sub">조식 → 카페·선물 → 짐 회수 → 간사이공항</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0">
+              <button type="button" class="editorial-chip-btn" data-toggle-tip="4">노트·대안</button>
+              <button type="button" class="editorial-chip-btn" data-toggle-list="4">전체 일정</button>
             </div>
           </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">2</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">오전 · 순서 변동 · 🎋 핵심</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">아라시야마에서 산책 하나</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">도게츠교 또는 대나무숲 입구를 짧게 골라요. 모든 사찰을 걸으려 하지 말고 자유시간 절반은 점심과 휴식에 써요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%A1%E6%9C%88%E6%A9%8B%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E4%B8%AD%E3%83%8E%E5%B3%B6%E7%94%BA" target="_blank" rel="noopener noreferrer">📍 지도 · 아라시야마 · 도게츠교 <span aria-hidden="true">↗</span></a>
-              
-            </div>
+          <div class="chapter-meta-row">
+            <span class="chapter-meta-item">리듬 · 공항 시각 우선</span>
+            <span class="chapter-meta-item">도보 · 약 2–3km</span>
+            <span class="chapter-meta-item">숙박 · 귀국</span>
           </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">3</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">자유시간 · 🍜 식사</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">오즈루 우동 또는 가까운 식당</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">오즈루·요지야는 후보일 뿐이에요. 대기와 집결지까지 왕복 시간을 보고, 멀어지면 가까운 식당으로 바꿔요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B5%90%E5%B1%B1%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%8A%E3%81%A5%E3%82%8B%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA22-4" target="_blank" rel="noopener noreferrer">📍 지도 · 아라시야마 우동 오즈루 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://tabelog.com/en/kyoto/A2601/A260403/26014273/" target="_blank" rel="noopener noreferrer">매장 게시 Tabelog 정보 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">4</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">오후 · 순서 변동 · ⛩️ 핵심</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">기요미즈데라와 짧은 골목 산책</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">청수사 목조 무대를 보고 내려오며 니넨자카를 조금만. 버스 주차장에서 절까지 언덕을 걸으므로 보행 부담은 남아요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E6%B0%B4%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%B8%85%E6%B0%B41%E4%B8%81%E7%9B%AE294" target="_blank" rel="noopener noreferrer">📍 지도 · 기요미즈데라 · 청수사 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.kiyomizudera.or.jp/en/visit/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">5</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">저녁 · 귀환 확인 · 🏨 휴식</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">오사카로 돌아와 가볍게</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">3곳 대안을 고르면 금각사도 들어가고 하루가 길어져요. 귀환 교통 정체를 고려해 시간 지정 저녁 예약은 잡지 않아요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener noreferrer">📍 지도 · 도톤보리 · 에비스바시 <span aria-hidden="true">↗</span></a>
-              
-            </div>
+          <div class="editorial-note-drawer" id="tip-drawer-4" hidden>
+            <strong>에디터 노트:</strong> 비행기 출발이 앞당겨지면 카페·쇼핑을 줄이고 공항 도착 시각부터 역산해요.<br>
+            <strong>우천·한파 대안:</strong> 열차 지연 안내가 보이면 난카이·공항 공식 안내에서 대체 경로를 확인하고 관광은 종료해요.
           </div>
         </div>
+      </div>
+
+      <div class="step-nodes-bar" role="tablist" aria-label="DAY 4 코스 순서">
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node is-current" data-step-btn="4-0" data-day="4" data-step="0" aria-label="01 아침을 먹고 체크아웃">
+              <span>01</span>
+            </button>
+            <div class="step-connector" data-conn="4-0"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="4-1" data-day="4" data-step="1" aria-label="02 난바 근처 카페 · 선물">
+              <span>02</span>
+            </button>
+            <div class="step-connector" data-conn="4-1"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="4-2" data-day="4" data-step="2" aria-label="03 짐 회수 · 난카이 난바역">
+              <span>03</span>
+            </button>
+            <div class="step-connector" data-conn="4-2"></div>
+          </div>
+        
+          <div class="step-node-wrap">
+            <button type="button" class="step-node " data-step-btn="4-3" data-day="4" data-step="3" aria-label="04 공항 도착 · 출국 수속">
+              <span>04</span>
+            </button>
+            
+          </div>
+        
+      </div>
+
+      <article class="mission-card" id="mission-card-4" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;09:30–11:00&quot;,&quot;title&quot;:&quot;아침을 먹고 체크아웃&quot;,&quot;desc&quot;:&quot;호텔 규정에 맞춰 체크아웃하고 짐을 맡겨요. 귀국일은 교토나 우메다로 새로 이동하지 않아요.&quot;,&quot;type&quot;:&quot;🧳 준비&quot;,&quot;mapUrl&quot;:&quot;&quot;,&quot;mapLabel&quot;:&quot;&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;&quot;,&quot;checkId&quot;:&quot;step-4-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;11:00–13:00&quot;,&quot;title&quot;:&quot;난바 근처 카페 · 선물&quot;,&quot;desc&quot;:&quot;마루후쿠 커피에서 쉬거나 역 주변에서 선물을 골라요. 점심은 전날 못 먹은 치보·이마이 중 영업하는 한 곳으로.&quot;,&quot;type&quot;:&quot;🥞 식사·카페&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B8%E7%A6%8F%E7%8F%88%E7%90%B2%E5%BA%97%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%83%E6%97%A5%E5%89%8D1-9-1&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 마루후쿠 커피 센니치마에 본점&quot;,&quot;extUrl&quot;:&quot;https://marufukucoffeeten.com/store/marufukucoffee-sennichimae/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-4-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;13:30–14:30&quot;,&quot;title&quot;:&quot;짐 회수 · 난카이 난바역&quot;,&quot;desc&quot;:&quot;19시 출발 예시라면 14:30 무렵 열차를 타는 넉넉한 흐름. 실제 운행 시각과 수하물 규정을 확인해요.&quot;,&quot;type&quot;:&quot;🚆 이동&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60&quot;,&quot;mapLabel&quot;:&quot;구글지도 · 난카이 난바역&quot;,&quot;extUrl&quot;:&quot;https://www.nankai.co.jp/en_railway/ticket/rapit/&quot;,&quot;extLabel&quot;:&quot;공항행 티켓 확인&quot;,&quot;checkId&quot;:&quot;step-4-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;16:00 이전 목표&quot;,&quot;title&quot;:&quot;공항 도착 · 출국 수속&quot;,&quot;desc&quot;:&quot;19시 이후 국제선 기준 약 3시간 전 도착 목표. T2 항공사는 터미널 이동 시간을 더 잡고 항공사 안내를 우선해요.&quot;,&quot;type&quot;:&quot;✈️ 귀국&quot;,&quot;mapUrl&quot;:&quot;&quot;,&quot;mapLabel&quot;:&quot;&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;&quot;,&quot;checkId&quot;:&quot;step-4-3&quot;}]'>
+        <div class="mission-header">
+          <span class="mission-badge" data-m-type>STOP 01 / 04</span>
+          <span class="mission-time" data-m-time>09:30–11:00</span>
+        </div>
+        <h3 class="mission-title" data-m-title>아침을 먹고 체크아웃</h3>
+        <p class="mission-desc" data-m-desc>호텔 규정에 맞춰 체크아웃하고 짐을 맡겨요. 귀국일은 교토나 우메다로 새로 이동하지 않아요.</p>
+        <div class="mission-links" data-m-links></div>
+        <div class="mission-footer">
+          <button type="button" class="mission-nav-btn" data-m-prev="4">◀ 이전</button>
+          <button type="button" class="mission-done-btn" data-m-done="4">방문 기록 후 다음 코스로 →</button>
+          <button type="button" class="mission-nav-btn" data-m-next="4">다음 ▶</button>
+        </div>
+      </article>
+
+      <div class="day-list-view" id="list-view-4" hidden>
+        <div class="compact-step-card">
+            <div class="compact-step-num">01</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">09:30–11:00 · 🧳 준비</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">아침을 먹고 체크아웃</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">호텔 규정에 맞춰 체크아웃하고 짐을 맡겨요. 귀국일은 교토나 우메다로 새로 이동하지 않아요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                
+                
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">02</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">11:00–13:00 · 🥞 식사·카페</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">난바 근처 카페 · 선물</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">마루후쿠 커피에서 쉬거나 역 주변에서 선물을 골라요. 점심은 전날 못 먹은 치보·이마이 중 영업하는 한 곳으로.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B8%E7%A6%8F%E7%8F%88%E7%90%B2%E5%BA%97%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%83%E6%97%A5%E5%89%8D1-9-1" target="_blank" rel="noopener noreferrer">구글지도 · 마루후쿠 커피 센니치마에 본점 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://marufukucoffeeten.com/store/marufukucoffee-sennichimae/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">03</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">13:30–14:30 · 🚆 이동</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">짐 회수 · 난카이 난바역</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">19시 출발 예시라면 14:30 무렵 열차를 타는 넉넉한 흐름. 실제 운행 시각과 수하물 규정을 확인해요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">구글지도 · 난카이 난바역 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-accent" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">공항행 티켓 확인 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div><div class="compact-step-card">
+            <div class="compact-step-num">04</div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:700;color:var(--vermilion)">16:00 이전 목표 · ✈️ 귀국</div>
+              <strong style="font-family:var(--serif-kr);font-size:16px;display:block;margin:2px 0">공항 도착 · 출국 수속</strong>
+              <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">19시 이후 국제선 기준 약 3시간 전 도착 목표. T2 항공사는 터미널 이동 시간을 더 잡고 항공사 안내를 우선해요.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                
+                
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
-  </div>
-  <div class="day-workspace" id="day-4" data-day-wrap="4" hidden>
-    <div class="unit-banner">
-      <div class="unit-top">
-        <div>
-          <div class="unit-eyebrow">DAY 4 · OSAKA → KIX</div>
-          <h2 class="unit-title">마지막 날도, 여유를 챙겨서.</h2>
-          <div style="font-size:12px;color:var(--muted)">조식 → 카페·선물 → 짐 회수 → 간사이공항</div>
-        </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <button type="button" class="top-icon-btn" data-toggle-tip="4">💡 팁·대안</button>
-          <button type="button" class="top-icon-btn" data-toggle-list="4">📋 전체</button>
-        </div>
-      </div>
-      <div class="unit-meta">
-        <span class="meta-chip">🏃 공항 시각 우선</span>
-        <span class="meta-chip">👟 도보 약 2–3km</span>
-        <span class="meta-chip">🛏️ 귀국</span>
-      </div>
-      <div class="unit-tip-drawer" id="tip-drawer-4" hidden>
-        <strong>💡 오늘의 기준:</strong> 비행기 출발이 앞당겨지면 카페·쇼핑을 줄이고 공항 도착 시각부터 역산해요.<br>
-        <strong>☔ 추위·비·지연 대안:</strong> 열차 지연 안내가 보이면 난카이·공항 공식 안내에서 대체 경로를 확인하고 관광은 종료해요.
-      </div>
-    </div>
-
-    <!-- Duolingo Step Nodes Path -->
-    <div class="step-nodes-bar" role="tablist" aria-label="DAY 4 코스 단계">
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node is-current" data-step-btn="4-0" data-day="4" data-step="0" aria-label="1단계 아침을 먹고 체크아웃">
-            <span>1</span>
-          </button>
-          <div class="step-connector" data-conn="4-0"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="4-1" data-day="4" data-step="1" aria-label="2단계 난바 근처 카페 · 선물">
-            <span>2</span>
-          </button>
-          <div class="step-connector" data-conn="4-1"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="4-2" data-day="4" data-step="2" aria-label="3단계 짐 회수 · 난카이 난바역">
-            <span>3</span>
-          </button>
-          <div class="step-connector" data-conn="4-2"></div>
-        </div>
-      
-        <div class="step-node-wrap">
-          <button type="button" class="step-node " data-step-btn="4-3" data-day="4" data-step="3" aria-label="4단계 공항 도착 · 출국 수속">
-            <span>4</span>
-          </button>
-          
-        </div>
-      
-    </div>
-
-    <!-- Active Step Mission Card (1 Card at a time!) -->
-    <article class="mission-card" id="mission-card-4" data-steps='[{&quot;idx&quot;:0,&quot;time&quot;:&quot;09:30–11:00&quot;,&quot;title&quot;:&quot;아침을 먹고 체크아웃&quot;,&quot;desc&quot;:&quot;호텔 규정에 맞춰 체크아웃하고 짐을 맡겨요. 귀국일은 교토나 우메다로 새로 이동하지 않아요.&quot;,&quot;type&quot;:&quot;🧳 준비&quot;,&quot;mapUrl&quot;:&quot;&quot;,&quot;mapLabel&quot;:&quot;&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;&quot;,&quot;checkId&quot;:&quot;step-4-0&quot;},{&quot;idx&quot;:1,&quot;time&quot;:&quot;11:00–13:00&quot;,&quot;title&quot;:&quot;난바 근처 카페 · 선물&quot;,&quot;desc&quot;:&quot;마루후쿠 커피에서 쉬거나 역 주변에서 선물을 골라요. 점심은 전날 못 먹은 치보·이마이 중 영업하는 한 곳으로.&quot;,&quot;type&quot;:&quot;🥞 식사·카페&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B8%E7%A6%8F%E7%8F%88%E7%90%B2%E5%BA%97%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%83%E6%97%A5%E5%89%8D1-9-1&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 마루후쿠 커피 센니치마에 본점&quot;,&quot;extUrl&quot;:&quot;https://marufukucoffeeten.com/store/marufukucoffee-sennichimae/&quot;,&quot;extLabel&quot;:&quot;공식 안내&quot;,&quot;checkId&quot;:&quot;step-4-1&quot;},{&quot;idx&quot;:2,&quot;time&quot;:&quot;13:30–14:30&quot;,&quot;title&quot;:&quot;짐 회수 · 난카이 난바역&quot;,&quot;desc&quot;:&quot;19시 출발 예시라면 14:30 무렵 열차를 타는 넉넉한 흐름. 실제 운행 시각과 수하물 규정을 확인해요.&quot;,&quot;type&quot;:&quot;🚆 이동&quot;,&quot;mapUrl&quot;:&quot;https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60&quot;,&quot;mapLabel&quot;:&quot;📍 구글지도 · 난카이 난바역&quot;,&quot;extUrl&quot;:&quot;https://www.nankai.co.jp/en_railway/ticket/rapit/&quot;,&quot;extLabel&quot;:&quot;공항행 티켓 확인&quot;,&quot;checkId&quot;:&quot;step-4-2&quot;},{&quot;idx&quot;:3,&quot;time&quot;:&quot;16:00 이전 목표&quot;,&quot;title&quot;:&quot;공항 도착 · 출국 수속&quot;,&quot;desc&quot;:&quot;19시 이후 국제선 기준 약 3시간 전 도착 목표. T2 항공사는 터미널 이동 시간을 더 잡고 항공사 안내를 우선해요.&quot;,&quot;type&quot;:&quot;✈️ 귀국&quot;,&quot;mapUrl&quot;:&quot;&quot;,&quot;mapLabel&quot;:&quot;&quot;,&quot;extUrl&quot;:&quot;&quot;,&quot;extLabel&quot;:&quot;&quot;,&quot;checkId&quot;:&quot;step-4-3&quot;}]'>
-      <div class="mission-header">
-        <span class="mission-badge" data-m-type>🧳 준비 · STEP 1/4</span>
-        <span class="mission-time" data-m-time>⏰ 09:30–11:00</span>
-      </div>
-      <h3 class="mission-title" data-m-title>아침을 먹고 체크아웃</h3>
-      <p class="mission-desc" data-m-desc>호텔 규정에 맞춰 체크아웃하고 짐을 맡겨요. 귀국일은 교토나 우메다로 새로 이동하지 않아요.</p>
-      <div class="mission-links" data-m-links></div>
-      <div class="mission-footer">
-        <button type="button" class="mission-nav-btn" data-m-prev="4">◀ 이전</button>
-        <button type="button" class="btn-3d btn-green mission-done-btn" data-m-done="4">✓ 완료하고 다음 코스로</button>
-        <button type="button" class="mission-nav-btn" data-m-next="4">다음 ▶</button>
-      </div>
-    </article>
-
-    <!-- Optional Compact List View (Hidden unless toggled or printed) -->
-    <div class="day-list-view" id="list-view-4" hidden>
-      <div class="compact-step-card">
-          <div class="compact-step-num">1</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">09:30–11:00 · 🧳 준비</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">아침을 먹고 체크아웃</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">호텔 규정에 맞춰 체크아웃하고 짐을 맡겨요. 귀국일은 교토나 우메다로 새로 이동하지 않아요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              
-              
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">2</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">11:00–13:00 · 🥞 식사·카페</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">난바 근처 카페 · 선물</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">마루후쿠 커피에서 쉬거나 역 주변에서 선물을 골라요. 점심은 전날 못 먹은 치보·이마이 중 영업하는 한 곳으로.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B8%E7%A6%8F%E7%8F%88%E7%90%B2%E5%BA%97%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%83%E6%97%A5%E5%89%8D1-9-1" target="_blank" rel="noopener noreferrer">📍 지도 · 마루후쿠 커피 센니치마에 본점 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://marufukucoffeeten.com/store/marufukucoffee-sennichimae/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">3</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">13:30–14:30 · 🚆 이동</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">짐 회수 · 난카이 난바역</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">19시 출발 예시라면 14:30 무렵 열차를 타는 넉넉한 흐름. 실제 운행 시각과 수하물 규정을 확인해요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">📍 지도 · 난카이 난바역 <span aria-hidden="true">↗</span></a>
-              <a class="btn-3d btn-accent" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">🎫 공항행 티켓 확인 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </div><div class="compact-step-card">
-          <div class="compact-step-num">4</div>
-          <div style="flex:1">
-            <div style="font-size:11px;font-weight:800;color:var(--primary)">16:00 이전 목표 · ✈️ 귀국</div>
-            <strong style="font-size:15px;display:block;margin:2px 0">공항 도착 · 출국 수속</strong>
-            <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">19시 이후 국제선 기준 약 3시간 전 도착 목표. T2 항공사는 터미널 이동 시간을 더 잡고 항공사 안내를 우선해요.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              
-              
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
       </section>
 
-      <!-- VIEW 2: FOOD & STAY (맛집·숙소) -->
+      <!-- VIEW 2: DINING & STAY -->
       <section class="view-panel" id="view-eatstay" data-view="eatstay">
         <div class="seg-tabs" role="tablist">
-          <button type="button" class="seg-btn is-active" data-subtab="food">🍽️ 밥·카페 (8)</button>
-          <button type="button" class="seg-btn" data-subtab="stay">🏨 추천 숙소 (3)</button>
+          <button type="button" class="seg-btn is-active" data-subtab="food">다이닝 &amp; 찻집 (8)</button>
+          <button type="button" class="seg-btn" data-subtab="stay">오사카 3연박 호텔 (3)</button>
         </div>
 
         <div data-subpanel="food">
           <div class="chip-bar">
-            <button type="button" class="filter-chip is-active" data-food-filter="all">전체 보기</button>
-            <button type="button" class="filter-chip" data-food-filter="osaka">오사카 식사</button>
-            <button type="button" class="filter-chip" data-food-filter="kyoto">교토 식사</button>
-            <button type="button" class="filter-chip" data-food-filter="cafe">카페·디저트</button>
+            <button type="button" class="filter-chip is-active" data-food-filter="all">전체 셀렉션</button>
+            <button type="button" class="filter-chip" data-food-filter="osaka">오사카 다이닝</button>
+            <button type="button" class="filter-chip" data-food-filter="kyoto">교토 다이닝</button>
+            <button type="button" class="filter-chip" data-food-filter="cafe">킷사텐 · 찻집</button>
           </div>
-          
           <div class="card-deck">
             <article class="deck-card" data-food-cat="osaka">
                 <div>
-                  <div class="sub">오사카 · 도톤보리 · ¥2,000–3,500</div>
+                  <div class="sub">오사카 · 도톤보리 · 1인 ¥2,000–3,500</div>
                   <h3>치보 도톤보리 빌딩점</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">오코노미야키 · 철판요리</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">千房 道頓堀ビル店 · 오코노미야키 · 철판요리</div>
                   <p>첫날 저녁 기본안. 공식 페이지의 예약 버튼으로 가능 시간을 확인해요.</p>
-                  <div class="meta-line">⏰ 11–23시 · L.O. 22시<br>📍 千房 道頓堀ビル店 大阪市中央区道頓堀1-5-5</div>
+                  <div class="meta-line">영업: 11–23시 · L.O. 22시<br>주소: 千房 道頓堀ビル店 大阪市中央区道頓堀1-5-5</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%83%E6%88%BF%20%E9%81%93%E9%A0%93%E5%A0%80%E3%83%93%E3%83%AB%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-5-5" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://shop.chibo.com/detail/28/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%83%E6%88%BF%20%E9%81%93%E9%A0%93%E5%A0%80%E3%83%93%E3%83%AB%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-5-5" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://shop.chibo.com/detail/28/" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="osaka">
                 <div>
-                  <div class="sub">오사카 · 도톤보리 · ¥2,000–3,000</div>
+                  <div class="sub">오사카 · 도톤보리 · 1인 ¥2,000–3,000</div>
                   <h3>미즈노</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">오코노미야키</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">美津の · 오코노미야키</div>
                   <p>치보와 같은 지역의 대안. 줄이 길면 다른 식당으로 가요. 두 곳을 연속으로 먹는 일정은 아니에요.</p>
-                  <div class="meta-line">⏰ 11–22시 · L.O. 21시 · 기본 무휴<br>📍 美津の 大阪市中央区道頓堀1-4-15</div>
+                  <div class="meta-line">영업: 11–22시 · L.O. 21시 · 기본 무휴<br>주소: 美津の 大阪市中央区道頓堀1-4-15</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%BE%8E%E6%B4%A5%E3%81%AE%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-4-15" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.mizuno-osaka.com/?mode=pc" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%BE%8E%E6%B4%A5%E3%81%AE%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-4-15" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.mizuno-osaka.com/?mode=pc" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="osaka">
                 <div>
-                  <div class="sub">오사카 · 도톤보리 · ¥1,000–2,000</div>
+                  <div class="sub">오사카 · 도톤보리 · 1인 ¥1,000–2,000</div>
                   <h3>도톤보리 이마이 본점</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">키츠네우동 · 따뜻한 면요리</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">道頓堀 今井 本店 · 키츠네우동 · 따뜻한 면요리</div>
                   <p>겨울 저녁 추천. 수요일·제4화요일 휴무가 기본이며 공휴일·12월 예외는 공식 확인.</p>
-                  <div class="meta-line">⏰ 11:30–21:30 · 수요일·제4화요일 휴무<br>📍 道頓堀 今井 本店 大阪市中央区道頓堀1-7-22</div>
+                  <div class="meta-line">영업: 11:30–21:30 · 수요일·제4화요일 휴무<br>주소: 道頓堀 今井 本店 大阪市中央区道頓堀1-7-22</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%81%93%E9%A0%93%E5%A0%80%20%E4%BB%8A%E4%BA%95%20%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-7-22" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.d-imai.com/shops/honten/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%81%93%E9%A0%93%E5%A0%80%20%E4%BB%8A%E4%BA%95%20%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-7-22" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.d-imai.com/shops/honten/" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="osaka">
                 <div>
-                  <div class="sub">오사카 · 도톤보리 · ¥2,500–5,000</div>
+                  <div class="sub">오사카 · 도톤보리 · 1인 ¥2,500–5,000</div>
                   <h3>하리쥬 그릴</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">함박스테이크 · 비프카츠</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">はり重グリル · 함박스테이크 · 비프카츠</div>
                   <p>조금 특별한 실내 저녁을 원할 때. 점심과 저녁 사이 브레이크가 있어요.</p>
-                  <div class="meta-line">⏰ 11:30–15시 / 17–20:30 · 화요일 휴무<br>📍 はり重グリル 大阪市中央区道頓堀1-9-17</div>
+                  <div class="meta-line">영업: 11:30–15시 / 17–20:30 · 화요일 휴무<br>주소: はり重グリル 大阪市中央区道頓堀1-9-17</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%AF%E3%82%8A%E9%87%8D%E3%82%B0%E3%83%AA%E3%83%AB%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-9-17" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.harijyu.co.jp/shop-info/2177/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%AF%E3%82%8A%E9%87%8D%E3%82%B0%E3%83%AA%E3%83%AB%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801-9-17" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.harijyu.co.jp/shop-info/2177/" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="cafe">
                 <div>
-                  <div class="sub">오사카 · 난바 · ¥1,000–2,000</div>
+                  <div class="sub">오사카 · 난바 · 1인 ¥1,000–2,000</div>
                   <h3>마루후쿠 커피 센니치마에 본점</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">커피 · 핫케이크 · 복고풍 찻집</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">丸福珈琲店 千日前本店 · 커피 · 핫케이크 · 복고풍 찻집</div>
                   <p>늦은 아침이나 귀국일 쉬는 시간 후보. 난바 동네를 벗어나지 않고 커피와 핫케이크로 잠깐 앉아 있어요.</p>
-                  <div class="meta-line">⏰ 기본 08–23시 · 모닝은 평일 안내<br>📍 丸福珈琲店 千日前本店 大阪市中央区千日前1-9-1</div>
+                  <div class="meta-line">영업: 기본 08–23시 · 모닝은 평일 안내<br>주소: 丸福珈琲店 千日前本店 大阪市中央区千日前1-9-1</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B8%E7%A6%8F%E7%8F%88%E7%90%B2%E5%BA%97%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%83%E6%97%A5%E5%89%8D1-9-1" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://marufukucoffeeten.com/store/marufukucoffee-sennichimae/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B8%E7%A6%8F%E7%8F%88%E7%90%B2%E5%BA%97%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%83%E6%97%A5%E5%89%8D1-9-1" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://marufukucoffeeten.com/store/marufukucoffee-sennichimae/" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="kyoto">
                 <div>
-                  <div class="sub">교토 · 아라시야마 · ¥1,000–2,000</div>
+                  <div class="sub">교토 · 아라시야마 · 1인 ¥1,000–2,000</div>
                   <h3>아라시야마 우동 오즈루</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">따뜻한 우동</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">嵐山うどん おづる · 따뜻한 우동</div>
                   <p>버스 자유시간에 동선이 맞으면 점심 후보. 예약 불가·현금 안내. 12/31 단축 영업 재확인.</p>
-                  <div class="meta-line">⏰ 기본 10:30–19:30 · 현금 안내<br>📍 嵐山うどん おづる 京都市右京区嵯峨天龍寺芒ノ馬場町22-4</div>
+                  <div class="meta-line">영업: 기본 10:30–19:30 · 현금 안내<br>주소: 嵐山うどん おづる 京都市右京区嵯峨天龍寺芒ノ馬場町22-4</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B5%90%E5%B1%B1%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%8A%E3%81%A5%E3%82%8B%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA22-4" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://tabelog.com/en/kyoto/A2601/A260403/26014273/" target="_blank" rel="noopener noreferrer">매장 게시 Tabelog 정보 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B5%90%E5%B1%B1%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%8A%E3%81%A5%E3%82%8B%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA22-4" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://tabelog.com/en/kyoto/A2601/A260403/26014273/" target="_blank" rel="noopener noreferrer">매장 게시 Tabelog 정보 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="cafe">
                 <div>
-                  <div class="sub">교토 · 아라시야마 · ¥1,000–2,000</div>
+                  <div class="sub">교토 · 아라시야마 · 1인 ¥1,000–2,000</div>
                   <h3>요지야 사가노 아라시야마점</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">말차·디저트·카페 휴식</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">よーじや 嵯峨野嵐山店 · 말차·디저트·카페 휴식</div>
                   <p>추우면 강변 대신 실내에서 쉬어요. 버스 집결지에서 멀어지면 가까운 카페로 바꿔요.</p>
-                  <div class="meta-line">⏰ 기본 10–18시 · L.O. 17:30<br>📍 よーじや 嵯峨野嵐山店 京都市右京区嵯峨天龍寺立石町2</div>
+                  <div class="meta-line">영업: 기본 10–18시 · L.O. 17:30<br>주소: よーじや 嵯峨野嵐山店 京都市右京区嵯峨天龍寺立石町2</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%88%E3%83%BC%E3%81%98%E3%82%84%20%E5%B5%AF%E5%B3%A8%E9%87%8E%E5%B5%90%E5%B1%B1%E5%BA%97%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E7%AB%8B%E7%9F%B3%E7%94%BA2" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.yojiya.co.jp/archives/shop/198" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%88%E3%83%BC%E3%81%98%E3%82%84%20%E5%B5%AF%E5%B3%A8%E9%87%8E%E5%B5%90%E5%B1%B1%E5%BA%97%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E7%AB%8B%E7%9F%B3%E7%94%BA2" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.yojiya.co.jp/archives/shop/198" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card" data-food-cat="cafe">
                 <div>
-                  <div class="sub">교토 · 니넨자카 · ¥700–1,200</div>
+                  <div class="sub">교토 · 니넨자카 · 1인 ¥700–1,200</div>
                   <h3>스타벅스 교토 니넨자카 야사카 차야점</h3>
-                  <div style="font-size:12px;font-weight:800;color:var(--muted)">커피 · 목조 가옥에서 휴식</div>
+                  <div style="font-size:12px;font-weight:700;color:var(--muted)">京都二寧坂ヤサカ茶屋店 · 커피 · 목조 가옥에서 휴식</div>
                   <p>청수사 아래 선택 휴식처. 좌석을 보장하지 않으며 매장 밖 대기는 피하라는 공식 안내가 있어요.</p>
-                  <div class="meta-line">⏰ 08–20시 · 매장 밖 대기 제한<br>📍 スターバックス 京都二寧坂ヤサカ茶屋店 京都市東山区桝屋町349</div>
+                  <div class="meta-line">영업: 08–20시 · 매장 밖 대기 제한<br>주소: スターバックス 京都二寧坂ヤサカ茶屋店 京都市東山区桝屋町349</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%90%E3%83%83%E3%82%AF%E3%82%B9%20%E4%BA%AC%E9%83%BD%E4%BA%8C%E5%AF%A7%E5%9D%82%E3%83%A4%E3%82%B5%E3%82%AB%E8%8C%B6%E5%B1%8B%E5%BA%97%20%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%A1%9D%E5%B1%8B%E7%94%BA349" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://store.starbucks.co.jp/detail-1476/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%90%E3%83%83%E3%82%AF%E3%82%B9%20%E4%BA%AC%E9%83%BD%E4%BA%8C%E5%AF%A7%E5%9D%82%E3%83%A4%E3%82%B5%E3%82%AB%E8%8C%B6%E5%B1%8B%E5%BA%97%20%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%A1%9D%E5%B1%8B%E7%94%BA349" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://store.starbucks.co.jp/detail-1476/" target="_blank" rel="noopener noreferrer">공식 웹페이지 <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
           </div>
         </div>
 
         <div data-subpanel="stay" hidden>
-          <div class="unit-tip-drawer" style="margin-bottom:12px">
-            <strong>🛏️ 숙소 선택 기준:</strong> 난바·도톤보리 3연박으로 짐 이동을 없앴어요.
+          <div class="editorial-note-drawer" style="margin-bottom:12px">
+            <strong>숙소 큐레이션 기준:</strong> 캐리어를 끌고 도시를 옮기지 않도록 난바·도톤보리·신사이바시 권역 한 곳에 3연박합니다.
           </div>
           <div class="card-deck">
             <article class="deck-card">
@@ -1154,11 +1229,11 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <h3>호텔 로열 클래식 오사카</h3>
                   <div style="font-size:11px;color:var(--muted)">Hotel Royal Classic Osaka</div>
                   <p>Metro 난바 12번 통로 직결. 난카이 난바에서도 가까워 공항 이동과 투어 집결에 편해요.</p>
-                  <div class="meta-line">💡 커플 1순위. 객실은 더블/트윈, 조식·취소 조건을 비교해요. 15시 입실·12시 퇴실 기본 안내.<br>📍 ホテルロイヤルクラシック大阪 大阪市中央区難波4-3-3</div>
+                  <div class="meta-line">커플 1순위. 객실은 더블/트윈, 조식·취소 조건을 비교해요. 15시 입실·12시 퇴실 기본 안내.<br>위치: ホテルロイヤルクラシック大阪 大阪市中央区難波4-3-3</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://hotel-royalclassic.jp/en/" target="_blank" rel="noopener noreferrer">🏨 공식 예약 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF%E5%A4%A7%E9%98%AA%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A24-3-3" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://hotel-royalclassic.jp/en/" target="_blank" rel="noopener noreferrer">공식 웹사이트 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF%E5%A4%A7%E9%98%AA%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A24-3-3" target="_blank" rel="noopener noreferrer">구글지도 위치 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card">
                 <div>
@@ -1166,11 +1241,11 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <h3>크로스 호텔 오사카</h3>
                   <div style="font-size:11px;color:var(--muted)">Cross Hotel Osaka</div>
                   <p>도톤보리 식당과 야경을 걸어서 연결하기 좋아요. 호텔 근처에서 저녁을 마무리할 두 사람에게.</p>
-                  <div class="meta-line">💡 번화가 위치라 조용한 객실 요청 가능 여부를 확인해요. 난카이 난바까지 도보 약 10분.<br>📍 クロスホテル大阪 大阪市中央区心斎橋筋2-5-15</div>
+                  <div class="meta-line">번화가 위치라 조용한 객실 요청 가능 여부를 확인해요. 난카이 난바까지 도보 약 10분.<br>위치: クロスホテル大阪 大阪市中央区心斎橋筋2-5-15</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://cross-osaka.orixhotelsandresorts.com/wcrsoskp/" target="_blank" rel="noopener noreferrer">🏨 공식 예약 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E9%98%AA%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%BF%83%E6%96%8E%E6%A9%8B%E7%AD%8B2-5-15" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://cross-osaka.orixhotelsandresorts.com/wcrsoskp/" target="_blank" rel="noopener noreferrer">공식 웹사이트 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%9B%E3%83%86%E3%83%AB%E5%A4%A7%E9%98%AA%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%BF%83%E6%96%8E%E6%A9%8B%E7%AD%8B2-5-15" target="_blank" rel="noopener noreferrer">구글지도 위치 <span aria-hidden="true">↗</span></a>
                 </div>
               </article><article class="deck-card">
                 <div>
@@ -1178,22 +1253,22 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <h3>호텔 더 플래그 신사이바시</h3>
                   <div style="font-size:11px;color:var(--muted)">HOTEL THE FLAG Shinsaibashi</div>
                   <p>신사이바시역 도보 약 3분. 커피와 라이브러리 공간이 있어 숙소에서 쉬는 시간도 즐겨요.</p>
-                  <div class="meta-line">💡 포켓몬 DX 동선에도 좋은 후보. 공항에서 난바 도착 후에는 지하철 한 번 또는 택시를 더 타요.<br>📍 HOTEL THE FLAG 大阪市中央区東心斎橋1-18-30</div>
+                  <div class="meta-line">다이마루 신사이바시와 상점가 동선에 좋은 후보. 공항에서 난바 도착 후에는 지하철 한 번 또는 택시를 더 타요.<br>위치: HOTEL THE FLAG 大阪市中央区東心斎橋1-18-30</div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://en.hoteltheflag.jp/" target="_blank" rel="noopener noreferrer">🏨 공식 예약 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=HOTEL%20THE%20FLAG%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%9D%B1%E5%BF%83%E6%96%8E%E6%A9%8B1-18-30" target="_blank" rel="noopener noreferrer">📍 구글지도 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://en.hoteltheflag.jp/" target="_blank" rel="noopener noreferrer">공식 웹사이트 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=HOTEL%20THE%20FLAG%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%9D%B1%E5%BF%83%E6%96%8E%E6%A9%8B1-18-30" target="_blank" rel="noopener noreferrer">구글지도 위치 <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
           </div>
         </div>
       </section>
 
-      <!-- VIEW 3: BOOKING & RAIL (예약·교통) -->
+      <!-- VIEW 3: RESERVATIONS & RAIL -->
       <section class="view-panel" id="view-book" data-view="book">
         <div class="seg-tabs" role="tablist">
-          <button type="button" class="seg-btn is-active" data-booktab="tickets">🎫 필수 예약 데스크</button>
-          <button type="button" class="seg-btn" data-booktab="rail">🚆 공항·도시 철도</button>
+          <button type="button" class="seg-btn is-active" data-booktab="tickets">사전 예약 티켓</button>
+          <button type="button" class="seg-btn" data-booktab="rail">공항 · 시내 철도</button>
         </div>
 
         <div data-bookpanel="tickets">
@@ -1206,7 +1281,7 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <p>한국어 안내 상품. 겨울 판매일·최소출발 인원·정확한 집결 시각·취소 규정은 날짜를 선택해 확인해요.</p>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.klook.com/ko/activity/140184-kyoto-arashiyama-kiyomizu-dera-bus-tour-from-osaka/" target="_blank" rel="noopener noreferrer">🎫 클룩 상품 · 날짜 확인 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.klook.com/ko/activity/140184-kyoto-arashiyama-kiyomizu-dera-bus-tour-from-osaka/" target="_blank" rel="noopener noreferrer">클룩 상품 · 날짜 확인 <span aria-hidden="true">↗</span></a>
                   
                 </div>
               </article>
@@ -1218,7 +1293,7 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <p>니코니코 상품은 약 11시간, 07:50 출발·18:15 오사카 복귀 예시. 12월부터 후시미이나리 제외 안내가 있으나 바우처가 우선이에요.</p>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.klook.com/ko/activity/177179-korean-guide-osaka-bus-tour/" target="_blank" rel="noopener noreferrer">🎫 클룩 대안 비교 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.klook.com/ko/activity/177179-korean-guide-osaka-bus-tour/" target="_blank" rel="noopener noreferrer">클룩 대안 비교 <span aria-hidden="true">↗</span></a>
                   
                 </div>
               </article>
@@ -1230,8 +1305,8 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <p>공식 입장권 페이지에서 달력과 판매처를 확인해요. 클룩과 비교할 때 날짜·시간·환불 조건이 같은지 확인해요.</p>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">🎫 공식 입장권 안내 <span aria-hidden="true">↗</span></a>
-                  <a class="btn-3d btn-secondary" href="https://www.klook.com/ko/activity/598-osaka-aquarium-kaiyukan-japan/" target="_blank" rel="noopener noreferrer">클룩 비교 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">공식 입장권 안내 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-outline" href="https://www.klook.com/ko/activity/598-osaka-aquarium-kaiyukan-japan/" target="_blank" rel="noopener noreferrer">클룩 비교 <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
             
@@ -1242,7 +1317,7 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                   <p>디지털 상품이 운임+특급권을 포함하는지 확인해요. 특급권만 파는 메뉴와 구분하고, IC카드와 운임을 중복 결제하지 않아요.</p>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <a class="btn-3d btn-primary" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">🎫 공식 디지털 티켓 <span aria-hidden="true">↗</span></a>
+                  <a class="mag-btn mag-btn-primary" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">공식 디지털 티켓 <span aria-hidden="true">↗</span></a>
                   
                 </div>
               </article>
@@ -1254,38 +1329,39 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
           <div class="card-deck">
             <article class="deck-card">
               <div>
-                <div class="sub">D1 · 간사이공항 → 난바</div>
-                <h3>난카이 라피트 / 공항급행</h3>
-                <p>라피트는 약 34–39분(운임+특급권), 공항급행은 약 43분(자유석). 입국·수하물 대기를 고려해 1.5–2시간 여유를 둬요.</p>
+                <div class="sub">DAY 01 &amp; DAY 04 · 간사이공항 ↔ 난카이 난바</div>
+                <h3>난카이 특급 라피트 / 공항급행</h3>
+                <p>라피트는 전석 지정석(약 34–39분), 공항급행은 일반 열차(약 43분)입니다. 입국 수속 대기를 감안해 공항 도착 후 1.5–2시간 여유를 두고 탑승합니다.</p>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">난카이 공식 티켓 <span aria-hidden="true">↗</span></a>
-                <a class="btn-3d btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%E9%A7%85&amp;destination=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85&amp;travelmode=transit" target="_blank" rel="noopener noreferrer">📍 공항→난바 경로 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noopener noreferrer">난카이 공식 티켓 안내 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%E9%A7%85&amp;destination=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85&amp;travelmode=transit" target="_blank" rel="noopener noreferrer">공항→난바 경로 <span aria-hidden="true">↗</span></a>
               </div>
             </article>
             <article class="deck-card">
               <div>
-                <div class="sub">D2 · 난바 ↔ 가이유칸</div>
-                <h3>Osaka Metro 미도스지·주오선</h3>
-                <p>난바→혼마치(미도스지선)→오사카코(주오선)→도보 약 45–60분. 기본 동선은 IC카드 충전이 가장 간편해요.</p>
+                <div class="sub">DAY 02 &amp; DAY 03 · 오사카만 &amp; 교토 버스투어</div>
+                <h3>Osaka Metro &amp; 도톤보리 집결지</h3>
+                <p>가이유칸은 난바역(미도스지선)→혼마치(주오선 환승)→오사카코역 경로가 가장 간결합니다. 교토 일일 투어는 전날 바우처의 정확한 집결 시각과 장소를 다시 확인하세요.</p>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E3%83%A1%E3%83%88%E3%83%AD&amp;destination=%E6%B5%B7%E9%81%8A%E9%A4%A8&amp;travelmode=transit" target="_blank" rel="noopener noreferrer">📍 가이유칸 경로 <span aria-hidden="true">↗</span></a><a class="btn-3d btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17" target="_blank" rel="noopener noreferrer">📍 투어 집결지 후보 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E3%83%A1%E3%83%88%E3%83%AD&amp;destination=%E6%B5%B7%E9%81%8A%E9%A4%A8&amp;travelmode=transit" target="_blank" rel="noopener noreferrer">난바→가이유칸 경로 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17" target="_blank" rel="noopener noreferrer">투어 집결지 후보 지도 <span aria-hidden="true">↗</span></a>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- VIEW 4: MAP & PLACES (지도 검색) -->
+      <!-- VIEW 4: ATLAS & DIRECTORY -->
       <section class="view-panel" id="view-map" data-view="map">
-        <div style="display:flex;gap:8px;margin-bottom:10px">
-          <input id="place-search" type="search" data-search placeholder="🔍 장소 검색 (예: 도톤보리, 청수사, 가이유칸)" autocomplete="off" style="flex:1;padding:11px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);font-weight:700">
+        <div style="margin-bottom:10px">
+          <input id="place-search" type="search" data-search placeholder="장소명 또는 지역 검색 (예: 도톤보리, 가이유칸, 아라시야마, 청수사)" autocomplete="off" style="width:100%;padding:11px 14px;border:1.5px solid var(--line-dark);background:var(--paper);font-weight:600">
         </div>
         <div class="chip-bar">
-          <button type="button" class="filter-chip is-active" data-map-region="all">전체 (8)</button>
-          <button type="button" class="filter-chip" data-map-region="osaka">오사카</button>
-          <button type="button" class="filter-chip" data-map-region="kyoto">교토</button>
+          <button type="button" class="filter-chip is-active" data-map-region="all">전체 수록 장소 (8)</button>
+          <button type="button" class="filter-chip" data-map-region="osaka">오사카 권역</button>
+          <button type="button" class="filter-chip" data-map-region="kyoto">교토 권역</button>
         </div>
         <div class="card-deck">
           <article class="deck-card" data-place="도톤보리 · 에비스바시 道頓堀・戎橋 난바 戎橋 大阪府大阪市中央区道頓堀1丁目" data-region="osaka">
@@ -1295,10 +1371,10 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div style="font-size:11px;color:var(--muted)">道頓堀・戎橋</div>
                 
                 <p>글리코 간판 사진은 다리에서 짧게. 강변 바람이 차면 상점가로 돌아와요.</p>
-                <div class="meta-line">📍 戎橋 大阪府大阪市中央区道頓堀1丁目</div>
+                <div class="meta-line">戎橋 大阪府大阪市中央区道頓堀1丁目</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%8E%E6%A9%8B%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%81%93%E9%A0%93%E5%A0%801%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
                 
               </div>
             </article><article class="deck-card" data-place="가이유칸 海遊館 덴포잔 海遊館 大阪府大阪市港区海岸通1-1-10" data-region="osaka">
@@ -1306,13 +1382,13 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div class="sub">덴포잔</div>
                 <h3>가이유칸</h3>
                 <div style="font-size:11px;color:var(--muted)">海遊館</div>
-                <div style="font-size:12px;font-weight:800;color:var(--primary);margin-top:4px">⏰ 날짜별 운영시간·가격 확인</div>
+                <div style="font-size:12px;font-weight:700;color:var(--vermilion);margin-top:4px">날짜별 운영시간·가격 확인</div>
                 <p>실내 관람을 오늘의 핵심으로. 걷는 전시 동선은 있어요. 시간 지정권을 먼저 확인해요.</p>
-                <div class="meta-line">📍 海遊館 大阪府大阪市港区海岸通1-1-10</div>
+                <div class="meta-line">海遊館 大阪府大阪市港区海岸通1-1-10</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
-                <a class="btn-3d btn-secondary" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%B7%E9%81%8A%E9%A4%A8%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.kaiyukan.com/info/ticket/kaiyukan/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
               </div>
             </article><article class="deck-card" data-place="덴포잔 마켓플레이스 天保山マーケットプレース 덴포잔 天保山マーケットプレース 大阪府大阪市港区海岸通1-1-10" data-region="osaka">
               <div>
@@ -1321,11 +1397,11 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div style="font-size:11px;color:var(--muted)">天保山マーケットプレース</div>
                 
                 <p>수족관 옆 실내 식사·휴식 공간. 가게별 영업은 다를 수 있어요.</p>
-                <div class="meta-line">📍 天保山マーケットプレース 大阪府大阪市港区海岸通1-1-10</div>
+                <div class="meta-line">天保山マーケットプレース 大阪府大阪市港区海岸通1-1-10</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
-                <a class="btn-3d btn-secondary" href="https://www.kaiyukan.com/thv/marketplace/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B8%AF%E5%8C%BA%E6%B5%B7%E5%B2%B8%E9%80%9A1-1-10" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.kaiyukan.com/thv/marketplace/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
               </div>
             </article><article class="deck-card" data-place="교토 투어 집결지 후보 つるとんたん 宗右衛門町店 도톤보리 つるとんたん 宗右衛門町店 大阪府大阪市中央区宗右衛門町3-17" data-region="osaka">
               <div>
@@ -1334,10 +1410,10 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div style="font-size:11px;color:var(--muted)">つるとんたん 宗右衛門町店</div>
                 
                 <p>조사한 두 상품에 표시된 집결지. 실제 위치·출발 시각은 예약 바우처를 우선해요.</p>
-                <div class="meta-line">📍 つるとんたん 宗右衛門町店 大阪府大阪市中央区宗右衛門町3-17</div>
+                <div class="meta-line">つるとんたん 宗右衛門町店 大阪府大阪市中央区宗右衛門町3-17</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA3-17" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
                 
               </div>
             </article><article class="deck-card" data-place="아라시야마 · 도게츠교 嵐山・渡月橋 교토 서쪽 渡月橋 京都府京都市右京区嵯峨中ノ島町" data-region="kyoto">
@@ -1347,10 +1423,10 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div style="font-size:11px;color:var(--muted)">嵐山・渡月橋</div>
                 
                 <p>도게츠교와 대나무숲 입구 중 가까운 구간만 골라요. 강변에서 오래 머물면 추워요.</p>
-                <div class="meta-line">📍 渡月橋 京都府京都市右京区嵯峨中ノ島町</div>
+                <div class="meta-line">渡月橋 京都府京都市右京区嵯峨中ノ島町</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%A1%E6%9C%88%E6%A9%8B%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E4%B8%AD%E3%83%8E%E5%B3%B6%E7%94%BA" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%A1%E6%9C%88%E6%A9%8B%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E4%B8%AD%E3%83%8E%E5%B3%B6%E7%94%BA" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
                 
               </div>
             </article><article class="deck-card" data-place="기요미즈데라 · 청수사 清水寺 히가시야마 清水寺 京都府京都市東山区清水1丁目294" data-region="kyoto">
@@ -1358,13 +1434,13 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div class="sub">히가시야마</div>
                 <h3>기요미즈데라 · 청수사</h3>
                 <div style="font-size:11px;color:var(--muted)">清水寺</div>
-                <div style="font-size:12px;font-weight:800;color:var(--primary);margin-top:4px">⏰ 06:00 개문 · 폐문은 계절·행사별 확인</div>
+                <div style="font-size:12px;font-weight:700;color:var(--vermilion);margin-top:4px">06:00 개문 · 폐문은 계절·행사별 확인</div>
                 <p>목조 무대와 교토 전망을 보는 곳. 언덕·계단이 있어 편한 신발이 필수예요.</p>
-                <div class="meta-line">📍 清水寺 京都府京都市東山区清水1丁目294</div>
+                <div class="meta-line">清水寺 京都府京都市東山区清水1丁目294</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E6%B0%B4%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%B8%85%E6%B0%B41%E4%B8%81%E7%9B%AE294" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
-                <a class="btn-3d btn-secondary" href="https://www.kiyomizudera.or.jp/en/visit/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E6%B0%B4%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E6%9D%B1%E5%B1%B1%E5%8C%BA%E6%B8%85%E6%B0%B41%E4%B8%81%E7%9B%AE294" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.kiyomizudera.or.jp/en/visit/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
               </div>
             </article><article class="deck-card" data-place="금각사 金閣寺 교토 북서쪽 金閣寺 京都府京都市北区金閣寺町1" data-region="kyoto">
               <div>
@@ -1373,11 +1449,11 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div style="font-size:11px;color:var(--muted)">金閣寺</div>
                 
                 <p>3곳 투어를 고를 때 추가되는 명소. 자유시간과 입장료 포함 여부를 확인해요.</p>
-                <div class="meta-line">📍 金閣寺 京都府京都市北区金閣寺町1</div>
+                <div class="meta-line">金閣寺 京都府京都市北区金閣寺町1</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E9%96%A3%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8C%97%E5%8C%BA%E9%87%91%E9%96%A3%E5%AF%BA%E7%94%BA1" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
-                <a class="btn-3d btn-secondary" href="https://www.shokoku-ji.jp/en/kinkakuji/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E9%96%A3%E5%AF%BA%20%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8C%97%E5%8C%BA%E9%87%91%E9%96%A3%E5%AF%BA%E7%94%BA1" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-outline" href="https://www.shokoku-ji.jp/en/kinkakuji/" target="_blank" rel="noopener noreferrer">공식 안내 <span aria-hidden="true">↗</span></a>
               </div>
             </article><article class="deck-card" data-place="난카이 난바역 南海なんば駅 난바 南海なんば駅 大阪府大阪市中央区難波5丁目1-60" data-region="osaka">
               <div>
@@ -1386,30 +1462,28 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
                 <div style="font-size:11px;color:var(--muted)">南海なんば駅</div>
                 
                 <p>라피트·공항급행 출발역. Osaka Metro/JR 난바와 위치가 다르니 난카이 표지를 따라가요.</p>
-                <div class="meta-line">📍 南海なんば駅 大阪府大阪市中央区難波5丁目1-60</div>
+                <div class="meta-line">南海なんば駅 大阪府大阪市中央区難波5丁目1-60</div>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <a class="btn-3d btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">📍 구글지도 열기 <span aria-hidden="true">↗</span></a>
+                <a class="mag-btn mag-btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25%E4%B8%81%E7%9B%AE1-60" target="_blank" rel="noopener noreferrer">구글지도 열기 <span aria-hidden="true">↗</span></a>
                 
               </div>
             </article>
         </div>
-        <p class="unit-tip-drawer" data-empty hidden>검색 조건에 맞는 장소가 없어요.</p>
+        <p class="editorial-note-drawer" data-empty hidden>일치하는 수록 장소가 없습니다.</p>
       </section>
 
-      <!-- VIEW 5: QUESTS & BUDGET (퀘스트·예산) -->
+      <!-- VIEW 5: CHECKLIST & BUDGET -->
       <section class="view-panel" id="view-prep" data-view="prep">
-        
-
         <div class="seg-tabs" role="tablist">
-          <button type="button" class="seg-btn is-active" data-preptab="checklist">✅ 출발 전 퀘스트</button>
-          <button type="button" class="seg-btn" data-preptab="budget">💰 2인 예산표</button>
+          <button type="button" class="seg-btn is-active" data-preptab="checklist">출발 전 체크리스트</button>
+          <button type="button" class="seg-btn" data-preptab="budget">2인 예산 가이드</button>
         </div>
 
         <div data-preppanel="checklist">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-            <strong data-check-count style="font-size:14px;font-weight:900"></strong>
-            <button type="button" class="top-icon-btn" data-reset>초기화</button>
+            <strong data-check-count style="font-family:var(--serif-kr);font-size:14px"></strong>
+            <button type="button" class="editorial-chip-btn" data-reset>기록 초기화</button>
           </div>
           <div class="quest-list">
             
@@ -1478,20 +1552,20 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
               </label>
             
           </div>
-          <p style="font-size:11px;color:var(--muted);margin-top:10px" data-storage-note>체크 상태는 현재 기기 브라우저에만 안전하게 저장돼요.</p>
+          <p style="font-size:11px;color:var(--muted);margin-top:10px" data-storage-note>체크 내역은 현재 사용 중인 브라우저에만 저장됩니다.</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-            <a class="btn-3d btn-primary" href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" rel="noopener noreferrer">Visit Japan Web 공식 <span aria-hidden="true">↗</span></a>
-            <a class="btn-3d btn-secondary" href="https://www.kansai-airport.or.jp/en/access/from-airport/train" target="_blank" rel="noopener noreferrer">간사이공항 교통 안내 <span aria-hidden="true">↗</span></a>
+            <a class="mag-btn mag-btn-primary" href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" rel="noopener noreferrer">Visit Japan Web 공식 <span aria-hidden="true">↗</span></a>
+            <a class="mag-btn mag-btn-outline" href="https://www.kansai-airport.or.jp/en/access/from-airport/train" target="_blank" rel="noopener noreferrer">간사이공항 철도 안내 <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
         <div data-preppanel="budget" hidden>
           <div class="deck-card">
             <div>
-              <div class="sub">성인 2명 합산 · 항공권·쇼핑 제외 계획 범위</div>
-              <h3>총 ¥132,000 – ¥218,000</h3>
+              <div class="sub">2인 합산 기준 · 항공권·개인 쇼핑 제외</div>
+              <h3 style="font-size:22px">¥132,000 – ¥218,000</h3>
               <p>2명 합산 ¥132,000–218,000. 항공·쇼핑·여행자보험·통신·별도 부과 숙박세 제외. 실제 판매가가 아닌 계획용 범위예요.</p>
-              <div style="border-top:2px solid var(--line);margin-top:10px;padding-top:8px;display:grid;gap:8px">
+              <div style="border-top:1px solid var(--line-dark);margin-top:12px;padding-top:10px;display:grid;gap:8px">
                 
                   <div style="display:flex;justify-content:space-between;font-size:13px">
                     <span>숙박 · 2인 1실 × 3박</span>
@@ -1525,44 +1599,42 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
       </section>
     </main>
 
-    <!-- Bottom 5-Tab App Bar -->
-    <nav class="bottom-tabbar" aria-label="하단 앱 메뉴">
+    <nav class="bottom-tabbar" aria-label="매거진 섹션 메뉴">
       <div class="bottom-tabbar-inner" role="tablist">
         <button type="button" class="nav-tab" role="tab" data-nav="itinerary" aria-selected="true">
-          <span class="tab-ico">🗺️</span><span>코스</span>
+          <span class="tab-num">I</span><span>커플 코스</span>
         </button>
         <button type="button" class="nav-tab" role="tab" data-nav="eatstay" aria-selected="false">
-          <span class="tab-ico">🍽️</span><span>맛집·숙소</span>
+          <span class="tab-num">II</span><span>미식·숙소</span>
         </button>
         <button type="button" class="nav-tab" role="tab" data-nav="book" aria-selected="false">
-          <span class="tab-ico">🎫</span><span>예약·교통</span>
+          <span class="tab-num">III</span><span>예약·교통</span>
         </button>
         <button type="button" class="nav-tab" role="tab" data-nav="map" aria-selected="false">
-          <span class="tab-ico">📍</span><span>지도검색</span>
+          <span class="tab-num">IV</span><span>장소 색인</span>
         </button>
         <button type="button" class="nav-tab" role="tab" data-nav="prep" aria-selected="false">
-          <span class="tab-ico">✅</span><span>퀘스트</span>
+          <span class="tab-num">V</span><span>준비·예산</span>
         </button>
       </div>
     </nav>
 
-    <!-- Guide Info Modal -->
     <div class="modal-backdrop" id="info-modal" hidden>
       <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <h3 id="modal-title" style="margin:0;font-size:18px;font-weight:900">💑 느긋한 두 사람 가이드 기준</h3>
-          <button type="button" class="top-icon-btn" data-close-info>닫기 ✕</button>
+          <h3 id="modal-title" style="margin:0;font-family:var(--serif-kr);font-size:18px">발행 노트 &amp; 여행 원칙</h3>
+          <button type="button" class="editorial-chip-btn" data-close-info>닫기 ✕</button>
         </div>
         <p style="font-size:13px;color:var(--muted);margin:0 0 12px">낮에는 한 곳만 제대로 보고, 저녁은 호텔 가까이서. 오사카 난바를 베이스로 삼아 짐을 옮기지 않고, 교토는 버스로 다녀오는 일정이에요.</p>
-        <div class="unit-tip-drawer" style="margin-bottom:12px">
-          <strong>⏰ 시간 가정:</strong> 겨울(12–2월) 성인 2명, D1 간사이공항 12:00 도착 · D4 19:00 이후 귀국편 기준 (확인일 2026.10.22). 실제 영업·예약·재고는 출발 직전 공식 링크에서 재확인해요.
+        <div class="editorial-note-drawer" style="margin-bottom:12px">
+          <strong>일정 기준:</strong> 동계(12–2월) 성인 2인, 첫날 12:00 간사이공항 도착 · 마지막 날 19:00 이후 귀국편 기준 (확인일 2026.10.22).
         </div>
-        <div style="display:grid;gap:8px;margin-bottom:14px">
-          <div class="meta-line"><strong>✔ 늦잠을 지켜요</strong> — 투어 날을 빼면 아침을 서두르지 않아요.</div><div class="meta-line"><strong>✔ 줄이 길면 바꿔요</strong> — 식당 대기가 20분을 넘으면 같은 동네 대안으로.</div><div class="meta-line"><strong>✔ 선택은 정말 선택</strong> — 항구·카페·쇼핑은 피곤하면 빼도 일정이 완성돼요.</div>
+        <div style="display:grid;gap:8px;margin-bottom:16px">
+          <div class="meta-line" style="font-size:12px;color:var(--ink)"><strong>늦잠을 지켜요</strong> — 투어 날을 빼면 아침을 서두르지 않아요.</div><div class="meta-line" style="font-size:12px;color:var(--ink)"><strong>줄이 길면 바꿔요</strong> — 식당 대기가 20분을 넘으면 같은 동네 대안으로.</div><div class="meta-line" style="font-size:12px;color:var(--ink)"><strong>선택은 정말 선택</strong> — 항구·카페·쇼핑은 피곤하면 빼도 일정이 완성돼요.</div>
         </div>
         <div style="display:flex;gap:8px;justify-content:flex-end">
-          <button type="button" class="btn-3d btn-secondary" data-print>🖨️ 전체 일정 인쇄·PDF</button>
-          <button type="button" class="btn-3d btn-primary" data-close-info>확인했어요</button>
+          <button type="button" class="mag-btn mag-btn-outline" data-print>인쇄 / PDF 저장</button>
+          <button type="button" class="mag-btn mag-btn-primary" data-close-info>닫기</button>
         </div>
       </div>
     </div>
@@ -1570,30 +1642,25 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
 
   <script>
   (() => {
-    document.documentElement.classList.add('js');
-    const guideId = document.body.dataset.guide || 'couple';
-    const storageKey = 'kansai-guide-v1-' + guideId;
+    const storageKey = 'kansai-couple-editorial-v2';
     let saved = {};
     let storageOk = true;
     try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { storageOk = false; }
 
     function saveState() {
-      try { localStorage.setItem(storageKey, JSON.stringify(saved)); }
-      catch { storageOk = false; }
+      try { localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { storageOk = false; }
       updateProgress();
     }
 
-    // 1. Bottom Tab Switching (App Shell Views)
     const navTabs = [...document.querySelectorAll('[data-nav]')];
     const views = [...document.querySelectorAll('[data-view]')];
-    function switchView(target) {
-      navTabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.nav === target)));
+    navTabs.forEach(t => t.addEventListener('click', () => {
+      const target = t.dataset.nav;
+      navTabs.forEach(x => x.setAttribute('aria-selected', String(x.dataset.nav === target)));
       views.forEach(v => v.classList.toggle('is-active', v.dataset.view === target));
       window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-    navTabs.forEach(t => t.addEventListener('click', () => switchView(t.dataset.nav)));
+    }));
 
-    // 2. Day Switching & Duolingo Step Mission Card
     const dayPills = [...document.querySelectorAll('.day-pill[data-day]')];
     const dayWraps = [...document.querySelectorAll('[data-day-wrap]')];
     const currentStepByDay = { 1: 0, 2: 0, 3: 0, 4: 0 };
@@ -1606,8 +1673,8 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
       const step = steps[idx];
       if (!step) return;
 
-      card.querySelector('[data-m-type]').textContent = step.type + ' · STEP ' + (idx + 1) + '/' + steps.length;
-      card.querySelector('[data-m-time]').textContent = '⏰ ' + step.time;
+      card.querySelector('[data-m-type]').textContent = 'STOP 0' + (idx + 1) + ' / 0' + steps.length + ' · ' + step.type;
+      card.querySelector('[data-m-time]').textContent = step.time;
       card.querySelector('[data-m-title]').textContent = step.title;
       card.querySelector('[data-m-desc]').textContent = step.desc;
 
@@ -1615,28 +1682,27 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
       linksBox.innerHTML = '';
       if (step.mapUrl) {
         const a = document.createElement('a');
-        a.className = 'btn-3d btn-primary';
+        a.className = 'mag-btn mag-btn-primary';
         a.href = step.mapUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
         a.textContent = step.mapLabel + ' ↗';
         linksBox.appendChild(a);
       }
       if (step.extUrl) {
         const a2 = document.createElement('a');
-        a2.className = 'btn-3d btn-accent';
+        a2.className = 'mag-btn mag-btn-accent';
         a2.href = step.extUrl; a2.target = '_blank'; a2.rel = 'noopener noreferrer';
-        a2.textContent = '🎫 ' + step.extLabel + ' ↗';
+        a2.textContent = step.extLabel + ' ↗';
         linksBox.appendChild(a2);
       }
 
       const isDone = !!saved[step.checkId];
       const doneBtn = card.querySelector('[data-m-done]');
-      doneBtn.textContent = isDone ? '✓ 완료됨 (다시 누르면 해제)' : (idx < steps.length - 1 ? '✓ 완료하고 다음 코스로!' : '🎉 이 날 마지막 코스 완료!');
-      doneBtn.className = 'btn-3d mission-done-btn ' + (isDone ? 'btn-secondary' : 'btn-green');
+      doneBtn.textContent = isDone ? '✓ 방문 기록됨 (다시 누르면 해제)' : (idx < steps.length - 1 ? '방문 체크 후 다음 코스로 →' : '✓ 이 챕터의 마지막 코스 완료');
+      doneBtn.classList.toggle('is-checked', isDone);
 
       card.querySelector('[data-m-prev]').disabled = idx === 0;
       card.querySelector('[data-m-next]').disabled = idx === steps.length - 1;
 
-      // Update Step Nodes Visuals
       steps.forEach((s, i) => {
         const btn = document.querySelector('[data-step-btn="' + dayNum + '-' + i + '"]');
         const conn = document.querySelector('[data-conn="' + dayNum + '-' + i + '"]');
@@ -1644,7 +1710,7 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
         if (btn) {
           btn.classList.toggle('is-current', i === idx);
           btn.classList.toggle('is-done', sDone);
-          btn.innerHTML = '<span>' + (sDone ? '✓' : (i + 1)) + '</span>';
+          btn.innerHTML = '<span>' + (sDone ? '✓' : ('0' + (i + 1))) + '</span>';
         }
         if (conn) conn.classList.toggle('is-done', sDone);
       });
@@ -1694,15 +1760,12 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
         const step = steps[idx];
         if (!step) return;
         saved[step.checkId] = !saved[step.checkId];
-        if (saved[step.checkId] && idx < steps.length - 1) {
-          currentStepByDay[d] = idx + 1;
-        }
+        if (saved[step.checkId] && idx < steps.length - 1) currentStepByDay[d] = idx + 1;
         saveState();
         renderMissionCard(d);
       });
     });
 
-    // Toggle Tip Drawer & List View
     document.querySelectorAll('[data-toggle-tip]').forEach(btn => {
       btn.addEventListener('click', () => {
         const drawer = document.getElementById('tip-drawer-' + btn.dataset.toggleTip);
@@ -1718,12 +1781,11 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
           const showList = list.hidden;
           list.hidden = !showList;
           card.hidden = showList;
-          btn.textContent = showList ? '🎯 카드뷰' : '📋 전체';
+          btn.textContent = showList ? '포커스 카드' : '전체 일정';
         }
       });
     });
 
-    // 3. Subtabs & Chips (Food/Stay, Book/Rail, Prep/Budget)
     function bindSubtabs(btnAttr, panelAttr) {
       const btns = [...document.querySelectorAll('[' + btnAttr + ']')];
       const panels = [...document.querySelectorAll('[' + panelAttr + ']')];
@@ -1737,7 +1799,6 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
     bindSubtabs('data-booktab', 'data-bookpanel');
     bindSubtabs('data-preptab', 'data-preppanel');
 
-    // Food category filter
     const foodChips = [...document.querySelectorAll('[data-food-filter]')];
     const foodCards = [...document.querySelectorAll('[data-food-cat]')];
     foodChips.forEach(chip => chip.addEventListener('click', () => {
@@ -1746,7 +1807,6 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
       foodCards.forEach(card => { card.hidden = cat !== 'all' && card.dataset.foodCat !== cat; });
     }));
 
-    // Map search & region filter
     const searchInput = document.querySelector('[data-search]');
     const regionChips = [...document.querySelectorAll('[data-map-region]')];
     const placeCards = [...document.querySelectorAll('[data-place]')];
@@ -1771,23 +1831,21 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
       filterPlaces();
     }));
 
-    // 4. Quests & XP Progress Bar
     const boxes = [...document.querySelectorAll('input[data-check]')];
     function updateProgress() {
-      const prepBoxes = boxes.filter(b => !b.closest('.center-pass'));
-      const donePrep = prepBoxes.filter(b => b.checked).length;
+      const donePrep = boxes.filter(b => b.checked).length;
       const countEl = document.querySelector('[data-check-count]');
-      if (countEl) countEl.textContent = donePrep + ' / ' + prepBoxes.length + ' 퀘스트 완료';
+      if (countEl) countEl.textContent = donePrep + ' / ' + boxes.length + ' 항목 확인 완료';
 
       const stepKeys = Object.keys(saved).filter(k => k.startsWith('step-') && saved[k]);
-      const totalItems = prepBoxes.length + 18;
-      const doneItems = boxes.filter(b => b.checked).length + stepKeys.length;
+      const totalItems = boxes.length + 18;
+      const doneItems = donePrep + stepKeys.length;
       const pct = Math.min(100, Math.round((doneItems / Math.max(1, totalItems)) * 100));
 
       const fill = document.querySelector('[data-xp-fill]');
       const txt = document.querySelector('[data-xp-text]');
       if (fill) fill.style.width = pct + '%';
-      if (txt) txt.textContent = '🔥 ' + pct + '%';
+      if (txt) txt.textContent = pct + '%';
     }
 
     boxes.forEach(b => {
@@ -1810,13 +1868,11 @@ button { cursor: pointer; background: none; border: none; padding: 0; }
       if (note) note.textContent = '이 환경에서는 브라우저 저장이 제한되어 현재 화면에서만 체크됩니다.';
     }
 
-    // 5. Info Modal & Print
     const modal = document.getElementById('info-modal');
     document.querySelector('[data-open-info]')?.addEventListener('click', () => { if (modal) modal.hidden = false; });
     document.querySelectorAll('[data-close-info]').forEach(b => b.addEventListener('click', () => { if (modal) modal.hidden = true; }));
     document.querySelectorAll('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
 
-    // Init
     const hashMatch = location.hash.match(/^#day-([1-4])$/);
     [1, 2, 3, 4].forEach(renderMissionCard);
     selectDay(hashMatch ? hashMatch[1] : 1);
