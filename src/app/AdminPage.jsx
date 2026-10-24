@@ -13,6 +13,7 @@ const materials = [
   ['돈구리 매뉴얼', '앱 사용 안내', './slides/manual_guil.html'],
   ['STUDY-BUDDY', '학생용 앱', './apps/studybuddy/index.html'],
   ['STUDY-BUDDY 매뉴얼', '앱 사용 안내', './slides/manual_okjong.html'],
+  ['Kocoafab 작은별 (테라리움)', '코코·금쪽이·로보독 3D 미니어처 테라리움', './apps/terrarium/index.html'],
 ];
 
 const travelGuides = [
