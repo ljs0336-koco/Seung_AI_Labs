@@ -1,26 +1,41 @@
 # Seung AI Labs
 
-공개돼도 괜찮은 교육·운영 자료만 게시합니다. 숨은 자료실도 비밀 보관함이 아닙니다.
+AI 교육 브리핑, 연구 서고, 수업용 앱과 자료를 읽고 나누는 공개 포털입니다.
 
-- 게시 가이드: `public/privacy-guidelines.html`. 전화번호·개인 이메일·학생 식별 자료·암호를 올리지 않습니다.
-- 새 클론에서 한 번 `npm run privacy:install-hook`를 실행하면 커밋 전 스테이징된 텍스트를 검사합니다. Git hook은 로컬 설정이므로 각 클론에서 설정해야 합니다.
-- `npm run check:privacy`: public/src와 진입 HTML 검사. `npm run build`는 빌드 전과 빌드 산출물에도 검사합니다. PR에서도 같은 검사를 실행합니다.
-- 감지되면 파일·행·유형만 표시합니다. 실제 값은 로그에 출력하지 않습니다. 검사에 실패하면 개인정보를 지우거나 역할명/가상 데이터로 바꾸고 다시 실행합니다.
-- 이미지·PDF·첨부·이름·얼굴·주소·여러 정보의 조합까지 자동으로 판별하지는 못하므로 사람이 게시 전 확인합니다. 외부에서 직접 수정·게시하거나 로컬 hook을 건너뛰는 경로까지 차단하는 기능은 아닙니다.
+## 자료를 읽고 공유하기
 
-## 개발 환경
+- 포털: `#/` / 나만의 기지: `#/base`.
+- 기지에서 자료·논문·저자를 찾고 최근 브리핑, 서고, 수업 도구를 엽니다.
+- 뉴스의 **이미지·요약 공유**에서 한 건의 주소, 글 복사, 캡처 화면, PNG 저장을 사용합니다.
+- 옛 자료실과 `/admin`은 기지로 연결됩니다. 기존 앱·매뉴얼 주소는 유지합니다.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## 자료를 올리거나 내리기
 
-Currently, two official plugins are available:
+1. 이 폴더의 **기지_관리_열기.cmd**를 더블클릭합니다. Node.js와 기존 의존성이 필요합니다.
+2. **자료 추가**에서 웹 주소를 붙여넣거나 파일·폴더를 고릅니다. HTML 자료는 이미지·스타일도 포함합니다.
+3. **포털에 표시**를 고르고 **변경 저장**을 누릅니다.
+4. **미리보기 만들기** 후 받는 사람 화면에서 자료가 열리는지 확인합니다.
+5. **웹에 반영**을 누르면 검사, 자료 커밋·전송, Pages 반영 확인을 진행합니다. 다른 코드 변경이나 미전송 코드 커밋이 섞이면 멈춥니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+포털에서 숨겨도 기존 공유 주소는 유지합니다. 등록한 파일의 원본은 바꾸지 않습니다. 기존 파일 자료를 편집하면서 새 파일을 선택하면 공유 주소를 유지하며 교체합니다. 새 자료 주소는 웹 반영 확인 후 복사합니다.
 
-## React Compiler
+편집 화면(8788)과 자료 미리보기(8789)는 별도 주소입니다. 공개 사이트는 읽기·공유용입니다. PC 편집 기록은 Git에 포함하지 않는 `.local-manager/`에 저장합니다. 여러 관리 화면에서 동시에 저장하면 오래된 화면의 저장을 거절합니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 운영과 검증
 
-## Expanding the Oxlint configuration
+- `npm run build`: 자료·공유 페이지 생성 → 게시 전 검사 → Vite 빌드 → 결과 검사.
+- `npm run manage`: 로컬 관리·미리보기 실행.
+- `npm test -- --run --configLoader native --no-cache`: 화면·기능 시험.
+- `npm run test:content`: 등록·저장·공유 페이지 시험.
+- `npm run test:privacy`: 게시 검사 회귀 시험.
+- `npm run lint`: 소스 검사.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+공개 가능한 자료만 발행합니다. 자동 검사는 이름·얼굴·첨부의 모든 내용을 판별하지 않으므로 게시할 자료를 사람이 확인합니다. 사용자 화면에는 별도 확인 관문이나 글 검사 도구를 두지 않습니다.
+
+## 루틴 생성기
+
+`tools/routine/`는 이번 통합의 생성기 기준본입니다. 실제 루틴 폴더의 `_도구/`와 버전을 맞춥니다. `SEUNG_ROUTINE_ROOT`를 지정하면 다른 작업 사본으로 시험할 수 있습니다.
+
+뉴스는 기존 `tag`와 새 `issue`·`field`를 지원하며 ID는 순번·제목과 무관하게 유지합니다. `publish_site.py`로 최신 브리핑·서고·뉴스 JSON을 복사한 뒤 `npm run build`로 기사별 정적 공유 페이지를 만듭니다. 포털 날짜를 JSX 문자열로 바꾸지 않습니다.
+
+기사 사진은 원문 주소로 표시합니다. PNG에는 준비된 같은 출처 이미지가 있을 때만 넣고, 없으면 제목·요약·출처로 만든 카드를 제공합니다. 실제 메신저 전송은 공유 창이 열렸다는 사실과 구분합니다.

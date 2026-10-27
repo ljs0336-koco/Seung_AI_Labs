@@ -1,0 +1,31 @@
+:root{--cs-ink:#233e35;--cs-muted:#647366;--cs-paper:#fffdf7;--cs-ground:#f4f0e5;--cs-line:#d8ddce;--cs-green:#294f40;--cs-accent:#c9a45f}
+.cs-page{margin:0;background:var(--cs-ground);color:var(--cs-ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.7}
+.cs-page-main{max-width:760px;margin:32px auto;padding:0 18px 48px}
+.cs-back{display:inline-block;margin:0 0 16px;color:var(--cs-green);text-decoration:none}
+.cs-card{overflow:hidden;border:1px solid var(--cs-line);border-radius:16px;background:var(--cs-paper);color:var(--cs-ink);box-shadow:0 12px 32px #203e3510;text-align:left}
+.cs-brand{margin:0;padding:17px 24px;background:var(--cs-green);color:#fffdf7;font-size:12px;font-weight:700;letter-spacing:.1em;line-height:1.6}
+.cs-card-body{padding:24px 28px}
+.cs-card h1,.cs-card h2{font-family:inherit;font-size:clamp(22px,4vw,30px);font-weight:750;line-height:1.48;letter-spacing:-.035em;color:var(--cs-ink);margin:10px 0 20px;word-break:keep-all;overflow-wrap:anywhere}
+.cs-card .cs-meta,.cs-card .cs-source{font-size:13px;color:var(--cs-muted);margin:0 0 8px}
+.cs-summary{font-size:17px;line-height:1.85;white-space:pre-line;overflow-wrap:anywhere;margin:0 0 24px}
+.cs-article-image{display:block;width:100%;max-height:360px;object-fit:contain;background:#ebeadd}
+.cs-original{color:var(--cs-green);font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.cs-page-address{font-size:11px;line-height:1.7;color:var(--cs-muted);overflow-wrap:anywhere;margin:16px 0 0}
+.cs-actions{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
+.cs-action{font:inherit;font-size:13px;line-height:1.5;min-height:42px;box-sizing:border-box;border:1px solid var(--cs-line);border-radius:9px;background:var(--cs-paper);color:var(--cs-green);padding:10px 13px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;text-align:center}
+.cs-action:first-child{background:var(--cs-green);border-color:var(--cs-green);color:#fff}
+.cs-action:hover{box-shadow:0 0 0 2px #294f4020}.cs-action:focus-visible,.cs-back:focus-visible,.cs-original:focus-visible,.cs-close:focus-visible{outline:3px solid #a77827;outline-offset:3px}
+.cs-action:disabled{cursor:wait;opacity:.6}.cs-status{min-height:24px;margin:10px 0;font-size:13px;line-height:1.6;color:var(--cs-muted)}
+.cs-fallback-copy{box-sizing:border-box;display:block;width:100%;min-height:130px;padding:12px;margin:10px 0;border:1px solid var(--cs-line);border-radius:8px;font:inherit;font-size:13px;color:var(--cs-ink);background:#fff}
+.cs-export{border:1px solid var(--cs-line);border-radius:12px;margin:18px 0 0;padding:14px;background:#f0eee4}
+.cs-export-title{font-weight:700;margin:0 0 4px;font-size:14px}.cs-export-help{font-size:12px;color:var(--cs-muted);margin:0 0 12px}
+.cs-export canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--cs-ground)}
+.cs-dialog{box-sizing:border-box;width:min(780px,calc(100% - 24px));max-height:calc(100dvh - 24px);padding:0;border:1px solid var(--cs-line);border-radius:18px;background:var(--cs-ground);color:var(--cs-ink);box-shadow:0 30px 90px #15291e50;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.cs-dialog::backdrop{background:#182b256b}.cs-dialog-inner{padding:20px;position:relative}
+.cs-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}.cs-dialog-label{margin:0;font-weight:700;font-size:15px}
+.cs-close{font:inherit;font-size:13px;border:1px solid var(--cs-line);border-radius:8px;background:var(--cs-paper);color:var(--cs-ink);min-height:40px;padding:8px 13px;cursor:pointer}
+.cs-dialog:not([open]){display:none}.cs-image-hint{font-size:12px;margin:0;padding:12px 24px;color:var(--cs-muted)}
+.cs-capture .cs-back,.cs-capture .cs-page-controls,.cs-capture noscript,.cs-capture .cs-original{display:none!important}
+.cs-capture .cs-page-main{margin:20px auto;padding-bottom:20px}.cs-capture .cs-card{box-shadow:none}
+@media(max-width:520px){.cs-page-main{margin:18px auto;padding-inline:12px}.cs-card-body{padding:20px}.cs-brand{padding:15px 20px;font-size:10px}.cs-dialog-inner{padding:12px}.cs-dialog{width:calc(100% - 12px);max-height:calc(100dvh - 12px)}.cs-actions{gap:6px}.cs-action{flex:1 1 44%;font-size:12px}.cs-summary{font-size:16px}}
+@media print{.cs-back,.cs-page-controls,.cs-actions,.cs-close,.cs-export,.cs-dialog-top{display:none!important}.cs-page-main{max-width:none;margin:0;padding:0}.cs-card{box-shadow:none;break-inside:avoid}}

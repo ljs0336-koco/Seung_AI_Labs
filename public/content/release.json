@@ -1,0 +1,106 @@
+{
+  "revision": 5,
+  "items": [
+    {
+      "id": "briefing",
+      "href": "./briefing/index.html"
+    },
+    {
+      "id": "library",
+      "href": "./library/index.html"
+    },
+    {
+      "id": "code-masterplan",
+      "href": "./slides/masterplan.html"
+    },
+    {
+      "id": "code-desk",
+      "href": "./slides/operations_desk.html"
+    },
+    {
+      "id": "code-round1",
+      "href": "./slides/mentoring_round1.html"
+    },
+    {
+      "id": "code-partner-guide",
+      "href": "./slides/expert_guide.html"
+    },
+    {
+      "id": "donguri",
+      "href": "./apps/donguri/index.html"
+    },
+    {
+      "id": "studybuddy",
+      "href": "./apps/studybuddy/index.html"
+    },
+    {
+      "id": "hub",
+      "href": "./hub/index.html"
+    },
+    {
+      "id": "literacy",
+      "href": "#/literacy"
+    },
+    {
+      "id": "deck",
+      "href": "./deck/index.html"
+    },
+    {
+      "id": "terrarium",
+      "href": "./apps/terrarium/index.html"
+    },
+    {
+      "id": "kansai",
+      "href": "./kansai-travel-guide/index.html"
+    },
+    {
+      "id": "logo-studio",
+      "href": "./hub/apps/logo_studio/index.html"
+    },
+    {
+      "id": "jangpan",
+      "href": "./hub/apps/jangpan_dawn/index.html"
+    },
+    {
+      "id": "malang",
+      "href": "./hub/apps/malang_run/index.html"
+    },
+    {
+      "id": "commute-locked",
+      "href": "./hub/apps/통학_데이터_탐구_v2.html"
+    },
+    {
+      "id": "question-locked",
+      "href": "./hub/apps/질문전후비교_v3.html"
+    }
+  ],
+  "newsIds": [
+    "n-d58cd032e7c44073",
+    "n-b67fd02a214f91e2",
+    "n-b2ed8daad1cc7e3f",
+    "n-e7a80d87e8606cee",
+    "n-dfe5fb536ca517ba",
+    "n-739797ca19c060e4",
+    "n-bdc7b775ab8d2106",
+    "n-264af0525447e45c",
+    "n-0336c2290ec14333",
+    "n-dd62bb078550a17e",
+    "n-d5f3d93c23fb54d7",
+    "n-b1ec87d705753567",
+    "n-9f2c544ee9306da0",
+    "n-c5e88e2156002099",
+    "n-2d2caae98728dfe7",
+    "n-4de91e1540639e75",
+    "n-f7c2cb7275e63972",
+    "n-a09763d94110cea3",
+    "n-8ffbbf24c13a812d",
+    "n-c3f9aa1e97f35f24",
+    "n-609d4cdb42eb1979",
+    "n-b54eae5511089092",
+    "n-b2fa807e4b0dbdf2",
+    "n-3027ecc1cd76f500",
+    "n-ed8a2de79dfb3db2",
+    "n-0aa3802f6f2a1aeb",
+    "n-cdb1d51fae043110"
+  ]
+}

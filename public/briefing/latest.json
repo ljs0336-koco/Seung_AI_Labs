@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "collectedAt": "09:46",
+  "headlines": [
+    {
+      "id": "n-d58cd032e7c44073",
+      "title": "방미심위, 11월부터 AI 채팅 서비스 본격 심의",
+      "summary": "청소년유해매체물로 결정되면 나이 확인·접근 제한 의무가 생기며, 방미통위는 청소년 과몰입 방지를 담은 이용자보호법을 준비 중입니다.",
+      "digest": [
+        "방송미디어통신심의위원회는 11월부터 청소년보호법·정보통신망법 등을 적용해 AI 채팅 서비스를 본격 심의합니다.",
+        "10월 21일 국내외 사업자 15곳과 회의를 열어 선정적 캐릭터·성적 대화 사례를 공유하고, 입력·출력 단계의 유해정보 차단과 청소년의 성인용 콘텐츠 접근 제한을 요청했습니다.",
+        "청소년유해매체물로 결정되면 유해 표시, 나이·본인 확인, 청소년 접근 제한 의무가 생깁니다.",
+        "방미통위는 만 19세 미만 유해정보·과몰입 유도 방지 조치를 담은 가칭 'AI서비스 이용자보호법'을 준비 중이며 입법 일정은 정해지지 않았습니다.",
+        "과기정통부는 연말 공청회에서 AI 기본법 개정 방향을 공개할 계획이고, 국회에는 연령 확인·이용시간 제한 등을 담은 개정안이 심사 중입니다."
+      ],
+      "source": "디지털투데이",
+      "date": "2026-10-27",
+      "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=709998",
+      "issue": "아동·청소년 안전",
+      "field": "챗봇",
+      "image": "https://cdn.digitaltoday.co.kr/news/photo/202610/709998_657556_230.png",
+      "href": "./share/news/n-d58cd032e7c44073/"
+    },
+    {
+      "id": "n-b67fd02a214f91e2",
+      "title": "Anthropic, 미국 증권거래위원회에 상장 신청서 제출",
+      "summary": "종목 코드 'ANT'로 상장을 추진하며, 창업자와 장기공익신탁이 경영권을 지키는 지배구조를 내세웠습니다.",
+      "digest": [
+        "Anthropic이 10월 26일(미국 시각) 상장 신청서(S-1)를 제출했고, 종목 코드는 'ANT'로 예정됐습니다. 공모 규모와 가격은 아직 밝히지 않았습니다.",
+        "2026년 상반기 매출은 163억 달러로 전년 같은 기간 12억 달러에서 크게 늘었고, 영업손실은 6.93억 달러였습니다.",
+        "공동창업자 7명이 의결권 50.1%를 갖고, 장기공익신탁이 이사 대부분을 임명하는 구조로 안전 사명을 지키겠다고 했습니다.",
+        "공개 주주의 실질 통제력이 거의 없다는 비판도 함께 나왔고, 신청서에는 AI가 재앙적 위험을 줄 수 있다는 위험 고지가 들어 있습니다."
+      ],
+      "source": "Anthropic·TechCrunch",
+      "date": "2026-10-26",
+      "url": "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/",
+      "issue": "책임성·투명성",
+      "field": "산업",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/10/GettyImages-2295579000.jpg?resize=1200,800",
+      "href": "./share/news/n-b67fd02a214f91e2/"
+    },
+    {
+      "id": "n-b2ed8daad1cc7e3f",
+      "title": "S-1로 본 Anthropic 전략: Claude Code 쓰는 기업 고객이 20배 더 지출",
+      "summary": "대형 고객 절반 이상이 API와 Claude Code 같은 자체 앱을 함께 쓰며, 클라우드 3사와의 경쟁을 위험 요인으로 적었습니다.",
+      "digest": [
+        "연 10만 달러 이상 쓰는 고객 약 1.19만 곳 중 절반 이상이 API와 Claude Code·Cowork 같은 자체 앱을 함께 씁니다(지난해 말 약 30%).",
+        "3분기 Claude Code를 쓰는 상위 5% 기업 고객은 쓰지 않는 평균 고객보다 매달 약 20배를 지출했습니다.",
+        "AWS·Google Cloud·Azure를 통해 판매하지만, 신청서는 이 회사들이 점점 경쟁자가 되어 컴퓨팅 확보가 어려워질 수 있다고 경고했습니다.",
+        "Claude Code 단독 매출은 공개되지 않았습니다."
+      ],
+      "source": "TechCrunch",
+      "date": "2026-10-26",
+      "url": "https://techcrunch.com/2026/10/26/anthropics-ipo-filing-reveals-its-strategy-for-keeping-enterprise-customers-hooked/",
+      "issue": "",
+      "field": "산업",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/10/GettyImages-2278152325.jpg?w=1024",
+      "href": "./share/news/n-b2ed8daad1cc7e3f/"
+    }
+  ],
+  "bids": [
+    {
+      "title": "직업계고 AI역량 강화사업 학교 관리자 퍼실리테이션 워크숍 기획·운영",
+      "deadline": "2026-10-27",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774630&bidPbancOrd=000",
+      "org": "한국과학창의재단"
+    },
+    {
+      "title": "2026 전국민 AI 페스티벌 부스 참여 기업·기관 모집(연장)",
+      "deadline": "2026-10-27",
+      "url": "https://apply.kosac.re.kr/onlnRcpt/getBscList.do",
+      "org": "한국과학창의재단"
+    },
+    {
+      "title": "AI·SW 기술 기반 과학 시뮬레이션 콘텐츠 개발",
+      "deadline": "2026-11-09",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01747372&bidPbancOrd=000",
+      "org": "한국과학창의재단"
+    }
+  ],
+  "editions": [
+    {
+      "date": "2026-10-27",
+      "url": "./briefing/archive/2026-10-27.html"
+    },
+    {
+      "date": "2026-10-26",
+      "url": "./briefing/archive/2026-10-26.html"
+    },
+    {
+      "date": "2026-10-23",
+      "url": "./briefing/archive/2026-10-23.html"
+    },
+    {
+      "date": "2026-10-22",
+      "url": "./briefing/archive/2026-10-22.html"
+    },
+    {
+      "date": "2026-10-21",
+      "url": "./briefing/archive/2026-10-21.html"
+    },
+    {
+      "date": "2026-10-20",
+      "url": "./briefing/archive/2026-10-20.html"
+    },
+    {
+      "date": "2026-10-19",
+      "url": "./briefing/archive/2026-10-19.html"
+    },
+    {
+      "date": "2026-10-14",
+      "url": "./briefing/archive/2026-10-14.html"
+    },
+    {
+      "date": "2026-10-13",
+      "url": "./briefing/archive/2026-10-13.html"
+    }
+  ]
+}

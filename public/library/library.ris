@@ -211,7 +211,7 @@ KW  - LLM 과신
 KW  - 메타인지
 KW  - 과학 탐구
 KW  - 아동 안전
-N1  - 연구 서고 A-01 · 학회 워크숍 · AI 리터러시·윤리
+N1  - 연구 서고 A-01 · 학회 워크숍 · AI 리터러시·시민성
 ER  - 
 
 TY  - RPRT
@@ -256,7 +256,7 @@ KW  - RAIL-Ed
 KW  - 교사교육
 KW  - AI 윤리
 KW  - 루브릭
-N1  - 연구 서고 A-02 · 프리프린트(심사 전) · AI 리터러시·윤리
+N1  - 연구 서고 A-02 · 프리프린트(심사 전) · AI 리터러시·시민성
 ER  - 
 
 TY  - BOOK
@@ -272,7 +272,7 @@ KW  - 교육 정책
 KW  - 메타인지적 게으름
 KW  - TALIS 2024
 KW  - 아동 안전
-N1  - 연구 서고 F-01 · 정책 보고서 · 교육 정책·효과 연구
+N1  - 연구 서고 F-01 · 정책 보고서 · 교육 정책·제도
 ER  - 
 
 TY  - UNPB
@@ -289,7 +289,7 @@ KW  - 시험 점수
 KW  - 관찰 연구
 KW  - 학습 효과
 KW  - 교육경제학
-N1  - 연구 서고 F-02 · 프리프린트(심사 전) · 교육 정책·효과 연구
+N1  - 연구 서고 F-02 · 프리프린트(심사 전) · 교육 정책·제도
 ER  - 
 
 TY  - UNPB
@@ -367,7 +367,7 @@ KW  - K-12
 KW  - 체계적 문헌고찰
 KW  - 과의존
 KW  - 교사 AI 리터러시
-N1  - 연구 서고 F-03 · 동료심사 저널 · 교육 정책·효과 연구
+N1  - 연구 서고 F-03 · 동료심사 저널 · 교육 정책·제도
 ER  - 
 
 TY  - JOUR
@@ -389,7 +389,7 @@ KW  - 생성형 AI 협업
 KW  - 모바일 앱 설계
 KW  - 고등학생
 KW  - MIT App Inventor
-N1  - 연구 서고 A-03 · 동료심사 저널 · AI 리터러시·윤리
+N1  - 연구 서고 A-03 · 동료심사 저널 · AI 리터러시·시민성
 ER  - 
 
 TY  - CPAPER
@@ -822,7 +822,7 @@ KW  - 인간 중심 접근
 KW  - 학습자 행위주체성
 KW  - 오류 인식 한계
 KW  - UNESCO
-N1  - 연구 서고 H-01 · 정책 보고서 · 책임 있는 AI·거버넌스
+N1  - 연구 서고 H-01 · 정책 보고서 · 책임 있는 AI·아동 안전
 ER  - 
 
 TY  - BOOK
@@ -840,7 +840,7 @@ KW  - 인간 중심 마인드셋
 KW  - AI 윤리·시스템 설계
 KW  - 이해·적용·창조
 KW  - 능동적 의사결정자
-N1  - 연구 서고 A-04 · 정책 보고서 · AI 리터러시·윤리
+N1  - 연구 서고 A-04 · 정책 보고서 · AI 리터러시·시민성
 ER  - 
 
 TY  - UNPB
@@ -916,4 +916,120 @@ KW  - 학습 분석
 KW  - 프로그래밍 과정
 KW  - 교사 도구 개발
 N1  - 연구 서고 D-10 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Xiao, Qing
+AU  - Xie, Wenhan
+AU  - Deng, Ziyu
+AU  - Xiao, Ruiwei
+AU  - Feng, Ziyue
+AU  - He, Xie
+AU  - Zhang, Shiyu
+AU  - Stamper, John
+AU  - Shen, Hong
+AU  - Hou, Xinying
+TI  - Exploring K-12 Teachers' Perceptions of Students' Relationships with AI Companions: Boundaries, Intervention Strategies, and Design Implications
+PY  - 2026
+DA  - 2026/09/11
+PB  - arXiv
+M3  - arXiv:2609.13479
+DO  - 10.48550/arXiv.2609.13479
+UR  - https://arxiv.org/abs/2609.13479
+KW  - AI 컴패니언
+KW  - AI 컴패니언 리터러시
+KW  - 아동 안전
+KW  - 교사 역할
+KW  - 정서적 의존
+N1  - 연구 서고 H-02 · 프리프린트(심사 전) · 책임 있는 AI·아동 안전
+ER  - 
+
+TY  - UNPB
+AU  - Riahi, Bahare
+AU  - Ozturk, Deniz
+AU  - Guth, Alice
+AU  - Li, Jiayu
+AU  - Singh, Daksh Pratap
+AU  - Tian, Xiaoyi
+AU  - Chiu, Jennifer
+AU  - Lytle, Nicholas
+AU  - Barnes, Tiffany
+AU  - Catete, Veronica
+TI  - Will It Teach as Intended? How Teachers Configure Educational AI Chatbots
+PY  - 2026
+DA  - 2026/09/24
+PB  - arXiv
+M3  - arXiv:2609.29993
+DO  - 10.48550/arXiv.2609.29993
+UR  - https://arxiv.org/abs/2609.29993
+KW  - 교육용 챗봇
+KW  - 챗봇 저작
+KW  - 교육적 충실도
+KW  - 교사 연수
+KW  - 가드레일
+N1  - 연구 서고 B-04 · 프리프린트(심사 전) · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Chen, Si
+AU  - Chen, Xinyue
+AU  - Mullagaliyev, Artur
+AU  - Nwanganga, Alexander
+AU  - Hou, Shifu
+AU  - Pan, Deng
+AU  - Metoyer, Ronald
+AU  - Chawla, Sugana Vijay
+TI  - Configuring AI for Exploratory Learning: Educator Perspectives on Inference, Persistence, and Disclosure
+PY  - 2026
+DA  - 2026/09/17
+PB  - arXiv
+M3  - arXiv:2609.21019
+DO  - 10.48550/arXiv.2609.21019
+UR  - https://arxiv.org/abs/2609.21019
+KW  - 생성형 AI 설정
+KW  - 개인화
+KW  - 학습자 정보
+KW  - 공개 범위
+KW  - 진로 탐색
+N1  - 연구 서고 B-05 · 프리프린트(심사 전) · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Yocam, Eric
+AU  - Vaidyan, Varghese
+AU  - Kalathas, Paris
+TI  - AI Security Literacy: Ecosystem-based Competency Framework and K-12 Learning Platform
+PY  - 2026
+DA  - 2026/10/20
+PB  - arXiv
+M3  - arXiv:2610.28859
+DO  - 10.48550/arXiv.2610.28859
+UR  - https://arxiv.org/abs/2610.28859
+KW  - AI 보안 리터러시
+KW  - 적대적 공격
+KW  - 학교 AI 정책
+KW  - 역량 프레임워크
+N1  - 연구 서고 A-05 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 
+
+TY  - JOUR
+AU  - Stalboerger, Katelyn
+AU  - Du, Shuqi
+AU  - Marshall, David
+AU  - Bowers, Shawndra
+AU  - Ali, Asim
+TI  - Empowering educators: A pilot study on AI literacy in K–12 professional development
+T2  - Online Learning
+PY  - 2026
+DA  - 2026/09/01
+PB  - Online Learning Consortium
+SP  - 599
+EP  - 629
+DO  - 10.24059/olj.v30i3.5251
+UR  - https://olj.onlinelearningconsortium.org/index.php/olj/article/view/5251
+KW  - AI 리터러시
+KW  - 교사 연수
+KW  - 비동기 온라인 연수
+KW  - 예비교원
+N1  - 연구 서고 B-06 · 동료심사 저널 · 교사 AI 역량·연수
 ER  - 

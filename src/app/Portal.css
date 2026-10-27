@@ -3,6 +3,8 @@
    Warm Archival Editorial & Dynamic Glassmorphism
    ========================================================================== */
 
+body:has(.portal-container) { min-width: 0; }
+
 :root {
   --portal-bg: #f7f6f2;
   --portal-card-bg: #ffffff;

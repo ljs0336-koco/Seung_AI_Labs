@@ -1,0 +1,1244 @@
+{
+  "schemaVersion": 1,
+  "total": 50,
+  "reviewed": 27,
+  "special": 23,
+  "updated": "2026-10-27",
+  "shelves": [
+    {
+      "id": "A",
+      "label": "AI 리터러시·시민성",
+      "count": 5
+    },
+    {
+      "id": "B",
+      "label": "교사 AI 역량·연수",
+      "count": 6
+    },
+    {
+      "id": "C",
+      "label": "AI 튜터링·학습 지원",
+      "count": 4
+    },
+    {
+      "id": "D",
+      "label": "바이브코딩·AI 협업 코딩",
+      "count": 10
+    },
+    {
+      "id": "E",
+      "label": "교육용 로봇·피지컬 컴퓨팅",
+      "count": 1
+    },
+    {
+      "id": "F",
+      "label": "교육 정책·제도",
+      "count": 3
+    },
+    {
+      "id": "G",
+      "label": "AI의 학습 영향",
+      "count": 3
+    },
+    {
+      "id": "H",
+      "label": "책임 있는 AI·아동 안전",
+      "count": 2
+    },
+    {
+      "id": "I",
+      "label": "이론적 기반",
+      "count": 4
+    },
+    {
+      "id": "J",
+      "label": "연구방법·측정도구",
+      "count": 12
+    }
+  ],
+  "recent": [
+    {
+      "id": "050",
+      "code": "B-06",
+      "call": "B-06",
+      "title": "Empowering educators: A pilot study on AI literacy in K–12 professional development",
+      "titleKo": "교육자 역량 강화: K-12 전문성 개발에서의 AI 리터러시 시범 연구",
+      "authors": "Katelyn Stalboerger; Shuqi Du; David Marshall; Shawndra Bowers; Asim Ali",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-050",
+      "keywords": [
+        "AI 리터러시",
+        "교사 연수",
+        "비동기 온라인 연수",
+        "예비교원"
+      ],
+      "shelves": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "049",
+      "code": "A-05",
+      "call": "A-05",
+      "title": "AI Security Literacy: Ecosystem-based Competency Framework and K-12 Learning Platform",
+      "titleKo": "AI 보안 리터러시: 생태계 기반 역량 프레임워크와 K-12 학습 플랫폼",
+      "authors": "Eric Yocam; Varghese Vaidyan; Paris Kalathas",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-049",
+      "keywords": [
+        "AI 보안 리터러시",
+        "적대적 공격",
+        "학교 AI 정책",
+        "역량 프레임워크"
+      ],
+      "shelves": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "048",
+      "code": "B-05",
+      "call": "B-05",
+      "title": "Configuring AI for Exploratory Learning: Educator Perspectives on Inference, Persistence, and Disclosure",
+      "titleKo": "탐구 학습을 위한 AI 설정: 추론·정보 보존·공개에 관한 교육자의 관점",
+      "authors": "Si Chen; Xinyue Chen; Artur Mullagaliyev; Alexander Nwanganga; Shifu Hou; Deng Pan; Ronald Metoyer; Sugana Vijay Chawla",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-048",
+      "keywords": [
+        "생성형 AI 설정",
+        "개인화",
+        "학습자 정보",
+        "공개 범위",
+        "진로 탐색"
+      ],
+      "shelves": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "047",
+      "code": "B-04",
+      "call": "B-04",
+      "title": "Will It Teach as Intended? How Teachers Configure Educational AI Chatbots",
+      "titleKo": "의도대로 가르칠까? 교사는 교육용 AI 챗봇을 어떻게 설정하는가",
+      "authors": "Bahare Riahi; Deniz Ozturk; Alice Guth; Jiayu Li; Daksh Pratap Singh; Xiaoyi Tian; Jennifer Chiu; Nicholas Lytle; Tiffany Barnes; Veronica Catete",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-047",
+      "keywords": [
+        "교육용 챗봇",
+        "챗봇 저작",
+        "교육적 충실도",
+        "교사 연수",
+        "가드레일"
+      ],
+      "shelves": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "046",
+      "code": "H-02",
+      "call": "H-02",
+      "title": "Exploring K-12 Teachers' Perceptions of Students' Relationships with AI Companions: Boundaries, Intervention Strategies, and Design Implications",
+      "titleKo": "학생과 AI 컴패니언의 관계에 대한 K-12 교사의 인식: 경계, 개입 전략, 설계 시사점",
+      "authors": "Qing Xiao; Wenhan Xie; Ziyu Deng; Ruiwei Xiao; Ziyue Feng; Xie He; Shiyu Zhang; John Stamper; Hong Shen; Xinying Hou",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-046",
+      "keywords": [
+        "AI 컴패니언",
+        "AI 컴패니언 리터러시",
+        "아동 안전",
+        "교사 역할",
+        "정서적 의존"
+      ],
+      "shelves": [
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "001",
+      "code": "C-01",
+      "call": "C-01",
+      "title": "Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming",
+      "titleKo": "가드레일인가 걸림돌인가? 프로그래밍 AI 조교의 교수 스타일과 맥락 인식이 미치는 효과",
+      "authors": "Madeleine Eastwood; Harshith Narne; Joseph Hilby; Paul Denny; Ashish Aggarwal; Amanpreet Kapoor",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-001",
+      "keywords": [
+        "AI 조교",
+        "소크라테스식 질문",
+        "맥락 인식",
+        "프로그래밍 교육",
+        "RCT"
+      ],
+      "shelves": [
+        "C"
+      ]
+    },
+    {
+      "id": "002",
+      "code": "C-02",
+      "call": "C-02",
+      "title": "Effective Personalized AI Tutors via LLM-Guided Reinforcement Learning",
+      "titleKo": "LLM 기반 강화학습으로 만든 효과적인 개인화 AI 튜터",
+      "authors": "Angel Tsai-Hsuan Chung; Botong Zhang; Ling-Chieh Kung; Hamsa Bastani; Osbert Bastani",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-002",
+      "keywords": [
+        "개인화 AI 튜터",
+        "강화학습",
+        "적응형 문제 순서",
+        "파이썬 교육"
+      ],
+      "shelves": [
+        "C"
+      ]
+    },
+    {
+      "id": "003",
+      "code": "B-01",
+      "call": "B-01",
+      "title": "A Guiding Framework for K-12 Teachers in Creating AI-powered Learning Technologies through Vibe Coding",
+      "titleKo": "K-12 교사가 바이브코딩으로 AI 학습 도구를 만들기 위한 안내 프레임워크(GAIDE)",
+      "authors": "Yukyeong Song; Seoyeon Choi; Jinhee Kim; Yeongje Kim; Lauren Weisberg; Jewoong Moon",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-003",
+      "keywords": [
+        "바이브코딩",
+        "교사 연수",
+        "AI 학습 도구 제작",
+        "디자인 씽킹",
+        "INTERACT 모형"
+      ],
+      "shelves": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "004",
+      "code": "E-01",
+      "call": "E-01",
+      "title": "Robo-Blocks: Generative Scaffolding in End-User Design and Programming of Social Robots",
+      "titleKo": "Robo-Blocks: 소셜 로봇 최종사용자 설계·프로그래밍을 위한 생성형 스캐폴딩",
+      "authors": "Arissa J. Sato; Callie Y. Kim; Nathan Thomas White; Abhinav Maneesh; Yuqing Wang; Hui-Ru Ho; Bilge Mutlu",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-004",
+      "keywords": [
+        "소셜 로봇",
+        "블록코딩",
+        "생성형 스캐폴딩",
+        "LLM",
+        "최종사용자 프로그래밍"
+      ],
+      "shelves": [
+        "E"
+      ]
+    },
+    {
+      "id": "005",
+      "code": "D-01",
+      "call": "D-01",
+      "title": "Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency",
+      "titleKo": "컴퓨터과학 성취도와 글쓰기 능력이 바이브코딩 숙련도를 예측한다",
+      "authors": "Sverrir Thorgeirsson; Theo B. Weidmann; Zhendong Su",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-005",
+      "keywords": [
+        "바이브코딩",
+        "컴퓨터과학 성취도",
+        "글쓰기 능력",
+        "프롬프트 작성"
+      ],
+      "shelves": [
+        "D"
+      ]
+    },
+    {
+      "id": "006",
+      "code": "C-03",
+      "call": "C-03",
+      "title": "Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment",
+      "titleKo": "AI 튜터링을 생산적으로 만들기: 숙달 기반 수학 연습 실험의 근거",
+      "authors": "Philip Oreopoulos; Michael Liut; Alp Sungu; Nina Low",
+      "year": 2026,
+      "kind": "working-paper",
+      "href": "./library/index.html#no-006",
+      "keywords": [
+        "AI 튜터",
+        "숙달 학습",
+        "컴퓨터 보조 학습(CAL)",
+        "수학",
+        "현장실험"
+      ],
+      "shelves": [
+        "C"
+      ]
+    },
+    {
+      "id": "007",
+      "code": "C-04",
+      "call": "C-04",
+      "title": "Evaluating LLMs for Answering Student Questions in Introductory Programming Courses",
+      "titleKo": "입문 프로그래밍 강좌에서 학생 질문 응답용 LLM 평가",
+      "authors": "Thomas Van Mullem; Bart Mesuere; Peter Dawyndt",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-007",
+      "keywords": [
+        "LLM 평가",
+        "학생 질문 응답",
+        "LLM-as-a-Judge",
+        "CS1",
+        "teacher-in-the-loop"
+      ],
+      "shelves": [
+        "C"
+      ]
+    },
+    {
+      "id": "008",
+      "code": "D-02",
+      "call": "D-02",
+      "title": "Code for All: Educational Applications of the \"Vibe Coding\" Hackathon in Programming Education across All Skill Levels",
+      "titleKo": "모두를 위한 코드: 전 수준 대상 '바이브코딩' 해커톤의 프로그래밍 교육적 활용",
+      "authors": "Ashley J. Chen; Yijia Cao; Minghao Shao; Ramesh Karri; Muhammad Shafique",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-008",
+      "keywords": [
+        "바이브코딩",
+        "해커톤",
+        "프롬프트 작성",
+        "디버깅",
+        "평가 설계"
+      ],
+      "shelves": [
+        "D"
+      ]
+    },
+    {
+      "id": "009",
+      "code": "D-03",
+      "call": "D-03",
+      "title": "\"Can you feel the vibes?\": An exploration of novice programmer engagement with vibe coding",
+      "titleKo": "\"바이브가 느껴지나요?\": 초보 프로그래머의 바이브코딩 참여 탐색",
+      "authors": "Kiev Gama; Filipe Calegario; Victoria Jackson; Alexander Nolte; Luiz Augusto Morais; Vinicius Garcia",
+      "year": 2025,
+      "kind": "conference",
+      "href": "./library/index.html#no-009",
+      "keywords": [
+        "바이브코딩",
+        "초보 프로그래머",
+        "해커톤",
+        "질적 연구",
+        "소프트웨어공학 교육"
+      ],
+      "shelves": [
+        "D"
+      ]
+    },
+    {
+      "id": "010",
+      "code": "A-01",
+      "call": "A-01",
+      "title": "Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students' Regulation of LLM Use in a Science Task",
+      "titleKo": "기계에 질문하는 법 가르치기: AI 리터러시 개입이 과학 과제에서 학생의 LLM 사용 조절을 개선하다",
+      "authors": "O. Clerc; R. Abdelghani; C. Desvaux; E. Poisson; P. Y. Oudeyer; H. Sauzéon",
+      "year": 2026,
+      "kind": "workshop",
+      "href": "./library/index.html#no-010",
+      "keywords": [
+        "AI 리터러시",
+        "LLM 과신",
+        "메타인지",
+        "과학 탐구",
+        "아동 안전"
+      ],
+      "shelves": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "011",
+      "code": "B-02",
+      "call": "B-02",
+      "title": "Not Faster, But Better: Generative AI and Teacher Skill in Peru",
+      "titleKo": "더 빠르게가 아니라 더 잘: 페루의 생성형 AI와 교사 역량",
+      "authors": "Carolina Lopez; Carla Z. Glave; Ezequiel Molina; Román Andrés Zárate",
+      "year": 2026,
+      "kind": "working-paper",
+      "href": "./library/index.html#no-011",
+      "keywords": [
+        "교사 AI 연수",
+        "생성형 AI",
+        "RCT",
+        "프롬프트 역량",
+        "개발도상국"
+      ],
+      "shelves": [
+        "B"
+      ]
+    },
+    {
+      "id": "012",
+      "code": "A-02",
+      "call": "A-02",
+      "title": "Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K-12 Teacher Education",
+      "titleKo": "생성형 AI 리터러시 다시 보기: K-12 교사교육을 위한 통합적·발달적·변증법적 프레임워크",
+      "authors": "Shahin Hossain; Sima Ahmadi; Leqi Li; Idowu David Awoyemi; Wei Huang; Chenxi Zhou; Jujia Li; Samaa Haniya; Shapla Khanam; Tasbirun Mashreka Subaha",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-012",
+      "keywords": [
+        "생성형 AI 리터러시",
+        "RAIL-Ed",
+        "교사교육",
+        "AI 윤리",
+        "루브릭"
+      ],
+      "shelves": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "013",
+      "code": "F-01",
+      "call": "F-01",
+      "title": "OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education",
+      "titleKo": "OECD 디지털 교육 전망 2026: 교육에서 생성형 AI의 효과적 활용 탐색",
+      "authors": "OECD",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-013",
+      "keywords": [
+        "생성형 AI",
+        "교육 정책",
+        "메타인지적 게으름",
+        "TALIS 2024",
+        "아동 안전"
+      ],
+      "shelves": [
+        "F",
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "014",
+      "code": "F-02",
+      "call": "F-02",
+      "title": "Little Impact of ChatGPT on High School Test Scores",
+      "titleKo": "ChatGPT가 고등학교 시험 점수에 미친 영향은 작다",
+      "authors": "Nick Huntington-Klein",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-014",
+      "keywords": [
+        "ChatGPT",
+        "시험 점수",
+        "관찰 연구",
+        "학습 효과",
+        "교육경제학"
+      ],
+      "shelves": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "015",
+      "code": "G-01",
+      "call": "G-01",
+      "title": "Faster Completion, Less Learning: Generative AI Reduced Study Time on Math Problems and the Knowledge They Build",
+      "titleKo": "더 빨리 끝내고 덜 배운다: 생성형 AI가 수학 문제 학습 시간과 그로써 쌓는 지식을 줄였다",
+      "authors": "Sina Rismanchian; Hasan Uzun; Jeffrey Matayoshi; Eric Cosyn; Eyad Kurd-Misto",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-015",
+      "keywords": [
+        "생성형 AI",
+        "학습 시간",
+        "지식 유지",
+        "인지적 항복",
+        "수학 학습"
+      ],
+      "shelves": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "016",
+      "code": "B-03",
+      "call": "B-03",
+      "title": "Preservice teachers' prompting practices and decision-making: Exploring pathways from talking to reasoning with generative artificial intelligence",
+      "titleKo": "예비교원의 프롬프트 사용과 의사결정: 생성형 AI와 대화하기에서 함께 추론하기로 가는 길",
+      "authors": "Yin Hong Cheah; Hsiao-Ping Hsu; Jingru Lu; Raghad Alsaka",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-016",
+      "keywords": [
+        "예비교원",
+        "프롬프트 전략",
+        "생성형 AI",
+        "교사교육",
+        "의사결정"
+      ],
+      "shelves": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "017",
+      "code": "G-02",
+      "call": "G-02",
+      "title": "An exploratory behavioral and electroencephalographic study of artificial intelligence-assisted learning modes in high school students",
+      "titleKo": "고등학생의 AI 보조 학습 모드에 대한 탐색적 행동·뇌파 연구",
+      "authors": "Kashika Khurana; Ally Liew",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-017",
+      "keywords": [
+        "AI 학습 모드",
+        "튜터·협력자·해결사",
+        "뇌파",
+        "학습 행동"
+      ],
+      "shelves": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "018",
+      "code": "F-03",
+      "call": "F-03",
+      "title": "Generative artificial intelligence in K-12 education: A systematic review",
+      "titleKo": "K-12 교육의 생성형 AI: 체계적 문헌고찰",
+      "authors": "Tianyu Zhang; Yiu Chi Lai; Philip Leung Ho Yu",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-018",
+      "keywords": [
+        "생성형 AI",
+        "K-12",
+        "체계적 문헌고찰",
+        "과의존",
+        "교사 AI 리터러시"
+      ],
+      "shelves": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "019",
+      "code": "A-03",
+      "call": "A-03",
+      "title": "Cultivating AI literacy among high school students through generative AI as a collaborative partner",
+      "titleKo": "생성형 AI와의 협업을 통한 고등학생의 AI 리터러시 함양",
+      "authors": "Jung Won Hur; Jay Bhuyan; Fan Wu; Cassandra Thomas; Kai Koong",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-019",
+      "keywords": [
+        "AI 리터러시",
+        "생성형 AI 협업",
+        "모바일 앱 설계",
+        "고등학생",
+        "MIT App Inventor"
+      ],
+      "shelves": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "020",
+      "code": "D-04",
+      "call": "D-04",
+      "title": "Studying the effect of AI Code Generators on Supporting Novice Learners in Introductory Programming",
+      "titleKo": "입문 프로그래밍에서 AI 코드 생성기가 초보 학습자 지원에 미치는 효과",
+      "authors": "Majeed Kazemitabaar; Justin Chow; Carl Ka To Ma; Barbara J. Ericson; David Weintrop; Tovi Grossman",
+      "year": 2023,
+      "kind": "conference",
+      "href": "./library/index.html#no-020",
+      "keywords": [
+        "AI 코드 생성기",
+        "초보 프로그래머",
+        "수동 코드 수정",
+        "파지검사",
+        "OpenAI Codex"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "021",
+      "code": "D-05",
+      "call": "D-05",
+      "title": "How Novices Use LLM-based Code Generators to Solve CS1 Coding Tasks in a Self-Paced Learning Environment",
+      "titleKo": "자기주도 학습 환경에서 초보자가 CS1 코딩 과제를 풀 때 LLM 코드 생성기를 사용하는 방식",
+      "authors": "Majeed Kazemitabaar; Xinying Hou; Austin Henley; Barbara Jane Ericson; David Weintrop; Tovi Grossman",
+      "year": 2023,
+      "kind": "conference",
+      "href": "./library/index.html#no-021",
+      "keywords": [
+        "과정 로그 분석",
+        "프롬프트 행동",
+        "코드 수정·검증",
+        "혼합 코딩 방식",
+        "초보 프로그래머"
+      ],
+      "shelves": [
+        "D",
+        "J"
+      ]
+    },
+    {
+      "id": "022",
+      "code": "D-06",
+      "call": "D-06",
+      "title": "The Widening Gap: The Benefits and Harms of Generative AI for Novice Programmers",
+      "titleKo": "벌어지는 격차: 초보 프로그래머에게 생성형 AI가 주는 이점과 해로움",
+      "authors": "James Prather; Brent N. Reeves; Juho Leinonen; Stephen MacNeil; Arisoa S. Randrianasolo; Brett A. Becker; Bailey Kimmel; Jared Wright; Ben Briggs",
+      "year": 2024,
+      "kind": "conference",
+      "href": "./library/index.html#no-022",
+      "keywords": [
+        "초보 프로그래머",
+        "메타인지적 어려움",
+        "이해의 착각",
+        "GitHub Copilot",
+        "ChatGPT"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "023",
+      "code": "D-07",
+      "call": "D-07",
+      "title": "Using Generative AI to Support UX Design Students in Web Development Courses",
+      "titleKo": "웹 개발 수업에서 UX 디자인 전공생을 지원하기 위한 생성형 AI 활용",
+      "authors": "Félix Buendía-García; Javier Piris-Ruano",
+      "year": 2025,
+      "kind": "journal",
+      "href": "./library/index.html#no-023",
+      "keywords": [
+        "생성형 AI",
+        "웹 개발 교육",
+        "UX 디자인",
+        "대화 로그 분석",
+        "GitHub Copilot"
+      ],
+      "shelves": [
+        "D"
+      ]
+    },
+    {
+      "id": "024",
+      "code": "I-01",
+      "call": "I-01",
+      "title": "The role of tutoring in problem solving",
+      "titleKo": "문제 해결에서 튜터링의 역할",
+      "authors": "David Wood; Jerome S. Bruner; Gail Ross",
+      "year": 1976,
+      "kind": "journal",
+      "href": "./library/index.html#no-024",
+      "keywords": [
+        "스캐폴딩",
+        "튜터링",
+        "문제 해결",
+        "자유도 축소",
+        "중요 특징 부각"
+      ],
+      "shelves": [
+        "I"
+      ]
+    },
+    {
+      "id": "025",
+      "code": "I-02",
+      "call": "I-02",
+      "title": "Cognitive apprenticeship: Making thinking visible",
+      "titleKo": "인지적 도제: 사고를 눈에 보이게 만들기",
+      "authors": "Allan Collins; John Seely Brown; Ann Holum",
+      "year": 1991,
+      "kind": "magazine",
+      "href": "./library/index.html#no-025",
+      "keywords": [
+        "인지적 도제",
+        "사고의 가시화",
+        "모델링·코칭·스캐폴딩",
+        "명료화·성찰·탐구",
+        "책임 이양"
+      ],
+      "shelves": [
+        "I"
+      ]
+    },
+    {
+      "id": "026",
+      "code": "I-03",
+      "call": "I-03",
+      "title": "Self-Regulation, Coregulation, and Socially Shared Regulation: Exploring Perspectives of Social in Self-Regulated Learning Theory",
+      "titleKo": "자기조절, 공동조절, 사회적으로 공유된 조절: 자기조절학습 이론에서 '사회적' 관점 탐색",
+      "authors": "Allyson Hadwin; Mika Oshige",
+      "year": 2011,
+      "kind": "journal",
+      "href": "./library/index.html#no-026",
+      "keywords": [
+        "자기조절학습(SRL)",
+        "공동조절(CoRL)",
+        "사회적으로 공유된 조절(SSRL)",
+        "사회적 맥락",
+        "학습 과정 조절"
+      ],
+      "shelves": [
+        "I"
+      ]
+    },
+    {
+      "id": "027",
+      "code": "I-04",
+      "call": "I-04",
+      "title": "Social Cognitive Theory: An Agentic Perspective",
+      "titleKo": "사회인지이론: 행위주체성 관점",
+      "authors": "Albert Bandura",
+      "year": 2001,
+      "kind": "journal",
+      "href": "./library/index.html#no-027",
+      "keywords": [
+        "사회인지이론",
+        "인간 행위주체성",
+        "의도성·미래지향적 사고",
+        "자기반응성·자기성찰",
+        "개인·대리·집합적 주체성"
+      ],
+      "shelves": [
+        "I"
+      ]
+    },
+    {
+      "id": "028",
+      "code": "J-01",
+      "call": "J-01",
+      "title": "Applications of Case Study Research",
+      "titleKo": "사례연구의 적용 (제3판)",
+      "authors": "Robert K. Yin",
+      "year": 2012,
+      "kind": "book",
+      "href": "./library/index.html#no-028",
+      "keywords": [
+        "사례연구 설계",
+        "단일·다중사례",
+        "전체적·내재적 분석단위",
+        "분석적 일반화",
+        "자료 삼각검증"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "029",
+      "code": "J-02",
+      "call": "J-02",
+      "title": "Journal article reporting standards for qualitative primary, qualitative meta-analytic, and mixed methods research in psychology: The APA Publications and Communications Board task force report",
+      "titleKo": "심리학의 질적 1차 연구·질적 메타분석·혼합연구 학술지 논문 보고 기준(APA JARS–Qual)",
+      "authors": "Heidi M. Levitt; Michael Bamberg; John W. Creswell; David M. Frost; Ruthellen Josselson; Carola Suárez-Orozco",
+      "year": 2018,
+      "kind": "journal",
+      "href": "./library/index.html#no-029",
+      "keywords": [
+        "JARS-Qual",
+        "질적 연구 보고 기준",
+        "방법론적 진실성",
+        "연구자-참여자 관계",
+        "분석 단위"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "030",
+      "code": "J-03",
+      "call": "J-03",
+      "title": "Sample Size in Qualitative Interview Studies: Guided by Information Power",
+      "titleKo": "질적 면담 연구의 표본 크기: 정보력(Information Power)을 기준으로",
+      "authors": "Kirsti Malterud; Volkert Dirk Siersma; Ann Dorrit Guassora",
+      "year": 2016,
+      "kind": "journal",
+      "href": "./library/index.html#no-030",
+      "keywords": [
+        "질적 면담",
+        "표본 크기",
+        "정보력(information power)",
+        "연구 목적의 범위",
+        "대화의 질"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "031",
+      "code": "J-04",
+      "call": "J-04",
+      "title": "Single group, pre- and post-test research designs: Some methodological concerns",
+      "titleKo": "단일집단 사전·사후 검사 연구 설계: 방법론적 우려 사항",
+      "authors": "Emma Marsden; Carole J. Torgerson",
+      "year": 2012,
+      "kind": "journal",
+      "href": "./library/index.html#no-031",
+      "keywords": [
+        "단일집단 사전·사후 설계",
+        "내적 타당도 위협",
+        "평균으로의 회귀",
+        "성숙·검사 효과",
+        "인과 추론 한계"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "032",
+      "code": "J-05",
+      "call": "J-05",
+      "title": "Focus Group Interviews in Child, Youth, and Parent Research: An Integrative Literature Review",
+      "titleKo": "아동·청소년·부모 연구에서의 포커스 그룹 면담(FGI): 통합적 문헌고찰",
+      "authors": "Kristin Adler; Sanna Salanterä; Maya Zumstein-Shaha",
+      "year": 2019,
+      "kind": "journal",
+      "href": "./library/index.html#no-032",
+      "keywords": [
+        "포커스 그룹 면담(FGI)",
+        "청소년 질적 연구",
+        "발언 편중 관리",
+        "진행자·관찰자 분리",
+        "연구 윤리"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "033",
+      "code": "J-06",
+      "call": "J-06",
+      "title": "Stimulated recall: a report on its use in naturalistic research",
+      "titleKo": "자극회상(Stimulated Recall): 자연주의적 연구에서의 활용 보고",
+      "authors": "John Lyle",
+      "year": 2003,
+      "kind": "journal",
+      "href": "./library/index.html#no-033",
+      "keywords": [
+        "자극회상 면담",
+        "내성적 절차",
+        "의사결정 과정",
+        "사후 재구성 위험",
+        "회상의 즉시성"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "034",
+      "code": "J-07",
+      "call": "J-07",
+      "title": "Reflecting on reflexive thematic analysis",
+      "titleKo": "반성적 주제분석(Reflexive Thematic Analysis)에 대한 성찰",
+      "authors": "Virginia Braun; Victoria Clarke",
+      "year": 2019,
+      "kind": "journal",
+      "href": "./library/index.html#no-034",
+      "keywords": [
+        "반성적 주제분석",
+        "코드북·신뢰도 접근 구분",
+        "공유된 의미 패턴",
+        "영역 요약 경계",
+        "연구자 반성성"
+      ],
+      "shelves": [
+        "J"
+      ]
+    },
+    {
+      "id": "035",
+      "code": "J-08",
+      "call": "J-08",
+      "title": "Development and validation of the Generative AI Self-Efficacy Scale (GAI-SES): psychometric properties, gender differences, and well-being associations",
+      "titleKo": "생성형 AI 자기효능감 척도(GAI-SES) 개발 및 타당화: 심리측정학적 특성, 성별 차이 및 웰빙과의 관계",
+      "authors": "Sen-Chi Yu; An-Chia Liu; Hung-Bin Sheu",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-035",
+      "keywords": [
+        "생성형 AI 자기효능감",
+        "GAI-SES",
+        "척도 타당화",
+        "과제 자기효능감",
+        "사회적 자기효능감"
+      ],
+      "shelves": [
+        "J",
+        "A"
+      ]
+    },
+    {
+      "id": "036",
+      "code": "J-09",
+      "call": "J-09",
+      "title": "A validity and reliability study of the computational thinking scales (CTS)",
+      "titleKo": "컴퓨팅 사고 척도(CTS)의 타당도 및 신뢰도 연구",
+      "authors": "Özgen Korkmaz; Recep Çakir; M. Yaşar Özden",
+      "year": 2017,
+      "kind": "journal",
+      "href": "./library/index.html#no-036",
+      "keywords": [
+        "컴퓨팅 사고 척도(CTS)",
+        "알고리즘적 사고",
+        "문제해결·비판적 사고",
+        "창의성·협력",
+        "자기보고 척도"
+      ],
+      "shelves": [
+        "J",
+        "D"
+      ]
+    },
+    {
+      "id": "037",
+      "code": "J-10",
+      "call": "J-10",
+      "title": "MAILS - Meta AI literacy scale: Development and testing of an AI literacy questionnaire based on well-founded competency models and psychological change- and meta-competencies",
+      "titleKo": "메타 AI 리터러시 척도(MAILS): 역량 모형과 심리적 변화·메타 역량에 기반한 AI 리터러시 설문 개발 및 검증",
+      "authors": "Astrid Carolus; Martin J. Koch; Samantha Straka; Marc Erich Latoschik; Carolin Wienrich",
+      "year": 2023,
+      "kind": "journal",
+      "href": "./library/index.html#no-037",
+      "keywords": [
+        "메타 AI 리터러시(MAILS)",
+        "AI 문제해결 효능감",
+        "AI 학습 효능감",
+        "모듈형 척도",
+        "자기보고 설문"
+      ],
+      "shelves": [
+        "J",
+        "A"
+      ]
+    },
+    {
+      "id": "038",
+      "code": "J-11",
+      "call": "J-11",
+      "title": "AI literacy for self-regulated learning among pre-service teachers: development and validation of a scale of ethical use, monitoring, motivation, regulation, and evaluation",
+      "titleKo": "예비교사의 자기조절학습을 위한 AI 리터러시: 윤리적 사용·점검·동기·조절·평가 척도 개발 및 타당화",
+      "authors": "Ismet Kaya; Rusen Meylani",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-038",
+      "keywords": [
+        "자기조절 AI 리터러시",
+        "비판적 평가",
+        "이해·학습상태 점검",
+        "예비교사",
+        "척도 타당화"
+      ],
+      "shelves": [
+        "J",
+        "B"
+      ]
+    },
+    {
+      "id": "039",
+      "code": "J-12",
+      "call": "J-12",
+      "title": "한국 중학생의 컴퓨팅 사고력 분석",
+      "titleKo": "한국 중학생의 컴퓨팅 사고력 분석",
+      "authors": "성원 김; 영준 이",
+      "year": 2020,
+      "kind": "journal",
+      "href": "./library/index.html#no-039",
+      "keywords": [
+        "컴퓨팅 사고력",
+        "척도 재구성",
+        "한국 중학생",
+        "탐색적 요인분석",
+        "자기보고 설문"
+      ],
+      "shelves": [
+        "J",
+        "D"
+      ]
+    },
+    {
+      "id": "040",
+      "code": "H-01",
+      "call": "H-01",
+      "title": "Guidance for generative AI in education and research",
+      "titleKo": "교육 및 연구 분야 생성형 AI 활용 지침",
+      "authors": "Fengchun Miao; Wayne Holmes",
+      "year": 2023,
+      "kind": "report",
+      "href": "./library/index.html#no-040",
+      "keywords": [
+        "생성형 AI 지침",
+        "인간 중심 접근",
+        "학습자 행위주체성",
+        "오류 인식 한계",
+        "UNESCO"
+      ],
+      "shelves": [
+        "H",
+        "F"
+      ]
+    },
+    {
+      "id": "041",
+      "code": "A-04",
+      "call": "A-04",
+      "title": "AI competency framework for students",
+      "titleKo": "학생을 위한 AI 역량 프레임워크",
+      "authors": "Fengchun Miao; Kelly Shiohira; Natalie Lao",
+      "year": 2024,
+      "kind": "report",
+      "href": "./library/index.html#no-041",
+      "keywords": [
+        "학생 AI 역량 프레임워크",
+        "인간 중심 마인드셋",
+        "AI 윤리·시스템 설계",
+        "이해·적용·창조",
+        "능동적 의사결정자"
+      ],
+      "shelves": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "042",
+      "code": "G-03",
+      "call": "G-03",
+      "title": "The Uneven Impact of Generative AI on Student Learning: Examining the Roles of Reliance, Evaluation Literacy, and Course Policy in AI-related Courses",
+      "titleKo": "생성형 AI가 학생 학습에 미치는 고르지 않은 영향: AI 관련 강좌에서 의존·평가 리터러시·수업 정책의 역할",
+      "authors": "Lydia Manikonda; Mei Si; Sirajam Munira; Oshani Seneviratne; Kristin Bennett",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-042",
+      "keywords": [
+        "생성형 AI 의존",
+        "평가 리터러시",
+        "수업 정책",
+        "학습 격차"
+      ],
+      "shelves": [
+        "G",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "043",
+      "code": "D-08",
+      "call": "D-08",
+      "title": "Self-Regulated Personal Contracts as a Harm Reduction Approach to Generative AI in Undergraduate Programming Education",
+      "titleKo": "학부 프로그래밍 교육에서 생성형 AI 피해 줄이기 접근으로서의 자기조절 개인 계약",
+      "authors": "Aadarsh Padiyath; Jessica Shen; Barbara Ericson",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-043",
+      "keywords": [
+        "자기조절학습",
+        "피해 줄이기",
+        "생성형 AI 사용 지침",
+        "프로그래밍 교육"
+      ],
+      "shelves": [
+        "D",
+        "I",
+        "G"
+      ]
+    },
+    {
+      "id": "044",
+      "code": "D-09",
+      "call": "D-09",
+      "title": "Revisiting the Performance of Generative Artificial Intelligence on Introductory Object-Oriented Programming Assessments: Insights from 2026",
+      "titleKo": "입문 객체지향 프로그래밍 평가에서 생성형 AI의 성능 재검토: 2026년의 통찰",
+      "authors": "Marina Lepp; Joosep Kaimre",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-044",
+      "keywords": [
+        "생성형 AI 성능",
+        "프로그래밍 평가",
+        "객체지향",
+        "평가 설계"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "045",
+      "code": "D-10",
+      "call": "D-10",
+      "title": "From Idea to Classroom in Days: Using \"Vibe Coding\" to Create a Programming Process Visualizer from IDE Activity Logs",
+      "titleKo": "며칠 만에 아이디어에서 교실로: 바이브코딩으로 IDE 활동 로그 기반 프로그래밍 과정 시각화 도구 만들기",
+      "authors": "Heidi Taveter; Marina Lepp",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-045",
+      "keywords": [
+        "바이브코딩",
+        "학습 분석",
+        "프로그래밍 과정",
+        "교사 도구 개발"
+      ],
+      "shelves": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "046",
+      "code": "H-02",
+      "call": "H-02",
+      "title": "Exploring K-12 Teachers' Perceptions of Students' Relationships with AI Companions: Boundaries, Intervention Strategies, and Design Implications",
+      "titleKo": "학생과 AI 컴패니언의 관계에 대한 K-12 교사의 인식: 경계, 개입 전략, 설계 시사점",
+      "authors": "Qing Xiao; Wenhan Xie; Ziyu Deng; Ruiwei Xiao; Ziyue Feng; Xie He; Shiyu Zhang; John Stamper; Hong Shen; Xinying Hou",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-046",
+      "keywords": [
+        "AI 컴패니언",
+        "AI 컴패니언 리터러시",
+        "아동 안전",
+        "교사 역할",
+        "정서적 의존"
+      ],
+      "shelves": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "047",
+      "code": "B-04",
+      "call": "B-04",
+      "title": "Will It Teach as Intended? How Teachers Configure Educational AI Chatbots",
+      "titleKo": "의도대로 가르칠까? 교사는 교육용 AI 챗봇을 어떻게 설정하는가",
+      "authors": "Bahare Riahi; Deniz Ozturk; Alice Guth; Jiayu Li; Daksh Pratap Singh; Xiaoyi Tian; Jennifer Chiu; Nicholas Lytle; Tiffany Barnes; Veronica Catete",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-047",
+      "keywords": [
+        "교육용 챗봇",
+        "챗봇 저작",
+        "교육적 충실도",
+        "교사 연수",
+        "가드레일"
+      ],
+      "shelves": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "048",
+      "code": "B-05",
+      "call": "B-05",
+      "title": "Configuring AI for Exploratory Learning: Educator Perspectives on Inference, Persistence, and Disclosure",
+      "titleKo": "탐구 학습을 위한 AI 설정: 추론·정보 보존·공개에 관한 교육자의 관점",
+      "authors": "Si Chen; Xinyue Chen; Artur Mullagaliyev; Alexander Nwanganga; Shifu Hou; Deng Pan; Ronald Metoyer; Sugana Vijay Chawla",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-048",
+      "keywords": [
+        "생성형 AI 설정",
+        "개인화",
+        "학습자 정보",
+        "공개 범위",
+        "진로 탐색"
+      ],
+      "shelves": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "049",
+      "code": "A-05",
+      "call": "A-05",
+      "title": "AI Security Literacy: Ecosystem-based Competency Framework and K-12 Learning Platform",
+      "titleKo": "AI 보안 리터러시: 생태계 기반 역량 프레임워크와 K-12 학습 플랫폼",
+      "authors": "Eric Yocam; Varghese Vaidyan; Paris Kalathas",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-049",
+      "keywords": [
+        "AI 보안 리터러시",
+        "적대적 공격",
+        "학교 AI 정책",
+        "역량 프레임워크"
+      ],
+      "shelves": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "050",
+      "code": "B-06",
+      "call": "B-06",
+      "title": "Empowering educators: A pilot study on AI literacy in K–12 professional development",
+      "titleKo": "교육자 역량 강화: K-12 전문성 개발에서의 AI 리터러시 시범 연구",
+      "authors": "Katelyn Stalboerger; Shuqi Du; David Marshall; Shawndra Bowers; Asim Ali",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-050",
+      "keywords": [
+        "AI 리터러시",
+        "교사 연수",
+        "비동기 온라인 연수",
+        "예비교원"
+      ],
+      "shelves": [
+        "B",
+        "A"
+      ]
+    }
+  ]
+}

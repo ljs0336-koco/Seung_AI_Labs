@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "revision": 5,
+  "publishedAt": null,
+  "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
+  "items": [
+    {
+      "id": "briefing",
+      "kind": "link",
+      "title": "AI·교육 브리핑",
+      "description": "사업 제안 기회와 AI 이슈·뉴스",
+      "href": "./briefing/index.html",
+      "section": "today",
+      "placement": "both",
+      "status": "live"
+    },
+    {
+      "id": "library",
+      "kind": "link",
+      "title": "연구 서고",
+      "description": "AI 교육 논문·정책·연구방법을 찾아 인용하기",
+      "href": "./library/index.html",
+      "section": "library",
+      "placement": "base",
+      "status": "candidate"
+    },
+    {
+      "id": "code-masterplan",
+      "kind": "link",
+      "title": "운영 마스터플랜 v1.3",
+      "description": "운영 일정과 역할 분담",
+      "href": "./slides/masterplan.html",
+      "section": "code",
+      "placement": "base",
+      "status": "live"
+    },
+    {
+      "id": "code-desk",
+      "kind": "link",
+      "title": "관제 데스크 v1.3",
+      "description": "체크리스트와 멘토링 일지",
+      "href": "./slides/operations_desk.html",
+      "section": "code",
+      "placement": "base",
+      "status": "live"
+    },
+    {
+      "id": "code-round1",
+      "kind": "link",
+      "title": "1차 멘토링 워크숍 보드",
+      "description": "사전 질문·피드백·정리 프롬프트",
+      "href": "./slides/mentoring_round1.html",
+      "section": "code",
+      "placement": "base",
+      "status": "live"
+    },
+    {
+      "id": "code-partner-guide",
+      "kind": "link",
+      "title": "협업 안내서",
+      "description": "앱 개발 협업과 피드백 안내",
+      "href": "./slides/expert_guide.html",
+      "section": "code",
+      "placement": "base",
+      "status": "live"
+    },
+    {
+      "id": "donguri",
+      "kind": "link",
+      "title": "돈구리",
+      "description": "학생 앱과 구일고 매뉴얼",
+      "href": "./apps/donguri/index.html",
+      "section": "code",
+      "placement": "base",
+      "status": "live",
+      "children": [
+        {
+          "title": "매뉴얼 · 구일고",
+          "href": "./slides/manual_guil.html"
+        }
+      ]
+    },
+    {
+      "id": "studybuddy",
+      "kind": "link",
+      "title": "STUDY-BUDDY",
+      "description": "학생 앱과 옥종고 매뉴얼",
+      "href": "./apps/studybuddy/index.html",
+      "section": "code",
+      "placement": "base",
+      "status": "live",
+      "children": [
+        {
+          "title": "매뉴얼 · 옥종고",
+          "href": "./slides/manual_okjong.html"
+        }
+      ]
+    },
+    {
+      "id": "hub",
+      "kind": "link",
+      "title": "AI 교육 특강 허브",
+      "description": "제주대 예비교원 특강·로보독 실습 자료",
+      "href": "./hub/index.html",
+      "section": "lecture",
+      "placement": "both",
+      "status": "live",
+      "children": [
+        {
+          "title": "멍멍 RL",
+          "href": "./hub/apps/robotdog_rl/index.html"
+        }
+      ]
+    },
+    {
+      "id": "literacy",
+      "kind": "router",
+      "title": "AI 리터러시 탐험 연구소",
+      "description": "공정한 AI·진실과 미디어·AI에 맡기기·에이전트 실습",
+      "href": "#/literacy",
+      "section": "showcase",
+      "placement": "both",
+      "status": "live",
+      "children": [
+        {
+          "title": "공정한 AI",
+          "href": "#/fairness"
+        },
+        {
+          "title": "진실·미디어",
+          "href": "#/verification"
+        },
+        {
+          "title": "AI에 맡기기",
+          "href": "#/role"
+        },
+        {
+          "title": "에이전트",
+          "href": "#/agent"
+        }
+      ]
+    },
+    {
+      "id": "deck",
+      "kind": "link",
+      "title": "The Agentic Shift",
+      "description": "에이전틱 AI 전환기의 조직과 교육",
+      "href": "./deck/index.html",
+      "section": "showcase",
+      "placement": "both",
+      "status": "live"
+    },
+    {
+      "id": "terrarium",
+      "kind": "link",
+      "title": "Kocoafab 작은별 테라리움",
+      "description": "코코·금쪽이·로보독 3D 미니어처",
+      "href": "./apps/terrarium/index.html",
+      "section": "showcase",
+      "placement": "base",
+      "status": "candidate"
+    },
+    {
+      "id": "kansai",
+      "kind": "link",
+      "title": "KANSAI NOTES",
+      "description": "겨울 간사이 여행가이드",
+      "href": "./kansai-travel-guide/index.html",
+      "section": "personal",
+      "placement": "base",
+      "status": "live",
+      "children": [
+        {
+          "title": "느긋한 커플편",
+          "href": "./kansai-travel-guide/couple.html"
+        },
+        {
+          "title": "포켓몬 원정대편",
+          "href": "./kansai-travel-guide/pokemon.html"
+        }
+      ]
+    },
+    {
+      "id": "logo-studio",
+      "kind": "link",
+      "title": "Logo Studio",
+      "description": "브랜드 디자인 실습",
+      "href": "./hub/apps/logo_studio/index.html",
+      "section": "archive",
+      "placement": "archive",
+      "status": "live"
+    },
+    {
+      "id": "jangpan",
+      "kind": "link",
+      "title": "장판의 새벽",
+      "description": "이전 실습 앱",
+      "href": "./hub/apps/jangpan_dawn/index.html",
+      "section": "archive",
+      "placement": "archive",
+      "status": "live"
+    },
+    {
+      "id": "malang",
+      "kind": "link",
+      "title": "말랑 런",
+      "description": "이전 실습 앱",
+      "href": "./hub/apps/malang_run/index.html",
+      "section": "archive",
+      "placement": "archive",
+      "status": "live"
+    },
+    {
+      "id": "commute-locked",
+      "kind": "link",
+      "title": "통학 데이터 탐구 v2",
+      "description": "원본 확인 대기",
+      "href": "./hub/apps/통학_데이터_탐구_v2.html",
+      "section": "archive",
+      "placement": "archive",
+      "status": "locked"
+    },
+    {
+      "id": "question-locked",
+      "kind": "link",
+      "title": "질문 전후 비교 v3",
+      "description": "원본 확인 대기",
+      "href": "./hub/apps/질문전후비교_v3.html",
+      "section": "archive",
+      "placement": "archive",
+      "status": "locked"
+    }
+  ]
+}

@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useCatalog, { useJsonResource } from '../hooks/useCatalog';
 import './Portal.css';
+
+const LABS = [
+  { href: '#/fairness', title: '공정한 AI 실험실', description: '데이터와 기준에 따라 달라지는 AI 추천 비교', icon: '⚖️' },
+  { href: '#/verification', title: '진실·미디어 검증소', description: 'AI 답변과 합성 미디어의 출처·제작 이력 검증', icon: '🔍' },
+  { href: '#/role', title: 'AI에게 무엇을 맡길까?', description: '자동화·AI의 도움·사람의 결정 구별', icon: '🤝' },
+  { href: '#/agent', title: 'AI가 대신 움직인다면?', description: '행동 전 확인, 이상 행동 멈춤과 복구', icon: '🛡️' },
+];
+const LECTURES = [
+  { href: './hub/index.html#jeju', title: '제주대 예비교원 특강', description: '예비교원 대상 AI 교육 특강 안내와 참고 자료', icon: '🎓' },
+  { href: './hub/index.html#hs', title: '고교 로보독 특강', description: '강화학습과 피지컬 AI 수업 안내', icon: '🐕' },
+  { href: './hub/apps/robotdog_rl/index.html', title: '멍멍 RL Playground', description: 'Q-learning·SARSA로 보는 로보독 길찾기', icon: '🧭' },
+];
+const PRIMARY_HREFS = new Set(['#/literacy', './hub/index.html', './briefing/index.html', './deck/index.html']);
 
 export default function Portal() {
   const navigate = useNavigate();
+  const { catalog, loading } = useCatalog();
+  const { data: latest } = useJsonResource('./briefing/latest.json');
+  const extras = catalog.items.filter(item => !item.parent && ['portal', 'both'].includes(item.placement) && !['locked', 'orphan'].includes(item.status) && !PRIMARY_HREFS.has(item.href));
+  const features = entries => entries.map(entry => ({ ...entry, ...catalog.items.find(item => item.href === entry.href) }));
+  const isPortalVisible = id => loading || ['portal', 'both'].includes(catalog.items.find(item => item.id === id)?.placement);
 
   useEffect(() => {
     document.title = "Seung AI Labs · 에듀테크 통합 포털";
@@ -37,16 +56,11 @@ export default function Portal() {
 
           {/* Publications: magazine and latest public briefing */}
           <div className="portal-publications">
-          <aside className="portal-magazine-clip-wrap" aria-label="매거진 탭">
+          {isPortalVisible('deck') && <aside className="portal-magazine-clip-wrap" aria-label="매거진 탭">
             <div className="magazine-brass-clip" aria-hidden="true"></div>
-            <div
+            <a
               className="magazine-clip-card"
-              onClick={() => handleCardClick('에이전틱 AI 인사이트 덱', './deck/index.html', true)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') handleCardClick('에이전틱 AI 인사이트 덱', './deck/index.html', true);
-              }}
+              href="./deck/index.html"
             >
               <div className="magazine-clip-header">
                 <span className="magazine-badge-pill">📎 매거진 Vol.01</span>
@@ -60,14 +74,14 @@ export default function Portal() {
                   매거진 읽기 →
                 </span>
               </div>
-            </div>
-          </aside>
-          <aside className="portal-magazine-clip-wrap" aria-label="AI·교육 브리핑">
+            </a>
+          </aside>}
+          {isPortalVisible('briefing') && <aside className="portal-magazine-clip-wrap" aria-label="AI·교육 브리핑">
             <div className="magazine-brass-clip briefing-paper-clip" aria-hidden="true"></div>
             <a className="magazine-clip-card briefing-clip-card" href="./briefing/index.html">
               <div className="magazine-clip-header">
                 <span className="magazine-badge-pill briefing-badge-pill">모루의 브리핑</span>
-                <time className="briefing-edition" dateTime="2026-10-26">2026.10.26</time>
+                {typeof latest?.date === 'string' ? <time className="briefing-edition" dateTime={latest.date}>{latest.date.replaceAll('-', '.')}</time> : <span className="briefing-edition">최신 브리핑</span>}
               </div>
               <h2 className="magazine-clip-title">AI·교육 브리핑</h2>
               <p className="magazine-clip-desc">
@@ -77,7 +91,7 @@ export default function Portal() {
                 <span className="magazine-read-btn briefing-read-btn">브리핑 읽기 →</span>
               </div>
             </a>
-          </aside>
+          </aside>}
           </div>
         </div>
       </header>
@@ -86,7 +100,7 @@ export default function Portal() {
       <main className="portal-main-content">
         <div className="portal-cards-2col-grid">
           {/* Card 1: AI Literacy Lab */}
-          <article className="portal-hub-card literacy-hub-card">
+          {isPortalVisible('literacy') && <article className="portal-hub-card literacy-hub-card">
             <div className="card-top-accent literacy-accent"></div>
             <div className="card-body">
               <div className="card-header-row">
@@ -100,38 +114,13 @@ export default function Portal() {
                 초등 AI 리터러시 탐험 연구소
               </h2>
               <p className="card-summary">
-                초등 학습자의 편향 인식, 생성형 AI 환각 팩트체크, 역할 분담 및 안전성 검증을 직접 시뮬레이션하는 인터랙티브 활동 공간입니다.
+                AI 추천의 공정성, 답변과 미디어 검증, 사람과 AI의 역할, 에이전트의 행동을 직접 탐구하는 인터랙티브 활동 공간입니다.
               </p>
 
               <div className="card-feature-list">
-                <div className="feature-item">
-                  <span className="feature-icon">⚖️</span>
-                  <div>
-                    <strong>공정성 실험실</strong>
-                    <p>학습 데이터 편향과 공정한 추천 알고리즘 발견</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">🔍</span>
-                  <div>
-                    <strong>팩트체크 실험실</strong>
-                    <p>AI 답변의 교차검증과 출처 신뢰도 평가 훈련</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">🤝</span>
-                  <div>
-                    <strong>역할과 역량 탐구</strong>
-                    <p>인간과 인공지능의 협업 가치 및 책임 윤리</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">🛡️</span>
-                  <div>
-                    <strong>안전성 검증</strong>
-                    <p>할루시네이션 방지와 안전한 프롬프트 규칙 수립</p>
-                  </div>
-                </div>
+                {features(LABS).map(feature => <a className="feature-item" href={feature.href} key={feature.href} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <span className="feature-icon">{feature.icon}</span><div><strong>{feature.title}</strong><p>{feature.description}</p></div>
+                </a>)}
               </div>
 
               <div className="card-action-box">
@@ -144,10 +133,10 @@ export default function Portal() {
                 </button>
               </div>
             </div>
-          </article>
+          </article>}
 
           {/* Card 2: Edutech Physical AI Hub */}
-          <article className="portal-hub-card edutech-hub-card">
+          {isPortalVisible('hub') && <article className="portal-hub-card edutech-hub-card">
             <div className="card-top-accent edutech-accent"></div>
             <div className="card-body">
               <div className="card-header-row">
@@ -167,34 +156,9 @@ export default function Portal() {
               </p>
 
               <div className="card-feature-list">
-                <div className="feature-item">
-                  <span className="feature-icon">🐕</span>
-                  <div>
-                    <strong>로보독 강화학습 시뮬레이터</strong>
-                    <p>보상 함수와 신경망 파라미터 튜닝 실습</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">📊</span>
-                  <div>
-                    <strong>통학 데이터 탐구 웹앱 (v2)</strong>
-                    <p>우리 학교 학생들의 실제 이동 경로와 통계 분석</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">💬</span>
-                  <div>
-                    <strong>질문 전후 비교 도구</strong>
-                    <p>모호한 프롬프트 vs 구조화된 질문 결과 대조</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">💡</span>
-                  <div>
-                    <strong>교수학습 지도안 & 실습키트</strong>
-                    <p>차시별 수업 지도 가이드라인 및 워크시트 완비</p>
-                  </div>
-                </div>
+                {features(LECTURES).map(feature => <a className="feature-item" href={feature.href} key={feature.href} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <span className="feature-icon">{feature.icon}</span><div><strong>{feature.title}</strong><p>{feature.description}</p></div>
+                </a>)}
               </div>
 
               <div className="card-action-box">
@@ -207,8 +171,12 @@ export default function Portal() {
                 </button>
               </div>
             </div>
-          </article>
+          </article>}
         </div>
+        {!!extras.length && <section aria-labelledby="portal-more" style={{ marginTop: '28px' }}>
+          <h2 id="portal-more" style={{ fontSize: '21px', marginBottom: '14px' }}>더 둘러보기</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>{extras.map(item => <a key={item.id} className="card" href={item.href} style={{ display: 'block', flex: '1 1 240px', maxWidth: '520px', color: 'inherit', margin: 0 }}><strong>{item.title}</strong>{item.description && <p style={{ margin: '8px 0 0', fontSize: '14px' }}>{item.description}</p>}<span style={{ display: 'block', marginTop: '12px', color: 'var(--color-primary)' }}>열기 →</span></a>)}</div>
+        </section>}
       </main>
 
       
@@ -226,7 +194,7 @@ export default function Portal() {
           </div>
 
           <div className="footer-right">
-            <a href="./privacy-guidelines.html" className="footer-admin-link">개인정보 게시 원칙</a>
+            <Link to="/base" className="footer-admin-link">나만의 기지</Link>
           </div>
         </div>
       </footer>

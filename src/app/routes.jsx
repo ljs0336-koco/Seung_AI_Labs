@@ -6,9 +6,9 @@ import FairnessLabPage from '../features/fairness/FairnessLabPage';
 import VerificationLabPage from '../features/verification/VerificationLabPage';
 import RoleLabPage from '../features/role/RoleLabPage';
 import AgentLabPage from '../features/agent/AgentLabPage';
-import { MATERIALS_PATH } from './materialsRoute';
+import { BASE_PATH, MATERIALS_PATH } from './materialsRoute';
 
-const AdminPage = lazy(() => import('./AdminPage'));
+const BasePage = lazy(() => import('./BasePage'));
 
 export default function AppRoutes() {
   return (
@@ -16,9 +16,9 @@ export default function AppRoutes() {
       {/* 1. Main Portal: ALWAYS 100% PUBLIC (Zero passcode gate) */}
       <Route path="/" element={<Portal />} />
 
-      {/* Unlisted materials; public-safe content only. */}
-      <Route path={MATERIALS_PATH} element={<Suspense fallback={<p role="status">자료실을 불러오는 중입니다.</p>}><AdminPage /></Suspense>} />
-      <Route path="/admin" element={<Navigate to="/" replace />} />
+      <Route path={BASE_PATH} element={<Suspense fallback={<p role="status">기지를 불러오는 중입니다.</p>}><BasePage /></Suspense>} />
+      <Route path={MATERIALS_PATH} element={<Navigate to={BASE_PATH} replace />} />
+      <Route path="/admin" element={<Navigate to={BASE_PATH} replace />} />
 
       {/* Educational activities stay publicly available. */}
       <Route
