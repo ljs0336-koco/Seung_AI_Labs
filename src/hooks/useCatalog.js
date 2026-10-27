@@ -19,7 +19,7 @@ export const FALLBACK_CATALOG = {
     { id: 'studybuddy', title: 'STUDY-BUDDY', description: '학생용 학습 버디', href: './apps/studybuddy/index.html', section: 'code', placement: 'base', status: 'live' },
     { id: 'studybuddy-manual', title: 'STUDY-BUDDY 매뉴얼', href: './slides/manual_okjong.html', parent: 'studybuddy', section: 'code', placement: 'base', status: 'live' },
     { id: 'hub', title: 'AI 교육 특강 허브', description: '교사·예비교원 특강과 로보독 실습', href: './hub/index.html', section: 'lecture', placement: 'both', status: 'live' },
-    { id: 'padlet-ai-training', title: 'AI 연수·특강 자료 · Padlet', description: '연수와 특강에서 사용하는 패들렛 자료', href: 'https://padlet.com/jaeseungtek/ai-8js4uzp6xqxjztbf', section: 'lecture', placement: 'base', status: 'live' },
+    { id: 'padlet-ai-training', title: 'AI 연수·특강 패들렛', description: '연수·특강에서 공유하며 꾸준히 업데이트하는 자료 모음', href: 'https://padlet.com/jaeseungtek/ai-8js4uzp6xqxjztbf', section: 'lecture', placement: 'both', status: 'live' },
     { id: 'literacy', title: '초등 AI 리터러시 탐험 연구소', description: '네 가지 인터랙티브 실험실', href: '#/literacy', section: 'showcase', placement: 'both', status: 'live' },
     { id: 'deck', title: 'The Curated Mind', edition: 'VOL.02', description: 'AI의 답에 담긴 기준과, 목적에 맞는 AI의 통제 범위', href: './deck/vol02/index.html', children: [{title:'Vol.01 · The Agentic Shift',href:'./deck/index.html'}], section: 'showcase', placement: 'both', status: 'live' },
     { id: 'playground', title: 'AI 놀이터', description: 'AI로 만든 실험과 산출물이 모이는 공간', href: '#/playground', section: 'showcase', placement: 'both', status: 'live' },

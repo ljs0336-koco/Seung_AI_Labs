@@ -14,11 +14,12 @@ const LECTURES = [
   ['./hub/apps/robotdog_rl/index.html', '멍멍 RL Playground'],
 ];
 const PUBLICATIONS = new Set(['briefing', 'deck']);
-const ORBIT_ORDER = ['literacy', 'hub', 'playground'];
+const ORBIT_ORDER = ['literacy', 'hub', 'playground', 'padlet-ai-training'];
 const ORBIT_LOOKS = {
   literacy: { kind: 'literacy', label: '배우는 곳', color: '#7d756e' },
   hub: { kind: 'lecture', label: '가르치는 곳', color: '#a2724e' },
   playground: { kind: 'playground', label: 'AI 활용 산출물', color: '#74858e' },
+  'padlet-ai-training': { kind: 'padlet', label: '연수 공유 자료', color: '#81759b' },
 };
 const visible = item => ['portal', 'both'].includes(item.placement) && !['locked', 'orphan'].includes(item.status);
 

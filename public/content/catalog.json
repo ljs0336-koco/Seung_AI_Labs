@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 8,
+  "revision": 9,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -256,11 +256,11 @@
     {
       "id": "padlet-ai-training",
       "kind": "link",
-      "title": "AI 연수·특강 자료 · Padlet",
-      "description": "연수와 특강에서 사용하는 패들렛 자료",
+      "title": "AI 연수·특강 패들렛",
+      "description": "연수·특강에서 공유하며 꾸준히 업데이트하는 자료 모음",
       "href": "https://padlet.com/jaeseungtek/ai-8js4uzp6xqxjztbf",
       "section": "lecture",
-      "placement": "base",
+      "placement": "both",
       "status": "live"
     }
   ]
