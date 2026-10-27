@@ -16,9 +16,9 @@ const LECTURES = [
 const PUBLICATIONS = new Set(['briefing', 'deck']);
 const ORBIT_ORDER = ['literacy', 'hub', 'playground'];
 const ORBIT_LOOKS = {
-  literacy: { kind: 'literacy', label: '배우는 곳', color: '#bfb7d5' },
-  hub: { kind: 'lecture', label: '가르치는 곳', color: '#c99d76' },
-  playground: { kind: 'playground', label: 'AI 활용 산출물', color: '#86b9cd' },
+  literacy: { kind: 'literacy', label: '배우는 곳', color: '#7d756e' },
+  hub: { kind: 'lecture', label: '가르치는 곳', color: '#a2724e' },
+  playground: { kind: 'playground', label: 'AI 활용 산출물', color: '#74858e' },
 };
 const visible = item => ['portal', 'both'].includes(item.placement) && !['locked', 'orphan'].includes(item.status);
 
@@ -30,7 +30,7 @@ export default function Portal() {
     const order = id => ORBIT_ORDER.includes(id) ? ORBIT_ORDER.indexOf(id) : ORBIT_ORDER.length;
     return order(a.id) - order(b.id);
   }).map(item => ({
-    ...item, ...(ORBIT_LOOKS[item.id] || { kind: 'artifact', label: '새로운 실험', color: '#c8bfad' }),
+    ...item, ...(ORBIT_LOOKS[item.id] || { kind: 'artifact', label: '새로운 실험', color: '#8b7d68' }),
   }));
   const publication = id => entrances.find(item => item.id === id);
   const magazine = publication('deck');
@@ -38,12 +38,6 @@ export default function Portal() {
   const literacy = entrances.find(item => item.id === 'literacy');
   const hub = entrances.find(item => item.id === 'hub');
   const library = entrances.find(item => item.id === 'library');
-  function showPublications() {
-    const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    const section = document.getElementById('portal-publications');
-    section?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-    section?.focus({ preventScroll: true });
-  }
 
   useEffect(() => { document.title = 'Seung AI Labs · 수업과 실험의 작은 우주'; }, []);
 
@@ -61,37 +55,35 @@ export default function Portal() {
       </header>
       <div className="portal-intro-line"><p>읽고, 실험하고, 수업에 연결하는 작업실.</p><span>AN EXPANDING UNIVERSE</span></div>
       <main>
-        <section className="portal-atlas" aria-labelledby="portal-atlas-title">
-          <div className="portal-atlas-copy">
-            <span className="portal-section-no">01 / EXPLORE</span>
-            <h2 id="portal-atlas-title">수업과 실험의<br />작은 우주.</h2>
-            <p>AI를 이해하는 실습, 함께 만드는 수업,<br className="portal-desktop-break" /> 그리고 AI로 만들어 본 것들.</p>
-            <p className="portal-atlas-note">각 구를 누르면 그 공간으로 이어집니다.</p>
-            <div className="portal-atlas-count"><b>{String(worlds.length).padStart(2, '0')}</b><span>개의 공간이<br />하나의 우주 안에</span></div>
-            {(magazine || briefing) && <button type="button" className="portal-text-link" onClick={showPublications}>매거진과 브리핑 읽기 ↓</button>}
-          </div>
-          <div className="portal-atlas-map"><OrbitScene items={worlds} brand="Seung" /></div>
-        </section>
-        {error && <p className="portal-load-note" role="status">자료 목록을 불러오지 못해 기본 입구를 표시합니다.</p>}
-        {(magazine || briefing) && <section className="portal-publications" id="portal-publications" tabIndex={-1} aria-labelledby="portal-publications-title">
-          <header className="portal-section-heading"><span className="portal-section-no">02 / PUBLICATIONS</span><h2 id="portal-publications-title">읽는 시간</h2><p>매거진과 오늘의 기록</p></header>
+        {(magazine || briefing) && <section className="portal-publications" id="portal-publications" aria-labelledby="portal-publications-title">
+          <h2 className="portal-sr" id="portal-publications-title">매거진과 AI 교육 브리핑</h2>
           <div className="portal-publication-grid">
             {magazine && <article className="portal-publication portal-magazine">
-              <div className="portal-publication-meta"><span>MAGAZINE / VOL.01</span><span>SEUNG AI LABS</span></div>
-              <h3><a href={magazine.href}>{magazine.title}</a></h3>
-              <p>{magazine.description || '에이전틱 AI 전환기의 조직과 교육'}</p>
+              <div className="portal-publication-copy">
+                <div className="portal-publication-meta"><span>MAGAZINE / VOL.01</span></div>
+                <h3><a href={magazine.href}>{magazine.title}</a></h3>
+                <p>{magazine.description || '에이전틱 AI 전환기의 조직과 교육'}</p>
+              </div>
               <a className="portal-text-link" href={magazine.href}>매거진 읽기 ↗</a>
-              <span className="portal-publication-folio" aria-hidden="true">M.</span>
             </article>}
             {briefing && <article className="portal-publication portal-briefing">
-              <div className="portal-publication-meta"><span>DAILY BRIEFING</span>{typeof latest?.date === 'string' ? <time dateTime={latest.date}>{latest.date.replaceAll('-', '.')}</time> : <span>최신호</span>}</div>
-              <h3><a href={briefing.href}>{briefing.title}</a></h3>
-              <p>{briefing.description || '교육 사업 기회와 AI 이슈·뉴스'}</p>
+              <div className="portal-publication-copy">
+                <div className="portal-publication-meta"><span>DAILY BRIEFING</span>{typeof latest?.date === 'string' ? <time dateTime={latest.date}>{latest.date.replaceAll('-', '.')}</time> : <span>최신호</span>}</div>
+                <h3><a href={briefing.href}>{briefing.title}</a></h3>
+                <p>{briefing.description || '교육 사업 기회와 AI 이슈·뉴스'}</p>
+              </div>
               <a className="portal-text-link" href={briefing.href}>브리핑 읽기 ↗</a>
-              <span className="portal-publication-folio" aria-hidden="true">B.</span>
             </article>}
           </div>
         </section>}
+        <section className="portal-atlas" aria-labelledby="portal-atlas-title">
+          <header className="portal-atlas-copy">
+            <div className="portal-atlas-heading"><span className="portal-section-no">EXPLORE</span><h2 id="portal-atlas-title">수업과 실험의 작은 우주</h2></div>
+            <p>각 구를 누르면 그 공간으로 이어집니다.</p>
+          </header>
+          <div className="portal-atlas-map"><OrbitScene items={worlds} brand="Seung" /></div>
+        </section>
+        {error && <p className="portal-load-note" role="status">자료 목록을 불러오지 못해 기본 입구를 표시합니다.</p>}
         {(literacy || hub) && <details className="portal-activity-index">
           <summary>실습·특강 바로가기 <span>INDEX ↗</span></summary>
           <div className="portal-activity-columns">

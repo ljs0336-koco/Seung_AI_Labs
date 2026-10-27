@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useState } from 'react';
 import './OrbitScene.css';
 
-const PALETTE = ['#7899ee', '#d4b392', '#a4b9c1', '#ae9bda', '#a5bb99', '#c78979'];
+const PALETTE = ['#52778c', '#a17b59', '#66877f', '#81759b', '#7a885b', '#a07668'];
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(() => typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -52,13 +52,11 @@ export default function OrbitScene({ items = [], brand = 'Seung', className = ''
       </div>
 
       <div className="orbit-stage">
-        <div className="orbit-starlight" aria-hidden="true" />
         <div className="orbit-reticle orbit-reticle-horizontal" aria-hidden="true" />
         <div className="orbit-reticle orbit-reticle-vertical" aria-hidden="true" />
         <div className="orbit-ring orbit-ring-outer" aria-hidden="true" />
         <div className="orbit-ring orbit-ring-inner" aria-hidden="true" />
         <div className="orbit-core" aria-hidden="true">
-          <span className="orbit-core-light" />
           <span className="orbit-core-mark">S</span>
           <span className="orbit-core-name">{brand}</span>
           <span className="orbit-core-caption">AI LABS</span>
