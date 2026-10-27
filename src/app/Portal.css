@@ -38,6 +38,11 @@ body:has(.portal-container) { min-width: 0; }
 .portal-publication + .portal-publication { border-left: 1px solid var(--portal-rule); padding-left: 24px; padding-right: 0; }
 .portal-publication-copy { min-width: 0; }
 .portal-publication-meta { display: flex; flex-wrap: wrap; gap: 4px 15px; color: var(--portal-muted); font-size: 9px; letter-spacing: .08em; }
+.portal-magazine .portal-publication-meta { flex-wrap: nowrap; gap: 10px; align-items: baseline; }
+.portal-magazine-edition { flex: none; white-space: nowrap; }
+.portal-magazine-history { display: flex; align-items: baseline; gap: 6px; min-width: 0; letter-spacing: 0; }
+.portal-magazine-history > span { flex: none; }
+.portal-magazine-history a { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-bottom: 1px solid var(--portal-rule); }
 .portal-publication h3 { font: 500 clamp(20px, 2vw, 25px)/1.35 var(--portal-serif); letter-spacing: -.035em; margin: 5px 0; }
 .portal-publication p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; font-size: 11px; color: var(--portal-muted); line-height: 1.5; }
 .portal-text-link { display: inline-block; font-size: 11px; font-weight: 600; padding-bottom: 3px; border-bottom: 1px solid currentColor; white-space: nowrap; }

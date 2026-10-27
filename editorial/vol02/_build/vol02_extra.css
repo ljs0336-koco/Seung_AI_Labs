@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Vol.02 추가 — 같은 틀, 몇 가지 변형
+   ========================================================================== */
+.nw{white-space:nowrap}
+.prose p,.panel .lead,.risk p.body,.evi p,.step p,.quad .stack,.stat-copy p,.ev-cap,.engine-copy p,.use dd,.imperative p,.lead{text-wrap:pretty}
+
+/* 01 · 표지 그림 */
+.cover-art--sieve{opacity:.2}
+
+/* 03 · 세 줄 진단 */
+.risks--tight .risk{grid-template-columns:104px 1fr;gap:26px;padding:14px 0}
+.risks--tight .risk-num{height:92px}
+.risks--tight .risk-num strong{font-size:40px}
+.risks--tight .risk h4{font-size:23px}
+.risks--tight .risk p.body{margin-top:6px;font-size:16.5px;line-height:1.58}
+.risks--tight .risk p.so{margin-top:6px;font-size:16.5px}
+.stat .who-tag{font:600 14px/1 var(--f-label);letter-spacing:.12em;color:var(--ink-3);margin-left:10px}
+
+.p5-body .stat .big{font-size:156px}
+
+/* 04 · 고르는 사람 */
+.who{margin-top:16px;padding:14px 16px 16px;background:var(--paper-2);border:1px solid var(--rule)}
+.who .label{font-size:13px;margin-bottom:6px}
+.who p{font:500 18px/1.45 var(--f-serif);letter-spacing:-.03em;color:var(--ink)}
+.pillar--hot{position:relative;border-color:var(--accent)}
+.pillar--hot::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:3px;background:var(--accent)}
+.pillar--hot .who .label{color:var(--accent)}
+.use dd small{display:block;margin-top:2px;font-size:13.5px;color:var(--ink-3)}
+.pillar-note{flex:none;margin-top:-8px;font:500 15px/1.4 var(--f-sans);color:var(--ink-3)}
+.pillar-note b{color:var(--accent)}
+
+/* 05 · 근거 띠 */
+.compare--tight .gen-card{padding:24px 36px 22px}
+.compare--tight .spec div{padding:8px 0}
+.compare--tight .gen-card h3{margin-top:12px}
+.evi-strip{flex:none;display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper-4);padding:18px 0 16px}
+.evi{display:flex;flex-direction:column;gap:8px;padding:0 34px;border-left:1px solid var(--rule-2)}
+.evi:first-child{border-left:0}
+.evi-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.evi-num{font:400 44px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.evi--hot .evi-num{color:var(--accent)}
+.evi p{font:500 17px/1.5 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+.evi cite{margin-top:auto;font:normal 400 13.5px/1.4 var(--f-sans);color:var(--ink-3)}
+
+/* 06 · 네 경로와 정제의 역설 */
+.quad .num-tag{margin-top:8px;font:400 40px/1.05 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.quad .num-tag.word{font:500 30px/1.2 var(--f-serif);letter-spacing:-.04em}
+.quad--agent .num-tag{color:var(--accent)}
+.quad .stack{margin-top:10px}
+.golden--doc strong{font:500 40px/1 var(--f-serif);letter-spacing:-.04em}
+.golden--doc span{font-size:17.5px}
+.questions--law li{grid-template-columns:44px 1fr;padding:9px 0}
+.questions--law b{font-size:18px}
+.questions--law b span{font-weight:400;color:var(--ink-3);margin-left:6px;font-size:15.5px}
+
+/* 07 · 두 패널 */
+.meter--compact{margin-top:22px;padding:18px 26px 16px}
+.meter--compact .label{margin-bottom:12px}
+.meter--compact .bars{gap:12px}
+.meter--compact .ev-cap{margin-top:10px}
+.risk-list--wide{margin-top:20px}
+.risk-list--wide li{grid-template-columns:116px 1fr auto;gap:12px;padding:18px 0}
+.risk-list--wide b{font-size:22px}
+.risk-list--wide span{font-size:18px}
+.risk-list--wide .term{font:500 13.5px/1 var(--f-label);letter-spacing:.06em;color:var(--ink-3);white-space:nowrap}
+.panel .shift-note{margin-top:22px}
+
+/* 08 · 질문과 출처 */
+.step--q .n{font-size:60px}
+.sources--dense{padding:24px 32px 18px}
+.sources--dense li{padding:9px 0;font-size:13.5px;line-height:1.5}
+.sources--dense li::before{line-height:1.65}
+.sources--dense i{font-size:14.5px}
+
+/* 렌더 확인 뒤 */
+.folio .src{text-wrap:balance}
+.fix,.principle cite,.evi p{text-wrap:pretty}
+.p5-body .stat-meta{flex-direction:column;align-items:flex-start;gap:10px}
+
+/* User-reviewed prose, with the original eight-page grid retained. */
+#slide-2 .prose{margin-top:24px;gap:14px}
+#slide-2 .prose p{font-size:20px;line-height:1.7}
+#slide-2 .pull{margin-top:24px}
+#slide-2 .pull p{font-size:30px}
+#slide-2 .pull cite{font-size:13.5px;line-height:1.5}
+#slide-3 .stat-copy p{font-size:22px}
+#slide-3 .risk-num strong{font-family:var(--f-sans);font-size:26px}
+#slide-3 .risk h4{font-size:21px}
+#slide-4 .engine{grid-template-columns:400px 1fr 400px;gap:28px;padding:18px 28px}
+#slide-4 .engine-copy h3{font-size:26px;line-height:1.3}
+#slide-4 .engine-copy p{font-size:16px;line-height:1.55}
+#slide-5 .gen-card h3{font-size:32px}
+#slide-5 .evi p{font-size:16.5px;line-height:1.5}
+#slide-5 .flow-row{flex-wrap:wrap}
+.matrix--paths{padding:0}
+.matrix--paths .quads{padding:0;border:0}
+.matrix--paths .quads::before,.matrix--paths .quads::after{display:none}
+.matrix--paths .quad h4{font-size:23px}
+.sovereign-pov .panel h3{font-size:30px;line-height:1.4}
+.sovereign-pov .lead{font-size:19px;line-height:1.7}
+.author-position{margin-top:18px;padding:18px 20px;background:var(--white);border-left:2px solid var(--accent);font:500 21px/1.6 var(--f-serif);letter-spacing:-.025em}
+.sovereign-pov .control-questions{margin-top:18px}
+.sovereign-pov .control-questions li{grid-template-columns:64px 1fr;padding:14px 0}
+.sovereign-pov .control-questions b{font-size:21px}
+.sovereign-pov .control-questions span{font-size:18px}
+.scope-note{margin-top:20px;padding-top:18px;border-top:1px solid var(--rule-2)}
+.scope-note>b{display:block;font:600 19px/1.4 var(--f-serif);color:var(--accent)}
+.scope-note p{margin-top:8px;font:400 18px/1.7 var(--f-sans);color:var(--ink-2)}
+.scope-note cite{display:block;margin-top:8px;font:normal 400 14px/1.5 var(--f-sans);color:var(--ink-3)}
+.sources a,.scope-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}

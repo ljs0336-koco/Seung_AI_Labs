@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import useCatalog, { useJsonResource } from '../hooks/useCatalog';
+import useCatalog, { safeContentHref, useJsonResource } from '../hooks/useCatalog';
 import OrbitScene from './OrbitScene';
 import PortalQr from './PortalQr';
 import './Portal.css';
@@ -34,6 +34,11 @@ export default function Portal() {
   }));
   const publication = id => entrances.find(item => item.id === id);
   const magazine = publication('deck');
+  const magazineEdition = typeof magazine?.edition === 'string' ? magazine.edition.trim() : '';
+  const magazineHistory = (Array.isArray(magazine?.children) ? magazine.children : [])
+    .map(child => typeof child === 'string' ? catalog.items.find(item => item.id === child) : child)
+    .filter(child => child && typeof child.title === 'string' && safeContentHref(child.href))
+    .map(child => ({ ...child, href: safeContentHref(child.href) }));
   const briefing = publication('briefing');
   const literacy = entrances.find(item => item.id === 'literacy');
   const hub = entrances.find(item => item.id === 'hub');
@@ -57,7 +62,10 @@ export default function Portal() {
           <div className="portal-publication-grid">
             {magazine && <article className="portal-publication portal-magazine">
               <div className="portal-publication-copy">
-                <div className="portal-publication-meta"><span>MAGAZINE / VOL.01</span></div>
+                <div className="portal-publication-meta">
+                  <span className="portal-magazine-edition">MAGAZINE{magazineEdition ? ` / ${magazineEdition}` : ''}</span>
+                  {!!magazineHistory.length && <nav className="portal-magazine-history" aria-label="매거진 지난호"><span>지난호</span>{magazineHistory.map(child => <a key={child.id || child.href} href={child.href} title={child.title}>{child.title}</a>)}</nav>}
+                </div>
                 <h3><a href={magazine.href}>{magazine.title}</a></h3>
                 <p>{magazine.description || '에이전틱 AI 전환기의 조직과 교육'}</p>
               </div>

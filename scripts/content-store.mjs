@@ -40,7 +40,7 @@ export function validateCatalog(input) {
     if (['locked','orphan'].includes(item.status) && ['both','portal'].includes(item.placement)) throw new Error('아직 열 수 없는 자료는 포털에 올릴 수 없습니다.');
     if (raw.parent) item.parent = String(raw.parent);
     if (raw.children) item.children = raw.children.map(child => typeof child === 'string' ? child : ({title:String(child.title||'열기').slice(0,120),href:safeHref(child.href)}));
-    for (const key of ['targetHref','date','source','newsId']) if (raw[key]) item[key] = key==='targetHref'?safeHref(raw[key]):String(raw[key]).slice(0,240);
+    for (const key of ['targetHref','date','source','newsId','edition']) if (raw[key]) item[key] = key==='targetHref'?safeHref(raw[key]):String(raw[key]).slice(0,240);
     result.items.push(item);
   }
   return result;

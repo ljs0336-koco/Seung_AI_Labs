@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 7,
+  "revision": 8,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -143,12 +143,19 @@
     {
       "id": "deck",
       "kind": "link",
-      "title": "The Agentic Shift",
-      "description": "에이전틱 AI 전환기의 조직과 교육",
-      "href": "./deck/index.html",
+      "title": "The Curated Mind",
+      "description": "AI의 답에 담긴 기준과, 목적에 맞는 AI의 통제 범위",
+      "href": "./deck/vol02/index.html",
       "section": "showcase",
       "placement": "both",
-      "status": "live"
+      "status": "live",
+      "children": [
+        {
+          "title": "Vol.01 · The Agentic Shift",
+          "href": "./deck/index.html"
+        }
+      ],
+      "edition": "VOL.02"
     },
     {
       "id": "terrarium",

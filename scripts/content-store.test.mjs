@@ -15,6 +15,12 @@ test('public projection keeps only defined fields',()=>{
  const result=validateCatalog({...fixture,secretPath:'local-only',items:[{...fixture.items[0],privateNote:'local-only'}]});
  assert.equal(result.secretPath,undefined);assert.equal(result.items[0].privateNote,undefined);
 });
+
+test('magazine edition and previous-issue links survive saving and materialization',()=>workspace(async root=>{
+ const draft=await loadDraft(root);Object.assign(draft.items[0],{edition:'VOL.02',children:[{title:'Vol.01',href:'./deck/index.html'}]});
+ const saved=await saveDraft(root,draft);await materialize(root,saved);
+ const result=await loadDraft(root);assert.equal(result.items[0].edition,'VOL.02');assert.equal(result.items[0].children[0].href,'./deck/index.html');
+}));
 test('locked item cannot be advertised on portal',()=>assert.throws(()=>validateCatalog({...fixture,items:[{...fixture.items[0],status:'locked',placement:'both'}]})));
 test('saved visibility survives loading another instance',()=>workspace(async root=>{
  const draft=await loadDraft(root);draft.items[0].placement='both';const saved=await saveDraft(root,draft);assert.equal(saved.revision,2);assert.equal((await loadDraft(root)).items[0].placement,'both');

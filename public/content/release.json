@@ -1,5 +1,5 @@
 {
-  "revision": 7,
+  "revision": 8,
   "items": [
     {
       "id": "briefing",
@@ -43,7 +43,7 @@
     },
     {
       "id": "deck",
-      "href": "./deck/index.html"
+      "href": "./deck/vol02/index.html"
     },
     {
       "id": "terrarium",

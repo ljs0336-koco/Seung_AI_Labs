@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Curated Mind</title>
+<link rel="canonical" href="https://ljs0336-koco.github.io/Seung_AI_Labs/deck/vol02/">
+<meta property="og:title" content="The Curated Mind · Vol.02">
+<meta property="og:description" content="AI의 답에는 누구의 기준이 담기는가 · Seung AI Labs">
+<meta property="og:url" content="https://ljs0336-koco.github.io/Seung_AI_Labs/deck/vol02/">
+<meta name="description" content="Responsible AI Vol.02 — AI의 답에 담긴 판단 기준, 데이터 정제, 목적에 맞는 AI와 통제 범위. 8쪽 에디토리얼.">
+
+<!-- Fonts: Playfair Display (표지 타이틀·용어) · Noto Serif KR (제목·본문 세리프) · Pretendard (본문·라벨) · Inter (숫자·폴리오) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+/* ==========================================================================
+   L'Éditeur Archival — design tokens · Vol.02 세피아 B
+   (DESIGN.md + GEMINI.md: warm minimalist, 0px radius, hairline rules)
+   ========================================================================== */
+:root{
+  --paper:#F6EFE2;        /* canvas — archival alabaster */
+  --paper-2:#F1E9DA;      /* surface-container-low */
+  --paper-3:#EAE1CF;      /* surface-container */
+  --paper-4:#E4D9C5;      /* surface-container-high */
+  --sheet:#EEE3CF;        /* tonal insert */
+  --white:#FFFBF2;
+  --ink:#1B1C1A;          /* on-surface */
+  --ink-2:#474741;        /* body */
+  --ink-3:#605C54;        /* muted */
+  --rule:#E2D7C3;         /* hairline */
+  --rule-2:#C9BBA2;       /* outline-variant */
+  --accent:#A23E18;       /* terracotta — 숫자·키커·한 장에 한 곳의 강조 */
+  --accent-soft:#FFDBCF;
+  --desk:#D9CCB4;         /* 스테이지 바깥 여백 */
+
+  --f-display:"Playfair Display","Noto Serif KR",Georgia,serif;
+  --f-serif:"Noto Serif KR","Playfair Display",Georgia,serif;
+  --f-sans:"Pretendard Variable","Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-label:"Inter","Pretendard Variable","Pretendard","Malgun Gothic",sans-serif;
+
+  --pad-x:112px;
+  --folio-h:84px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--desk);overflow:hidden}
+body{
+  font-family:var(--f-sans);color:var(--ink);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  word-break:keep-all;overflow-wrap:break-word;
+}
+::-webkit-scrollbar{display:none}
+::selection{background:var(--accent-soft);color:#390C00}
+b,strong{font-weight:600}
+ol,ul{list-style:none}
+
+/* ==========================================================================
+   Stage: 1920×1080 고정 캔버스를 창 크기에 맞춰 축소·확대 (16:9 유지)
+   ========================================================================== */
+.viewport{position:fixed;inset:0;overflow:hidden;background:var(--desk)}
+.stage{
+  position:absolute;left:50%;top:50%;
+  width:1920px;height:1080px;
+  transform:translate(-50%,-50%) scale(var(--scale,.5));
+  transform-origin:center center;
+  background:var(--paper);
+  box-shadow:0 40px 90px -40px rgba(27,28,26,.28),0 0 0 1px rgba(27,28,26,.05);
+}
+.slide{
+  position:absolute;inset:0;overflow:hidden;background:var(--paper);
+  opacity:0;visibility:hidden;
+  transition:opacity .45s ease,visibility 0s linear .45s;
+}
+.slide.is-active{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+
+.sheet{position:absolute;inset:0;display:flex;flex-direction:column;padding:56px var(--pad-x) 0}
+.sheet::before{ /* 종이 결 */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(27,28,26,.9) .7px,transparent .8px);
+  background-size:24px 24px;opacity:.03;
+}
+.sheet>*{position:relative;z-index:2}
+
+/* ==========================================================================
+   공통 에디토리얼 요소
+   ========================================================================== */
+.masthead{
+  flex:none;display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:18px;border-bottom:1px solid var(--rule-2);
+  font:600 14px/1 var(--f-sans);letter-spacing:.04em;color:var(--ink-2);
+}
+.masthead .grp{display:flex;align-items:center;gap:14px}
+.masthead strong{color:var(--ink)}
+.caps{font-family:var(--f-label);font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.sq{display:inline-block;width:8px;height:8px;background:var(--accent);flex:none}
+.sep{color:var(--rule-2);font-weight:400}
+.accent{color:var(--accent)}
+
+.folio{
+  flex:none;margin-top:auto;height:var(--folio-h);border-top:1px solid var(--rule-2);
+  display:grid;grid-template-columns:auto 1fr 360px;align-items:center;gap:48px;
+  font:500 14px/1.4 var(--f-sans);letter-spacing:.02em;color:var(--ink-3);
+}
+.folio b{font:600 13px/1 var(--f-label);letter-spacing:.16em;color:var(--ink);margin-right:8px}
+.folio .src{text-align:center;font-size:13.5px}
+.folio .src i{font-family:var(--f-display);font-size:14.5px}
+.folio .pg{justify-self:end;visibility:hidden;font:600 14px/1 var(--f-label);letter-spacing:.2em;color:var(--ink)}
+
+.kicker{display:flex;align-items:center;gap:12px;font:600 16px/1.2 var(--f-sans);letter-spacing:.02em;color:var(--accent)}
+.kicker .num{font-family:var(--f-label);letter-spacing:.14em}
+.chip{display:inline-block;padding:8px 14px;background:var(--paper-3);font:600 14px/1 var(--f-sans);letter-spacing:.04em;color:var(--ink-2)}
+.chip--accent{color:var(--accent)}
+.label{font:600 14px/1.3 var(--f-sans);letter-spacing:.02em;color:var(--ink-3)}
+.term{font-family:var(--f-display);font-style:italic;font-weight:400}
+
+.title-block{display:flex;flex-direction:column;gap:14px}
+.headline{font:500 58px/1.22 var(--f-serif);letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
+.headline em{font-style:normal;color:var(--accent)}
+.deck{font:400 22px/1.5 var(--f-serif);letter-spacing:-.03em;color:var(--ink-3)}
+
+/* 막대 (근거·토큰 차트 공용) */
+.bars{display:flex;flex-direction:column;gap:11px}
+.bars li{display:grid;grid-template-columns:130px 1fr 58px;align-items:center;gap:12px;font:500 15px/1.2 var(--f-sans);color:var(--ink-2)}
+.bars .track{height:10px;background:var(--paper-3);position:relative}
+.bars .fill{position:absolute;left:0;top:0;bottom:0;width:var(--v);background:var(--ink-3)}
+.bars .bv{justify-self:end;font:600 15px/1 var(--f-label);font-variant-numeric:tabular-nums;color:var(--ink)}
+.bars li.hot{color:var(--ink);font-weight:700}
+.bars li.hot .fill{background:var(--accent)}
+.bars li.hot .bv{color:var(--accent)}
+
+/* ==========================================================================
+   01 · 표지
+   ========================================================================== */
+.cover-art{position:absolute;right:0;top:0;width:64%;height:100%;z-index:1;pointer-events:none;color:var(--accent);opacity:.17}
+.cover-art svg{display:block;width:100%;height:100%}
+
+.cover-core{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;max-width:1400px}
+.tag-row{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.tag-row .line{width:64px;height:1px;background:var(--rule-2)}
+.cover-title{
+  font-family:var(--f-display);font-weight:400;font-size:140px;line-height:.96;
+  letter-spacing:-.025em;text-transform:uppercase;color:#000;
+}
+.cover-sub{margin-top:28px;font:500 50px/1.3 var(--f-serif);letter-spacing:-.045em;color:var(--accent)}
+.cover-deck{margin-top:34px;border-left:2px solid rgba(162,62,24,.45);padding-left:26px;font:400 24px/1.7 var(--f-serif);color:var(--ink-2)}
+
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;padding-bottom:36px}
+.in-volume .label{margin-bottom:14px}
+.in-volume ol{display:flex;flex-direction:column;gap:14px;font:600 19px/1 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+.in-volume ol span{display:inline-block;width:72px;font:600 13px/1 var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.in-volume ol em{font-style:normal;font-weight:400;color:var(--ink-3);margin-left:12px}
+
+.ledger{width:440px;background:rgba(237,230,216,.8);padding:24px 30px 22px}
+.ledger .label{padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--rule-2);color:var(--ink-2)}
+.ledger dl{display:flex;flex-direction:column;gap:11px}
+.ledger dl div{display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+.ledger dt{font:500 14px/1.3 var(--f-sans);color:var(--ink-3)}
+.ledger dd{font:500 16px/1.3 var(--f-sans);color:var(--ink);text-align:right}
+
+/* ==========================================================================
+   02 · 프롤로그 & 목차
+   ========================================================================== */
+.p2-body{flex:1;min-height:0;display:grid;grid-template-columns:640px 1fr;column-gap:128px;padding:44px 0 40px;position:relative}
+.p2-body::after{content:"";position:absolute;top:44px;bottom:40px;left:704px;width:1px;background:var(--rule)}
+
+.manifesto{display:flex;flex-direction:column}
+.manifesto .headline{margin-top:24px;font-size:54px}
+.prose{margin-top:36px;display:flex;flex-direction:column;gap:20px}
+.prose p{font:400 21px/1.9 var(--f-serif);color:var(--ink-2)}
+.prose b{color:var(--ink);font-weight:600}
+.dropcap::first-letter{float:left;font:500 84px/.9 var(--f-serif);color:var(--accent);margin:8px 14px 0 0}
+.pull{margin-top:64px;border-left:2px solid var(--accent);padding:4px 0 4px 26px}
+.pull p{font:500 34px/1.35 var(--f-serif);letter-spacing:-.03em;color:var(--ink)}
+.pull cite{display:block;margin-top:10px;font:normal 500 14px/1.4 var(--f-sans);color:var(--ink-3)}
+
+.index{display:flex;flex-direction:column}
+.index-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--rule-2)}
+.index-head h3{font:500 42px/1 var(--f-serif);letter-spacing:-.03em}
+.part-head{display:flex;align-items:center;gap:12px;margin-top:30px;padding-bottom:6px;font:600 16px/1 var(--f-sans);color:var(--ink)}
+.part-head .caps{color:var(--accent);font-weight:700}
+.part-head .status{margin-left:auto;font:500 13px/1 var(--f-label);letter-spacing:.12em;color:var(--ink-3)}
+
+.toc li{
+  display:grid;grid-template-columns:64px 1fr 180px 44px;align-items:center;
+  padding:20px 12px;margin:0 -12px;border-bottom:1px solid var(--rule);
+  transition:background .15s ease;
+}
+.toc li:hover{background:var(--paper-2)}
+.toc .n{font:700 15px/1 var(--f-label);letter-spacing:.14em;color:var(--accent)}
+.toc h4{font:500 28px/1.3 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
+.toc .leader{height:1px;margin:0 16px;border-bottom:2px dotted var(--rule-2);transform:translateY(6px)}
+.toc .pg{justify-self:end;font:500 16px/1 var(--f-label);letter-spacing:.08em;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ==========================================================================
+   03 · 패러다임 대전환
+   ========================================================================== */
+.p3-body{flex:1;min-height:0;display:flex;flex-direction:column;padding:32px 0 28px;gap:28px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1;min-height:0}
+.gen-card{position:relative;display:flex;flex-direction:column;padding:30px 38px 28px;background:var(--paper-2)}
+.gen-card--active{background:var(--paper-3)}
+.gen-card--active::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--accent)}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.badge{display:inline-block;padding:8px 13px;font:600 14px/1 var(--f-sans);letter-spacing:.04em;background:var(--paper-4);color:var(--ink-2)}
+.badge--accent{background:var(--accent);color:#fff}
+.glyph{width:28px;height:28px;color:var(--ink-3)}
+.gen-card--active .glyph{color:var(--accent)}
+.gen-card h3{margin-top:20px;font:600 40px/1.2 var(--f-serif);letter-spacing:-.045em;color:var(--ink)}
+.gen-card .tagline{margin-top:4px;font:400 21px/1.5 var(--f-serif);color:var(--ink-2)}
+
+.spec{margin-top:20px}
+.spec div{display:grid;grid-template-columns:140px 1fr;align-items:baseline;gap:16px;padding:12px 0;border-top:1px solid var(--rule)}
+.spec dt{font:600 15px/1.4 var(--f-sans);color:var(--ink-3)}
+.gen-card--active .spec dt{color:var(--accent)}
+.spec dd{font:500 20px/1.45 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+.spec dd .term{font-size:21px;color:var(--ink-3);margin-left:6px}
+
+.flow{margin-top:auto;padding:16px 20px 18px;background:var(--paper-3)}
+.gen-card--active .flow{background:var(--paper)}
+.flow .label{margin-bottom:14px}
+.gen-card--active .flow .label{color:var(--accent)}
+.flow-row{display:flex;align-items:center;gap:10px;font:500 16px/1 var(--f-sans);color:var(--ink)}
+.node{padding:10px 14px;background:var(--paper);box-shadow:0 0 0 1px var(--rule)}
+.gen-card--active .node{background:var(--paper-3);box-shadow:none}
+.node--muted{color:var(--ink-3);box-shadow:none;background:transparent;border:1px dashed var(--rule-2)}
+.node--hot{background:var(--accent-soft)!important;color:#390C00}
+.node--done{background:var(--ink)!important;color:var(--paper)}
+.arr{color:var(--accent);font-size:16px}
+.loop{position:relative;display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px dashed var(--accent)}
+.loop .tag{position:absolute;top:-11px;left:10px;padding:0 6px;background:var(--paper);font:600 13px/1.5 var(--f-sans);color:var(--accent)}
+
+.shift-strip{display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper-4);padding:24px 0}
+.shift{padding:0 38px;border-left:1px solid var(--rule-2)}
+.shift:first-child{border-left:0}
+.shift .from-to{margin-top:10px;font:500 28px/1.25 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
+.shift .from{color:var(--ink-3);font-weight:400}
+.shift .to-arr{color:var(--accent);margin:0 12px;font-family:var(--f-label);font-weight:400}
+
+/* ==========================================================================
+   04 · 4대 설계 패턴 + ReAct
+   ========================================================================== */
+.p4-body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-between;padding:32px 0 30px;gap:26px}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;flex:none}
+.pillar{display:flex;flex-direction:column;padding:24px 26px 20px;background:var(--white);border:1px solid var(--rule-2);transition:border-color .2s ease}
+.pillar:hover{border-color:var(--accent)}
+.pillar-head{padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.pillar-head .row{display:flex;justify-content:space-between;align-items:center}
+.pillar-head .row+.row{margin-top:10px;align-items:baseline}
+.pillar-head .idx{font:700 14px/1 var(--f-label);letter-spacing:.16em;color:var(--accent)}
+.pillar-head svg{width:24px;height:24px;color:var(--ink-3);flex:none}
+.pillar-head h3{font:400 34px/1.05 var(--f-display);letter-spacing:-.015em}
+.pillar-head .kr{font:500 20px/1 var(--f-serif);letter-spacing:-.03em;color:var(--ink-3)}
+.pillar .thesis{margin-top:16px;font:500 21px/1.45 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
+.schema{margin-top:16px;background:var(--paper-2);border:1px solid var(--rule);padding:8px 6px}
+.schema svg{display:block;width:100%;height:108px}
+.use{margin-top:22px}
+.use div{display:grid;grid-template-columns:46px 1fr;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+.use dt{font:600 14px/1.5 var(--f-sans);color:var(--ink-3)}
+.use dt.warn{color:var(--accent)}
+.use dd{font:400 16.5px/1.5 var(--f-sans);color:var(--ink-2)}
+
+.engine{flex:none;display:grid;grid-template-columns:400px 1fr 420px;gap:40px;align-items:center;padding:22px 32px;background:var(--sheet);border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
+.engine-copy h3{margin-top:10px;font:500 30px/1.2 var(--f-serif);letter-spacing:-.04em}
+.engine-copy h3 .arr{font-size:26px;margin:0 6px}
+.engine-copy p{margin-top:10px;font:400 17px/1.6 var(--f-sans);color:var(--ink-2)}
+.engine-copy cite{display:block;margin-top:6px;font:normal 400 13.5px/1.4 var(--f-sans);color:var(--ink-3)}
+.engine-diagram svg{display:block;width:100%;height:auto;max-height:140px}
+
+.evidence{padding-left:34px;border-left:1px solid var(--rule-2)}
+.evidence .label{color:var(--accent);margin-bottom:14px}
+.ev-cap{margin-top:12px;font:400 14.5px/1.5 var(--f-sans);color:var(--ink-3)}
+
+/* ==========================================================================
+   05 · 가트너 전망 & 현실의 간극
+   ========================================================================== */
+.p5-body{flex:1;min-height:0;display:flex;flex-direction:column;padding:32px 0 28px;gap:30px}
+.p5-grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.2fr;gap:36px}
+.forecast{display:flex;flex-direction:column;gap:18px}
+.col-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--rule-2)}
+.col-head .label{color:var(--ink)}
+.col-head span:last-child{font:400 14px/1 var(--f-sans);color:var(--ink-3)}
+.stat{flex:1;display:flex;flex-direction:column;padding:24px 32px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.stat .label{color:var(--accent)}
+.stat-main{flex:1;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center}
+.big{font:400 132px/.9 var(--f-display);letter-spacing:-.03em;color:var(--ink)}
+.big small{font-size:.5em;letter-spacing:0;vertical-align:.62em;margin-left:2px}
+.big--accent{color:var(--accent)}
+.stat-copy p{font:500 25px/1.45 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.stat-meta{display:flex;align-items:center;gap:16px;margin-top:14px}
+.units{display:block;flex:none}
+.stat-meta span{font:400 15px/1.4 var(--f-sans);color:var(--ink-3)}
+.stat-meta span b{color:var(--ink-2)}
+
+.reality{display:flex;flex-direction:column;padding:28px 38px 26px;background:var(--paper-2);box-shadow:0 0 0 1px var(--rule)}
+.reality-head{padding-bottom:18px;border-bottom:1px solid var(--rule-2)}
+.reality-head .label{color:var(--accent);margin-bottom:10px}
+.reality-head h3{font:500 38px/1.1 var(--f-serif);letter-spacing:-.04em}
+.risks{flex:1;display:flex;flex-direction:column;justify-content:space-around}
+.risk{display:grid;grid-template-columns:120px 1fr;gap:30px;padding:20px 0;align-items:center}
+.risk+.risk{border-top:1px solid var(--rule)}
+.risk-num{display:flex;flex-direction:column;align-items:center;justify-content:center;height:112px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.risk-num strong{font:500 48px/1 var(--f-display);color:var(--accent);letter-spacing:-.02em}
+.risk-num span{margin-top:8px;font:600 14px/1 var(--f-sans);color:var(--ink-3)}
+.risk-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.risk h4{font:600 26px/1.3 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.risk .when{flex:none;padding:6px 10px;background:var(--paper);box-shadow:0 0 0 1px var(--rule);font:500 13.5px/1 var(--f-sans);color:var(--ink-2)}
+.risk p.body{margin-top:8px;font:400 18px/1.6 var(--f-sans);color:var(--ink-2)}
+.risk p.so{margin-top:8px;display:grid;grid-template-columns:24px 1fr;font:600 18px/1.5 var(--f-sans);color:var(--ink)}
+.risk p.so::before{content:"—";color:var(--accent)}
+.imperative{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:18px 24px;background:var(--paper-3);box-shadow:0 0 0 1px var(--rule)}
+.imperative .label{color:var(--ink)}
+.imperative p{font:500 21px/1.5 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
+.imperative .next{font:600 15px/1 var(--f-sans);color:var(--accent);white-space:nowrap}
+
+/* ==========================================================================
+   06 · 도입 적합성 판단
+   ========================================================================== */
+.p6-body{flex:1;min-height:0;display:flex;flex-direction:column;padding:32px 0 30px;gap:30px}
+.p6-grid{flex:1;min-height:0;display:grid;grid-template-columns:1.12fr 1fr;gap:64px}
+
+.matrix{position:relative;display:flex;flex-direction:column;padding:36px 0 40px 0}
+.quads{
+  flex:1;position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;
+  padding:0 0 14px 14px;border-left:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);
+}
+.quads::before{content:"";position:absolute;left:-6.75px;top:-12px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:12px solid var(--ink)}
+.quads::after{content:"";position:absolute;right:-12px;bottom:-6.75px;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:12px solid var(--ink)}
+.ax{position:absolute;font:600 15px/1 var(--f-sans);color:var(--ink)}
+.ax span{font-weight:400;color:var(--ink-3);margin-left:8px}
+.ax-y{left:0;top:0}
+.ax-x{right:0;bottom:0}
+.quad{display:flex;flex-direction:column;padding:22px 26px;background:var(--paper-2);box-shadow:0 0 0 1px var(--rule)}
+.quad h4{font:600 26px/1.3 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.quad .stack{margin-top:6px;font:500 17px/1.5 var(--f-sans);color:var(--ink-2)}
+.quad .ex{margin-top:auto;font:400 15.5px/1.5 var(--f-sans);color:var(--ink-3)}
+.quad--agent{background:var(--white);box-shadow:0 0 0 1px var(--accent);position:relative}
+.quad--agent::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+.quad--agent h4{color:var(--accent)}
+
+.p6-side{display:flex;flex-direction:column;justify-content:space-between;padding:36px 0 40px}
+.principle{border-left:2px solid var(--accent);padding:2px 0 2px 26px}
+.principle .label{color:var(--accent);margin-bottom:12px}
+.principle p{font:500 32px/1.4 var(--f-serif);letter-spacing:-.04em;color:var(--ink)}
+.principle cite{display:block;margin-top:10px;font:normal 400 14px/1.4 var(--f-sans);color:var(--ink-3)}
+.golden{display:flex;align-items:baseline;gap:20px;padding:18px 0;border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
+.golden strong{font:400 56px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.golden span{font:500 19px/1.5 var(--f-sans);color:var(--ink-2)}
+.golden em{display:block;font-style:normal;font-weight:400;font-size:14px;color:var(--ink-3)}
+.questions .label{color:var(--ink);margin-bottom:6px}
+.questions li{display:grid;grid-template-columns:52px 1fr;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)}
+.questions .qn{font:700 15px/1 var(--f-label);letter-spacing:.1em;color:var(--accent)}
+.questions b{display:block;font:600 20px/1.45 var(--f-sans);letter-spacing:-.02em;color:var(--ink)}
+.questions small{display:block;margin-top:3px;font:400 15.5px/1.5 var(--f-sans);color:var(--ink-3)}
+.verdict{margin-top:14px;font:600 17px/1.5 var(--f-sans);color:var(--accent)}
+
+/* ==========================================================================
+   07 · 비용과 통제권
+   ========================================================================== */
+.p7-body{flex:1;min-height:0;display:flex;flex-direction:column;padding:32px 0 30px;gap:30px}
+.p7-grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.panel{display:flex;flex-direction:column;padding:30px 38px 28px;background:var(--paper-2);box-shadow:0 0 0 1px var(--rule)}
+.panel--dark{background:var(--paper-3)}
+.panel>.label{color:var(--accent)}
+.panel h3{margin-top:10px;font:600 32px/1.3 var(--f-serif);letter-spacing:-.045em;color:var(--ink)}
+.panel .lead{margin-top:10px;font:400 18px/1.65 var(--f-sans);color:var(--ink-2)}
+.meter{margin-top:28px;padding:26px 28px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.meter .label{margin-bottom:20px}
+.meter .label em{font-style:normal;font-weight:400}
+.meter .bars{gap:18px}
+.meter .bars li{grid-template-columns:110px 1fr 70px;font-size:16px}
+.meter .bars .track{height:16px}
+.meter .bars .bv{font-size:16px}
+.mult{margin-top:34px;display:grid;grid-template-columns:1fr 1fr auto;align-items:end;gap:20px}
+.mult div{display:flex;align-items:baseline;gap:14px}
+.mult strong{font:400 76px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.mult div:nth-child(2) strong{color:var(--accent)}
+.mult span{font:500 16px/1.3 var(--f-sans);color:var(--ink-2)}
+.mult cite{font:normal 400 13.5px/1.3 var(--f-sans);color:var(--ink-3);text-align:right}
+.fix{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule-2);display:grid;grid-template-columns:52px 1fr;align-items:baseline;font:600 18px/1.5 var(--f-sans);color:var(--ink)}
+.fix span{font:700 14px/1 var(--f-sans);color:var(--accent)}
+
+.risk-list{margin-top:32px}
+.risk-list li{display:grid;grid-template-columns:72px 1fr auto;align-items:baseline;gap:8px;padding:26px 0;border-top:1px solid var(--rule)}
+.risk-list li:last-child{border-bottom:1px solid var(--rule)}
+.risk-list b{font:600 24px/1.3 var(--f-serif);letter-spacing:-.04em;color:var(--accent)}
+.risk-list span{font:500 20px/1.45 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+.risk-list .term{font-size:19px;color:var(--ink-3)}
+.shift-note{margin-top:30px;display:flex;align-items:center;gap:14px;font:500 17px/1.5 var(--f-sans);color:var(--ink-2)}
+.shift-note .node{background:var(--white);font-size:16px}
+.shift-note .node--hot{font-weight:600}
+
+/* ==========================================================================
+   08 · 실행 제언 & 검증 출처
+   ========================================================================== */
+.p8-body{flex:1;min-height:0;display:flex;flex-direction:column;padding:32px 0 30px;gap:30px}
+.p8-grid{flex:1;min-height:0;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.steps{display:flex;flex-direction:column;justify-content:center}
+.step{display:grid;grid-template-columns:104px 1fr;padding:28px 0;border-top:1px solid var(--rule-2)}
+.step:last-child{border-bottom:1px solid var(--rule-2)}
+.step .n{font:400 68px/.85 var(--f-display);letter-spacing:-.02em;color:var(--accent)}
+.step h4{font:600 30px/1.3 var(--f-serif);letter-spacing:-.045em;color:var(--ink)}
+.step p{margin-top:8px;font:400 18px/1.6 var(--f-sans);color:var(--ink-2)}
+.step .ref{display:inline-block;margin-top:10px;font:500 14px/1 var(--f-sans);color:var(--ink-3)}
+.step .ref b{color:var(--accent);font-weight:600}
+
+.sources{display:flex;flex-direction:column;padding:28px 36px 22px;background:var(--paper-2);box-shadow:0 0 0 1px var(--rule)}
+.sources .label{color:var(--ink);padding-bottom:12px}
+.sources ol{counter-reset:src}
+.sources li{display:grid;grid-template-columns:40px 1fr;padding:15px 0;border-top:1px solid var(--rule);font:400 15px/1.55 var(--f-sans);color:var(--ink-3)}
+.sources li::before{counter-increment:src;content:counter(src,decimal-leading-zero);font:600 13px/1.9 var(--f-label);letter-spacing:.08em;color:var(--accent)}
+.sources b{color:var(--ink);font-weight:600}
+.sources i{font-family:var(--f-display);font-size:16px;color:var(--ink-2)}
+
+/* ==========================================================================
+   네비게이션 (화면 전용)
+   ========================================================================== */
+.nav-controls{
+  position:absolute;right:var(--pad-x);bottom:0;height:var(--folio-h);z-index:20;
+  display:flex;align-items:center;gap:22px;
+}
+.dots{display:flex;align-items:center}
+.dot{width:20px;height:28px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.dot::before{content:"";width:7px;height:7px;background:var(--rule-2);transition:width .3s ease,background .3s ease}
+.dot:hover::before{background:var(--ink-3)}
+.dot.is-active{width:38px}
+.dot.is-active::before{width:26px;background:var(--accent)}
+.slide-counter{font:600 14px/1 var(--f-label);letter-spacing:.2em;font-variant-numeric:tabular-nums;color:var(--ink);min-width:78px;text-align:center}
+.slide-counter .total{color:var(--ink-3)}
+.nav-btn{
+  width:40px;height:40px;display:grid;place-items:center;cursor:pointer;
+  background:transparent;border:1px solid var(--rule-2);color:var(--ink);
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.nav-btn:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.nav-btn:disabled{opacity:.3;cursor:default}
+.nav-btn svg{width:16px;height:16px}
+.nav-btn:focus-visible,.dot:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+.nav-group{display:flex;gap:8px}
+
+/* ==========================================================================
+   인쇄 — Ctrl+P → 페이지당 16:9 슬라이드 1장, 여백·UI 없음
+   ========================================================================== */
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{
+    width:1920px;height:auto!important;overflow:visible!important;
+    background-color:#F6EFE2!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .viewport{position:static!important;overflow:visible!important;background:none!important}
+  .stage{position:static!important;transform:none!important;width:1920px!important;height:auto!important;box-shadow:none!important}
+  .slide{
+    display:block!important;position:relative!important;
+    width:1920px!important;height:1080px!important;
+    opacity:1!important;visibility:visible!important;transition:none!important;
+    page-break-after:always!important;break-after:page!important;
+  }
+  .slide:last-of-type{page-break-after:auto!important;break-after:auto!important}
+  .nav-controls,.slide-counter{display:none!important}
+  .folio .pg{visibility:visible}
+  .toc li:hover,.pillar:hover{background:inherit}
+}
+/* ==========================================================================
+   Vol.02 추가 — 같은 틀, 몇 가지 변형
+   ========================================================================== */
+.nw{white-space:nowrap}
+.prose p,.panel .lead,.risk p.body,.evi p,.step p,.quad .stack,.stat-copy p,.ev-cap,.engine-copy p,.use dd,.imperative p,.lead{text-wrap:pretty}
+
+/* 01 · 표지 그림 */
+.cover-art--sieve{opacity:.2}
+
+/* 03 · 세 줄 진단 */
+.risks--tight .risk{grid-template-columns:104px 1fr;gap:26px;padding:14px 0}
+.risks--tight .risk-num{height:92px}
+.risks--tight .risk-num strong{font-size:40px}
+.risks--tight .risk h4{font-size:23px}
+.risks--tight .risk p.body{margin-top:6px;font-size:16.5px;line-height:1.58}
+.risks--tight .risk p.so{margin-top:6px;font-size:16.5px}
+.stat .who-tag{font:600 14px/1 var(--f-label);letter-spacing:.12em;color:var(--ink-3);margin-left:10px}
+
+.p5-body .stat .big{font-size:156px}
+
+/* 04 · 고르는 사람 */
+.who{margin-top:16px;padding:14px 16px 16px;background:var(--paper-2);border:1px solid var(--rule)}
+.who .label{font-size:13px;margin-bottom:6px}
+.who p{font:500 18px/1.45 var(--f-serif);letter-spacing:-.03em;color:var(--ink)}
+.pillar--hot{position:relative;border-color:var(--accent)}
+.pillar--hot::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:3px;background:var(--accent)}
+.pillar--hot .who .label{color:var(--accent)}
+.use dd small{display:block;margin-top:2px;font-size:13.5px;color:var(--ink-3)}
+.pillar-note{flex:none;margin-top:-8px;font:500 15px/1.4 var(--f-sans);color:var(--ink-3)}
+.pillar-note b{color:var(--accent)}
+
+/* 05 · 근거 띠 */
+.compare--tight .gen-card{padding:24px 36px 22px}
+.compare--tight .spec div{padding:8px 0}
+.compare--tight .gen-card h3{margin-top:12px}
+.evi-strip{flex:none;display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper-4);padding:18px 0 16px}
+.evi{display:flex;flex-direction:column;gap:8px;padding:0 34px;border-left:1px solid var(--rule-2)}
+.evi:first-child{border-left:0}
+.evi-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.evi-num{font:400 44px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.evi--hot .evi-num{color:var(--accent)}
+.evi p{font:500 17px/1.5 var(--f-sans);letter-spacing:-.01em;color:var(--ink)}
+.evi cite{margin-top:auto;font:normal 400 13.5px/1.4 var(--f-sans);color:var(--ink-3)}
+
+/* 06 · 네 경로와 정제의 역설 */
+.quad .num-tag{margin-top:8px;font:400 40px/1.05 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.quad .num-tag.word{font:500 30px/1.2 var(--f-serif);letter-spacing:-.04em}
+.quad--agent .num-tag{color:var(--accent)}
+.quad .stack{margin-top:10px}
+.golden--doc strong{font:500 40px/1 var(--f-serif);letter-spacing:-.04em}
+.golden--doc span{font-size:17.5px}
+.questions--law li{grid-template-columns:44px 1fr;padding:9px 0}
+.questions--law b{font-size:18px}
+.questions--law b span{font-weight:400;color:var(--ink-3);margin-left:6px;font-size:15.5px}
+
+/* 07 · 두 패널 */
+.meter--compact{margin-top:22px;padding:18px 26px 16px}
+.meter--compact .label{margin-bottom:12px}
+.meter--compact .bars{gap:12px}
+.meter--compact .ev-cap{margin-top:10px}
+.risk-list--wide{margin-top:20px}
+.risk-list--wide li{grid-template-columns:116px 1fr auto;gap:12px;padding:18px 0}
+.risk-list--wide b{font-size:22px}
+.risk-list--wide span{font-size:18px}
+.risk-list--wide .term{font:500 13.5px/1 var(--f-label);letter-spacing:.06em;color:var(--ink-3);white-space:nowrap}
+.panel .shift-note{margin-top:22px}
+
+/* 08 · 질문과 출처 */
+.step--q .n{font-size:60px}
+.sources--dense{padding:24px 32px 18px}
+.sources--dense li{padding:9px 0;font-size:13.5px;line-height:1.5}
+.sources--dense li::before{line-height:1.65}
+.sources--dense i{font-size:14.5px}
+
+/* 렌더 확인 뒤 */
+.folio .src{text-wrap:balance}
+.fix,.principle cite,.evi p{text-wrap:pretty}
+.p5-body .stat-meta{flex-direction:column;align-items:flex-start;gap:10px}
+
+/* User-reviewed prose, with the original eight-page grid retained. */
+#slide-2 .prose{margin-top:24px;gap:14px}
+#slide-2 .prose p{font-size:20px;line-height:1.7}
+#slide-2 .pull{margin-top:24px}
+#slide-2 .pull p{font-size:30px}
+#slide-2 .pull cite{font-size:13.5px;line-height:1.5}
+#slide-3 .stat-copy p{font-size:22px}
+#slide-3 .risk-num strong{font-family:var(--f-sans);font-size:26px}
+#slide-3 .risk h4{font-size:21px}
+#slide-4 .engine{grid-template-columns:400px 1fr 400px;gap:28px;padding:18px 28px}
+#slide-4 .engine-copy h3{font-size:26px;line-height:1.3}
+#slide-4 .engine-copy p{font-size:16px;line-height:1.55}
+#slide-5 .gen-card h3{font-size:32px}
+#slide-5 .evi p{font-size:16.5px;line-height:1.5}
+#slide-5 .flow-row{flex-wrap:wrap}
+.matrix--paths{padding:0}
+.matrix--paths .quads{padding:0;border:0}
+.matrix--paths .quads::before,.matrix--paths .quads::after{display:none}
+.matrix--paths .quad h4{font-size:23px}
+.sovereign-pov .panel h3{font-size:30px;line-height:1.4}
+.sovereign-pov .lead{font-size:19px;line-height:1.7}
+.author-position{margin-top:18px;padding:18px 20px;background:var(--white);border-left:2px solid var(--accent);font:500 21px/1.6 var(--f-serif);letter-spacing:-.025em}
+.sovereign-pov .control-questions{margin-top:18px}
+.sovereign-pov .control-questions li{grid-template-columns:64px 1fr;padding:14px 0}
+.sovereign-pov .control-questions b{font-size:21px}
+.sovereign-pov .control-questions span{font-size:18px}
+.scope-note{margin-top:20px;padding-top:18px;border-top:1px solid var(--rule-2)}
+.scope-note>b{display:block;font:600 19px/1.4 var(--f-serif);color:var(--accent)}
+.scope-note p{margin-top:8px;font:400 18px/1.7 var(--f-sans);color:var(--ink-2)}
+.scope-note cite{display:block;margin-top:8px;font:normal 400 14px/1.5 var(--f-sans);color:var(--ink-3)}
+.sources a,.scope-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+
+<!-- [FLOATING NAV START] -->
+<div style="position:fixed;top:18px;left:24px;z-index:9999;display:flex;gap:8px;">
+  <a href="../../#/" style="display:inline-flex;align-items:center;gap:6px;background:rgba(27,28,26,0.88);color:#F6EFE2;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:12.5px;font-weight:600;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:all .2s ease;" onmouseover="this.style.background='#A23E18'" onmouseout="this.style.background='rgba(27,28,26,0.88)'">
+    <span>←</span>
+    <span>통합 포털</span>
+  </a>
+</div>
+<!-- [FLOATING NAV END] -->
+
+<div class="viewport">
+<div class="stage" id="stage">
+
+<!-- ======================================================================
+     01 · 표지
+     ====================================================================== -->
+<section class="slide is-active" id="slide-1" aria-roledescription="slide" aria-label="01 / 08 — 표지">
+  <div class="sheet">
+    <div class="cover-art cover-art--sieve" aria-hidden="true">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dots-s" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="16" cy="16" r="1.8" fill="currentColor"/></pattern>
+          <pattern id="dots-l" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="16" cy="16" r="6" fill="currentColor"/></pattern>
+        </defs>
+        <rect x="96" y="32" width="704" height="544" fill="url(#dots-s)"/>
+        <rect x="448" y="192" width="224" height="224" fill="url(#dots-l)"/>
+        <rect x="440" y="184" width="240" height="240" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <circle cx="560" cy="304" r="196" stroke="currentColor"/>
+        <circle cx="560" cy="304" r="300" stroke="currentColor" stroke-dasharray="3 3"/>
+        <path d="M 120,40 L 440,184" stroke="currentColor" stroke-width="1.25"/>
+        <path d="M 120,568 L 440,424" stroke="currentColor" stroke-width="1.25"/>
+        <line x1="552" x2="568" y1="304" y2="304" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="560" x2="560" y1="296" y2="312" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>2026 가을</span></div>
+    </header>
+
+    <div class="cover-core">
+      <div class="tag-row"><span class="chip">책임 있는 AI · 사회적 영향</span><span class="line"></span></div>
+      <h1 class="cover-title">The Curated Mind</h1>
+      <p class="cover-sub">AI의 답에는 누구의 기준이 담기는가</p>
+      <p class="cover-deck">무엇을 배우고, 누구의 평가를 받고, 어디를 참고했는가.<br>그리고 나는 어떤 AI까지 감당할 수 있는가.</p>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="in-volume">
+        <div class="label">이번 호</div>
+        <ol>
+          <li><span>Part 1</span>진단<em>답의 경향 · 평가 기준 · 참여의 쏠림</em></li>
+          <li><span>Part 2</span>구조<em>데이터 정제 · 목적과 통제 · 남는 질문</em></li>
+        </ol>
+      </div>
+      <div class="ledger">
+        <div class="label">발행 정보</div>
+        <dl>
+          <div><dt>발행일</dt><dd>2026. 10. 27</dd></div>
+          <div><dt>시리즈</dt><dd>Responsible AI</dd></div>
+          <div><dt>글·편집</dt><dd>Seung AI Labs</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>01</b>표지</span>
+      <span class="src"></span>
+      <span class="pg">01 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     02 · 프롤로그 & 목차
+     ====================================================================== -->
+<section class="slide" id="slide-2" aria-roledescription="slide" aria-label="02 / 08 — 프롤로그와 목차">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>프롤로그 · 목차</span></div>
+    </header>
+
+    <div class="p2-body">
+      <article class="manifesto">
+        <div><span class="chip chip--accent">프롤로그</span></div>
+        <h2 class="headline">‘더 좋은 답’은,<br><em>누가</em> 고르는가</h2>
+        <div class="prose">
+          <p>프로그램 제안서를 쓸 때 AI가 여러 초안을 내놓았다. 나는 더 창의적인 안보다, <b>조금 투박해도 내 자료와 말투, 원래 소스의 느낌이 살아 있는 쪽</b>을 골랐다. 그 선택에는 내 기준이 남았다.</p>
+          <p>내가 원하는 것은 듣기 좋은 전망만이 아니다. 현실의 제약과 위기를 냉철하게 보고, <b>무엇을 대비해야 할지</b> 짚어 주는 답이다.</p>
+          <p>Vol.01에서는 사람이 실행을 승인하는 역할을 봤다. 이번에는 답을 좋다고 평가하는 기준을 본다. 내 초안을 고르는 일과 모델을 학습시키는 일은 다르지만, 둘 다 <b>‘누구의 판단인가’</b>를 묻게 한다.</p>
+        </div>
+        <blockquote class="pull">
+          <p>나에게 좋은 답이,<br>모두에게 좋은 답일까.</p>
+          <cite>서로 다른 사람들의 선호를 하나의 평가 기준에 담는 데는 한계가 있다.<br>Casper 외 (2023)의 논의를 참고한 문제제기</cite>
+        </blockquote>
+      </article>
+
+      <nav class="index" aria-label="목차">
+        <div class="index-head"><h3>목차</h3><span class="label">2부 구성 · 총 8장</span></div>
+
+        <div class="part-head"><span class="caps">Part 1</span><span>진단</span><span class="status">03 — 05</span></div>
+        <ol class="toc">
+          <li><span class="n">01</span><h4>한 명만 고르라 하자</h4><span class="leader"></span><span class="pg">03</span></li>
+          <li><span class="n">02</span><h4>편향의 경로, 고르는 손</h4><span class="leader"></span><span class="pg">04</span></li>
+          <li><span class="n">03</span><h4>사용자 피드백은 1인 1표가 아니다</h4><span class="leader"></span><span class="pg">05</span></li>
+        </ol>
+
+        <div class="part-head"><span class="caps">Part 2</span><span>구조</span><span class="status">06 — 08</span></div>
+        <ol class="toc">
+          <li><span class="n">04</span><h4>거르는 손, 데이터 정제</h4><span class="leader"></span><span class="pg">06</span></li>
+          <li><span class="n">05</span><h4>목적에 맞는 AI와 통제</h4><span class="leader"></span><span class="pg">07</span></li>
+          <li><span class="n">06</span><h4>교육 현장에 남는 질문</h4><span class="leader"></span><span class="pg">08</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <footer class="folio">
+      <span><b>02</b>프롤로그 · 목차</span>
+      <span class="src">출처: Casper et al. (2023), <i>Open Problems and Fundamental Limitations of RLHF</i>, TMLR</span>
+      <span class="pg">02 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     03 · 강요하자 드러난 기울기
+     ====================================================================== -->
+<section class="slide" id="slide-3" aria-roledescription="slide" aria-label="03 / 08 — 강요하자 드러난 기울기">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>Part 1 · 진단</span></div>
+    </header>
+
+    <div class="p5-body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">01</span>공정성 · 챗봇과 선거</div>
+        <h2 class="headline">같은 선택 질문, <em>다른 응답 경향</em></h2>
+      </div>
+
+      <div class="p5-grid">
+        <section class="forecast">
+          <div class="col-head"><span class="label">강제 선택 실험 · 검색 사용 · 2026 미국 중간선거</span><span>공개 논문, 2026.10</span></div>
+
+          <article class="stat">
+            <div class="label">Grok 4.7</div>
+            <div class="stat-main">
+              <div class="big">92<small>%</small></div>
+              <div class="stat-copy">
+                <p>후보를 지목한 응답 중 공화당</p>
+                <div class="stat-meta">
+                  <svg class="units" data-value="92" role="img" aria-label="100칸 중 92칸"></svg>
+                  <span>공화당 952 / 양당 후보를 지목한 응답 1,038건</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stat">
+            <div class="label">GPT-6.1 Sol</div>
+            <div class="stat-main">
+              <div class="big">97<small>%</small></div>
+              <div class="stat-copy">
+                <p>후보를 지목한 응답 중 민주당</p>
+                <div class="stat-meta">
+                  <svg class="units" data-value="97" role="img" aria-label="100칸 중 97칸"></svg>
+                  <span>민주당 1,082 / 양당 후보를 지목한 응답 1,111건</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="reality">
+          <div class="reality-head">
+            <div class="label">읽기 전에</div>
+            <h3>조건과 반박, 그리고 출처</h3>
+          </div>
+
+          <div class="risks risks--tight">
+            <div class="risk">
+              <div class="risk-num"><strong>API</strong><span>조건</span></div>
+              <div>
+                <div class="risk-top"><h4>개발자용 접속(API)에서, 한 명을 고르게 했다</h4><span class="when">동료 심사 전</span></div>
+                <p class="body">특정 후보를 반드시 고르라는 인위적인 질문이다. 수치는 전체 질문이나 선거구가 아니라, 양당 후보를 지목한 응답만을 분모로 삼았다.</p>
+              </div>
+            </div>
+            <div class="risk">
+              <div class="risk-num"><strong>ON/OFF</strong><span>검색 유무</span></div>
+              <div>
+                <div class="risk-top"><h4>검색 유무에 따라 선택과 거절 양상이 달랐다</h4><span class="when">조건 비교</span></div>
+                <p class="body">검색 사용·미사용 실험은 각각 10/21·10/23에 진행됐다. 모델과 검색 시스템의 영향을 분리한 실험이 아니므로, 차이를 검색만의 효과라고 단정할 수 없다.</p>
+              </div>
+            </div>
+            <div class="risk">
+              <div class="risk-num"><strong>출처</strong><span>인용 자료</span></div>
+              <div>
+                <div class="risk-top"><h4>기댄 출처가 달랐다</h4></div>
+                <p class="body">두 모델이 자주 인용한 사이트도 달랐다. 인용 목록은 답을 이해할 단서지만, 모델 내부의 판단 이유를 그대로 보여 주는 것은 아니다.</p>
+                <p class="so">답의 경향을 읽으려면 질문 조건과 모델, 검색 시스템을 함께 봐야 한다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="imperative">
+            <span class="label">읽는 법</span>
+            <p>정치 성향을 단정하기보다, 어떤 조건에서 무엇을 근거로 답했는지를 본다. 일반 앱의 응답과도 구분해야 한다.</p>
+            <span class="next">02 고르는 손 →</span>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>03</b>한 명만 고르라 하자</span>
+      <span class="src">출처: Tapan Parikh, How Does Search Influence the Election Picks of Two Frontier LLMs? (2026.10), §4·Table 1 — 공개 연구, 동료 심사 전</span>
+      <span class="pg">03 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     04 · 편향의 경로, 고르는 손
+     ====================================================================== -->
+<section class="slide" id="slide-4" aria-roledescription="slide" aria-label="04 / 08 — 편향의 경로">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>Part 1 · 진단</span></div>
+    </header>
+
+    <div class="p4-body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">02</span>편향의 경로</div>
+        <h2 class="headline">AI의 답은 <em>여러 단계의 선택</em>을 거친다</h2>
+      </div>
+
+      <div class="pillars">
+        <!-- 01 Data -->
+        <article class="pillar">
+          <div class="pillar-head">
+            <div class="row"><span class="idx">01</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div>
+            <div class="row"><h3>Data</h3><span class="kr">학습 데이터</span></div>
+          </div>
+          <p class="thesis">처음 무엇으로 배웠나</p>
+          <div class="who"><div class="label">고르는 사람</div><p>글을 쓴 사람, 모으고 거른 사람</p></div>
+          <dl class="use">
+            <div><dt>근거</dt><dd>사람 피드백을 거치기 전의 모델부터 특정 인구집단의 의견에 더 가까웠다<small>Santurkar 외, ICML 2023</small></dd></div>
+            <div><dt class="warn">주의</dt><dd>영어가 아닌 말이나 방언에서 성능 격차가 생길 수 있다<small>NIST AI 600-1, 2024</small></dd></div>
+          </dl>
+        </article>
+
+        <!-- 02 Raters -->
+        <article class="pillar pillar--hot">
+          <div class="pillar-head">
+            <div class="row"><span class="idx">02</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="5" width="7" height="12"/><rect x="14" y="5" width="7" height="12"/><path d="m15.5 11 1.5 1.5 3-3"/></svg></div>
+            <div class="row"><h3>Raters</h3><span class="kr">평가자</span></div>
+          </div>
+          <p class="thesis">개발 중 누가 답을 평가했나</p>
+          <div class="who"><div class="label">고르는 사람</div><p>고용된 평가자 — 두 답 중 고른다</p></div>
+          <dl class="use">
+            <div><dt>근거</dt><dd>사람 피드백으로 조정한 2023년 모델은 미국 설문에서 진보·고소득·고학력 응답 쪽으로 옮겨 갔다<small>Santurkar 외, ICML 2023 — 평가자와의 인과는 미확인</small></dd></div>
+            <div><dt class="warn">주의</dt><dd>드러난 편견은 줄어도 숨은 편견은 남았다<small>Hofmann 외, Nature 2024</small></dd></div>
+          </dl>
+        </article>
+
+        <!-- 03 Feedback -->
+        <article class="pillar pillar--hot">
+          <div class="pillar-head">
+            <div class="row"><span class="idx">03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 11v9H4v-9zM7 11l4-7c1.5 0 2.5 1 2 3l-1 3h6c1.2 0 2 1 1.8 2.2l-1.3 6.3c-.2 1-1 1.5-2 1.5H7"/></svg></div>
+            <div class="row"><h3>Feedback</h3><span class="kr">사용자 피드백</span></div>
+          </div>
+          <p class="thesis">무엇에 좋아요를 눌렀나</p>
+          <div class="who"><div class="label">고르는 사람</div><p>사용자 — 좋아요·싫어요, 둘 중 고르기</p></div>
+          <dl class="use">
+            <div><dt>근거</dt><dd>엄지 위·아래 반응을 보상 신호에 더한 변경 등이 겹쳐 맞장구가 심해졌다<small>OpenAI의 GPT-4o 사후 설명, 2025</small></dd></div>
+            <div><dt class="warn">주의</dt><dd>사람도 그럴듯한 아첨형 오답을 고르는 경우가 적지 않았다<small>Sharma 외, ICLR 2024</small></dd></div>
+          </dl>
+        </article>
+
+        <!-- 04 Sources -->
+        <article class="pillar">
+          <div class="pillar-head">
+            <div class="row"><span class="idx">04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg></div>
+            <div class="row"><h3>Sources</h3><span class="kr">답할 때 참고한 출처</span></div>
+          </div>
+          <p class="thesis">답할 때 어떤 자료를 찾았나</p>
+          <div class="who"><div class="label">고르는 것</div><p>검색 순위, 그리고 무엇을 출처로 쓸지 정한 기준</p></div>
+          <dl class="use">
+            <div><dt>근거</dt><dd>같은 선택 질문에도 두 모델이 자주 인용한 자료는 달랐다<small>01장 · Parikh, 2026</small></dd></div>
+            <div><dt class="warn">주의</dt><dd>인용 목록만으로 답이 만들어진 이유를 모두 알 수는 없다</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <!-- 엔진: 사람 피드백 강화학습 -->
+      <div class="engine">
+        <div class="engine-copy">
+          <div class="kicker"><span class="sq"></span>개발 단계의 예 · 사람 피드백을 이용한 강화학습(RLHF)</div>
+          <h3>사람의 평가를 모아, 모델을 다듬는다</h3>
+          <p>여러 답을 비교한 평가를 모아 후속 학습의 기준으로 쓴다. 방금 누른 좋아요가 현재 대화의 다음 답을 곧바로 학습시키는 뜻은 아니다.</p>
+          <cite>Ouyang 외, NeurIPS 2022 · Casper 외, TMLR 2023</cite>
+        </div>
+        <div class="engine-diagram" aria-label="사람 피드백 강화학습 고리: 모델이 답 두 개를 내면 사람이 고르고, 그 선택이 보상 모델을 거쳐 다시 모델을 학습시킨다">
+          <svg viewBox="0 0 660 136" fill="none" font-family="Pretendard Variable, Pretendard, Malgun Gothic, sans-serif" text-anchor="middle">
+            <text x="425" y="20" dominant-baseline="central" font-size="13" fill="#605C54">학습에 참여한 평가자</text>
+            <rect x="10" y="42" width="120" height="54" fill="#FFFBF2" stroke="#1B1C1A"/>
+            <text x="70" y="62" dominant-baseline="central" font-size="17" font-weight="700" fill="#1B1C1A">모델</text>
+            <text x="70" y="82" dominant-baseline="central" font-size="13.5" fill="#605C54">답을 만든다</text>
+            <rect x="175" y="42" width="140" height="54" fill="#FFFBF2" stroke="#1B1C1A"/>
+            <text x="245" y="62" dominant-baseline="central" font-size="17" font-weight="700" fill="#1B1C1A">답 A · B · C</text>
+            <text x="245" y="82" dominant-baseline="central" font-size="13.5" fill="#605C54">여러 후보</text>
+            <rect x="355" y="42" width="140" height="54" fill="#FFFBF2" stroke="#A23E18" stroke-width="1.5"/>
+            <text x="425" y="62" dominant-baseline="central" font-size="17" font-weight="700" fill="#A23E18">사람이 고른다</text>
+            <text x="425" y="82" dominant-baseline="central" font-size="13.5" fill="#605C54">‘더 좋은 답’</text>
+            <rect x="535" y="42" width="115" height="54" fill="#1B1C1A"/>
+            <text x="592" y="62" dominant-baseline="central" font-size="16" font-weight="700" fill="#F6EFE2">보상 모델</text>
+            <text x="592" y="82" dominant-baseline="central" font-size="13.5" fill="#D9CCB4">선택을 점수로</text>
+            <line x1="130" y1="69" x2="169" y2="69" stroke="#1B1C1A"/><polygon points="173,69 166,65 166,73" fill="#1B1C1A"/>
+            <line x1="315" y1="69" x2="349" y2="69" stroke="#1B1C1A"/><polygon points="353,69 346,65 346,73" fill="#1B1C1A"/>
+            <line x1="495" y1="69" x2="529" y2="69" stroke="#A23E18"/><polygon points="533,69 526,65 526,73" fill="#A23E18"/>
+            <path d="M592 96 V114 H70 V102" stroke="#A23E18" stroke-dasharray="4 3"/><polygon points="70,98 66,105 74,105" fill="#A23E18"/>
+            <text x="331" y="127" dominant-baseline="central" font-size="13" font-weight="600" fill="#A23E18">↺ 모인 평가로 후속 학습 — 응답 경향을 조정한다</text>
+          </svg>
+        </div>
+        <div class="evidence">
+          <div class="label">근거 · InstructGPT 평가자 구성 (설문 응답 19명)</div>
+          <ul class="bars">
+            <li title="국적 필리핀: 22%"><span>필리핀 국적</span><span class="track"><span class="fill" style="--v:22%"></span></span><span class="bv">22%</span></li>
+            <li title="국적 방글라데시: 22%"><span>방글라데시 국적</span><span class="track"><span class="fill" style="--v:22%"></span></span><span class="bv">22%</span></li>
+            <li title="국적 미국: 17%"><span>미국 국적</span><span class="track"><span class="fill" style="--v:17%"></span></span><span class="bv">17%</span></li>
+            <li class="hot" title="18~34세: 약 74%"><span>18–34세</span><span class="track"><span class="fill" style="--v:74%"></span></span><span class="bv">74%</span></li>
+          </ul>
+          <p class="ev-cap">“배포 모델을 쓰고 영향받을 사람 전체를 분명히 대표하지 않는다.” — InstructGPT 연구진, 평가자 집단에 대해 (2022)</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>04</b>편향의 경로</span>
+      <span class="src">출처: Santurkar et al. (2023) · Ouyang et al. (2022) · Casper et al. (2023) · Hofmann et al. (2024) · Sharma et al. (2024) · OpenAI (2025) · NIST AI 600-1 · Parikh (2026.10)</span>
+      <span class="pg">04 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     05 · 피드백은 1인 1표가 아니다
+     ====================================================================== -->
+<section class="slide" id="slide-5" aria-roledescription="slide" aria-label="05 / 08 — 피드백은 1인 1표가 아니다">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>Part 1 · 진단</span></div>
+    </header>
+
+    <div class="p3-body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">03</span>피드백의 무게</div>
+        <h2 class="headline">사용자 피드백은 <em>1인 1표</em>가 아니다</h2>
+      </div>
+
+      <div class="compare compare--tight">
+        <article class="gen-card">
+          <div class="card-top">
+            <span class="badge">선거</span>
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7M10.5 7.5l1.2 1.2 2.3-2.4"/></svg>
+          </div>
+          <h3>1인 1표</h3>
+          <p class="tagline">한 사람이, 한 번 말한다.</p>
+          <dl class="spec">
+            <div><dt>누가</dt><dd>자격을 갖춘 모든 사람</dd></div>
+            <div><dt>횟수</dt><dd>한 사람에 한 번</dd></div>
+            <div><dt>무게</dt><dd>모두 같다</dd></div>
+            <div><dt>집계</dt><dd>공개하고, 다시 셀 수 있다</dd></div>
+          </dl>
+          <div class="flow">
+            <div class="label">직선 경로</div>
+            <div class="flow-row">
+              <span class="node">유권자</span><span class="arr">→</span>
+              <span class="node">한 표</span><span class="arr">→</span>
+              <span class="node">공개 개표</span><span class="arr">→</span>
+              <span class="node">결과</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="gen-card gen-card--active">
+          <div class="card-top">
+            <span class="badge badge--accent">사용자 피드백</span>
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></svg>
+          </div>
+          <h3>한 사람이, 여러 번 반응한다</h3>
+          <p class="tagline">모이는 반응의 수와, 학습에 채택되는 무게는 다른 문제다.</p>
+          <dl class="spec">
+            <div><dt>누가</dt><dd>서비스 정책에 따라 대화·평가를 제공한 사용자</dd></div>
+            <div><dt>횟수</dt><dd>한 사람이 여러 반응을 남길 수 있다</dd></div>
+            <div><dt>무게</dt><dd>사용 횟수만으로 학습 영향력을 알 수 없다</dd></div>
+            <div><dt>집계</dt><dd>선별·채택 비율과 사람별 가중치는 확인되지 않는다</dd></div>
+          </dl>
+          <div class="flow">
+            <div class="label">수집과 반영은 구분해야 한다</div>
+            <div class="flow-row"><span class="node">대화·평가</span><span class="arr">→</span><span class="node node--hot">정책에 따른 선별</span><span class="arr">→</span><span class="node node--done">후속 학습에 쓰일 수 있음</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="evi-strip">
+        <div class="evi evi--hot">
+          <div class="label">① 연구용 평가 데이터의 생산</div>
+          <div class="evi-top"><span class="evi-num">80%</span></div>
+          <p>돈을 받고 참여한 평가자 중 약 20명이 ‘어느 답이 더 좋은가’를 고른 기록의 약 80%를 만들었다.</p>
+          <cite>Bai 외, Anthropic 2022 — 초기 연구용 데이터</cite>
+        </div>
+        <div class="evi">
+          <div class="label">② 서비스 사용 비중 · 한국</div>
+          <div class="evi-top"><span class="evi-num">3.73×</span></div>
+          <p>생산가능인구 비중 대비 Claude 사용 비중은 3.73배였다. 사용량 지표이며 학습 영향력 수치는 아니다.</p>
+          <cite>Anthropic Economic Index, 2025.09 — Claude 한 서비스 기준</cite>
+        </div>
+        <div class="evi">
+          <div class="label">③ 집단에 따라 달라지는 선호</div>
+          <div class="evi-top"><span class="evi-num">45%</span></div>
+          <p>미국 표본에서 가장 많이 선택된 모델도 선택 확률은 45%였다. 누구를 평가에 참여시키느냐에 따라 결과가 달라졌다.</p>
+          <cite>Kirk 외, PRISM · NeurIPS 2024</cite>
+        </div>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>05</b>사용자 피드백은 1인 1표가 아니다</span>
+      <span class="src">출처: Bai et al. (2022) · Anthropic Economic Index (2025) · Kirk et al. (2024) · OpenAI 도움말 (2026.10 확인) — 세 수치는 서로 다른 연구·측정이며, 사용자별 학습 영향력을 비교한 값이 아님</span>
+      <span class="pg">05 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     06 · 거르는 손, 데이터 정제
+     ====================================================================== -->
+<section class="slide" id="slide-6" aria-roledescription="slide" aria-label="06 / 08 — 거르는 손, 데이터 정제">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>Part 2 · 구조</span></div>
+    </header>
+
+    <div class="p6-body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">04</span>데이터 정제</div>
+        <h2 class="headline">거르는 손도, <em>고르는 손</em>이다</h2>
+        <p class="deck">AI가 배우고 참고하는 자료에 문제가 생기는 네 경로.</p>
+      </div>
+
+      <div class="p6-grid">
+        <div class="matrix matrix--paths" aria-label="학습·검색·반복 학습에서 자료에 문제가 생기는 네 경로">
+          <div class="quads">
+            <div class="quad">
+              <h4>학습 전 · 의도적으로 심기</h4>
+              <p class="num-tag">약 250개</p>
+              <p class="stack">실험에서는 약 250개 문서를 섞자 특정 문구 뒤에 무의미한 답을 내는 동작이 학습됐다</p>
+              <p class="ex">6억~130억 파라미터 모델 실험 — Anthropic 외, 2025</p>
+            </div>
+            <div class="quad">
+              <h4>검색 자료 · 선전 기사 쏟아붓기</h4>
+              <p class="num-tag">360만 건</p>
+              <p class="stack">한 해 재게시 기사 약 360만 건. 사람보다 AI를 노렸다는 분석이 나왔다</p>
+              <p class="ex">Pravda 네트워크(2024) — 효과는 33%(NewsGuard, 유도형 질문)와 5%(HKS)로 엇갈린다. 방법이 달라 직접 비교는 어렵다</p>
+            </div>
+            <div class="quad quad--agent">
+              <h4>검색 자료 · 믿을 자료의 빈자리</h4>
+              <p class="num-tag word">틈새 질문</p>
+              <p class="stack">Pravda 기사 언급(8%)은 주로 주류 언론이 다루지 않은 틈새 질문에서 나왔다. 저자들은 오염보다 <span class="nw">‘부재’로</span> 본다</p>
+              <p class="ex">Alyukov 외, HKS 2025 — 소규모 예비 연구</p>
+            </div>
+            <div class="quad">
+              <h4>반복 학습 · AI 출력의 재사용</h4>
+              <p class="num-tag word">드문 것부터</p>
+              <p class="stack">AI가 만든 데이터로 원본을 갈아 끼우며 거듭 학습하면, 드문 사례부터 사라진다</p>
+              <p class="ex">Shumailov 외, Nature 2024 · 원본을 남겨 쌓으면 피했다 — Gerstgrasser 외, ICML 2024</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="p6-side">
+          <blockquote class="principle">
+            <div class="label">정제의 역설</div>
+            <p>문제 있는 글을 거르다가,<br>누군가의 목소리도 지울 수 있다.</p>
+            <cite>근거: 대형 공개 학습 데이터 C4의 ‘나쁜 단어’ 필터는 소수자가 쓴 글과 소수자에 관한 글을 불균형하게 지웠다 — Dodge 외, EMNLP 2021</cite>
+          </blockquote>
+
+          <p class="golden golden--doc"><strong>문서화</strong><span>품질을 관리하면서, 무엇을 왜 걸렀고 어떤 자료가 빠졌는지도 기록해야 한다<em>Gebru 외 2021 · Bender 외 2021</em></span></p>
+
+          <div class="questions questions--law">
+            <div class="label">제도도 묻는다 · EU AI Act 제10조의 고위험 AI 데이터 관리</div>
+            <ol>
+              <li><span class="qn">01</span><div><b>어디서 모았나<span>수집 출처</span></b></div></li>
+              <li><span class="qn">02</span><div><b>어떻게 손질했나<span>준비 과정</span></b></div></li>
+              <li><span class="qn">03</span><div><b>무엇을 가정했나<span>전제</span></b></div></li>
+              <li><span class="qn">04</span><div><b>편향을 살폈나<span>편향 검토</span></b></div></li>
+              <li><span class="qn">05</span><div><b>빈자리를 찾고 메웠나<span>데이터 공백</span></b></div></li>
+            </ol>
+            <p class="verdict">정제는 많이 거르는 일이 아니라, 기준과 손실을 살피는 일이다.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>06</b>거르는 손</span>
+      <span class="src">출처: Souly et al. (2025) · NewsGuard (2025) · Alyukov et al. (2025) · Shumailov et al. (2024), <i>Nature</i> · Gerstgrasser et al. (2024) · Dodge et al. (2021) · Gebru et al. (2021) · Bender et al. (2021) · EU AI Act 제10조</span>
+      <span class="pg">06 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     07 · 누구의 AI인가
+     ====================================================================== -->
+<section class="slide" id="slide-7" aria-roledescription="slide" aria-label="07 / 08 — 목적에 맞는 AI와 통제">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>Part 2 · 구조</span></div>
+    </header>
+
+    <div class="p7-body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">05</span>목적에 맞는 AI와 통제</div>
+        <h2 class="headline">가장 강한 AI가, <em>늘 필요한가</em></h2>
+      </div>
+
+      <div class="p7-grid sovereign-pov">
+        <section class="panel">
+          <div class="label">필자의 관점 · 목적에 맞는 AI</div>
+          <h3>서울에서 부산까지,<br>모두 전투기를 탈 필요는 없다</h3>
+          <p class="lead">AI의 발전을 이제 멈추기는 어렵다고 본다. AI가 앞으로 만들어 낼 정보를 사람이 얼마나 파악하고 검증할 수 있을지도 걱정된다. 그렇다고 내가 맡길 일마다 최고급 모델이 필요한 것은 아니다.</p>
+          <p class="author-position">나는 목적에 맞는 규모를 고르고, 어떤 데이터를 쓰며 어디까지 동작할지 이해하고 통제하면서 안전하게 쓸 수 있는 AI에 공감한다.</p>
+          <ul class="risk-list risk-list--wide control-questions">
+            <li><b>자료</b><span>어떤 자료를 쓰고 갱신할지 정할 수 있는가</span></li>
+            <li><b>행동</b><span>검색·외부 접속·실행 권한을 제한할 수 있는가</span></li>
+            <li><b>검증</b><span>실패를 확인하고 중단·복구할 수 있는가</span></li>
+          </ul>
+          <p class="fix"><span>관점</span>기업 의존을 줄이는 문제를 넘어, 맡길 일과 감당할 위험을 스스로 정하고 싶다는 생각이다.</p>
+        </section>
+        <section class="panel panel--dark">
+          <div class="label">개념과 사례 · 소버린 AI</div>
+          <h3>데이터와 운영의 결정권</h3>
+          <p class="lead">소버린 AI는 보통 국가 차원에서 핵심 AI 역량의 개발·배포에 접근하고 영향을 미치거나 통제할 능력을 갖추려는 개념이다. 여기서 내가 주목하는 것은 <b>‘통제할 수 있는가’</b>라는 질문이다.</p>
+          <div class="scope-note"><b>구분해서 볼 것</b><p>작은 모델을 쓰거나 내부 자료만 참고하게 하는 것은 운영 방식의 선택이다. 소버린 AI와 같은 뜻은 아니며, 국산·소형·폐쇄형이라는 이름만으로 안전이 보장되지도 않는다.</p></div>
+          <div class="scope-note"><b>공개 사례 · <a href="https://ai.epfl.ch/apertus-a-fully-open-transparent-multilingual-language-model/">스위스 Apertus</a></b><p>EPFL·ETH·CSCS는 모델의 가중치, 학습 데이터와 훈련 방법을 공개했다. 사용자가 살펴보고 목적에 맞게 조정할 단서를 주는 사례다.</p><cite>2025.09 · 공개가 곧 편향 제거를 뜻하지는 않는다.</cite></div>
+          <p class="fix"><span>질문</span>얼마나 강한 AI인가에 앞서, 무엇을 맡기고 무엇을 확인할 수 있는가를 묻는다.</p>
+        </section>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>07</b>목적에 맞는 AI와 통제</span>
+      <span class="src">개념·사례: UK Parliament 서면답변 (2025.06.19) · NVIDIA 기술 개요 · EPFL, Apertus (2025.09.02) | 왼쪽 패널은 필자의 관점</span>
+      <span class="pg">07 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     08 · 남는 질문 & 검증 출처
+     ====================================================================== -->
+<section class="slide" id="slide-8" aria-roledescription="slide" aria-label="08 / 08 — 남는 질문과 검증 출처">
+  <div class="sheet">
+    <header class="masthead">
+      <div class="grp"><span class="sq"></span><span>Responsible AI</span><span class="sep">|</span><strong class="caps">Vol. 02</strong></div>
+      <div class="grp"><span>Part 2 · 구조</span></div>
+    </header>
+
+    <div class="p8-body">
+      <div class="title-block">
+        <div class="kicker"><span class="sq"></span><span class="num">06</span>남는 질문과 검증 출처</div>
+        <h2 class="headline">교육 현장에 남는 <em>세 가지 질문</em></h2>
+      </div>
+
+      <div class="p8-grid">
+        <ol class="steps">
+          <li class="step step--q">
+            <span class="n">01</span>
+            <div>
+              <h4>내가 좋다고 고른 답은, 학생에게도 좋은 답일까</h4>
+              <p>내 자료와 말투가 살아 있는 초안을 고른 경험처럼, 선택에는 내 기준이 남는다. 내가 쓰기 편한 답과 학생의 배움에 도움이 되는 답은 언제 같고, 언제 다를까.</p>
+              <span class="ref">관련 장 · <b>03</b> 1인 1표가 아니다</span>
+            </div>
+          </li>
+          <li class="step step--q">
+            <span class="n">02</span>
+            <div>
+              <h4>이 자료는 누가 골랐고, 무엇이 빠졌나</h4>
+              <p>한국어·지역·교과 자료의 빈자리를, 지금은 누가 무엇으로 채우고 있는가.</p>
+              <span class="ref">관련 장 · <b>04</b> 데이터 공백</span>
+            </div>
+          </li>
+          <li class="step step--q">
+            <span class="n">03</span>
+            <div>
+              <h4>어떤 AI를 들일지, 누구의 기준으로 정하나</h4>
+              <p>우리 수업에 필요한 성능과 자료 범위는 어디까지일까. 누가 사용 권한을 정하고, 실패를 확인하며, 멈출 수 있어야 할까.</p>
+              <span class="ref">관련 장 · <b>05</b> 목적과 통제</span>
+            </div>
+          </li>
+        </ol>
+
+        <section class="sources sources--dense">
+          <div class="label">참고 출처</div>
+          <ol>
+            <li><div><b>Parikh (2026.10).</b> <a href="https://convovo.ai/ballot/paper.pdf">How Does Search Influence the Election Picks of Two Frontier LLMs?</a> · 공개 논문 · §4/Table 1 · 동료 심사 전</div></li>
+            <li><div><b>Santurkar et al. (2023).</b> <a href="https://proceedings.mlr.press/v202/santurkar23a.html">Whose Opinions Do Language Models Reflect?</a> · ICML</div></li>
+            <li><div><b>Ouyang et al. (2022).</b> <a href="https://arxiv.org/abs/2203.02155">InstructGPT</a> · NeurIPS · 평가 절차와 표본</div></li>
+            <li><div><b>Bai et al. (2022).</b> <a href="https://arxiv.org/abs/2204.05862">Helpful and Harmless Assistant</a> · 초기 연구용 선호 데이터</div></li>
+            <li><div><b>Casper et al. (2023).</b> <a href="https://arxiv.org/abs/2307.15217">Open Problems of RLHF</a> · TMLR · Hofmann 외, Nature 633 (2024)</div></li>
+            <li><div><b>OpenAI (2025).</b> <a href="https://openai.com/index/expanding-on-sycophancy/">GPT-4o 아첨 사후 설명</a> · Sharma 외, ICLR 2024</div></li>
+            <li><div><b>Kirk et al. (2024).</b> <a href="https://arxiv.org/abs/2404.16019">PRISM</a> · Anthropic Economic Index (2025.09)</div></li>
+            <li><div><b>OpenAI 도움말.</b> <a href="https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance">모델 성능 개선에 데이터를 사용하는 방식</a> · 2026.10 확인</div></li>
+            <li><div><b>Souly et al. (2025).</b> <a href="https://www.anthropic.com/research/small-samples-poison">A small number of samples can poison LLMs</a> · NewsGuard (2025) · Alyukov 외, HKS (2025)</div></li>
+            <li><div><b>Shumailov et al. (2024).</b> <a href="https://www.nature.com/articles/s41586-024-07566-y">AI models collapse when trained on recursively generated data</a> · Gerstgrasser 외, ICML 2024</div></li>
+            <li><div><b>Dodge et al. (2021).</b> <a href="https://aclanthology.org/2021.emnlp-main.98/">Documenting Large Webtext Corpora</a> · Gebru 외 · Bender 외 (2021) · NIST AI 600-1</div></li>
+            <li><div><b>European Commission.</b> <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-10">EU AI Act 제10조</a> · 고위험 AI 데이터 관리</div></li>
+            <li><div><b>UK Parliament (2025).</b> <a href="https://questions-statements.parliament.uk/written-questions/detail/2025-06-11/59030">Sovereign AI 서면답변</a> · EPFL·ETH·CSCS, Apertus (2025) · NVIDIA 기술 개요</div></li>
+          </ol>
+        </section>
+      </div>
+    </div>
+
+    <footer class="folio">
+      <span><b>08</b>남는 질문 · 출처</span>
+      <span class="src">Vol. 02 — 끝</span>
+      <span class="pg">08 / 08</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ======================================================================
+     네비게이션 (인쇄 시 숨김)
+     ====================================================================== -->
+<nav class="nav-controls" aria-label="슬라이드 이동">
+  <div class="dots" role="tablist"></div>
+  <div class="slide-counter" aria-live="polite"><span class="cur">01</span> <span class="total">/ 08</span></div>
+  <div class="nav-group">
+    <button class="nav-btn" type="button" data-dir="-1" aria-label="이전 슬라이드">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 3 5 8l5 5"/></svg>
+    </button>
+    <button class="nav-btn" type="button" data-dir="1" aria-label="다음 슬라이드">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m6 3 5 5-5 5"/></svg>
+    </button>
+  </div>
+</nav>
+
+</div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var W = 1920, H = 1080;
+  var stage = document.getElementById("stage");
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var total = slides.length;
+  var dotsWrap = document.querySelector(".dots");
+  var curEl = document.querySelector(".slide-counter .cur");
+  var totalEl = document.querySelector(".slide-counter .total");
+  var prevBtn = document.querySelector('.nav-btn[data-dir="-1"]');
+  var nextBtn = document.querySelector('.nav-btn[data-dir="1"]');
+  var current = 0;
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+  /* ---- 유닛 차트 (100칸, 세로 열 단위로 채움) ---- */
+  Array.prototype.forEach.call(document.querySelectorAll("svg.units"), function (svg) {
+    var value = +svg.getAttribute("data-value");
+    var fill = svg.hasAttribute("data-accent") ? "#A23E18" : "#1B1C1A";
+    var cols = 25, rows = 4, cell = 10, gap = 3;
+    var w = cols * (cell + gap) - gap, h = rows * (cell + gap) - gap;
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+    svg.setAttribute("width", w);
+    svg.setAttribute("height", h);
+    var out = "";
+    for (var i = 0; i < cols * rows; i++) {
+      var c = Math.floor(i / rows), r = i % rows;
+      out += '<rect x="' + c * (cell + gap) + '" y="' + r * (cell + gap) + '" width="' + cell + '" height="' + cell +
+             '" fill="' + (i < value ? fill : "#E2D7C3") + '"></rect>';
+    }
+    svg.innerHTML = "<title>" + value + " / 100 (1칸 = 1%)</title>" + out;
+  });
+
+  /* ---- 화면 맞춤 ---- */
+  function fit() {
+    var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.setProperty("--scale", s);
+  }
+
+  /* ---- 도트 ---- */
+  var dots = slides.map(function (s, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "dot";
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-label", pad(i + 1) + " 슬라이드로 이동");
+    b.addEventListener("click", function () { go(i); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+  totalEl.textContent = "/ " + pad(total);
+
+  function go(i) {
+    i = Math.max(0, Math.min(total - 1, i));
+    current = i;
+    slides.forEach(function (s, k) {
+      var on = k === i;
+      s.classList.toggle("is-active", on);
+      s.setAttribute("aria-hidden", on ? "false" : "true");
+      if (on) s.removeAttribute("inert"); else s.setAttribute("inert", "");
+    });
+    dots.forEach(function (d, k) {
+      d.classList.toggle("is-active", k === i);
+      d.setAttribute("aria-selected", k === i ? "true" : "false");
+    });
+    curEl.textContent = pad(i + 1);
+    prevBtn.disabled = i === 0;
+    nextBtn.disabled = i === total - 1;
+    try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
+  }
+  var next = function () { go(current + 1); };
+  var prev = function () { go(current - 1); };
+
+  prevBtn.addEventListener("click", prev);
+  nextBtn.addEventListener("click", next);
+
+  /* ---- 키보드: → / Space / PageDown · ← / PageUp · Home / End · F ---- */
+  document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;           // Ctrl+P 등은 그대로 통과
+    var onButton = e.target && e.target.tagName === "BUTTON";
+    switch (e.key) {
+      case "ArrowRight": case "ArrowDown": case "PageDown":
+        e.preventDefault(); next(); break;
+      case "ArrowLeft": case "ArrowUp": case "PageUp":
+        e.preventDefault(); prev(); break;
+      case " ": case "Spacebar":
+        if (onButton) return;
+        e.preventDefault(); e.shiftKey ? prev() : next(); break;
+      case "Home": e.preventDefault(); go(0); break;
+      case "End":  e.preventDefault(); go(total - 1); break;
+      case "f": case "F":
+        if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+        else { document.exitFullscreen && document.exitFullscreen(); }
+        break;
+    }
+  });
+
+  /* ---- 터치 스와이프 ---- */
+  var x0 = null;
+  document.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+    x0 = null;
+  });
+
+  /* ---- 딥링크: #1 … #8 ---- */
+  function fromHash() {
+    var n = parseInt((location.hash || "").replace("#", ""), 10);
+    return isNaN(n) ? 0 : n - 1;
+  }
+  window.addEventListener("hashchange", function () { go(fromHash()); });
+  window.addEventListener("resize", fit);
+
+  fit();
+  go(fromHash());
+})();
+</script>
+
+<!-- Public-safe educational content; no participant gate. -->
+</body>
+</html>
