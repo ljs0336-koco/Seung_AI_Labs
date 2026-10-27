@@ -21,6 +21,8 @@ export const FALLBACK_CATALOG = {
     { id: 'hub', title: 'AI 교육 특강 허브', description: '교사·예비교원 특강과 로보독 실습', href: './hub/index.html', section: 'lecture', placement: 'both', status: 'live' },
     { id: 'literacy', title: '초등 AI 리터러시 탐험 연구소', description: '네 가지 인터랙티브 실험실', href: '#/literacy', section: 'showcase', placement: 'both', status: 'live' },
     { id: 'deck', title: 'The Agentic Shift', description: '에이전틱 AI 매거진 Vol.01', href: './deck/index.html', section: 'showcase', placement: 'both', status: 'live' },
+    { id: 'playground', title: 'AI 놀이터', description: 'AI로 만든 실험과 산출물이 모이는 공간', href: '#/playground', section: 'showcase', placement: 'both', status: 'live' },
+    { id: 'terrarium', title: '작은별 테라리움', description: 'AI 활용 산출물 · 코코·금쪽이·로보독 3D 미니어처', href: './apps/terrarium/index.html', section: 'playground', placement: 'base', status: 'live' },
     { id: 'kansai', title: 'KANSAI NOTES · 겨울 간사이 3박 4일', description: '취향별 두 여행가이드', href: './kansai-travel-guide/index.html', section: 'personal', placement: 'base', status: 'live' },
     { id: 'kansai-couple', title: '느긋한 커플편', href: './kansai-travel-guide/couple.html', parent: 'kansai', section: 'personal', placement: 'base', status: 'live' },
     { id: 'kansai-pokemon', title: '포켓몬 원정대편', href: './kansai-travel-guide/pokemon.html', parent: 'kansai', section: 'personal', placement: 'base', status: 'live' },

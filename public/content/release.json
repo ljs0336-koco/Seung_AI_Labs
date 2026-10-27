@@ -1,5 +1,5 @@
 {
-  "revision": 5,
+  "revision": 6,
   "items": [
     {
       "id": "briefing",
@@ -72,6 +72,10 @@
     {
       "id": "question-locked",
       "href": "./hub/apps/질문전후비교_v3.html"
+    },
+    {
+      "id": "playground",
+      "href": "#/playground"
     }
   ],
   "newsIds": [

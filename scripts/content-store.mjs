@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-export const sections = ['today','library','code','lecture','showcase','personal','archive'];
+export const sections = ['today','library','code','lecture','showcase','playground','personal','archive'];
 export const placements = ['base','both','portal','archive'];
 export const siteUrl = 'https://ljs0336-koco.github.io/Seung_AI_Labs/';
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

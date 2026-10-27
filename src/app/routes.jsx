@@ -9,6 +9,7 @@ import AgentLabPage from '../features/agent/AgentLabPage';
 import { BASE_PATH, MATERIALS_PATH } from './materialsRoute';
 
 const BasePage = lazy(() => import('./BasePage'));
+const PlaygroundPage = lazy(() => import('./PlaygroundPage'));
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
       <Route path="/" element={<Portal />} />
 
       <Route path={BASE_PATH} element={<Suspense fallback={<p role="status">기지를 불러오는 중입니다.</p>}><BasePage /></Suspense>} />
+      <Route path="/playground" element={<Suspense fallback={<p role="status">AI 놀이터를 불러오는 중입니다.</p>}><PlaygroundPage /></Suspense>} />
       <Route path={MATERIALS_PATH} element={<Navigate to={BASE_PATH} replace />} />
       <Route path="/admin" element={<Navigate to={BASE_PATH} replace />} />
 

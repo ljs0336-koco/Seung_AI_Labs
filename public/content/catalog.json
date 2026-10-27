@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 5,
+  "revision": 6,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -115,7 +115,7 @@
     {
       "id": "literacy",
       "kind": "router",
-      "title": "AI 리터러시 탐험 연구소",
+      "title": "AI 리터러시 연구소",
       "description": "공정한 AI·진실과 미디어·AI에 맡기기·에이전트 실습",
       "href": "#/literacy",
       "section": "showcase",
@@ -154,11 +154,11 @@
       "id": "terrarium",
       "kind": "link",
       "title": "Kocoafab 작은별 테라리움",
-      "description": "코코·금쪽이·로보독 3D 미니어처",
+      "description": "AI 활용 산출물 · 코코·금쪽이·로보독 3D 미니어처",
       "href": "./apps/terrarium/index.html",
-      "section": "showcase",
+      "section": "playground",
       "placement": "base",
-      "status": "candidate"
+      "status": "live"
     },
     {
       "id": "kansai",
@@ -229,6 +229,22 @@
       "section": "archive",
       "placement": "archive",
       "status": "locked"
+    },
+    {
+      "id": "playground",
+      "kind": "router",
+      "title": "AI 놀이터",
+      "description": "AI로 만든 실험과 산출물이 모이는 공간",
+      "href": "#/playground",
+      "section": "showcase",
+      "placement": "both",
+      "status": "live",
+      "children": [
+        {
+          "title": "작은별 테라리움",
+          "href": "./apps/terrarium/index.html"
+        }
+      ]
     }
   ]
 }

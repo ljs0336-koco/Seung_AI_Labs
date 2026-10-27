@@ -1,6 +1,6 @@
 const $=id=>document.getElementById(id);
 let state,tab='resources',edited=null,selectedFiles=[],dirty=false;
-const sections={today:'오늘',library:'서고',code:'C.O.D.E',lecture:'특강',showcase:'쇼케이스',personal:'개인',archive:'보관함'};
+const sections={today:'오늘',library:'서고',code:'C.O.D.E',lecture:'특강',showcase:'쇼케이스',playground:'AI 놀이터',personal:'개인',archive:'보관함'};
 const notice=text=>{$('notice').textContent=text;};
 async function api(route,method='GET',data){const response=await fetch(`/__manage/api/${route}`,{method,headers:method==='GET'?{}:{'Content-Type':'application/json','X-Content-Token':state?.token||''},body:data?JSON.stringify(data):undefined});const value=await response.json();if(!response.ok)throw new Error(value.error||'작업을 마치지 못했습니다.');return value;}
 async function refresh(){state=await api('state');dirty=false;render();}
@@ -63,3 +63,4 @@ async function launch(actionName){await save();state.job=await api(actionName,'P
 $('resources').onclick=()=>{tab='resources';render();};$('news').onclick=()=>{tab='news';render();};$('search').oninput=render;$('add').onclick=()=>openEditor();$('close').onclick=()=>$('editor').close();$('copy-close').onclick=()=>$('copy-dialog').close();$('files').onchange=e=>selectFiles(e.target.files);$('folder').onchange=e=>selectFiles(e.target.files);
 $('save').onclick=()=>save().catch(e=>notice(e.message));$('prepare').onclick=()=>launch('prepare').catch(e=>notice(e.message));$('publish').onclick=()=>launch('publish').catch(e=>notice(e.message));
 refresh().catch(e=>notice(e.message));
+

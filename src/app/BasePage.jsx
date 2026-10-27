@@ -7,7 +7,7 @@ const SECTIONS = [
   ['today', '오늘'], ['library', '서고'], ['code', 'C.O.D.E'], ['lecture', '특강'],
   ['showcase', '쇼케이스'], ['personal', '개인'], ['archive', '보관함'],
 ];
-const SECTION_NAMES = Object.fromEntries(SECTIONS);
+const SECTION_NAMES = { ...Object.fromEntries(SECTIONS), playground: 'AI 놀이터' };
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', '::1']);
 const PUBLICATION_LABELS = {
   journal: '동료심사 저널', conference: '동료심사 학회', workshop: '학회 워크숍',
@@ -160,7 +160,7 @@ export default function BasePage() {
   const items = catalog.items;
   const mainItems = items.filter(item => !item.parent && item.placement !== 'archive' && item.section !== 'archive');
   const archive = items.filter(item => !item.parent && (item.placement === 'archive' || item.section === 'archive'));
-  const bySection = section => mainItems.filter(item => item.section === section);
+  const bySection = section => mainItems.filter(item => item.section === section || section === 'showcase' && item.section === 'playground');
   const local = LOCAL_HOSTS.has(globalThis.location?.hostname);
   const localDate = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', weekday: 'short' }).format(new Date());
   const indexedPapers = useMemo(() => Array.isArray(library.data?.items) ? library.data.items : Array.isArray(library.data?.papers) ? library.data.papers : library.data?.recent || [], [library.data]);
