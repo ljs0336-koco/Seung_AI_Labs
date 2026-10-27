@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import useCatalog, { useJsonResource } from '../hooks/useCatalog';
 import OrbitScene from './OrbitScene';
+import PortalQr from './PortalQr';
 import './Portal.css';
 
 const LABS = [
@@ -46,12 +46,9 @@ export default function Portal() {
       <header className="portal-masthead">
         <div>
           <p className="portal-kicker">EDUCATION · RESEARCH · MAKING</p>
-          <h1 className="portal-main-title">Seung AI Labs</h1>
+          <div className="portal-title-row"><h1 className="portal-main-title">Seung AI Labs</h1><PortalQr /></div>
         </div>
-        <nav className="portal-navigation" aria-label="자료와 기록">
-          {library && <a href={library.href}>연구 서고 ↗</a>}
-          <Link to="/base">기지로 가기 ↗</Link>
-        </nav>
+        {library && <nav className="portal-navigation" aria-label="자료와 기록"><a href={library.href}>연구 서고 ↗</a></nav>}
       </header>
       <div className="portal-intro-line"><p>읽고, 실험하고, 수업에 연결하는 작업실.</p><span>AN EXPANDING UNIVERSE</span></div>
       <main>
@@ -92,7 +89,7 @@ export default function Portal() {
           </div>
         </details>}
       </main>
-      <footer className="portal-footer"><p>Seung AI Labs <span>·</span> 에듀테크 융합교육 연구실</p><Link to="/base">나만의 기지 ↗</Link></footer>
+      <footer className="portal-footer"><p>Seung AI Labs <span>·</span> 에듀테크 융합교육 연구실</p></footer>
     </div>
   </div>;
 }

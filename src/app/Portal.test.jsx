@@ -19,6 +19,8 @@ describe('catalog-connected orbital portal',()=>{
   expect(map.queryByRole('link',{name:/The Agentic Shift/})).not.toBeInTheDocument();
   expect(screen.getByRole('link',{name:/매거진 읽기/})).toHaveAttribute('href','./deck/index.html');
   expect(screen.getByRole('link',{name:/브리핑 읽기/})).toHaveAttribute('href','./briefing/index.html');
+  expect(screen.getByRole('button',{name:'통합포털 QR 코드 크게 보기'})).toBeInTheDocument();
+  expect(screen.getAllByRole('link').some(link=>link.getAttribute('href')?.includes('#/base'))).toBe(false);
   const publications=screen.getByRole('region',{name:'매거진과 AI 교육 브리핑'});
   const atlas=screen.getByRole('region',{name:'수업과 실험의 작은 우주'});
   expect(publications.compareDocumentPosition(atlas) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -26,13 +28,14 @@ describe('catalog-connected orbital portal',()=>{
   for(const [name,href] of [['공정한 AI 실험실','#/fairness'],['진실·미디어 검증소','#/verification'],['AI에게 무엇을 맡길까?','#/role'],['AI가 대신 움직인다면?','#/agent']])expect(screen.getByRole('link',{name:new RegExp(name.replace(/[?]/g,'\\?'))})).toHaveAttribute('href',href);
  });
  it('honors hiding and lets a newly promoted resource expand the map',async()=>{
-  mockCatalog([...primary.map(x=>({...x,placement:'base'})),item('new-experiment','새 공개 실험','./apps/terrarium/index.html')]);
+  mockCatalog([...primary.map(x=>({...x,placement:'base'})),item('padlet-ai-training','AI 연수·특강 자료 · Padlet','https://padlet.com/jaeseungtek/ai-8js4uzp6xqxjztbf','base'),item('new-experiment','새 공개 실험','./apps/terrarium/index.html')]);
   render(<MemoryRouter><Portal /></MemoryRouter>);
   const link=await screen.findByRole('link',{name:/새 공개 실험/});expect(link).toHaveAttribute('href','./apps/terrarium/index.html');
   const map=within(screen.getByRole('region',{name:'Seung의 탐험 지도'}));expect(map.getAllByRole('link')).toHaveLength(1);
   expect(screen.queryByRole('link',{name:/매거진 읽기/})).not.toBeInTheDocument();
   expect(screen.queryByText('실습·특강 바로가기')).not.toBeInTheDocument();
   expect(screen.queryByRole('region',{name:'매거진과 AI 교육 브리핑'})).not.toBeInTheDocument();
+  expect(screen.queryByRole('link',{name:/Padlet/})).not.toBeInTheDocument();
   expect(screen.getByRole('heading',{name:'Seung AI Labs',level:1})).toBeInTheDocument();
  });
  it('keeps the three entrances usable if catalog loading fails',async()=>{

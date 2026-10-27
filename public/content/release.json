@@ -1,5 +1,5 @@
 {
-  "revision": 6,
+  "revision": 7,
   "items": [
     {
       "id": "briefing",
@@ -76,6 +76,10 @@
     {
       "id": "playground",
       "href": "#/playground"
+    },
+    {
+      "id": "padlet-ai-training",
+      "href": "https://padlet.com/jaeseungtek/ai-8js4uzp6xqxjztbf"
     }
   ],
   "newsIds": [

@@ -1,0 +1,27 @@
+.portal-title-row { display: flex; align-items: center; gap: 18px; }
+.portal-qr-trigger { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 50px; height: 50px; min-height: 0; padding: 2px; border: 1px solid var(--portal-rule); border-radius: 0; background: #fff; cursor: pointer; }
+.portal-qr-trigger img { display: block; width: 44px; height: 44px; }
+.portal-qr-trigger:hover { border-color: var(--portal-ink); }
+.portal-qr-trigger:focus-visible, .portal-qr-close:focus-visible { outline: 2px solid var(--portal-accent); outline-offset: 4px; }
+body:has(.portal-qr-dialog[open]) { overflow: hidden; }
+.portal-qr-dialog { width: min(760px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 0; overflow: auto; border: 1px solid var(--portal-rule); border-radius: 0; color: var(--portal-ink); background: var(--portal-paper); }
+.portal-qr-dialog::backdrop { background: rgb(28 26 22 / 72%); }
+.portal-qr-content { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 28px 32px 24px; }
+.portal-qr-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; width: 100%; padding-bottom: 16px; border-bottom: 1px solid var(--portal-rule); }
+.portal-qr-heading p { font-size: 9px; letter-spacing: .16em; color: var(--portal-muted); }
+.portal-qr-heading h2 { margin-top: 5px; font: 500 30px/1.2 var(--portal-serif); letter-spacing: -.035em; }
+.portal-qr-close { flex: 0 0 auto; min-height: 40px; padding: 8px 0 8px 12px; border: 0; border-radius: 0; color: var(--portal-ink); background: transparent; font: inherit; font-size: 12px; cursor: pointer; }
+.portal-qr-instruction { font-size: 13px; text-align: center; color: var(--portal-muted); }
+.portal-qr-large { display: block; width: min(100%, 62vmin, 540px); height: auto; aspect-ratio: 1; background: #fff; }
+.portal-qr-url { max-width: 100%; font-size: 12px; text-align: center; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .portal-title-row { gap: 12px; }
+  .portal-title-row .portal-main-title { font-size: clamp(27px, 7.7vw, 34px); }
+  .portal-qr-trigger { width: 44px; height: 44px; }
+  .portal-qr-trigger img { width: 38px; height: 38px; }
+  .portal-qr-content { gap: 14px; padding: 20px 18px; }
+  .portal-qr-heading h2 { font-size: 25px; }
+  .portal-qr-large { width: min(100%, 72vmin); }
+  .portal-qr-instruction { font-size: 12px; }
+  .portal-qr-url { font-size: 10px; }
+}
