@@ -9,7 +9,7 @@ function run(command,args){return new Promise((resolve,reject)=>{const p=spawn(c
 try{
  if(!await ready()){
   try{await access(path.join(root,'dist/index.html'));}catch{await run(process.execPath,[process.env.npm_execpath||'C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js','run','build']);}
-  const processHandle=spawn(process.execPath,[path.join(root,'scripts/content-manager.mjs')],{cwd:root,detached:true,windowsHide:true,stdio:'ignore'});processHandle.unref();
+  const processHandle=spawn(process.execPath,['--use-system-ca',path.join(root,'scripts/content-manager.mjs')],{cwd:root,detached:true,windowsHide:true,stdio:'ignore'});processHandle.unref();
   let opened=false;for(let attempt=0;attempt<30;attempt++){await new Promise(resolve=>setTimeout(resolve,400));if(await ready()){opened=true;break;}}
   if(!opened)throw new Error('관리 화면을 열지 못했습니다. 잠시 후 다시 실행해 주세요.');
  }

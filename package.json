@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "node scripts/build-content.mjs && npm run build:app",
     "build:app": "npm run check:privacy && vite build --configLoader native && node scripts/check-public-privacy.mjs dist",
-    "manage": "node scripts/content-manager.mjs",
+    "manage": "node --use-system-ca scripts/content-manager.mjs",
     "test:content": "node --test scripts/content-store.test.mjs scripts/build-share-pages.test.mjs",
     "check:privacy": "node scripts/check-public-privacy.mjs public src index.html",
     "test:privacy": "node --test scripts/check-public-privacy.test.mjs",
