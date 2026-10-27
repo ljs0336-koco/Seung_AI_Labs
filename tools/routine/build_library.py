@@ -745,7 +745,7 @@ def build():
 <style>.library-site-nav{{max-width:1240px;margin:0 auto 18px;display:flex;gap:10px 20px;flex-wrap:wrap;font-size:14px;font-weight:700}}.library-site-nav a{{min-height:32px;display:inline-flex;align-items:center}}</style>
 </head>
 <body>
-<nav class="library-site-nav" aria-label="사이트 이동"><a href="../#/">Seung AI Labs · 포털</a><a href="../briefing/">브리핑</a><a href="../#/base">나만의 기지</a><a href="../briefing/archive/">지난 브리핑</a></nav>
+<nav class="library-site-nav" aria-label="사이트 이동"><a href="../#/">Seung AI Labs · 포털</a><a href="../briefing/">브리핑</a><a href="../briefing/archive/">지난 브리핑</a></nav>
 <div class="sheet">
 {body}
 </div>

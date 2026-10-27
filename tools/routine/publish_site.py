@@ -7,7 +7,7 @@
   각 페이지 맨 위에 포털 이동 바를 넣고 바닥글 링크를 사이트에 맞게 바꾼다.
   '지난 브리핑' 목록은 사이트 디자인(요약 한 줄 + 최신호 표시)으로 새로 만든다.
   public/briefing/assets/style.css 는 사이트 전용으로 따로 꾸민 파일이라 건드리지 않는다.
-- 연구 서고: research-library/ → public/library/ (별도 공유용, 그대로 복사)
+- 연구 서고: research-library/ → public/library/ (공개 화면의 기지 진입 링크만 제거)
 - briefing/latest.json과 library/summary.json, content/news.json으로 포털·기지에 공개 메타데이터를 제공한다.
   JSX 파일은 바꾸지 않는다.
 커밋·푸시는 하지 않는다. 저장소에서 개인정보 검사(npm run check:privacy) 뒤 사람이 확인하고 올린다.
@@ -19,7 +19,9 @@ import re
 import shutil
 import sys
 import os
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 from build_briefing import news_record, active_bids
 
 ROOT = Path(os.environ.get("SEUNG_ROUTINE_ROOT", Path(__file__).resolve().parent.parent))
@@ -33,7 +35,6 @@ NAV_INDEX = """<nav class="site-bar" aria-label="포털 이동">
   <a class="brand" href="../#/"><span class="brand-mark" aria-hidden="true">S</span><span>Seung AI Labs</span></a>
   <div class="site-actions">
     <a class="portal-link" href="../library/">연구 서고</a>
-    <a class="portal-link" href="../#/base">나만의 기지</a>
     <a class="portal-link" href="archive/index.html">📚 지난 브리핑</a>
     <a class="portal-link" href="../#/">← 포털 돌아가기</a>
   </div>
@@ -42,7 +43,6 @@ NAV_ARCHIVE = """<nav class="site-bar" aria-label="포털 이동">
   <a class="brand" href="../../#/"><span class="brand-mark" aria-hidden="true">S</span><span>Seung AI Labs</span></a>
   <div class="site-actions">
     <a class="portal-link" href="../../library/">연구 서고</a>
-    <a class="portal-link" href="../../#/base">나만의 기지</a>
     <a class="portal-link" href="./index.html">📚 지난 브리핑 목록</a>
     <a class="portal-link" href="../index.html">오늘 브리핑</a>
     <a class="portal-link" href="../../#/">← 포털 돌아가기</a>
@@ -52,7 +52,6 @@ NAV_LIST = """<nav class="site-bar" aria-label="포털 이동">
   <a class="brand" href="../../#/"><span class="brand-mark" aria-hidden="true">S</span><span>Seung AI Labs</span></a>
   <div class="site-actions">
     <a class="portal-link" href="../../library/">연구 서고</a>
-    <a class="portal-link" href="../../#/base">나만의 기지</a>
     <a class="portal-link" href="../index.html">오늘 브리핑으로 →</a>
     <a class="portal-link" href="../../#/">← 포털 돌아가기</a>
   </div>
@@ -72,6 +71,55 @@ def write(p, text):
     p.write_text(text, encoding="utf-8", newline="\n")
 
 
+def is_base_entry(href):
+    """Recognize local entry aliases without changing their directly opened pages."""
+    try:
+        target = urlsplit(unquote(href or ""))
+    except ValueError:
+        return False
+    if target.scheme not in ("", "http", "https"):
+        return False
+    if target.netloc and target.netloc.lower() != "ljs0336-koco.github.io":
+        return False
+    aliases = {"base", "admin", "desk-3802e7b987d344178fc03571", "privacy-guidelines.html"}
+    route = target.fragment.split("?", 1)[0].strip("/")
+    destination = re.sub(r"^(?:\.\.?/)+", "", target.path).strip("/")
+    if destination.startswith("Seung_AI_Labs/"):
+        destination = destination[len("Seung_AI_Labs/"):]
+    return route in aliases or destination in aliases
+
+
+def normalize_public_navigation(text):
+    """Remove base entry anchors while preserving all other source markup verbatim."""
+    class EntryLinks(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=False)
+            self.starts = [0] + [m.end() for m in re.finditer("\n", text)]
+            self.anchor = None
+            self.ranges = []
+
+        def text_offset(self):
+            row, column = self.getpos()
+            return self.starts[row - 1] + column
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "a":
+                self.anchor = (self.text_offset(), is_base_entry(dict(attrs).get("href")))
+
+        def handle_endtag(self, tag):
+            if tag == "a" and self.anchor is not None:
+                start, hidden = self.anchor
+                if hidden:
+                    self.ranges.append((start, text.index(">", self.text_offset()) + 1))
+                self.anchor = None
+
+    links = EntryLinks()
+    links.feed(text)
+    for start, end in reversed(links.ranges):
+        text = text[:start] + text[end:]
+    return text
+
+
 def site_page(text, nav, foot, shared_prefix="../"):
     if 'class="site-bar"' not in text:
         text = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + "\n" + nav, text, count=1)
@@ -83,7 +131,7 @@ def site_page(text, nav, foot, shared_prefix="../"):
         text = text.replace('</head>', f'<link rel="stylesheet" href="{shared_prefix}shared/content-share.css">\n</head>')
     if "content-share.js" not in text:
         text = text.replace('</body>', f'<script src="{shared_prefix}shared/content-share.js" defer></script>\n</body>')
-    return text
+    return normalize_public_navigation(text)
 
 
 def strip_tags(s):
@@ -270,7 +318,8 @@ def publish_library(repo):
             dest = lib / p.relative_to(LIB)
             dest.parent.mkdir(parents=True, exist_ok=True)
             if p.suffix in (".html", ".css", ".bib", ".ris", ".json"):
-                write(dest, read(p))
+                text = read(p)
+                write(dest, normalize_public_navigation(text) if p.suffix == ".html" else text)
             else:
                 shutil.copyfile(p, dest)
     return ["library/"]

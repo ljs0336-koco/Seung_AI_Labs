@@ -69,7 +69,7 @@ export default function PlaygroundPage() {
     <div className="playground-sheet">
       <header className="playground-masthead">
         <Link to="/" className="playground-wordmark">SEUNG AI LABS</Link>
-        <nav aria-label="놀이터 이동"><Link to="/">← 통합 포털</Link><Link to="/base">나만의 기지 ↗</Link></nav>
+        <nav aria-label="놀이터 이동"><Link to="/">← 통합 포털</Link></nav>
       </header>
       <main>
         <div className="playground-title-block">
@@ -78,7 +78,7 @@ export default function PlaygroundPage() {
           <p className="playground-intro">AI를 활용해 만든 실험, 도구, 작은 세계를 한곳에 모았습니다.<br />마음이 가는 산출물을 열어 직접 둘러보세요.</p>
         </div>
         <div className="playground-section-head"><h2>만들며 발견한 것들</h2>{!loading && !error && <span>{items.length}개의 산출물</span>}</div>
-        {loading ? <p className="playground-state" role="status">AI 놀이터를 불러오는 중입니다.</p> : error ? <p className="playground-state" role="status">산출물 목록을 불러오지 못했습니다. <Link to="/base">기지에서 자료 확인하기 ↗</Link></p> : items.length ? <div className="playground-grid">{items.map((item, index) => <Exhibit key={item.id} item={item} index={index} />)}</div> : <p className="playground-state" role="status">표시할 산출물이 없습니다.</p>}
+        {loading ? <p className="playground-state" role="status">AI 놀이터를 불러오는 중입니다.</p> : error ? <p className="playground-state" role="status">산출물 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요. <Link to="/">통합 포털로 돌아가기 ↗</Link></p> : items.length ? <div className="playground-grid">{items.map((item, index) => <Exhibit key={item.id} item={item} index={index} />)}</div> : <p className="playground-state" role="status">표시할 산출물이 없습니다.</p>}
       </main>
       <footer className="playground-footer"><span>Seung AI Labs · AI Playground</span><Link to="/">포털로 돌아가기 ↗</Link></footer>
     </div>

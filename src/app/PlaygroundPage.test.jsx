@@ -26,7 +26,8 @@ describe('AI 놀이터', () => {
     expect(container.querySelector('.playground-visual svg')).not.toBeNull();
     expect(container.querySelector('iframe, canvas')).toBeNull();
     expect(screen.getByRole('link', { name: '← 통합 포털' })).toHaveAttribute('href', '/');
-    expect(screen.getByRole('link', { name: '나만의 기지 ↗' })).toHaveAttribute('href', '/base');
+    expect(screen.getAllByRole('link').some(link => /\/(base|admin|materials)(?:[/?#]|$)/.test(link.getAttribute('href') || ''))).toBe(false);
+    expect(screen.queryByRole('link', { name: /기지/ })).not.toBeInTheDocument();
   });
 
   it('grows from new catalog items and excludes archives, locked items and other sections', async () => {
@@ -53,11 +54,13 @@ describe('AI 놀이터', () => {
     expect(screen.getByText('0개의 산출물')).toBeInTheDocument();
   });
 
-  it('keeps the base entrance available when the catalog cannot be loaded', async () => {
+  it('returns to the public portal without exposing the base when the catalog cannot be loaded', async () => {
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('offline')));
     show();
     expect(await screen.findByText(/산출물 목록을 불러오지 못했습니다/)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: '기지에서 자료 확인하기 ↗' })).toHaveAttribute('href', '/base');
+    expect(screen.getByRole('link', { name: '통합 포털로 돌아가기 ↗' })).toHaveAttribute('href', '/');
+    expect(screen.getAllByRole('link').some(link => /\/(base|admin|materials)(?:[/?#]|$)/.test(link.getAttribute('href') || ''))).toBe(false);
+    expect(screen.queryByRole('link', { name: /기지/ })).not.toBeInTheDocument();
     expect(screen.queryByRole('article')).not.toBeInTheDocument();
   });
 });

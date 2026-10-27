@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build-content.mjs && node scripts/check-magazine.mjs && npm run build:app",
-    "build:app": "npm run check:privacy && vite build --configLoader native && node scripts/check-public-privacy.mjs dist",
+    "build:app": "node scripts/check-public-navigation.mjs && npm run check:privacy && vite build --configLoader native && node scripts/check-public-privacy.mjs dist",
     "manage": "node --use-system-ca scripts/content-manager.mjs",
-    "test:content": "node --test scripts/content-store.test.mjs scripts/build-share-pages.test.mjs",
+    "test:content": "node --test scripts/content-store.test.mjs scripts/build-share-pages.test.mjs scripts/check-public-navigation.test.mjs",
     "check:privacy": "node scripts/check-public-privacy.mjs public src index.html",
     "test:privacy": "node --test scripts/check-public-privacy.test.mjs",
     "privacy:install-hook": "git config core.hooksPath .githooks",

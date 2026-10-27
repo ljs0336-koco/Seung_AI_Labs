@@ -32,6 +32,7 @@ test('new HTML bundle preserves relative assets and source draft until materiali
  await materialize(root,result.draft);
  assert.match(await fs.readFile(path.join(root,'public/materials',result.item.id,'board/index.html'),'utf8'),/assets\/chart.svg/);
  const page=await fs.readFile(path.join(root,'public/share/materials',result.item.id,'index.html'),'utf8');assert.match(page,/자료 열기/);assert.match(page,/https:\/\/ljs0336-koco/);
+ assert.match(page,/<a href="\.\.\/\.\.\/\.\.\/#\/">← 통합 포털<\/a>/);assert.doesNotMatch(page,/#\/base|나만의 기지/);
 }));
 test('invalid entry cannot mutate stored catalog',()=>workspace(async root=>{
  await assert.rejects(importFiles(root,{title:'잘못된 묶음',files:[{path:'index.html',data:'PGgxPjwvaDE+'}],entry:'missing.html'}));assert.equal((await loadDraft(root)).items.length,1);
