@@ -9,11 +9,6 @@ const SECTIONS = [
 ];
 const SECTION_NAMES = { ...Object.fromEntries(SECTIONS), playground: 'AI 놀이터' };
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', '::1']);
-const PUBLICATION_LABELS = {
-  journal: '동료심사 저널', conference: '동료심사 학회', workshop: '학회 워크숍',
-  'working-paper': '워킹페이퍼(심사 전)', preprint: '프리프린트(심사 전)',
-  report: '정책 보고서', book: '단행본·장', magazine: '실무 잡지',
-};
 
 function text(value) {
   return Array.isArray(value) ? value.map(text).join(' ') : value == null ? '' : typeof value === 'object' ? Object.values(value).map(text).join(' ') : String(value);
@@ -58,11 +53,14 @@ function Item({ item, items, copy }) {
     <div className="acts">
       <a className="act open" href={item.href}>열기 ↗</a>
       <CopyLink title={item.title} href={item.href} copy={copy} />
-      {children.map(child => <span className="child-action" key={child.id || child.href}>
+    </div>
+    {!!children.length && <details className="item-children">
+      <summary>연결 자료 {children.length}개</summary>
+      <div className="child-actions">{children.map(child => <span className="child-action" key={child.id || child.href}>
         <a className="act kid" href={child.href}>{child.title}</a>
         <CopyLink title={child.title} href={child.href} copy={copy} compact />
-      </span>)}
-    </div>
+      </span>)}</div>
+    </details>}
   </li>;
 }
 
@@ -73,37 +71,30 @@ function Panel({ section, number, title, meta, children, className = '' }) {
   </section>;
 }
 
-function CatalogPanel({ section, number, title, items, allItems, copy }) {
+function CatalogPanel({ section, number, title, items, allItems, copy, folded = false, expanded, onToggle }) {
+  const contents = items.length ? <ul className="items">{items.map(item => <Item key={item.id} item={item} items={allItems} copy={copy} />)}</ul> : <p className="empty-state">이 구역에 등록된 자료가 없습니다.</p>;
   return <Panel section={section} number={number} title={title} meta={`${items.length}개`}>
-    {items.length ? <ul className="items">{items.map(item => <Item key={item.id} item={item} items={allItems} copy={copy} />)}</ul> : <p className="empty-state">이 구역에 등록된 자료가 없습니다.</p>}
+    {folded ? <details className="catalog-fold" open={expanded} onToggle={event => onToggle?.(event.currentTarget.open)}>
+      <summary>멘토링 자료 {items.length}개 <span>자료 목록 보기</span></summary>
+      {contents}
+    </details> : contents}
   </Panel>;
 }
 
 function TodayPanel({ latest, loading, error, copy }) {
-  const headlines = Array.isArray(latest?.headlines) ? latest.headlines.filter(item => item.title).slice(0, 3) : [];
-  const editions = Array.isArray(latest?.editions) ? latest.editions.slice(0, 5) : [];
+  const headlines = Array.isArray(latest?.headlines) ? latest.headlines.filter(item => item.title).slice(0, 2) : [];
   const bids = (Array.isArray(latest?.bids) ? latest.bids : []).filter(item => deadlineLabel(item.deadline) !== '마감');
   const dueSoon = bids.filter(item => {
     const label = deadlineLabel(item.deadline);
     return label === 'D-day' || /^D-\d+$/.test(label) && Number(label.slice(2)) <= 14;
-  }).sort((a, b) => (a.deadline || '').localeCompare(b.deadline || '')).slice(0, 3);
-  const lead = headlines[0];
+  }).sort((a, b) => (a.deadline || '').localeCompare(b.deadline || '')).slice(0, 1);
   const articleHref = item => safeContentHref(item.href || item.url) || './briefing/index.html';
   return <Panel section="today" number="01" title="오늘 · AI·교육 브리핑" meta={latest?.date ? `${shortDate(latest.date)}${latest.collectedAt ? ` · ${latest.collectedAt}` : ''}` : '평일 갱신'}>
     {headlines.length ? <div className="today-grid">
-      <div>
-        <article className="lead">
-          <div className="kick">{(lead.issue || lead.field || lead.tag) && <span className="tag">{[lead.issue, lead.field].filter(Boolean).join(' | ') || lead.tag}</span>}{lead.source}</div>
-          <h3><a href={articleHref(lead)}>{lead.title}</a></h3>
-          <p>{lead.summary}</p>
-          <div className="acts headline-actions"><a className="act open" href={articleHref(lead)}>기사 읽기 ↗</a>{lead.id && <button className="act copy" type="button" data-share-id={lead.id} aria-label={`${lead.title} 공유`}>기사 공유</button>}</div>
-        </article>
-        <ul className="news">{headlines.slice(1).map((item, index) => <li key={item.id || index}>
-          <span className="tag">{item.issue || item.field || item.tag || '뉴스'}</span><a href={articleHref(item)}>{item.title}</a>
-          <small>{[item.source, shortDate(item.date)].filter(Boolean).join(' · ')}</small>
-          {item.id && <div className="news-copy"><button className="act copy" type="button" data-share-id={item.id} aria-label={`${item.title} 공유`}>기사 공유</button></div>}
-        </li>)}</ul>
-      </div>
+      <ul className="news">{headlines.map((item, index) => <li key={item.id || index}>
+        <a href={articleHref(item)}>{item.title}</a>
+        {item.id && <button className="act copy" type="button" data-share-id={item.id} aria-label={`${item.title} 공유`}>공유</button>}
+      </li>)}</ul>
       <aside className="biz" aria-label="사업 제안 기회">
         <div className="biz-head"><b>사업 제안 기회</b><span>접수 중 {bids.length}건</span></div>
         {dueSoon.length ? <ul className="near">{dueSoon.map((bid, index) => <li key={bid.id || index}>
@@ -116,33 +107,16 @@ function TodayPanel({ latest, loading, error, copy }) {
     {error && <p className="load-note">요약을 불러오지 못했습니다. 브리핑 링크는 계속 열 수 있습니다.</p>}
     <footer className="panel-foot">
       <a className="btn primary" href="./briefing/index.html">브리핑 열기 ↗</a><CopyLink title="AI·교육 브리핑" href="./briefing/index.html" copy={copy} />
-      <a className="btn" href="./briefing/archive/index.html">지난 브리핑 전체</a>
-      {!!editions.length && <div className="editions"><span>최근 {editions.length}호</span>{editions.map((edition, index) => <a className={`ed${index === 0 ? ' ed-today' : ''}`} key={edition.date || index} href={safeContentHref(edition.href || edition.url) || './briefing/archive/index.html'}>{shortDate(edition.date)}</a>)}</div>}
     </footer>
   </Panel>;
 }
 
 function LibraryPanel({ summary, loading, error, copy }) {
-  const shelves = Array.isArray(summary?.shelves) ? summary.shelves : [];
-  const recent = Array.isArray(summary?.recent) ? summary.recent : [];
   return <Panel section="library" number="02" title="연구 서고" meta={summary?.updatedAt ? `최근 입고 ${shortDate(summary.updatedAt)}` : '연구·인용 자료'}>
-    {summary && <div className="lib-grid">
-      <div>
-        <dl className="stats">{[['소장', summary.total], ['동료심사', summary.reviewed], ['특별리서치', summary.special]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{Number.isFinite(Number(value)) ? Number(value) : '—'}<small>편</small></dd></div>)}</dl>
-        {!!shelves.length && <><h3 className="sub">서가 <span className="n">{shelves.length}곳</span></h3><ul className="shelves">{shelves.map(shelf => {
-          const id = String(shelf.id || '').replace(/^shelf-/, '');
-          return <li key={id}><a href={`./library/index.html#shelf-${encodeURIComponent(id)}`}><b>{id}</b><span>{shelf.label || shelf.name}</span><em>{shelf.count}</em></a></li>;
-        })}</ul></>}
-      </div>
-      {!!recent.length && <div><h3 className="sub">신착 자료 <span className="n">{recent.length}편</span></h3><ol className="newin">{recent.map((paper, index) => {
-        const href = safeContentHref(paper.href) || './library/index.html';
-        const title = paper.titleKo || paper.title;
-        return <li key={paper.id || index}><a className="paper-main" href={href}><span className="call">{paper.call || paper.code || '연구'}</span><span className="nt">{title}</span><span className="nm">{[text(paper.authors), paper.year, paper.kind ? PUBLICATION_LABELS[paper.kind] || '연구 자료' : ''].filter(Boolean).join(' · ')}</span></a><div className="acts"><CopyLink title={title} href={href} copy={copy} /></div></li>;
-      })}</ol></div>}
-    </div>}
+    {summary && <p className="library-brief"><strong>소장 {Number.isFinite(Number(summary.total)) ? Number(summary.total) : '—'}편</strong><span>상세 요약·검색·인용은 연구 서고에서 확인하세요.</span></p>}
     {!summary && <p className="empty-state">{loading ? '서고 현황을 불러오는 중입니다.' : '연구 서고에서 자료 검색과 인용 복사를 이용하세요.'}</p>}
     {error && <p className="load-note">서고 요약을 불러오지 못했습니다. 전체 서고는 아래에서 열 수 있습니다.</p>}
-    <footer className="panel-foot"><a className="btn primary" href="./library/index.html">서고 열기 ↗</a><CopyLink title="연구 서고" href="./library/index.html" copy={copy} /><a className="btn" href="./library/library.bib" download>.bib</a><a className="btn" href="./library/library.ris" download>.ris</a></footer>
+    <footer className="panel-foot"><a className="btn primary" href="./library/index.html">서고 열기 ↗</a><CopyLink title="연구 서고" href="./library/index.html" copy={copy} /></footer>
   </Panel>;
 }
 
@@ -154,13 +128,14 @@ export default function BasePage() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('today');
   const [archiveOpen, setArchiveOpen] = useState(false);
+  const [codeOpen, setCodeOpen] = useState(false);
   const [notice, setNotice] = useState('');
   const findRef = useRef(null);
   const inputRef = useRef(null);
   const items = catalog.items;
   const mainItems = items.filter(item => !item.parent && item.placement !== 'archive' && item.section !== 'archive');
   const archive = items.filter(item => !item.parent && (item.placement === 'archive' || item.section === 'archive'));
-  const bySection = section => mainItems.filter(item => item.section === section || section === 'showcase' && item.section === 'playground');
+  const bySection = section => mainItems.filter(item => item.section === section);
   const local = LOCAL_HOSTS.has(globalThis.location?.hostname);
   const localDate = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', weekday: 'short' }).format(new Date());
   const indexedPapers = useMemo(() => Array.isArray(library.data?.items) ? library.data.items : Array.isArray(library.data?.papers) ? library.data.papers : library.data?.recent || [], [library.data]);
@@ -168,9 +143,14 @@ export default function BasePage() {
     const words = searchable(query).trim().split(/\s+/).filter(Boolean);
     if (!words.length) return { materials: [], papers: [] };
     const matches = value => words.every(word => searchable(value).includes(word));
-    const materials = [...new Map(items.flatMap(item => [item, ...childrenOf(item, items).map(child => ({ ...child, section: child.section || item.section }))]).map(item => [item.id || item.href, item])).values()];
+    const materials = new Map(items.map(item => [item.href, item]));
+    for (const item of items) {
+      for (const child of childrenOf(item, items)) {
+        if (!materials.has(child.href)) materials.set(child.href, { ...child, section: child.section || item.section });
+      }
+    }
     return {
-      materials: materials.filter(item => matches([item.title, item.description, SECTION_NAMES[item.section], item.keywords])),
+      materials: [...materials.values()].filter(item => matches([item.title, item.description, SECTION_NAMES[item.section], item.keywords])),
       papers: indexedPapers.filter(paper => matches([paper.title, paper.titleKo, paper.authors, paper.call, paper.code, paper.id, paper.keywords])),
     };
   }, [items, indexedPapers, query]);
@@ -213,6 +193,7 @@ export default function BasePage() {
   function goToSection(section) {
     setActiveSection(section);
     if (section === 'archive') setArchiveOpen(true);
+    if (section === 'code') setCodeOpen(true);
     const motion = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     document.getElementById(`base-${section}`)?.scrollIntoView?.({ behavior: motion ? 'auto' : 'smooth', block: 'start' });
   }
@@ -250,7 +231,7 @@ export default function BasePage() {
     <main className="wrap"><div className="board">
       <div className="col col-main">
         <TodayPanel latest={briefing.data} loading={briefing.loading} error={briefing.error} copy={copy} />
-        <CatalogPanel section="code" number="03" title="C.O.D.E 본선 멘토링" items={bySection('code')} allItems={items} copy={copy} />
+        <CatalogPanel section="code" number="03" title="C.O.D.E 본선 멘토링" items={bySection('code')} allItems={items} copy={copy} folded expanded={codeOpen} onToggle={setCodeOpen} />
         <CatalogPanel section="showcase" number="05" title="공개 쇼케이스" items={bySection('showcase')} allItems={items} copy={copy} />
       </div>
       <div className="col col-side">

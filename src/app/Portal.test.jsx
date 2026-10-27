@@ -26,6 +26,8 @@ describe('catalog-connected orbital portal',()=>{
   const atlas=screen.getByRole('region',{name:'수업과 실험의 작은 우주'});
   expect(publications.compareDocumentPosition(atlas) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   fireEvent.click(screen.getByText('실습·특강 바로가기'));
+  expect(screen.getByRole('link',{name:'서울대 AI 융합교육 연수'})).toHaveAttribute('href','./hub/index.html#snu');
+  expect(screen.queryByRole('link',{name:/멍멍 RL/})).not.toBeInTheDocument();
   for(const [name,href] of [['공정한 AI 실험실','#/fairness'],['진실·미디어 검증소','#/verification'],['AI에게 무엇을 맡길까?','#/role'],['AI가 대신 움직인다면?','#/agent']])expect(screen.getByRole('link',{name:new RegExp(name.replace(/[?]/g,'\\?'))})).toHaveAttribute('href',href);
  });
  it('reads the latest magazine edition and keeps previous issues inside the same publication cell',async()=>{

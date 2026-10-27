@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 9,
+  "revision": 10,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -100,15 +100,23 @@
       "id": "hub",
       "kind": "link",
       "title": "AI 교육 특강 허브",
-      "description": "제주대 예비교원 특강·로보독 실습 자료",
+      "description": "서울대 연수·제주대 예비교원 특강·고교 로보독 실습",
       "href": "./hub/index.html",
       "section": "lecture",
       "placement": "both",
       "status": "live",
       "children": [
         {
-          "title": "멍멍 RL",
-          "href": "./hub/apps/robotdog_rl/index.html"
+          "title": "서울대 AI 융합교육 연수",
+          "href": "./hub/index.html#snu"
+        },
+        {
+          "title": "제주대 예비교원 특강",
+          "href": "./hub/index.html#jeju"
+        },
+        {
+          "title": "고교 로보독 특강",
+          "href": "./hub/index.html#hs"
         }
       ]
     },
@@ -210,32 +218,12 @@
     {
       "id": "malang",
       "kind": "link",
-      "title": "말랑 런",
-      "description": "이전 실습 앱",
+      "title": "말랑런",
+      "description": "장애물을 피하고 젤리를 모으는 러너 게임",
       "href": "./hub/apps/malang_run/index.html",
-      "section": "archive",
-      "placement": "archive",
+      "section": "playground",
+      "placement": "base",
       "status": "live"
-    },
-    {
-      "id": "commute-locked",
-      "kind": "link",
-      "title": "통학 데이터 탐구 v2",
-      "description": "원본 확인 대기",
-      "href": "./hub/apps/통학_데이터_탐구_v2.html",
-      "section": "archive",
-      "placement": "archive",
-      "status": "locked"
-    },
-    {
-      "id": "question-locked",
-      "kind": "link",
-      "title": "질문 전후 비교 v3",
-      "description": "원본 확인 대기",
-      "href": "./hub/apps/질문전후비교_v3.html",
-      "section": "archive",
-      "placement": "archive",
-      "status": "locked"
     },
     {
       "id": "playground",
@@ -250,6 +238,10 @@
         {
           "title": "작은별 테라리움",
           "href": "./apps/terrarium/index.html"
+        },
+        {
+          "title": "말랑런",
+          "href": "./hub/apps/malang_run/index.html"
         }
       ]
     },

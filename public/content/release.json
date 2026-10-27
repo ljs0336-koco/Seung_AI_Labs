@@ -1,5 +1,5 @@
 {
-  "revision": 9,
+  "revision": 10,
   "items": [
     {
       "id": "briefing",
@@ -64,14 +64,6 @@
     {
       "id": "malang",
       "href": "./hub/apps/malang_run/index.html"
-    },
-    {
-      "id": "commute-locked",
-      "href": "./hub/apps/통학_데이터_탐구_v2.html"
-    },
-    {
-      "id": "question-locked",
-      "href": "./hub/apps/질문전후비교_v3.html"
     },
     {
       "id": "playground",

@@ -9,9 +9,9 @@ const LABS = [
   ['#/role', 'AI에게 무엇을 맡길까?'], ['#/agent', 'AI가 대신 움직인다면?'],
 ];
 const LECTURES = [
+  ['./hub/index.html#snu', '서울대 AI 융합교육 연수'],
   ['./hub/index.html#jeju', '제주대 예비교원 특강'],
   ['./hub/index.html#hs', '고교 로보독 특강'],
-  ['./hub/apps/robotdog_rl/index.html', '멍멍 RL Playground'],
 ];
 const PUBLICATIONS = new Set(['briefing', 'deck']);
 const ORBIT_ORDER = ['literacy', 'hub', 'playground', 'padlet-ai-training'];

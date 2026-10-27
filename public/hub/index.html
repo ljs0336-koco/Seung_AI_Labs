@@ -3,84 +3,66 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#f6f2ea"/>
   <title>AI 교육 특강 허브</title>
-  <meta name="description" content="고등학생 로보독 특강과 제주대학교 예비교원 특강의 공개 안내와 참고 자료"/>
-  <!-- 공개 배포용. AI 교육 특강 허브 -->
+  <meta name="description" content="AI 교육 특강의 강의 개요, 진행 내용, 공개 참고 자료를 항목별로 살펴보는 공간"/>
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            "background": "#fcf9f5",
-            "surface": "#fcf9f5",
-            "surface-dim": "#dcdad6",
-            "surface-container-lowest": "#ffffff",
-            "surface-container-low": "#f6f3f0",
-            "surface-container": "#f0edea",
-            "surface-container-high": "#eae8e4",
-            "on-surface": "#1b1c1a",
-            "on-surface-variant": "#444841",
-            "outline": "#747870",
-            "outline-variant": "#c4c8be",
-            "primary": "#52634c",
-            "primary-fixed": "#d5e8cb",
-            "on-primary-fixed": "#101f0d",
-            "secondary": "#99462a",
-            "secondary-fixed": "#ffdbd0",
-            "tertiary": "#755662"
-          },
-          fontFamily: { sans: ["Pretendard", "sans-serif"] }
-        }
-      }
-    };
-  </script>
-  <style>
-    body { font-family: 'Pretendard', sans-serif; word-break: keep-all; }
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      display: inline-block; vertical-align: middle; line-height: 1;
-    }
-    a:focus-visible, button:focus-visible { outline: 2px solid #52634c; outline-offset: 2px; }
-  </style>
+  <link rel="stylesheet" href="hub.css"/>
 </head>
-<body class="bg-surface-dim/40 text-on-surface antialiased flex justify-center min-h-screen">
-  <div class="w-full max-w-2xl bg-background min-h-screen flex flex-col shadow-2xl border-x border-outline-variant/30">
-
-    <header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40 px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2 min-w-0">
-        <button id="back-btn" onclick="navigate('#home')" class="hidden p-1.5 rounded-lg hover:bg-surface-container text-on-surface" aria-label="강의 목록으로">
-          <span class="material-symbols-outlined text-[22px]">arrow_back</span>
-        </button>
-        <div class="min-w-0">
-          <div class="flex items-center gap-1.5">
-            <span class="inline-block w-2 h-2 rounded-full bg-primary"></span>
-            <span id="bar-tag" class="text-[11px] tracking-wider text-primary font-semibold">AI 교육 특강</span>
-          </div>
-          <h1 id="bar-title" class="text-base font-bold leading-tight mt-0.5 truncate">강의 허브</h1>
-        </div>
-      </div>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="hub-shell">
+    <header class="hub-header">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">S.</span><div><p class="eyebrow">SEUNG AI LABS / LECTURES</p><h1><a href="#home">AI 교육 특강 허브</a></h1></div></div>
+      <a class="portal-link" href="../#/">통합 포털 <span aria-hidden="true">↗</span></a>
     </header>
-
-    <main class="flex-1 pb-10">
-      <section id="view-home" class="p-4 space-y-4"></section>
-      <section id="view-lecture" class="hidden p-4 space-y-4"></section>
+    <main id="main" tabindex="-1">
+      <section id="view-home" aria-label="공개 강의 목록"></section>
+      <section id="view-lecture" hidden aria-label="강의 안내"></section>
+      <noscript><p class="notice">강의 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
     </main>
-
-    <footer class="px-4 py-5 border-t border-outline-variant/40 text-[11px] text-outline leading-relaxed">
-      강의 안내와 참고 자료를 모은 공개 페이지입니다. 수강생 개인정보는 담지 않습니다.<br/>
-      외부 자료는 각 기관의 원문 링크로 연결하며, 제품 기능과 연구 결과는 발표 당시 기준입니다.
-    </footer>
+    <footer class="hub-footer"><p>강의 안내와 공개 참고 자료를 모았습니다. 수강생 개인정보는 담지 않습니다.</p><p>외부 자료는 원문으로 연결합니다. 제품 기능과 연구 결과는 발표 당시 기준입니다.</p></footer>
   </div>
-
   <script>
-    // ------------------------------------------------------------------
-    // 강의 데이터. 새 특강을 올릴 때는 이 배열에 항목을 하나 추가한다.
-    // 원본 문서: 고등학생 대상 특강_1002/01·04, 제주대_예비교원_AI특강_202610/00·02
-    // ------------------------------------------------------------------
+    // 공개 가능한 강의 설명과 원문 링크만 유지합니다.
     const LECTURES = [
+      {
+        id: "snu",
+        badge: "서울대 연수",
+        status: "강의 기록",
+        title: "AI 교육 프로그램 기획과 구현",
+        lead: "공교육 에듀테크의 근거를 검토하고, 기획한 프로그램을 수업 자료와 작은 웹 앱으로 옮기는 과정입니다. 서울대학교 연수의 강의 주제와 진행 내용을 공개용으로 정리했습니다.",
+        facts: [
+          { label: "대상", value: "서울대학교 AI융합교육학과 대학원생" },
+          { label: "형태", value: "강의·실습" },
+          { label: "구성", value: "기획 · 근거 검증 · 수업 자료 · 웹 앱" },
+          { label: "공개", value: "강의 개요와 주제별 내용" }
+        ],
+        keyLabel: "함께 다룬 질문",
+        key: "AI와 만든 교육 프로그램을 실제 수업에서 쓰려면, 무엇을 근거로 기획하고 어떻게 확인해야 할까?",
+        listTitle: "연수에서 다룬 주제",
+        list: [
+          "공교육의 요구를 읽고, AI가 제시한 자료를 원출처와 대조하기",
+          "원본 자료·요약·작업 규칙을 나눠 AI와 협업하고 수업 자료 확인하기",
+          "학습활동을 웹 앱으로 옮기고, 휴대폰 점검과 동료 피드백 반영하기"
+        ],
+        flowTitle: "주제별 강의 내용",
+        flow: [
+          { time: "기획", title: "공교육의 요구 읽기", text: "공교육 정책과 제안요청서(RFP)를 읽고, 프로그램이 해결할 문제와 방향을 정합니다." },
+          { time: "검증", title: "근거를 원출처와 대조하기", text: "AI가 제시한 논문·통계·정책 자료를 원출처와 대조하고, 기획에 쓸 수 있는 근거인지 검토합니다." },
+          { time: "협업", title: "AI와 일하는 자료 구조", text: "원본 자료·요약·작업 규칙의 역할을 나누고, AI가 참고할 맥락과 작업 기준을 정리합니다." },
+          { time: "자료", title: "과정안과 활동지 만들기", text: "기획을 과정안과 활동지로 옮기고, 실제 파일을 열어 내용과 구성을 확인합니다." },
+          { time: "구현", title: "작은 웹 앱으로 옮기기", text: "학습활동의 한 기능을 웹 화면으로 만들고, 휴대폰에서도 읽고 조작할 수 있는지 점검합니다." },
+          { time: "회고", title: "피드백과 다음 시도", text: "동료 피드백을 반영하고, KPT(계속할 것·문제·시도할 것)로 다음 작업을 정리합니다." }
+        ],
+        checkTitle: "",
+        checks: [],
+        closing: "",
+        apps: [],
+        refs: [],
+        materialsNote: "주제별 설명은 ‘강의 내용’ 탭에서 볼 수 있습니다. 공개할 수 있는 참고 자료가 정리되면 이곳에 연결합니다.",
+        notice: "수강생·팀별 정보와 개별 과제를 제외하고, 강의의 주제와 진행 내용만 정리했습니다."
+      },
       {
         id: "jeju",
         badge: "예비교원 특강",
@@ -198,193 +180,7 @@
         notice: "학교와 협의 중인 교육과정안입니다. 일정과 세부 내용은 바뀔 수 있습니다."
       }
     ];
-
-    const ACCENT = {
-      primary:   { chip: "bg-primary-fixed text-on-primary-fixed", icon: "bg-primary-fixed/60 text-primary", bar: "bg-primary" },
-      secondary: { chip: "bg-secondary-fixed text-secondary", icon: "bg-secondary-fixed/60 text-secondary", bar: "bg-secondary" }
-    };
-
-    function esc(s) {
-      return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    }
-
-    function renderHome() {
-      const cards = LECTURES.map(l => {
-        const a = ACCENT[l.accent];
-        return `
-        <a href="#${l.id}" class="block bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/50 shadow-sm hover:border-primary/50 transition-all">
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg ${a.icon} flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-[22px]">${l.icon}</span>
-            </div>
-            <div class="min-w-0 flex-1">
-              <div class="flex items-center gap-1.5 flex-wrap">
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded ${a.chip}">${esc(l.badge)}</span>
-                <span class="text-[11px] text-outline">${esc(l.status)}</span>
-              </div>
-              <h3 class="text-[15px] font-bold leading-snug mt-1.5">${esc(l.title)}</h3>
-              <p class="text-xs text-on-surface-variant mt-1">${esc(l.facts[0].value)} · ${esc(l.facts[2].value)}</p>
-            </div>
-            <span class="material-symbols-outlined text-outline text-[20px] mt-2">chevron_right</span>
-          </div>
-        </a>`;
-      }).join("");
-
-      document.getElementById("view-home").innerHTML = `
-        <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/50 shadow-sm">
-          <p class="text-sm leading-relaxed text-on-surface">
-            강의 안내와 수업에서 함께 보는 자료를 모았습니다.<br/>
-            특강을 고르면 흐름과 참고 자료를 볼 수 있습니다.
-          </p>
-        </div>
-        <div class="flex items-center justify-between pt-1">
-          <h2 class="text-sm font-bold">공개 특강</h2>
-          <span class="text-[11px] text-outline">${LECTURES.length}개</span>
-        </div>
-        <div class="space-y-3">${cards}</div>`;
-    }
-
-    function section(title, body) {
-      return `
-        <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/50 shadow-sm space-y-3">
-          <h3 class="text-sm font-bold text-primary">${esc(title)}</h3>
-          ${body}
-        </div>`;
-    }
-
-    function renderLecture(l) {
-      const a = ACCENT[l.accent];
-      let html = `
-        <div class="space-y-2">
-          <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded ${a.chip}">${esc(l.badge)}</span>
-            <span class="text-[11px] text-outline">${esc(l.status)}</span>
-          </div>
-          <h2 class="text-xl font-bold leading-snug">${esc(l.title)}</h2>
-          <p class="text-sm text-on-surface-variant leading-relaxed">${esc(l.lead)}</p>
-        </div>
-
-        <dl class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-sm divide-y divide-outline-variant/30">
-          ${l.facts.map(f => `
-            <div class="flex gap-3 px-4 py-2.5 text-sm">
-              <dt class="w-12 shrink-0 text-outline">${esc(f.label)}</dt>
-              <dd class="flex-1">${esc(f.value)}</dd>
-            </div>`).join("")}
-        </dl>
-
-        <div class="relative pl-4 py-1">
-          <span class="absolute left-0 top-1 bottom-1 w-1 rounded-full ${a.bar}"></span>
-          <div class="text-[11px] font-bold text-outline">${esc(l.keyLabel)}</div>
-          <p class="text-[15px] font-semibold leading-relaxed mt-0.5">${esc(l.key)}</p>
-        </div>`;
-
-      html += section(l.listTitle, `
-        <ol class="space-y-2">
-          ${l.list.map((t, i) => `
-            <li class="flex gap-2.5 text-sm leading-relaxed">
-              <span class="w-5 h-5 shrink-0 rounded-full bg-surface-container text-[11px] font-bold flex items-center justify-center mt-0.5">${i + 1}</span>
-              <span>${esc(t)}</span>
-            </li>`).join("")}
-        </ol>`);
-
-      html += section(l.flowTitle, `
-        <ol class="relative border-l-2 border-outline-variant/50 ml-1.5 space-y-3.5">
-          ${l.flow.map(s => `
-            <li class="pl-4 relative">
-              <span class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full ${a.bar} ring-4 ring-surface-container-lowest"></span>
-              <div class="flex items-baseline gap-2">
-                <span class="text-[11px] font-bold text-outline shrink-0">${esc(s.time)}</span>
-                <span class="text-sm font-bold">${esc(s.title)}</span>
-              </div>
-              <p class="text-[13px] text-on-surface-variant leading-relaxed mt-0.5">${esc(s.text)}</p>
-              ${s.out ? `<p class="text-[12px] mt-1"><span class="text-outline">결과물</span> · ${esc(s.out)}</p>` : ""}
-            </li>`).join("")}
-        </ol>`);
-
-      if (l.checks.length) {
-        html += section(l.checkTitle, `
-          <ul class="space-y-2">
-            ${l.checks.map(c => `
-              <li class="flex gap-3 text-sm leading-relaxed">
-                <span class="w-10 shrink-0 font-bold">${esc(c.k)}</span>
-                <span class="text-on-surface-variant">${esc(c.v)}</span>
-              </li>`).join("")}
-          </ul>
-          ${l.closing ? `<p class="text-[13px] font-semibold pt-2 border-t border-outline-variant/30">“${esc(l.closing)}”</p>` : ""}`);
-      }
-
-      if (l.apps.length) {
-        html += section("실습 앱", l.apps.map(ap => `
-          <div class="p-3 rounded-lg bg-surface-container-low space-y-2">
-            <div class="flex items-center gap-1.5">
-              <span class="text-sm font-bold">${esc(ap.title)}</span>
-              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">${esc(ap.tag)}</span>
-            </div>
-            <p class="text-[13px] text-on-surface-variant leading-relaxed">${esc(ap.desc)}</p>
-            <div class="flex items-center justify-between">
-              <span class="text-[11px] text-outline">${esc(ap.note)}</span>
-              <a href="${esc(ap.url)}" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 flex items-center gap-1">
-                <span class="material-symbols-outlined text-[14px]">open_in_new</span> 열기
-              </a>
-            </div>
-          </div>`).join(""));
-      }
-
-      html += section("참고 자료", l.refs.map(g => `
-        <div class="space-y-1.5">
-          <div class="text-[11px] font-bold text-outline pt-1">${esc(g.group)}</div>
-          ${g.items.map(r => `
-            <a href="${esc(r.url)}" target="_blank" rel="noopener" class="block p-3 rounded-lg hover:bg-surface-container-low border border-outline-variant/30 transition-all">
-              <div class="flex items-start justify-between gap-2">
-                <span class="text-[13px] font-semibold leading-snug">${esc(r.title)}</span>
-                <span class="material-symbols-outlined text-[15px] text-outline shrink-0 mt-0.5">open_in_new</span>
-              </div>
-              <div class="text-[11px] text-outline mt-0.5">${esc(r.source)}</div>
-              <p class="text-[12px] text-on-surface-variant leading-relaxed mt-1">${esc(r.line)}</p>
-            </a>`).join("")}
-        </div>`).join(""));
-
-      html += `
-        <p class="flex gap-1.5 text-[12px] text-outline leading-relaxed px-1">
-          <span class="material-symbols-outlined text-[16px]">info</span>
-          <span>${esc(l.notice)}</span>
-        </p>`;
-
-      document.getElementById("view-lecture").innerHTML = html;
-    }
-
-    function navigate(route) {
-      window.location.hash = route;
-    }
-
-    function route() {
-      const id = (window.location.hash || "#home").slice(1);
-      const lecture = LECTURES.find(l => l.id === id);
-      const home = document.getElementById("view-home");
-      const detail = document.getElementById("view-lecture");
-      const back = document.getElementById("back-btn");
-      if (lecture) {
-        renderLecture(lecture);
-        home.classList.add("hidden");
-        detail.classList.remove("hidden");
-        back.classList.remove("hidden");
-        document.getElementById("bar-tag").textContent = lecture.badge;
-        document.getElementById("bar-title").textContent = lecture.status + " · " + lecture.facts[0].value;
-        document.title = lecture.title + " · 강의 허브";
-      } else {
-        home.classList.remove("hidden");
-        detail.classList.add("hidden");
-        back.classList.add("hidden");
-        document.getElementById("bar-tag").textContent = "AI 교육 특강";
-        document.getElementById("bar-title").textContent = "강의 허브";
-        document.title = "AI 교육 특강 허브";
-      }
-      window.scrollTo(0, 0);
-    }
-
-    renderHome();
-    window.addEventListener("hashchange", route);
-    route();
   </script>
+  <script src="hub.js"></script>
 </body>
 </html>
