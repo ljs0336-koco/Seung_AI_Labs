@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Special Edition · 고르는 손, 만드는 손</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --night:#1B1C1A; --night2:#24251F; --night3:#2E2F29; --line:#3E3F38;
+  --paper:#FBF9F5; --paper2:#C9C6BC; --muted:#8F8C82;
+  --acc:#E0673A; --acc-deep:#A23E18; --acc-soft:#FFDBCF;
+  --serif:"KoPubWorldBatang Medium","Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable","Pretendard","Malgun Gothic",sans-serif;
+  --disp:"Playfair Display",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0F100E;overflow:hidden;font-family:var(--sans);color:var(--paper);word-break:keep-all}
+.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,.5));background:var(--night);overflow:hidden}
+.stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(251,249,245,.9) .7px,transparent .8px);background-size:28px 28px;opacity:.05;pointer-events:none}
+.slide{position:absolute;inset:0;padding:72px 120px 0;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1),visibility 0s .6s}
+.slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.slide.off{transform:translateX(-60px)}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);font:600 15px/1 var(--sans);letter-spacing:.06em;color:var(--paper2)}
+.top b{color:var(--acc);letter-spacing:.24em;font-size:13px}
+.sq{display:inline-block;width:9px;height:9px;background:var(--acc);margin-right:12px}
+.kicker{margin-top:44px;font:600 18px/1 var(--sans);color:var(--acc);letter-spacing:.04em}
+.kicker span{font-family:var(--disp);font-style:italic;font-size:22px;margin-right:10px}
+h2{margin-top:18px;font:500 64px/1.2 var(--serif);letter-spacing:-.04em}
+h2 em{font-style:normal;color:var(--acc)}
+.sub{margin-top:14px;font:400 24px/1.5 var(--serif);color:var(--paper2)}
+/* step reveal */
+[data-step]{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+[data-step].show{opacity:1;transform:none}
+.hint{position:absolute;right:120px;bottom:40px;font:500 14px/1 var(--sans);color:var(--muted);letter-spacing:.08em}
+.hint i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acc);margin-right:8px;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.2}}
+.prog{position:absolute;left:0;bottom:0;height:4px;background:var(--acc);transition:width .6s}
+.pg{position:absolute;left:120px;bottom:34px;font:600 14px/1 var(--sans);letter-spacing:.2em;color:var(--muted)}
+
+/* 01 cover */
+.cover h1{margin-top:150px;font:400 128px/1 var(--serif);letter-spacing:-.05em}
+.cover h1 em{font-style:normal;color:var(--acc)}
+.cover .tag{display:inline-block;margin-top:150px;padding:10px 16px;border:1px solid var(--acc);color:var(--acc);font:600 16px/1 var(--sans);letter-spacing:.2em}
+.cover .tag + h1{margin-top:36px}
+.cover p{margin-top:36px;font:400 30px/1.6 var(--serif);color:var(--paper2)}
+.orbit{position:absolute;right:150px;top:230px;width:620px;height:620px}
+.orbit .ring{position:absolute;inset:0;border:1px dashed var(--line);border-radius:50%}
+.orbit .ring.r2{inset:110px;border-style:solid;border-color:#33342D}
+.orbit .core{position:absolute;left:50%;top:50%;width:170px;height:170px;margin:-85px;border-radius:50%;background:var(--acc-deep);display:grid;place-items:center;text-align:center;font:600 24px/1.3 var(--sans);box-shadow:0 0 0 14px rgba(224,103,58,.12),0 0 80px rgba(224,103,58,.35);animation:pulse 3s infinite}
+.orbit .core small{display:block;font-size:14px;font-weight:500;opacity:.8}
+@keyframes pulse{50%{box-shadow:0 0 0 26px rgba(224,103,58,.05),0 0 110px rgba(224,103,58,.45)}}
+.spin{position:absolute;inset:0;animation:spin 24s linear infinite}
+.spin .ai{position:absolute;width:118px;height:118px;margin:-59px;border-radius:50%;background:var(--night3);border:1px solid var(--paper2);display:grid;place-items:center;text-align:center;font:600 22px/1.2 var(--sans);animation:spin 24s linear infinite reverse}
+.spin .ai small{display:block;font-size:12.5px;color:var(--paper2);font-weight:500}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 02 interview chat */
+.chat{margin-top:80px;display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.bubbles{display:flex;flex-direction:column;gap:30px}
+.b{max-width:720px;padding:22px 28px;border-radius:22px;font:500 29px/1.5 var(--sans)}
+.b.u{align-self:flex-end;background:var(--paper);color:var(--night);border-bottom-right-radius:4px}
+.b.a{background:var(--night3);border:1px solid var(--line);border-bottom-left-radius:4px}
+.b .who{display:block;font-size:14px;font-weight:700;letter-spacing:.1em;margin-bottom:6px;color:var(--acc)}
+.b.u .who{color:var(--acc-deep)}
+.shift{display:flex;flex-direction:column;gap:30px;justify-content:center}
+.pair{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;font:500 33px/1.3 var(--serif)}
+.pair .from{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--acc)}
+.pair .arrow{color:var(--acc);font-family:var(--sans);text-align:center}
+.pair .to{color:var(--paper)}
+.lesson{margin-top:30px;padding:26px 30px;border-left:3px solid var(--acc);font:500 28px/1.5 var(--serif);background:var(--night2)}
+
+/* 03 roles */
+.roles{margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.card{height:500px;perspective:1400px;cursor:pointer}
+.card .in{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;padding:34px 30px;border:1px solid var(--line);background:var(--night2);display:flex;flex-direction:column}
+.face.back{transform:rotateY(180deg);background:var(--paper);color:var(--night)}
+.card.me .face.front{border-color:var(--acc);box-shadow:inset 0 3px 0 var(--acc)}
+.face .em{font-size:64px;line-height:1}
+.face h3{margin-top:26px;font:600 44px/1.1 var(--serif)}
+.face .tool{margin-top:8px;font:500 16px/1 var(--sans);color:var(--muted);letter-spacing:.06em}
+.face .verb{margin-top:auto;font:500 30px/1.35 var(--serif);color:var(--acc)}
+.face .tap{margin-top:14px;font:500 14px/1 var(--sans);color:var(--muted)}
+.face.back h4{font:700 15px/1 var(--sans);letter-spacing:.12em;color:var(--acc-deep)}
+.face.back ul{margin-top:14px;list-style:none;display:flex;flex-direction:column;gap:12px;font:500 21px/1.45 var(--sans)}
+.face.back li::before{content:"— ";color:var(--acc-deep)}
+.face.back .no{margin-top:auto;padding-top:16px;border-top:1px solid #DDD8CC;font:500 18px/1.45 var(--sans);color:#6A675F}
+.rule{margin-top:34px;text-align:center;font:500 26px/1 var(--serif);color:var(--paper2)}
+.rule b{color:var(--acc);font-weight:600}
+
+/* 04 pipeline */
+.pipe{position:relative;margin-top:90px;height:220px}
+.track{position:absolute;left:40px;right:40px;top:58px;height:3px;background:var(--line)}
+.track .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acc);transition:width .7s}
+.nodes{position:absolute;inset:0;display:flex;justify-content:space-between}
+.node{position:relative;width:180px;text-align:center;cursor:pointer}
+.node .dot{margin:36px auto 0;width:46px;height:46px;border-radius:50%;background:var(--night);border:3px solid var(--line);display:grid;place-items:center;font:700 16px/1 var(--sans);color:var(--muted);transition:all .35s}
+.node.on .dot{border-color:var(--acc);color:var(--paper);background:var(--acc-deep);transform:scale(1.15)}
+.node.fail .dot{border-color:#C9473A}
+.node .v{margin-top:16px;font:600 24px/1 var(--disp);font-style:italic}
+.node .t{margin-top:8px;font:500 17px/1.3 var(--sans);color:var(--paper2)}
+.node .who{position:absolute;top:-6px;left:50%;transform:translateX(-50%);font:700 13px/1 var(--sans);letter-spacing:.1em;color:var(--acc);white-space:nowrap}
+.detail{margin:30px auto 0;max-width:1300px;min-height:230px;padding:34px 44px;background:var(--night2);border:1px solid var(--line);border-left:4px solid var(--acc);display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center}
+.detail .big{font:400 90px/1 var(--disp);font-style:italic;color:var(--acc)}
+.detail h3{font:600 34px/1.3 var(--serif)}
+.detail p{margin-top:12px;font:400 22px/1.6 var(--sans);color:var(--paper2)}
+
+/* 05 errors */
+.errs{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.err{height:420px;padding:30px 28px;border:1px solid var(--line);background:var(--night2);cursor:pointer;position:relative;overflow:hidden;transition:border-color .3s}
+.err:hover{border-color:var(--acc)}
+.err .x{font:700 15px/1 var(--sans);letter-spacing:.14em;color:#E07A6E}
+.err h3{margin-top:18px;font:600 30px/1.35 var(--serif)}
+.err .why{margin-top:14px;font:400 19px/1.55 var(--sans);color:var(--paper2)}
+.err .fix{position:absolute;inset:0;padding:30px 28px;background:var(--acc-deep);transform:translateY(100%);transition:transform .55s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.err.done .fix{transform:none}
+.err .fix .ok{font:700 15px/1 var(--sans);letter-spacing:.14em;color:var(--acc-soft)}
+.err .fix h3{color:#fff}
+.err .fix .learn{margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.3);font:600 21px/1.45 var(--serif);color:#fff}
+.gigo{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:26px;font:500 26px/1 var(--serif);color:var(--paper2)}
+.gigo .n{font:400 64px/1 var(--disp);color:var(--acc)}
+
+/* 06 closing */
+.loop{position:absolute;right:170px;top:250px;width:560px;height:560px}
+.loop svg{width:100%;height:100%;overflow:visible}
+.loop .lbl{font:600 22px var(--sans);fill:var(--paper)}
+.loop .hot{fill:var(--acc)}
+.dash{stroke-dasharray:8 10;animation:flow 2.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-36}}
+.close h2{margin-top:130px;font-size:84px;line-height:1.18}
+.close .q{margin-top:60px;max-width:900px;padding:30px 36px;border:1px solid var(--acc);font:500 34px/1.5 var(--serif)}
+.close .q small{display:block;margin-bottom:10px;font:700 15px/1 var(--sans);letter-spacing:.16em;color:var(--acc)}
+.close .sig{margin-top:40px;font:500 18px/1 var(--sans);color:var(--muted);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+<!-- 01 표지 -->
+<section class="slide cover" data-title="표지">
+  <div class="top"><span><i class="sq"></i>제주대 예비교원 AI 특강</span><b>SPECIAL EDITION</b></div>
+  <span class="tag">메이킹 필름 · 이 강의자료는 어떻게 만들어졌나</span>
+  <h1>만드는 손,<br><em>고르는 손</em></h1>
+  <p>사람 한 명과 AI 셋이<br>슬라이드 한 벌을 함께 만든 기록</p>
+  <div class="orbit" aria-hidden="true">
+    <div class="ring"></div><div class="ring r2"></div>
+    <div class="core">사람<small>방향 · 최종 판단</small></div>
+    <div class="spin">
+      <div class="ai" style="left:50%;top:0">모루<small>만들기</small></div>
+      <div class="ai" style="left:93.3%;top:75%">마루<small>모으기</small></div>
+      <div class="ai" style="left:6.7%;top:75%">미르<small>검증하기</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PART 1 -->
+<section class="slide" data-title="질문으로 시작">
+  <div class="top"><span><i class="sq"></i>PART 1 · 시작</span><b>SPECIAL EDITION</b></div>
+  <div class="kicker"><span>01</span>“맘에 안 들어”에서 출발하다</div>
+  <h2>AI는 바로 고치지 않고, <em>먼저 물었다</em></h2>
+  <div class="chat">
+    <div class="bubbles">
+      <div class="b u" data-step="1"><span class="who">사람</span>슬라이드가 좀 맘에 안 들어. 인터뷰해서 내 입맛에 맞게 고쳐 줄래?</div>
+      <div class="b a" data-step="2"><span class="who">모루</span>무엇이 제일 걸리세요? 톤은 유지할까요? 본편과 부록은 어떻게 나눌까요?</div>
+      <div class="b u" data-step="3"><span class="who">사람</span>글이 너무 많고, 흐름이 안 꽂혀. 톤은 그대로, 더 과감하게.</div>
+    </div>
+    <div class="shift">
+      <div class="pair" data-step="4"><span class="from">글이 빽빽한 장</span><span class="arrow">→</span><span class="to">한 장에 한 메시지</span></div>
+      <div class="pair" data-step="4"><span class="from">설명하는 강의</span><span class="arrow">→</span><span class="to">묻고 답하는 대화</span></div>
+      <div class="pair" data-step="4"><span class="from">한꺼번에 보이기</span><span class="arrow">→</span><span class="to">클릭하면 하나씩</span></div>
+      <div class="pair" data-step="4"><span class="from">긴 원고 노트</span><span class="arrow">→</span><span class="to">짧은 큐카드</span></div>
+      <p class="lesson" data-step="5">좋은 결과물은 좋은 질문에서 시작한다.<br>무엇이 ‘좋은지’는 사람이 정한다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PART 2 -->
+<section class="slide" data-title="역할">
+  <div class="top"><span><i class="sq"></i>PART 2 · 역할</span><b>SPECIAL EDITION</b></div>
+  <div class="kicker"><span>02</span>넷이 같은 일을 하지 않는다</div>
+  <h2>각자 잘하는 일, <em>책임은 한 명</em></h2>
+  <div class="roles">
+    <div class="card me" data-step="1"><div class="in">
+      <div class="face front"><div class="em">🙋</div><h3>사람</h3><div class="tool">강사 · 발행인</div><div class="verb">방향을 정하고<br>최종 판단한다</div><div class="tap">눌러서 뒤집기</div></div>
+      <div class="face back"><h4>한 일</h4><ul><li>인터뷰에 답하며 취향을 말함</li><li>PowerPoint에서 직접 고침(v0.4)</li><li>시간·실습 방식 결정</li></ul><div class="no">AI가 고른 안을 그대로 쓰지 않고 마지막에 고른다</div></div>
+    </div></div>
+    <div class="card" data-step="2"><div class="in">
+      <div class="face front"><div class="em">🔨</div><h3>모루</h3><div class="tool">Claude Code</div><div class="verb">질문하고,<br>만들고, 검수한다</div><div class="tap">눌러서 뒤집기</div></div>
+      <div class="face back"><h4>한 일</h4><ul><li>인터뷰 질문 설계</li><li>슬라이드 생성 코드·발표 노트</li><li>뉴스 조사, 원문 대조 검수</li></ul><div class="no">강의 운영과 최종 선택은 하지 않는다</div></div>
+    </div></div>
+    <div class="card" data-step="3"><div class="in">
+      <div class="face front"><div class="em">🧭</div><h3>마루</h3><div class="tool">Antigravity IDE</div><div class="verb">자료를 모으고<br>계획을 캐묻는다</div><div class="tap">눌러서 뒤집기</div></div>
+      <div class="face back"><h4>한 일</h4><ul><li>장마다 쓸 사례 링크·이미지 수집</li><li>/grill-me로 기획 질문 던지기</li><li>저장소 관리</li></ul><div class="no">모은 자료도 원문 확인을 거친다</div></div>
+    </div></div>
+    <div class="card" data-step="4"><div class="in">
+      <div class="face front"><div class="em">🔍</div><h3>미르</h3><div class="tool">Codex</div><div class="verb">빠진 것과<br>틀린 것을 찾는다</div><div class="tap">눌러서 뒤집기</div></div>
+      <div class="face back"><h4>한 일</h4><ul><li>요구사항·완료 기준 정리</li><li>모루와 교차 검토</li><li>결과 통합</li></ul><div class="no">칭찬보다 오류를 찾는 역할</div></div>
+    </div></div>
+  </div>
+  <p class="rule" data-step="5">담당 한 명 + <b>다른 한 명의 검토</b> + 마지막은 <b>사람</b></p>
+</section>
+
+<!-- 04 PART 3 -->
+<section class="slide" data-title="흐름">
+  <div class="top"><span><i class="sq"></i>PART 3 · 흐름</span><b>SPECIAL EDITION</b></div>
+  <div class="kicker"><span>03</span>한 번에 완성되지 않았다</div>
+  <h2>다섯 번 고쳐서, <em>한 벌</em>이 되었다</h2>
+  <div class="pipe">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="nodes" id="nodes"></div>
+  </div>
+  <div class="detail" id="detail"><div class="big" id="dBig"></div><div><h3 id="dH"></h3><p id="dP"></p></div></div>
+</section>
+
+<!-- 05 PART 4 -->
+<section class="slide" data-title="시행착오">
+  <div class="top"><span><i class="sq"></i>PART 4 · 시행착오</span><b>SPECIAL EDITION</b></div>
+  <div class="kicker"><span>04</span>막힌 곳에서 배운 것</div>
+  <h2>문제는 생겼고, <em>그래서 기록했다</em></h2>
+  <div class="errs">
+    <div class="err" data-step="1"><div class="x">✕ 문제 01</div><h3>파일이 열리지 않는다</h3><p class="why">고친 슬라이드가 PowerPoint에서 아예 안 열렸다.</p>
+      <div class="fix"><div class="ok">✓ 해결</div><h3>덧대지 말고, 처음부터 다시 만든다</h3><p class="learn">수작업 땜질보다 재생성이 안전하다</p></div></div>
+    <div class="err" data-step="1"><div class="x">✕ 문제 02</div><h3>한글이 깨진다</h3><p class="why">자동 수정 명령 안에서 한글·특수문자가 망가졌다.</p>
+      <div class="fix"><div class="ok">✓ 해결</div><h3>파일로 저장한 뒤 실행한다</h3><p class="learn">도구의 약점을 알고 우회한다</p></div></div>
+    <div class="err" data-step="1"><div class="x">✕ 문제 03</div><h3>그럴듯한 사실 오류</h3><p class="why">AI가 모은 자료에 학술지 이름·수치가 틀린 곳이 있었다.</p>
+      <div class="fix"><div class="ok">✓ 해결</div><h3>원문과 하나씩 대조한다</h3><p class="learn">Garbage In, Garbage Out — 확인은 사람의 책임</p></div></div>
+    <div class="err" data-step="1"><div class="x">✕ 문제 04</div><h3>서로 다른 버전을 본다</h3><p class="why">한 AI는 v0.4, 다른 AI는 v0.5 장 번호로 일했다.</p>
+      <div class="fix"><div class="ok">✓ 해결</div><h3>인계할 때 기준 버전을 적는다</h3><p class="learn">협업의 절반은 맥락 넘기기</p></div></div>
+  </div>
+  <div class="gigo" data-step="2">카드를 눌러 해결을 확인하세요 · 검수로 바로잡은 사실 <span class="n">10+</span> 곳</div>
+</section>
+
+<!-- 06 마무리 -->
+<section class="slide close" data-title="마무리">
+  <div class="top"><span><i class="sq"></i>EPILOGUE</span><b>SPECIAL EDITION</b></div>
+  <h2 data-step="1">AI가 만들고,<br><em>사람이 고른다.</em></h2>
+  <div class="q" data-step="2"><small>여러분에게 남기는 질문</small>여러분의 교실에서,<br>‘고르는 손’은 누가 될까요?</div>
+  <p class="sig" data-step="2">이 강의의 내용(HITL)이, 이 강의를 만든 방식이었습니다.</p>
+  <div class="loop" aria-hidden="true">
+    <svg viewBox="0 0 560 560">
+      <circle cx="280" cy="280" r="200" fill="none" stroke="#3E3F38" stroke-width="2"/>
+      <circle class="dash" cx="280" cy="280" r="200" fill="none" stroke="#E0673A" stroke-width="3"/>
+      <g text-anchor="middle">
+        <circle cx="280" cy="80" r="58" fill="#24251F" stroke="#C9C6BC"/><text class="lbl" x="280" y="88">요청</text>
+        <circle cx="453" cy="380" r="58" fill="#24251F" stroke="#C9C6BC"/><text class="lbl" x="453" y="388">AI 제작</text>
+        <circle cx="107" cy="380" r="64" fill="#A23E18"/><text class="lbl" x="107" y="388">사람 검토</text>
+        <text x="280" y="290" style="font:400 30px var(--disp);font-style:italic" fill="#E0673A">human in the loop</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<div class="pg" id="pg"></div>
+<div class="hint"><i></i>클릭 · → 다음 &nbsp; ← 이전 &nbsp; F 전체화면</div>
+<div class="prog" id="prog"></div>
+</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'),slides=[].slice.call(document.querySelectorAll('.slide')),cur=0,step=0;
+  var STEPS=[
+    {v:'v0.1',t:'원고 29장',who:'사람',h:'처음 원고와 초안',p:'강의 원고와 첫 슬라이드. 내용은 있었지만 글이 많고 흐름이 약했다.'},
+    {v:'v0.2',t:'열리지 않음',who:'',fail:1,h:'시행착오 — 파일이 깨졌다',p:'부록을 덧붙이다 파일 구조가 망가져 PowerPoint에서 열리지 않았다.'},
+    {v:'v0.3',t:'인터뷰 반영',who:'모루',h:'질문으로 다시 짓기',p:'인터뷰 답을 바탕으로 코드로 새로 생성. 한 장 한 메시지, 클릭 공개, 큐카드 노트.'},
+    {v:'v0.4',t:'사람이 직접 수정',who:'사람',h:'사람의 손이 들어가다',p:'강사가 PowerPoint에서 문구와 순서를 직접 고쳤다. 이후 작업은 이 판에서 이어갔다.'},
+    {v:'v0.5',t:'사례·실습 추가',who:'모루 + 마루',h:'뉴스·실습·검수',p:'LLM·Agent 비교, GIGO, 뉴스 사례, Jules 실습. 마루가 모은 링크를 붙이고, 원문 대조 검수로 오류를 바로잡았다.'},
+    {v:'Final',t:'리허설 남음',who:'사람',h:'마지막은 강의실에서',p:'휴대폰 실습 리허설과 화면 전환 연습. 완성은 실제 수업에서 확인한다.'}
+  ];
+  var nodes=document.getElementById('nodes');
+  STEPS.forEach(function(s,i){
+    var n=document.createElement('div');n.className='node'+(s.fail?' fail':'');
+    n.innerHTML='<div class="who">'+s.who+'</div><div class="dot">'+(s.fail?'✕':i+1)+'</div><div class="v">'+s.v+'</div><div class="t">'+s.t+'</div>';
+    n.onclick=function(e){e.stopPropagation();pick(i)};nodes.appendChild(n);
+  });
+  function pick(i){
+    [].forEach.call(nodes.children,function(n,k){n.classList.toggle('on',k<=i)});
+    document.getElementById('fill').style.width=(i/(STEPS.length-1)*100)+'%';
+    document.getElementById('dBig').textContent=STEPS[i].v;
+    document.getElementById('dH').textContent=STEPS[i].h;
+    document.getElementById('dP').textContent=STEPS[i].p;
+    pipeIdx=i;
+  }
+  var pipeIdx=0;
+  function maxStep(i){return i===3?STEPS.length-1:Math.max(0,...[].map.call(slides[i].querySelectorAll('[data-step]'),function(e){return +e.dataset.step}))}
+  function render(){
+    if(/all/.test(location.search))step=maxStep(cur);
+    slides.forEach(function(s,k){s.classList.toggle('on',k===cur);s.classList.toggle('off',k<cur)});
+    [].forEach.call(slides[cur].querySelectorAll('[data-step]'),function(e){e.classList.toggle('show',+e.dataset.step<=step)});
+    if(cur===3)pick(step);
+    document.getElementById('pg').textContent=String(cur+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')+' · '+slides[cur].dataset.title;
+    document.getElementById('prog').style.width=((cur+1)/slides.length*100)+'%';
+    try{history.replaceState(null,'','#'+(cur+1))}catch(e){}
+  }
+  function next(){if(step<maxStep(cur)){step++;render()}else if(cur<slides.length-1){cur++;step=0;render()}}
+  function prev(){if(step>0){step--;render()}else if(cur>0){cur--;step=maxStep(cur);render()}}
+  document.querySelectorAll('.card').forEach(function(c){c.onclick=function(e){e.stopPropagation();if(c.classList.contains('show'))c.classList.toggle('flip')}});
+  document.querySelectorAll('.err').forEach(function(c){c.onclick=function(e){e.stopPropagation();if(c.classList.contains('show'))c.classList.toggle('done')}});
+  document.addEventListener('click',next);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+    else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  });
+  function fit(){stage.style.setProperty('--s',Math.min(innerWidth/1920,innerHeight/1080))}
+  addEventListener('resize',fit);fit();
+  var h=parseInt(location.hash.slice(1),10);if(h>0&&h<=slides.length)cur=h-1;
+  render();
+})();
+</script>
+</body>
+</html>
