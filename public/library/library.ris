@@ -1033,3 +1033,241 @@ KW  - 비동기 온라인 연수
 KW  - 예비교원
 N1  - 연구 서고 B-06 · 동료심사 저널 · 교사 AI 역량·연수
 ER  - 
+
+TY  - UNPB
+AU  - Macina, Jakub
+AU  - Kapur, Manu
+AU  - Sachan, Mrinmaya
+TI  - The Assistance Dilemma: Learning to Teach via Multi-Turn Reinforcement Learning
+PY  - 2026
+DA  - 2026/10/05
+PB  - arXiv
+M3  - arXiv:2610.06446
+DO  - 10.48550/arXiv.2610.06446
+UR  - https://arxiv.org/abs/2610.06446
+KW  - AI 튜터
+KW  - 강화학습
+KW  - 정답 넘겨주기
+KW  - 전이
+KW  - 보상 설계
+N1  - 연구 서고 C-05 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Adak, Sayantan
+AU  - Hazra, Rima
+AU  - Mukherjee, Koyel
+AU  - Bose, Digbalay
+AU  - Banerjee, Somnath
+TI  - Do LLM Tutors Actually Teach? A Process-Centered Synthesis of the Tutoring Loop
+PY  - 2026
+DA  - 2026/10/11
+PB  - arXiv
+M3  - arXiv:2610.15692
+DO  - 10.48550/arXiv.2610.15692
+UR  - https://arxiv.org/abs/2610.15692
+KW  - AI 튜터
+KW  - 문헌 종합
+KW  - 학습 효과
+KW  - 전이
+KW  - 지연 파지
+N1  - 연구 서고 C-06 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Northcutt, Curtis
+AU  - Hasmani, Inaara
+AU  - Feng, Kevin
+AU  - Khangi, Trevor
+AU  - Plesner, Andreas
+AU  - Mueller, Jonas
+TI  - StudentBench: AI and human tutoring yield equivalent GRE learning gains
+PY  - 2026
+DA  - 2026/09/23
+PB  - arXiv
+M3  - arXiv:2609.28470
+DO  - 10.48550/arXiv.2609.28470
+UR  - https://arxiv.org/abs/2609.28470
+KW  - AI 튜터
+KW  - 인간 튜터 비교
+KW  - GRE
+KW  - 비용 효율
+KW  - 공개 데이터
+N1  - 연구 서고 C-07 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Cen, Sky
+AU  - Sonkar, Shashank
+TI  - MUSE: Revealing Responsiveness Gaps of LLM Tutors on Multiple-Solution Programming Problems
+PY  - 2026
+DA  - 2026/10/26
+PB  - arXiv
+M3  - arXiv:2610.36367
+DO  - 10.48550/arXiv.2610.36367
+UR  - https://arxiv.org/abs/2610.36367
+KW  - AI 튜터
+KW  - 프로그래밍 교육
+KW  - 다중 풀이
+KW  - 반응적 교수
+N1  - 연구 서고 C-08 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - JOUR
+AU  - Aribe Jr., Sales G.
+AU  - Labastida, Louie Jay S.
+TI  - The Vibe Shift in Software Engineering: Evaluating AI-Led Conversational Programming for Performance, Cognition, and Responsible Adoption
+T2  - International Journal on Advanced Science, Engineering and Information Technology
+PY  - 2026
+DA  - 2026/09/09
+SP  - 1459
+EP  - 1472
+DO  - 10.18517/ijaseit.16.4.21812
+UR  - https://arxiv.org/abs/2609.09560
+KW  - 바이브코딩
+KW  - 인지 부하
+KW  - 코드 품질
+KW  - 보안
+KW  - 책임 있는 도입
+N1  - 연구 서고 D-11 · 동료심사 저널 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Puppart, Brett
+AU  - Laak, Kristjan-Julius
+AU  - Aru, Jaan
+TI  - GenAIT: Development and Validation of an Objective Generative AI Literacy Test for High School Students
+PY  - 2026
+DA  - 2026/08/26
+PB  - arXiv
+M3  - arXiv:2608.25815
+DO  - 10.48550/arXiv.2608.25815
+UR  - https://arxiv.org/abs/2608.25815
+KW  - 생성형 AI 리터러시
+KW  - 검사 타당화
+KW  - 문항반응이론
+KW  - 고등학생
+N1  - 연구 서고 A-06 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Ojeda-Ramirez, Santiago
+AU  - Durall Gazulla, Eva
+AU  - Peppler, Kylie
+TI  - Emergent Technology, Emergent Critique: Students and Teachers Developing Critical AI Literacy through Participatory Design around Generative AI
+PY  - 2026
+DA  - 2026/04/23
+PB  - arXiv
+M3  - arXiv:2604.21995
+DO  - 10.48550/arXiv.2604.21995
+UR  - https://arxiv.org/abs/2604.21995
+KW  - 비판적 AI 리터러시
+KW  - 참여적 설계
+KW  - 생성형 AI
+KW  - 학생 주체성
+N1  - 연구 서고 A-07 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Wang, Deliang
+AU  - Bian, Cunling
+TI  - Scaffolding Critical Engagement with GenAI: Transforming Ethnic Minority Preparatory Students' Collaborative Discourse in Prompt Engineering Tasks
+PY  - 2026
+DA  - 2026/04/16
+PB  - arXiv
+M3  - arXiv:2607.28630
+DO  - 10.48550/arXiv.2607.28630
+UR  - https://arxiv.org/abs/2607.28630
+KW  - 프롬프트 엔지니어링
+KW  - 비판적 참여
+KW  - 비계
+KW  - 인지적 안일함
+KW  - 인식적 주체성
+N1  - 연구 서고 A-08 · 동료심사 학회 · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Mansi, Gennie
+AU  - Newton, Sunni
+AU  - Moore, Roxanne
+AU  - Alemdar, Meltem
+AU  - Riedl, Mark
+TI  - Concept Catalyst: Exploring Scrutable Interfaces to Structure K-12 Teacher Interactions with Generative AI
+PY  - 2026
+DA  - 2026/06/29
+PB  - arXiv
+M3  - arXiv:2606.30590
+DO  - 10.48550/arXiv.2606.30590
+UR  - https://arxiv.org/abs/2606.30590
+KW  - scrutable 인터페이스
+KW  - 교사 AI 활용
+KW  - 교육과정 개발
+KW  - 성찰
+N1  - 연구 서고 B-07 · 프리프린트(심사 전) · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Ozturk, Deniz
+AU  - Li, Jiayu
+AU  - Singh, Daksh Pratap
+AU  - Rajapaksha, Yasitha
+AU  - Melese, Fasika
+AU  - Riahi, Bahare
+AU  - Jiang, Shiyan
+AU  - Jin, Qiao
+AU  - Huang, Joey
+AU  - Cateté, Veronica
+AU  - Barnes, Tiffany
+AU  - Tian, Xiaoyi
+TI  - How Children Design and Reason about Trustworthy AI Chatbots
+PY  - 2026
+DA  - 2026/09/21
+PB  - arXiv
+M3  - arXiv:2609.25244
+DO  - 10.48550/arXiv.2609.25244
+UR  - https://arxiv.org/abs/2609.25244
+KW  - 신뢰 보정
+KW  - 챗봇 설계
+KW  - 아동
+KW  - AI 리터러시
+N1  - 연구 서고 A-09 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Melese, Fasika
+AU  - Wu, Ruiyang
+AU  - Cui, Xinyue
+AU  - Perkins, Joanna
+AU  - Tian, Xiaoyi
+AU  - Barnes, Tiffany
+AU  - Jiang, Shiyan
+TI  - Adapting for AI: How elementary teachers adjust their practices for an AI-integrated curriculum
+PY  - 2026
+DA  - 2026/09/25
+PB  - arXiv
+M3  - arXiv:2609.31569
+DO  - 10.48550/arXiv.2609.31569
+UR  - https://arxiv.org/abs/2609.31569
+KW  - 교사 적응 실천
+KW  - 대화형 AI
+KW  - 초등 AI 리터러시
+KW  - 교육과정 실행
+N1  - 연구 서고 B-08 · 프리프린트(심사 전) · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Lee, Hyejeong
+AU  - Yu, Wonjin
+TI  - What does it mean to use AI critically? Unpacking critical AI literacy through students' evaluation of AI-generated content
+PY  - 2026
+DA  - 2026/10/07
+PB  - arXiv
+M3  - arXiv:2610.10743
+DO  - 10.48550/arXiv.2610.10743
+UR  - https://arxiv.org/abs/2610.10743
+KW  - 비판적 AI 리터러시
+KW  - 평가 렌즈
+KW  - AI 생성 콘텐츠
+KW  - 학업 과제
+N1  - 연구 서고 A-10 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 

@@ -159,6 +159,10 @@
       "status": "live",
       "children": [
         {
+          "title": "Special · 만드는 손, 고르는 손",
+          "href": "./hub/apps/jeju_making/index.html"
+        },
+        {
           "title": "Vol.01 · The Agentic Shift",
           "href": "./deck/index.html"
         }

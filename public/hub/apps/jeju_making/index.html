@@ -39,13 +39,10 @@ html,body{height:100%;background:#F6E9E1;overflow:hidden;font-family:var(--soft)
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.on [data-a]{animation:fade .01s both}}
 
-/* 캐릭터 */
-.mz{display:block;width:100%;height:auto;overflow:visible;animation:bob 2.8s ease-in-out infinite;transform-origin:50% 100%}
-[data-m]:nth-child(2n) .mz{animation-delay:-1.1s}
-.mz.pic{aspect-ratio:124/112;object-fit:contain;object-position:50% 100%}
-@keyframes bob{50%{transform:translateY(-8px) scaleY(1.02)}}
-.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite}
-@keyframes blink{0%,92%,100%{transform:none}95%{transform:scaleY(.12)}}
+/* 역할 배지 엠블럼 (비캐릭터 아이콘 카드) */
+.mz{display:block;width:100%;height:auto;overflow:visible;animation:floatBadge 3.2s ease-in-out infinite;transform-origin:50% 100%}
+[data-m]:nth-child(2n) .mz{animation-delay:-1.3s}
+@keyframes floatBadge{50%{transform:translateY(-5px)}}
 
 /* 장식 */
 .spk{position:absolute;width:38px;height:38px;animation:twinkle 2.6s ease-in-out infinite}
@@ -58,12 +55,15 @@ html,body{height:100%;background:#F6E9E1;overflow:hidden;font-family:var(--soft)
 
 /* 공통 */
 .hdr{position:absolute;left:100px;right:100px;top:36px;display:flex;justify-content:space-between;align-items:center;z-index:5}
-.tagp{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;border-radius:999px;background:#fff;border:3px solid var(--line);box-shadow:0 5px 0 #F2D8CC;font:400 28px/1 var(--round)}
+.hdr-left{display:inline-flex;align-items:center;gap:14px}
+.tagp{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;border-radius:999px;background:#fff;border:3px solid var(--line);box-shadow:0 5px 0 #F2D8CC;font:400 28px/1 var(--round);color:var(--ink);text-decoration:none}
 .tagp i{width:14px;height:14px;border-radius:50%;background:var(--coral)}
+.navp{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.88);border:2.5px solid var(--line);font:400 22px/1 var(--round);color:var(--ink2);text-decoration:none;transition:transform .2s ease,background .2s ease}
+.navp:hover{background:#fff;color:var(--coral);transform:translateY(-2px)}
 .hdr .r{font:400 30px/1 var(--round);color:var(--ink2)}
 .hdr .r b{font-weight:400;color:var(--coral)}
 .dots{position:absolute;left:0;right:0;bottom:28px;display:flex;justify-content:center;gap:12px;z-index:5}
-.dots span{width:16px;height:16px;border-radius:999px;background:#F2D3C7;transition:all .8s var(--boing)}
+.dots span{width:16px;height:16px;border-radius:999px;background:#F2D3C7;transition:all .8s var(--boing);cursor:pointer}
 .dots span.on{width:52px;background:var(--coral)}
 .content{position:absolute;inset:0;padding:130px 100px 0;z-index:2}
 .kicker{display:inline-flex;align-items:center;gap:14px;padding:10px 24px 10px 10px;border-radius:999px;background:var(--pink);font:400 32px/1 var(--round);color:var(--coral)}
@@ -204,7 +204,14 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
   <div class="cloud" style="left:1060px;top:110px"></div>
   <div class="cloud" style="left:1600px;top:120px;transform:scale(.7);animation-delay:-4s"></div>
   <div class="hill"></div>
-  <div class="hdr"><span class="tagp"><i></i>SPECIAL EDITION</span><span class="r">제주대 예비교원 AI 특강 · <b>메이킹 필름</b></span></div>
+  <div class="hdr">
+    <div class="hdr-left">
+      <span class="tagp"><i></i>SPECIAL EDITION</span>
+      <a class="navp" href="../../../#/" onclick="event.stopPropagation()">← 포털 홈</a>
+      <a class="navp" href="../../index.html#jeju" onclick="event.stopPropagation()">특강 허브</a>
+    </div>
+    <span class="r">제주대 예비교원 AI 특강 · <b>메이킹 필름</b></span>
+  </div>
   <div class="cv">
     <span class="q" data-a="pop" style="--d:.3">이 강의자료는 어떻게 만들었을까?</span>
     <h1><span data-a style="--d:.9">만드는 손,</span><span data-a style="--d:1.6"><em>고르는 손</em>
@@ -212,7 +219,7 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
     <p data-a style="--d:2.4">사람 한 명과 AI 셋이<br>강의자료를 함께 만든 이야기</p>
   </div>
   <div class="party">
-    <div class="say" data-a="pop" style="--d:5;left:450px;top:-10px">같이 만들어 볼까?</div>
+    <div class="say" data-a="pop" style="--d:5;left:450px;top:-10px">역할을 나눠 함께 만들자!</div>
     <div class="who" data-a="pop" style="--d:3;left:260px;top:70px;width:270px"><span data-m="h" data-mood="yay"></span><span class="nm">사람 <small>선생님</small></span></div>
     <div class="who" data-a="pop" style="--d:3.6;left:0;top:350px;width:200px"><span data-m="mo"></span><span class="nm">Claude Code</span></div>
     <div class="who" data-a="pop" style="--d:4;left:590px;top:350px;width:200px"><span data-m="ma"></span><span class="nm">Antigravity</span></div>
@@ -225,7 +232,7 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
 <!-- 02 PART 1 -->
 <section class="slide" data-part="PART 1">
   <div class="cloud" style="left:1560px;top:120px;transform:scale(.8)"></div>
-  <div class="hdr"><span class="tagp"><i></i>SPECIAL EDITION</span><span class="r"><b>PART 1</b> · 시작</span></div>
+  <div class="hdr"><div class="hdr-left"><span class="tagp"><i></i>SPECIAL EDITION</span><a class="navp" href="../../../#/" onclick="event.stopPropagation()">← 포털 홈</a></div><span class="r"><b>PART 1</b> · 시작</span></div>
   <div class="content">
     <span class="kicker" data-a="pop" style="--d:.2"><b>1</b>“맘에 안 들어”에서 출발</span>
     <h2 data-a style="--d:.6">AI는 바로 고치지 않고, <em>먼저 물었어요</em></h2>
@@ -250,7 +257,7 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
 
 <!-- 03 PART 2 -->
 <section class="slide" data-part="PART 2">
-  <div class="hdr"><span class="tagp"><i></i>SPECIAL EDITION</span><span class="r"><b>PART 2</b> · 역할</span></div>
+  <div class="hdr"><div class="hdr-left"><span class="tagp"><i></i>SPECIAL EDITION</span><a class="navp" href="../../../#/" onclick="event.stopPropagation()">← 포털 홈</a></div><span class="r"><b>PART 2</b> · 역할</span></div>
   <div class="content">
     <span class="kicker" data-a="pop" style="--d:.2"><b>2</b>넷이 같은 일을 하지 않아요</span>
     <h2 data-a style="--d:.6">각자 잘하는 일, <em>책임은 한 명</em></h2>
@@ -283,7 +290,7 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
 <!-- 04 PART 3 -->
 <section class="slide" data-part="PART 3">
   <div class="cloud" style="left:1520px;top:130px;transform:scale(.75)"></div>
-  <div class="hdr"><span class="tagp"><i></i>SPECIAL EDITION</span><span class="r"><b>PART 3</b> · 흐름</span></div>
+  <div class="hdr"><div class="hdr-left"><span class="tagp"><i></i>SPECIAL EDITION</span><a class="navp" href="../../../#/" onclick="event.stopPropagation()">← 포털 홈</a></div><span class="r"><b>PART 3</b> · 흐름</span></div>
   <div class="content">
     <span class="kicker" data-a="pop" style="--d:.2"><b>3</b>한 번에 완성되지 않았어요</span>
     <h2 data-a style="--d:.6">다섯 번 고쳐서, <em>한 벌</em>이 되었어요</h2>
@@ -302,7 +309,7 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
 
 <!-- 05 PART 4 -->
 <section class="slide" data-part="PART 4" id="s5">
-  <div class="hdr"><span class="tagp"><i></i>SPECIAL EDITION</span><span class="r"><b>PART 4</b> · 시행착오</span></div>
+  <div class="hdr"><div class="hdr-left"><span class="tagp"><i></i>SPECIAL EDITION</span><a class="navp" href="../../../#/" onclick="event.stopPropagation()">← 포털 홈</a></div><span class="r"><b>PART 4</b> · 시행착오</span></div>
   <div class="content">
     <span class="kicker" data-a="pop" style="--d:.2"><b>4</b>막힌 곳에서 배운 것</span>
     <h2 data-a style="--d:.6">문제는 생겼고, <em>그래서 기록했어요</em></h2>
@@ -331,7 +338,7 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
 <!-- 06 마무리 -->
 <section class="slide" data-part="EPILOGUE">
   <div class="cloud" style="left:900px;top:110px;transform:scale(.8)"></div>
-  <div class="hdr"><span class="tagp"><i></i>SPECIAL EDITION</span><span class="r"><b>EPILOGUE</b></span></div>
+  <div class="hdr"><div class="hdr-left"><span class="tagp"><i></i>SPECIAL EDITION</span><a class="navp" href="../../../#/" onclick="event.stopPropagation()">← 포털 홈</a></div><span class="r"><b>EPILOGUE</b></span></div>
   <div class="ep">
     <h2><span data-a style="--d:.4">AI가 만들고,</span><span data-a style="--d:1.2"><em>사람이 고른다.</em></span></h2>
     <div class="ask" data-a="pop" style="--d:2.6"><small>여러분에게 남기는 질문</small><p>여러분의 교실에서,<br>‘고르는 손’은 누가 될까요?</p></div>
@@ -352,53 +359,58 @@ h2 em::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height
 
 <script>
 (function(){
-  /* 오리지널 몽글 캐릭터 · h 사람(선생님) · mo Claude Code(고등학생) · ma Antigravity(중학생 체육복) · mi Codex(고등학생) */
+  /* 비캐릭터 에디토리얼 역할 배지 엠블럼 · h 사람(기획·선택) · mo Claude Code(구현) · ma Antigravity(조사) · mi Codex(검증) */
   var L='#6B5A50';
-  var C={h:['#FFF6EC','#FFB3A7'],mo:['#FFD2BD','#FF9E8A'],ma:['#CDEBD5','#FFB3A7'],mi:['#D3E5F8','#FFB3A7']};
-  var P={
-    h:'<path d="M60 17c-4-10 8-14 11-6" fill="none" stroke="'+L+'" stroke-width="3.5" stroke-linecap="round"/>'+
-      '<g transform="translate(104 40) rotate(10)"><rect x="-2.5" y="0" width="5" height="40" rx="2.5" fill="#D9A877" stroke="'+L+'" stroke-width="2"/><rect x="-18" y="-24" width="36" height="28" rx="8" fill="#fff" stroke="'+L+'" stroke-width="3"/><path d="M-8 -10l5 5 11-11" fill="none" stroke="#F07A62" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></g>',
-    mo:'<g transform="translate(16 46) rotate(-30)"><rect x="-5" y="0" width="10" height="40" rx="2" fill="#FFD66B" stroke="'+L+'" stroke-width="2.5"/><rect x="-5" y="-6" width="10" height="7" rx="2" fill="#FFB3A7" stroke="'+L+'" stroke-width="2.5"/><path d="M-5 40 L0 51 L5 40Z" fill="#F6E1C3" stroke="'+L+'" stroke-width="2.5" stroke-linejoin="round"/><path d="M-1.6 47.5 L0 51 L1.6 47.5Z" fill="'+L+'"/></g>',
-    ma:'<path d="M62 18V6" stroke="#5B8F69" stroke-width="3.5" stroke-linecap="round"/><path d="M62 8c-13-8-21 1-18 6 7 3 13 1 18-6z" fill="#8ED1A8" stroke="#5B8F69" stroke-width="2.5"/><path d="M62 8c13-8 21 1 18 6-7 3-13 1-18-6z" fill="#8ED1A8" stroke="#5B8F69" stroke-width="2.5"/>',
-    mi:'<g fill="none" stroke="'+L+'" stroke-width="2.6"><circle cx="48" cy="60" r="10"/><circle cx="76" cy="60" r="10"/><path d="M58 59q4-3 8 0M38 58l-8-3M86 58l8-3"/></g>'+
-       '<g transform="translate(106 74)"><circle r="13" fill="#fff" fill-opacity=".75" stroke="'+L+'" stroke-width="3.5"/><path d="M9 10l9 10" stroke="'+L+'" stroke-width="6" stroke-linecap="round"/></g>'
+  var ROLES={
+    h:{bg:'#FFF6EC',hdr:'#F07A62',accent:'#FFD66B',tag:'HUMAN',icon:
+      '<path d="M45 64l10 10 24-24" fill="none" stroke="#F07A62" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '<circle cx="62" cy="58" r="24" fill="none" stroke="'+L+'" stroke-width="3.2" stroke-dasharray="5 4"/>'
+    },
+    mo:{bg:'#FFE6DA',hdr:'#E06D44',accent:'#FFB3A7',tag:'CLAUDE',icon:
+      '<path d="M48 48L36 58l12 10M76 48l12 10-12 10" fill="none" stroke="#E06D44" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '<path d="M66 44l-8 28" fill="none" stroke="'+L+'" stroke-width="4.2" stroke-linecap="round"/>'
+    },
+    ma:{bg:'#E6F5EA',hdr:'#4F8F64',accent:'#8ED1A8',tag:'RESEARCH',icon:
+      '<circle cx="46" cy="52" r="7" fill="#4F8F64" stroke="'+L+'" stroke-width="2.8"/>'+
+      '<circle cx="78" cy="48" r="7" fill="#8ED1A8" stroke="'+L+'" stroke-width="2.8"/>'+
+      '<circle cx="64" cy="70" r="8" fill="#fff" stroke="'+L+'" stroke-width="3"/>'+
+      '<path d="M52 54l8 11M73 53l-6 11M53 51l18-2" stroke="'+L+'" stroke-width="3" stroke-linecap="round"/>'
+    },
+    mi:{bg:'#E5EFFA',hdr:'#4A7DB0',accent:'#9FD0F5',tag:'VERIFY',icon:
+      '<circle cx="58" cy="56" r="15" fill="#fff" stroke="'+L+'" stroke-width="3.6"/>'+
+      '<path d="M52 56l4 4 9-9" fill="none" stroke="#4A7DB0" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '<path d="M69 67l12 12" stroke="'+L+'" stroke-width="5.5" stroke-linecap="round"/>'
+    }
   };
-  var tag='<rect x="77" y="89" width="15" height="5.5" rx="1.5" fill="#fff" stroke="'+L+'" stroke-width="1.2"/><path d="M80 91.8h9" stroke="#9AA" stroke-width="1"/>';
-  var W={
-    h:'<rect x="0" y="80" width="124" height="40" fill="#EBCB9F"/><path d="M50 80L62 99L74 80Z" fill="#DCEBFA"/><path d="M50 80L60 104M74 80L64 104" stroke="#C9A67A" stroke-width="2.5"/><circle cx="57" cy="94" r="1.8" fill="#A8845A"/><circle cx="56" cy="101" r="1.8" fill="#A8845A"/>',
-    mo:'<rect x="0" y="80" width="124" height="40" fill="#2F3F63"/><path d="M50 80L62 99L74 80Z" fill="#fff"/><path d="M50 80L60 104M74 80L64 104" stroke="#1E2A45" stroke-width="2.5"/><path d="M60 83h4l2.4 3-2.4 12h-4l-2.4-12z" fill="#C8463A"/>'+tag,
-    ma:'<rect x="0" y="80" width="124" height="40" fill="#3E6FA8"/><path d="M0 80h124v4H0z" fill="#fff" opacity=".9"/><path d="M62 84V110" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/><path d="M28 84V110M33 84V110M91 84V110M96 84V110" stroke="#fff" stroke-width="2.5"/>'+tag,
-    mi:'<rect x="0" y="80" width="124" height="40" fill="#7D8794"/><path d="M50 80L62 99L74 80Z" fill="#fff"/><path d="M50 80L60 104M74 80L64 104" stroke="#5E6772" stroke-width="2.5"/><path d="M62 86l-9-5v10zM62 86l9-5v10z" fill="#2F3F63"/><circle cx="62" cy="86" r="2.6" fill="#2F3F63"/>'+tag
-  };
-  var uid=0;
-  function face(mood){
-    var eyes='<ellipse class="eye" cx="48" cy="60" rx="4.6" ry="6" fill="#3B2F2A"/><ellipse class="eye" cx="76" cy="60" rx="4.6" ry="6" fill="#3B2F2A"/><circle cx="49.5" cy="57.5" r="1.7" fill="#fff"/><circle cx="77.5" cy="57.5" r="1.7" fill="#fff"/>';
-    var mouth='<path d="M56 69q3 4 6 0q3 4 6 0" fill="none" stroke="#3B2F2A" stroke-width="2.6" stroke-linecap="round"/>';
-    if(mood==='yay'){eyes='<path d="M43 61q5-7 10 0M71 61q5-7 10 0" fill="none" stroke="#3B2F2A" stroke-width="3.2" stroke-linecap="round"/>';mouth='<path d="M55 67q7 9 14 0z" fill="#E86A5A" stroke="#3B2F2A" stroke-width="2.4" stroke-linejoin="round"/>';}
-    if(mood==='oops'){mouth='<path d="M57 72q5-5 10 0" fill="none" stroke="#3B2F2A" stroke-width="2.6" stroke-linecap="round"/><path d="M96 34q5 8 0 11q-5-3 0-11z" fill="#9FD0F5" stroke="'+L+'" stroke-width="1.5"/>';}
-    return eyes+mouth;
+  function roleBadge(k,mood){
+    var r=ROLES[k]||ROLES.h;
+    var badge='';
+    if(mood==='yay'){
+      badge='<g transform="translate(96 22)"><circle r="15" fill="#FFD66B" stroke="'+L+'" stroke-width="3"/><path d="M0 -8l2.3 4.8 5.2.7-3.8 3.6.9 5.2L0 3.8l-4.6 2.5.9-5.2-3.8-3.6 5.2-.7z" fill="#F07A62"/></g>';
+    }else if(mood==='oops'){
+      badge='<g transform="translate(96 22)"><circle r="15" fill="#FFE1DA" stroke="'+L+'" stroke-width="3"/><path d="M0 -7v8" stroke="#E0574A" stroke-width="4.2" stroke-linecap="round"/><circle cx="0" cy="6.5" r="2.4" fill="#E0574A"/></g>';
+    }
+    return '<svg class="mz" viewBox="0 0 124 112" aria-hidden="true">'+
+      '<ellipse cx="62" cy="104" rx="38" ry="5" fill="rgba(107,90,80,.13)"/>'+
+      '<rect x="18" y="14" width="88" height="84" rx="24" fill="'+r.bg+'" stroke="'+L+'" stroke-width="3.5"/>'+
+      '<path d="M18 36a22 22 0 0 1 22-22h44a22 22 0 0 1 22 22v2H18z" fill="'+r.hdr+'"/>'+
+      '<circle cx="33" cy="26" r="3.2" fill="#fff" opacity=".85"/><circle cx="44" cy="26" r="3.2" fill="#fff" opacity=".6"/>'+
+      '<rect x="26" y="42" width="72" height="48" rx="14" fill="#fff" fill-opacity=".75"/>'+
+      r.icon+
+      badge+
+      '</svg>';
   }
-  function mascot(k,mood){
-    var c=C[k],id='body'+(++uid),B='M62 17C95 17 112 43 112 68C112 92 92 102 62 102C32 102 12 92 12 68C12 43 29 17 62 17Z';
-    return '<svg class="mz" viewBox="0 0 124 112" aria-hidden="true"><defs><clipPath id="'+id+'"><path d="'+B+'"/></clipPath></defs><ellipse cx="62" cy="106" rx="38" ry="5.5" fill="rgba(107,90,80,.13)"/>'+
-      '<path d="'+B+'" fill="'+c[0]+'"/><g clip-path="url(#'+id+')">'+W[k]+'</g><path d="'+B+'" fill="none" stroke="'+L+'" stroke-width="3.5"/>'+
-      '<path d="M30 40q8-12 22-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>'+
-      '<ellipse cx="37" cy="71" rx="8" ry="5" fill="'+c[1]+'" opacity=".85"/><ellipse cx="87" cy="71" rx="8" ry="5" fill="'+c[1]+'" opacity=".85"/>'+
-      face(mood)+P[k]+'</svg>';
-  }
-  /* 로컬 발표본에서만 window.CHAR_IMAGES로 사용자가 넣은 그림을 쓴다. 파일이 없으면 몽글이로 돌아온다. */
-  var IMG=window.CHAR_IMAGES||{};
   document.querySelectorAll('[data-m]').forEach(function(el){
-    var k=el.dataset.m,mood=el.dataset.mood,src=IMG[k+'_'+mood]||IMG[k];
     el.style.display='block';
-    if(!src){el.innerHTML=mascot(k,mood);return}
-    var img=new Image();img.className='mz pic';img.alt='';img.src=src;
-    img.onerror=function(){if(IMG[k]&&img.src.indexOf(IMG[k])<0&&!img.dataset.tried){img.dataset.tried=1;img.src=IMG[k]}else{el.innerHTML=mascot(k,mood)}};
-    el.appendChild(img);
+    el.innerHTML=roleBadge(el.dataset.m,el.dataset.mood);
   });
 
   var stage=document.getElementById('stage'),slides=[].slice.call(document.querySelectorAll('.slide')),cur=-1,timer=null,dots=document.getElementById('dots');
-  slides.forEach(function(){dots.appendChild(document.createElement('span'))});
+  slides.forEach(function(_,idx){
+    var dot=document.createElement('span');
+    dot.addEventListener('click',function(e){e.stopPropagation();go(idx)});
+    dots.appendChild(dot);
+  });
   function count(){
     var el=document.getElementById('count'),to=+el.dataset.to,t0=null;el.textContent='0';clearTimeout(timer);
     timer=setTimeout(function(){requestAnimationFrame(function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1600);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)})},8200);
