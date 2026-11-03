@@ -1,6 +1,7 @@
 """사업공고·테크브리핑 JSON으로 공개용 브리핑 페이지를 만든다.
 
-  python build_briefing.py            # 가장 최근 JSON으로 index.html과 지난 브리핑을 갱신
+  python build_briefing.py              # 가장 최근 JSON으로 index.html과 지난 브리핑을 갱신
+  python build_briefing.py 2026-10-28   # 그 날짜의 지난 브리핑(archive/)만 다시 만든다(index.html은 그대로)
 
 읽는 곳:   <루틴 폴더>/01_사업공고/*_사업공고.json, 03_테크트렌드/*_테크브리핑.json
 쓰는 곳:   <루틴 폴더>/ai-edu-briefing/ (GitHub에 올리는 폴더. 공개해도 되는 내용만 들어간다)
@@ -12,6 +13,9 @@ import hashlib
 import json
 import re
 import os
+import ssl
+import sys
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(os.environ.get("SEUNG_ROUTINE_ROOT", Path(__file__).resolve().parent.parent))
@@ -25,8 +29,13 @@ MAX_ROWS = 5             # 위 목록 최대 행 수
 MAX_LATER = 3            # 마감이 넉넉해도 적합도가 높아 아래에 붙이는 공고 수
 SOON_DAYS = 7            # 이 날짜 안에 마감이면 주황으로 표시
 FIT_ORDER = {"상": 0, "중": 1}
+FETCH_IMAGES = True      # 기사 대표 이미지(og:image) 주소를 채울지. 파일은 내려받지 않고 화면에서 원문 주소로 연결한다
+IMAGE_TRIES = 3          # 대표 이미지를 못 찾은 기사를 다시 시도하는 최대 횟수
 
 WEEKDAY = "월화수목금토일"
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
+OG = [re.compile(r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)["\'][^>]*content=["\']([^"\']+)', re.I),
+      re.compile(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\'](?:og:image|twitter:image)', re.I)]
 
 
 def e(s):
@@ -42,9 +51,57 @@ def latest(folder, suffix):
     return (files[-1], json.loads(files[-1].read_text(encoding="utf-8"))) if files else (None, None)
 
 
+def on_or_before(folder, suffix, date):
+    files = sorted(p for p in folder.glob(f"????-??-??_{suffix}.json") if p.name[:10] <= date)
+    return (files[-1], json.loads(files[-1].read_text(encoding="utf-8"))) if files else (None, None)
+
+
+def og_image(url):
+    """기사 대표 이미지 주소만 읽는다(이미지 파일은 내려받지 않는다). 회사망 인증서 때문에 엄격 모드만 끈다."""
+    if not url.startswith(("http://", "https://")):
+        return ""
+    ctx = ssl.create_default_context()
+    ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        page = urllib.request.urlopen(req, timeout=8, context=ctx).read(400_000).decode("utf-8", "ignore")
+    except Exception:
+        return ""
+    for p in OG:
+        m = p.search(page)
+        if m:
+            src = html.unescape(m.group(1)).replace("//img/", "/img/")
+            return src if src.startswith(("http://", "https://")) else ""
+    return ""
+
+
+def youtube_thumb(url):
+    m = re.search(r"(?:v=|youtu\.be/|/shorts/)([\w-]{11})", url or "")
+    return f"https://img.youtube.com/vi/{m.group(1)}/hqdefault.jpg" if m else ""
+
+
 def fill_images(path, data):
-    """빌드는 저장된 주소만 사용한다. 원격 이미지나 원문을 새로 요청하지 않는다."""
-    return data
+    """빈 대표 이미지 주소를 원문 og:image로 채워 JSON에 저장한다. 못 찾으면 image_tries를 늘려 다음 빌드에서 다시 시도한다.
+    화면 표시용 주소일 뿐이며 PNG 내보내기에는 쓰지 않는다(공유 PNG는 자체 카드)."""
+    if not FETCH_IMAGES or not data:
+        return
+    changed = False
+    for h in data.get("headlines", []):
+        if h.get("image") or h.get("image_tries", 0) >= IMAGE_TRIES:
+            continue
+        found = og_image(h.get("url", ""))
+        if found:
+            h["image"] = found
+            h.pop("image_tries", None)
+        else:
+            h["image_tries"] = h.get("image_tries", 0) + 1
+        changed = True
+    v = data.get("video")
+    if v and not v.get("image") and youtube_thumb(v.get("url")):
+        v["image"] = youtube_thumb(v.get("url"))
+        changed = True
+    if changed and path:
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 FIELDS = {"교육", "에이전트", "AI 코딩", "챗봇", "모델", "기기·로봇", "산업"}
@@ -327,9 +384,20 @@ def page(title, body, css_href, archive_href, extra="", tabloid=False):
 """
 
 
-def build():
-    biz_path, biz = latest(BIZ_DIR, "사업공고")
-    news_path, news = latest(NEWS_DIR, "테크브리핑")
+def build(only_date=None):
+    if only_date:
+        dt.date.fromisoformat(only_date)
+        news_path = NEWS_DIR / f"{only_date}_테크브리핑.json"
+        if not news_path.exists():
+            raise SystemExit(f"{news_path.name} 파일이 없습니다")
+        news = json.loads(news_path.read_text(encoding="utf-8"))
+        biz_path, biz = on_or_before(BIZ_DIR, "사업공고", only_date)
+    else:
+        biz_path, biz = latest(BIZ_DIR, "사업공고")
+        news_path, news = latest(NEWS_DIR, "테크브리핑")
+    fill_images(news_path, news)
+    heads = (news or {}).get("headlines", [])
+    images = f"이미지 {sum(1 for h in heads if h.get('image'))}/{len(heads)}"
     # The edition belongs to the collected data, not to a machine timezone.
     edition = (news or biz or {}).get("date") or dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
     today = dt.date.fromisoformat(edition)
@@ -345,7 +413,8 @@ def build():
 """
     title = f"AI·교육 브리핑 · {edition}"
     (SITE / "archive").mkdir(parents=True, exist_ok=True)
-    (SITE / "index.html").write_text(page(title, body, "assets/style.css", "archive/", reader, True), encoding="utf-8")
+    if not only_date:
+        (SITE / "index.html").write_text(page(title, body, "assets/style.css", "archive/", reader, True), encoding="utf-8")
     archive_body = body.replace('href="../share/news/', 'href="../../share/news/')
     archive_reader = reader.replace('href="../share/news/', 'href="../../share/news/')
     (SITE / "archive" / f"{edition}.html").write_text(page(title, archive_body, "../assets/style.css", "./", archive_reader, True), encoding="utf-8")
@@ -353,8 +422,9 @@ def build():
     links = "".join(f'<li><a href="{d}.html">{md(d)} · {d}</a></li>' for d in dates)
     arch_body = f'<header class="masthead"><div><div class="kicker">AI 교육 업무 브리핑 · 아카이브</div><h1>지난 브리핑</h1></div><div class="updated"><a href="../">오늘 브리핑으로 →</a></div></header><ul class="archive-list">{links}</ul>'
     (SITE / "archive" / "index.html").write_text(page("지난 브리핑 · AI 교육 업무 브리핑", arch_body, "../assets/style.css", "./"), encoding="utf-8")
-    print(f"브리핑 갱신: {edition} (지난 브리핑 {len(dates)}개, 원격 요청 없음)")
+    target = "지난 브리핑만" if only_date else "오늘·지난 브리핑"
+    print(f"브리핑 갱신: {edition} {target} (지난 브리핑 {len(dates)}개, {images})")
 
 
 if __name__ == "__main__":
-    build()
+    build(sys.argv[1] if len(sys.argv) > 1 else None)

@@ -5,7 +5,7 @@ import { join, resolve, relative, dirname, sep } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
-import { buildSharePages, validateNewsManifest, publicSiteUrl, DEFAULT_SITE_URL } from './build-share-pages.mjs';
+import { buildSharePages, validateNewsManifest, publicSiteUrl, shareDescription, DEFAULT_SITE_URL } from './build-share-pages.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const entry = {
@@ -59,6 +59,31 @@ test('generates first-HTML OG, stable canonical links and safely escaped text wi
   assert.match(html, /src="\.\.\/\.\.\/\.\.\/shared\/content-share\.js"/);
 });
 
+const digest = ['첫째 사실 문장입니다.', '둘째 <b>사실</b> & 숫자 3건입니다.', '셋째 문장입니다.'];
+
+test('share page shows the whole digest escaped, credits the photo and keeps the team note out', async t => {
+  const root = await fixture(t, manifest([{ ...entry, digest, image: 'https://example.org/pic.jpg', note: 'INTERNAL_NOTE_SENTINEL' }]));
+  await buildSharePages({ root });
+  const html = await readFile(join(root, 'public', 'share', 'news', entry.id, 'index.html'), 'utf8');
+  assert.match(html, /<h2 class="cs-digest-title">자세한 요약<\/h2><ul class="cs-digest"><li>첫째 사실 문장입니다\.<\/li><li>둘째 &lt;b&gt;사실&lt;\/b&gt; &amp; 숫자 3건입니다\.<\/li><li>셋째 문장입니다\.<\/li><\/ul>/);
+  assert.match(html, /<figcaption class="cs-credit">이미지: 공식 연구소<\/figcaption>/);
+  assert.doesNotMatch(html, /INTERNAL_NOTE_SENTINEL|<b>사실<\/b>/);
+});
+
+test('digest must be a short list of non-empty sentences', () => {
+  for (const bad of ['문장', ['ok', ''], ['가'.repeat(301)], Array(9).fill('문장'), Array(6).fill('가'.repeat(280))]) {
+    assert.throws(() => validateNewsManifest(manifest([{ ...entry, digest: bad }])), /digest/);
+  }
+  assert.deepEqual(validateNewsManifest(manifest([entry]))[0].digest, []);
+});
+
+test('link preview description adds whole digest sentences only, within the limit', () => {
+  const item = { ...entry, summary: '요약입니다.', digest: ['가'.repeat(80) + '.', '나'.repeat(80) + '.', '다'.repeat(80) + '.'] };
+  const text = shareDescription(item);
+  assert.ok(text.length <= 200);
+  assert.equal(text, `요약입니다. ${'가'.repeat(80)}. ${'나'.repeat(80)}.`);
+});
+
 test('public base disallows local preview addresses, credentials, query and fragment', () => {
   for (const address of ['http://localhost:8765/', 'http://127.0.0.1/', 'http://[::1]/', 'file:///tmp/', ['https://user:pass','example.org/'].join('@'), 'https://example.org/?x=1', 'https://example.org/#x']) {
     assert.throws(() => publicSiteUrl(address));
@@ -100,6 +125,16 @@ test('canvas draws every title/summary/source line within dynamic height without
   assert.ok(canvas.labels.every(label => label.y < canvas.height - 28));
   assert.ok(canvas.labels.map(label => label.value).join('').includes('마지막확인문장'));
   assert.ok(canvas.labels.map(label => label.value).join('').includes('출처: 공식 연구소'));
+});
+
+test('copied text and PNG card carry every digest sentence', () => {
+  const text = core.shareText({ ...entry, digest }, DEFAULT_SITE_URL);
+  assert.match(text, /· 첫째 사실 문장입니다\.\n· 둘째 <b>사실<\/b> & 숫자 3건입니다\.\n· 셋째 문장입니다\./);
+  const canvas = fakeCanvas();
+  const layout = core.drawCard(canvas, { ...entry, digest, pageUrl: core.newsUrl(entry.id) }, null);
+  const drawn = canvas.labels.map(label => label.value).join('');
+  assert.ok(digest.every(line => drawn.includes(line)));
+  assert.ok(canvas.labels.every(label => label.y < layout.height - 28));
 });
 
 test('canvas refuses unusably long image output rather than silently clipping it', () => {

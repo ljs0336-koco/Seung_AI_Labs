@@ -21,7 +21,11 @@
     return new URL('share/news/' + id + '/', canonicalRoot(site)).href;
   }
   function shareText(item, site) {
-    return [item.title, item.summary, '출처: ' + item.source + ' · ' + item.date, '원문: ' + item.url, '요약 페이지: ' + newsUrl(item.id, site)].join('\n\n');
+    var points = digestOf(item).map(function (line) { return '· ' + line; }).join('\n');
+    return [item.title, item.summary].concat(points ? [points] : []).concat(['출처: ' + item.source + ' · ' + item.date, '원문: ' + item.url, '요약 페이지: ' + newsUrl(item.id, site)]).join('\n\n');
+  }
+  function digestOf(item) {
+    return Array.isArray(item.digest) ? item.digest.filter(function (line) { return typeof line === 'string' && line.trim(); }) : [];
   }
   function safeImageUrl(value, root, exportOnly) {
     if (!value || typeof value !== 'string') return null;
@@ -51,14 +55,17 @@
     var titleLines = wrapText(context, item.title, textWidth);
     context.font = '34px ' + FONT;
     var summaryLines = wrapText(context, item.summary, textWidth);
+    context.font = '29px ' + FONT;
+    var digestLines = [];
+    digestOf(item).forEach(function (line) { wrapText(context, '· ' + line, textWidth).forEach(function (part) { digestLines.push(part); }); });
     context.font = '25px ' + FONT;
     var sourceLines = wrapText(context, '출처: ' + item.source + ' · ' + item.date, textWidth);
     context.font = '21px ' + FONT;
     var addressLines = wrapText(context, item.pageUrl || '', textWidth);
     var imageHeight = hasImage ? 460 : 0;
-    var height = 160 + imageHeight + 74 + titleLines.length * 70 + 40 + summaryLines.length * 55 + 68 + sourceLines.length * 38 + 30 + addressLines.length * 31 + 80;
+    var height = 160 + imageHeight + 74 + titleLines.length * 70 + 40 + summaryLines.length * 55 + (digestLines.length ? 24 + digestLines.length * 46 : 0) + 68 + sourceLines.length * 38 + 30 + addressLines.length * 31 + 80;
     if (height > 6000) throw new Error('이미지에 담기에는 글이 너무 깁니다. 제목이나 공유용 요약을 짧게 편집해 주세요.');
-    return { width: 1080, height: Math.max(1080, height), titleLines: titleLines, summaryLines: summaryLines, sourceLines: sourceLines, addressLines: addressLines, imageHeight: imageHeight };
+    return { width: 1080, height: Math.max(1080, height), titleLines: titleLines, summaryLines: summaryLines, digestLines: digestLines, sourceLines: sourceLines, addressLines: addressLines, imageHeight: imageHeight };
   }
   function drawCard(canvas, item, image) {
     var context = canvas.getContext('2d');
@@ -89,6 +96,7 @@
     y += 40;
     context.font = '34px ' + FONT;
     layout.summaryLines.forEach(function (line) { context.fillText(line, 88, y); y += 55; });
+    if (layout.digestLines.length) { y += 24; context.font = '29px ' + FONT; layout.digestLines.forEach(function (line) { context.fillText(line, 88, y); y += 46; }); }
     y += 25;
     context.strokeStyle = '#d8ddce'; context.lineWidth = 2; context.beginPath(); context.moveTo(88, y); context.lineTo(992, y); context.stroke();
     y += 43;
@@ -137,15 +145,24 @@
     article.append(element('p', 'cs-brand', 'SEUNG AI LABS · AI 교육 브리핑'));
     var imageUrl = safeImageUrl(item.image, assetRoot, false);
     if (imageUrl) {
+      var figure = element('figure', 'cs-figure');
       var image = element('img', 'cs-article-image');
       image.alt = ''; image.referrerPolicy = 'no-referrer'; image.src = imageUrl;
-      image.addEventListener('error', function () { image.remove(); }, { once: true });
-      article.append(image);
+      image.addEventListener('error', function () { figure.remove(); }, { once: true });
+      figure.append(image, element('figcaption', 'cs-credit', '이미지: ' + item.source));
+      article.append(figure);
     }
     var body = element('div', 'cs-card-body');
     body.append(element('p', 'cs-meta', item.source + ' · ' + item.date));
     var title = element('h2', '', item.title); title.id = headingId; body.append(title);
     body.append(element('p', 'cs-summary', item.summary));
+    var points = digestOf(item);
+    if (points.length) {
+      body.append(element('h3', 'cs-digest-title', '자세한 요약'));
+      var list = element('ul', 'cs-digest');
+      points.forEach(function (line) { list.append(element('li', '', line)); });
+      body.append(list);
+    }
     body.append(element('p', 'cs-source', '출처: ' + item.source + ' · ' + item.date));
     var originalUrl = safeImageUrl(item.url, assetRoot, false);
     if (originalUrl) { var original = element('a', 'cs-original', '원문 보기 ↗'); original.href = originalUrl; original.target = '_blank'; original.rel = 'noopener noreferrer'; body.append(original); }

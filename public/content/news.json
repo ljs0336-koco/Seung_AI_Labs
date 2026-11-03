@@ -16,7 +16,8 @@
       "date": "2026-11-02",
       "url": "https://antigravity.google/docs/models",
       "issue": "",
-      "field": "AI 코딩"
+      "field": "AI 코딩",
+      "image": "https://antigravity.google/assets/image/sitecards/sitecard-documentation.png"
     },
     {
       "id": "n-7a5ce7ed2f78d284",
@@ -32,7 +33,8 @@
       "date": "2026-11-01",
       "url": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
       "issue": "사회적 영향",
-      "field": "챗봇"
+      "field": "챗봇",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-1481617564.jpg?resize=1200,680"
     },
     {
       "id": "n-204d5faf405d3242",
@@ -48,7 +50,8 @@
       "date": "2026-10-31",
       "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/",
       "issue": "책임성·투명성",
-      "field": "산업"
+      "field": "산업",
+      "image": "https://techcrunch.com/wp-content/uploads/2025/06/GettyImages-2217198328.jpeg?resize=1200,800"
     },
     {
       "id": "n-baf2e8680ec92ea7",
@@ -65,7 +68,8 @@
       "date": "2026-10-30",
       "url": "https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/",
       "issue": "개인정보",
-      "field": "에이전트"
+      "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2022/08/GettyImages-1232015093.jpg?resize=1200,800"
     },
     {
       "id": "n-4d0843b360d077cf",
@@ -82,7 +86,8 @@
       "date": "2026-10-30",
       "url": "https://techcrunch.com/2026/10/30/zests-new-ai-agent-finds-restaurants-and-books-reservations-over-text/",
       "issue": "개인정보",
-      "field": "에이전트"
+      "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/10/zest.jpg?resize=1200,764"
     },
     {
       "id": "n-4413e75a33c5a4c9",
@@ -98,7 +103,8 @@
       "date": "2026-10-30",
       "url": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/",
       "issue": "개인정보",
-      "field": "에이전트"
+      "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/09/Ollie_Hero.png?resize=1200,847"
     },
     {
       "id": "n-b138df71b1659a33",
@@ -115,7 +121,8 @@
       "date": "2026-10-29",
       "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
       "issue": "AI 안전",
-      "field": "모델"
+      "field": "모델",
+      "image": "https://techcrunch.com/wp-content/uploads/2024/06/GettyImages-1760104305.jpg?resize=1200,798"
     },
     {
       "id": "n-d58cd032e7c44073",
@@ -150,7 +157,8 @@
       "date": "2026-10-27",
       "url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
       "issue": "AI 안전",
-      "field": "챗봇"
+      "field": "챗봇",
+      "image": "https://techcrunch.com/wp-content/uploads/2025/01/GettyImages-2191707579.jpg?w=1024"
     },
     {
       "id": "n-22c376eb4e784663",
@@ -166,7 +174,8 @@
       "date": "2026-10-27",
       "url": "https://techcrunch.com/2026/10/27/bank-of-america-kindly-asks-that-you-dont-share-your-banking-password-with-your-ai-assistant/",
       "issue": "보안·권한",
-      "field": "에이전트"
+      "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/05/ai-agents-GettyImages-2229880232.jpg?resize=1200,675"
     },
     {
       "id": "n-b67fd02a214f91e2",
@@ -216,7 +225,8 @@
       "date": "2026-10-26",
       "url": "https://techcrunch.com/2026/10/26/how-openai-turned-its-coding-tools-into-dots-an-always-on-personal-assistant/",
       "issue": "",
-      "field": "에이전트"
+      "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/10/55593495974_7bfdac6a15_k.jpg?resize=1200,800"
     },
     {
       "id": "n-e7a80d87e8606cee",

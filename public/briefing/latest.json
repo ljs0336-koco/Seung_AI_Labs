@@ -19,6 +19,7 @@
       "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
       "issue": "AI 안전",
       "field": "모델",
+      "image": "https://techcrunch.com/wp-content/uploads/2024/06/GettyImages-1760104305.jpg?resize=1200,798",
       "href": "./share/news/n-b138df71b1659a33/"
     },
     {
@@ -37,6 +38,7 @@
       "url": "https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/",
       "issue": "개인정보",
       "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2022/08/GettyImages-1232015093.jpg?resize=1200,800",
       "href": "./share/news/n-baf2e8680ec92ea7/"
     },
     {
@@ -54,6 +56,7 @@
       "url": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/",
       "issue": "개인정보",
       "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/09/Ollie_Hero.png?resize=1200,847",
       "href": "./share/news/n-4413e75a33c5a4c9/"
     },
     {
@@ -72,6 +75,7 @@
       "url": "https://techcrunch.com/2026/10/30/zests-new-ai-agent-finds-restaurants-and-books-reservations-over-text/",
       "issue": "개인정보",
       "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/10/zest.jpg?resize=1200,764",
       "href": "./share/news/n-4d0843b360d077cf/"
     },
     {
@@ -90,6 +94,7 @@
       "url": "https://antigravity.google/docs/models",
       "issue": "",
       "field": "AI 코딩",
+      "image": "https://antigravity.google/assets/image/sitecards/sitecard-documentation.png",
       "href": "./share/news/n-97e16e07fc487c58/"
     },
     {
@@ -107,6 +112,7 @@
       "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/",
       "issue": "책임성·투명성",
       "field": "산업",
+      "image": "https://techcrunch.com/wp-content/uploads/2025/06/GettyImages-2217198328.jpeg?resize=1200,800",
       "href": "./share/news/n-204d5faf405d3242/"
     },
     {
@@ -124,6 +130,7 @@
       "url": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
       "issue": "사회적 영향",
       "field": "챗봇",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-1481617564.jpg?resize=1200,680",
       "href": "./share/news/n-7a5ce7ed2f78d284/"
     }
   ],

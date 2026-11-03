@@ -9,6 +9,11 @@
 .cs-card .cs-meta,.cs-card .cs-source{font-size:13px;color:var(--cs-muted);margin:0 0 8px}
 .cs-summary{font-size:17px;line-height:1.85;white-space:pre-line;overflow-wrap:anywhere;margin:0 0 24px}
 .cs-article-image{display:block;width:100%;max-height:360px;object-fit:contain;background:#ebeadd}
+.cs-figure{margin:0;background:#ebeadd}.cs-credit{padding:6px 24px;font-size:11px;line-height:1.6;color:var(--cs-muted);text-align:right}
+.cs-tags{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.cs-tags b{font-size:12px;font-weight:700;line-height:1.5;padding:2px 8px;border:1px solid var(--cs-line);border-radius:4px;color:var(--cs-green)}
+.cs-card .cs-digest-title{font-size:15px;font-weight:700;line-height:1.5;letter-spacing:0;color:var(--cs-green);margin:14px 0 8px}
+.cs-digest{margin:0 0 20px;padding:0 0 0 1.2em;font-size:16px;line-height:1.8}.cs-digest li{margin:0 0 8px;overflow-wrap:anywhere}
+.cs-disclaimer{font-size:12px;line-height:1.6;color:var(--cs-muted);margin:0 0 16px}
 .cs-original{color:var(--cs-green);font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
 .cs-page-address{font-size:11px;line-height:1.7;color:var(--cs-muted);overflow-wrap:anywhere;margin:16px 0 0}
 .cs-actions{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}

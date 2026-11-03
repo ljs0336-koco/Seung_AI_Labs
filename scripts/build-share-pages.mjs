@@ -32,6 +32,25 @@ function webUrl(value, field, { optional = false, relative = false } = {}) {
   return url.href;
 }
 
+function digestList(item) {
+  if (item.digest === undefined || item.digest === null) return [];
+  if (!Array.isArray(item.digest) || item.digest.length > 8) throw new Error(`${item.id}: digest must be a list of at most 8 sentences.`);
+  const list = item.digest.map(line => (typeof line === 'string' ? line.trim() : ''));
+  if (list.some(line => !line || line.length > 300)) throw new Error(`${item.id}: each digest sentence must be 1-300 characters.`);
+  if (list.join('').length > 1600) throw new Error(`${item.id}: shorten digest to 1600 characters or fewer.`);
+  return list;
+}
+
+// Link previews get the summary plus whole digest sentences, never a sentence cut in half.
+export function shareDescription(item, limit = 200) {
+  let text = item.summary.trim();
+  for (const line of item.digest || []) {
+    if ((text + ' ' + line).length > limit) break;
+    text += ' ' + line;
+  }
+  return text;
+}
+
 export function validateNewsManifest(manifest) {
   if (!manifest || manifest.schemaVersion !== 1 || !Array.isArray(manifest.items)) throw new Error('Expected news schemaVersion 1 and items array.');
   const ids = new Set();
@@ -52,6 +71,7 @@ export function validateNewsManifest(manifest) {
       url: webUrl(item.url, `${item.id}.url`),
       image: webUrl(item.image, `${item.id}.image`, { optional: true, relative: true }),
       exportImage: webUrl(item.exportImage, `${item.id}.exportImage`, { optional: true, relative: true }),
+      digest: digestList(item),
       issue: typeof item.issue === 'string' ? item.issue : '',
       field: typeof item.field === 'string' ? item.field : '',
     };
@@ -63,22 +83,25 @@ export function renderSharePage(item, siteUrl) {
   const pageUrl = new URL(`share/news/${item.id}/`, siteUrl).href;
   const imageUrl = new URL('shared/share-default.png', siteUrl).href;
   const recordJson = JSON.stringify(item).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
-  const picture = item.image ? `<img class="cs-article-image" src="${e(new URL(item.image, siteUrl).href)}" alt="" loading="eager" referrerpolicy="no-referrer">` : '';
+  const picture = item.image ? `<figure class="cs-figure"><img class="cs-article-image" src="${e(new URL(item.image, siteUrl).href)}" alt="" loading="eager" referrerpolicy="no-referrer" onerror="this.parentElement.remove()"><figcaption class="cs-credit">이미지: ${e(item.source)}</figcaption></figure>` : '';
+  const description = shareDescription(item);
+  const tags = [item.issue, item.field].filter(Boolean).map(tag => `<b>${e(tag)}</b>`).join('');
+  const digest = item.digest.length ? `<h2 class="cs-digest-title">자세한 요약</h2><ul class="cs-digest">${item.digest.map(line => `<li>${e(line)}</li>`).join('')}</ul>` : '';
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${e(item.title)} · Seung AI Labs</title>
-<meta name="description" content="${e(item.summary)}"><meta name="robots" content="noindex, nofollow">
+<meta name="description" content="${e(description)}"><meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="${e(pageUrl)}"><meta name="seung-share-site-url" content="${e(siteUrl)}">
 <meta property="og:type" content="article"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="Seung AI Labs">
-<meta property="og:title" content="${e(item.title)}"><meta property="og:description" content="${e(item.summary)}"><meta property="og:url" content="${e(pageUrl)}">
+<meta property="og:title" content="${e(item.title)}"><meta property="og:description" content="${e(description)}"><meta property="og:url" content="${e(pageUrl)}">
 <meta property="og:image" content="${e(imageUrl)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Seung AI Labs 뉴스 공유">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${e(item.title)}"><meta name="twitter:description" content="${e(item.summary)}"><meta name="twitter:image" content="${e(imageUrl)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${e(item.title)}"><meta name="twitter:description" content="${e(description)}"><meta name="twitter:image" content="${e(imageUrl)}">
 <link rel="stylesheet" href="../../../shared/content-share.css"><script src="../../../shared/content-share.js" defer></script></head>
 <body class="cs-page"><main class="cs-page-main" data-share-page-id="${e(item.id)}">
 <a class="cs-back" href="../../../briefing/">← AI 교육 브리핑</a>
 <article class="cs-card" aria-labelledby="cs-page-title"><p class="cs-brand">SEUNG AI LABS · AI 교육 브리핑</p>${picture}
-<div class="cs-card-body"><p class="cs-meta">${e(item.source)} · ${e(item.date)}</p><h1 id="cs-page-title">${e(item.title)}</h1>
-<p class="cs-summary">${e(item.summary)}</p><p class="cs-source">출처: ${e(item.source)} · ${e(item.date)}</p>
+<div class="cs-card-body">${tags ? `<p class="cs-tags">${tags}</p>` : ''}<p class="cs-meta">${e(item.source)} · ${e(item.date)}</p><h1 id="cs-page-title">${e(item.title)}</h1>
+<p class="cs-summary">${e(item.summary)}</p>${digest}<p class="cs-disclaimer">원문을 읽고 우리말로 정리한 요약입니다. 정확한 내용은 원문에서 확인해 주세요.</p><p class="cs-source">출처: ${e(item.source)} · ${e(item.date)}</p>
 <a class="cs-original" href="${e(item.url)}" target="_blank" rel="noopener noreferrer">원문 보기 ↗</a>
 <p class="cs-page-address">${e(pageUrl)}</p></div></article><div class="cs-page-controls"></div>
 <noscript><p>이 주소를 복사하거나 화면을 캡처해 공유할 수 있습니다. 기사 원문은 위 링크에서 확인하세요.</p></noscript>
