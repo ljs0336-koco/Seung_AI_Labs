@@ -1271,3 +1271,93 @@ KW  - AI 생성 콘텐츠
 KW  - 학업 과제
 N1  - 연구 서고 A-10 · 프리프린트(심사 전) · AI 리터러시·시민성
 ER  - 
+
+TY  - RPRT
+AU  - 한국교육과정평가원
+TI  - 교사의 수업 및 평가 지원을 위한 생성형 AI 활용 방안 탐색
+T2  - KICE 연구리포트
+PY  - 2026
+DA  - 2026/10/07
+PB  - 한국교육과정평가원
+M1  - 13
+UR  - https://hangyo.com/mobile/article.html?no=109594
+KW  - 교사 생성형 AI 활용
+KW  - 수업과 평가
+KW  - 활용 가이드라인
+KW  - 채점 보조
+KW  - 한국
+N1  - 연구 서고 F-04 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - BOOK
+AU  - UNESCO
+TI  - The algorithm in the room: Seeing and confronting the implications of AI for the future of education
+PY  - 2026
+DA  - 2026/09/08
+PB  - UNESCO
+UR  - https://www.unesco.org/en/articles/algorithm-room-seeing-and-confronting-implications-ai-future-education
+KW  - AI 거버넌스
+KW  - 교육의 미래
+KW  - 행위주체성
+KW  - 공공재로서의 교육
+KW  - UNESCO
+N1  - 연구 서고 F-05 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - JOUR
+AU  - 전, 찬주
+AU  - 김, 아람
+AU  - 윤, 미현
+TI  - 학습자와 생성형 AI 간 상호작용의 교육적 효과 메타분석
+T2  - 교육정보미디어연구
+PY  - 2026
+DA  - 2026/04/30
+PB  - 한국교육정보미디어학회
+SP  - 679
+EP  - 700
+UR  - https://dl.nanet.go.kr/detail/KINX2026063646
+KW  - 메타분석
+KW  - 학습자-AI 상호작용
+KW  - 정교화 피드백
+KW  - 조절변인
+N1  - 연구 서고 G-04 · 동료심사 저널 · AI의 학습 영향
+ER  - 
+
+TY  - JOUR
+AU  - 유, 인환
+AU  - 박, 대륜
+TI  - AI 에이전트와 교육용 로봇을 활용한 AI 프로그래밍 교육 방법 탐색
+T2  - 정보교육학회논문지
+PY  - 2026
+DA  - 2026/02
+PB  - 한국정보교육학회
+SP  - 149
+EP  - 159
+UR  - https://www.earticle.net/Article/A481719
+KW  - AI 에이전트
+KW  - 바이브 코딩
+KW  - 교육용 로봇
+KW  - 컴퓨팅 사고력
+KW  - 점진적 자율성
+N1  - 연구 서고 E-02 · 동료심사 저널 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - JOUR
+AU  - 이, 춘식
+AU  - 유, 영길
+AU  - 성, 신웅
+TI  - 생성형 AI와 교육용 로봇을 연계한 초등 실과 수업 모형 탐색: 블록기반 코딩에서 바이브 코딩으로
+T2  - 실과교육연구
+PY  - 2026
+DA  - 2026/02
+PB  - 한국실과교육연구학회
+SP  - 47
+EP  - 84
+UR  - https://www.earticle.net/Article/A481313
+KW  - 바이브 코딩
+KW  - 교육용 로봇
+KW  - 초등 실과
+KW  - V-I-B-E
+KW  - 블록 코딩
+N1  - 연구 서고 E-03 · 동료심사 저널 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 

@@ -36,6 +36,7 @@ WEEKDAY = "월화수목금토일"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 OG = [re.compile(r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)["\'][^>]*content=["\']([^"\']+)', re.I),
       re.compile(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\'](?:og:image|twitter:image)', re.I)]
+PLACEHOLDER_IMG = re.compile(r"default[_-]?img|/default\.(?:png|jpe?g)|placeholder|no[_-]?image", re.I)
 
 
 def e(s):
@@ -71,7 +72,10 @@ def og_image(url):
         m = p.search(page)
         if m:
             src = html.unescape(m.group(1)).replace("//img/", "/img/")
-            return src if src.startswith(("http://", "https://")) else ""
+            # 기관 기본 그림(예: 교육부 default_img)은 기사 사진이 아니므로 자체 배경을 쓴다.
+            if not src.startswith(("http://", "https://")) or PLACEHOLDER_IMG.search(src):
+                return ""
+            return src
     return ""
 
 

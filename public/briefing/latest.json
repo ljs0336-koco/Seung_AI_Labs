@@ -1,137 +1,87 @@
 {
   "schemaVersion": 1,
-  "date": "2026-11-02",
-  "collectedAt": "09:00",
+  "date": "2026-11-05",
+  "collectedAt": "12:55",
   "headlines": [
     {
-      "id": "n-b138df71b1659a33",
-      "title": "Mistral, 1조 매개변수 모델 가중치 공개",
-      "summary": "보안·에이전트 코딩용 Mistral Large 4를 누구나 받아 쓸 수 있게 열었지만, 악용 위험은 회사도 인정했다.",
+      "id": "n-dca8692856b15009",
+      "title": "구글, AI를 안 켜는 학교는 검색도 차단… 미국 정치권 반발",
+      "summary": "구글이 K-12 학교가 AI 도구 사용에 동의하지 않으면 학생의 구글 검색도 막겠다고 발표해 거센 반발을 샀습니다. 샌더스 상원의원 등은 갈취·독점이라고 비판했고, 구글은 학교의 통제권을 넓힌 조치라고 맞섰습니다.",
       "digest": [
-        "프랑스 Mistral이 1조 매개변수급 모델 Mistral Large 4(별칭 Le Chonk)의 가중치를 10월 29일 공개했습니다.",
-        "Hugging Face에서 내려받을 수 있고 Mistral API로도 쓸 수 있습니다.",
-        "기업·정부가 코드와 IT 인프라의 위협을 찾고 대응하는 용도로 만들었다고 합니다.",
-        "성능은 중국 오픈 모델 GLM-5.3과 비슷하고 토큰은 47% 적게 쓴다는 것이 회사 주장이며, 독립 검증은 없습니다.",
-        "구체적 안전장치는 기사에 없고, 임원은 악의적 이용 위험을 인정했습니다."
+        "구글은 11월 3일 K-12용 소프트웨어를 쓰는 학교가 Gemini 같은 AI 도구 사용에 동의하지 않으면 학생이 구글 검색을 쓸 수 없게 된다고 발표했습니다.",
+        "크리스 필립스 구글 교육 담당 부사장은 뉴욕타임스에 검색과 AI가 깊이 통합돼 있어서라고 설명했고, 학생은 학교가 막았다는 안내 문구를 보게 된다고 했습니다.",
+        "버니 샌더스 상원의원은 X에서 갈취라고 했고, 리처드 블루멘털 상원의원과 리나 칸 전 FTC 위원장, 조란 맘다니 뉴욕시장도 Gemini 강요와 독점 문제를 들어 비판했습니다.",
+        "기자는 교육자들이 검색의 AI 요약 때문에 학생이 스스로 답을 찾지 않게 될까 걱정하며, 크롬북을 써야 하는 수백만 학생은 다른 검색엔진으로 바꾸기도 쉽지 않다고 짚었습니다.",
+        "구글은 X에서 AI 제품을 기본으로 꺼 두고 Gemini, Gemini Notebook, 검색을 학교가 따로 켤 수 있게 했다며, 교육자 의견을 듣고 통제권을 넓힌 변경이라고 반박했습니다.",
+        "구글은 답을 바로 주는 대신 지수 나눗셈 규칙을 떠올리게 하는 식으로 풀이 과정을 이끄는 학생용 검색 기능 Guided Learning도 개발 중이라고 밝혔습니다."
       ],
       "source": "TechCrunch",
-      "date": "2026-10-29",
-      "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
-      "issue": "AI 안전",
-      "field": "모델",
-      "image": "https://techcrunch.com/wp-content/uploads/2024/06/GettyImages-1760104305.jpg?resize=1200,798",
-      "href": "./share/news/n-b138df71b1659a33/"
-    },
-    {
-      "id": "n-baf2e8680ec92ea7",
-      "title": "DoorDash \"외부 AI 에이전트 주문은 수백 건뿐\"",
-      "summary": "에이전트가 대신 주문하는 흐름은 아직 매우 작다는 회사 발언이다.",
-      "digest": [
-        "DoorDash CEO가 3분기 실적 발표에서 외부 AI 에이전트를 통한 주문이 총 수백 건이라고 말했습니다.",
-        "Muse, Instinct, Fo 등이 언급됐고 에이전트별 구분은 없습니다.",
-        "DoorDash는 하루 약 300만 건을 배달하며, 대부분 주문은 여전히 자사 앱에서 나옵니다.",
-        "Amazon은 개인 에이전트를 막고 Walmart는 환영하는 등 사이트별 정책이 갈립니다.",
-        "한 회사의 발언이라 기간과 집계 방식은 확인되지 않습니다."
-      ],
-      "source": "TechCrunch",
-      "date": "2026-10-30",
-      "url": "https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/",
-      "issue": "개인정보",
-      "field": "에이전트",
-      "image": "https://techcrunch.com/wp-content/uploads/2022/08/GettyImages-1232015093.jpg?resize=1200,800",
-      "href": "./share/news/n-baf2e8680ec92ea7/"
-    },
-    {
-      "id": "n-4413e75a33c5a4c9",
-      "title": "개인정보 중심 AI 비서 Ollie, 11월 6일 종료",
-      "summary": "메일·캘린더에 연결하던 가족용 AI 비서가 경쟁을 못 이겨 문을 닫는다.",
-      "digest": [
-        "Ollie는 메일·캘린더와 연결해 예약, 식단, 청구서 결제를 돕던 가족용 문자 AI 비서입니다.",
-        "CEO가 10월 30일 서비스 종료를 알렸고, 종료일은 11월 6일입니다.",
-        "시드 투자 750만 달러를 받았고 SOC 2 감사를 통과했지만 신규 경쟁자 속에서 성장하지 못했다고 합니다.",
-        "사용자에게 데이터 내보내기와 환불 안내가 곧 간다고 하나, 종료 후 데이터 처리 방식은 기사에 없습니다."
-      ],
-      "source": "TechCrunch",
-      "date": "2026-10-30",
-      "url": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/",
-      "issue": "개인정보",
-      "field": "에이전트",
-      "image": "https://techcrunch.com/wp-content/uploads/2026/09/Ollie_Hero.png?resize=1200,847",
-      "href": "./share/news/n-4413e75a33c5a4c9/"
-    },
-    {
-      "id": "n-4d0843b360d077cf",
-      "title": "Zest, 문자로 식당 추천·예약하는 AI 컨시어지",
-      "summary": "카드 내역으로 취향을 읽어 문자와 단체방에서 식당을 찾고 예약해 준다.",
-      "digest": [
-        "Zest가 10월 30일 문자 기반 식당 AI 컨시어지를 내놨습니다.",
-        "전용 번호에 문자를 보내거나 단체방에 초대하면 추천, 메뉴 전송, 예약을 해 줍니다.",
-        "예약은 OpenTable, Resy, SevenRooms로 하고, 단체방에서는 투표도 합니다.",
-        "Plaid로 카드 내역을 읽어 외식 거래만으로 취향 프로필을 만든다고 합니다.",
-        "음식 주문은 준비 중이며, 데이터 보관·삭제 설정은 기사에 설명이 없습니다."
-      ],
-      "source": "TechCrunch",
-      "date": "2026-10-30",
-      "url": "https://techcrunch.com/2026/10/30/zests-new-ai-agent-finds-restaurants-and-books-reservations-over-text/",
-      "issue": "개인정보",
-      "field": "에이전트",
-      "image": "https://techcrunch.com/wp-content/uploads/2026/10/zest.jpg?resize=1200,764",
-      "href": "./share/news/n-4d0843b360d077cf/"
-    },
-    {
-      "id": "n-97e16e07fc487c58",
-      "title": "Antigravity, Claude 4.6 두 종과 GPT-OSS-120b 오늘 제공 종료 예정",
-      "summary": "공식 모델 문서상 2026-11-02에 Claude Sonnet·Opus 4.6과 GPT-OSS-120b가 빠집니다.",
-      "digest": [
-        "Antigravity 공식 모델 문서의 플랜별 표를 기준으로 한 내용입니다.",
-        "무료·Google AI Plus는 Gemini 3.8 Flash와 Claude 4.6 두 종, GPT-OSS-120b가 열려 있습니다.",
-        "Claude 5.5는 Pro(체험판 제외)·Ultra·Enterprise에서 제공됩니다.",
-        "문서는 Claude 4.6 두 종과 GPT-OSS-120b가 2026-11-02에 제공 종료된다고 적었습니다.",
-        "오늘 실제 종료 여부는 확인하지 못한 문서상 예정일입니다."
-      ],
-      "source": "Google Antigravity 문서",
-      "date": "2026-11-02",
-      "url": "https://antigravity.google/docs/models",
-      "issue": "",
-      "field": "AI 코딩",
-      "image": "https://antigravity.google/assets/image/sitecards/sitecard-documentation.png",
-      "href": "./share/news/n-97e16e07fc487c58/"
-    },
-    {
-      "id": "n-204d5faf405d3242",
-      "title": "판사, xAI 데이터센터 터빈 대기오염 소송 기각 신청 거부",
-      "summary": "NAACP 소송이 계속 진행됩니다. 위법 여부 판단은 아닙니다.",
-      "digest": [
-        "미국 연방판사가 NAACP가 낸 소송에서 xAI의 기각 신청을 받아들이지 않았습니다.",
-        "소송은 xAI가 멤피스 인근 데이터센터에서 가스터빈 최소 35기를 대기오염 허가 없이 돌렸다는 주장입니다.",
-        "xAI는 이동식이라 허가 대상이 아니라고 했지만 판사는 주 계획상 이동식 오염원이 아니라고 봤습니다.",
-        "재판을 계속하게 한 결정일 뿐이며 SpaceX 측 입장은 기사에 없습니다."
-      ],
-      "source": "TechCrunch",
-      "date": "2026-10-31",
-      "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/",
-      "issue": "책임성·투명성",
-      "field": "산업",
-      "image": "https://techcrunch.com/wp-content/uploads/2025/06/GettyImages-2217198328.jpeg?resize=1200,800",
-      "href": "./share/news/n-204d5faf405d3242/"
-    },
-    {
-      "id": "n-7a5ce7ed2f78d284",
-      "title": "AI는 CEO의 삶은 편하게 하는데, 나머지 사람에게는?",
-      "summary": "기술 기업 CEO들의 AI 일상 활용 발언이 일반인 정서와 동떨어졌다는 논쟁을 다룹니다.",
-      "digest": [
-        "TechCrunch Equity 팟캐스트 소개글로, 의견 중심입니다.",
-        "CEO들이 육아·학교 과제에 AI를 쓰라고 권하는 발언이 비판받는다는 내용입니다.",
-        "패널은 일상의 사람 간 상호작용까지 최적화하려는 흐름과 폴더폰·CD를 찾는 반대 흐름을 대비했습니다.",
-        "여론조사 같은 수치는 없고 다른 매체 보도를 확인 없이 인용했습니다."
-      ],
-      "source": "TechCrunch",
-      "date": "2026-11-01",
-      "url": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
+      "date": "2026-11-04",
+      "url": "https://techcrunch.com/2026/11/04/google-faces-backlash-for-plan-that-would-turn-off-search-for-schools-that-restrict-ai/",
       "issue": "사회적 영향",
+      "field": "교육",
+      "image": "https://techcrunch.com/wp-content/uploads/2024/03/students-typing-on-laptops-GettyImages_1513744777.jpeg?w=1200",
+      "href": "./share/news/n-dca8692856b15009/"
+    },
+    {
+      "id": "n-166dbd706385b2a9",
+      "title": "635억 들인 교육청 AI 플랫폼 AIEP, 하루 방문자 가입자의 1.63%",
+      "summary": "서울 등 11개 시도교육청이 635억여원을 들인 AI 맞춤형 학습 플랫폼 AIEP의 하루 방문자가 가입자의 1.63%에 그쳤습니다. 내년까지 155억여원이 더 들어갈 예정이어서 활성화 대책이 필요하다는 지적이 나옵니다.",
+      "digest": [
+        "교육플러스가 국회 교육위원회 김준혁 의원이 서울교육청에서 받은 국정감사 자료를 분석한 결과, 7~9월 일 평균 방문자는 2만708명으로 가입자 127만1120명의 1.63%였습니다.",
+        "지역별로는 울산 0.25%, 대전 0.49%, 전북 0.79%, 강원 0.83%가 1%에 못 미쳤고, 가장 높은 곳도 옛 전남 지역의 2.38%, 그다음이 서울 2.04%였습니다.",
+        "월 평균 방문자는 중복을 빼고 22만2316명(17.40%)이었고, 방학을 뺀 9월만 봐도 일 평균 2.25%, 월간 21.37%로 크게 늘지 않았습니다.",
+        "교육청들은 2023년부터 올해 운영비까지 635억여원을 썼으며 서울이 180억여원으로 가장 많고 세종이 21억여원으로 가장 적은데, 2차 고도화 사업자 선정도 끝나 내년까지 155억여원을 더 씁니다.",
+        "AIEP를 쓰는 서울의 한 중학교 교사는 시험 출제 때문에 교사 한 명이 반대하면 그 교과 전체가 쓸 수 없고, 학교의 기기 규제와 기존 플랫폼 자료를 옮기지 못하는 점, 보안 문제도 한계라고 말했습니다.",
+        "이 교사는 초등학교 전체와 중·고 1학년에서 먼저 활용을 늘리고, 교육청이 교사들의 사용 현황부터 파악해 개선책을 내야 한다고 제안했습니다."
+      ],
+      "source": "교육플러스",
+      "date": "2026-11-03",
+      "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21970",
+      "issue": "",
+      "field": "교육",
+      "image": "https://cdn.edpl.co.kr/news/photo/202611/21970_43482_12.png",
+      "href": "./share/news/n-166dbd706385b2a9/"
+    },
+    {
+      "id": "n-c52f3545b7f5081b",
+      "title": "카카오, 12월 '카나나 스페이스' 시범… 브라우저 제어와 MCP 연동 병행",
+      "summary": "카카오가 카카오톡을 AI가 일을 대신하는 공간으로 바꾸겠다며 12월 '카나나 스페이스' 시범 서비스를 시작한다고 밝혔습니다. 결제 1건 비용이 브라우저 제어는 800~900원, 직접 연동은 약 5원이라며 두 방식을 함께 씁니다.",
+      "digest": [
+        "정신아 카카오 대표는 11월 5일 3분기 컨퍼런스콜에서 AI 경쟁이 답변에서 실제 작업 수행으로 옮겨 간다고 진단하고, 12월 사전 신청자에게 카나나 스페이스 파일럿을 시작해 내년부터 이용자를 넓힌다고 밝혔습니다.",
+        "카나나 스페이스는 카카오톡 어디서나 음성이나 글로 불러 글자 크기 변경부터 선물하기, 송금까지 대신 처리하도록 개발 중입니다.",
+        "회사는 파트너사의 개발 일정과 이해관계가 걸림돌이었다며, AI가 브라우저를 직접 다루는 컴퓨터 사용 에이전트를 쓰고 수요가 확인된 서비스는 A2A와 MCP로 직접 연결하겠다고 했습니다.",
+        "정 대표 설명에 따르면 브라우저로 결제까지 할 때 모델 호출 비용만 건당 약 800~900원이 들 수 있지만 직접 연동하면 약 5원까지 낮아질 수 있습니다.",
+        "PC에서 브라우저를 제어해 검색과 자료 정리를 돕는 칸바스는 사내 베타 중으로 연내 출시가 목표이며, 신종환 CFO는 2028년 AI 사업이 손익분기점 수준에 이를 것으로 전망했습니다.",
+        "전자신문은 11월 4일 네이버도 검색·쇼핑·지도 에이전트를 잇는 통합 에이전트 구축을 앞당기고 있어 내년 상반기 출시 전망이 나온다고 전했습니다."
+      ],
+      "source": "디지털투데이",
+      "date": "2026-11-05",
+      "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=712845",
+      "issue": "",
+      "field": "에이전트",
+      "image": "https://cdn.digitaltoday.co.kr/news/photo/202611/712845_660284_2319.png",
+      "href": "./share/news/n-c52f3545b7f5081b/"
+    },
+    {
+      "id": "n-7f330728e0367f47",
+      "title": "EU 법원 법무관 \"기사를 대신 읽을 정도의 AI 답변은 저작권 침해 가능\"",
+      "summary": "EU 최고법원의 법무관이 AI 챗봇이 원문을 안 읽어도 될 만큼 기사를 재사용해 답하면 저작권 침해가 될 수 있다는 의견을 냈습니다. 구속력은 없지만 법원이 따르는 경우가 많아 AI 요약 서비스에 영향을 줄 전망입니다.",
+      "digest": [
+        "마치에이 슈푸나르 유럽사법재판소 수석 법무관은 11월 초 헝가리 출판사 라이크 컴퍼니가 구글을 상대로 낸 소송에서 AI 챗봇의 기사 재사용이 조건에 따라 저작권 침해가 될 수 있다는 의견을 냈습니다.",
+        "라이크 컴퍼니는 구글이 2023년 6월부터 2024년 5월까지 자사 저작물을 Gemini 학습에 쓰고 답변에서도 되풀이했다고 주장했고, 법무관은 이 사건에서 구글이 해당 기사를 학습에 썼다는 증거를 찾지 못했다고 밝혔습니다.",
+        "법무관은 EU의 텍스트·데이터 마이닝 예외로 언어 모델 학습은 허용될 수 있어도 답변에 쓰는 행위까지 무조건 허용되지는 않는다고 나눠 봤습니다.",
+        "유료 구독 장벽을 우회해 기사를 가져오거나, 표현을 알아볼 만큼 재현하거나, 답변만으로 원문을 볼 필요가 없어지면 문제가 될 수 있으며 보호 대상은 사실이 아니라 표현 형식이라고 했습니다.",
+        "구글 대변인은 학습 허용 판단을 환영하며 Gemini는 언어 패턴을 배워 새로운 결과물을 만든다고 했고, 유럽출판사협의회 사무총장은 검색 노출과 저작권 중 하나를 고르게 해서는 안 된다고 했습니다.",
+        "이 의견은 구속력이 없고 유럽사법재판소 판결 뒤 최종 판단은 헝가리 법원이 내립니다."
+      ],
+      "source": "AI타임스(WSJ 인용)",
+      "date": "2026-11-04",
+      "url": "https://www.aitimes.com/news/articleView.html?idxno=217014",
+      "issue": "법·규제",
       "field": "챗봇",
-      "image": "https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-1481617564.jpg?resize=1200,680",
-      "href": "./share/news/n-7a5ce7ed2f78d284/"
+      "image": "https://cdn.aitimes.com/news/photo/202611/217014_221197_2855.jpg",
+      "href": "./share/news/n-7f330728e0367f47/"
     }
   ],
   "bids": [
@@ -143,6 +93,14 @@
     }
   ],
   "editions": [
+    {
+      "date": "2026-11-05",
+      "url": "./briefing/archive/2026-11-05.html"
+    },
+    {
+      "date": "2026-11-03",
+      "url": "./briefing/archive/2026-11-03.html"
+    },
     {
       "date": "2026-11-02",
       "url": "./briefing/archive/2026-11-02.html"
