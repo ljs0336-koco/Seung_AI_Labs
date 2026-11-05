@@ -151,9 +151,9 @@
     {
       "id": "deck",
       "kind": "link",
-      "title": "The Curated Mind",
-      "description": "AI의 답에 담긴 기준과, 목적에 맞는 AI의 통제 범위",
-      "href": "./deck/vol02/index.html",
+      "title": "The Easy Answer",
+      "description": "답이 쉬워질수록 사람이 남는다. 인지적 항복, 신입의 사다리, 그리고 관계",
+      "href": "./deck/vol03/index.html",
       "section": "showcase",
       "placement": "both",
       "status": "live",
@@ -163,11 +163,15 @@
           "href": "./hub/apps/jeju_making/index.html"
         },
         {
+          "title": "Vol.02 · The Curated Mind",
+          "href": "./deck/vol02/index.html"
+        },
+        {
           "title": "Vol.01 · The Agentic Shift",
           "href": "./deck/index.html"
         }
       ],
-      "edition": "VOL.02"
+      "edition": "VOL.03"
     },
     {
       "id": "terrarium",
