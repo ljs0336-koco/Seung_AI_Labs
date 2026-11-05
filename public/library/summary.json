@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "total": 67,
-  "reviewed": 32,
-  "special": 23,
+  "total": 79,
+  "reviewed": 36,
+  "special": 35,
   "updated": "2026-11-05",
   "shelves": [
     {
@@ -18,7 +18,7 @@
     {
       "id": "C",
       "label": "AI 튜터링·학습 지원",
-      "count": 8
+      "count": 9
     },
     {
       "id": "D",
@@ -33,12 +33,12 @@
     {
       "id": "F",
       "label": "교육 정책·제도",
-      "count": 5
+      "count": 9
     },
     {
       "id": "G",
       "label": "AI의 학습 영향",
-      "count": 4
+      "count": 9
     },
     {
       "id": "H",
@@ -48,7 +48,7 @@
     {
       "id": "I",
       "label": "이론적 기반",
-      "count": 4
+      "count": 6
     },
     {
       "id": "J",
@@ -58,112 +58,110 @@
   ],
   "recent": [
     {
-      "id": "067",
-      "code": "E-03",
-      "call": "E-03",
-      "title": "생성형 AI와 교육용 로봇을 연계한 초등 실과 수업 모형 탐색: 블록기반 코딩에서 바이브 코딩으로",
-      "titleKo": "생성형 AI와 교육용 로봇을 연계한 초등 실과 수업 모형 탐색: 블록기반 코딩에서 바이브 코딩으로",
-      "authors": "춘식 이; 영길 유; 신웅 성",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-067",
+      "id": "079",
+      "code": "I-06",
+      "call": "I-06",
+      "title": "Deep Utopia: Life and Meaning in a Solved World",
+      "titleKo": "딥 유토피아: 초지능이 완성한 세상에서 삶은 무엇으로 채워지는가",
+      "authors": "Nick Bostrom",
+      "year": 2024,
+      "kind": "book",
+      "href": "./library/index.html#no-079",
       "keywords": [
-        "바이브 코딩",
-        "교육용 로봇",
-        "초등 실과",
-        "V-I-B-E",
-        "블록 코딩"
+        "의미",
+        "목적",
+        "해결된 세계",
+        "자기목적적 활동",
+        "여가"
       ],
       "shelves": [
-        "E",
-        "D"
+        "I",
+        "G"
       ]
     },
     {
-      "id": "066",
-      "code": "E-02",
-      "call": "E-02",
-      "title": "AI 에이전트와 교육용 로봇을 활용한 AI 프로그래밍 교육 방법 탐색",
-      "titleKo": "AI 에이전트와 교육용 로봇을 활용한 AI 프로그래밍 교육 방법 탐색",
-      "authors": "인환 유; 대륜 박",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-066",
+      "id": "078",
+      "code": "I-05",
+      "call": "I-05",
+      "title": "Understanding by Design Framework",
+      "titleKo": "이해를 위한 설계(UbD) 프레임워크",
+      "authors": "Jay McTighe; Grant Wiggins",
+      "year": 2012,
+      "kind": "report",
+      "href": "./library/index.html#no-078",
       "keywords": [
-        "AI 에이전트",
-        "바이브 코딩",
-        "교육용 로봇",
-        "컴퓨팅 사고력",
-        "점진적 자율성"
+        "백워드 설계",
+        "역설계",
+        "평가 증거",
+        "이해",
+        "전이"
       ],
       "shelves": [
-        "E",
-        "D"
+        "I"
       ]
     },
     {
-      "id": "065",
-      "code": "G-04",
-      "call": "G-04",
-      "title": "학습자와 생성형 AI 간 상호작용의 교육적 효과 메타분석",
-      "titleKo": "학습자와 생성형 AI 간 상호작용의 교육적 효과 메타분석",
-      "authors": "찬주 전; 아람 김; 미현 윤",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-065",
-      "keywords": [
-        "메타분석",
-        "학습자-AI 상호작용",
-        "정교화 피드백",
-        "조절변인"
-      ],
-      "shelves": [
-        "G",
-        "C"
-      ]
-    },
-    {
-      "id": "064",
-      "code": "F-05",
-      "call": "F-05",
-      "title": "The algorithm in the room: Seeing and confronting the implications of AI for the future of education",
-      "titleKo": "방 안의 알고리즘: 교육의 미래에 AI가 갖는 함의를 보고 맞서기",
-      "authors": "UNESCO",
+      "id": "077",
+      "code": "F-09",
+      "call": "F-09",
+      "title": "Report of MIT's Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training",
+      "titleKo": "MIT 교수·학습·연구 훈련의 AI 활용 특별위원회 보고서",
+      "authors": "MIT Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training",
       "year": 2026,
       "kind": "report",
-      "href": "./library/index.html#no-064",
+      "href": "./library/index.html#no-077",
       "keywords": [
-        "AI 거버넌스",
-        "교육의 미래",
-        "행위주체성",
-        "공공재로서의 교육",
-        "UNESCO"
+        "고등교육",
+        "백워드 설계",
+        "구술시험",
+        "인지적 항복",
+        "평가"
       ],
       "shelves": [
         "F",
-        "H"
+        "G"
       ]
     },
     {
-      "id": "063",
-      "code": "F-04",
-      "call": "F-04",
-      "title": "교사의 수업 및 평가 지원을 위한 생성형 AI 활용 방안 탐색",
-      "titleKo": "교사의 수업 및 평가 지원을 위한 생성형 AI 활용 방안 탐색",
-      "authors": "한국교육과정평가원",
+      "id": "076",
+      "code": "F-08",
+      "call": "F-08",
+      "title": "Trends in Adult Learning: New Data from the 2023 Survey of Adult Skills",
+      "titleKo": "성인 학습의 동향: 2023 성인역량조사의 새 자료",
+      "authors": "OECD",
+      "year": 2025,
+      "kind": "report",
+      "href": "./library/index.html#no-076",
+      "keywords": [
+        "성인 학습",
+        "PIAAC",
+        "직무 관련 학습",
+        "한국",
+        "일터 학습"
+      ],
+      "shelves": [
+        "F"
+      ]
+    },
+    {
+      "id": "075",
+      "code": "F-07",
+      "call": "F-07",
+      "title": "2026 Global AI Jobs Barometer",
+      "titleKo": "2026 글로벌 AI 일자리 바로미터",
+      "authors": "PwC",
       "year": 2026,
       "kind": "report",
-      "href": "./library/index.html#no-063",
+      "href": "./library/index.html#no-075",
       "keywords": [
-        "교사 생성형 AI 활용",
-        "수업과 평가",
-        "활용 가이드라인",
-        "채점 보조",
-        "한국"
+        "채용공고",
+        "신입",
+        "시니어 역량",
+        "AI 노출도"
       ],
       "shelves": [
         "F",
-        "B"
+        "G"
       ]
     }
   ],
@@ -1600,6 +1598,265 @@
       "shelves": [
         "E",
         "D"
+      ]
+    },
+    {
+      "id": "068",
+      "code": "G-05",
+      "call": "G-05",
+      "title": "Thinking—Fast, Slow, and Artificial: How AI is Reshaping Human Reasoning and the Rise of Cognitive Surrender",
+      "titleKo": "빠르게, 느리게, 그리고 인공적으로 생각하기: AI가 바꾸는 인간의 추론과 인지적 항복의 부상",
+      "authors": "Steven D. Shaw; Gideon Nave",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-068",
+      "keywords": [
+        "인지적 항복",
+        "인지적 오프로딩",
+        "System 3",
+        "AI 의존",
+        "추론"
+      ],
+      "shelves": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "069",
+      "code": "G-06",
+      "call": "G-06",
+      "title": "Effects of LLM use and note-taking on reading comprehension and memory: A randomised experiment in secondary schools",
+      "titleKo": "LLM 사용과 노트 필기가 읽기 이해와 기억에 미치는 영향: 중등학교 무작위 실험",
+      "authors": "Pia Kreijkes; Viktor Kewenig; Martina Kuvalja; Mina Lee; Jake M. Hofman; Sylvia Vitello; Abigail Sellen; Sean Rintel; Daniel G. Goldstein; David Rothschild; Lev Tankelevitch; Tim Oates",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-069",
+      "keywords": [
+        "LLM",
+        "노트 필기",
+        "읽기 이해",
+        "파지",
+        "중등교육"
+      ],
+      "shelves": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "070",
+      "code": "G-07",
+      "call": "G-07",
+      "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+      "titleKo": "안전장치 없는 생성형 AI는 학습을 해칠 수 있다: 고등학교 수학의 증거",
+      "authors": "Hamsa Bastani; Osbert Bastani; Alp Sungu; Haosen Ge; Özge Kabakcı; Rei Mariman",
+      "year": 2025,
+      "kind": "journal",
+      "href": "./library/index.html#no-070",
+      "keywords": [
+        "GPT-4",
+        "튜터 설계",
+        "수학 학습",
+        "AI 의존",
+        "현장 실험"
+      ],
+      "shelves": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "071",
+      "code": "C-09",
+      "call": "C-09",
+      "title": "AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting",
+      "titleKo": "AI 튜터링이 교실 능동학습을 앞서다: 실제 교육 환경에서 새로운 연구 기반 설계를 적용한 무작위 대조 실험",
+      "authors": "Greg Kestin; Kelly Miller; Anna Klales; Timothy Milbourne; Gregorio Ponti",
+      "year": 2025,
+      "kind": "journal",
+      "href": "./library/index.html#no-071",
+      "keywords": [
+        "AI 튜터",
+        "능동학습",
+        "스캐폴딩",
+        "물리교육",
+        "무작위 실험"
+      ],
+      "shelves": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "072",
+      "code": "G-08",
+      "call": "G-08",
+      "title": "The Cybernetic Teammate: A Field Experiment on Generative AI and Teamwork",
+      "titleKo": "사이버네틱 팀원: 생성형 AI와 팀워크에 관한 현장 실험",
+      "authors": "Fabrizio Dell'Acqua; Charles Ayoubi; Hila Lifshitz; Raffaella Sadun; Ethan Mollick; Lilach Mollick; Yi Han; Jeff Goldman; Hari Nair; Stew Taub; Karim R. Lakhani",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-072",
+      "keywords": [
+        "AI 협업",
+        "팀워크",
+        "현장 실험",
+        "직무 경계",
+        "정서"
+      ],
+      "shelves": [
+        "G"
+      ]
+    },
+    {
+      "id": "073",
+      "code": "G-09",
+      "call": "G-09",
+      "title": "Does AI Assistance Enhance or Erode Expertise? Evidence from a Three-Month Field Experiment in Patent Drafting",
+      "titleKo": "AI 지원은 전문성을 높이는가, 깎아내리는가: 특허 작성 3개월 현장 실험의 증거",
+      "authors": "David Autor; Tanya Rodchenko; Josh Martin; Zanna Iscenko; Scott Strand; David Pearl; Melissa Ferere",
+      "year": 2026,
+      "kind": "working-paper",
+      "href": "./library/index.html#no-073",
+      "keywords": [
+        "전문성",
+        "주니어",
+        "숙련 형성",
+        "AI 지원",
+        "현장 실험"
+      ],
+      "shelves": [
+        "G"
+      ]
+    },
+    {
+      "id": "074",
+      "code": "F-06",
+      "call": "F-06",
+      "title": "청년고용 위축, AI탓인가? 변화하는 경력 사다리와 대응 과제",
+      "titleKo": "청년고용 위축, AI탓인가? 변화하는 경력 사다리와 대응 과제",
+      "authors": "한국은행",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-074",
+      "keywords": [
+        "청년고용",
+        "경력 사다리",
+        "AI 노출도",
+        "자동화",
+        "증강"
+      ],
+      "shelves": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "075",
+      "code": "F-07",
+      "call": "F-07",
+      "title": "2026 Global AI Jobs Barometer",
+      "titleKo": "2026 글로벌 AI 일자리 바로미터",
+      "authors": "PwC",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-075",
+      "keywords": [
+        "채용공고",
+        "신입",
+        "시니어 역량",
+        "AI 노출도"
+      ],
+      "shelves": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "076",
+      "code": "F-08",
+      "call": "F-08",
+      "title": "Trends in Adult Learning: New Data from the 2023 Survey of Adult Skills",
+      "titleKo": "성인 학습의 동향: 2023 성인역량조사의 새 자료",
+      "authors": "OECD",
+      "year": 2025,
+      "kind": "report",
+      "href": "./library/index.html#no-076",
+      "keywords": [
+        "성인 학습",
+        "PIAAC",
+        "직무 관련 학습",
+        "한국",
+        "일터 학습"
+      ],
+      "shelves": [
+        "F"
+      ]
+    },
+    {
+      "id": "077",
+      "code": "F-09",
+      "call": "F-09",
+      "title": "Report of MIT's Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training",
+      "titleKo": "MIT 교수·학습·연구 훈련의 AI 활용 특별위원회 보고서",
+      "authors": "MIT Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-077",
+      "keywords": [
+        "고등교육",
+        "백워드 설계",
+        "구술시험",
+        "인지적 항복",
+        "평가"
+      ],
+      "shelves": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "078",
+      "code": "I-05",
+      "call": "I-05",
+      "title": "Understanding by Design Framework",
+      "titleKo": "이해를 위한 설계(UbD) 프레임워크",
+      "authors": "Jay McTighe; Grant Wiggins",
+      "year": 2012,
+      "kind": "report",
+      "href": "./library/index.html#no-078",
+      "keywords": [
+        "백워드 설계",
+        "역설계",
+        "평가 증거",
+        "이해",
+        "전이"
+      ],
+      "shelves": [
+        "I"
+      ]
+    },
+    {
+      "id": "079",
+      "code": "I-06",
+      "call": "I-06",
+      "title": "Deep Utopia: Life and Meaning in a Solved World",
+      "titleKo": "딥 유토피아: 초지능이 완성한 세상에서 삶은 무엇으로 채워지는가",
+      "authors": "Nick Bostrom",
+      "year": 2024,
+      "kind": "book",
+      "href": "./library/index.html#no-079",
+      "keywords": [
+        "의미",
+        "목적",
+        "해결된 세계",
+        "자기목적적 활동",
+        "여가"
+      ],
+      "shelves": [
+        "I",
+        "G"
       ]
     }
   ]

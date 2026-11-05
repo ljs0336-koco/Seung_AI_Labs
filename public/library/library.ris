@@ -1361,3 +1361,236 @@ KW  - V-I-B-E
 KW  - 블록 코딩
 N1  - 연구 서고 E-03 · 동료심사 저널 · 교육용 로봇·피지컬 컴퓨팅
 ER  - 
+
+TY  - BOOK
+AU  - Shaw, Steven D.
+AU  - Nave, Gideon
+TI  - Thinking—Fast, Slow, and Artificial: How AI is Reshaping Human Reasoning and the Rise of Cognitive Surrender
+PY  - 2026
+DA  - 2026/01/12
+PB  - PsyArXiv
+DO  - 10.31234/osf.io/yk25n_v1
+UR  - https://osf.io/preprints/psyarxiv/yk25n_v1
+KW  - 인지적 항복
+KW  - 인지적 오프로딩
+KW  - System 3
+KW  - AI 의존
+KW  - 추론
+N1  - 연구 서고 G-05 · 프리프린트(심사 전) · AI의 학습 영향
+ER  - 
+
+TY  - JOUR
+AU  - Kreijkes, Pia
+AU  - Kewenig, Viktor
+AU  - Kuvalja, Martina
+AU  - Lee, Mina
+AU  - Hofman, Jake M.
+AU  - Vitello, Sylvia
+AU  - Sellen, Abigail
+AU  - Rintel, Sean
+AU  - Goldstein, Daniel G.
+AU  - Rothschild, David
+AU  - Tankelevitch, Lev
+AU  - Oates, Tim
+TI  - Effects of LLM use and note-taking on reading comprehension and memory: A randomised experiment in secondary schools
+T2  - Computers & Education
+PY  - 2026
+DA  - 2026/04
+SP  - 105514
+DO  - 10.1016/j.compedu.2025.105514
+UR  - https://doi.org/10.1016/j.compedu.2025.105514
+KW  - LLM
+KW  - 노트 필기
+KW  - 읽기 이해
+KW  - 파지
+KW  - 중등교육
+N1  - 연구 서고 G-06 · 동료심사 저널 · AI의 학습 영향
+ER  - 
+
+TY  - JOUR
+AU  - Bastani, Hamsa
+AU  - Bastani, Osbert
+AU  - Sungu, Alp
+AU  - Ge, Haosen
+AU  - Kabakcı, Özge
+AU  - Mariman, Rei
+TI  - Generative AI without guardrails can harm learning: Evidence from high school mathematics
+T2  - Proceedings of the National Academy of Sciences
+PY  - 2025
+DA  - 2025/06/25
+SP  - e2422633122
+DO  - 10.1073/pnas.2422633122
+UR  - https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/
+KW  - GPT-4
+KW  - 튜터 설계
+KW  - 수학 학습
+KW  - AI 의존
+KW  - 현장 실험
+N1  - 연구 서고 G-07 · 동료심사 저널 · AI의 학습 영향
+ER  - 
+
+TY  - JOUR
+AU  - Kestin, Greg
+AU  - Miller, Kelly
+AU  - Klales, Anna
+AU  - Milbourne, Timothy
+AU  - Ponti, Gregorio
+TI  - AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting
+T2  - Scientific Reports
+PY  - 2025
+DA  - 2025/06/03
+SP  - 17458
+DO  - 10.1038/s41598-025-97652-6
+UR  - https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/
+KW  - AI 튜터
+KW  - 능동학습
+KW  - 스캐폴딩
+KW  - 물리교육
+KW  - 무작위 실험
+N1  - 연구 서고 C-09 · 동료심사 저널 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - JOUR
+AU  - Dell'Acqua, Fabrizio
+AU  - Ayoubi, Charles
+AU  - Lifshitz, Hila
+AU  - Sadun, Raffaella
+AU  - Mollick, Ethan
+AU  - Mollick, Lilach
+AU  - Han, Yi
+AU  - Goldman, Jeff
+AU  - Nair, Hari
+AU  - Taub, Stew
+AU  - Lakhani, Karim R.
+TI  - The Cybernetic Teammate: A Field Experiment on Generative AI and Teamwork
+T2  - Organization Science
+PY  - 2026
+DA  - 2026/07
+SP  - 1217
+EP  - 1242
+DO  - 10.1287/orsc.2025.20702
+UR  - https://doi.org/10.1287/orsc.2025.20702
+KW  - AI 협업
+KW  - 팀워크
+KW  - 현장 실험
+KW  - 직무 경계
+KW  - 정서
+N1  - 연구 서고 G-08 · 동료심사 저널 · AI의 학습 영향
+ER  - 
+
+TY  - RPRT
+AU  - Autor, David
+AU  - Rodchenko, Tanya
+AU  - Martin, Josh
+AU  - Iscenko, Zanna
+AU  - Strand, Scott
+AU  - Pearl, David
+AU  - Ferere, Melissa
+TI  - Does AI Assistance Enhance or Erode Expertise? Evidence from a Three-Month Field Experiment in Patent Drafting
+T2  - NBER Working Paper
+PY  - 2026
+DA  - 2026/09
+PB  - National Bureau of Economic Research
+M1  - 35720
+DO  - 10.3386/w35720
+UR  - https://www.nber.org/papers/w35720
+KW  - 전문성
+KW  - 주니어
+KW  - 숙련 형성
+KW  - AI 지원
+KW  - 현장 실험
+N1  - 연구 서고 G-09 · 워킹페이퍼(심사 전) · AI의 학습 영향
+ER  - 
+
+TY  - RPRT
+AU  - 한국은행
+TI  - 청년고용 위축, AI탓인가? 변화하는 경력 사다리와 대응 과제
+T2  - BOK 이슈노트
+PY  - 2026
+DA  - 2026/08/18
+PB  - 한국은행
+M1  - 2026-19
+UR  - https://www.bok.or.kr/portal/bbs/P0002353/view.do?nttId=11063845&menuNo=200433&programType=newsData&relate=Y&depth=200433
+KW  - 청년고용
+KW  - 경력 사다리
+KW  - AI 노출도
+KW  - 자동화
+KW  - 증강
+N1  - 연구 서고 F-06 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - BOOK
+AU  - PwC
+TI  - 2026 Global AI Jobs Barometer
+PY  - 2026
+DA  - 2026/06/15
+PB  - PwC
+UR  - https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html
+KW  - 채용공고
+KW  - 신입
+KW  - 시니어 역량
+KW  - AI 노출도
+N1  - 연구 서고 F-07 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - BOOK
+AU  - OECD
+TI  - Trends in Adult Learning: New Data from the 2023 Survey of Adult Skills
+PY  - 2025
+DA  - 2025/07/08
+PB  - OECD Publishing
+DO  - 10.1787/ec0624a6-en
+UR  - https://www.oecd.org/en/publications/trends-in-adult-learning_ec0624a6-en.html
+KW  - 성인 학습
+KW  - PIAAC
+KW  - 직무 관련 학습
+KW  - 한국
+KW  - 일터 학습
+N1  - 연구 서고 F-08 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - BOOK
+AU  - MIT Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training
+TI  - Report of MIT's Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training
+PY  - 2026
+DA  - 2026/08/13
+PB  - Massachusetts Institute of Technology
+UR  - https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/d/2418/files/2026/09/AI-Committee-Final-Report-Aug-13.pdf
+KW  - 고등교육
+KW  - 백워드 설계
+KW  - 구술시험
+KW  - 인지적 항복
+KW  - 평가
+N1  - 연구 서고 F-09 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - BOOK
+AU  - McTighe, Jay
+AU  - Wiggins, Grant
+TI  - Understanding by Design Framework
+PY  - 2012
+DA  - 2012
+PB  - ASCD
+UR  - https://files.ascd.org/staticfiles/ascd/pdf/siteASCD/publications/UbD_WhitePaper0312.pdf
+KW  - 백워드 설계
+KW  - 역설계
+KW  - 평가 증거
+KW  - 이해
+KW  - 전이
+N1  - 연구 서고 I-05 · 정책 보고서 · 이론적 기반
+ER  - 
+
+TY  - BOOK
+AU  - Bostrom, Nick
+TI  - Deep Utopia: Life and Meaning in a Solved World
+PY  - 2024
+DA  - 2024/03/27
+PB  - Ideapress Publishing
+UR  - https://nickbostrom.com/deep-utopia/
+KW  - 의미
+KW  - 목적
+KW  - 해결된 세계
+KW  - 자기목적적 활동
+KW  - 여가
+N1  - 연구 서고 I-06 · 단행본·장 · 이론적 기반
+ER  - 
