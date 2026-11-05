@@ -30,7 +30,7 @@
   --mono: ui-monospace, "SFMono-Regular", Consolas, "D2Coding", monospace;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+html { scroll-behavior: smooth; scroll-padding-top: 119px; } /* 고정 검색창(.toolbar) 높이 + 16px */
 body {
   background: var(--desk);
   color: var(--ink);
@@ -381,10 +381,12 @@ footer {
 
 /* 화면 폭 */
 @media (max-width: 1040px) {
+  html { scroll-padding-top: 148px; }
   .cards { grid-template-columns: 1fr; }
   .desk { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
+  html { scroll-padding-top: 161px; }
   .shelves { grid-template-columns: 1fr; }
   .masthead { grid-template-columns: 1fr; gap: 18px; }
   .stats { border-left: 0; flex-wrap: wrap; row-gap: 10px; }
@@ -399,6 +401,7 @@ footer {
   .stats dd.date { font-size: 16px; }
   .guide { grid-template-columns: 1fr; gap: 16px; }
   .section-head { flex-direction: column; gap: 2px; }
+  html { scroll-padding-top: 16px; }
   .toolbar { position: static; padding: 10px; }
   .toolbar .search { flex-basis: 100%; }
   .toolbar label:not(.search) { flex: 1 1 calc(50% - 8px); }
