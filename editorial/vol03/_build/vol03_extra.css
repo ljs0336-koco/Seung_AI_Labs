@@ -69,8 +69,10 @@
 .v3-tile h3{margin-top:22px;font:500 38px/1.4 var(--f-serif);letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
 .v3-tile p{margin-top:24px;font:400 24px/1.7 var(--f-sans);color:var(--ink-2);text-wrap:pretty}
 .v3-measure{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);font:500 18px/1.4 var(--f-sans);color:var(--ink-3)}
-.v3-close{margin-top:0;padding-top:34px;font:500 29px/1.6 var(--f-serif);letter-spacing:-.035em;color:var(--ink)}
-.v3-close em{font-style:normal;color:var(--accent)}
+.v3-imp{margin-top:26px;padding:22px 30px;display:grid;grid-template-columns:auto 1fr;column-gap:30px;align-items:center;background:var(--paper-3)}
+.v3-imp .label{color:var(--accent);font-size:16px}
+.v3-imp p{font:500 25px/1.5 var(--f-serif);letter-spacing:-.035em;color:var(--ink);text-wrap:pretty}
+.v3-who-src{display:block;margin-top:10px;font:600 16px/1.3 var(--f-sans);color:var(--ink-3)}
 
 /* 사다리 */
 .v3-cols--ladder{margin-top:26px;grid-template-columns:1.12fr 1fr;column-gap:80px}

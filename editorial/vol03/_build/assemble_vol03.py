@@ -13,9 +13,9 @@ html = base
 html = html.replace("<title>The Curated Mind</title>", "<title>The Easy Answer</title>")
 html = html.replace("/deck/vol02/", "/deck/vol03/")
 html = html.replace("The Curated Mind · Vol.02", "The Easy Answer · Vol.03")
-html = html.replace("AI의 답에는 누구의 기준이 담기는가 · Seung AI Labs", "답이 쉬워질수록, 사람이 남는다 · Seung AI Labs")
+html = html.replace("AI의 답에는 누구의 기준이 담기는가 · Seung AI Labs", "답이 쉬워질수록, 판단은 어려워진다 · Seung AI Labs")
 html = re.sub(r'<meta name="description" content="[^"]*">',
-              '<meta name="description" content="AI &amp; Learning Vol.03 — 인지적 항복, 신입의 사다리, 귀족의 시간, 그리고 관계. 글로벌인재포럼 2026 참관을 바탕으로 한 10쪽 에디토리얼.">',
+              '<meta name="description" content="AI &amp; Learning Vol.03 — 인지적 항복, 경력 사다리의 균열, 노동 이후의 시간, 관계의 역설. 10쪽 에디토리얼.">',
               html)
 html = html.replace("design tokens · Vol.02 세피아 B", "design tokens · Vol.02 세피아 B 계승")
 
