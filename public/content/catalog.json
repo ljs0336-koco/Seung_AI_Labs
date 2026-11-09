@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 10,
+  "revision": 11,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -202,6 +202,16 @@
           "href": "./kansai-travel-guide/pokemon.html"
         }
       ]
+    },
+    {
+      "id": "jeju",
+      "kind": "link",
+      "title": "늦가을 제주",
+      "description": "11.30–12.05 · 서귀포에서 잘 먹고 천천히 쉬는 5박 6일 여행가이드",
+      "href": "./jeju-travel-guide/index.html",
+      "section": "personal",
+      "placement": "base",
+      "status": "live"
     },
     {
       "id": "logo-studio",

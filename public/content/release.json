@@ -1,5 +1,5 @@
 {
-  "revision": 10,
+  "revision": 11,
   "items": [
     {
       "id": "briefing",
@@ -52,6 +52,10 @@
     {
       "id": "kansai",
       "href": "./kansai-travel-guide/index.html"
+    },
+    {
+      "id": "jeju",
+      "href": "./jeju-travel-guide/index.html"
     },
     {
       "id": "logo-studio",
