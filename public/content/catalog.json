@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 13,
+  "revision": 14,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -212,6 +212,30 @@
       "section": "personal",
       "placement": "base",
       "status": "live"
+    },
+    {
+      "id": "proposal-roadmap",
+      "kind": "link",
+      "title": "프로포절 로드맵",
+      "description": "박사논문 프로포절까지 주 단위 일정 · 계획서·면담 양식",
+      "href": "./proposal-roadmap/index.html",
+      "section": "personal",
+      "placement": "base",
+      "status": "live",
+      "children": [
+        {
+          "title": "연구계획서 틀",
+          "href": "./proposal-roadmap/plan-template.html"
+        },
+        {
+          "title": "면담 체크리스트",
+          "href": "./proposal-roadmap/meeting-checklist.html"
+        },
+        {
+          "title": "첫 만남 안건",
+          "href": "./proposal-roadmap/kickoff.html"
+        }
+      ]
     },
     {
       "id": "logo-studio",

@@ -1,5 +1,5 @@
 {
-  "revision": 13,
+  "revision": 14,
   "items": [
     {
       "id": "briefing",
@@ -56,6 +56,10 @@
     {
       "id": "jeju",
       "href": "./jeju-travel-guide/index.html"
+    },
+    {
+      "id": "proposal-roadmap",
+      "href": "./proposal-roadmap/index.html"
     },
     {
       "id": "logo-studio",
