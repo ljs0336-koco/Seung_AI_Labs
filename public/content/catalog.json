@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 18,
+  "revision": 19,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -207,7 +207,7 @@
       "id": "jeju",
       "kind": "link",
       "title": "늦가을 제주",
-      "description": "날씨별 6일 코스, 노을 시간과 취향 방문 팁 · 식당과 네이버 지도",
+      "description": "서귀포 중심 6일 코스 · 식당 시간별 대안 · 노을·취향 팁과 네이버 지도",
       "href": "./jeju-travel-guide/index.html",
       "section": "personal",
       "placement": "base",
