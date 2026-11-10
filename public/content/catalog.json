@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 15,
+  "revision": 16,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -207,7 +207,7 @@
       "id": "jeju",
       "kind": "link",
       "title": "늦가을 제주",
-      "description": "서귀포5박6일 · 가벼운식사와바다산책 · 끼니4곳추천 · 네이버동선",
+      "description": "서귀포 5박 6일 · 매일 다른 산책과 식사 · 끼니 4곳 추천 · 네이버 동선",
       "href": "./jeju-travel-guide/index.html",
       "section": "personal",
       "placement": "base",
