@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "total": 79,
-  "reviewed": 36,
+  "total": 88,
+  "reviewed": 44,
   "special": 35,
-  "updated": "2026-11-05",
+  "updated": "2026-11-09",
   "shelves": [
     {
       "id": "A",
       "label": "AI 리터러시·시민성",
-      "count": 10
+      "count": 13
     },
     {
       "id": "B",
       "label": "교사 AI 역량·연수",
-      "count": 8
+      "count": 10
     },
     {
       "id": "C",
@@ -28,17 +28,17 @@
     {
       "id": "E",
       "label": "교육용 로봇·피지컬 컴퓨팅",
-      "count": 3
+      "count": 4
     },
     {
       "id": "F",
       "label": "교육 정책·제도",
-      "count": 9
+      "count": 10
     },
     {
       "id": "G",
       "label": "AI의 학습 영향",
-      "count": 9
+      "count": 11
     },
     {
       "id": "H",
@@ -58,110 +58,109 @@
   ],
   "recent": [
     {
-      "id": "079",
-      "code": "I-06",
-      "call": "I-06",
-      "title": "Deep Utopia: Life and Meaning in a Solved World",
-      "titleKo": "딥 유토피아: 초지능이 완성한 세상에서 삶은 무엇으로 채워지는가",
-      "authors": "Nick Bostrom",
-      "year": 2024,
-      "kind": "book",
-      "href": "./library/index.html#no-079",
-      "keywords": [
-        "의미",
-        "목적",
-        "해결된 세계",
-        "자기목적적 활동",
-        "여가"
-      ],
-      "shelves": [
-        "I",
-        "G"
-      ]
-    },
-    {
-      "id": "078",
-      "code": "I-05",
-      "call": "I-05",
-      "title": "Understanding by Design Framework",
-      "titleKo": "이해를 위한 설계(UbD) 프레임워크",
-      "authors": "Jay McTighe; Grant Wiggins",
-      "year": 2012,
-      "kind": "report",
-      "href": "./library/index.html#no-078",
-      "keywords": [
-        "백워드 설계",
-        "역설계",
-        "평가 증거",
-        "이해",
-        "전이"
-      ],
-      "shelves": [
-        "I"
-      ]
-    },
-    {
-      "id": "077",
-      "code": "F-09",
-      "call": "F-09",
-      "title": "Report of MIT's Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training",
-      "titleKo": "MIT 교수·학습·연구 훈련의 AI 활용 특별위원회 보고서",
-      "authors": "MIT Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training",
+      "id": "088",
+      "code": "A-13",
+      "call": "A-13",
+      "title": "Playing Bias: Epistemic Games for Interpreting Text-to-Image Models",
+      "titleKo": "편향을 놀이로: 이미지 생성 AI를 해석하는 인식론적 게임",
+      "authors": "Amalia Foka",
       "year": 2026,
-      "kind": "report",
-      "href": "./library/index.html#no-077",
+      "kind": "conference",
+      "href": "./library/index.html#no-088",
       "keywords": [
-        "고등교육",
-        "백워드 설계",
-        "구술시험",
-        "인지적 항복",
-        "평가"
+        "비판적 AI 리터러시",
+        "이미지 생성 AI",
+        "편향",
+        "게임 기반 학습"
       ],
       "shelves": [
-        "F",
-        "G"
+        "A",
+        "H"
       ]
     },
     {
-      "id": "076",
-      "code": "F-08",
-      "call": "F-08",
-      "title": "Trends in Adult Learning: New Data from the 2023 Survey of Adult Skills",
-      "titleKo": "성인 학습의 동향: 2023 성인역량조사의 새 자료",
-      "authors": "OECD",
-      "year": 2025,
-      "kind": "report",
-      "href": "./library/index.html#no-076",
-      "keywords": [
-        "성인 학습",
-        "PIAAC",
-        "직무 관련 학습",
-        "한국",
-        "일터 학습"
-      ],
-      "shelves": [
-        "F"
-      ]
-    },
-    {
-      "id": "075",
-      "code": "F-07",
-      "call": "F-07",
-      "title": "2026 Global AI Jobs Barometer",
-      "titleKo": "2026 글로벌 AI 일자리 바로미터",
-      "authors": "PwC",
+      "id": "087",
+      "code": "B-10",
+      "call": "B-10",
+      "title": "Teachers' use of generative artificial intelligence in K–12 education: a systematic review",
+      "titleKo": "K-12 교육에서 교사의 생성형 AI 활용: 체계적 문헌고찰",
+      "authors": "Oğuz Cincioğlu; Duygu Mutlu Bayraktar; Tuğba Altan",
       "year": 2026,
-      "kind": "report",
-      "href": "./library/index.html#no-075",
+      "kind": "journal",
+      "href": "./library/index.html#no-087",
       "keywords": [
-        "채용공고",
-        "신입",
-        "시니어 역량",
-        "AI 노출도"
+        "교사 생성형 AI 활용",
+        "K-12",
+        "수업 설계",
+        "체계적 문헌고찰"
       ],
       "shelves": [
-        "F",
-        "G"
+        "B"
+      ]
+    },
+    {
+      "id": "086",
+      "code": "B-09",
+      "call": "B-09",
+      "title": "Teachers and Generative AI: A Systematic Review of Adoption, Competence, Professional Development, and Socio-Technical Experiences",
+      "titleKo": "교사와 생성형 AI: 도입·역량·연수·사회기술적 경험에 관한 체계적 문헌고찰",
+      "authors": "Sara Ayubian; Génesis Aguilar Chávez; Ernestina Wiafe; Vajiheh Shahsavari; Nelofar Khamisani; Noor us Subah Sohail Quidwai; Dillon Simmons; Ambyr Rios; Farhan Sadique; J. Spencer Clark",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-086",
+      "keywords": [
+        "교사 AI 역량",
+        "교원 연수",
+        "TPACK",
+        "자기효능감",
+        "체계적 문헌고찰"
+      ],
+      "shelves": [
+        "B"
+      ]
+    },
+    {
+      "id": "085",
+      "code": "G-11",
+      "call": "G-11",
+      "title": "Enhancing School Students' Self-Regulated Learning through Generative AI Support: A Randomized Controlled Trial",
+      "titleKo": "생성형 AI 지원으로 학생의 자기조절학습 높이기: 무작위 통제 실험",
+      "authors": "Tim Fütterer; Lisa Bardach; Jochen Kuhn; Stefan Daniel Keller; Peter H. Gerjets",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-085",
+      "keywords": [
+        "자기조절학습",
+        "생성형 AI",
+        "무작위 통제 실험",
+        "과제 유용성 가치",
+        "학습전략"
+      ],
+      "shelves": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "084",
+      "code": "A-12",
+      "call": "A-12",
+      "title": "Fostering machine learning literacy in senior primary education: Evaluating a structured pedagogical course design",
+      "titleKo": "초등 고학년 머신러닝 리터러시 함양: 구조화된 수업 설계의 평가",
+      "authors": "Siu Cheung Kong; Qiaoyi Wang",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-084",
+      "keywords": [
+        "머신러닝 리터러시",
+        "초등 AI 교육",
+        "교육용 로봇",
+        "지도학습",
+        "강화학습"
+      ],
+      "shelves": [
+        "A",
+        "E"
       ]
     }
   ],
@@ -1857,6 +1856,198 @@
       "shelves": [
         "I",
         "G"
+      ]
+    },
+    {
+      "id": "080",
+      "code": "F-10",
+      "call": "F-10",
+      "title": "Education ministers call for education to remain a common good in the age of AI",
+      "titleKo": "교육장관들, AI 시대에도 교육이 공공재로 남아야 한다고 촉구(Digital Learning Week 2026 장관 성명)",
+      "authors": "UNESCO",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-080",
+      "keywords": [
+        "AI 거버넌스",
+        "공공재로서의 교육",
+        "아동 보호",
+        "교사 주체성",
+        "UNESCO"
+      ],
+      "shelves": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "081",
+      "code": "A-11",
+      "call": "A-11",
+      "title": "초등학생의 생성형 AI 리터러시 함양을 위한 교육적 미들웨어 AL-G 개발 및 타당화",
+      "titleKo": "초등학생의 생성형 AI 리터러시 함양을 위한 교육적 미들웨어 AL-G 개발 및 타당화",
+      "authors": "현재 최; 승기 신",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-081",
+      "keywords": [
+        "생성형 AI 리터러시",
+        "교육적 미들웨어",
+        "AL-G",
+        "초등교육"
+      ],
+      "shelves": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "082",
+      "code": "G-10",
+      "call": "G-10",
+      "title": "초등학생의 인공지능 및 디지털 기기 활용 빈도와 사회정서역량 간의 관계",
+      "titleKo": "초등학생의 인공지능 및 디지털 기기 활용 빈도와 사회정서역량 간의 관계",
+      "authors": "지혜 박; 재권 심",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-082",
+      "keywords": [
+        "사회정서역량",
+        "인공지능",
+        "디지털 기기",
+        "초등학생"
+      ],
+      "shelves": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "083",
+      "code": "E-04",
+      "call": "E-04",
+      "title": "고등학교 기술 교과를 위한 컴퓨터 비전 활용 인공지능 로봇 교육 프로그램 개발 및 적용",
+      "titleKo": "고등학교 기술 교과를 위한 컴퓨터 비전 활용 인공지능 로봇 교육 프로그램 개발 및 적용",
+      "authors": "광민 서; 은지 이; 귀훈 김",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-083",
+      "keywords": [
+        "컴퓨터 비전",
+        "AI 로봇 교육",
+        "창의적 문제해결력",
+        "AI 리터러시",
+        "기술 교육"
+      ],
+      "shelves": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "084",
+      "code": "A-12",
+      "call": "A-12",
+      "title": "Fostering machine learning literacy in senior primary education: Evaluating a structured pedagogical course design",
+      "titleKo": "초등 고학년 머신러닝 리터러시 함양: 구조화된 수업 설계의 평가",
+      "authors": "Siu Cheung Kong; Qiaoyi Wang",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-084",
+      "keywords": [
+        "머신러닝 리터러시",
+        "초등 AI 교육",
+        "교육용 로봇",
+        "지도학습",
+        "강화학습"
+      ],
+      "shelves": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "085",
+      "code": "G-11",
+      "call": "G-11",
+      "title": "Enhancing School Students' Self-Regulated Learning through Generative AI Support: A Randomized Controlled Trial",
+      "titleKo": "생성형 AI 지원으로 학생의 자기조절학습 높이기: 무작위 통제 실험",
+      "authors": "Tim Fütterer; Lisa Bardach; Jochen Kuhn; Stefan Daniel Keller; Peter H. Gerjets",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-085",
+      "keywords": [
+        "자기조절학습",
+        "생성형 AI",
+        "무작위 통제 실험",
+        "과제 유용성 가치",
+        "학습전략"
+      ],
+      "shelves": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "086",
+      "code": "B-09",
+      "call": "B-09",
+      "title": "Teachers and Generative AI: A Systematic Review of Adoption, Competence, Professional Development, and Socio-Technical Experiences",
+      "titleKo": "교사와 생성형 AI: 도입·역량·연수·사회기술적 경험에 관한 체계적 문헌고찰",
+      "authors": "Sara Ayubian; Génesis Aguilar Chávez; Ernestina Wiafe; Vajiheh Shahsavari; Nelofar Khamisani; Noor us Subah Sohail Quidwai; Dillon Simmons; Ambyr Rios; Farhan Sadique; J. Spencer Clark",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-086",
+      "keywords": [
+        "교사 AI 역량",
+        "교원 연수",
+        "TPACK",
+        "자기효능감",
+        "체계적 문헌고찰"
+      ],
+      "shelves": [
+        "B"
+      ]
+    },
+    {
+      "id": "087",
+      "code": "B-10",
+      "call": "B-10",
+      "title": "Teachers' use of generative artificial intelligence in K–12 education: a systematic review",
+      "titleKo": "K-12 교육에서 교사의 생성형 AI 활용: 체계적 문헌고찰",
+      "authors": "Oğuz Cincioğlu; Duygu Mutlu Bayraktar; Tuğba Altan",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-087",
+      "keywords": [
+        "교사 생성형 AI 활용",
+        "K-12",
+        "수업 설계",
+        "체계적 문헌고찰"
+      ],
+      "shelves": [
+        "B"
+      ]
+    },
+    {
+      "id": "088",
+      "code": "A-13",
+      "call": "A-13",
+      "title": "Playing Bias: Epistemic Games for Interpreting Text-to-Image Models",
+      "titleKo": "편향을 놀이로: 이미지 생성 AI를 해석하는 인식론적 게임",
+      "authors": "Amalia Foka",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-088",
+      "keywords": [
+        "비판적 AI 리터러시",
+        "이미지 생성 AI",
+        "편향",
+        "게임 기반 학습"
+      ],
+      "shelves": [
+        "A",
+        "H"
       ]
     }
   ]

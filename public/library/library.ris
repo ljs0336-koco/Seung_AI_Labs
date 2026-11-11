@@ -1594,3 +1594,175 @@ KW  - 자기목적적 활동
 KW  - 여가
 N1  - 연구 서고 I-06 · 단행본·장 · 이론적 기반
 ER  - 
+
+TY  - BOOK
+AU  - UNESCO
+TI  - Education ministers call for education to remain a common good in the age of AI
+PY  - 2026
+DA  - 2026/09/09
+PB  - UNESCO
+UR  - https://www.unesco.org/en/articles/education-ministers-call-education-remain-common-good-age-ai-unescos-digital-learning-week
+KW  - AI 거버넌스
+KW  - 공공재로서의 교육
+KW  - 아동 보호
+KW  - 교사 주체성
+KW  - UNESCO
+N1  - 연구 서고 F-10 · 정책 보고서 · 교육 정책·제도
+ER  - 
+
+TY  - JOUR
+AU  - 최, 현재
+AU  - 신, 승기
+TI  - 초등학생의 생성형 AI 리터러시 함양을 위한 교육적 미들웨어 AL-G 개발 및 타당화
+T2  - 정보교육학회논문지
+PY  - 2026
+DA  - 2026/08
+PB  - 한국정보교육학회
+SP  - 877
+EP  - 892
+UR  - https://www.earticle.net/Article/A491109
+KW  - 생성형 AI 리터러시
+KW  - 교육적 미들웨어
+KW  - AL-G
+KW  - 초등교육
+N1  - 연구 서고 A-11 · 동료심사 저널 · AI 리터러시·시민성
+ER  - 
+
+TY  - JOUR
+AU  - 박, 지혜
+AU  - 심, 재권
+TI  - 초등학생의 인공지능 및 디지털 기기 활용 빈도와 사회정서역량 간의 관계
+T2  - 정보교육학회논문지
+PY  - 2026
+DA  - 2026/08
+PB  - 한국정보교육학회
+SP  - 741
+EP  - 750
+UR  - https://www.earticle.net/Article/A491099
+KW  - 사회정서역량
+KW  - 인공지능
+KW  - 디지털 기기
+KW  - 초등학생
+N1  - 연구 서고 G-10 · 동료심사 저널 · AI의 학습 영향
+ER  - 
+
+TY  - JOUR
+AU  - 서, 광민
+AU  - 이, 은지
+AU  - 김, 귀훈
+TI  - 고등학교 기술 교과를 위한 컴퓨터 비전 활용 인공지능 로봇 교육 프로그램 개발 및 적용
+T2  - 정보교육학회논문지
+PY  - 2026
+DA  - 2026/08
+PB  - 한국정보교육학회
+SP  - 775
+EP  - 790
+UR  - https://www.earticle.net/Article/A491102
+KW  - 컴퓨터 비전
+KW  - AI 로봇 교육
+KW  - 창의적 문제해결력
+KW  - AI 리터러시
+KW  - 기술 교육
+N1  - 연구 서고 E-04 · 동료심사 저널 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - JOUR
+AU  - Kong, Siu Cheung
+AU  - Wang, Qiaoyi
+TI  - Fostering machine learning literacy in senior primary education: Evaluating a structured pedagogical course design
+T2  - Computers and Education: Artificial Intelligence
+PY  - 2026
+DA  - 2026/06/16
+PB  - Elsevier
+SP  - 100631
+DO  - 10.1016/j.caeai.2026.100631
+UR  - https://doi.org/10.1016/j.caeai.2026.100631
+KW  - 머신러닝 리터러시
+KW  - 초등 AI 교육
+KW  - 교육용 로봇
+KW  - 지도학습
+KW  - 강화학습
+N1  - 연구 서고 A-12 · 동료심사 저널 · AI 리터러시·시민성
+ER  - 
+
+TY  - JOUR
+AU  - Fütterer, Tim
+AU  - Bardach, Lisa
+AU  - Kuhn, Jochen
+AU  - Keller, Stefan Daniel
+AU  - Gerjets, Peter H.
+TI  - Enhancing School Students' Self-Regulated Learning through Generative AI Support: A Randomized Controlled Trial
+T2  - Educational Psychology Review
+PY  - 2026
+DA  - 2026/04/14
+PB  - Springer
+DO  - 10.1007/s10648-026-10133-8
+UR  - https://doi.org/10.1007/s10648-026-10133-8
+KW  - 자기조절학습
+KW  - 생성형 AI
+KW  - 무작위 통제 실험
+KW  - 과제 유용성 가치
+KW  - 학습전략
+N1  - 연구 서고 G-11 · 동료심사 저널 · AI의 학습 영향
+ER  - 
+
+TY  - JOUR
+AU  - Ayubian, Sara
+AU  - Aguilar Chávez, Génesis
+AU  - Wiafe, Ernestina
+AU  - Shahsavari, Vajiheh
+AU  - Khamisani, Nelofar
+AU  - Quidwai, Noor us Subah Sohail
+AU  - Simmons, Dillon
+AU  - Rios, Ambyr
+AU  - Sadique, Farhan
+AU  - Clark, J. Spencer
+TI  - Teachers and Generative AI: A Systematic Review of Adoption, Competence, Professional Development, and Socio-Technical Experiences
+T2  - Education Sciences
+PY  - 2026
+DA  - 2026/09/14
+PB  - MDPI
+SP  - 1501
+DO  - 10.3390/educsci16091501
+UR  - https://doi.org/10.3390/educsci16091501
+KW  - 교사 AI 역량
+KW  - 교원 연수
+KW  - TPACK
+KW  - 자기효능감
+KW  - 체계적 문헌고찰
+N1  - 연구 서고 B-09 · 동료심사 저널 · 교사 AI 역량·연수
+ER  - 
+
+TY  - JOUR
+AU  - Cincioğlu, Oğuz
+AU  - Mutlu Bayraktar, Duygu
+AU  - Altan, Tuğba
+TI  - Teachers' use of generative artificial intelligence in K–12 education: a systematic review
+T2  - Frontiers in Education
+PY  - 2026
+DA  - 2026/10/02
+PB  - Frontiers Media
+DO  - 10.3389/feduc.2026.1935733
+UR  - https://doi.org/10.3389/feduc.2026.1935733
+KW  - 교사 생성형 AI 활용
+KW  - K-12
+KW  - 수업 설계
+KW  - 체계적 문헌고찰
+N1  - 연구 서고 B-10 · 동료심사 저널 · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Foka, Amalia
+TI  - Playing Bias: Epistemic Games for Interpreting Text-to-Image Models
+PY  - 2026
+DA  - 2026/10/23
+PB  - arXiv
+M3  - arXiv:2610.32159
+DO  - 10.48550/arXiv.2610.32159
+UR  - https://arxiv.org/abs/2610.32159
+KW  - 비판적 AI 리터러시
+KW  - 이미지 생성 AI
+KW  - 편향
+KW  - 게임 기반 학습
+N1  - 연구 서고 A-13 · 동료심사 학회 · AI 리터러시·시민성
+ER  - 

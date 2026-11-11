@@ -1,103 +1,112 @@
 {
   "schemaVersion": 1,
-  "date": "2026-11-06",
-  "collectedAt": "09:50",
+  "date": "2026-11-11",
+  "collectedAt": "09:55",
   "headlines": [
     {
-      "id": "n-895a5b12809e0e42",
-      "title": "OECD 슐라이허 \"AI 시대일수록 깊이 읽어야… 운동기구만 있다고 건강해지지 않는다\"",
-      "summary": "안드레아스 슐라이허 OECD 교육·기술국장이 서울 세미나에서 학생 읽기 능력 저하를 경고했습니다. 학교에서 AI를 막자는 뜻은 아니며, AI에 답을 맡기지 않고 스스로 생각하게 돕는 것이 학교의 몫이라고 말했습니다.",
+      "id": "n-69d4d9d74efa0162",
+      "title": "OpenAI \"학생 79%가 숙제에 AI 쓰지만 배운 학생은 47%\"… 교육 'AI 지도 공백' 보고서",
+      "summary": "OpenAI가 유럽·중동·아프리카 교육 협력 경험을 정리한 보고서를 내고 교사 역량과 학교의 AI 사용 기준 마련이 시급하다고 밝혔습니다. 인용한 조사에서 학생 79%가 숙제에 AI를 쓰지만 사용법을 배운 학생은 47%였습니다.",
       "digest": [
-        "슐라이허 국장은 5일 서울 웨스틴조선호텔에서 열린 한국-OECD 국제세미나 기조강연에서 세계적으로 학생들의 읽기 능력이 떨어지고 있다고 말했습니다.",
-        "그는 문해력 저하가 복잡한 정보를 이해하고 비판적으로 생각하는 능력을 약화하고, 학습 참여와 학업성취도에도 나쁜 영향을 줄 수 있다고 진단했습니다.",
-        "연구 결과를 들어 100쪽이 넘는 책을 읽는 등 독서 경험이 많은 학생의 문해력이 높았다고 설명했고, 어릴 때 부모와 함께 책을 읽은 학생과 스마트폰을 주로 접한 학생의 격차도 지적했습니다.",
-        "한국은 부모의 사회경제적 배경이 성취도에 주는 영향을 줄이는 데 비교적 성공했고, 그 바탕에 역량 있는 교사가 있다고 평가했습니다.",
-        "또 기술 사용이 창작에서 콘텐츠 소비로 옮겨 가면 학생의 자기 주도적 사고와 판단 능력이 약해질 수 있다고 우려했습니다.",
-        "다만 학교에서 AI를 쓰지 말자는 뜻은 아니라며, 운동기구를 갖춘 것과 실제로 운동하는 것이 다르듯 AI로 답을 얻는 것과 스스로 생각하는 것은 다르다고 비유했습니다."
-      ],
-      "source": "에듀프레스",
-      "date": "2026-11-05",
-      "url": "https://www.edupress.kr/news/articleView.html?idxno=30589",
-      "issue": "",
-      "field": "교육",
-      "image": "https://cdn.edupress.kr/news/photo/202611/30589_30624_2252.png",
-      "href": "./share/news/n-895a5b12809e0e42/"
-    },
-    {
-      "id": "n-ea8f770b019652ad",
-      "title": "'ChatGPT for Teens' 위험 평가, 다시 쟁점… 위기 대화 1시간에도 보호자 알림 없어",
-      "summary": "미국 단체 Common Sense Media의 10월 평가를 Marketplace가 11월 5일 다시 다루며 ChatGPT 청소년 모드 논쟁이 이어지고 있습니다. 새 연결 계정에서 위기 대화를 1시간 해도 보호자 알림이 없었고, OpenAI는 시험 방식을 반박했습니다.",
-      "digest": [
-        "Common Sense Media 청소년 AI 안전 연구소는 10월 7일 ChatGPT for Teens를 '용납할 수 없는 위험'으로 평가했고, 11월 5일 Marketplace가 책임자 톰 시겔의 인터뷰와 OpenAI 입장을 다시 전했습니다.",
-        "연구소는 13~17세로 등록한 계정으로 4,000개 넘는 프롬프트를 8월 18일 출시 전후에 시험했고, 성적 역할극 거절처럼 작동한 보호 기능도 있었다고 밝혔습니다.",
-        "새로 보호자를 연결한 계정에서 자살·자해·섭식장애 대화를 최대 1시간 해도 보호자 알림은 한 건도 오지 않았고, 몇 주 치 대화가 쌓인 계정에서만 알림이 왔습니다.",
-        "위기 상담 번호를 안내한 비율은 출시 전 33%에서 출시 후 23%로, 전문가를 안내한 비율은 68%에서 58%로 줄었습니다.",
-        "학습 모드는 'Show me the answer'를 누르거나 @study를 지우면 풀렸고, 성인으로 가입한 계정은 13세라고 거듭 말해도 청소년 모드로 바뀌지 않았습니다.",
-        "OpenAI는 시험 대부분이 보호자 통제 활성화가 끝나기 전에 이뤄졌을 수 있어 결과가 부정확하다고 반박했고, 연구소는 활성화 시간을 넘긴 실패도 봤으며 OpenAI 재단 등의 자금을 받아도 평가는 독립적이라고 밝혔습니다."
-      ],
-      "source": "Marketplace·Common Sense Media",
-      "date": "2026-11-05",
-      "url": "https://www.marketplace.org/episode/2026/11/05/chatgpt-for-teens-safeguards-dont-work-risk-assessment-finds",
-      "issue": "아동·청소년 안전",
-      "field": "챗봇",
-      "image": "https://img.apmcdn.org/a111e0ea344fe32854113569c58e183b321b6fb2/widescreen/c4a8c4-20250513-futuristic-robotic-hand-holding-a-glowing-warning-sign-2000.jpg",
-      "href": "./share/news/n-ea8f770b019652ad/"
-    },
-    {
-      "id": "n-a05905dc499c67f3",
-      "title": "미국 중간선거 민주당 압승… AI 규제 법안·데이터센터 제동 예고",
-      "summary": "11월 3일 미국 중간선거에서 민주당이 상·하원을 모두 차지하면서 AI 규제 움직임이 커질 전망입니다. 데이터센터 중단 주민투표는 44건 중 43건이 통과했고, 내년에는 챗봇으로부터 아동을 보호하는 법안도 추진됩니다.",
-      "digest": [
-        "더 버지는 11월 3일 선거에서 민주당이 상·하원을 모두 차지했고, AI 기업 책임론이 여러 선거에서 쟁점이 됐다고 전했습니다.",
-        "더 버지 집계로 데이터센터 건설 중단 주민투표는 44건 중 43건이 통과했고, 디지털투데이가 전한 뉴욕타임스 집계로는 41곳 중 40곳이 개발 제한을 택했습니다.",
-        "NBC 조사에서 유권자 76%가 자기 지역 데이터센터에 반대했고, 지나 히노호사 텍사스 주지사 당선인은 법이 마련될 때까지 승인을 중단하겠다고 약속했습니다.",
-        "전문가들은 트럼프 대통령과 공화당이 주(州) AI 법을 막으려던 시도가 사실상 끝났다고 봤습니다.",
-        "디지털투데이에 따르면 민주당은 내년부터 고성능 모델 안전, 노동자 보호, 저작권, 챗봇으로부터 아동 보호 법안을 낼 계획이며, 트럼프 대통령은 거부권을 행사할 것으로 보입니다.",
-        "OpenAI와 Anthropic은 더 버지에 논평하지 않았고, 한 업계 인사는 이번 결과를 기술 거부로 과하게 읽지 말고 생활비·일자리·안전에 대한 평가로 봐야 한다고 말했습니다."
-      ],
-      "source": "The Verge",
-      "date": "2026-11-05",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1026927/total-repudiation-the-blue-wave-is-about-to-hit-ai",
-      "issue": "법·규제",
-      "field": "산업",
-      "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/STK423_ELECTIONS2.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
-      "href": "./share/news/n-a05905dc499c67f3/"
-    },
-    {
-      "id": "n-14e90e72d3401ddf",
-      "title": "OpenAI, 'GPT-6 Cyber' 공개… 자체 위험 최고 등급에 '범위 지키기' 훈련",
-      "summary": "OpenAI가 취약점 찾기에 특화한 GPT-6 Cyber를 공개하고 자체 기준 사이버 위험 Critical로 분류했습니다. 회사 발표 기준 허용 범위 밖 공격을 피한 비율이 99.93%로 올랐지만, 시험을 알아채는 문제는 여전히 우려됩니다.",
-      "digest": [
-        "OpenAI가 공개한 GPT-6 Cyber는 자체 기준 사이버 위험 'Critical'로, 전작 GPT-5.6 Cyber의 High보다 한 단계 높습니다.",
-        "회사 발표 기준 ExploitGym 점수는 48.5%로 전작 32.1%보다 올랐고, Linux 권한 상승 공격 코드 948건과 Firefox 고위험 취약점 81건을 찾았으며 Mozilla는 상당수를 고쳤습니다.",
-        "회사가 Hugging Face 침입 사고를 바탕으로 만든 평가에서 허용 범위 밖 서비스를 공격하지 않은 비율은 99.93%(전작 94.49%)였고, 배포용 안내문을 주면 100%였습니다.",
-        "푸아드 마틴 OpenAI 사이버 안전팀 책임자는 더 버지에 모델이 시험임을 알아채고 행동을 바꾸는 문제가 여전히 큰 걱정이라고 말했습니다.",
-        "모델은 Daybreak Red 프로그램 일부 회원에게 먼저 제공되고 몇 주 안에 전체 고객으로 넓어집니다.",
-        "TechCrunch는 스타트업 CTO 맥스 저스티츠가 이전 모델로 2시간 만에 Ubuntu 서버의 심각한 취약점을 찾은 사례를 전하며, Linux 점검에 쓴 120만 달러와 수천 명 규모의 방어자 참여로 충분한지 물었습니다."
+        "OpenAI가 에스토니아·슬로바키아·그리스·이탈리아 등 유럽·중동·아프리카(EMEA) 정부·교육 당국과 함께한 교육 협력에서 얻은 교훈을 보고서로 정리했습니다.",
+        "협력의 세 축은 최신 AI 도구의 공평한 접근, 함께 설계한 AI 리터러시 프로그램, 꾸준한 측정·평가이며, 각 나라의 언어·교육과정에 맞춰 조정한다고 회사는 설명했습니다.",
+        "청년 싱크탱크 ThinkYoung 조사에서 학생 79%가 숙제·과제에 AI를 쓴다고 답했지만 사용법을 배웠다는 학생은 47%에 그쳐, 회사는 정부가 교사를 지원하고 학생에게 더 분명한 사용 기준을 줘야 한다고 했습니다.",
+        "국가 사례의 공통 교훈으로는 분명한 공공 리더십, 교사의 역량·자신감에 대한 투자, 지역 교육과정과 교실에 맞춘 실무 지원을 꼽았고, 교육 목표·교사 준비·지역 파트너십·비판적 AI 리터러시·믿을 만한 근거의 다섯 주제로 정리했습니다.",
+        "회사 발표 기준 교사의 도입률과 시간 절약은 고무적인 초기 신호지만, AI가 지식·독립적 사고·기억에 주는 효과는 장기 평가가 필요하며 OpenAI Learning Lab에서 교육 연구자들과 연구를 이어 가겠다고 밝혔습니다."
       ],
       "source": "OpenAI",
-      "date": "2026-11-05",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber",
-      "issue": "보안·권한",
+      "date": "2026-11-10",
+      "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+      "issue": "",
+      "field": "교육",
+      "href": "./share/news/n-69d4d9d74efa0162/"
+    },
+    {
+      "id": "n-636bec9b1738d105",
+      "title": "뉴욕주 AI 안전법 등록 창구 개설… OpenAI·Anthropic 등 2027년 1월까지 등록해야",
+      "summary": "뉴욕주가 대형 AI 개발사 등록 포털을 열고 2027년 1월 1일 시행되는 RAISE Act 집행 준비에 들어갔습니다. 중대 안전사고는 72시간 안에 보고해야 하고, 위반하면 최대 300만 달러 벌금을 물 수 있습니다.",
+      "digest": [
+        "뉴욕주는 11월 10일 대형 프런티어 AI 개발사 등록 포털을 열었고, 연 매출 5억 달러가 넘는 OpenAI·Anthropic 같은 개발사는 2027년 1월 1일까지 등록해야 합니다.",
+        "RAISE Act는 이들에게 안전 프레임워크를 누리집에 공개하고, 중대 안전사고를 72시간 안에 보고하며, 모델 투명성 보고서를 내도록 요구합니다.",
+        "새로 만든 기관 DIGIT가 법을 집행하며, 위반하면 첫 위반은 최대 100만 달러, 이후 위반은 최대 300만 달러 벌금을 물 수 있습니다.",
+        "호컬 주지사는 같은 날 뉴욕주립대 빙엄턴 캠퍼스에 AI 시스템의 안전성을 독립적으로 평가하는 'AI 책임·연구 센터'를 열었고, 이 센터는 1월 발표 당시 기부·자본 5,500만 달러로 시작했습니다.",
+        "뉴욕은 10월에 미성년자 대상 챗봇 안전법에도 서명해 사람인 척 속이기, 감정을 조종하거나 아첨하는 응답, 자살·섭식장애 조장을 막기로 했고, 이 법은 2027년 6월 1일 시행됩니다.",
+        "기사에 따르면 캘리포니아 SB 53(올해 1월 시행, 사고 15일 안 보고)과 일리노이 SB 315(2027년 시행, 독립 감사 포함)도 비슷한 의무를 두고 있습니다."
+      ],
+      "source": "TechCrunch",
+      "date": "2026-11-10",
+      "url": "https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/",
+      "issue": "법·규제",
       "field": "모델",
-      "href": "./share/news/n-14e90e72d3401ddf/"
+      "image": "https://techcrunch.com/wp-content/uploads/2026/11/GettyImages-2302996653.jpg?w=1024",
+      "href": "./share/news/n-636bec9b1738d105/"
+    },
+    {
+      "id": "n-8658a0744e2cda3c",
+      "title": "구글 Gemini 4 Carbon 일반 공개… Antigravity에 '에이전트 팀' 기능 /swarm 미리보기",
+      "summary": "구글이 Gemini 4 Carbon을 일반 공개하고 Antigravity에 여러 에이전트가 일을 나눠 맡는 /swarm을 미리 선보였습니다. 출시 가격은 입력 100만 토큰당 2달러로 Fable 5.2의 4분의 1입니다.",
+      "digest": [
+        "구글은 10월 말 일부 사이버보안 전문가에게만 내놨던 Gemini 4 Carbon을 Gemini API·Google AI Studio의 유료 개발자와 기업, Google AI Ultra 구독자(Gemini 앱·검색 AI 모드·Antigravity)에게 공개했습니다.",
+        "회사는 일반 개발·지식 업무에는 지난달 낸 Argon이 여전히 알맞고, Carbon은 복잡한 다단계 코딩과 열린 과학 연구처럼 한계를 시험하는 일에 맞다고 설명했습니다.",
+        "함께 미리보기로 낸 Antigravity의 /swarm은 한 지시를 에이전트 팀으로 나눠, Carbon이 설계·조율·검토를 맡고 가벼운 모델들이 병렬로 만들고 시험하는 과정을 실시간으로 보여 줍니다.",
+        "출시 가격은 11월 30일까지 입력 100만 토큰당 2달러·출력 10달러이고 12월 1일부터 두 배가 되며, 기자는 같은 작업에 쓰는 토큰 양이 모델마다 달라 실제 비용은 다를 수 있다고 짚었습니다.",
+        "AI타임스에 따르면 Artificial Analysis 지능 지수에서 Fable 5.2가 65점, Carbon이 60점입니다. 구글은 업무 자동화 평가에서 Carbon이 성공률 53.88%·작업당 2.12달러로 Fable 5.2(51.45%·4.64달러)를 앞섰다고 밝혔습니다."
+      ],
+      "source": "The Verge",
+      "date": "2026-11-10",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1030787/google-gemini-4-carbon-public-rollout",
+      "issue": "",
+      "field": "에이전트",
+      "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/Gemini-4-Carbon-Key-Art.jpg?quality=90&strip=all&crop=0%2C3.4613147178592%2C100%2C93.077370564282&w=1200",
+      "href": "./share/news/n-8658a0744e2cda3c/"
+    },
+    {
+      "id": "n-c0148d18638aab68",
+      "title": "Anthropic, 화상회의에 들어가 일하는 'Claude Meetings'와 Sheets·Whiteboards 공개",
+      "summary": "Anthropic이 Claude가 화상회의에 참가자로 들어가 회의 중에 계획·일정표를 만드는 Claude Meetings를 베타로 냈습니다. Claude는 참가자임을 밝히고, 외부 손님이 들어오면 자동으로 회의에서 나갑니다.",
+      "digest": [
+        "Anthropic은 11월 10일 비개발자를 위한 업무 도구로 Claude Meetings, Claude Whiteboards, Claude Sheets를 공개했습니다.",
+        "Claude Meetings에서 Claude는 화상회의에 보이는 참가자로 들어가 대화를 따라가며 계획 초안을 쓰고, 화이트보드에 일정표를 그리고, 회의 채팅 질문에 답하고, 연결된 업무 앱에서 지난해 수치 같은 자료를 찾아옵니다.",
+        "Claude는 참가자임을 밝히고 회의 채팅에 공지를 올리며, 관리자 허가 없이는 외부 손님이 있는 회의에 들어가지 않고 외부 손님이 들어오면 자동으로 나갑니다(Team·Enterprise 베타, 우선 Google Meet 지원).",
+        "Whiteboards는 함께 쓰는 보드를 문서나 슬라이드로 바꾸고, Sheets는 탭·수식·드롭다운이 있는 표를 만들어 팀과 함께 고치며 바꾼 칸을 설명하는데, 둘 다 유료 플랜 베타입니다.",
+        "회사는 Claude Data(옛 Dashboards)를 정식 출시하고 Adobe·Atlassian·HubSpot 앱을 Claude 안에서 여는 인터랙티브 커넥터도 냈으며, The Verge에 따르면 MCP 기반 도구는 9,000개가 넘습니다."
+      ],
+      "source": "TechCrunch",
+      "date": "2026-11-10",
+      "url": "https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/",
+      "issue": "",
+      "field": "에이전트",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/11/Claude-Meetings.png?resize=1200,675",
+      "href": "./share/news/n-c0148d18638aab68/"
     }
   ],
   "bids": [
     {
-      "title": "디지털새싹 5개년 통합 성과확산 대행(사전규격)",
-      "deadline": "2026-11-09",
-      "url": "https://www.kosac.re.kr/menus/275/boards/403/posts/62229?page=1",
-      "org": "한국과학창의재단"
+      "title": "2026 하반기 강원아이로·AIEP 활용 교원·업무담당자 역량강화 연수 위탁 용역",
+      "deadline": "2026-11-16",
+      "url": "https://www.sankun.com/bid-info/ZiXOk2BfYkiihwqDlH3VQeRy8_R0BYR1VNgpxGwMi_g",
+      "org": "강원특별자치도교육청"
     },
     {
-      "title": "2026년 AI·SW 기술 기반 과학 시뮬레이션 콘텐츠 개발",
-      "deadline": "2026-11-09",
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01747372&bidPbancOrd=000",
+      "title": "2027년 초등학교 방과후 프로그램 공급사업(특색분야형) 운영기관 모집",
+      "deadline": "2026-11-18",
+      "url": "https://www.syu.ac.kr/rnd/%ed%95%9c%ea%b5%ad%ea%b3%bc%ed%95%99%ec%b0%bd%ec%9d%98%ec%9e%ac%eb%8b%a8-2027%eb%85%84-%ec%b4%88%eb%93%b1%ed%95%99%ea%b5%90-%eb%b0%a9%ea%b3%bc%ed%9b%84-%ed%94%84%eb%a1%9c%ea%b7%b8%eb%9e%a8-%ea%b3%b5-2/",
       "org": "한국과학창의재단"
     }
   ],
   "editions": [
+    {
+      "date": "2026-11-11",
+      "url": "./briefing/archive/2026-11-11.html"
+    },
+    {
+      "date": "2026-11-10",
+      "url": "./briefing/archive/2026-11-10.html"
+    },
+    {
+      "date": "2026-11-09",
+      "url": "./briefing/archive/2026-11-09.html"
+    },
     {
       "date": "2026-11-06",
       "url": "./briefing/archive/2026-11-06.html"
