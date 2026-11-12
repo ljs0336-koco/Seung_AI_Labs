@@ -216,26 +216,12 @@
     {
       "id": "proposal-roadmap",
       "kind": "link",
-      "title": "프로포절 로드맵",
-      "description": "박사논문 프로포절까지 주 단위 일정 · 계획서·면담 양식",
+      "title": "박사논문 로드맵",
+      "description": "졸업까지 날짜·시기별 할 일 · 연구자와 책임자",
       "href": "./proposal-roadmap/index.html",
       "section": "personal",
       "placement": "base",
-      "status": "live",
-      "children": [
-        {
-          "title": "연구계획서 틀",
-          "href": "./proposal-roadmap/plan-template.html"
-        },
-        {
-          "title": "면담 체크리스트",
-          "href": "./proposal-roadmap/meeting-checklist.html"
-        },
-        {
-          "title": "첫 만남 안건",
-          "href": "./proposal-roadmap/kickoff.html"
-        }
-      ]
+      "status": "live"
     },
     {
       "id": "logo-studio",
