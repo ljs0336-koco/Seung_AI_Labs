@@ -1766,3 +1766,114 @@ KW  - 편향
 KW  - 게임 기반 학습
 N1  - 연구 서고 A-13 · 동료심사 학회 · AI 리터러시·시민성
 ER  - 
+
+TY  - CPAPER
+AU  - Brender, Jerome
+AU  - El-Hamamsy, Laila
+AU  - Uittenhove, Kim
+AU  - Perez, Aitor
+AU  - Jermann, Patrick
+AU  - Mondada, Francesco
+AU  - Bumbacher, Engin
+TI  - Reflective Dialogue or Prompt Refinement? Effects of Tutor Scaffolding on Students' Independent LLM Use for Programming
+T2  - Artificial Intelligence in Education: 27th International Conference, AIED 2026
+PY  - 2026
+DA  - 2026/07/03
+PB  - Springer Nature Switzerland
+SP  - 546
+EP  - 561
+M3  - arXiv:2607.03303
+DO  - 10.1007/978-3-032-29763-1_37
+UR  - https://arxiv.org/abs/2607.03303
+KW  - LLM 튜터
+KW  - 소크라테스식 질문
+KW  - 프롬프트 전략
+KW  - 프로그래밍 교육
+KW  - 로보틱스
+N1  - 연구 서고 C-10 · 동료심사 학회 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Lane, H. Chad
+AU  - Kageler, Bryson
+TI  - CSTutorBench: Benchmarking Small Language Models as Tutors for Block-Based Programming
+PY  - 2026
+DA  - 2026/07/06
+PB  - arXiv
+M3  - arXiv:2607.05571
+DO  - 10.48550/arXiv.2607.05571
+UR  - https://arxiv.org/abs/2607.05571
+KW  - 소형 언어모델
+KW  - 블록코딩
+KW  - 교육용 로봇
+KW  - AI 튜터
+KW  - 벤치마크
+N1  - 연구 서고 E-05 · 학회 워크숍 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - UNPB
+AU  - Riegel, Kaitlin
+AU  - Hua, Yan Cathy
+AU  - Denny, Paul
+AU  - Pădurean, Victor-Alexandru
+AU  - Leinonen, Juho
+AU  - Prather, James
+AU  - Singla, Adish
+TI  - Say What? Examining Text and Voice Input Modalities for Prompt-Based Programming in Computing Education
+PY  - 2026
+DA  - 2026/07/07
+PB  - arXiv
+M3  - arXiv:2607.05808
+DO  - 10.48550/arXiv.2607.05808
+UR  - https://arxiv.org/abs/2607.05808
+KW  - 음성 입력
+KW  - 프롬프트 프로그래밍
+KW  - Prompt Problems
+KW  - 멀티모달
+KW  - 입문 프로그래밍
+N1  - 연구 서고 D-12 · 동료심사 학회 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - CPAPER
+AU  - Udeshi, Tushar
+AU  - Khazenzon, Anna
+AU  - Khan, Kabir
+AU  - Breen, Nick
+AU  - Corwin, RJ
+AU  - DiGiano, Chris
+AU  - Weatherholtz, Kodi
+AU  - Zaluski, Marek
+TI  - Methodologies for Improving the Quality of AI Tutoring in K-12 Education
+T2  - Artificial Intelligence in Education: AIED 2026 (Lecture Notes in Computer Science, vol. 16582)
+PY  - 2026
+DA  - 2026/06/25
+PB  - Springer, Cham
+M3  - arXiv:2608.11259
+DO  - 10.1007/978-3-032-29755-6_14
+UR  - https://arxiv.org/abs/2608.11259
+KW  - AI 튜터
+KW  - K-12
+KW  - 평가 지표
+KW  - A/B 실험
+KW  - 프롬프트
+N1  - 연구 서고 C-11 · 동료심사 학회 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Boussioux, Léonard
+AU  - Zhao, Ziyi
+AU  - Cho, Kanghyun
+TI  - One Tool, One Taste? How Vibe Coding Trades Collective Diversity for Individual Creativity
+PY  - 2026
+DA  - 2026/08/05
+PB  - arXiv
+M3  - arXiv:2609.38183
+DO  - 10.48550/arXiv.2609.38183
+UR  - https://arxiv.org/abs/2609.38183
+KW  - 바이브코딩
+KW  - 창의성
+KW  - 다양성
+KW  - 결과물 동질화
+KW  - 생성형 AI
+N1  - 연구 서고 D-13 · 프리프린트(심사 전) · 바이브코딩·AI 협업 코딩
+ER  - 

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "total": 88,
-  "reviewed": 44,
+  "total": 93,
+  "reviewed": 47,
   "special": 35,
-  "updated": "2026-11-09",
+  "updated": "2026-11-12",
   "shelves": [
     {
       "id": "A",
@@ -18,17 +18,17 @@
     {
       "id": "C",
       "label": "AI 튜터링·학습 지원",
-      "count": 9
+      "count": 11
     },
     {
       "id": "D",
       "label": "바이브코딩·AI 협업 코딩",
-      "count": 11
+      "count": 13
     },
     {
       "id": "E",
       "label": "교육용 로봇·피지컬 컴퓨팅",
-      "count": 4
+      "count": 5
     },
     {
       "id": "F",
@@ -58,109 +58,111 @@
   ],
   "recent": [
     {
-      "id": "088",
-      "code": "A-13",
-      "call": "A-13",
-      "title": "Playing Bias: Epistemic Games for Interpreting Text-to-Image Models",
-      "titleKo": "편향을 놀이로: 이미지 생성 AI를 해석하는 인식론적 게임",
-      "authors": "Amalia Foka",
+      "id": "093",
+      "code": "D-13",
+      "call": "D-13",
+      "title": "One Tool, One Taste? How Vibe Coding Trades Collective Diversity for Individual Creativity",
+      "titleKo": "도구 하나, 취향 하나? 바이브코딩은 개인의 창의성을 얻는 대신 집단의 다양성을 잃는가",
+      "authors": "Léonard Boussioux; Ziyi Zhao; Kanghyun Cho",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-093",
+      "keywords": [
+        "바이브코딩",
+        "창의성",
+        "다양성",
+        "결과물 동질화",
+        "생성형 AI"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "092",
+      "code": "C-11",
+      "call": "C-11",
+      "title": "Methodologies for Improving the Quality of AI Tutoring in K-12 Education",
+      "titleKo": "K-12 AI 튜터링 품질 개선 방법론",
+      "authors": "Tushar Udeshi; Anna Khazenzon; Kabir Khan; Nick Breen; RJ Corwin; Chris DiGiano; Kodi Weatherholtz; Marek Zaluski",
       "year": 2026,
       "kind": "conference",
-      "href": "./library/index.html#no-088",
+      "href": "./library/index.html#no-092",
       "keywords": [
-        "비판적 AI 리터러시",
-        "이미지 생성 AI",
-        "편향",
-        "게임 기반 학습"
-      ],
-      "shelves": [
-        "A",
-        "H"
-      ]
-    },
-    {
-      "id": "087",
-      "code": "B-10",
-      "call": "B-10",
-      "title": "Teachers' use of generative artificial intelligence in K–12 education: a systematic review",
-      "titleKo": "K-12 교육에서 교사의 생성형 AI 활용: 체계적 문헌고찰",
-      "authors": "Oğuz Cincioğlu; Duygu Mutlu Bayraktar; Tuğba Altan",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-087",
-      "keywords": [
-        "교사 생성형 AI 활용",
+        "AI 튜터",
         "K-12",
-        "수업 설계",
-        "체계적 문헌고찰"
+        "평가 지표",
+        "A/B 실험",
+        "프롬프트"
       ],
       "shelves": [
-        "B"
-      ]
-    },
-    {
-      "id": "086",
-      "code": "B-09",
-      "call": "B-09",
-      "title": "Teachers and Generative AI: A Systematic Review of Adoption, Competence, Professional Development, and Socio-Technical Experiences",
-      "titleKo": "교사와 생성형 AI: 도입·역량·연수·사회기술적 경험에 관한 체계적 문헌고찰",
-      "authors": "Sara Ayubian; Génesis Aguilar Chávez; Ernestina Wiafe; Vajiheh Shahsavari; Nelofar Khamisani; Noor us Subah Sohail Quidwai; Dillon Simmons; Ambyr Rios; Farhan Sadique; J. Spencer Clark",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-086",
-      "keywords": [
-        "교사 AI 역량",
-        "교원 연수",
-        "TPACK",
-        "자기효능감",
-        "체계적 문헌고찰"
-      ],
-      "shelves": [
-        "B"
-      ]
-    },
-    {
-      "id": "085",
-      "code": "G-11",
-      "call": "G-11",
-      "title": "Enhancing School Students' Self-Regulated Learning through Generative AI Support: A Randomized Controlled Trial",
-      "titleKo": "생성형 AI 지원으로 학생의 자기조절학습 높이기: 무작위 통제 실험",
-      "authors": "Tim Fütterer; Lisa Bardach; Jochen Kuhn; Stefan Daniel Keller; Peter H. Gerjets",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-085",
-      "keywords": [
-        "자기조절학습",
-        "생성형 AI",
-        "무작위 통제 실험",
-        "과제 유용성 가치",
-        "학습전략"
-      ],
-      "shelves": [
-        "G",
         "C"
       ]
     },
     {
-      "id": "084",
-      "code": "A-12",
-      "call": "A-12",
-      "title": "Fostering machine learning literacy in senior primary education: Evaluating a structured pedagogical course design",
-      "titleKo": "초등 고학년 머신러닝 리터러시 함양: 구조화된 수업 설계의 평가",
-      "authors": "Siu Cheung Kong; Qiaoyi Wang",
+      "id": "091",
+      "code": "D-12",
+      "call": "D-12",
+      "title": "Say What? Examining Text and Voice Input Modalities for Prompt-Based Programming in Computing Education",
+      "titleKo": "말로 할까, 글로 쓸까? 프롬프트 기반 프로그래밍에서 텍스트·음성 입력 비교",
+      "authors": "Kaitlin Riegel; Yan Cathy Hua; Paul Denny; Victor-Alexandru Pădurean; Juho Leinonen; James Prather; Adish Singla",
       "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-084",
+      "kind": "conference",
+      "href": "./library/index.html#no-091",
       "keywords": [
-        "머신러닝 리터러시",
-        "초등 AI 교육",
-        "교육용 로봇",
-        "지도학습",
-        "강화학습"
+        "음성 입력",
+        "프롬프트 프로그래밍",
+        "Prompt Problems",
+        "멀티모달",
+        "입문 프로그래밍"
       ],
       "shelves": [
-        "A",
-        "E"
+        "D"
+      ]
+    },
+    {
+      "id": "090",
+      "code": "E-05",
+      "call": "E-05",
+      "title": "CSTutorBench: Benchmarking Small Language Models as Tutors for Block-Based Programming",
+      "titleKo": "CSTutorBench: 블록 기반 프로그래밍 튜터로서 소형 언어모델 벤치마크",
+      "authors": "H. Chad Lane; Bryson Kageler",
+      "year": 2026,
+      "kind": "workshop",
+      "href": "./library/index.html#no-090",
+      "keywords": [
+        "소형 언어모델",
+        "블록코딩",
+        "교육용 로봇",
+        "AI 튜터",
+        "벤치마크"
+      ],
+      "shelves": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "089",
+      "code": "C-10",
+      "call": "C-10",
+      "title": "Reflective Dialogue or Prompt Refinement? Effects of Tutor Scaffolding on Students' Independent LLM Use for Programming",
+      "titleKo": "성찰적 대화냐, 프롬프트 다듬기냐? 튜터의 비계 방식이 학생의 독립적 LLM 활용에 미치는 영향",
+      "authors": "Jerome Brender; Laila El-Hamamsy; Kim Uittenhove; Aitor Perez; Patrick Jermann; Francesco Mondada; Engin Bumbacher",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-089",
+      "keywords": [
+        "LLM 튜터",
+        "소크라테스식 질문",
+        "프롬프트 전략",
+        "프로그래밍 교육",
+        "로보틱스"
+      ],
+      "shelves": [
+        "C",
+        "D"
       ]
     }
   ],
@@ -2048,6 +2050,114 @@
       "shelves": [
         "A",
         "H"
+      ]
+    },
+    {
+      "id": "089",
+      "code": "C-10",
+      "call": "C-10",
+      "title": "Reflective Dialogue or Prompt Refinement? Effects of Tutor Scaffolding on Students' Independent LLM Use for Programming",
+      "titleKo": "성찰적 대화냐, 프롬프트 다듬기냐? 튜터의 비계 방식이 학생의 독립적 LLM 활용에 미치는 영향",
+      "authors": "Jerome Brender; Laila El-Hamamsy; Kim Uittenhove; Aitor Perez; Patrick Jermann; Francesco Mondada; Engin Bumbacher",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-089",
+      "keywords": [
+        "LLM 튜터",
+        "소크라테스식 질문",
+        "프롬프트 전략",
+        "프로그래밍 교육",
+        "로보틱스"
+      ],
+      "shelves": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "090",
+      "code": "E-05",
+      "call": "E-05",
+      "title": "CSTutorBench: Benchmarking Small Language Models as Tutors for Block-Based Programming",
+      "titleKo": "CSTutorBench: 블록 기반 프로그래밍 튜터로서 소형 언어모델 벤치마크",
+      "authors": "H. Chad Lane; Bryson Kageler",
+      "year": 2026,
+      "kind": "workshop",
+      "href": "./library/index.html#no-090",
+      "keywords": [
+        "소형 언어모델",
+        "블록코딩",
+        "교육용 로봇",
+        "AI 튜터",
+        "벤치마크"
+      ],
+      "shelves": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "091",
+      "code": "D-12",
+      "call": "D-12",
+      "title": "Say What? Examining Text and Voice Input Modalities for Prompt-Based Programming in Computing Education",
+      "titleKo": "말로 할까, 글로 쓸까? 프롬프트 기반 프로그래밍에서 텍스트·음성 입력 비교",
+      "authors": "Kaitlin Riegel; Yan Cathy Hua; Paul Denny; Victor-Alexandru Pădurean; Juho Leinonen; James Prather; Adish Singla",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-091",
+      "keywords": [
+        "음성 입력",
+        "프롬프트 프로그래밍",
+        "Prompt Problems",
+        "멀티모달",
+        "입문 프로그래밍"
+      ],
+      "shelves": [
+        "D"
+      ]
+    },
+    {
+      "id": "092",
+      "code": "C-11",
+      "call": "C-11",
+      "title": "Methodologies for Improving the Quality of AI Tutoring in K-12 Education",
+      "titleKo": "K-12 AI 튜터링 품질 개선 방법론",
+      "authors": "Tushar Udeshi; Anna Khazenzon; Kabir Khan; Nick Breen; RJ Corwin; Chris DiGiano; Kodi Weatherholtz; Marek Zaluski",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-092",
+      "keywords": [
+        "AI 튜터",
+        "K-12",
+        "평가 지표",
+        "A/B 실험",
+        "프롬프트"
+      ],
+      "shelves": [
+        "C"
+      ]
+    },
+    {
+      "id": "093",
+      "code": "D-13",
+      "call": "D-13",
+      "title": "One Tool, One Taste? How Vibe Coding Trades Collective Diversity for Individual Creativity",
+      "titleKo": "도구 하나, 취향 하나? 바이브코딩은 개인의 창의성을 얻는 대신 집단의 다양성을 잃는가",
+      "authors": "Léonard Boussioux; Ziyi Zhao; Kanghyun Cho",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-093",
+      "keywords": [
+        "바이브코딩",
+        "창의성",
+        "다양성",
+        "결과물 동질화",
+        "생성형 AI"
+      ],
+      "shelves": [
+        "D",
+        "G"
       ]
     }
   ]
