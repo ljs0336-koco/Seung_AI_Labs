@@ -1877,3 +1877,57 @@ KW  - 결과물 동질화
 KW  - 생성형 AI
 N1  - 연구 서고 D-13 · 프리프린트(심사 전) · 바이브코딩·AI 협업 코딩
 ER  - 
+
+TY  - JOUR
+AU  - 이, 화선
+TI  - 다차원적 생성형 AI 의존성 척도(M-GAIDS)의 개발과 타당화
+T2  - 정보교육학회논문지
+PY  - 2026
+DA  - 2026/02
+PB  - 한국정보교육학회
+SP  - 111
+EP  - 124
+UR  - https://www.earticle.net/Article/A481716
+KW  - 생성형 AI 의존
+KW  - 척도 개발
+KW  - 타당화
+KW  - 정서적 의존
+KW  - AI 과의존
+N1  - 연구 서고 J-13 · 동료심사 저널 · 연구방법·측정도구
+ER  - 
+
+TY  - JOUR
+AU  - 김, 인주
+AU  - 정, 영식
+TI  - 예비교원의 AI·디지털 교육 경험과 역량 분석을 통한 2022 개정 정보과 교육과정의 운영 방안 탐색
+T2  - 정보교육학회논문지
+PY  - 2026
+DA  - 2026/07
+PB  - 한국정보교육학회
+SP  - 77
+EP  - 88
+UR  - https://www.earticle.net/Article/A489452
+KW  - 예비교원
+KW  - AI·디지털 교육 역량
+KW  - 정보과 교육과정
+KW  - 교과 외 활동
+KW  - AI 원리 설명
+N1  - 연구 서고 B-11 · 동료심사 저널 · 교사 AI 역량·연수
+ER  - 
+
+TY  - BOOK
+AU  - OECD
+TI  - Policies supporting responsible and systematic GenAI adoption in higher education
+T2  - OECD Education Spotlights
+PY  - 2026
+DA  - 2026/07
+PB  - OECD Publishing
+DO  - 10.1787/c4e5621f-en
+UR  - https://www.oecd.org/en/publications/policies-supporting-responsible-and-systematic-genai-adoption-in-higher-education_c4e5621f-en.html
+KW  - 고등교육
+KW  - 생성형 AI 정책
+KW  - 거버넌스
+KW  - 조달
+KW  - AI 역량
+N1  - 연구 서고 F-11 · 정책 보고서 · 교육 정책·제도
+ER  - 
