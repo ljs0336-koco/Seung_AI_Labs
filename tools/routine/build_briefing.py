@@ -17,8 +17,9 @@ import ssl
 import sys
 import urllib.request
 from pathlib import Path
+from urllib.parse import urlsplit
 
-ROOT = Path(os.environ.get("SEUNG_ROUTINE_ROOT", Path(__file__).resolve().parent.parent))
+ROOT =Path(os.environ.get("SEUNG_ROUTINE_ROOT", Path(__file__).resolve().parent.parent))
 BIZ_DIR = ROOT / "01_사업공고"
 NEWS_DIR = ROOT / "03_테크트렌드"
 SITE = ROOT / "ai-edu-briefing"
@@ -30,7 +31,8 @@ MAX_LATER = 3            # 마감이 넉넉해도 적합도가 높아 아래에 
 SOON_DAYS = 7            # 이 날짜 안에 마감이면 주황으로 표시
 FIT_ORDER = {"상": 0, "중": 1}
 FETCH_IMAGES = True      # 기사 대표 이미지(og:image) 주소를 채울지. 파일은 내려받지 않고 화면에서 원문 주소로 연결한다
-IMAGE_TRIES = 3          # 대표 이미지를 못 찾은 기사를 다시 시도하는 최대 횟수
+IMAGE_TRIES = 3          # 대표 이미지를 못 찾은 기사를 다시 시도하는 최대 날 수(하루에 한 번만 센다)
+RETRY_DAYS = 3           # 오늘 판을 만들 때 사진이 빠진 지난 판을 몇 개까지 다시 채울지. 채워지면 그 판도 다시 만든다
 
 WEEKDAY = "월화수목금토일"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
@@ -84,21 +86,41 @@ def youtube_thumb(url):
     return f"https://img.youtube.com/vi/{m.group(1)}/hqdefault.jpg" if m else ""
 
 
+def kst_today():
+    return dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
+
+
+def host_name(url):
+    host = urlsplit(url or "").hostname or ""
+    return host[4:] if host.startswith("www.") else host
+
+
 def fill_images(path, data):
-    """빈 대표 이미지 주소를 원문 og:image로 채워 JSON에 저장한다. 못 찾으면 image_tries를 늘려 다음 빌드에서 다시 시도한다.
-    화면 표시용 주소일 뿐이며 PNG 내보내기에는 쓰지 않는다(공유 PNG는 자체 카드)."""
+    """빈 대표 이미지 주소를 og:image로 채워 JSON에 저장한다. 원문 url → image_from(같은 소식의 다른 기사·공식 발표) 순서로 읽는다.
+    못 찾으면 하루에 한 번만 시도로 센다(image_tries, image_tried). IMAGE_TRIES일 동안 못 찾으면 화면에는 제목 카드가 남는다.
+    화면 표시용 주소일 뿐이며 PNG 내보내기에는 쓰지 않는다(공유 PNG는 자체 카드). 새로 채운 사진이 있으면 True."""
     if not FETCH_IMAGES or not data:
-        return
-    changed = False
+        return False
+    today = kst_today()
+    changed = filled = False
     for h in data.get("headlines", []):
-        if h.get("image") or h.get("image_tries", 0) >= IMAGE_TRIES:
+        if h.get("image") or h.get("image_tries", 0) >= IMAGE_TRIES or h.get("image_tried") == today:
             continue
-        found = og_image(h.get("url", ""))
+        found, via_from = og_image(h.get("url", "")), False
+        if not found and h.get("image_from"):
+            found, via_from = og_image(h["image_from"]), True
         if found:
             h["image"] = found
+            if via_from:
+                h["image_credit"] = h.get("image_credit") or host_name(h["image_from"])
+            else:
+                h.pop("image_credit", None)
             h.pop("image_tries", None)
+            h.pop("image_tried", None)
+            filled = True
         else:
             h["image_tries"] = h.get("image_tries", 0) + 1
+            h["image_tried"] = today
         changed = True
     v = data.get("video")
     if v and not v.get("image") and youtube_thumb(v.get("url")):
@@ -106,6 +128,19 @@ def fill_images(path, data):
         changed = True
     if changed and path:
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return filled
+
+
+def retry_recent_images(current_path):
+    """사진이 빠진 지난 판(최근 RETRY_DAYS개)을 다시 채우고, 새 사진이 들어간 판의 날짜를 돌려준다."""
+    files = [p for p in sorted(NEWS_DIR.glob("????-??-??_테크브리핑.json"))
+             if not current_path or p.resolve() != Path(current_path).resolve()]
+    dates = []
+    for p in files[-RETRY_DAYS:]:
+        data = json.loads(p.read_text(encoding="utf-8"))
+        if fill_images(p, data):
+            dates.append(p.name[:10])
+    return dates
 
 
 FIELDS = {"교육", "에이전트", "AI 코딩", "챗봇", "모델", "기기·로봇", "산업"}
@@ -165,6 +200,8 @@ def news_record(item, edition_date=""):
               "url": item.get("url", ""), "issue": issue, "field": field}
     if item.get("image"):
         record["image"] = item["image"]
+        if item.get("image_credit"):
+            record["imageCredit"] = item["image_credit"]
     return record
 
 
@@ -264,10 +301,19 @@ def render_reader(news, hs):
     return '<div class="reader-backdrop" data-read-close></div><aside class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title" inert><div class="reader-head"><div><div class="kicker">AI 이슈와 뉴스 · ' + e(news.get("period")) + '</div><h2 id="reader-title">요약 읽기</h2></div><button class="btn reader-close" type="button" data-read-close>닫기</button></div>' + "".join(items) + '<p class="reader-foot">원문을 읽고 우리말로 정리한 요약입니다. 정확한 내용은 원문에서 확인해 주세요.</p></aside>'
 
 
+def title_card(h):
+    """사진이 없거나 불러오지 못할 때 보이는 제목 카드. 사진이 있으면 사진 아래에 깔려 보이지 않는다."""
+    kick = " | ".join(x for x in taxonomy(h) if x)
+    return (f'<div class="ph-card" aria-hidden="true"><span class="ph-card-kick">{e(kick)}</span>'
+            f'<span class="ph-card-title">{e(h.get("title"))}</span><span class="ph-card-src">{e(h.get("source"))}</span></div>')
+
+
 def photo(h, cls):
+    card = title_card(h)
     if h.get("image"):
-        return f'<figure class="ph {cls}" data-src="{e(taxonomy(h)[1])}">{img_tag(h["image"], h.get("title"))}<figcaption class="credit">이미지: {e(h.get("source"))}</figcaption></figure>'
-    return f'<figure class="ph noimg {cls}" data-src="{e(taxonomy(h)[1])}" aria-label="기사 대표 이미지 없음"></figure>'
+        credit = h.get("image_credit") or h.get("source")
+        return f'<figure class="ph {cls}" data-src="{e(taxonomy(h)[1])}">{card}{img_tag(h["image"], h.get("title"))}<figcaption class="credit">이미지: {e(credit)}</figcaption></figure>'
+    return f'<figure class="ph noimg {cls}" data-src="{e(taxonomy(h)[1])}" aria-label="대표 이미지 대신 제목 카드">{card}</figure>'
 
 
 def story(h, idx):
@@ -428,6 +474,10 @@ def build(only_date=None):
     (SITE / "archive" / "index.html").write_text(page("지난 브리핑 · AI 교육 업무 브리핑", arch_body, "../assets/style.css", "./"), encoding="utf-8")
     target = "지난 브리핑만" if only_date else "오늘·지난 브리핑"
     print(f"브리핑 갱신: {edition} {target} (지난 브리핑 {len(dates)}개, {images})")
+    if not only_date:
+        for d in retry_recent_images(news_path):
+            print(f"사진 다시 채움: {d}")
+            build(d)
 
 
 if __name__ == "__main__":

@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "total": 96,
-  "reviewed": 49,
+  "total": 100,
+  "reviewed": 50,
   "special": 35,
-  "updated": "2026-11-13",
+  "updated": "2026-11-16",
   "shelves": [
     {
       "id": "A",
       "label": "AI 리터러시·시민성",
-      "count": 13
+      "count": 15
     },
     {
       "id": "B",
       "label": "교사 AI 역량·연수",
-      "count": 11
+      "count": 12
     },
     {
       "id": "C",
@@ -38,7 +38,7 @@
     {
       "id": "G",
       "label": "AI의 학습 영향",
-      "count": 11
+      "count": 12
     },
     {
       "id": "H",
@@ -57,6 +57,95 @@
     }
   ],
   "recent": [
+    {
+      "id": "100",
+      "code": "A-15",
+      "call": "A-15",
+      "title": "Gender Differences in AI Literacy Workshop Outcomes and Deepfake Engagement",
+      "titleKo": "AI 리터러시 워크숍 성과와 딥페이크 관여의 성별 차이",
+      "authors": "Jake Renzella; Christian Bergh; Natasha Banks; Alexandra Vassar",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-100",
+      "keywords": [
+        "AI 리터러시",
+        "딥페이크",
+        "성별 차이",
+        "STEM 진로",
+        "아동 안전"
+      ],
+      "shelves": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "099",
+      "code": "A-14",
+      "call": "A-14",
+      "title": "When AI Is—and Is Not—Needed: AI Literacy and Computational Thinking in Primary STEM",
+      "titleKo": "AI가 필요할 때와 필요하지 않을 때: 초등 STEM에서의 AI 리터러시와 컴퓨팅 사고",
+      "authors": "Ahmet Akif Erbaş; Tolga Topçubaşı",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-099",
+      "keywords": [
+        "초등 AI 리터러시",
+        "컴퓨팅 사고",
+        "규칙 기반 대 기계학습",
+        "피지컬 컴퓨팅",
+        "수행평가"
+      ],
+      "shelves": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "098",
+      "code": "B-12",
+      "call": "B-12",
+      "title": "Generative AI Can Harm Teaching",
+      "titleKo": "생성형 AI는 가르침을 해칠 수 있다",
+      "authors": "Alp Sungu; Benjamin Lira; Angela Lee Duckworth",
+      "year": 2026,
+      "kind": "working-paper",
+      "href": "./library/index.html#no-098",
+      "keywords": [
+        "교사용 AI",
+        "수업 준비",
+        "내재적 동기",
+        "무작위 실험",
+        "교사 격차"
+      ],
+      "shelves": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "097",
+      "code": "G-12",
+      "call": "G-12",
+      "title": "The Evidence Base on AI in K-12: A November 2026 Review",
+      "titleKo": "K-12 AI 근거 기반: 2026년 11월 검토",
+      "authors": "Seth Walker; Lily Fesler; JP Martinez Claeys; Chris Agnew; Susanna Loeb",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-097",
+      "keywords": [
+        "인과 근거",
+        "생성형 AI",
+        "K-12",
+        "근거 종합",
+        "교사용 AI"
+      ],
+      "shelves": [
+        "G",
+        "F",
+        "B"
+      ]
+    },
     {
       "id": "096",
       "code": "F-11",
@@ -77,92 +166,6 @@
       "shelves": [
         "F",
         "H"
-      ]
-    },
-    {
-      "id": "095",
-      "code": "B-11",
-      "call": "B-11",
-      "title": "예비교원의 AI·디지털 교육 경험과 역량 분석을 통한 2022 개정 정보과 교육과정의 운영 방안 탐색",
-      "titleKo": "예비교원의 AI·디지털 교육 경험과 역량 분석을 통한 2022 개정 정보과 교육과정의 운영 방안 탐색",
-      "authors": "인주 김; 영식 정",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-095",
-      "keywords": [
-        "예비교원",
-        "AI·디지털 교육 역량",
-        "정보과 교육과정",
-        "교과 외 활동",
-        "AI 원리 설명"
-      ],
-      "shelves": [
-        "B"
-      ]
-    },
-    {
-      "id": "094",
-      "code": "J-13",
-      "call": "J-13",
-      "title": "다차원적 생성형 AI 의존성 척도(M-GAIDS)의 개발과 타당화",
-      "titleKo": "다차원적 생성형 AI 의존성 척도(M-GAIDS)의 개발과 타당화",
-      "authors": "화선 이",
-      "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-094",
-      "keywords": [
-        "생성형 AI 의존",
-        "척도 개발",
-        "타당화",
-        "정서적 의존",
-        "AI 과의존"
-      ],
-      "shelves": [
-        "J",
-        "G"
-      ]
-    },
-    {
-      "id": "093",
-      "code": "D-13",
-      "call": "D-13",
-      "title": "One Tool, One Taste? How Vibe Coding Trades Collective Diversity for Individual Creativity",
-      "titleKo": "도구 하나, 취향 하나? 바이브코딩은 개인의 창의성을 얻는 대신 집단의 다양성을 잃는가",
-      "authors": "Léonard Boussioux; Ziyi Zhao; Kanghyun Cho",
-      "year": 2026,
-      "kind": "preprint",
-      "href": "./library/index.html#no-093",
-      "keywords": [
-        "바이브코딩",
-        "창의성",
-        "다양성",
-        "결과물 동질화",
-        "생성형 AI"
-      ],
-      "shelves": [
-        "D",
-        "G"
-      ]
-    },
-    {
-      "id": "092",
-      "code": "C-11",
-      "call": "C-11",
-      "title": "Methodologies for Improving the Quality of AI Tutoring in K-12 Education",
-      "titleKo": "K-12 AI 튜터링 품질 개선 방법론",
-      "authors": "Tushar Udeshi; Anna Khazenzon; Kabir Khan; Nick Breen; RJ Corwin; Chris DiGiano; Kodi Weatherholtz; Marek Zaluski",
-      "year": 2026,
-      "kind": "conference",
-      "href": "./library/index.html#no-092",
-      "keywords": [
-        "AI 튜터",
-        "K-12",
-        "평가 지표",
-        "A/B 실험",
-        "프롬프트"
-      ],
-      "shelves": [
-        "C"
       ]
     }
   ],
@@ -2222,6 +2225,95 @@
       ],
       "shelves": [
         "F",
+        "H"
+      ]
+    },
+    {
+      "id": "097",
+      "code": "G-12",
+      "call": "G-12",
+      "title": "The Evidence Base on AI in K-12: A November 2026 Review",
+      "titleKo": "K-12 AI 근거 기반: 2026년 11월 검토",
+      "authors": "Seth Walker; Lily Fesler; JP Martinez Claeys; Chris Agnew; Susanna Loeb",
+      "year": 2026,
+      "kind": "report",
+      "href": "./library/index.html#no-097",
+      "keywords": [
+        "인과 근거",
+        "생성형 AI",
+        "K-12",
+        "근거 종합",
+        "교사용 AI"
+      ],
+      "shelves": [
+        "G",
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "098",
+      "code": "B-12",
+      "call": "B-12",
+      "title": "Generative AI Can Harm Teaching",
+      "titleKo": "생성형 AI는 가르침을 해칠 수 있다",
+      "authors": "Alp Sungu; Benjamin Lira; Angela Lee Duckworth",
+      "year": 2026,
+      "kind": "working-paper",
+      "href": "./library/index.html#no-098",
+      "keywords": [
+        "교사용 AI",
+        "수업 준비",
+        "내재적 동기",
+        "무작위 실험",
+        "교사 격차"
+      ],
+      "shelves": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "099",
+      "code": "A-14",
+      "call": "A-14",
+      "title": "When AI Is—and Is Not—Needed: AI Literacy and Computational Thinking in Primary STEM",
+      "titleKo": "AI가 필요할 때와 필요하지 않을 때: 초등 STEM에서의 AI 리터러시와 컴퓨팅 사고",
+      "authors": "Ahmet Akif Erbaş; Tolga Topçubaşı",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-099",
+      "keywords": [
+        "초등 AI 리터러시",
+        "컴퓨팅 사고",
+        "규칙 기반 대 기계학습",
+        "피지컬 컴퓨팅",
+        "수행평가"
+      ],
+      "shelves": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "100",
+      "code": "A-15",
+      "call": "A-15",
+      "title": "Gender Differences in AI Literacy Workshop Outcomes and Deepfake Engagement",
+      "titleKo": "AI 리터러시 워크숍 성과와 딥페이크 관여의 성별 차이",
+      "authors": "Jake Renzella; Christian Bergh; Natasha Banks; Alexandra Vassar",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-100",
+      "keywords": [
+        "AI 리터러시",
+        "딥페이크",
+        "성별 차이",
+        "STEM 진로",
+        "아동 안전"
+      ],
+      "shelves": [
+        "A",
         "H"
       ]
     }

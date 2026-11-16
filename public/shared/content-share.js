@@ -144,14 +144,23 @@
     article.setAttribute('aria-labelledby', headingId);
     article.append(element('p', 'cs-brand', 'SEUNG AI LABS · AI 교육 브리핑'));
     var imageUrl = safeImageUrl(item.image, assetRoot, false);
+    // 사진이 없거나 깨지면 같은 자리에 제목 카드를 보인다(2026-11-16).
+    var figure = element('figure', 'cs-figure');
+    var titleCard = element('div', 'cs-title-card');
+    titleCard.setAttribute('aria-hidden', 'true');
+    var kick = [item.issue, item.field].filter(Boolean).join(' | ');
+    if (kick) titleCard.append(element('span', 'cs-title-card-kick', kick));
+    titleCard.append(element('span', 'cs-title-card-title', item.title), element('span', 'cs-title-card-src', item.source));
     if (imageUrl) {
-      var figure = element('figure', 'cs-figure');
       var image = element('img', 'cs-article-image');
       image.alt = ''; image.referrerPolicy = 'no-referrer'; image.src = imageUrl;
-      image.addEventListener('error', function () { figure.remove(); }, { once: true });
-      figure.append(image, element('figcaption', 'cs-credit', '이미지: ' + item.source));
-      article.append(figure);
+      image.addEventListener('error', function () { figure.classList.add('cs-noimg'); image.remove(); }, { once: true });
+      figure.append(image, titleCard, element('figcaption', 'cs-credit', '이미지: ' + (item.imageCredit || item.source)));
+    } else {
+      figure.classList.add('cs-noimg');
+      figure.append(titleCard);
     }
+    article.append(figure);
     var body = element('div', 'cs-card-body');
     body.append(element('p', 'cs-meta', item.source + ' · ' + item.date));
     var title = element('h2', '', item.title); title.id = headingId; body.append(title);

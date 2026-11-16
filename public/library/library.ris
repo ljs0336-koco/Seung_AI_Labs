@@ -1931,3 +1931,80 @@ KW  - 조달
 KW  - AI 역량
 N1  - 연구 서고 F-11 · 정책 보고서 · 교육 정책·제도
 ER  - 
+
+TY  - BOOK
+AU  - Walker, Seth
+AU  - Fesler, Lily
+AU  - Martinez Claeys, JP
+AU  - Agnew, Chris
+AU  - Loeb, Susanna
+TI  - The Evidence Base on AI in K-12: A November 2026 Review
+PY  - 2026
+DA  - 2026/11/10
+PB  - SCALE Initiative, Stanford University
+DO  - 10.26300/80wn-ca81
+UR  - https://scale.stanford.edu/ai/evidence-base-review/evidence-base-ai-k12-november-review
+KW  - 인과 근거
+KW  - 생성형 AI
+KW  - K-12
+KW  - 근거 종합
+KW  - 교사용 AI
+N1  - 연구 서고 G-12 · 정책 보고서 · AI의 학습 영향
+ER  - 
+
+TY  - RPRT
+AU  - Sungu, Alp
+AU  - Lira, Benjamin
+AU  - Duckworth, Angela Lee
+TI  - Generative AI Can Harm Teaching
+PY  - 2026
+DA  - 2026/07
+PB  - SSRN
+M1  - 7007339
+UR  - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7007339
+KW  - 교사용 AI
+KW  - 수업 준비
+KW  - 내재적 동기
+KW  - 무작위 실험
+KW  - 교사 격차
+N1  - 연구 서고 B-12 · 워킹페이퍼(심사 전) · 교사 AI 역량·연수
+ER  - 
+
+TY  - JOUR
+AU  - Erbaş, Ahmet Akif
+AU  - Topçubaşı, Tolga
+TI  - When AI Is—and Is Not—Needed: AI Literacy and Computational Thinking in Primary STEM
+T2  - Journal of Intelligence
+PY  - 2026
+DA  - 2026/10/12
+PB  - MDPI
+SP  - 257
+DO  - 10.3390/jintelligence14100257
+UR  - https://doi.org/10.3390/jintelligence14100257
+KW  - 초등 AI 리터러시
+KW  - 컴퓨팅 사고
+KW  - 규칙 기반 대 기계학습
+KW  - 피지컬 컴퓨팅
+KW  - 수행평가
+N1  - 연구 서고 A-14 · 동료심사 저널 · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Renzella, Jake
+AU  - Bergh, Christian
+AU  - Banks, Natasha
+AU  - Vassar, Alexandra
+TI  - Gender Differences in AI Literacy Workshop Outcomes and Deepfake Engagement
+PY  - 2026
+DA  - 2026/05/19
+PB  - arXiv
+M3  - arXiv:2606.14718
+DO  - 10.48550/arXiv.2606.14718
+UR  - https://arxiv.org/abs/2606.14718
+KW  - AI 리터러시
+KW  - 딥페이크
+KW  - 성별 차이
+KW  - STEM 진로
+KW  - 아동 안전
+N1  - 연구 서고 A-15 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 

@@ -70,6 +70,7 @@ export function validateNewsManifest(manifest) {
       date: item.date,
       url: webUrl(item.url, `${item.id}.url`),
       image: webUrl(item.image, `${item.id}.image`, { optional: true, relative: true }),
+      imageCredit: typeof item.imageCredit === 'string' ? item.imageCredit.trim() : '',
       exportImage: webUrl(item.exportImage, `${item.id}.exportImage`, { optional: true, relative: true }),
       digest: digestList(item),
       issue: typeof item.issue === 'string' ? item.issue : '',
@@ -83,7 +84,12 @@ export function renderSharePage(item, siteUrl) {
   const pageUrl = new URL(`share/news/${item.id}/`, siteUrl).href;
   const imageUrl = new URL('shared/share-default.png', siteUrl).href;
   const recordJson = JSON.stringify(item).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
-  const picture = item.image ? `<figure class="cs-figure"><img class="cs-article-image" src="${e(new URL(item.image, siteUrl).href)}" alt="" loading="eager" referrerpolicy="no-referrer" onerror="this.parentElement.remove()"><figcaption class="cs-credit">이미지: ${e(item.source)}</figcaption></figure>` : '';
+  // 사진이 없거나 깨지면 같은 자리에 제목 카드를 보인다(2026-11-16).
+  const kick = [item.issue, item.field].filter(Boolean).join(' | ');
+  const titleCard = `<div class="cs-title-card" aria-hidden="true">${kick ? `<span class="cs-title-card-kick">${e(kick)}</span>` : ''}<span class="cs-title-card-title">${e(item.title)}</span><span class="cs-title-card-src">${e(item.source)}</span></div>`;
+  const picture = item.image
+    ? `<figure class="cs-figure"><img class="cs-article-image" src="${e(new URL(item.image, siteUrl).href)}" alt="" loading="eager" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('cs-noimg');this.remove()">${titleCard}<figcaption class="cs-credit">이미지: ${e(item.imageCredit || item.source)}</figcaption></figure>`
+    : `<figure class="cs-figure cs-noimg">${titleCard}</figure>`;
   const description = shareDescription(item);
   const tags = [item.issue, item.field].filter(Boolean).map(tag => `<b>${e(tag)}</b>`).join('');
   const digest = item.digest.length ? `<h2 class="cs-digest-title">자세한 요약</h2><ul class="cs-digest">${item.digest.map(line => `<li>${e(line)}</li>`).join('')}</ul>` : '';

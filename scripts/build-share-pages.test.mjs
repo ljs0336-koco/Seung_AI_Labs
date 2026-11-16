@@ -70,6 +70,19 @@ test('share page shows the whole digest escaped, credits the photo and keeps the
   assert.doesNotMatch(html, /INTERNAL_NOTE_SENTINEL|<b>사실<\/b>/);
 });
 
+test('share page shows a title card without a photo and credits an alternate photo source', async t => {
+  const plain = { ...entry, id: 'n-0000000000000001', title: '사진 없는 <소식>' };
+  const borrowed = { ...entry, id: 'n-0000000000000002', image: 'https://example.org/alt.jpg', imageCredit: '다른 매체' };
+  const root = await fixture(t, manifest([plain, borrowed]));
+  await buildSharePages({ root });
+  const noPhoto = await readFile(join(root, 'public', 'share', 'news', plain.id, 'index.html'), 'utf8');
+  assert.match(noPhoto, /<figure class="cs-figure cs-noimg"><div class="cs-title-card" aria-hidden="true"><span class="cs-title-card-kick">2026-10-27 \| AI 교육<\/span><span class="cs-title-card-title">사진 없는 &lt;소식&gt;<\/span><span class="cs-title-card-src">공식 연구소<\/span><\/div><\/figure>/);
+  assert.doesNotMatch(noPhoto, /cs-credit/);
+  const withPhoto = await readFile(join(root, 'public', 'share', 'news', borrowed.id, 'index.html'), 'utf8');
+  assert.match(withPhoto, /onerror="this\.parentElement\.classList\.add\('cs-noimg'\);this\.remove\(\)"/);
+  assert.match(withPhoto, /<figcaption class="cs-credit">이미지: 다른 매체<\/figcaption>/);
+});
+
 test('digest must be a short list of non-empty sentences', () => {
   for (const bad of ['문장', ['ok', ''], ['가'.repeat(301)], Array(9).fill('문장'), Array(6).fill('가'.repeat(280))]) {
     assert.throws(() => validateNewsManifest(manifest([{ ...entry, digest: bad }])), /digest/);
