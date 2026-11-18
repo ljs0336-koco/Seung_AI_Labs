@@ -23,30 +23,35 @@ export const MONTHS = [
 ];
 
 export const DUTIES = [
-  { id: 'h1', name: '1학년 담임', group: 'homeroom' },
-  { id: 'h2', name: '2학년 담임', group: 'homeroom' },
-  { id: 'h3', name: '3학년 담임', group: 'homeroom' },
-  { id: 'h4', name: '4학년 담임', group: 'homeroom' },
-  { id: 'h5', name: '5학년 담임', group: 'homeroom' },
-  { id: 'h6', name: '6학년 담임', group: 'homeroom' },
-  { id: 'd-kyomu', name: '교무기획', group: 'admin' },
-  { id: 'd-research', name: '교육연구', group: 'admin' },
-  { id: 'd-safety', name: '생활안전', group: 'admin' },
-  { id: 'd-creative', name: '창의체험', group: 'admin' },
-  { id: 'd-media', name: '정보미디어', group: 'admin' },
-  { id: 'd-health', name: '보건·영양', group: 'admin' },
+  { id: 'h1', name: '1학년 담임', group: 'homeroom', short: '1학년' },
+  { id: 'h2', name: '2학년 담임', group: 'homeroom', short: '2학년' },
+  { id: 'h3', name: '3학년 담임', group: 'homeroom', short: '3학년' },
+  { id: 'h4', name: '4학년 담임', group: 'homeroom', short: '4학년' },
+  { id: 'h5', name: '5학년 담임', group: 'homeroom', short: '5학년' },
+  { id: 'h6', name: '6학년 담임', group: 'homeroom', short: '6학년' },
+  { id: 'd-kyomu', name: '교무기획', group: 'admin', short: '교무기획' },
+  { id: 'd-research', name: '교육연구', group: 'admin', short: '교육연구' },
+  { id: 'd-safety', name: '생활안전', group: 'admin', short: '생활안전' },
+  { id: 'd-creative', name: '창의체험', group: 'admin', short: '창의체험' },
+  { id: 'd-media', name: '정보미디어', group: 'admin', short: '정보미디어' },
+  { id: 'd-health', name: '보건·영양', group: 'admin', short: '보건·영양' },
 ];
 
 export const MONTH_EVENTS = [
-  { id: 'ev-03-1', month: 3, date: '2026-03-03', title: '시업식 및 신입생 입학식' },
-  { id: 'ev-05-1', month: 5, date: '2026-05-14', title: '봄 학년별 현장체험학습' },
-  { id: 'ev-10-1', month: 10, date: '2026-10-16', title: '가을 한마음 체육대회' },
-  { id: 'ev-11-1', month: 11, date: '2026-11-04', title: '가을 독서 주간 개막' },
-  { id: 'ev-11-2', month: 11, date: '2026-11-11', title: '교직원 동절기 안전 연수' },
-  { id: 'ev-11-3', month: 11, date: '2026-11-19', title: '전 학년 학급 공개수업의 날' },
-  { id: 'ev-11-4', month: 11, date: '2026-11-25', title: '2학기 학부모 상담 주간 시작' },
-  { id: 'ev-12-1', month: 12, date: '2026-12-29', title: '겨울방학식' },
-  { id: 'ev-02-1', month: 2, date: '2027-02-12', title: '종업식 및 졸업식' },
+  { id: 'ev-03-1', month: 3, date: '2026-03-03', title: '시업식 및 신입생 입학식', dutyId: 'd-kyomu' },
+  { id: 'ev-04-1', month: 4, date: '2026-04-17', title: '봄 학부모 공개수업', dutyId: 'd-research' },
+  { id: 'ev-05-1', month: 5, date: '2026-05-14', title: '봄 학년별 현장체험학습', dutyId: 'd-creative' },
+  { id: 'ev-06-1', month: 6, date: '2026-06-19', title: '1학기 학교자율시간 나눔의 날', dutyId: 'd-research' },
+  { id: 'ev-07-1', month: 7, date: '2026-07-22', title: '여름방학식', dutyId: 'd-kyomu' },
+  { id: 'ev-09-1', month: 9, date: '2026-09-01', title: '2학기 개학 및 시업 조회', dutyId: 'd-kyomu' },
+  { id: 'ev-10-1', month: 10, date: '2026-10-16', title: '가을 한마음 체육대회', dutyId: 'd-creative' },
+  { id: 'ev-11-1', month: 11, date: '2026-11-04', title: '가을 독서 주간 개막', dutyId: 'd-creative' },
+  { id: 'ev-11-2', month: 11, date: '2026-11-11', title: '교직원 동절기 안전 연수', dutyId: 'd-safety' },
+  { id: 'ev-11-3', month: 11, date: '2026-11-18', title: '수요 교직원 협의회', dutyId: 'd-kyomu' },
+  { id: 'ev-11-4', month: 11, date: '2026-11-19', title: '전 학년 학급 공개수업의 날', dutyId: 'd-research' },
+  { id: 'ev-11-5', month: 11, date: '2026-11-25', title: '2학기 학부모 상담 주간 시작', dutyId: 'h1' },
+  { id: 'ev-12-1', month: 12, date: '2026-12-29', title: '겨울방학식', dutyId: 'd-kyomu' },
+  { id: 'ev-02-1', month: 2, date: '2027-02-12', title: '종업식 및 졸업식', dutyId: 'd-kyomu' },
 ];
 
 export const INITIAL_TASKS = [
@@ -135,6 +140,27 @@ export const INITIAL_TASKS = [
     submission: null,
   },
   {
+    id: 't-11-w2-2',
+    month: 11,
+    weekLabel: '11월 2주차',
+    dueDate: '2026-11-14',
+    dutyId: 'h3',
+    category: 'draft',
+    typeLabel: '기안',
+    status: 'confirmed',
+    done: true,
+    title: '3학년 고장 문화재 탐방 버스 임차 정산',
+    note: '체험활동 참가 확인서와 영수증을 첨부해 정산 기안을 올립니다.',
+    folderPath: '교내공유폴더 > 2026 > 3학년연구실 > 현장체험',
+    sourceTitle: '예시문서-1100 체험학습 정산 안내',
+    sourceExcerpt: '체험학습 종료 후 1주 이내에 차량 이용 내역과 참가 학생 명단을 확인해 정산 품의를 완료한다.',
+    checklist: [
+      { id: 'c-114a', text: '차량 영수증 대조', done: true },
+      { id: 'c-114b', text: '정산 기안 결재 완료', done: true },
+    ],
+    submission: null,
+  },
+  {
     id: 't-11-w3-1',
     month: 11,
     weekLabel: '11월 3주차',
@@ -213,7 +239,7 @@ export const INITIAL_TASKS = [
     typeLabel: '수합',
     status: 'confirmed',
     done: false,
-    title: '학예 발표회 학급별 무대 순서 및 음원 목록 수합',
+    title: '2학기 학예 발표회 학급별 무대 순서 및 음원 목록 수합',
     note: '음원 파일은 교내 공유폴더에 학년·반 이름으로 넣어 주세요.',
     folderPath: '교내공유폴더 > 2026 > 창의체험 > 학예발표회',
     sourceTitle: '예시문서-1106 학예발표회 진행 안내',
@@ -226,7 +252,7 @@ export const INITIAL_TASKS = [
       targetDutyIds: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       submittedDutyIds: ['h1', 'h2', 'h4', 'h5', 'h6'],
       nudged: false,
-      messengerTemplate: '안녕하세요, 창의체험 담당입니다. 학예 발표회 무대 순서 및 음원 목록 제출 마감(11/24) 안내드립니다. 3학년 학급 순서와 음원을 확인 후 회신 부탁드립니다.',
+      messengerTemplate: '안녕하세요, 예시초 창의체험 담당입니다. 학예 발표회 무대 순서 및 음원 목록 제출 마감(11/24) 안내드립니다. 3학년 학급 순서와 음원을 확인 후 회신 부탁드립니다.',
     },
   },
   {
@@ -282,7 +308,7 @@ export const INITIAL_TASKS = [
     status: 'confirmed',
     done: false,
     title: '차년도 교육과정 편성 교원 희망 설문 수합',
-    note: '희망 학년 및 자율시간 운영 의견을 익명 집계표가 아닌 학년 대표 취합본으로 제출합니다.',
+    note: '희망 학년 및 자율시간 운영 의견을 학년 대표 취합본으로 제출합니다.',
     folderPath: '교내공유폴더 > 2026 > 교육연구 > 차년도편성',
     sourceTitle: '예시문서-1109 교육과정 평가 일정',
     sourceExcerpt: '11월 27일(금)까지 학년별 교육과정 반성 및 차년도 편성 의견을 수합한다.',
@@ -294,7 +320,7 @@ export const INITIAL_TASKS = [
       targetDutyIds: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       submittedDutyIds: ['h1', 'h3', 'h4', 'h5'],
       nudged: false,
-      messengerTemplate: '안녕하세요, 교육연구 담당입니다. 차년도 교육과정 편성 희망 설문 마감이 11/27(금)입니다. 2학년·6학년 담임 선생님께서는 편하신 시간에 응답 부탁드립니다.',
+      messengerTemplate: '안녕하세요, 예시초 교육연구 담당입니다. 차년도 교육과정 편성 희망 설문 마감이 11/27(금)입니다. 2학년·6학년 담임 선생님께서는 편하신 시간에 응답 부탁드립니다.',
     },
   },
   {
@@ -358,35 +384,309 @@ export const INITIAL_TASKS = [
     ],
     submission: null,
   },
+  {
+    id: 't-12-2',
+    month: 12,
+    weekLabel: '12월 3주차',
+    dueDate: '2026-12-18',
+    dutyId: 'd-media',
+    category: 'draft',
+    typeLabel: '기안',
+    status: 'confirmed',
+    done: false,
+    title: '겨울방학 전 교실 방송·네트워크 장비 점검 품의',
+    note: '학급별 전자칠판·무선 AP 이상 여부를 파악해 보수 예산을 집행합니다.',
+    folderPath: '교내공유폴더 > 2026 > 정보미디어 > 방학점검',
+    sourceTitle: '예시문서-1205 방학 전 시설 점검 계획',
+    sourceExcerpt: '12월 18일까지 교내 방송장비와 교실 무선 네트워크 점검 결과를 정리해 품의를 완료한다.',
+    checklist: [
+      { id: 'c-1202', text: '교실 무선 AP 점검표 회수', done: false },
+      { id: 'c-1203', text: '보수 업체 방문 일정 협의', done: false },
+    ],
+    submission: null,
+  },
 ];
 
-export const SCOPE_GUIDE_COPY = {
-  upload: {
-    title: '자료 올리기 (1차 개선안 범위 안내)',
-    paragraphs: [
-      '기존 프로토타입에서 별도 탭으로 나뉘어 있던 [학사력 불러오기]와 [자료 → 업무 변환]을 상단 [+ 자료 올리기] 버튼 하나로 합치는 구성을 제안합니다.',
-      '이번 1차 시연 앱에서는 가장 많이 쓰이는 [업무 지도] 한 화면과 모바일 반응형·필터·수합 상세 흐름에 집중해 구현했습니다.',
+export const UPLOAD_NOTICE_PRESETS = [
+  {
+    id: 'preset-counsel',
+    label: '공문 예시 1 · 학부모 상담주간',
+    docTitle: '예시공문-1114 2학기 학부모 상담주간 운영 안내',
+    rawText: `[예시공문-1114] 2026학년도 2학기 학부모 상담주간 운영 협조\n\n1. 운영 기간: 2026년 11월 25일(수) ~ 12월 1일(화)\n2. 대상: 전 학년 담임교사 및 학부모\n3. 협조 사항:\n  - 각 학급 담임교사는 11월 23일(월)까지 가정통신문 회신 및 온라인 신청 내역을 취합해 상담 시간표를 확정한다.\n  - 교무기획 담당은 11월 21일(토) 전후로 특별실(상담실) 예약 현황표를 교내 공유폴더에 게시한다.\n  - 상담 종료 후 특이 지원이 필요한 학생은 교육연구 담당과 연계한다.`,
+    drafts: [
+      {
+        title: '2학기 학부모 상담 시간표 최종 확정 및 가정 안내',
+        dueDate: '2026-11-23',
+        dutyId: 'h1',
+        category: 'task',
+        highlightQuote: '각 학급 담임교사는 11월 23일(월)까지 가정통신문 회신 및 온라인 신청 내역을 취합해 상담 시간표를 확정한다.',
+        checklistText: '온라인·종이 회신 대조, 대면/전화 구분 표기, 확정 시간표 알림장 발송',
+        folderPath: '교내공유폴더 > 2026 > 1학년연구실 > 상담주간',
+      },
+      {
+        title: '상담주간 교내 특별실 예약 현황표 게시 및 공유',
+        dueDate: '2026-11-21',
+        dutyId: 'd-kyomu',
+        category: 'draft',
+        highlightQuote: '교무기획 담당은 11월 21일(토) 전후로 특별실(상담실) 예약 현황표를 교내 공유폴더에 게시한다.',
+        checklistText: '위클래스·다목적실 가용 시간 확인, 공유폴더 예약표 업로드',
+        folderPath: '교내공유폴더 > 2026 > 교무기획 > 상담실배정',
+      },
     ],
   },
-  handover: {
-    title: '인수인계 노트 (1차 개선안 범위 안내)',
-    paragraphs: [
-      '인수인계 카드를 업무 지도 안의 담당 필터와 연동해, 학년·부서를 넘겨받는 교사가 과장 문구 없이 핵심 요령과 공유폴더 위치만 깔끔하게 확인할 수 있게 정리할 예정입니다.',
-      '이번 시연에서는 [업무 지도]에서 각 업무 상세 서랍 안에 원문 근거와 폴더 위치를 담는 방식으로 먼저 확인하실 수 있습니다.',
+  {
+    id: 'preset-care',
+    label: '공문 예시 2 · 겨울방학 돌봄 수요조사',
+    docTitle: '예시공문-1116 겨울방학 중 초등돌봄교실 수요조사 수합',
+    rawText: `[예시공문-1116] 겨울방학 중 초등돌봄교실 참여 수요조사 알림\n\n1. 제출 마감: 2026년 12월 4일(금) 16:00까지\n2. 주관 부서: 창의체험 담당\n3. 제출 대상: 1학년~6학년 담임교사\n4. 내용: 학급별 희망 학생 수 및 귀가 보호자 동행 여부를 요약표에 입력하여 제출한다.`,
+    drafts: [
+      {
+        title: '겨울방학 중 초등돌봄교실 참여 수요조사 수합',
+        dueDate: '2026-12-04',
+        dutyId: 'd-creative',
+        category: 'collect',
+        highlightQuote: '제출 마감: 2026년 12월 4일(금) 16:00까지 · 학급별 희망 학생 수 및 귀가 보호자 동행 여부를 요약표에 입력하여 제출한다.',
+        checklistText: '가정통신문 링크 배부, 학년별 요약표 수합, 미제출 학급 재안내',
+        folderPath: '교내공유폴더 > 2026 > 창의체험 > 겨울방학돌봄',
+      },
     ],
   },
-  chat: {
-    title: '업무 질문 (1차 개선안 범위 안내)',
-    paragraphs: [
-      '챗봇에서 다른 탭으로 이동해도 대화 내용이 유지되고, 질문과 무관한 문서가 [공식 근거]로 묶이지 않도록 근거 검증을 강화하는 개선안을 별도 보고서에 정리했습니다.',
-      '이번 시연에서는 로그인·서버 API 연결 없이 눌러 볼 수 있도록 [업무 지도] 핵심 흐름만 먼저 공개합니다.',
+  {
+    id: 'preset-library',
+    label: '회의자료 예시 3 · 학기말 도서실 장서점검',
+    docTitle: '예시안내-1118 학기말 도서실 장서점검 협조',
+    rawText: `[교직원 협의회 안내] 학기말 도서실 장서점검 및 도서 반납 주간 운영\n\n- 도서 반납 집중 기간: 12월 7일(월) ~ 12월 14일(월)\n- 각 학년 담임교사는 12월 14일(월)까지 학급 문고와 미반납 도서를 도서실로 일괄 반납한다.\n- 창의체험 담당은 12월 16일(수)까지 파손·분실 도서 목록 기안을 완료한다.`,
+    drafts: [
+      {
+        title: '학기말 학급 문고 및 미반납 도서 일괄 반납',
+        dueDate: '2026-12-14',
+        dutyId: 'h1',
+        category: 'task',
+        highlightQuote: '각 학년 담임교사는 12월 14일(월)까지 학급 문고와 미반납 도서를 도서실로 일괄 반납한다.',
+        checklistText: '미반납 학생 명단 확인, 학급 문고 상자 도서실 이동',
+        folderPath: '교내공유폴더 > 2026 > 도서실 > 장서점검',
+      },
+      {
+        title: '학기말 파손·분실 도서 제적 및 보충 기안',
+        dueDate: '2026-12-16',
+        dutyId: 'd-creative',
+        category: 'draft',
+        highlightQuote: '창의체험 담당은 12월 16일(수)까지 파손·분실 도서 목록 기안을 완료한다.',
+        checklistText: '바코드 스캔 점검 결과 정리, 제적 품의 기안 상신',
+        folderPath: '교내공유폴더 > 2026 > 창의체험 > 도서정리',
+      },
     ],
   },
-  settings: {
-    title: '설정 (단일 진입점 통일 안내)',
-    paragraphs: [
-      '기존에는 상단 [설정·지표] 버튼과 주 메뉴의 [환경설정·보안] 탭이 같은 화면으로 중복 연결되어 있었습니다.',
-      '개선안에서는 우측 상단 [설정] 아이콘 1곳으로 통일해 주 메뉴 탭을 4개로 단순화했습니다. (이 시연 앱은 서버 연결·계정 변경 없이 동작합니다.)',
+];
+
+export const UPLOAD_CALENDAR_PRESET = [
+  { id: 'cal-1', dueDate: '2026-12-03', title: '12월 교직원 안전보건 정기 점검', dutyId: 'd-safety', category: 'task', selected: true },
+  { id: 'cal-2', dueDate: '2026-12-10', title: '2학기 학교교육과정 평가회 자료 수합', dutyId: 'd-research', category: 'collect', selected: true },
+  { id: 'cal-3', dueDate: '2026-12-22', title: '겨울방학 중 학생 생활안전 안내 가정통신문', dutyId: 'd-safety', category: 'draft', selected: true },
+  { id: 'cal-4', dueDate: '2026-12-29', title: '겨울방학식 식순 및 방송 점검', dutyId: 'd-kyomu', category: 'task', selected: false },
+];
+
+export const INITIAL_UPLOAD_HISTORY = [
+  {
+    id: 'uh-1',
+    reflectedAt: '2026-11-02',
+    docType: '공문 본문',
+    docTitle: '예시문서-1102 동절기 시설안전 점검 안내',
+    extractedCount: 1,
+    status: '확정 1건',
+  },
+  {
+    id: 'uh-2',
+    reflectedAt: '2026-11-05',
+    docType: '학사일정표',
+    docTitle: '2026학년도 2학기 교무 학사운영표(예시)',
+    extractedCount: 3,
+    status: '확정 2 · 초안 1',
+  },
+  {
+    id: 'uh-3',
+    reflectedAt: '2026-11-06',
+    docType: '공문 본문',
+    docTitle: '예시문서-1106 학예발표회 진행 안내',
+    extractedCount: 1,
+    status: '확정 1건',
+  },
+  {
+    id: 'uh-4',
+    reflectedAt: '2026-11-09',
+    docType: '공문 본문',
+    docTitle: '예시문서-1109 교육과정 평가 일정',
+    extractedCount: 1,
+    status: '확정 1건',
+  },
+];
+
+export const INITIAL_HANDOVER_CARDS = [
+  {
+    id: 'ho-h1',
+    dutyId: 'h1',
+    title: '1학년 담임 학년 운영 및 기초생활 지도 노트',
+    ownerLabel: '전임 1학년 부장 (가상)',
+    updatedAt: '2026-02-25',
+    summary: '3월 입학 초기 적응 주간부터 11월 공개수업·학부모 상담, 12월 생활통지표 작성까지 1학년 담임 연간 흐름을 정리했습니다.',
+    folderPath: '교내공유폴더 > 2026 > 1학년연구실 > 인수인계',
+    sourceTitle: '예시문서-0225 1학년 운영 인수인계서',
+    timeline: [
+      { monthLabel: '3월', text: '입학 적응 주간 이름표·하교 동선표 제작 및 돌봄 명단 대조' },
+      { monthLabel: '5월', text: '기초 한글·수해력 진단 1차 실시 및 개별 관찰 메모' },
+      { monthLabel: '11월', text: '학급 공개수업 안내장 배부 및 2학기 학부모 상담 일정 조율' },
+      { monthLabel: '12월', text: '생활통지표 문구 점검 및 예비소집 안내 지원' },
+    ],
+    tips: [
+      '공개수업 전날 오후에 복도 작품 게시와 참관 동선 화살표를 함께 붙이면 당일 혼선이 없습니다.',
+      '학부모 상담 신청을 받을 때 대면·전화 구분 칸을 미리 분리해 두면 시간 조정이 빨라집니다.',
+      '수합 요청이 들어올 때 학년 공통 양식 사본을 1학년연구실 폴더에 먼저 올려두면 반별 작업이 수월합니다.',
+    ],
+    messengerQuestionTemplate: '안녕하세요, 올해 1학년 담임 맡은 교사입니다. [1학년 담임 운영 노트] 관련하여 혹시 작년에 쓰셨던 상담 시간표 양식 위치가 공유폴더 어느 경로였는지 여쭤봐도 될까요?',
+    qaList: [
+      {
+        id: 'qa-h1-1',
+        author: '현임 1학년 담임',
+        question: '공개수업 참관록 회수함은 교무실에서 대여하나요?',
+        answer: '창의체험·교육연구 공동 비품함에 아크릴 회수함이 6개 보관되어 있습니다. 학년 대표가 전날 한 번에 수령하면 됩니다.',
+        createdAt: '2026-11-10',
+        byPredecessor: true,
+      },
     ],
   },
-};
+  {
+    id: 'ho-safety',
+    dutyId: 'd-safety',
+    title: '생활안전 연간 점검·수합 및 시설 연계 노트',
+    ownerLabel: '전임 생활안전 담당 (가상)',
+    updatedAt: '2026-02-24',
+    summary: '계절별 안전점검(봄 현장체험·여름 물놀이·겨울 난방기/콘센트) 수합과 행정실 시설 연계 절차를 정리했습니다.',
+    folderPath: '교내공유폴더 > 2026 > 생활안전 > 연간점검',
+    sourceTitle: '예시문서-0224 생활안전 인수인계서',
+    timeline: [
+      { monthLabel: '3월', text: '교내 안전사고 예방 계획 기안 및 등하교 지킴이 일정 안내' },
+      { monthLabel: '6월', text: '여름철 풍수해·물놀이 안전교육 주간 운영 및 가정 안내' },
+      { monthLabel: '11월', text: '동절기 교실 난방기·멀티탭 안전점검표 전 학급 수합 → 행정실 공유' },
+    ],
+    tips: [
+      '수합 문서는 마감 D-2 시점에 미제출 학년만 추려 쿨메신저 정중 안내 문구로 한 번 더 알려드리면 당일 마감이 됩니다.',
+      '전열기구·멀티탭 노후 사진이 올라온 학급은 행정실 시설 담당자와 공유폴더 링크로 바로 연결하세요.',
+      '교직원 안전 연수는 연수 이수 서명부를 스캔해 연도별 폴더에 보관해야 차년도 점검 때 바로 찾을 수 있습니다.',
+    ],
+    messengerQuestionTemplate: '안녕하세요, 올해 생활안전 담당을 맡았습니다. [동절기 난방기 안전점검표 수합] 이후 행정실 전달 시 별도 공문 기안이 필요했는지, 요약표 공유만으로 갈음했는지 확인 부탁드립니다.',
+    qaList: [
+      {
+        id: 'qa-safety-1',
+        author: '현임 생활안전 담당',
+        question: '난방기 점검표 취합본은 행정실에 내부 메신저로만 보내면 되나요?',
+        answer: '네, 수합 취합본 파일을 공유폴더에 저장한 뒤 내부결재 1건과 함께 행정실 주무관님께 경로를 알려드리면 됩니다.',
+        createdAt: '2026-11-15',
+        byPredecessor: true,
+      },
+    ],
+  },
+  {
+    id: 'ho-creative',
+    dutyId: 'd-creative',
+    title: '창의체험 · 독서주간 · 학예발표회 운영 노트',
+    ownerLabel: '전임 창의체험 담당 (가상)',
+    updatedAt: '2026-02-24',
+    summary: '봄 현장체험학습, 가을 독서 주간, 11월 2학기 학예 발표회 무대·음원 수합 및 방송실 사전 테스트 절차입니다.',
+    folderPath: '교내공유폴더 > 2026 > 창의체험 > 행사운영',
+    sourceTitle: '예시문서-0224 창의체험 인수인계서',
+    timeline: [
+      { monthLabel: '4월', text: '현장체험학습 사전답사 및 차량·안전요원 계약 품의' },
+      { monthLabel: '11월 1주', text: '가을 독서 주간 추천 도서 전시 코너 운영' },
+      { monthLabel: '11월 4주', text: '2학기 학예 발표회 학급별 무대 순서 및 음원 파일 수합 (방송실 사전 테스트)' },
+      { monthLabel: '12월', text: '겨울방학 돌봄·특기적성 연계 일정 확인' },
+    ],
+    tips: [
+      '학예 발표회 음원은 파일명 규칙을 `1-1_합창_반주.mp3`처럼 예시와 함께 안내해야 방송실 재생 오류가 줄어듭니다.',
+      '방송실 사전 테스트는 수합 마감 다음 날 오후 3시 이후로 잡아 한꺼번에 확인하면 무대 당일 사고가 없습니다.',
+      '추천 도서 전시 라벨 파일은 `창의체험 > 독서주간` 폴더의 한글 템플릿을 그대로 재사용하시면 됩니다.',
+    ],
+    messengerQuestionTemplate: '안녕하세요, 올해 창의체험 담당입니다. [2학기 학예 발표회] 음원 사전 테스트 때 방송실 연결 케이블이나 USB 포맷 유의사항이 있었을까요?',
+    qaList: [
+      {
+        id: 'qa-creative-1',
+        author: '현임 창의체험 담당',
+        question: '학예회 음원은 MP3만 받나요, 영상 파일도 함께 받나요?',
+        answer: '기본은 MP3 음원으로 통일해 받고, 배경 영상이 꼭 필요한 학급만 방송실 담당과 사전에 해상도 테스트를 진행했습니다.',
+        createdAt: '2026-11-12',
+        byPredecessor: true,
+      },
+    ],
+  },
+  {
+    id: 'ho-kyomu',
+    dutyId: 'd-kyomu',
+    title: '교무기획 월간 학사운영 · 교직원 회의 노트',
+    ownerLabel: '전임 교무부장 (가상)',
+    updatedAt: '2026-02-23',
+    summary: '매월 20일 차월 학사운영 계획 기안, 교직원 협의회 안건 취합, 학기 초·말 주요 식순 운영 절차입니다.',
+    folderPath: '교내공유폴더 > 2026 > 교무기획 > 운영지침',
+    sourceTitle: '예시문서-0223 교무기획 인수인계서',
+    timeline: [
+      { monthLabel: '3월', text: '시업식·입학식 식순 기안 및 연간 학사력 공지' },
+      { monthLabel: '매월 20일', text: '부서별 차월 행사 일정 취합 → 월간 학사운영 계획 기안' },
+      { monthLabel: '12·2월', text: '겨울방학식·종업식·졸업식 학사 일정 최종 점검' },
+    ],
+    tips: [
+      '매월 17일경 각 부서 행사 변동 여부를 먼저 확인해 두어야 20일 월간 계획 기안이 지연되지 않습니다.',
+      '특별실 배정표는 변경 이력이 남도록 날짜가 붙은 버전명(`_1121`)으로 저장하세요.',
+    ],
+    messengerQuestionTemplate: '안녕하세요, 올해 교무기획 맡은 교사입니다. [월간 학사운영 계획] 기안 시 첨부하는 학사력 서식은 작년도 서식에서 날짜만 수정하면 될까요?',
+    qaList: [],
+  },
+  {
+    id: 'ho-research',
+    dutyId: 'd-research',
+    title: '교육연구 · 공개수업 · 차년도 교육과정 편성 노트',
+    ownerLabel: '전임 연구부장 (가상)',
+    updatedAt: '2026-02-23',
+    summary: '전 학년 공개수업 운영, 자율시간 운영 정리, 11월 말 차년도 교육과정 편성 희망 설문 수합 절차입니다.',
+    folderPath: '교내공유폴더 > 2026 > 교육연구 > 교육과정',
+    sourceTitle: '예시문서-0223 교육연구 인수인계서',
+    timeline: [
+      { monthLabel: '4월·11월', text: '학년별 학급 공개수업 일정 조율 및 참관 안내' },
+      { monthLabel: '11월 4주', text: '차년도 교육과정 편성 교원 희망 설문 학년별 수합' },
+      { monthLabel: '12월', text: '학년말 교육과정 반성 및 차년도 시수표 초안 정리' },
+    ],
+    tips: [
+      '차년도 교육과정 설문은 학년 대표 선생님이 취합본 1부로 제출하게 안내하면 누락 학년을 파악하기 쉽습니다.',
+      '공개수업 참관 동선표는 1주일 전에 교무실 게시판과 공유폴더에 동시 게시하세요.',
+    ],
+    messengerQuestionTemplate: '안녕하세요, 올해 교육연구 담당입니다. [차년도 교육과정 편성 희망 설문] 결과는 학년별 요약표만 교육과정위원회에 올렸나요?',
+    qaList: [],
+  },
+  {
+    id: 'ho-media',
+    dutyId: 'd-media',
+    title: '정보미디어 태블릿 충전함 · 교실 장비 점검 노트',
+    ownerLabel: '전임 정보부장 (가상)',
+    updatedAt: '2026-02-22',
+    summary: '공용 태블릿 충전함 월말 점검, 소모품 교체 신청, 방학 전 교실 무선 AP·방송장비 점검 기준입니다.',
+    folderPath: '교내공유폴더 > 2026 > 정보미디어 > 기기관리',
+    sourceTitle: '예시문서-0222 정보미디어 인수인계서',
+    timeline: [
+      { monthLabel: '3월', text: '학급별 스마트기기·무선 AP 초기 세팅 점검' },
+      { monthLabel: '매월 말', text: '충전함 전원 타이머 및 케이블 불량 수량 파악 → 소모품 신청' },
+      { monthLabel: '12월', text: '겨울방학 전 전자칠판·네트워크 보수 품의' },
+    ],
+    tips: [
+      '충전 케이블은 학년별 여유분을 미리 20% 확보해 두면 수업 직전 교체 요청에 바로 대응할 수 있습니다.',
+      '장애 접수 시 호실 번호와 증상을 한 줄로 받아두면 방문 수리 시간이 절반으로 줄어듭니다.',
+    ],
+    messengerQuestionTemplate: '안녕하세요, 올해 정보미디어 담당입니다. [태블릿 충전함 케이블 교체]는 분기별 소모품 일괄 구입으로 진행하셨는지 여쭤봅니다.',
+    qaList: [],
+  },
+];
+
+export const BLOCKED_ROSTER_DEMO_CSV = '이름,학번,학년반,비고\n가상학생A,20260101,1학년 1반,테스트\n가상학생B,20260102,1학년 1반,테스트';
+
+export const CHAT_SAMPLE_QUESTIONS = [
+  '2학기 학예 발표회 음원 제출 마감일과 공유폴더 위치는?',
+  '동절기 난방기 안전점검표 아직 안 낸 학년이 어디야?',
+  '1학년 학급 공개수업 준비할 때 전임자 팁 있어?',
+  '교직원 주차장 차단기 야간 비밀번호 알려줘',
+];
