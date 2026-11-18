@@ -9,11 +9,11 @@
 
 ## 시연 링크 및 로컬 실행 방법
 
-### 1) `main` 병합 후 GitHub Pages 시연 주소 형식
+### 1) 공개 시연 링크 (GitHub Pages)
 ```text
 https://ljs0336-koco.github.io/Seung_AI_Labs/apps/teachermate-map/
 ```
-*(작업 브랜치 `maru/teachermate-map-demo-20261118`를 `main`에 병합하고 GitHub Pages 배포가 완료되면 위 주소로 열립니다.)*
+*(포털 목록에는 노출하지 않고 직접 시연 링크로 공유하는 독립 페이지입니다.)*
 
 ### 2) 폴더·ZIP 압축 해제 후 로컬에서 바로 실행하기
 ES 모듈(`type="module"`)을 사용하므로 `file://` 직접 열기 대신 폴더 안에서 정적 웹 서버로 띄워 주세요.
