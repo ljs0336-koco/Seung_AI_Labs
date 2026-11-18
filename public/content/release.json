@@ -1,5 +1,5 @@
 {
-  "revision": 19,
+  "revision": 20,
   "items": [
     {
       "id": "briefing",
@@ -60,6 +60,10 @@
     {
       "id": "proposal-roadmap",
       "href": "./proposal-roadmap/index.html"
+    },
+    {
+      "id": "teachermate-map",
+      "href": "./apps/teachermate-map/index.html"
     },
     {
       "id": "logo-studio",

@@ -20,3 +20,11 @@ test('lecture shortcuts represent lectures and keep RL inside the high-school le
   assert.ok(children.some(x=>x.href==='./hub/index.html#snu'));
   assert.equal(children.some(x=>x.href.includes('robotdog_rl')),false);
 });
+test('TeacherMate sample app is accessible from base personal section without appearing on public portal or playground',()=>{
+  const tm=catalog.items.find(x=>x.id==='teachermate-map');
+  assert.ok(tm);
+  assert.equal(tm.href,'./apps/teachermate-map/index.html');
+  assert.equal(tm.section,'personal');
+  assert.equal(tm.placement,'base');
+  assert.equal(tm.status,'live');
+});

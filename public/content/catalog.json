@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 19,
+  "revision": 20,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -219,6 +219,16 @@
       "title": "박사논문 로드맵",
       "description": "졸업까지 날짜·시기별 할 일 · 연구자와 책임자",
       "href": "./proposal-roadmap/index.html",
+      "section": "personal",
+      "placement": "base",
+      "status": "live"
+    },
+    {
+      "id": "teachermate-map",
+      "kind": "link",
+      "title": "TeacherMate · 가상 학교 업무 앱",
+      "description": "업무 지도·월간 달력·자료 올리기·인수인계·업무 질문·백업 복원 시연",
+      "href": "./apps/teachermate-map/index.html",
       "section": "personal",
       "placement": "base",
       "status": "live"

@@ -28,6 +28,7 @@ export const FALLBACK_CATALOG = {
     { id: 'kansai', title: 'KANSAI NOTES · 겨울 간사이 3박 4일', description: '취향별 두 여행가이드', href: './kansai-travel-guide/index.html', section: 'personal', placement: 'base', status: 'live' },
     { id: 'kansai-couple', title: '느긋한 커플편', href: './kansai-travel-guide/couple.html', parent: 'kansai', section: 'personal', placement: 'base', status: 'live' },
     { id: 'kansai-pokemon', title: '포켓몬 원정대편', href: './kansai-travel-guide/pokemon.html', parent: 'kansai', section: 'personal', placement: 'base', status: 'live' },
+    { id: 'teachermate-map', title: 'TeacherMate · 가상 학교 업무 앱', description: '업무 지도·월간 달력·자료 올리기·인수인계·업무 질문·백업 복원 시연', href: './apps/teachermate-map/index.html', section: 'personal', placement: 'base', status: 'live' },
   ],
 };
 
