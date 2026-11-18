@@ -1,7 +1,8 @@
 export const DEMO_TODAY = '2026-11-18';
 
 export const SCHOOL_INFO = {
-  name: '새솔초등학교',
+  name: '예시초등학교(가상)',
+  shortName: '예시초',
   schoolYear: '2026학년도',
   defaultMonth: 11,
 };
@@ -178,7 +179,7 @@ export const INITIAL_TASKS = [
       targetDutyIds: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       submittedDutyIds: ['h1', 'h2', 'h3', 'h4'],
       nudged: false,
-      messengerTemplate: '안녕하세요, 새솔초 생활안전 담당입니다. 동절기 교실 난방기·멀티탭 안전점검표 제출 마감(11/20)이 다가오고 있습니다. 아직 제출 전이신 5학년·6학년 담임 선생님께서는 확인 부탁드립니다. 감사합니다.',
+      messengerTemplate: '안녕하세요, 예시초 생활안전 담당입니다. 동절기 교실 난방기·멀티탭 안전점검표 제출 마감(11/20)이 다가오고 있습니다. 아직 제출 전이신 5학년·6학년 담임 선생님께서는 확인 부탁드립니다. 감사합니다.',
     },
   },
   {

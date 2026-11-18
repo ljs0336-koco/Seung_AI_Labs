@@ -14,10 +14,10 @@ function cloneInitialTasks() {
     checklist: task.checklist.map((item) => ({ ...item })),
     submission: task.submission
       ? {
-          ...task.submission,
-          targetDutyIds: [...task.submission.targetDutyIds],
-          submittedDutyIds: [...task.submission.submittedDutyIds],
-        }
+        ...task.submission,
+        targetDutyIds: [...task.submission.targetDutyIds],
+        submittedDutyIds: [...task.submission.submittedDutyIds],
+      }
       : null,
   }));
 }
@@ -32,7 +32,7 @@ const state = {
   searchQuery: '',
   eventsOpen: false,
   overdueExpanded: false,
-  mobileCollectionsExpanded: true,
+  mobileCollectionsExpanded: false,
   rolePopoverOpen: false,
   drawer: null, // { taskId, fromCollectionPanel }
   scopeModalKey: null,
@@ -40,7 +40,7 @@ const state = {
 };
 
 let savedScrollY = 0;
-let lastTriggerEl = null;
+let lastDrawerTrigger = null; // { taskId, fromSource }
 let toastTimer = null;
 
 const dutyMap = new Map(DUTIES.map((d) => [d.id, d]));
@@ -79,6 +79,20 @@ function formatDateCompact(dateStr) {
   return dateStr ? dateStr.slice(5) : '';
 }
 
+function isTaskOverdue(task) {
+  return Boolean(task && !task.done && task.dueDate && diffDays(task.dueDate) < 0);
+}
+
+function findVisibleTaskTrigger(taskId, fromSource) {
+  const candidates = document.querySelectorAll('[data-open-task]');
+  for (const el of candidates) {
+    if (el.dataset.openTask !== taskId) continue;
+    if (fromSource && el.dataset.openSource !== fromSource) continue;
+    if (el.getClientRects().length > 0) return el;
+  }
+  return null;
+}
+
 function showToast(message) {
   const toastEl = document.getElementById('toast');
   if (!toastEl) return;
@@ -106,7 +120,7 @@ async function copyText(text, successMsg) {
     }
     showToast(successMsg);
   } catch {
-    showToast('복사 권한이 제한되어 화면의 문구를 직접 선택해 주세요.');
+    showToast('복사 권한이 제한되어 화면 문구를 직접 선택해 주세요.');
   }
 }
 
@@ -127,7 +141,7 @@ function getFilteredTasks() {
 
 function getActiveFilterLabel() {
   if (state.selectedDutyId) return getDutyName(state.selectedDutyId);
-  if (state.myOnly) return '내 담당만';
+  if (state.myOnly) return '내 담당';
   return '';
 }
 
@@ -137,27 +151,28 @@ function getCollectionTasks() {
 
 function renderMonthStrip() {
   const container = document.getElementById('month-strip');
-  const html = MONTHS.map((m) => {
-    const monthTasks = state.tasks.filter((t) => {
-      if (t.month !== m.num) return false;
-      if (state.selectedDutyId) return t.dutyId === state.selectedDutyId;
-      if (state.myOnly) return state.myDutyIds.has(t.dutyId);
-      return true;
-    });
-    const openCount = monthTasks.filter((t) => !t.done).length;
+  const currentMonthObj = MONTHS.find((m) => m.num === state.selectedMonth);
+  const currentLabel = currentMonthObj ? currentMonthObj.label : `${state.selectedMonth}월`;
+  const baseYear = Number(SCHOOL_INFO.schoolYear.slice(0, 4)) || 2026;
+  const displayYear = state.selectedMonth <= 2 ? baseYear + 1 : baseYear;
+
+  const desktopTabs = MONTHS.map((m) => {
     const isSelected = m.num === state.selectedMonth;
     const isCurrent = m.num === SCHOOL_INFO.defaultMonth;
     const classes = ['month-btn'];
     if (isSelected) classes.push('is-selected');
     if (isCurrent) classes.push('is-current');
-    return `
-      <button type="button" class="${classes.join(' ')}" data-month="${m.num}" aria-pressed="${isSelected}">
-        <span>${escapeHtml(m.label)}</span>
-        <span class="month-count">${openCount}건</span>
-      </button>
-    `;
+    return `<button type="button" class="${classes.join(' ')}" data-month="${m.num}" aria-pressed="${isSelected}">${escapeHtml(m.label)}</button>`;
   }).join('');
-  container.innerHTML = html;
+
+  container.innerHTML = `
+    <div class="month-tabs-desktop">${desktopTabs}</div>
+    <div class="month-stepper-mobile">
+      <button type="button" class="month-step-btn" data-month-step="-1" aria-label="이전 달">◀</button>
+      <span class="month-step-current">${displayYear}년 ${escapeHtml(currentLabel)}</span>
+      <button type="button" class="month-step-btn" data-month-step="1" aria-label="다음 달">▶</button>
+    </div>
+  `;
 }
 
 function renderRolePopover() {
@@ -178,7 +193,7 @@ function renderRolePopover() {
   myBtn.setAttribute('aria-pressed', String(state.myOnly));
   myCountEl.textContent = String(state.myDutyIds.size);
 
-  document.querySelectorAll('.cat-pill').forEach((btn) => {
+  document.querySelectorAll('.cat-btn').forEach((btn) => {
     const active = btn.dataset.cat === state.selectedCategory;
     btn.classList.toggle('is-active', active);
     btn.setAttribute('aria-pressed', String(active));
@@ -196,20 +211,20 @@ function renderRolePopover() {
     <div>
       <div class="role-grid">
         <div class="role-option-wrap ${state.selectedDutyId === null ? 'is-selected' : ''}">
-          <button type="button" class="role-option-btn" data-select-duty="">전체 업무 보기</button>
+          <button type="button" class="role-option-btn" data-select-duty="">전체 업무</button>
         </div>
       </div>
     </div>
     ${groups.map((grp) => {
-      const items = DUTIES.filter((d) => d.group === grp.key);
-      return `
+    const items = DUTIES.filter((d) => d.group === grp.key);
+    return `
         <div>
           <h3 class="role-group-title">${escapeHtml(grp.title)}</h3>
           <div class="role-grid">
             ${items.map((d) => {
-              const selected = state.selectedDutyId === d.id;
-              const starred = state.myDutyIds.has(d.id);
-              return `
+      const selected = state.selectedDutyId === d.id;
+      const starred = state.myDutyIds.has(d.id);
+      return `
                 <div class="role-option-wrap ${selected ? 'is-selected' : ''}">
                   <button type="button" class="role-option-btn" data-select-duty="${escapeHtml(d.id)}">${escapeHtml(d.name)}</button>
                   <button
@@ -218,28 +233,28 @@ function renderRolePopover() {
                     data-star-duty="${escapeHtml(d.id)}"
                     aria-label="${escapeHtml(d.name)} 내 담당 지정"
                     aria-pressed="${starred}"
-                    title="${starred ? '내 담당 해제' : '내 담당으로 지정'}"
+                    title="${starred ? '내 담당 해제' : '내 담당 지정'}"
                   >${starred ? '★' : '☆'}</button>
                 </div>
               `;
-            }).join('')}
+    }).join('')}
           </div>
         </div>
       `;
-    }).join('')}
+  }).join('')}
   `;
 }
 
 function renderActiveFilterSummary(filteredCount) {
   const el = document.getElementById('active-filter-summary');
   const activeBits = [];
-  if (state.selectedDutyId) activeBits.push(`담당: <strong>${escapeHtml(getDutyName(state.selectedDutyId))}</strong>`);
-  if (state.myOnly) activeBits.push('<strong>내 담당만</strong>');
+  if (state.selectedDutyId) activeBits.push(`담당 <strong>${escapeHtml(getDutyName(state.selectedDutyId))}</strong>`);
+  if (state.myOnly) activeBits.push('<strong>내 담당</strong>');
   if (state.selectedCategory !== 'all') {
     const labelMap = { draft: '기안', collect: '수합', task: '상시' };
-    activeBits.push(`분류: <strong>${labelMap[state.selectedCategory]}</strong>`);
+    activeBits.push(`구분 <strong>${labelMap[state.selectedCategory]}</strong>`);
   }
-  if (state.searchQuery.trim()) activeBits.push(`검색: "${escapeHtml(state.searchQuery.trim())}"`);
+  if (state.searchQuery.trim()) activeBits.push(`검색 "${escapeHtml(state.searchQuery.trim())}"`);
 
   if (activeBits.length === 0) {
     el.hidden = true;
@@ -249,8 +264,8 @@ function renderActiveFilterSummary(filteredCount) {
 
   el.hidden = false;
   el.innerHTML = `
-    <span>적용된 조건: ${activeBits.join(' · ')} (${filteredCount}건)</span>
-    <button type="button" class="btn btn-text btn-xs" id="summary-reset-btn">전체 보기</button>
+    <span>적용 조건: ${activeBits.join(' · ')} (${filteredCount}건)</span>
+    <button type="button" class="btn btn-text btn-sm" id="summary-reset-btn">전체 보기</button>
   `;
 }
 
@@ -274,7 +289,7 @@ function renderEventsSection() {
   stripEl.innerHTML = `
     <ul class="events-grid">
       ${monthEvents.map((ev) => `
-        <li class="event-chip">
+        <li class="event-item">
           <span class="event-date">${escapeHtml(formatDateCompact(ev.date))}</span>
           <span>${escapeHtml(ev.title)}</span>
         </li>
@@ -283,9 +298,40 @@ function renderEventsSection() {
   `;
 }
 
+function renderTaskStatusTag(task) {
+  if (task.done) return '<span class="tag-done">완료</span>';
+  if (task.status === 'draft') return '<span class="tag-draft">AI 초안</span>';
+  return '<span class="text-confirmed">확정</span>';
+}
+
+function renderTaskProgressCell(task) {
+  const sub = task.submission;
+  if (sub) {
+    const submittedCount = sub.submittedDutyIds.length;
+    const totalCount = sub.targetDutyIds.length;
+    const pct = Math.round((submittedCount / totalCount) * 100);
+    const missingCount = totalCount - submittedCount;
+    const subOverdue = isTaskOverdue(task) && missingCount > 0;
+    return `
+      <div class="sub-progress-cell">
+        <span class="sub-progress-text ${subOverdue ? 'is-overdue' : ''}">${submittedCount}/${totalCount} 제출</span>
+        <div class="progress-mini" aria-hidden="true">
+          <div class="progress-fill ${subOverdue ? 'is-overdue' : ''}" style="width:${pct}%"></div>
+        </div>
+      </div>
+    `;
+  }
+  const totalChecks = task.checklist.length;
+  if (totalChecks > 0) {
+    const doneChecks = task.checklist.filter((c) => c.done).length;
+    return `<span class="progress-muted">점검 ${doneChecks}/${totalChecks}</span>`;
+  }
+  return '<span class="progress-muted">-</span>';
+}
+
 function renderTaskLedger() {
   const titleEl = document.getElementById('ledger-title');
-  const subtitleEl = document.getElementById('ledger-subtitle');
+  const summaryEl = document.getElementById('ledger-summary');
   const ledgerEl = document.getElementById('task-ledger');
 
   const monthObj = MONTHS.find((m) => m.num === state.selectedMonth);
@@ -298,10 +344,10 @@ function renderTaskLedger() {
   const openCount = tasks.filter((t) => !t.done).length;
   const draftCount = tasks.filter((t) => t.status === 'draft').length;
 
-  titleEl.textContent = `${monthLabel} ${scopeLabel} 업무 (${tasks.length}건)`;
-  subtitleEl.textContent = draftCount > 0
-    ? `남은 할 일 ${openCount}건 · 확인을 기다리는 AI 초안 ${draftCount}건`
-    : `남은 할 일 ${openCount}건 · 확정된 업무 중심으로 표시합니다.`;
+  titleEl.textContent = `${monthLabel} ${scopeLabel} 업무`;
+  summaryEl.textContent = draftCount > 0
+    ? `전체 ${tasks.length}건 · 잔여 ${openCount}건 · AI 초안 ${draftCount}건`
+    : `전체 ${tasks.length}건 · 잔여 ${openCount}건`;
 
   renderActiveFilterSummary(tasks.length);
   renderEventsSection();
@@ -309,9 +355,9 @@ function renderTaskLedger() {
   if (state.myOnly && state.myDutyIds.size === 0) {
     ledgerEl.innerHTML = `
       <div class="empty-card">
-        <h2>아직 내 담당 업무가 지정되지 않았습니다</h2>
-        <p>담당 메뉴에서 올해 맡으신 학년이나 부서를 별표(☆)로 지정하면 한눈에 모아볼 수 있습니다.</p>
-        <button type="button" class="btn btn-primary btn-sm" id="empty-pick-role-btn">내 학년·업무 고르기</button>
+        <h3>지정된 내 담당 업무가 없습니다</h3>
+        <p>담당 메뉴에서 맡으신 학년이나 부서를 별표(☆)로 지정하면 해당 업무만 모아볼 수 있습니다.</p>
+        <button type="button" class="btn btn-outline btn-sm" id="empty-pick-role-btn">담당 업무 선택</button>
       </div>
     `;
     return;
@@ -320,9 +366,9 @@ function renderTaskLedger() {
   if (tasks.length === 0) {
     ledgerEl.innerHTML = `
       <div class="empty-card">
-        <h2>조건에 맞는 업무가 없습니다</h2>
-        <p>${escapeHtml(monthLabel)}에는 선택한 조건의 등록된 업무가 없습니다. 월을 바꾸거나 필터를 해제해 보세요.</p>
-        <button type="button" class="btn btn-subtle btn-sm" id="empty-reset-btn">전체 업무 보기</button>
+        <h3>해당 조건의 업무가 없습니다</h3>
+        <p>${escapeHtml(monthLabel)}에는 선택한 조건에 해당하는 등록 업무가 없습니다.</p>
+        <button type="button" class="btn btn-outline btn-sm" id="empty-reset-btn">전체 업무 보기</button>
       </div>
     `;
     return;
@@ -334,66 +380,116 @@ function renderTaskLedger() {
     weekMap.get(task.weekLabel).push(task);
   }
 
-  ledgerEl.innerHTML = Array.from(weekMap.entries()).map(([weekLabel, items]) => `
-    <section class="week-group">
-      <h2 class="week-heading">${escapeHtml(weekLabel)}</h2>
-      <ul class="ledger-list">
-        ${items.map((task) => {
-          const dday = formatDday(task.dueDate);
-          const doneChecks = task.checklist.filter((c) => c.done).length;
-          const totalChecks = task.checklist.length;
-          const sub = task.submission;
-          const missingCount = sub ? sub.targetDutyIds.length - sub.submittedDutyIds.length : 0;
-          const statusBadge = task.status === 'draft'
-            ? '<span class="status-pill is-draft">AI 초안</span>'
-            : '<span class="status-pill is-confirmed">확정됨</span>';
+  const weekEntries = Array.from(weekMap.entries());
 
-          return `
-            <li class="task-row ${task.done ? 'is-done' : ''}">
-              <input
-                type="checkbox"
-                class="task-check"
-                data-toggle-done="${escapeHtml(task.id)}"
-                ${task.done ? 'checked' : ''}
-                aria-label="${escapeHtml(task.title)} 완료 표시"
-              >
-              <div class="task-main">
-                <div class="task-top-line">
-                  <button
-                    type="button"
-                    class="task-title-btn"
-                    data-open-task="${escapeHtml(task.id)}"
-                    data-open-source="ledger"
-                  >${escapeHtml(task.title)}</button>
-                  <div class="task-right-meta">
-                    ${statusBadge}
-                    <span class="dday-text ${dday.tone}">${escapeHtml(dday.text)}</span>
-                  </div>
-                </div>
-                <div class="task-sub-line">
-                  <span class="type-tag">${escapeHtml(task.typeLabel)}</span>
-                  <span class="owner-tag">${escapeHtml(getDutyName(task.dutyId))}</span>
-                  <span>마감 ${escapeHtml(formatDateCompact(task.dueDate))}</span>
-                  ${totalChecks > 0 ? `<span>체크 ${doneChecks}/${totalChecks}</span>` : ''}
-                  ${sub ? `<span class="sub-progress-inline ${missingCount === 0 ? 'is-complete' : ''}">수합 ${sub.submittedDutyIds.length}/${sub.targetDutyIds.length} 완료</span>` : ''}
-                </div>
-              </div>
-            </li>
-          `;
-        }).join('')}
-      </ul>
-    </section>
+  const desktopRows = weekEntries.map(([weekLabel, items]) => `
+    <tr class="week-row">
+      <th colspan="6" scope="colgroup">${escapeHtml(weekLabel)}</th>
+    </tr>
+    ${items.map((task) => {
+    const overdue = isTaskOverdue(task);
+    const dday = formatDday(task.dueDate);
+    const ddayClass = overdue ? 'text-overdue' : (dday.tone === 'is-soon' ? 'text-soon' : '');
+    const dateMarkup = task.done
+      ? `<span class="date-main">${escapeHtml(formatDateCompact(task.dueDate))}</span>`
+      : `<span class="date-main">${escapeHtml(formatDateCompact(task.dueDate))}</span><span class="dday-inline ${ddayClass}">(${escapeHtml(dday.text)})</span>`;
+
+    return `
+        <tr class="task-tr ${overdue ? 'is-overdue' : ''} ${task.done ? 'is-done' : ''}">
+          <td class="cell-num">${dateMarkup}</td>
+          <td>
+            <button
+              type="button"
+              class="task-title-btn"
+              data-open-task="${escapeHtml(task.id)}"
+              data-open-source="ledger"
+            >${escapeHtml(task.title)}</button>
+          </td>
+          <td>${escapeHtml(getDutyName(task.dutyId))}</td>
+          <td><span class="type-label">${escapeHtml(task.typeLabel)}</span></td>
+          <td>${renderTaskStatusTag(task)}</td>
+          <td>${renderTaskProgressCell(task)}</td>
+        </tr>
+      `;
+  }).join('')}
   `).join('');
+
+  const mobileGroups = weekEntries.map(([weekLabel, items]) => `
+    <div class="mobile-week-heading">${escapeHtml(weekLabel)}</div>
+    <ul class="mobile-task-list">
+      ${items.map((task) => {
+    const overdue = isTaskOverdue(task);
+    const dday = formatDday(task.dueDate);
+    const ddayClass = overdue ? 'text-overdue' : (dday.tone === 'is-soon' ? 'text-soon' : '');
+    const sub = task.submission;
+    const progressInline = sub
+      ? `<span class="${overdue && sub.targetDutyIds.length > sub.submittedDutyIds.length ? 'text-overdue' : ''}">${sub.submittedDutyIds.length}/${sub.targetDutyIds.length} 제출</span>`
+      : (task.checklist.length > 0
+        ? `<span>점검 ${task.checklist.filter((c) => c.done).length}/${task.checklist.length}</span>`
+        : '');
+
+    return `
+          <li class="mobile-task-row ${overdue ? 'is-overdue' : ''} ${task.done ? 'is-done' : ''}">
+            <button
+              type="button"
+              class="task-title-btn"
+              data-open-task="${escapeHtml(task.id)}"
+              data-open-source="ledger"
+            >${escapeHtml(task.title)}</button>
+            <div class="mobile-task-meta">
+              <span class="${ddayClass}">${escapeHtml(formatDateCompact(task.dueDate))}${task.done ? '' : ` (${escapeHtml(dday.text)})`}</span>
+              <span>${escapeHtml(getDutyName(task.dutyId))}</span>
+              <span>${escapeHtml(task.typeLabel)}</span>
+              ${renderTaskStatusTag(task)}
+              ${progressInline}
+            </div>
+          </li>
+        `;
+  }).join('')}
+    </ul>
+  `).join('');
+
+  ledgerEl.innerHTML = `
+    <div class="ledger-table-wrap">
+      <table class="ledger-table">
+        <colgroup>
+          <col class="col-date">
+          <col>
+          <col class="col-owner">
+          <col class="col-type">
+          <col class="col-status">
+          <col class="col-progress">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">마감일</th>
+            <th scope="col">업무명</th>
+            <th scope="col">담당</th>
+            <th scope="col">구분</th>
+            <th scope="col">상태</th>
+            <th scope="col">진행</th>
+          </tr>
+        </thead>
+        <tbody>${desktopRows}</tbody>
+      </table>
+    </div>
+    <div class="mobile-ledger-wrap">${mobileGroups}</div>
+  `;
 }
 
 function renderCollectionItemsMarkup(collections) {
   return collections.map((task) => {
     const sub = task.submission;
+    const submittedCount = sub.submittedDutyIds.length;
+    const totalCount = sub.targetDutyIds.length;
+    const pct = Math.round((submittedCount / totalCount) * 100);
     const missingNames = sub.targetDutyIds
       .filter((id) => !sub.submittedDutyIds.includes(id))
       .map((id) => getDutyName(id).replace(' 담임', ''));
     const dday = formatDday(task.dueDate);
-    const isComplete = missingNames.length === 0;
+    const overdue = isTaskOverdue(task);
+    const subOverdue = overdue && missingNames.length > 0;
+
     return `
       <li>
         <button
@@ -403,11 +499,14 @@ function renderCollectionItemsMarkup(collections) {
           data-open-source="collection-panel"
         >
           <span class="collection-item-top">
-            <span class="status-pill ${isComplete ? 'is-confirmed' : 'is-urgent'}">${sub.submittedDutyIds.length}/${sub.targetDutyIds.length} 완료</span>
-            <span class="dday-text ${dday.tone}">${escapeHtml(dday.text)} · ${escapeHtml(getDutyName(task.dutyId))}</span>
+            <span class="collection-ratio ${subOverdue ? 'is-overdue' : ''}">${submittedCount}/${totalCount} 제출</span>
+            <span class="collection-owner ${overdue ? 'text-overdue' : ''}">${escapeHtml(dday.text)} · ${escapeHtml(getDutyName(task.dutyId))}</span>
+          </span>
+          <span class="progress-mini" aria-hidden="true">
+            <span class="progress-fill ${subOverdue ? 'is-overdue' : ''}" style="width:${pct}%"></span>
           </span>
           <span class="collection-item-title">${escapeHtml(task.title)}</span>
-          <span class="collection-item-meta">${isComplete ? '모든 대상 제출 완료' : `미제출: ${escapeHtml(missingNames.join(', '))}`}</span>
+          <span class="collection-item-meta">${missingNames.length === 0 ? '전체 대상 제출 완료' : `미제출: ${escapeHtml(missingNames.join(', '))}`}</span>
         </button>
       </li>
     `;
@@ -417,30 +516,25 @@ function renderCollectionItemsMarkup(collections) {
 function renderRightRailAndMobileCollections() {
   const collections = getCollectionTasks();
 
-  // Desktop right rail collections
   const desktopList = document.getElementById('desktop-collections-list');
   desktopList.innerHTML = renderCollectionItemsMarkup(collections);
 
-  // Mobile quick-access collections strip (above ledger on <960px)
   const mobileBox = document.getElementById('mobile-collections-box');
-  const activeRoleNote = state.selectedDutyId
-    ? `(${escapeHtml(getDutyName(state.selectedDutyId))} 필터 유지됨)`
-    : '(누르면 상세가 열립니다)';
+  const activeRoleSub = state.selectedDutyId
+    ? `${escapeHtml(getDutyName(state.selectedDutyId))} 필터 유지`
+    : '전체 기준';
 
   mobileBox.innerHTML = `
-    <div class="mobile-collections-head">
-      <button type="button" class="mobile-collections-toggle" id="mobile-collections-toggle" aria-expanded="${state.mobileCollectionsExpanded}">
-        <div>
-          <strong class="rail-title">학교 전체 수합 현황 (${collections.length}건)</strong>
-          <div class="rail-note">전체 기준 ${activeRoleNote}</div>
-        </div>
-        <span class="scope-tag">${state.mobileCollectionsExpanded ? '접기' : '펼치기'}</span>
-      </button>
-    </div>
+    <button type="button" class="mobile-collections-toggle" id="mobile-collections-toggle" aria-expanded="${state.mobileCollectionsExpanded}">
+      <span>
+        <span class="mobile-collections-title">수합 현황 · ${collections.length}건 진행 중</span>
+        <span class="mobile-collections-sub">${activeRoleSub}</span>
+      </span>
+      <span class="mobile-collections-action">${state.mobileCollectionsExpanded ? '접기 ▲' : '펼치기 ▼'}</span>
+    </button>
     ${state.mobileCollectionsExpanded ? `<ul class="collection-list mobile-collections-list">${renderCollectionItemsMarkup(collections)}</ul>` : ''}
   `;
 
-  // Upcoming deadlines
   const confirmedOpen = state.tasks
     .filter((t) => t.status === 'confirmed' && !t.done && t.dueDate)
     .sort((a, b) => a.dueDate.localeCompare(b.dueDate));
@@ -461,19 +555,19 @@ function renderRightRailAndMobileCollections() {
   if (soonItems.length > 0) {
     parts.push(`
       <div>
-        <h3 class="upcoming-group-title">오늘 · 내일 마감</h3>
+        <h3 class="upcoming-group-title">오늘 · 내일</h3>
         <ul class="upcoming-list">
           ${soonItems.map((t) => {
-            const dday = formatDday(t.dueDate);
-            return `
+      const dday = formatDday(t.dueDate);
+      return `
               <li>
                 <button type="button" class="upcoming-btn" data-open-task="${escapeHtml(t.id)}" data-open-source="upcoming">
-                  <span class="dday-text ${dday.tone}">${escapeHtml(dday.text)}</span>
+                  <span class="upcoming-dday text-soon">${escapeHtml(dday.text)}</span>
                   <span>${escapeHtml(t.title)}</span>
                 </button>
               </li>
             `;
-          }).join('')}
+    }).join('')}
         </ul>
       </div>
     `);
@@ -482,19 +576,19 @@ function renderRightRailAndMobileCollections() {
   if (weekItems.length > 0) {
     parts.push(`
       <div>
-        <h3 class="upcoming-group-title">이번 주 안 (D-7)</h3>
+        <h3 class="upcoming-group-title">이번 주 (D-7)</h3>
         <ul class="upcoming-list">
           ${weekItems.map((t) => {
-            const dday = formatDday(t.dueDate);
-            return `
+      const dday = formatDday(t.dueDate);
+      return `
               <li>
                 <button type="button" class="upcoming-btn" data-open-task="${escapeHtml(t.id)}" data-open-source="upcoming">
-                  <span class="dday-text ${dday.tone}">${escapeHtml(dday.text)}</span>
+                  <span class="upcoming-dday text-soon">${escapeHtml(dday.text)}</span>
                   <span>${escapeHtml(t.title)}</span>
                 </button>
               </li>
             `;
-          }).join('')}
+    }).join('')}
         </ul>
       </div>
     `);
@@ -504,28 +598,28 @@ function renderRightRailAndMobileCollections() {
     parts.push(`
       <div>
         <button type="button" class="overdue-toggle" id="overdue-toggle-btn" aria-expanded="${state.overdueExpanded}">
-          지난 미완료 ${overdueItems.length}건 ${state.overdueExpanded ? '접기' : '펼쳐보기'}
+          지난 미완료 ${overdueItems.length}건 · ${state.overdueExpanded ? '접기' : '보기'}
         </button>
         ${state.overdueExpanded ? `
-          <ul class="upcoming-list" style="margin-top:6px;">
+          <ul class="upcoming-list overdue-list-spaced">
             ${overdueItems.map((t) => {
-              const dday = formatDday(t.dueDate);
-              return `
+      const dday = formatDday(t.dueDate);
+      return `
                 <li>
                   <button type="button" class="upcoming-btn" data-open-task="${escapeHtml(t.id)}" data-open-source="upcoming">
-                    <span class="dday-text ${dday.tone}">${escapeHtml(dday.text)}</span>
+                    <span class="upcoming-dday text-overdue">${escapeHtml(dday.text)}</span>
                     <span>${escapeHtml(t.title)}</span>
                   </button>
                 </li>
               `;
-            }).join('')}
+    }).join('')}
           </ul>
         ` : ''}
       </div>
     `);
   }
 
-  upcomingEl.innerHTML = parts.join('') || '<p class="rail-note">다가오는 마감 업무가 없습니다.</p>';
+  upcomingEl.innerHTML = parts.join('') || '<p class="drawer-caption">다가오는 마감 일정 없음</p>';
   document.getElementById('ics-my-only').checked = state.icsMyOnly;
 }
 
@@ -555,93 +649,105 @@ function renderDrawer() {
     (state.myOnly && !state.myDutyIds.has(task.dutyId));
 
   const dday = formatDday(task.dueDate);
+  const overdue = isTaskOverdue(task);
   const ownerName = getDutyName(task.dutyId);
   const sub = task.submission;
   const subPct = sub ? Math.round((sub.submittedDutyIds.length / sub.targetDutyIds.length) * 100) : 0;
+  const subOverdue = Boolean(sub && overdue && sub.targetDutyIds.length > sub.submittedDutyIds.length);
+
+  const hasDraftPrimary = task.status === 'draft' && !task.done;
+  const hasSubPrimary = !hasDraftPrimary && Boolean(sub);
+  const footBtnClass = (!hasDraftPrimary && !hasSubPrimary) ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm';
 
   backdrop.hidden = false;
   drawerEl.hidden = false;
 
   contentEl.innerHTML = `
     <div class="drawer-head">
-      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-        <span class="type-tag">${escapeHtml(task.typeLabel)}</span>
-        <span class="status-pill ${task.status === 'draft' ? 'is-draft' : 'is-confirmed'}">${task.status === 'draft' ? 'AI 초안' : '확정됨'}</span>
-        <span class="dday-text ${dday.tone}">${escapeHtml(dday.text)}</span>
+      <div class="drawer-head-tags">
+        <span class="type-label">${escapeHtml(task.typeLabel)}</span>
+        ${renderTaskStatusTag(task)}
+        <span class="meta-label ${overdue ? 'text-overdue' : ''}">${escapeHtml(dday.text)}</span>
       </div>
-      <button type="button" class="btn btn-ghost btn-xs" id="drawer-close-top" style="color:var(--ink-secondary);border-color:var(--line-strong);">닫기</button>
+      <button type="button" class="btn btn-outline btn-sm" id="drawer-close-top">닫기</button>
     </div>
 
     ${(state.drawer.fromCollectionPanel || isOutsideActiveFilter) && activeFilterLabel ? `
       <div class="drawer-context-banner" role="status">
         <span>현재 <strong>'${escapeHtml(activeFilterLabel)}'</strong> 필터가 유지되어 있습니다. 창을 닫으면 보던 ${escapeHtml(activeFilterLabel)} 목록으로 돌아갑니다.</span>
-        <div>
-          <button type="button" class="btn btn-text btn-xs" id="drawer-clear-filter-jump" style="padding:0;color:var(--brand);text-decoration:underline;">필터를 풀고 전체 목록에서 위치 보기</button>
-        </div>
+        <button type="button" class="drawer-link-btn" id="drawer-clear-filter-jump">필터 해제 후 전체 목록에서 위치 보기</button>
       </div>
     ` : ''}
 
     <div class="drawer-body">
       <h2 id="drawer-title" class="drawer-title">${escapeHtml(task.title)}</h2>
 
-      <dl class="drawer-meta-grid">
-        <div>
-          <dt>주관 담당</dt>
-          <dd>${escapeHtml(ownerName)}</dd>
-        </div>
-        <div>
-          <dt>마감일</dt>
-          <dd>${escapeHtml(task.dueDate)} (${escapeHtml(dday.text)})</dd>
-        </div>
-      </dl>
+      <div class="drawer-meta-bar">
+        <dl class="drawer-meta-grid">
+          <div>
+            <dt>주관 담당</dt>
+            <dd>${escapeHtml(ownerName)}</dd>
+          </div>
+          <div>
+            <dt>마감일</dt>
+            <dd class="${overdue ? 'text-overdue' : ''}">${escapeHtml(task.dueDate)} (${escapeHtml(dday.text)})</dd>
+          </div>
+        </dl>
+        <button type="button" class="btn btn-outline btn-sm" data-toggle-task-done="${escapeHtml(task.id)}">
+          ${task.done ? '미완료로 변경' : '완료 처리'}
+        </button>
+      </div>
 
       ${task.status === 'draft' ? `
-        <section class="drawer-section" style="background:var(--draft-bg);border-color:var(--draft-line);">
-          <h3 class="drawer-section-title" style="color:var(--draft-ink);">AI 초안 검토 대기</h3>
-          <p style="margin:0;font-size:0.83rem;color:var(--draft-ink);">학사안내 문서에서 추출한 초안입니다. 아래 원문 근거와 날짜가 맞는지 확인한 뒤 확정해 주세요.</p>
+        <section class="drawer-draft-notice">
+          <h3 class="drawer-section-title">AI 초안 검토 대기</h3>
+          <p class="drawer-section-note">학사안내 문서에서 추출한 초안입니다. 아래 원문 근거와 마감일을 확인한 뒤 확정해 주세요.</p>
           <div>
-            <button type="button" class="btn btn-primary btn-sm" id="drawer-confirm-draft">내용 확인 후 확정하기</button>
+            <button type="button" class="${hasDraftPrimary ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm'}" id="drawer-confirm-draft">내용 확인 후 확정</button>
           </div>
         </section>
       ` : ''}
 
       ${sub ? `
         <section class="drawer-section">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+          <div class="drawer-section-head">
             <h3 class="drawer-section-title">제출 수합 현황</h3>
-            <span style="font-size:0.82rem;font-weight:700;font-variant-numeric:tabular-nums;">${sub.submittedDutyIds.length} / ${sub.targetDutyIds.length} 완료</span>
+            <span class="sub-progress-text ${subOverdue ? 'is-overdue' : ''}">${sub.submittedDutyIds.length}/${sub.targetDutyIds.length} 제출</span>
           </div>
           <div class="progress-track" aria-hidden="true">
-            <div class="progress-fill" style="width:${subPct}%"></div>
+            <div class="progress-fill ${subOverdue ? 'is-overdue' : ''}" style="width:${subPct}%"></div>
           </div>
-          <div class="grade-chips">
+          <div class="grade-tags">
             ${sub.targetDutyIds.map((id) => {
-              const submitted = sub.submittedDutyIds.includes(id);
-              const isMine = state.selectedDutyId === id || state.myDutyIds.has(id);
-              const shortName = getDutyName(id).replace(' 담임', '');
-              return `<span class="grade-chip ${submitted ? 'is-submitted' : 'is-missing'} ${isMine ? 'is-mine' : ''}">${escapeHtml(shortName)} ${submitted ? '제출' : '미제출'}</span>`;
-            }).join('')}
+    const submitted = sub.submittedDutyIds.includes(id);
+    const isMine = state.selectedDutyId === id || state.myDutyIds.has(id);
+    const shortName = getDutyName(id).replace(' 담임', '');
+    const cls = submitted
+      ? 'is-submitted'
+      : `is-missing${overdue ? ' is-overdue' : ''}`;
+    return `<span class="grade-tag ${cls} ${isMine ? 'is-mine' : ''}">${escapeHtml(shortName)} ${submitted ? '제출' : '미제출'}</span>`;
+  }).join('')}
           </div>
           <div class="drawer-actions-row">
-            <button type="button" class="btn btn-primary btn-sm" id="drawer-copy-messenger">교내 메신저 안내 문구 복사</button>
-            <button type="button" class="btn btn-outline btn-sm" id="drawer-nudge-inapp">${sub.nudged ? '앱 화면 알림 표시됨' : '앱 화면 알림 남기기'}</button>
+            <button type="button" class="${hasSubPrimary ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm'}" id="drawer-copy-messenger">교내 메신저 안내 문구 복사</button>
+            <button type="button" class="btn btn-outline btn-sm" id="drawer-nudge-inapp">${sub.nudged ? '앱 알림 기록됨' : '앱 내 알림 표시'}</button>
           </div>
-          <p style="margin:0;font-size:0.75rem;color:var(--ink-muted);">앱 화면 알림은 수신자가 앱에 접속했을 때 보이며, 즉시 전달은 메신저 문구 복사로 보내는 방식이 확실합니다.</p>
+          <p class="drawer-caption">앱 내 알림은 접속 시 화면에 표시되며, 즉시 전달은 메신저 문구 복사를 권장합니다.</p>
         </section>
       ` : ''}
 
       <section class="drawer-section">
         <h3 class="drawer-section-title">업무 안내 및 원문 근거</h3>
-        <p style="margin:0;font-size:0.85rem;color:var(--ink-secondary);">${escapeHtml(task.note)}</p>
+        <p class="drawer-section-note">${escapeHtml(task.note)}</p>
         <blockquote class="source-quote">
-          <div style="font-weight:700;margin-bottom:3px;">${escapeHtml(task.sourceTitle)}</div>
+          <div class="source-quote-title">${escapeHtml(task.sourceTitle)}</div>
           <div>${escapeHtml(task.sourceExcerpt)}</div>
         </blockquote>
       </section>
 
       ${task.checklist.length > 0 ? `
         <section class="drawer-section">
-          <h3 class="drawer-section-title">세부 체크리스트</h3>
+          <h3 class="drawer-section-title">세부 점검 사항</h3>
           <ul class="drawer-checklist">
             ${task.checklist.map((item) => `
               <li>
@@ -656,16 +762,16 @@ function renderDrawer() {
       ` : ''}
 
       <section class="drawer-section">
-        <h3 class="drawer-section-title">교내 자료 폴더 위치</h3>
+        <h3 class="drawer-section-title">교내 공유폴더 위치</h3>
         <div class="path-box">
           <span class="path-code">${escapeHtml(task.folderPath)}</span>
-          <button type="button" class="btn btn-subtle btn-xs" id="drawer-copy-path">경로 복사</button>
+          <button type="button" class="btn btn-outline btn-sm" id="drawer-copy-path">경로 복사</button>
         </div>
       </section>
     </div>
 
     <div class="drawer-foot">
-      <button type="button" class="btn btn-primary btn-sm" id="drawer-close-foot">
+      <button type="button" class="${footBtnClass}" id="drawer-close-foot">
         ${activeFilterLabel ? `닫고 ${escapeHtml(activeFilterLabel)} 목록으로 돌아가기` : '목록으로 돌아가기'}
       </button>
     </div>
@@ -697,9 +803,12 @@ function renderAll() {
   renderScopeModal();
 }
 
-function openTaskDrawer(taskId, fromSource, triggerEl) {
+function openTaskDrawer(taskId, fromSource) {
   savedScrollY = window.scrollY;
-  lastTriggerEl = triggerEl || document.activeElement;
+  lastDrawerTrigger = {
+    taskId,
+    fromSource: fromSource || 'ledger',
+  };
   state.rolePopoverOpen = false;
   state.drawer = {
     taskId,
@@ -707,17 +816,24 @@ function openTaskDrawer(taskId, fromSource, triggerEl) {
   };
   renderAll();
   const closeBtn = document.getElementById('drawer-close-top');
-  if (closeBtn) closeBtn.focus();
+  if (closeBtn) closeBtn.focus({ preventScroll: true });
 }
 
 function closeTaskDrawer() {
   if (!state.drawer) return;
+  const trigger = lastDrawerTrigger;
   state.drawer = null;
   renderAll();
   window.scrollTo(0, savedScrollY);
-  if (lastTriggerEl && typeof lastTriggerEl.focus === 'function' && document.contains(lastTriggerEl)) {
-    lastTriggerEl.focus();
+  const restored = trigger
+    ? findVisibleTaskTrigger(trigger.taskId, trigger.fromSource)
+    : null;
+  if (restored && typeof restored.focus === 'function') {
+    restored.focus({ preventScroll: true });
+  } else {
+    document.getElementById('role-picker-btn')?.focus({ preventScroll: true });
   }
+  window.scrollTo(0, savedScrollY);
 }
 
 function formatIcsDate(dateStr) {
@@ -732,18 +848,19 @@ function nextDayIso(dateStr) {
 
 function buildIcsContent(tasks) {
   const stamp = `${DEMO_TODAY.replace(/-/g, '')}T090000Z`;
+  const calPrefix = SCHOOL_INFO.shortName || '예시초';
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Saesol-Demo//TeacherMate-Map//KO',
+    'PRODID:-//Yeshicho-Demo//TeacherMate-Map//KO',
     'CALSCALE:GREGORIAN',
-    'X-WR-CALNAME:새솔초 업무 일정 예시',
+    `X-WR-CALNAME:${calPrefix} 업무 일정(가상)`,
   ];
 
   for (const t of tasks) {
     lines.push(
       'BEGIN:VEVENT',
-      `UID:${t.id}-saesol-demo`,
+      `UID:${t.id}-yeshicho-demo`,
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${formatIcsDate(t.dueDate)}`,
       `DTEND;VALUE=DATE:${formatIcsDate(nextDayIso(t.dueDate))}`,
@@ -784,12 +901,12 @@ function downloadIcs() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'saesol-demo-schedule.ics';
+  a.download = 'yeshicho-demo-schedule.ics';
   document.body.appendChild(a);
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
-  showToast(`확정 일정 ${targets.length}건을 캘린더 파일(.ics)로 내려받았습니다.`);
+  showToast(`확정 일정 ${targets.length}건을 .ics 파일로 내보냈습니다.`);
 }
 
 function resetDemoState() {
@@ -802,20 +919,21 @@ function resetDemoState() {
   state.searchQuery = '';
   state.eventsOpen = false;
   state.overdueExpanded = false;
+  state.mobileCollectionsExpanded = false;
   state.rolePopoverOpen = false;
   state.drawer = null;
   state.scopeModalKey = null;
   state.icsMyOnly = false;
+  lastDrawerTrigger = null;
   document.getElementById('search-input').value = '';
   renderAll();
-  showToast('처음 시연 상태로 되돌렸습니다.');
+  showToast('초기 시연 상태로 되돌렸습니다.');
 }
 
 // Event Delegation
 document.addEventListener('click', (event) => {
   const target = event.target;
 
-  // Scope modal buttons
   const scopeTrigger = target.closest('[data-scope-trigger]');
   if (scopeTrigger) {
     state.scopeModalKey = scopeTrigger.dataset.scopeTrigger;
@@ -830,7 +948,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Month selection
   const monthBtn = target.closest('[data-month]');
   if (monthBtn) {
     state.selectedMonth = Number(monthBtn.dataset.month);
@@ -839,7 +956,17 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Role picker toggle
+  const monthStepBtn = target.closest('[data-month-step]');
+  if (monthStepBtn) {
+    const delta = Number(monthStepBtn.dataset.monthStep);
+    const idx = MONTHS.findIndex((m) => m.num === state.selectedMonth);
+    const nextIdx = (idx + delta + MONTHS.length) % MONTHS.length;
+    state.selectedMonth = MONTHS[nextIdx].num;
+    state.rolePopoverOpen = false;
+    renderAll();
+    return;
+  }
+
   if (target.closest('#role-picker-btn')) {
     state.rolePopoverOpen = !state.rolePopoverOpen;
     renderRolePopover();
@@ -852,7 +979,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Select duty inside popover
   const selectDutyBtn = target.closest('[data-select-duty]');
   if (selectDutyBtn) {
     const val = selectDutyBtn.dataset.selectDuty;
@@ -863,7 +989,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Star duty inside popover
   const starBtn = target.closest('[data-star-duty]');
   if (starBtn) {
     const dutyId = starBtn.dataset.starDuty;
@@ -874,14 +999,12 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Clear role filter
   if (target.closest('#clear-role-btn')) {
     state.selectedDutyId = null;
     renderAll();
     return;
   }
 
-  // My duties toggle
   if (target.closest('#my-duties-btn')) {
     state.myOnly = !state.myOnly;
     if (state.myOnly) state.selectedDutyId = null;
@@ -890,7 +1013,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Category filter
   const catBtn = target.closest('[data-cat]');
   if (catBtn) {
     state.selectedCategory = catBtn.dataset.cat;
@@ -898,7 +1020,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Reset buttons
   if (target.closest('#reset-demo-btn')) {
     resetDemoState();
     return;
@@ -914,41 +1035,45 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Events strip toggle
   if (target.closest('#toggle-events-btn')) {
     state.eventsOpen = !state.eventsOpen;
     renderEventsSection();
     return;
   }
 
-  // Mobile collections toggle
   if (target.closest('#mobile-collections-toggle') && !target.closest('[data-open-task]')) {
     state.mobileCollectionsExpanded = !state.mobileCollectionsExpanded;
     renderRightRailAndMobileCollections();
     return;
   }
 
-  // Overdue toggle
   if (target.closest('#overdue-toggle-btn')) {
     state.overdueExpanded = !state.overdueExpanded;
     renderRightRailAndMobileCollections();
     return;
   }
 
-  // Export ICS
   if (target.closest('#export-ics-btn')) {
     downloadIcs();
     return;
   }
 
-  // Open task drawer
-  const openBtn = target.closest('[data-open-task]');
-  if (openBtn) {
-    openTaskDrawer(openBtn.dataset.openTask, openBtn.dataset.openSource, openBtn);
+  const toggleDoneBtn = target.closest('[data-toggle-task-done]');
+  if (toggleDoneBtn) {
+    const task = state.tasks.find((t) => t.id === toggleDoneBtn.dataset.toggleTaskDone);
+    if (task) {
+      task.done = !task.done;
+      renderAll();
+    }
     return;
   }
 
-  // Drawer actions
+  const openBtn = target.closest('[data-open-task]');
+  if (openBtn) {
+    openTaskDrawer(openBtn.dataset.openTask, openBtn.dataset.openSource);
+    return;
+  }
+
   if (target.id === 'drawer-close-top' || target.id === 'drawer-close-foot' || target.id === 'drawer-backdrop') {
     closeTaskDrawer();
     return;
@@ -1005,7 +1130,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  // Close role popover when clicking outside
   if (state.rolePopoverOpen && !target.closest('.role-picker-anchor')) {
     state.rolePopoverOpen = false;
     renderRolePopover();
@@ -1014,15 +1138,6 @@ document.addEventListener('click', (event) => {
 
 document.addEventListener('change', (event) => {
   const target = event.target;
-
-  if (target.matches('[data-toggle-done]')) {
-    const task = state.tasks.find((t) => t.id === target.dataset.toggleDone);
-    if (task) {
-      task.done = target.checked;
-      renderAll();
-    }
-    return;
-  }
 
   if (target.matches('[data-toggle-check-item]') && state.drawer) {
     const task = state.tasks.find((t) => t.id === state.drawer.taskId);

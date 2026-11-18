@@ -4,85 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="referrer" content="no-referrer">
-  <title>TeacherMate 업무 지도 개선 시연 · 새솔초등학교</title>
-  <meta name="description" content="로그인·서버 연결 없이 업무 지도 흐름을 눌러 보는 TeacherMate 개선 시연 화면입니다.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231e4e8c'/%3E%3Cpath d='M7 8h10M7 12h7M7 16h10' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <title>TeacherMate 업무 지도 · 예시초등학교(가상)</title>
+  <meta name="description" content="로그인·서버 연결 없이 업무 지도 흐름을 확인하는 TeacherMate 공공 업무 대장형 개선 시연 화면입니다.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%231e4e8c'/%3E%3Cpath d='M6 8h12M6 12h8M6 16h12' stroke='%23fff' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-gov-dynamic-subset.min.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">업무 목록으로 바로가기</a>
+  <a class="skip-link" href="#main-content">업무 목록 바로가기</a>
 
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand-group">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="17" rx="2"></rect>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-            <path d="M8 14h4M8 17h7"></path>
-          </svg>
-        </span>
-        <div class="brand-text">
+      <div class="topbar-inner">
+        <div class="brand-bar">
           <span class="brand-name">TeacherMate</span>
-          <span class="brand-school">새솔초등학교 · 2026학년도</span>
+          <span class="brand-sep" aria-hidden="true">|</span>
+          <span id="school-label" class="brand-school">예시초등학교(가상) 2026학년도</span>
         </div>
-      </div>
 
-      <div class="topbar-actions">
-        <span class="demo-chip" title="로그인과 서버 연결 없이 가상 예시로 동작하는 시연 화면입니다.">가상 시연 데이터</span>
-        <button type="button" class="btn btn-primary btn-sm" data-scope-trigger="upload">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 5v14M5 12h14"></path>
-          </svg>
-          <span>자료 올리기</span>
-        </button>
-        <button type="button" class="btn btn-ghost btn-sm" data-scope-trigger="settings" aria-label="환경설정 안내">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-          <span class="hide-xs">설정</span>
-        </button>
+        <div class="topbar-actions">
+          <span class="demo-label hide-xs" title="로그인과 서버 연결 없이 가상 예시 데이터로 동작하는 시연 화면입니다.">가상 시연 데이터</span>
+          <button type="button" class="topbar-btn" data-scope-trigger="settings">설정</button>
+        </div>
       </div>
     </header>
 
     <nav class="subnav" aria-label="주 메뉴">
       <div class="subnav-inner">
-        <button type="button" class="nav-tab is-active" aria-current="page">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="17" rx="2"></rect>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          <span>업무 지도</span>
-        </button>
-        <button type="button" class="nav-tab" data-scope-trigger="upload">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-          </svg>
-          <span>자료 올리기</span>
-        </button>
-        <button type="button" class="nav-tab" data-scope-trigger="handover">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          </svg>
-          <span>인수인계</span>
-        </button>
-        <button type="button" class="nav-tab" data-scope-trigger="chat">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>업무 질문</span>
-        </button>
+        <button type="button" class="nav-tab is-active" aria-current="page">업무 지도</button>
+        <button type="button" class="nav-tab" data-scope-trigger="upload">자료 올리기</button>
+        <button type="button" class="nav-tab" data-scope-trigger="handover">인수인계</button>
+        <button type="button" class="nav-tab" data-scope-trigger="chat">업무 질문</button>
       </div>
     </nav>
 
     <div class="page-wrap">
+      <div class="page-header">
+        <div class="page-header-copy">
+          <h1 class="page-title">업무 지도</h1>
+          <p class="page-desc">월별 학교 업무 대장 및 부서 수합 현황 (가상 예시)</p>
+        </div>
+        <button type="button" class="btn btn-primary" data-scope-trigger="upload">자료 올리기</button>
+      </div>
+
       <div class="month-strip-wrap">
         <div id="month-strip" class="month-strip" role="navigation" aria-label="월 선택"></div>
       </div>
@@ -93,63 +57,54 @@
             <button type="button" id="role-picker-btn" class="filter-trigger" aria-expanded="false" aria-controls="role-popover">
               <span class="filter-label-muted">담당</span>
               <span id="role-picker-value" class="filter-value">전체 업무</span>
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
+              <span class="caret" aria-hidden="true">▾</span>
             </button>
 
             <div id="role-popover" class="role-popover" hidden role="dialog" aria-label="담당 업무분장 선택">
               <div class="role-popover-head">
-                <strong>담당 업무분장 고르기</strong>
-                <span class="hint-inline">별표(☆)로 내 담당을 지정해 두면 바로 모아볼 수 있습니다.</span>
+                <strong>담당 업무분장 선택</strong>
+                <span class="hint-inline">별표(☆)로 내 담당 지정</span>
               </div>
               <div id="role-popover-body" class="role-popover-body"></div>
             </div>
           </div>
 
-          <button type="button" id="clear-role-btn" class="btn btn-subtle btn-xs" hidden>필터 해제 ×</button>
+          <button type="button" id="clear-role-btn" class="btn btn-outline btn-sm" hidden>담당 해제 ×</button>
 
-          <button type="button" id="my-duties-btn" class="pill-btn">
-            <span>내 담당만</span>
-            <span id="my-duties-count" class="pill-count">0</span>
+          <button type="button" id="my-duties-btn" class="filter-toggle-btn" aria-pressed="false">
+            <span>내 담당</span>
+            <span id="my-duties-count" class="count-tag">0</span>
           </button>
 
-          <div class="category-group" role="group" aria-label="문서·업무 분류">
-            <button type="button" class="cat-pill is-active" data-cat="all">전체</button>
-            <button type="button" class="cat-pill" data-cat="draft">기안</button>
-            <button type="button" class="cat-pill" data-cat="collect">수합</button>
-            <button type="button" class="cat-pill" data-cat="task">상시</button>
+          <div class="category-group" role="group" aria-label="업무 구분">
+            <button type="button" class="cat-btn is-active" data-cat="all">전체</button>
+            <button type="button" class="cat-btn" data-cat="draft">기안</button>
+            <button type="button" class="cat-btn" data-cat="collect">수합</button>
+            <button type="button" class="cat-btn" data-cat="task">상시</button>
           </div>
 
           <div class="search-wrap">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input id="search-input" type="search" placeholder="업무 제목·키워드 검색" aria-label="업무 제목 및 키워드 검색">
+            <input id="search-input" type="search" placeholder="업무명·담당 검색" aria-label="업무명 및 담당 검색">
           </div>
 
-          <button type="button" id="reset-demo-btn" class="btn btn-text btn-xs" title="필터와 시연 체크 상태를 처음 상태로 되돌립니다">초기화</button>
+          <button type="button" id="reset-demo-btn" class="btn btn-text btn-sm" title="필터와 시연 상태를 처음 상태로 되돌립니다">초기화</button>
         </div>
 
         <div id="active-filter-summary" class="active-filter-summary" hidden></div>
       </section>
 
-      <!-- 모바일(<960px) 전용: 필터 직후 바로 눌러볼 수 있는 학교 전체 수합 요약 -->
-      <section id="mobile-collections-box" class="mobile-collections-box" aria-label="학교 전체 수합 현황"></section>
+      <section id="mobile-collections-box" class="mobile-collections-box" aria-label="수합 현황"></section>
 
       <div class="workspace-grid">
         <main id="main-content" class="ledger-column" tabindex="-1">
-          <div class="ledger-head">
-            <div>
-              <h1 id="ledger-title" class="ledger-title">11월 전체 업무</h1>
-              <p id="ledger-subtitle" class="ledger-subtitle"></p>
+          <div class="section-head ledger-head">
+            <div class="section-head-copy">
+              <h2 id="ledger-title" class="section-title">11월 전체 업무</h2>
+              <p id="ledger-summary" class="ledger-summary"></p>
             </div>
-            <div class="ledger-head-actions">
-              <button type="button" id="toggle-events-btn" class="btn btn-subtle btn-xs" aria-expanded="false">
-                <span>학사 행사 (<span id="events-count">0</span>)</span>
-              </button>
-            </div>
+            <button type="button" id="toggle-events-btn" class="btn btn-outline btn-sm" aria-expanded="false">
+              학사 일정 (<span id="events-count">0</span>)
+            </button>
           </div>
 
           <div id="events-drawer-strip" class="events-strip" hidden></div>
@@ -157,41 +112,29 @@
           <div id="task-ledger" class="task-ledger"></div>
         </main>
 
-        <aside class="rail-column" aria-label="수합 현황 및 마감 알림">
+        <aside class="rail-column" aria-label="수합 현황 및 마감 일정">
           <section id="rail-collections-card" class="rail-card">
-            <div class="rail-card-head">
-              <div>
-                <h2 class="rail-title">학교 전체 수합 현황</h2>
-                <p class="rail-note">왼쪽 담당 필터와 무관하게 진행 중인 전체 수합입니다.</p>
-              </div>
-              <span class="scope-tag">전체 기준</span>
+            <div class="section-head rail-head">
+              <h2 class="section-title">수합 현황</h2>
+              <span class="meta-label">학교 공통</span>
             </div>
             <ul id="desktop-collections-list" class="collection-list"></ul>
           </section>
 
           <section class="rail-card">
-            <div class="rail-card-head">
-              <div>
-                <h2 class="rail-title">다가오는 마감</h2>
-                <p class="rail-note">교사가 확정한 업무만 알림과 캘린더에 반영됩니다.</p>
-              </div>
+            <div class="section-head rail-head">
+              <h2 class="section-title">마감 일정</h2>
+              <span class="meta-label">확정 기준</span>
             </div>
             <div id="upcoming-list" class="upcoming-wrap"></div>
 
             <div class="ics-box">
               <label class="ics-scope-check">
                 <input type="checkbox" id="ics-my-only">
-                <span>내 담당으로 지정한 업무만 내보내기</span>
+                <span>내 담당 지정 업무만 포함</span>
               </label>
-              <button type="button" id="export-ics-btn" class="btn btn-outline btn-full">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span>캘린더 일정 내려받기 (.ics)</span>
-              </button>
-              <p class="ics-hint">예시 일정 내려받기 동작을 확인할 수 있습니다. (외부 캘린더 앱별 기본 알림 정책이 우선 적용될 수 있습니다.)</p>
+              <button type="button" id="export-ics-btn" class="btn btn-outline btn-full">일정 내보내기 (.ics)</button>
+              <p class="ics-hint">확정 일정 기준 · D-7, D-1 알림 포함</p>
             </div>
           </section>
         </aside>
@@ -203,18 +146,16 @@
     </footer>
   </div>
 
-  <!-- 우측 상세 슬라이드 서랍 (모바일 하단/전체 시트) -->
   <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
   <aside id="detail-drawer" class="detail-drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drawer-title">
     <div id="drawer-content" class="drawer-inner"></div>
   </aside>
 
-  <!-- 1차 시연 범위 안내 모달 (자료 올리기 / 인수인계 / 업무 질문 / 설정 클릭 시) -->
   <div id="scope-modal-backdrop" class="modal-backdrop" hidden>
     <div id="scope-modal" class="scope-modal" role="dialog" aria-modal="true" aria-labelledby="scope-modal-title">
       <div class="scope-modal-head">
         <h2 id="scope-modal-title"></h2>
-        <button type="button" id="scope-modal-close" class="btn btn-ghost btn-xs" aria-label="안내 닫기">닫기</button>
+        <button type="button" id="scope-modal-close" class="btn btn-outline btn-sm" aria-label="안내 닫기">닫기</button>
       </div>
       <div id="scope-modal-body" class="scope-modal-body"></div>
       <div class="scope-modal-foot">
