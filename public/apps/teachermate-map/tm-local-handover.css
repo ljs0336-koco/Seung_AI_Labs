@@ -1,0 +1,10 @@
+.tm-ho-tools,.tm-ho-link {display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:9px 0;min-width:0}
+.tm-ho-edit {display:grid;gap:8px;width:100%;margin:10px 0}
+.tm-ho-edit label {display:grid;gap:6px;min-width:0}
+.tm-ho-edit textarea,.tm-ho-link input {width:100%;min-width:0;max-width:100%;font:inherit}
+.tm-ho-edit button {width:fit-content}
+.tm-local-reply {max-width:660px;margin:32px auto;padding:20px;display:grid;gap:12px;line-height:1.55;overflow-wrap:anywhere}
+.tm-local-reply h1 {font-size:22px}
+.tm-local-reply p,.tm-local-reply h1 {margin:0}
+.tm-ho-question {border-inline-start:3px solid #315987;padding:8px 12px;background:#f1f6fa}
+@media(max-width:640px){.tm-local-reply{margin:12px;padding:14px}.tm-ho-tools button{white-space:normal}}

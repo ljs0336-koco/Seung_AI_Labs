@@ -1,3 +1,4 @@
+import { attachHandoverEditors as attachLocalEditors, openLocalReply } from './tm-local-handover.js';
 import {
   BLOCKED_ROSTER_DEMO_CSV,
   CHAT_SAMPLE_QUESTIONS,
@@ -12,6 +13,7 @@ import {
   UPLOAD_CALENDAR_PRESET,
   UPLOAD_NOTICE_PRESETS,
 } from './data/demoData.js';
+import {connectWorkspace} from './savedWorkspace.js';
 
 function cloneInitialTasks() {
   return INITIAL_TASKS.map((task) => ({
@@ -50,19 +52,6 @@ function buildInitialUploadState() {
   };
 }
 
-function resolveInitialReplyTarget() {
-  try {
-    const param = new URLSearchParams(window.location.search).get('reply');
-    if (!param) return null;
-    const found = INITIAL_HANDOVER_CARDS.find((c) => c.id === param || c.dutyId === param);
-    return found ? found.id : INITIAL_HANDOVER_CARDS[0].id;
-  } catch {
-    return null;
-  }
-}
-
-const initialReplyId = resolveInitialReplyTarget();
-
 function buildInitialChatMessages() {
   return [
     {
@@ -79,20 +68,18 @@ function buildInitialChatMessages() {
 }
 
 const state = {
-  activeTab: initialReplyId ? 'reply' : 'map', // 'map' | 'upload' | 'handover' | 'chat' | 'settings' | 'reply'
+  activeTab: 'map',
   mapView: 'list', // 'list' | 'calendar'
   tasks: cloneInitialTasks(),
   uploadHistory: INITIAL_UPLOAD_HISTORY.map((h) => ({ ...h })),
   upload: buildInitialUploadState(),
   handoverCards: cloneHandoverCards(),
-  selectedHandoverId: initialReplyId || INITIAL_HANDOVER_CARDS[0].id,
+  selectedHandoverId: INITIAL_HANDOVER_CARDS[0].id,
   handoverDutyFilter: 'all',
   handoverSearch: '',
-  replyCardId: initialReplyId || INITIAL_HANDOVER_CARDS[0].id,
-  replySavedBanner: false,
   chatMessages: buildInitialChatMessages(),
   chatInputValue: '',
-  chatSelectedEscalationDutyId: 'd-kyomu',
+  chatSelectedEscalationDutyId: '',
   selectedMonth: SCHOOL_INFO.defaultMonth,
   selectedDutyId: null,
   myOnly: false,
@@ -224,22 +211,12 @@ function downloadFile(filename, content, mimeType) {
 function switchTab(tabKey, { preserveScroll = false } = {}) {
   state.activeTab = tabKey;
   state.rolePopoverOpen = false;
-  if (tabKey !== 'reply') {
-    state.replySavedBanner = false;
-    try {
-      if (new URLSearchParams(window.location.search).has('reply')) {
-        window.history.replaceState(null, '', window.location.pathname);
-      }
-    } catch {
-      // ignore history errors in restricted frames
-    }
-  }
   if (!preserveScroll) window.scrollTo(0, 0);
   renderAll();
 }
 
 function renderTopAndSubnav() {
-  const views = ['map', 'upload', 'handover', 'chat', 'settings', 'reply'];
+  const views = ['map', 'upload', 'handover', 'chat', 'settings'];
   views.forEach((key) => {
     const el = document.getElementById(`view-${key}`);
     if (el) el.hidden = state.activeTab !== key;
@@ -937,26 +914,16 @@ function inferCategoryFromText(text) {
 function extractCandidatesFromText(rawText, docTitle) {
   const lines = rawText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   const candidates = [];
-  const baseYear = 2026;
 
   for (const line of lines) {
-    let dueDate = '';
-    const fullDateMatch = line.match(/(202[67])[.-](\d{1,2})[.-](\d{1,2})/);
-    const krDateMatch = line.match(/(\d{1,2})\s*월\s*(\d{1,2})\s*일/);
-    if (fullDateMatch) {
-      dueDate = `${fullDateMatch[1]}-${String(fullDateMatch[2]).padStart(2, '0')}-${String(fullDateMatch[3]).padStart(2, '0')}`;
-    } else if (krDateMatch) {
-      const m = Number(krDateMatch[1]);
-      const d = Number(krDateMatch[2]);
-      const y = m <= 2 ? baseYear + 1 : baseYear;
-      dueDate = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    }
+    const sourceDates = datesFromUpload(line);
+    const dueDate = sourceDates.length === 1 ? sourceDates[0] : '';
 
     if (!dueDate && !/(제출|마감|기안|확인|게시|반납|완료)/.test(line)) continue;
     if (line.startsWith('[') && !dueDate) continue;
 
     const cleanTitle = line
-      .replace(/^[-*•\d.]+\s*/, '')
+      .replace(/^(?:[-*•]\s*|\d+[.)]\s+)/, '')
       .replace(/\s+/g, ' ')
       .slice(0, 48);
     if (cleanTitle.length < 6) continue;
@@ -966,30 +933,89 @@ function extractCandidatesFromText(rawText, docTitle) {
     candidates.push({
       id: `cand-ext-${candidates.length + 1}`,
       title: cleanTitle,
-      dueDate: dueDate || '2026-11-28',
+      dueDate,
       dutyId,
       category,
       highlightQuote: line,
       checklistText: '원문 확인, 관련 양식 점검, 결과 공유',
       folderPath: `교내공유폴더 > 2026 > ${getDutyName(dutyId).replace(/\s/g, '')}`,
     });
-    if (candidates.length >= 3) break;
   }
 
-  if (candidates.length === 0) {
-    candidates.push({
-      id: 'cand-fallback-1',
-      title: (docTitle || '올린 문서 확인 업무').slice(0, 42),
-      dueDate: '2026-11-28',
-      dutyId: inferDutyFromText(rawText),
-      category: inferCategoryFromText(rawText),
-      highlightQuote: lines[0] || '문서 본문 전체에서 일정을 확인하세요.',
-      checklistText: '본문 세부 확인, 담당자 공유',
-      folderPath: '교내공유폴더 > 2026 > 신규반영',
-    });
-  }
   return candidates;
 }
+
+function uploadInputIssue(...values) {
+  const text = values.map(v => String(v ?? '')).join('\n').normalize('NFKC');
+  if (typeof detectUploadBlockReason === 'function' ? detectUploadBlockReason(text) : detectPiiInQuery(text)) return '개인을 식별할 수 있는 정보가 있어 반영하지 않았습니다. 가상 자료로 바꿔 주세요.';
+  const personalColumn = /^(?:(?:학생|학부모|보호자|교직원|교원|참가자|참여자)\s*)?(?:성명|이름|연락처|휴대전화|전화번호|주민등록번호|이메일)(?:\s*[:：]|$)/u;
+  const roster = text.split(/\r?\n/).some(line => line.split(/[,\t|;]/).some(cell => personalColumn.test(cell.trim().replace(/^"|"$/g,''))) || /^\s*(?:학생|학부모|교직원|참가자|참여자)\s*명단\s*[:：]/u.test(line));
+  return roster ? '개인 이름이나 연락처를 적는 명단은 가져올 수 없습니다. 업무나 행사 정보만 남겨 주세요.' : '';
+}
+function datesFromUpload(text) {
+  const tokens = String(text || '').match(/(?:\d{4}\s*년\s*)?\d{1,2}\s*월\s*\d{1,2}\s*일|(?<!\d)\d{4}\s*[-./]\s*\d{1,2}\s*[-./]\s*\d{1,2}(?!\d)|(?<![\d./-])\d{1,2}\s*[./]\s*\d{1,2}(?![\d./-])/gu) || [];
+  return [...new Set(tokens.map(token => {
+    const nums = token.match(/\d+/g).map(Number);
+    const [y,m,day] = nums.length === 3 ? nums : [nums[0] < 3 ? 2027 : 2026, ...nums];
+    const date = new Date(Date.UTC(y,m-1,day));
+    const iso = [y,String(m).padStart(2,'0'),String(day).padStart(2,'0')].join('-');
+    return date.getUTCFullYear()===y && date.getUTCMonth()+1===m && date.getUTCDate()===day && iso>='2026-03-01' && iso<='2027-02-28' ? iso : '';
+  }))];
+}
+function verifyNoticeCandidate(cand,up) {
+  const bad=uploadInputIssue(up.rawText,up.docTitle,cand.title,cand.folderPath);
+  if(bad)return bad;
+  if(!String(cand.title || '').trim())return '업무 제목을 입력해 주세요.';
+  if(!cand.dueDate || !datesFromUpload(cand.dueDate).includes(cand.dueDate))return '2026학년도(2026년 3월~2027년 2월)의 실제 마감일을 선택해 주세요.';
+  const quote=String(cand.highlightQuote || '').trim();
+  const folded=s=>String(s).replace(/[\s·]+/g,'');
+  const raw=folded(up.rawText),quoted=quote.split(/\s+·\s+/).filter(Boolean);
+  if(!quoted.length || !quoted.every(part=>raw.includes(folded(part))))return '원문이 바뀌었습니다. 내용을 확인한 뒤 업무 초안을 다시 추출해 주세요.';
+  if(!datesFromUpload(quote).includes(cand.dueDate))return '선택한 마감일을 원문 근거에서 확인할 수 없습니다. 날짜가 적힌 원문으로 다시 추출해 주세요.';
+  return '';
+}
+function parseUploadCalendar(raw) {
+  const csv=[];let row=[],cell='',quoted=false;
+  const text=String(raw).replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++;}else quoted=!quoted;}
+    else if(c===','&&!quoted){row.push(cell.trim());cell='';}
+    else if(c==='\n'&&!quoted){row.push(cell.trim());if(row.some(Boolean))csv.push(row);row=[];cell='';}
+    else cell+=c;
+  }
+  if(quoted)throw new Error('CSV 따옴표가 닫히지 않았습니다.');
+  row.push(cell.trim());if(row.some(Boolean))csv.push(row);
+  if(!csv.length)throw new Error('날짜와 제목이 있는 학사 일정을 입력해 주세요.');
+  const col=re=>csv[0].findIndex(c=>re.test(c));
+  const dateCol=col(/^(날짜|일자|일정일|마감일|date)$/i),titleCol=col(/^(업무명|행사명|일정명|제목|업무·행사명|title)$/i),dutyCol=col(/^(담당|담당자|업무분장|duty)$/i);
+  const header=dateCol>=0||titleCol>=0;
+  if(header&&(dateCol<0||titleCol<0))throw new Error('CSV 첫 줄에는 날짜와 제목을 함께 적어 주세요.');
+  const rows=(header?csv.slice(1):csv).map((cols,i)=>{
+    const number=i+(header?2:1),dates=datesFromUpload(cols[header?dateCol:0]),title=cols[header?titleCol:1]||'';
+    if(dates.length!==1||!dates[0]||!title.trim())throw new Error(number+'번째 줄의 날짜와 제목을 확인해 주세요. 날짜는 2026학년도 안에 있어야 합니다.');
+    const duty=cols[header?dutyCol:2]||'';
+    const owner=DUTIES.find(d=>d.id===duty||d.name===duty);
+    if(duty&&!owner)throw new Error(number+'번째 줄의 담당을 앱에 있는 업무분장 이름으로 적거나 비워 두세요.');
+    return {id:'calendar-input-'+i,dueDate:dates[0],title:title.trim(),dutyId:owner?.id||'',category:'task',selected:true};
+  });
+  if(!rows.length)throw new Error('제목 줄 아래에 일정 한 건 이상을 적어 주세요.');
+  return rows;
+}
+function applyUploadCalendarText(raw,name) {
+  const issue=uploadInputIssue(raw,name);
+  if(issue){showToast(issue);return;}
+  try{const rows=parseUploadCalendar(raw);state.upload.calendarRows=rows;state.upload.calendarSource=name||'입력한 학사 일정';state.upload.lastAddedSummary=null;renderUploadView();showToast(rows.length+'개 일정을 읽었습니다. 날짜와 제목을 확인해 주세요.');}
+  catch(e){showToast(e.message);}
+}
+function openCalendarFile(file) {
+  const reader=new FileReader();
+  reader.onload=()=>applyUploadCalendarText(String(reader.result||''),file.name);
+  reader.onerror=()=>showToast('파일을 읽을 수 없습니다. 내용을 붙여 넣어 주세요.');
+  reader.readAsText(file,'utf-8');
+}
+
+
 
 function renderUploadView() {
   const root = document.getElementById('view-upload');
@@ -1011,7 +1037,7 @@ function renderUploadView() {
     </div>
 
     <div class="rule-notice-banner">
-      <strong>시연용 규칙 추출 · 브라우저 내 처리:</strong> 이 공개 시연은 외부 AI 서버를 호출하지 않고 날짜·키워드 규칙으로 후보를 뽑습니다. 실제 서비스에서는 AI 추출 초안이 이 위치에 표시되며, 올린 자료와 파일은 브라우저 밖으로 전송되지 않습니다.
+      <strong>규칙으로 찾은 초안</strong> · 이 브라우저에서 문장의 날짜와 낱말을 읽어 업무 후보를 만듭니다. 원문과 마감일을 대조한 뒤 필요한 업무를 선택해 주세요.
     </div>
 
     ${up.blockedMessage ? `
@@ -1083,7 +1109,7 @@ function renderUploadView() {
         <section class="panel-card">
           <div class="section-head rail-head">
             <h2 class="section-title">추출된 업무 초안 검수 (${up.candidates.length}건)</h2>
-            <span class="status-badge is-ai">시연용 규칙 추출</span>
+            <span class="status-badge is-ai">규칙으로 찾은 초안</span>
           </div>
 
           ${up.candidates.length === 0 ? `
@@ -1128,7 +1154,7 @@ function renderUploadView() {
                 </div>
               </div>
               <div class="drawer-actions-row">
-                <button type="button" class="btn btn-outline btn-sm" data-commit-cand="${idx}" data-commit-status="draft">AI 초안으로 추가</button>
+                <button type="button" class="btn btn-outline btn-sm" data-commit-cand="${idx}" data-commit-status="draft">업무 초안으로 추가</button>
                 <button type="button" class="btn btn-primary btn-sm" data-commit-cand="${idx}" data-commit-status="confirmed">검수 완료 · 확정 반영</button>
               </div>
             </div>
@@ -1137,9 +1163,13 @@ function renderUploadView() {
       </div>
     ` : `
       <section class="panel-card" style="margin-bottom:16px;">
-        <div class="section-head rail-head">
-          <h2 class="section-title">학사일정표 추출 미리보기 (${up.calendarRows.filter((r) => r.selected).length}건 선택)</h2>
-          <button type="button" class="btn btn-primary btn-sm" id="commit-calendar-rows-btn">선택 항목 AI 초안으로 일괄 반영</button>
+        <div class="field-group"><label for="calendar-csv-text">학사 일정 등록</label>
+          <p class="drawer-caption">선택한 행은 업무 초안으로 등록되어 월별 업무 목록과 월간 캘린더에 표시됩니다. 2026년 3월부터 2027년 2월까지의 가상 일정만 사용해 주세요.</p>
+          <textarea id="calendar-csv-text" class="field-textarea" placeholder="날짜,제목,담당&#10;2026-12-09,가상 겨울 책마당,창의체험"></textarea>
+          <div class="drawer-actions-row"><button type="button" class="btn btn-outline btn-sm" id="calendar-read-input">입력한 일정 읽기</button>
+          <label class="file-upload-label"><input type="file" id="calendar-upload-file" accept=".txt,.csv"><span>TXT·CSV 파일 불러오기</span></label></div></div>
+          <div class="section-head rail-head"><h2 class="section-title">학사일정표 추출 미리보기 (${up.calendarRows.filter((r) => r.selected).length}건 선택)</h2>
+          <button type="button" class="btn btn-primary btn-sm" id="commit-calendar-rows-btn">선택 항목 업무 초안으로 일괄 반영</button>
         </div>
         <div class="simple-table-wrap">
           <table class="simple-table">
@@ -1342,10 +1372,8 @@ function renderHandoverView() {
             </div>
             <div class="drawer-actions-row" style="margin-bottom:10px;">
               <button type="button" class="btn btn-primary btn-sm" id="handover-copy-messenger">교내 메신저 질문 문구 복사</button>
-              <button type="button" class="btn btn-outline btn-sm" id="handover-copy-magiclink">전보 전임자용 1회용 답변 링크 복사</button>
-              <button type="button" class="btn btn-outline btn-sm" id="handover-open-reply-view">1회용 답변 화면 열기 →</button>
             </div>
-            <p class="drawer-caption" style="margin-bottom:10px;">복사한 <code>?reply=...</code> 링크로 접속하면 로그인 없이 해당 질문 1건에 바로 회신할 수 있습니다.</p>
+            <p class="drawer-caption" style="margin-bottom:10px;">직접 질문과 답변을 작성할 수 있습니다. 같은 기기의 같은 브라우저에서만 열리는 회신 링크는 질문 한 건에 한 번, 24시간 동안 유효합니다. 다른 사람에게 전송되지 않습니다.</p>
 
             <div style="display:grid;gap:8px;">
               ${selected.qaList.map((qa) => `
@@ -1353,7 +1381,7 @@ function renderHandoverView() {
                   <div class="qa-q">Q. ${escapeHtml(qa.question)} <span class="hint-inline">(${escapeHtml(qa.createdAt)})</span></div>
                   ${qa.answer
                     ? `<div class="qa-a">A. ${escapeHtml(qa.answer)}</div>`
-                    : `<div class="hint-inline">전임자 회신 대기 중 ${state.demoMode ? '<button type="button" class="btn btn-outline btn-sm" data-fill-predecessor-reply="' + escapeHtml(qa.id) + '" style="margin-left:8px;">[시연] 전임자 예시 답변 채우기</button>' : ''}</div>`}
+                    : `<div class="hint-inline">답변 대기 중</div>`}
                 </div>
               `).join('') || '<p class="hint-inline">등록된 질문이 아직 없습니다. 아래에서 첫 질문을 남겨 보세요.</p>'}
             </div>
@@ -1367,6 +1395,7 @@ function renderHandoverView() {
       </div>
     </div>
   `;
+  attachLocalEditors(root,selected,{check:detectPiiInQuery,render:renderHandoverView,notify:showToast});
 }
 
 /* -----------------------------
@@ -1397,179 +1426,106 @@ function detectUploadBlockReason(text) {
   return '';
 }
 
-function inferEscalationDutyFromQuery(question) {
-  // Explicitly resolve domain keywords before homeroom numbers so "2학기" never mis-routes to 2학년 담임.
-  if (/학예|독서|도서|돌봄|체험/.test(question)) return 'd-creative';
-  if (/난방|안전|시설|콘센트|멀티탭/.test(question)) return 'd-safety';
-  if (/보건|감염|위생|독감/.test(question)) return 'd-health';
-  if (/공개수업|교육과정|설문|평가/.test(question)) return 'd-research';
-  if (/태블릿|충전|방송|전자칠판/.test(question)) return 'd-media';
-  if (/상담|월간|학사|기안|시업|졸업|성과상여금/.test(question)) return 'd-kyomu';
-  const gradeMatch = question.match(/([1-6])\s*학년/);
-  if (gradeMatch) return `h${gradeMatch[1]}`;
-  return 'd-kyomu';
+function compactChatText(value) {
+  return String(value ?? '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
 }
 
-const GENERIC_QUERY_WORDS = new Set([
-  '언제', '언제야', '언제인가요', '언제까지', '어디', '어디야', '어디서', '누구', '무엇', '무슨', '어떤', '어떻게', '어느', '몇', '왜',
-  '마감', '마감일', '기한', '제출', '제출일', '일정', '일정표', '날짜', '시기',
-  '기준', '기준표', '평가', '계획', '안내', '안내문', '운영', '작성', '준비', '준비할', '진행',
-  '확인', '점검', '정리', '수합', '기안', '품의', '정산', '결재', '시행', '공지',
-  '공문', '자료', '문서', '파일', '서식', '양식', '명단', '목록', '결과', '내용', '원문',
-  '폴더', '공유폴더', '경로', '위치', '저장',
-  '교원', '교사', '선생님', '교직원', '직원', '학생', '학부모', '학급', '학년', '담임', '담당', '담당자', '부서',
-  '전임', '전임자', '후임', '후임자', '팁', '요령', '노트', '인수인계', '질문', '문의',
-  '학교', '교내', '우리', '전체', '올해', '작년', '올해는', '차년도', '이번',
-  '학기', '1학기', '2학기', '2026', '2026년', '2026학년도', '2027',
-  '아직', '미제출', '미완료', '구입', '구매', '신청', '시간', '알려', '알려줘', '알려주세요', '보여줘', '찾아줘',
-  '있어', '있나요', '없어', '가요', '하나요', '되나요', '할까', '해요', '관련', '대해',
-]);
-
-function stripKoreanParticle(raw) {
-  let w = raw.toLowerCase();
-  if (GENERIC_QUERY_WORDS.has(w)) return '';
-  const suffixRe = /(인가요|하나요|되나요|해주세요|주세요|알려줘|언제야|어디야|까지|부터|에서|으로|과는|와는|이랑|하고|은|는|이|가|을|를|의|에|로|과|와|도|만)$/;
-  const stripped = w.replace(suffixRe, '');
-  if (stripped.length >= 2) w = stripped;
-  return w;
+function tokenizeKoreanQuery(question) {
+  const scope = /\d+\s*(학년도|학년|학기|년|월|일)([은는이가을를의에])?/g;
+  const common = new Set('학교 우리 교직원 교원 선생님 학생 올해 이번 학년 학급 전체 관련 자료 원문 문서 업무 행사 날짜 일시 기한 일정 마감 마감일 제출일 제출 수합 취합 마감날 언제 기간 기준 확인 안내 평가 보고 품의 구입 담당 담당자 부서 전임자 인수인계 요령 질문 내용 참고 파일 폴더 공유폴더 위치 준비 준비할 방법 아직 미제출 제출한 학년별 처리 기준표'.split(' '));
+  return [...new Set((String(question).normalize('NFKC').toLowerCase().replace(scope, ' ').match(/[\p{L}\p{N}]+/gu) || [])
+    .map(word => word.replace(/(인가요|일까요|이었나요|이에요|이야|예요|까지는|까지|에서는|에서|으로|에는|은|는|을|를|이|가|에|와|과|의|도)$/u, ''))
+    .filter(word => word.length > 1 && !common.has(word) && !/^(알려|어떻|어디|누구|언제|며칠|어느|무슨|어떤|있어|있나|부탁|찾아|보여|궁금|뭐야|인가요|할까|하나요)/.test(word)))];
 }
 
-function extractSubjectTokens(question) {
-  const rawWords = String(question || '')
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
-    .split(/\s+/)
-    .map(stripKoreanParticle)
-    .filter((w) => w.length >= 2);
-
-  const unique = [];
-  for (const w of rawWords) {
-    if (GENERIC_QUERY_WORDS.has(w)) continue;
-    if (!unique.includes(w)) unique.push(w);
-  }
-  return unique;
+function chatRefTask(task) {
+  return { type: 'task', id: task.id, label: '업무 상세: ' + task.title };
 }
-
-function isExplicitGradeToken(tok) {
-  return /^[1-6]학년$/.test(tok);
+function chatRefCard(card) {
+  return { type: 'handover', id: card.id, label: '인수인계: ' + card.title };
 }
 
 function answerChatQuestion(question) {
-  const subjectTokens = extractSubjectTokens(question);
-  const nonGradeSubjects = subjectTokens.filter((t) => !isExplicitGradeToken(t));
-  const targetDutyHint = inferEscalationDutyFromQuery(question);
-
-  if (subjectTokens.length === 0) {
-    return {
-      id: `chat-bot-${Date.now()}`,
-      role: 'bot',
-      badge: '확인 필요 · 연관 근거 없음',
-      badgeTone: 'is-ai',
-      text: `질문에서 구체적인 업무 주제어를 찾지 못했습니다. 임의로 일정을 추측하지 않으니 오른쪽 [전임자·담당 연결]에서 부서를 선택해 문의하시거나 업무명·키워드를 구체적으로 입력해 주세요.`,
-      sources: [],
-      escalationDutyId: targetDutyHint,
-      questionText: question,
-    };
+  const reply = (badge, text, sources = [], dutyId = '') => ({
+    id: 'chat-bot-' + Date.now(), role: 'bot', badge,
+    badgeTone: sources.length && !badge.startsWith('확인 필요') ? 'is-confirmed' : 'is-ai',
+    text, sources, escalationDutyId: DUTIES.some(d => d.id === dutyId) ? dutyId : '', questionText: question
+  });
+  const unknown = (reason = '이 질문의 답을 확인할 자료가 없습니다.', sources = []) =>
+    reply('확인 필요 · 직접 근거 부족', reason + ' 확인할 부서를 직접 선택해 문의할 수 있습니다.', sources);
+  const normalized = compactChatText(question);
+  const subjects = tokenizeKoreanQuery(question);
+  const saved = state.handoverCards.flatMap(card => (card.qaList || [])
+    .filter(pair => pair.answer?.trim() && compactChatText(pair.question) === normalized)
+    .map(pair => ({card, pair})));
+  if (saved.length === 1) {
+    const {card, pair} = saved[0];
+    return reply('인수인계 답변 확인', '저장된 질문: ' + pair.question + '\n전임자 답변: ' + pair.answer, [chatRefCard(card)], card.dutyId);
   }
-
-  const scoredTasks = state.tasks.map((t) => {
-    const hay = `${t.title} ${t.note} ${t.sourceTitle} ${t.sourceExcerpt} ${t.folderPath} ${getDutyName(t.dutyId)}`.toLowerCase();
-    let matchedCount = 0;
-    let nonGradeMatched = 0;
-    let score = 0;
-    const matchedTokens = [];
-    for (const tok of subjectTokens) {
-      if (hay.includes(tok)) {
-        matchedCount += 1;
-        matchedTokens.push(tok);
-        if (!isExplicitGradeToken(tok)) nonGradeMatched += 1;
-        score += tok.length >= 3 ? 3 : 2;
-      }
-    }
-    if (matchedCount > 0 && t.dutyId === targetDutyHint) score += 1;
-    return { task: t, score, matchedCount, nonGradeMatched, matchedTokens };
-  }).sort((a, b) => b.score - a.score || b.matchedCount - a.matchedCount);
-
-  const scoredCards = state.handoverCards.map((c) => {
-    const hay = `${c.title} ${c.summary} ${c.tips.join(' ')} ${c.timeline.map((x) => x.text).join(' ')} ${getDutyName(c.dutyId)}`.toLowerCase();
-    let matchedCount = 0;
-    let score = 0;
-    for (const tok of subjectTokens) {
-      if (hay.includes(tok)) {
-        matchedCount += 1;
-        score += 2;
-      }
-    }
-    if (matchedCount > 0 && c.dutyId === targetDutyHint) score += 1;
-    return { card: c, score, matchedCount };
-  }).sort((a, b) => b.score - a.score);
-
-  const topTask = scoredTasks[0];
-  const topCard = scoredCards[0];
-
-  const hasValidDomainHit = Boolean(
-    topTask &&
-    topTask.matchedCount > 0 &&
-    (nonGradeSubjects.length === 0 || topTask.nonGradeMatched > 0)
-  );
-
-  if (!hasValidDomainHit) {
-    return {
-      id: `chat-bot-${Date.now()}`,
-      role: 'bot',
-      badge: '확인 필요 · 연관 근거 없음',
-      badgeTone: 'is-ai',
-      text: `올려진 업무 지도·공문 근거·인수인계 노트에서 "${subjectTokens.join(', ')}" 관련 문서를 찾지 못했습니다. 근거가 없는 일정·기준·비밀번호는 추측해 안내하지 않으며, 오른쪽 [전임자·담당 연결]에서 해당 부서에 바로 문의하실 수 있습니다.`,
-      sources: [],
-      escalationDutyId: targetDutyHint,
-      questionText: question,
-    };
-  }
-
-  const coverageDenominator = nonGradeSubjects.length > 0 ? nonGradeSubjects.length : subjectTokens.length;
-  const coverageRatio = (nonGradeSubjects.length > 0 ? topTask.nonGradeMatched : topTask.matchedCount) / coverageDenominator;
-  const isPartialMatch = coverageRatio < 0.7;
-
-  const matchedTask = topTask.task;
-  const lines = [];
-  if (isPartialMatch) {
-    lines.push(`[관련 있을 수 있는 자료 · 확인 필요] 질문의 일부 단어(${topTask.matchedTokens.join(', ')})와 일치하는 문서가 있으나 전체 주제와 일치하는지는 확인이 필요합니다.`);
-  } else {
-    lines.push(`[${matchedTask.sourceTitle}] 근거 기준 안내입니다.`);
-  }
-  lines.push(`• 주관 담당: ${getDutyName(matchedTask.dutyId)} · 마감일: ${matchedTask.dueDate}`);
-  lines.push(`• 핵심 내용: ${matchedTask.sourceExcerpt}`);
-  if (matchedTask.submission) {
-    const missing = matchedTask.submission.targetDutyIds
-      .filter((id) => !matchedTask.submission.submittedDutyIds.includes(id))
-      .map((id) => getDutyName(id));
-    lines.push(missing.length > 0
-      ? `• 현재 수합 현황: ${matchedTask.submission.submittedDutyIds.length}/${matchedTask.submission.targetDutyIds.length} 제출 (미제출: ${missing.join(', ')})`
-      : '• 현재 수합 현황: 전체 대상 제출 완료');
-  }
-  lines.push(`• 자료 폴더 위치: ${matchedTask.folderPath}`);
-
-  if (topCard && topCard.matchedCount > 0 && topCard.card.tips.length > 0) {
-    lines.push(`• 전임자 실무 요령(${getDutyName(topCard.card.dutyId)}): ${topCard.card.tips[0]}`);
-  }
-
-  const sources = [
-    { type: 'task', id: matchedTask.id, label: `업무 상세: ${matchedTask.title}` },
-  ];
-  if (topCard && topCard.matchedCount > 0) {
-    sources.push({ type: 'handover', id: topCard.card.id, label: `인수인계: ${getDutyName(topCard.card.dutyId)}` });
-  }
-
-  return {
-    id: `chat-bot-${Date.now()}`,
-    role: 'bot',
-    badge: isPartialMatch ? '관련 있을 수 있는 자료 · 확인 필요' : '✓ 문서 근거 확인',
-    badgeTone: isPartialMatch ? 'is-ai' : 'is-confirmed',
-    text: lines.join('\n'),
-    sources,
-    escalationDutyId: matchedTask.dutyId,
-    questionText: question,
+  if (saved.length > 1) return unknown('서로 다른 인수인계 기록에 같은 질문이 있어 하나의 답을 고르기 어렵습니다.', saved.slice(0,4).map(hit => chatRefCard(hit.card)));
+  if (!subjects.length) return unknown();
+  const matches = (text, keys = subjects) => keys.every(word => compactChatText(text).includes(word));
+  const qualifiers = [...new Set(question.match(/[1-6]\s*학년(?!도)|[12]\s*학기/g) || [])];
+  const explicitYears = [...question.matchAll(/(\d{4})\s*(학년도|년)/g)];
+  const explicitMonths = [...question.matchAll(/(?:^|[^\d])(\d{1,2})\s*월/g)].map(m => Number(m[1]));
+  const explicitDays = [...question.matchAll(/(?:^|[^\d])(\d{1,2})\s*일/g)].map(m => Number(m[1]));
+  if (new Set(explicitYears.map(x=>x[0])).size > 1 || new Set(explicitMonths).size > 1 || new Set(explicitDays).size > 1 || /\d+\s*(?:~|–|부터|에서)\s*\d+\s*[월일]/.test(question)) return unknown('날짜가 여러 개입니다. 확인하실 업무와 날짜를 하나씩 적어 주세요.');
+  const wantingDue = /마감|기한|언제까지|제출일/.test(question);
+  const wantingDate = wantingDue || /언제|며칠|일정|행사일|날짜/.test(question);
+  const wantingStatus = /미제출|안\s*낸|안\s*냈|제출\s*현황/.test(question);
+  const wantingTip = /전임자|실무\s*팁|인수인계|요령/.test(question);
+  const hasDateScope = explicitYears.length || explicitMonths.length || explicitDays.length;
+  const matchesDateScope = (date) => {
+    if (!hasDateScope) return true;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) return false;
+    const [year,month,day] = date.split('-').map(Number);
+    const askedYear = explicitYears[0];
+    return (!askedYear || Number(askedYear[1]) === (askedYear[2] === '학년도' && month < 3 ? year-1 : year))
+      && (!explicitMonths.length || month === explicitMonths[0]) && (!explicitDays.length || day === explicitDays[0]);
   };
+  const candidates = state.tasks.filter(task => {
+    if (task.status !== 'confirmed' || !matchesDateScope(task.dueDate) || (wantingStatus && !task.submission)) return false;
+    const title = compactChatText(task.title);
+    const evidence = [task.title, task.sourceTitle, task.sourceExcerpt].join(' ');
+    return subjects.some(word => title.includes(word)) && matches(evidence)
+      && qualifiers.every(qualifier => matches([evidence,getDutyName(task.dutyId)].join(' '),[compactChatText(qualifier)]));
+  });
+  const named = candidates.filter(t => normalized.includes(compactChatText(t.title)));
+  const hits = named.length ? named : candidates;
+  if (hits.length > 1) return unknown('여러 업무가 해당합니다. 업무 제목을 확인한 뒤 다시 물어보세요.', hits.slice(0, 4).map(chatRefTask));
+  const task = hits[0];
+  const cards = state.handoverCards.filter(card => (!task || card.dutyId === task.dutyId)
+    && qualifiers.every(qualifier => matches([card.title,card.summary,getDutyName(card.dutyId)].join(' '),[compactChatText(qualifier)])));
+  if (wantingTip) {
+    const tips = cards.flatMap(card => (card.tips || []).filter(tip => matches(tip)).map(tip => ({card,tip})));
+    if (tips.length === 1 && (!hasDateScope || task)) {
+      const {card,tip} = tips[0];
+      return reply('인수인계 노트에서 확인', '전임자 실무 요령: ' + tip, [chatRefCard(card), ...(task ? [chatRefTask(task)] : [])], card.dutyId);
+    }
+    return unknown('질문에 직접 답하는 전임자 기록을 하나로 확인하지 못했습니다.', task ? [chatRefTask(task)] : []);
+  }
+  if (!task) return unknown();
+  if (wantingDate && !wantingDue && !named.length && !/제출|수합|취합|점검|준비|작성|보고|신청/.test(question)) {
+    return unknown('관련 업무 카드는 찾았지만 업무 마감일이 질문하신 행사일과 같은 날인지 확인하지 못했습니다.', [chatRefTask(task)]);
+  }
+  const lines = ['업무: ' + task.title];
+  if (wantingDue || wantingDate) {
+    if (!task.dueDate) return unknown('이 업무에는 확인된 마감일이 없습니다.', [chatRefTask(task)]);
+    lines.push('업무 카드에 등록된 마감일: ' + task.dueDate);
+  }
+  if (wantingStatus && task.submission) {
+    const {targetDutyIds, submittedDutyIds} = task.submission;
+    const missing = targetDutyIds.filter(id => !submittedDutyIds.includes(id)).map(id => getDutyName(id));
+    lines.push('현재 수합 현황: ' + (targetDutyIds.length - missing.length) + '/' + targetDutyIds.length + ' 제출' + (missing.length ? ' (미제출: ' + missing.join(', ') + ')' : ' · 전체 제출 완료'));
+  }
+  if (/폴더|경로|위치/.test(question)) {
+    if (!task.folderPath) return unknown('관련 업무를 찾았지만 폴더 위치는 기록되어 있지 않습니다.', [chatRefTask(task)]);
+    lines.push('자료 폴더 위치: ' + task.folderPath);
+  }
+  if (task.dutyId) lines.push('담당: ' + getDutyName(task.dutyId));
+  if (task.sourceExcerpt) lines.push('원문: ' + task.sourceExcerpt);
+  if (task.sourceTitle) lines.push('출처: ' + task.sourceTitle);
+  return reply(task.sourceExcerpt ? '✓ 문서 근거 확인' : '업무 카드에서 확인', lines.join('\n'), [chatRefTask(task)], task.dutyId);
 }
 
 function sendChatQuestion(rawQuestion) {
@@ -1592,9 +1548,7 @@ function sendChatQuestion(rawQuestion) {
   });
   const botReply = answerChatQuestion(question);
   state.chatMessages.push(botReply);
-  if (botReply.escalationDutyId) {
-    state.chatSelectedEscalationDutyId = botReply.escalationDutyId;
-  }
+  state.chatSelectedEscalationDutyId = botReply.escalationDutyId || '';
   state.chatInputValue = '';
   renderChatView();
   const thread = document.getElementById('chat-thread');
@@ -1605,10 +1559,12 @@ function renderChatView() {
   const root = document.getElementById('view-chat');
   if (!root || state.activeTab !== 'chat') return;
 
-  const escalationDutyName = getDutyName(state.chatSelectedEscalationDutyId);
+  const selectedDuty = DUTIES.find(d => d.id === state.chatSelectedEscalationDutyId);
+  const escalationCard = selectedDuty && state.handoverCards.find(c => c.dutyId === selectedDuty.id);
+  const escalationDutyName = selectedDuty?.name || '';
   const lastUserMsg = [...state.chatMessages].reverse().find((m) => m.role === 'user');
   const lastQ = lastUserMsg ? lastUserMsg.text : '업무 진행 절차 확인 요청';
-  const escalationMsg = `안녕하세요, ${escalationDutyName} 전임/담당 선생님. TeacherMate 자료에서 근거가 확인되지 않아 여쭤봅니다. [${lastQ}] 관련하여 작년도 기준이나 자료 위치 안내 부탁드립니다.`;
+  const escalationMsg = selectedDuty ? `안녕하세요, ${escalationDutyName} 전임/담당 선생님. TeacherMate 자료에서 근거가 확인되지 않아 여쭤봅니다. [${lastQ}] 관련하여 작년도 기준이나 자료 위치 안내 부탁드립니다.` : '문의를 보낼 부서를 먼저 선택해 주세요.';
 
   root.innerHTML = `
     <div class="page-header">
@@ -1681,8 +1637,9 @@ function renderChatView() {
         </div>
         <p class="drawer-section-note" style="margin-bottom:10px;">자료 근거가 없을 때는 담당 부서를 고른 뒤 메신저 문구를 복사하거나 인수인계 Q&A에 바로 남기세요.</p>
         <div class="field-group" style="margin-bottom:10px;">
-          <label for="chat-escalation-duty">추천 연결 부서 (자동 키워드 분류)</label>
+          <label for="chat-escalation-duty">문의할 부서</label>
           <select id="chat-escalation-duty" class="field-select">
+            <option value="" ${!selectedDuty ? 'selected' : ''}>부서를 선택해 주세요</option>
             ${DUTIES.map((d) => `<option value="${escapeHtml(d.id)}" ${d.id === state.chatSelectedEscalationDutyId ? 'selected' : ''}>${escapeHtml(d.name)}</option>`).join('')}
           </select>
         </div>
@@ -1690,8 +1647,8 @@ function renderChatView() {
           ${escapeHtml(escalationMsg)}
         </div>
         <div style="display:grid;gap:8px;">
-          <button type="button" class="btn btn-primary btn-sm btn-full" id="chat-copy-escalation" data-copy-msg="${escapeHtml(escalationMsg)}">문의 메신저 문구 복사</button>
-          <button type="button" class="btn btn-outline btn-sm btn-full" id="chat-go-handover-qa">해당 부서 인수인계 Q&A로 이동 →</button>
+          <button type="button" class="btn btn-primary btn-sm btn-full" id="chat-copy-escalation" ${selectedDuty ? '' : 'disabled'} data-copy-msg="${escapeHtml(escalationMsg)}">문의 메신저 문구 복사</button>
+          <button type="button" class="btn btn-outline btn-sm btn-full" id="chat-go-handover-qa" ${escalationCard ? '' : 'disabled'}>해당 부서 인수인계 Q&A로 이동 →</button>
         </div>
       </aside>
     </div>
@@ -1714,8 +1671,8 @@ function renderSettingsView() {
   root.innerHTML = `
     <div class="page-header">
       <div class="page-header-copy">
-        <h1 class="page-title">환경설정 및 시연 관리</h1>
-        <p class="page-desc">내 담당 학년·부서 기본 필터, 실시간 업무 현황, 발표용 시연 보조 도구와 공개 데이터 보호를 관리합니다.</p>
+        <h1 class="page-title">설정</h1>
+        <p class="page-desc">내 담당을 고르고, 이 브라우저에 저장한 자료를 백업하거나 복원할 수 있습니다.</p>
       </div>
       <div class="page-header-actions">
         <button type="button" class="btn btn-outline btn-sm" data-go-tab="map">← 업무 지도로 돌아가기</button>
@@ -1742,7 +1699,7 @@ function renderSettingsView() {
       <section class="panel-card">
         <div class="section-head rail-head">
           <h2 class="section-title">학교 업무 운영 현황 (실시간 집계)</h2>
-          <span class="meta-chip">현재 메모리 상태 기준</span>
+          <span class="meta-chip">이 브라우저의 자료 기준</span>
         </div>
         <div class="stat-grid">
           <div class="stat-card">
@@ -1758,7 +1715,7 @@ function renderSettingsView() {
             <span class="stat-value">${doneCount}건</span>
           </div>
           <div class="stat-card">
-            <span class="stat-label">AI 초안 대기</span>
+            <span class="stat-label">확인할 초안</span>
             <span class="stat-value">${draftCount}건</span>
           </div>
           <div class="stat-card">
@@ -1774,13 +1731,13 @@ function renderSettingsView() {
 
       <section class="panel-card">
         <div class="section-head rail-head">
-          <h2 class="section-title">발표용 시연 보조 도구</h2>
+          <h2 class="section-title">예시 수합 상태 변경</h2>
           <span class="status-badge ${state.demoMode ? 'is-confirmed' : 'is-done'}">${state.demoMode ? '표시 중' : '일반 교사 화면'}</span>
         </div>
         <label class="toggle-row" style="cursor:pointer;">
           <div>
-            <strong>발표용 시연 보조 버튼 켜기</strong>
-            <div class="hint-inline">끄면 일반 교사용 화면만 보이며, 켜면 서랍의 미제출 토글과 인수인계 예시 답변 버튼이 열립니다.</div>
+            <strong>예시 수합 상태 변경 허용</strong>
+            <div class="hint-inline">켜면 업무 상세에서 학년별 제출 여부를 눌러 바꿀 수 있습니다.</div>
           </div>
           <input type="checkbox" id="settings-demo-mode" ${state.demoMode ? 'checked' : ''}>
         </label>
@@ -1788,19 +1745,17 @@ function renderSettingsView() {
 
       <section class="panel-card">
         <div class="section-head rail-head">
-          <h2 class="section-title">백업 및 공개 시연 보호 잠금</h2>
-          <span class="meta-chip">시연 데이터 보호됨</span>
+          <h2 class="section-title">백업과 복원</h2>
+          <span class="meta-chip">이 기기에 저장</span>
         </div>
         <div class="lock-box" style="margin-bottom:12px;">
-          <div style="font-size:13px;font-weight:700;color:var(--st-over-ink);">파괴적 작업 보호</div>
-          <div style="font-size:12px;color:var(--ink-secondary);">공개 시연 중 다수가 접속하더라도 학교 공용 데이터가 지워지지 않도록 일괄 삭제 기능을 잠급니다.</div>
-          <div>
-            <button type="button" class="btn btn-outline btn-sm" disabled title="공개 시연 보호로 비활성화됨">전체 데이터 일괄 삭제 (시연 계정 잠금됨)</button>
-          </div>
+          <div style="font-size:13px;font-weight:700;color:var(--st-over-ink);">저장 위치</div>
+          <div style="font-size:12px;color:var(--ink-secondary);">입력한 업무, 인수인계 기록과 대화는 이 브라우저에 보관됩니다. 공용 PC에는 실제 학교 자료를 입력하지 마세요.</div>
         </div>
         <div class="drawer-actions-row">
-          <button type="button" class="btn btn-outline btn-sm" id="settings-download-json">현재 시연 데이터 JSON 백업</button>
-          <button type="button" class="btn btn-outline btn-sm" id="settings-reset-all">처음 시연 상태로 되돌리기</button>
+          <button type="button" class="btn btn-outline btn-sm" id="settings-download-json">현재 자료 백업 (.json)</button>
+          <label class="btn btn-outline btn-sm" style="cursor:pointer">백업 파일 복원 <input style="max-width:14em" type="file" id="settings-restore-file" accept=".json,application/json"></label>
+          <button type="button" class="btn btn-outline btn-sm" id="settings-reset-all">초기 가상 자료로 되돌리기</button>
         </div>
       </section>
     </div>
@@ -1908,7 +1863,7 @@ function renderDrawer() {
               const shortName = getDutyName(id).replace(' 담임', '');
               const cls = submitted ? 'is-submitted' : 'is-missing';
               if (state.demoMode) {
-                return `<button type="button" class="grade-tag ${cls} ${isMine ? 'is-mine' : ''}" data-demo-toggle-sub="${escapeHtml(task.id)}:${escapeHtml(id)}" title="시연 보조: 클릭해 제출 상태 전환">${escapeHtml(shortName)} ${submitted ? '제출' : '미제출'}</button>`;
+                return `<button type="button" class="grade-tag ${cls} ${isMine ? 'is-mine' : ''}" data-demo-toggle-sub="${escapeHtml(task.id)}:${escapeHtml(id)}" title="눌러 제출 상태 변경">${escapeHtml(shortName)} ${submitted ? '제출' : '미제출'}</button>`;
               }
               return `<span class="grade-tag ${cls} ${isMine ? 'is-mine' : ''}">${escapeHtml(shortName)} ${submitted ? '제출' : '미제출'}</span>`;
             }).join('')}
@@ -1917,7 +1872,7 @@ function renderDrawer() {
             <button type="button" class="btn btn-primary btn-sm" id="drawer-copy-messenger">교내 메신저 안내 문구 복사</button>
             <button type="button" class="btn btn-outline btn-sm" id="drawer-nudge-inapp">${sub.nudged ? '앱 알림 기록됨' : '앱 내 알림 표시'}</button>
           </div>
-          <p class="drawer-caption">${state.demoMode ? '발표 시연 도구 켜짐: 학년 라벨을 눌러 제출/미제출을 전환할 수 있습니다.' : '앱 내 알림은 접속 시 화면에 표시되며, 즉시 전달은 메신저 문구 복사를 권장합니다.'}</p>
+          <p class="drawer-caption">${state.demoMode ? '예시 자료 편집 중 · 학년 라벨을 눌러 제출/미제출을 전환할 수 있습니다.' : '앱 내 알림은 접속 시 화면에 표시되며, 즉시 전달은 메신저 문구 복사를 권장합니다.'}</p>
         </section>
       ` : ''}
 
@@ -1967,69 +1922,6 @@ function renderDrawer() {
   `;
 }
 
-/* -----------------------------
- * 6. 외부 전보 전임자용 1회용 답변 화면 (?reply=)
- * ----------------------------- */
-function renderReplyView() {
-  const root = document.getElementById('view-reply');
-  if (!root || state.activeTab !== 'reply') return;
-
-  const card = state.handoverCards.find((c) => c.id === state.replyCardId) || state.handoverCards[0];
-  const pendingQa = card.qaList.find((q) => !q.answer);
-  const latestQa = card.qaList[card.qaList.length - 1];
-  const promptQuestion = pendingQa
-    ? pendingQa.question
-    : (latestQa ? latestQa.question : card.messengerQuestionTemplate);
-
-  root.innerHTML = `
-    <div class="reply-card-wrap">
-      <div class="page-header" style="margin-bottom:0;">
-        <div class="page-header-copy">
-          <span class="meta-chip">외부 전보 교원용 1회용 답변 화면 (무로그인 시연)</span>
-          <h1 class="page-title" style="margin-top:6px;">전임자 질문 답변하기</h1>
-          <p class="page-desc">${escapeHtml(SCHOOL_INFO.name)} · ${escapeHtml(getDutyName(card.dutyId))} 인수인계 확인 요청</p>
-        </div>
-        <button type="button" class="btn btn-outline btn-sm" id="reply-go-handover">인수인계 노트로 이동 →</button>
-      </div>
-
-      ${state.replySavedBanner ? `
-        <div class="added-banner" role="status">
-          <span>답변을 등록해 ${escapeHtml(getDutyName(card.dutyId))} 인수인계 Q&A에 반영했습니다. (시연)</span>
-          <button type="button" class="btn btn-primary btn-sm" id="reply-view-saved-btn">저장된 인수인계 Q&A 보기 →</button>
-        </div>
-      ` : ''}
-
-      <section class="panel-card">
-        <div class="section-head rail-head">
-          <h2 class="section-title">${escapeHtml(card.title)}</h2>
-          <span class="meta-chip">${escapeHtml(getDutyName(card.dutyId))}</span>
-        </div>
-
-        <div class="source-quote" style="margin-bottom:14px;">
-          <div class="source-quote-title">현임 교사의 확인 요청 질문</div>
-          <div>${escapeHtml(promptQuestion)}</div>
-        </div>
-
-        <form id="reply-form" style="display:grid;gap:10px;">
-          <div class="field-group">
-            <label for="reply-answer-text">전임자 답변 입력 (학교 밖에서도 로그인 없이 회신)</label>
-            <textarea
-              id="reply-answer-text"
-              class="field-textarea"
-              maxlength="400"
-              placeholder="작년도 진행 경험, 서식 폴더 위치, 유의사항 등을 간단히 적어 주세요. (개인정보·연락처 입력 차단)"
-            ></textarea>
-          </div>
-          <div class="drawer-actions-row">
-            <button type="submit" class="btn btn-primary btn-sm">답변 등록하고 인수인계에 반영</button>
-            <button type="button" class="btn btn-outline btn-sm" id="reply-back-map">일반 업무 지도로 이동</button>
-          </div>
-        </form>
-      </section>
-    </div>
-  `;
-}
-
 function renderAll() {
   renderTopAndSubnav();
   if (state.activeTab === 'map') {
@@ -2045,8 +1937,7 @@ function renderAll() {
     renderChatView();
   } else if (state.activeTab === 'settings') {
     renderSettingsView();
-  } else if (state.activeTab === 'reply') {
-    renderReplyView();
+
   }
   renderDrawer();
 }
@@ -2097,6 +1988,9 @@ function nextDayIso(dateStr) {
   return next.toISOString().slice(0, 10);
 }
 
+function icalText(value) {
+  return String(value ?? '').replace(/\\/g, '\\\\').replace(/\r\n?|\n/g, '\\n').replace(/[,;]/g, ch=>'\\'+ch);
+}
 function buildIcsContent(tasks) {
   const stamp = `${DEMO_TODAY.replace(/-/g, '')}T090000Z`;
   const calPrefix = SCHOOL_INFO.shortName || '예시초';
@@ -2115,8 +2009,8 @@ function buildIcsContent(tasks) {
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${formatIcsDate(t.dueDate)}`,
       `DTEND;VALUE=DATE:${formatIcsDate(nextDayIso(t.dueDate))}`,
-      `SUMMARY:${t.title}`,
-      `DESCRIPTION:${getDutyName(t.dutyId)} | ${t.folderPath}`,
+      `SUMMARY:${icalText(t.title)}`,
+      `DESCRIPTION:${icalText(getDutyName(t.dutyId))} | ${icalText(t.folderPath)}`,
       'BEGIN:VALARM',
       'ACTION:DISPLAY',
       'DESCRIPTION:D-7 업무 확인 알림',
@@ -2138,7 +2032,7 @@ function buildIcsContent(tasks) {
 function downloadIcs() {
   const targets = state.tasks.filter((t) => {
     if (t.status !== 'confirmed' || !t.dueDate) return false;
-    if (state.icsMyOnly && state.myDutyIds.size > 0) return state.myDutyIds.has(t.dutyId);
+    if (state.icsMyOnly) return state.myDutyIds.has(t.dutyId);
     return true;
   });
 
@@ -2179,7 +2073,7 @@ function resetDemoState() {
   const searchEl = document.getElementById('search-input');
   if (searchEl) searchEl.value = '';
   renderAll();
-  showToast('초기 시연 상태로 되돌렸습니다.');
+  showToast('처음 가상 자료로 되돌렸습니다.');
 }
 
 /* -----------------------------
@@ -2278,6 +2172,7 @@ document.addEventListener('click', (event) => {
   }
 
   if (target.closest('#reset-demo-btn') || target.closest('#settings-reset-all')) {
+    if (!window.confirm('저장한 업무와 대화를 처음 예시 자료로 되돌릴까요? 필요한 내용은 먼저 백업해 주세요.')) return;
     resetDemoState();
     return;
   }
@@ -2379,7 +2274,7 @@ document.addEventListener('click', (event) => {
     if (task && task.submission) {
       task.submission.nudged = true;
       renderDrawer();
-      showToast('미제출 학년 화면에 앱 내 알림을 표시했습니다. (시연)');
+      showToast('이 브라우저의 수합표에 알림 표시를 추가했습니다.');
     }
     return;
   }
@@ -2457,8 +2352,11 @@ document.addEventListener('click', (event) => {
   }
 
   if (target.closest('#run-extract-btn')) {
-    const raw = state.upload.rawText;
-    const blockReason = detectUploadBlockReason(raw);
+    const raw=document.getElementById('upload-raw-text').value;
+    const docTitle=document.getElementById('upload-doc-title').value;
+    const blockReason=uploadInputIssue(raw, docTitle);
+    if(!blockReason){state.upload.rawText=raw;state.upload.docTitle=docTitle;}
+    else {state.upload.rawText='';state.upload.docTitle='';}
     if (blockReason) {
       state.upload.blockedMessage = blockReason;
       state.upload.candidates = [];
@@ -2476,7 +2374,7 @@ document.addEventListener('click', (event) => {
 
   const commitCandBtn = target.closest('[data-commit-cand]');
   if (commitCandBtn) {
-    const blockReason = detectUploadBlockReason(state.upload.rawText);
+    const blockReason=uploadInputIssue(document.getElementById('upload-raw-text')?.value,document.getElementById('upload-doc-title')?.value);
     if (blockReason) {
       state.upload.blockedMessage = blockReason;
       renderUploadView();
@@ -2492,6 +2390,8 @@ document.addEventListener('click', (event) => {
         renderUploadView();
         return;
       }
+      const verified=verifyNoticeCandidate(cand,state.upload);
+      if(verified){showToast(verified);return;}
       const month = Number(cand.dueDate.slice(5, 7)) || SCHOOL_INFO.defaultMonth;
       const newTaskId = `t-up-${Date.now()}-${idx}`;
       const checklistItems = String(cand.checklistText || '')
@@ -2532,10 +2432,10 @@ document.addEventListener('click', (event) => {
         docType: '공문 본문',
         docTitle: state.upload.docTitle || '직접 입력 문서',
         extractedCount: 1,
-        status: status === 'confirmed' ? '확정 1건' : 'AI 초안 1건',
+        status: status === 'confirmed' ? '확정 1건' : '업무 초안 1건',
       });
       state.upload.lastAddedSummary = {
-        label: `"${newTask.title}" 항목을 ${month}월 업무 지도에 ${status === 'confirmed' ? '확정 반영' : 'AI 초안으로 추가'}했습니다.`,
+        label: `"${newTask.title}" 항목을 ${month}월 업무 지도에 ${status === 'confirmed' ? '확정 반영' : '업무 초안으로 추가'}했습니다.`,
         month,
         taskId: newTaskId,
       };
@@ -2545,8 +2445,10 @@ document.addEventListener('click', (event) => {
     return;
   }
 
+  if(target.closest('#calendar-read-input')){applyUploadCalendarText(document.getElementById('calendar-csv-text').value,'직접 입력한 학사 일정');return;}
   if (target.closest('#commit-calendar-rows-btn')) {
     const picked = state.upload.calendarRows.filter((r) => r.selected);
+    if(picked.some(row=>uploadInputIssue(row.title,row.dueDate,row.dutyId,state.upload.calendarSource) || !datesFromUpload(row.dueDate).includes(row.dueDate))){showToast('날짜 또는 개인정보가 포함된 행을 확인해 주세요.');return;}
     if (picked.length === 0) {
       showToast('반영할 일정을 하나 이상 선택해 주세요.');
       return;
@@ -2569,9 +2471,9 @@ document.addEventListener('click', (event) => {
         status: 'draft',
         done: false,
         title: row.title,
-        note: '학사일정표 일괄 등록으로 추가된 AI 초안입니다.',
+        note: '학사일정표 일괄 등록으로 추가된 업무 초안입니다.',
         folderPath: `교내공유폴더 > 2026 > ${getDutyName(row.dutyId).replace(/\s/g, '')}`,
-        sourceTitle: '2026학년도 12월 학사일정표(예시)',
+        sourceTitle: state.upload.calendarSource || '2026학년도 12월 학사일정표(예시)',
         sourceExcerpt: `${row.dueDate} ${row.title} (${getDutyName(row.dutyId)})`,
         checklist: [],
         submission: null,
@@ -2581,12 +2483,12 @@ document.addEventListener('click', (event) => {
       id: `uh-cal-${Date.now()}`,
       reflectedAt: DEMO_TODAY,
       docType: '학사일정표',
-      docTitle: '연간 학사일정표 추가 추출본',
+      docTitle: state.upload.calendarSource || '연간 학사일정표 추가 추출본',
       extractedCount: picked.length,
-      status: `AI 초안 ${picked.length}건`,
+      status: `업무 초안 ${picked.length}건`,
     });
     state.upload.lastAddedSummary = {
-      label: `학사일정표에서 ${picked.length}건을 ${firstMonth}월 업무 지도에 AI 초안으로 반영했습니다.`,
+      label: `학사일정표에서 ${picked.length}건을 ${firstMonth}월 업무 지도에 업무 초안으로 반영했습니다.`,
       month: firstMonth,
       taskId: firstId,
     };
@@ -2636,42 +2538,6 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  if (target.closest('#handover-copy-magiclink')) {
-    const card = state.handoverCards.find((c) => c.id === state.selectedHandoverId);
-    if (card) {
-      const base = `${window.location.origin}${window.location.pathname}`;
-      const demoUrl = `${base}?reply=${encodeURIComponent(card.id)}`;
-      copyText(demoUrl, '전보 교원용 1회용 답변 링크를 복사했습니다.');
-    }
-    return;
-  }
-
-  if (target.closest('#handover-open-reply-view')) {
-    const card = state.handoverCards.find((c) => c.id === state.selectedHandoverId);
-    if (card) {
-      state.replyCardId = card.id;
-      state.replySavedBanner = false;
-      try {
-        window.history.replaceState(null, '', `${window.location.pathname}?reply=${encodeURIComponent(card.id)}`);
-      } catch {
-        // ignore history error
-      }
-      switchTab('reply');
-    }
-    return;
-  }
-
-  if (target.closest('#reply-go-handover') || target.closest('#reply-view-saved-btn')) {
-    state.selectedHandoverId = state.replyCardId;
-    switchTab('handover');
-    return;
-  }
-
-  if (target.closest('#reply-back-map')) {
-    switchTab('map');
-    return;
-  }
-
   if (target.closest('#handover-download-txt')) {
     const card = state.handoverCards.find((c) => c.id === state.selectedHandoverId);
     if (card) {
@@ -2680,6 +2546,8 @@ document.addEventListener('click', (event) => {
         `담당: ${getDutyName(card.dutyId)} | 작성: ${card.ownerLabel} | 기준일: ${card.updatedAt}`,
         `폴더 위치: ${card.folderPath}`,
         '',
+        '[인수인계 메모]', card.summary, '',
+        '[질문과 답변]', ...card.qaList.flatMap(q => ['질문: ' + q.question, '답변: ' + (q.answer || '미작성')]), '',
         '[연간 주요 시기]',
         ...card.timeline.map((t) => `- ${t.monthLabel}: ${t.text}`),
         '',
@@ -2688,19 +2556,6 @@ document.addEventListener('click', (event) => {
       ].join('\n');
       downloadFile(`handover-${card.dutyId}.txt`, text, 'text/plain;charset=utf-8');
       showToast('인수인계 노트를 텍스트(.txt)로 내려받았습니다.');
-    }
-    return;
-  }
-
-  const fillPredBtn = target.closest('[data-fill-predecessor-reply]');
-  if (fillPredBtn) {
-    const qaId = fillPredBtn.dataset.fillPredecessorReply;
-    const card = state.handoverCards.find((c) => c.id === state.selectedHandoverId);
-    const qa = card?.qaList.find((q) => q.id === qaId);
-    if (qa) {
-      qa.answer = '작년 기준 서식은 해당 부서 교내 공유폴더 상단 `_표준서식` 하위 폴더에 저장되어 있습니다.';
-      renderHandoverView();
-      showToast('시연용 전임자 답변을 채웠습니다.');
     }
     return;
   }
@@ -2714,6 +2569,8 @@ document.addEventListener('click', (event) => {
 
   const jumpHoFromChat = target.closest('[data-jump-handover]');
   if (jumpHoFromChat) {
+    state.handoverDutyFilter = 'all';
+    state.handoverSearch = '';
     state.selectedHandoverId = jumpHoFromChat.dataset.jumpHandover;
     switchTab('handover');
     return;
@@ -2722,6 +2579,7 @@ document.addEventListener('click', (event) => {
   if (target.closest('#chat-clear-btn')) {
     state.chatMessages = buildInitialChatMessages();
     state.chatInputValue = '';
+    state.chatSelectedEscalationDutyId = '';
     renderChatView();
     showToast('질문 대화를 초기화했습니다.');
     return;
@@ -2735,22 +2593,19 @@ document.addEventListener('click', (event) => {
 
   if (target.closest('#chat-go-handover-qa')) {
     const card = state.handoverCards.find((c) => c.dutyId === state.chatSelectedEscalationDutyId);
-    if (card) state.selectedHandoverId = card.id;
+    if (!card) return;
+    state.handoverDutyFilter = 'all';
+    state.handoverSearch = '';
+    state.selectedHandoverId = card.id;
     switchTab('handover');
     return;
   }
 
   // Settings view interactions
   if (target.closest('#settings-download-json')) {
-    const backup = {
-      exportedAt: DEMO_TODAY,
-      school: SCHOOL_INFO.name,
-      tasks: state.tasks,
-      handoverCards: state.handoverCards,
-      uploadHistory: state.uploadHistory,
-    };
+    const backup = workspaceStore.snapshot();
     downloadFile('yeshicho-teachermate-backup.json', JSON.stringify(backup, null, 2), 'application/json;charset=utf-8');
-    showToast('시연 데이터 백업(JSON)을 내려받았습니다.');
+    showToast('이 브라우저의 자료를 JSON 파일로 내려받았습니다.');
     return;
   }
 
@@ -2798,17 +2653,19 @@ document.addEventListener('change', (event) => {
     return;
   }
 
+  if(target.id==='calendar-upload-file' && target.files?.[0]){openCalendarFile(target.files[0]);return;}
   if (target.id === 'upload-text-file' && target.files && target.files[0]) {
     const file = target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      const text = String(reader.result || '').slice(0, 12000);
+      const text = String(reader.result || '');
       state.upload.docTitle = file.name.replace(/\.[^.]+$/, '');
       state.upload.rawText = text;
       state.upload.selectedPresetId = '';
       state.upload.lastAddedSummary = null;
-      const blockReason = detectUploadBlockReason(text);
+      const blockReason=uploadInputIssue(text,file.name);
       if (blockReason) {
+        state.upload.rawText='';state.upload.docTitle='';
         state.upload.blockedMessage = blockReason;
         state.upload.candidates = [];
         renderUploadView();
@@ -2820,6 +2677,7 @@ document.addEventListener('change', (event) => {
       renderUploadView();
       showToast(`${file.name} 내용을 불러와 규칙 기반으로 후보를 추출했습니다.`);
     };
+    reader.onerror=()=>showToast('파일을 읽지 못했습니다. 내용을 붙여 넣어 주세요.');
     reader.readAsText(file, 'utf-8');
     return;
   }
@@ -2847,7 +2705,7 @@ document.addEventListener('change', (event) => {
   if (target.id === 'settings-demo-mode') {
     state.demoMode = target.checked;
     renderSettingsView();
-    showToast(state.demoMode ? '발표용 시연 보조 도구를 켰습니다.' : '일반 교사 화면 모드로 전환했습니다.');
+    showToast(state.demoMode ? '예시 수합 상태 변경를 켰습니다.' : '일반 교사 화면 모드로 전환했습니다.');
   }
 });
 
@@ -2859,11 +2717,11 @@ document.addEventListener('input', (event) => {
     return;
   }
   if (target.id === 'upload-doc-title') {
-    state.upload.docTitle = target.value;
+    state.upload.docTitle = uploadInputIssue(target.value) ? '' : target.value;
     return;
   }
   if (target.id === 'upload-raw-text') {
-    state.upload.rawText = target.value;
+    state.upload.rawText = uploadInputIssue(target.value) ? '' : target.value;
     return;
   }
   if (target.id === 'handover-search-input') {
@@ -2900,12 +2758,13 @@ document.addEventListener('submit', (event) => {
         id: `qa-${Date.now()}`,
         author: '현임 담당 교사',
         question: q,
-        answer: state.demoMode ? '공유폴더 내 최신 기준 문서를 참고하시거나 메신저로 바로 연락 주세요.' : '',
+        answer: '',
         createdAt: DEMO_TODAY,
-        byPredecessor: state.demoMode,
+        byPredecessor: false,
       });
       renderHandoverView();
-      showToast('전임자에게 질문을 남겼습니다.');
+      window.dispatchEvent(new Event('tm:changed'));
+      showToast('이 브라우저의 노트에 질문을 저장했습니다.');
     }
     return;
   }
@@ -2917,37 +2776,6 @@ document.addEventListener('submit', (event) => {
     return;
   }
 
-  if (form.id === 'reply-form') {
-    event.preventDefault();
-    const area = document.getElementById('reply-answer-text');
-    const ans = area ? area.value.trim() : '';
-    if (!ans) {
-      showToast('답변 내용을 입력해 주세요.');
-      return;
-    }
-    if (detectPiiInQuery(ans)) {
-      showToast('개인정보 패턴이 포함되어 답변을 저장할 수 없습니다.');
-      return;
-    }
-    const card = state.handoverCards.find((c) => c.id === state.replyCardId) || state.handoverCards[0];
-    const pendingQa = card.qaList.find((q) => !q.answer);
-    if (pendingQa) {
-      pendingQa.answer = ans;
-      pendingQa.byPredecessor = true;
-    } else {
-      card.qaList.push({
-        id: `qa-reply-${Date.now()}`,
-        author: '전보 전임자 (1회용 링크 회신)',
-        question: card.messengerQuestionTemplate,
-        answer: ans,
-        createdAt: DEMO_TODAY,
-        byPredecessor: true,
-      });
-    }
-    state.replySavedBanner = true;
-    renderReplyView();
-    showToast('1회용 답변이 인수인계 Q&A에 저장되었습니다.');
-  }
 });
 
 document.addEventListener('keydown', (event) => {
@@ -2962,4 +2790,28 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+const workspaceStore = connectWorkspace(state,DUTIES,renderAll,showToast);
+document.addEventListener('change',async event=>{
+  if (event.target.id !== 'settings-restore-file') return;
+  const file=event.target.files?.[0];
+  event.target.value='';
+  if (!file) return;
+  if (file.size>3*1024*1024) return showToast('3MB 이하의 가상 자료 백업을 선택해 주세요.');
+  try {
+    const raw=await file.text();
+    workspaceStore.check(JSON.parse(raw));
+    if (!window.confirm('이 브라우저에 있는 자료를 선택한 백업으로 교체할까요?')) return;
+    workspaceStore.restore(raw);
+    showToast(workspaceStore.notice || '백업 자료를 복원했습니다.');
+  } catch { showToast('파일을 복원하지 않았습니다. 이 앱에서 내려받은 JSON 백업을 확인해 주세요.'); }
+});
+if (workspaceStore.notice) showToast(workspaceStore.notice);
+
 renderAll();
+
+openLocalReply({cards:()=>state.handoverCards,check:detectPiiInQuery});
+
+if (new URLSearchParams(location.search).has('reply') && !location.hash) {
+  switchTab('handover');
+  showToast('이전 형식의 링크입니다. 해당 노트의 질문에서 새 답변 링크를 열어 주세요.');
+}
