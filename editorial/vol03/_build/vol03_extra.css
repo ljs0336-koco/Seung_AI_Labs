@@ -124,3 +124,100 @@
 .v3-sources b{font-weight:600}
 .v3-sources a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .v3-ai{margin-top:14px;padding-top:16px;border-top:1px solid var(--rule-2);font:400 17px/1.5 var(--f-sans);color:var(--ink-3)}
+
+/* ==========================================================================
+   2026-11-19 보강 — 장마다 덱, 수치 블록과 도식을 더한다
+   ========================================================================== */
+.v3 .title-block .deck{max-width:1500px}
+#slide-3 .v3-cols{margin-top:34px}
+#slide-3 .v3-pair{margin-top:32px}
+#slide-3 .v3-card{padding:26px 28px 28px}
+#slide-3 .v3-card p{font-size:23px}
+#slide-3 .v3-take{margin-top:24px}
+#slide-3 .v3-note{margin-top:14px}
+#slide-3 .v3-big{margin-top:26px;padding-top:26px}
+#slide-3 .v3-big strong{font-size:96px}
+
+/* 과정과 평가 */
+.v3-lane-label{display:block;margin-top:26px;font-size:16px}
+#slide-4 .v3-lanes{margin-top:12px}
+#slide-4 .v3-step{min-height:66px}
+#slide-4 .v3-who{width:56px;height:56px;font-size:26px}
+#slide-4 .v3-lanes{grid-template-columns:56px repeat(6,1fr)}
+.v3-split--assess{flex:none;margin-top:30px;grid-template-columns:1.1fr 1fr;column-gap:60px;align-items:start}
+.v3-split--assess .v3-take{margin-top:12px;font-size:24px}
+.v3-split--assess .v3-take b{display:block;margin-top:6px}
+.v3-split--assess .v3-note{margin-top:12px;font-size:18px}
+.v3-dumbbell{display:block;width:100%;height:auto}
+.v3-dumbbell text{font-family:var(--f-sans)}
+.v3-dumbbell .axis{font-size:22px;font-weight:600;fill:var(--ink-2)}
+.v3-dumbbell .axis--hot{fill:var(--ink)}
+.v3-dumbbell .key{font-size:17px;fill:var(--ink-3)}
+.v3-dumbbell .track{stroke:#A79A82;stroke-width:6}
+.v3-dumbbell .track--hot{stroke:var(--accent)}
+.v3-dumbbell .pre{fill:var(--paper);stroke:var(--ink-3);stroke-width:3}
+.v3-dumbbell .post{fill:var(--accent)}
+.v3-dumbbell .post--flat{fill:var(--ink-3)}
+.v3-dumbbell .val{font:600 21px/1 var(--f-label);fill:var(--ink-2)}
+.v3-dumbbell .val--hot{fill:var(--accent)}
+.v3-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.v3-mini > div{padding:16px 18px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.v3-mini strong{display:block;font:400 50px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.v3-mini small{font-size:22px;color:var(--ink-3)}
+.v3-mini span{display:block;margin-top:8px;font:500 16px/1.4 var(--f-sans);color:var(--ink-2)}
+.v3-mini-hot{position:relative}
+.v3-mini-hot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+.v3-mini-hot strong{color:var(--accent)}
+.v3-split--assess .v3-panel{padding:30px 36px}
+.v3-split--assess .v3-panel h3{margin-top:12px;font-size:32px}
+.v3-split--assess .v3-panel > p{margin-top:14px;font-size:19px;line-height:1.65}
+
+/* 협업의 조건 */
+.v3-tile-num{margin-top:20px;padding:16px 0 4px;border-top:1px solid var(--rule)}
+.v3-tile-num strong{display:block;font:400 76px/1 var(--f-display);letter-spacing:-.02em;color:var(--accent)}
+.v3-tile-num small{margin-left:4px;font-size:30px;color:var(--ink-3)}
+.v3-tile-num span{display:block;margin-top:8px;font:500 16px/1.4 var(--f-sans);color:var(--ink-3)}
+.v3-tile-num--ink strong{color:var(--ink)}
+#slide-5 .v3-tile{padding:36px 38px 30px}
+#slide-5 .v3-tile h3{margin-top:14px;font-size:34px}
+#slide-5 .v3-tile p{margin-top:16px;font-size:21px;line-height:1.65}
+
+/* 경력 사다리 */
+#slide-6 .v3-note{margin-top:14px}
+
+/* 조직의 설계 */
+#slide-7 .v3-panel > p{margin-top:20px}
+.v3-steps{margin-top:22px;display:grid;gap:10px}
+.v3-steps li{display:grid;grid-template-columns:44px 1fr;align-items:center;padding:12px 16px;background:var(--white);box-shadow:0 0 0 1px var(--rule);font:500 21px/1.4 var(--f-sans);color:var(--ink)}
+.v3-steps span{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#FFFBF2;font:600 16px/1 var(--f-label)}
+
+/* 노동 이후 */
+.v3-chips{margin:22px 0 28px;display:flex;flex-wrap:wrap;gap:10px}
+.v3-chips li{padding:9px 18px;background:var(--paper-3);font:600 18px/1 var(--f-sans);letter-spacing:.02em;color:var(--ink-2)}
+#slide-8 .v3-cols{margin-top:36px}
+
+/* 관계의 역설 */
+.v3-cols--rel{margin-top:40px;grid-template-columns:1fr 1.05fr;column-gap:72px;align-items:stretch}
+.v3-cols--rel > .v3-col{height:100%}
+.v3-big--rel{margin-top:auto}
+#slide-9 .v3-statement{margin-top:0;font-size:34px;line-height:1.65}
+#slide-9 .v3-take{font-size:27px}
+.v3-big--rel strong{font-size:88px}
+.v3-big--rel small{font-size:34px}
+.v3-big--rel p{font-size:20px}
+.v3-voices--grid{margin-top:0;padding-top:0;border-top:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:20px}
+.v3-voices--grid article{display:flex;flex-direction:column;justify-content:center;padding:30px 34px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.v3-voices--grid h3{font-size:33px}
+.v3-voices--grid p{margin-top:14px;font-size:22px;line-height:1.65}
+.v3-voice-hot{position:relative;background:var(--paper-2) !important}
+.v3-voice-hot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+
+/* 남는 질문 */
+#slide-10 .v3-final{margin:24px 0 20px;font-size:40px}
+#slide-10 .v3-lede{font-size:23px;line-height:1.7}
+.v3-recap{margin-top:24px;border-top:1px solid var(--rule-2)}
+.v3-recap li{display:grid;grid-template-columns:76px 1fr auto;column-gap:16px;align-items:start;padding:16px 0;border-bottom:1px solid var(--rule-2)}
+.v3-recap .n{font:600 17px/1.6 var(--f-sans);letter-spacing:.04em;color:var(--accent)}
+.v3-recap h3{font:500 24px/1.4 var(--f-serif);letter-spacing:-.03em;color:var(--ink)}
+.v3-recap p{margin-top:4px;font:400 18px/1.55 var(--f-sans);color:var(--ink-2)}
+.v3-recap em{font:600 15px/1.6 var(--f-label);font-style:normal;color:var(--ink-3)}

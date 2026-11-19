@@ -15,7 +15,7 @@ html = html.replace("/deck/vol02/", "/deck/vol04/")
 html = html.replace("The Curated Mind · Vol.02", "The Open Tabs · Vol.04")
 html = html.replace("AI의 답에는 누구의 기준이 담기는가 · Seung AI Labs", "열린 창이 늘수록, 주의는 얇아진다 · Seung AI Labs")
 html = re.sub(r'<meta name="description" content="[^"]*">',
-              '<meta name="description" content="AI &amp; Learning Vol.04 — 멀티태스킹의 비용, 숏폼의 시간, 에이전트를 지켜보는 일, 읽기의 자리. 10쪽 에디토리얼.">',
+              '<meta name="description" content="AI &amp; Learning Vol.04 — 멀티태스킹의 비용, 흘러드는 시청, 에이전트를 지켜보는 일, 읽기의 자리. 10쪽 에디토리얼.">',
               html)
 html = html.replace("design tokens · Vol.02 세피아 B", "design tokens · Vol.02 세피아 B 계승")
 

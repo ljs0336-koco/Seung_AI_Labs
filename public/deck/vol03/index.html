@@ -668,6 +668,103 @@ ol,ul{list-style:none}
 .v3-sources b{font-weight:600}
 .v3-sources a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .v3-ai{margin-top:14px;padding-top:16px;border-top:1px solid var(--rule-2);font:400 17px/1.5 var(--f-sans);color:var(--ink-3)}
+
+/* ==========================================================================
+   2026-11-19 보강 — 장마다 덱, 수치 블록과 도식을 더한다
+   ========================================================================== */
+.v3 .title-block .deck{max-width:1500px}
+#slide-3 .v3-cols{margin-top:34px}
+#slide-3 .v3-pair{margin-top:32px}
+#slide-3 .v3-card{padding:26px 28px 28px}
+#slide-3 .v3-card p{font-size:23px}
+#slide-3 .v3-take{margin-top:24px}
+#slide-3 .v3-note{margin-top:14px}
+#slide-3 .v3-big{margin-top:26px;padding-top:26px}
+#slide-3 .v3-big strong{font-size:96px}
+
+/* 과정과 평가 */
+.v3-lane-label{display:block;margin-top:26px;font-size:16px}
+#slide-4 .v3-lanes{margin-top:12px}
+#slide-4 .v3-step{min-height:66px}
+#slide-4 .v3-who{width:56px;height:56px;font-size:26px}
+#slide-4 .v3-lanes{grid-template-columns:56px repeat(6,1fr)}
+.v3-split--assess{flex:none;margin-top:30px;grid-template-columns:1.1fr 1fr;column-gap:60px;align-items:start}
+.v3-split--assess .v3-take{margin-top:12px;font-size:24px}
+.v3-split--assess .v3-take b{display:block;margin-top:6px}
+.v3-split--assess .v3-note{margin-top:12px;font-size:18px}
+.v3-dumbbell{display:block;width:100%;height:auto}
+.v3-dumbbell text{font-family:var(--f-sans)}
+.v3-dumbbell .axis{font-size:22px;font-weight:600;fill:var(--ink-2)}
+.v3-dumbbell .axis--hot{fill:var(--ink)}
+.v3-dumbbell .key{font-size:17px;fill:var(--ink-3)}
+.v3-dumbbell .track{stroke:#A79A82;stroke-width:6}
+.v3-dumbbell .track--hot{stroke:var(--accent)}
+.v3-dumbbell .pre{fill:var(--paper);stroke:var(--ink-3);stroke-width:3}
+.v3-dumbbell .post{fill:var(--accent)}
+.v3-dumbbell .post--flat{fill:var(--ink-3)}
+.v3-dumbbell .val{font:600 21px/1 var(--f-label);fill:var(--ink-2)}
+.v3-dumbbell .val--hot{fill:var(--accent)}
+.v3-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.v3-mini > div{padding:16px 18px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.v3-mini strong{display:block;font:400 50px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.v3-mini small{font-size:22px;color:var(--ink-3)}
+.v3-mini span{display:block;margin-top:8px;font:500 16px/1.4 var(--f-sans);color:var(--ink-2)}
+.v3-mini-hot{position:relative}
+.v3-mini-hot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+.v3-mini-hot strong{color:var(--accent)}
+.v3-split--assess .v3-panel{padding:30px 36px}
+.v3-split--assess .v3-panel h3{margin-top:12px;font-size:32px}
+.v3-split--assess .v3-panel > p{margin-top:14px;font-size:19px;line-height:1.65}
+
+/* 협업의 조건 */
+.v3-tile-num{margin-top:20px;padding:16px 0 4px;border-top:1px solid var(--rule)}
+.v3-tile-num strong{display:block;font:400 76px/1 var(--f-display);letter-spacing:-.02em;color:var(--accent)}
+.v3-tile-num small{margin-left:4px;font-size:30px;color:var(--ink-3)}
+.v3-tile-num span{display:block;margin-top:8px;font:500 16px/1.4 var(--f-sans);color:var(--ink-3)}
+.v3-tile-num--ink strong{color:var(--ink)}
+#slide-5 .v3-tile{padding:36px 38px 30px}
+#slide-5 .v3-tile h3{margin-top:14px;font-size:34px}
+#slide-5 .v3-tile p{margin-top:16px;font-size:21px;line-height:1.65}
+
+/* 경력 사다리 */
+#slide-6 .v3-note{margin-top:14px}
+
+/* 조직의 설계 */
+#slide-7 .v3-panel > p{margin-top:20px}
+.v3-steps{margin-top:22px;display:grid;gap:10px}
+.v3-steps li{display:grid;grid-template-columns:44px 1fr;align-items:center;padding:12px 16px;background:var(--white);box-shadow:0 0 0 1px var(--rule);font:500 21px/1.4 var(--f-sans);color:var(--ink)}
+.v3-steps span{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#FFFBF2;font:600 16px/1 var(--f-label)}
+
+/* 노동 이후 */
+.v3-chips{margin:22px 0 28px;display:flex;flex-wrap:wrap;gap:10px}
+.v3-chips li{padding:9px 18px;background:var(--paper-3);font:600 18px/1 var(--f-sans);letter-spacing:.02em;color:var(--ink-2)}
+#slide-8 .v3-cols{margin-top:36px}
+
+/* 관계의 역설 */
+.v3-cols--rel{margin-top:40px;grid-template-columns:1fr 1.05fr;column-gap:72px;align-items:stretch}
+.v3-cols--rel > .v3-col{height:100%}
+.v3-big--rel{margin-top:auto}
+#slide-9 .v3-statement{margin-top:0;font-size:34px;line-height:1.65}
+#slide-9 .v3-take{font-size:27px}
+.v3-big--rel strong{font-size:88px}
+.v3-big--rel small{font-size:34px}
+.v3-big--rel p{font-size:20px}
+.v3-voices--grid{margin-top:0;padding-top:0;border-top:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:20px}
+.v3-voices--grid article{display:flex;flex-direction:column;justify-content:center;padding:30px 34px;background:var(--white);box-shadow:0 0 0 1px var(--rule)}
+.v3-voices--grid h3{font-size:33px}
+.v3-voices--grid p{margin-top:14px;font-size:22px;line-height:1.65}
+.v3-voice-hot{position:relative;background:var(--paper-2) !important}
+.v3-voice-hot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+
+/* 남는 질문 */
+#slide-10 .v3-final{margin:24px 0 20px;font-size:40px}
+#slide-10 .v3-lede{font-size:23px;line-height:1.7}
+.v3-recap{margin-top:24px;border-top:1px solid var(--rule-2)}
+.v3-recap li{display:grid;grid-template-columns:76px 1fr auto;column-gap:16px;align-items:start;padding:16px 0;border-bottom:1px solid var(--rule-2)}
+.v3-recap .n{font:600 17px/1.6 var(--f-sans);letter-spacing:.04em;color:var(--accent)}
+.v3-recap h3{font:500 24px/1.4 var(--f-serif);letter-spacing:-.03em;color:var(--ink)}
+.v3-recap p{margin-top:4px;font:400 18px/1.55 var(--f-sans);color:var(--ink-2)}
+.v3-recap em{font:600 15px/1.6 var(--f-label);font-style:normal;color:var(--ink-3)}
 </style>
 </head>
 <body>
@@ -823,6 +920,7 @@ ol,ul{list-style:none}
       <div class="title-block">
         <div class="kicker"><span class="sq"></span><span class="num">01</span>인지적 항복</div>
         <h2 class="headline">답을 맡기는 일과, 판단을 <em>넘겨주는</em> 일</h2>
+        <p class="deck">AI가 틀린 답을 내놓을 때, 사람은 그 답을 얼마나 그대로 따르는가.</p>
       </div>
 
       <div class="v3-cols">
@@ -849,6 +947,7 @@ ol,ul{list-style:none}
             <li class="hot"><span>AI가 틀릴 때</span><div class="track"><div class="fill" style="--v:31.5%"></div></div><span class="bv">32%</span></li>
           </ul>
           <p class="v3-take">AI에 물은 경우, 틀린 답도 80%가 그대로 따랐다.</p>
+          <p class="v3-note">세 실험 1,372명을 합치면, AI가 틀린 시행의 73%에서 틀린 답을 따랐다. 성인의 논리 퀴즈이며, 학습을 잰 실험은 아니다.</p>
           <div class="v3-big">
             <strong>6<small> / 4,929</small></strong>
             <p>영국 14~15세 학생의 프롬프트 가운데 AI의 신뢰성을 의심한 건수.</p>
@@ -879,8 +978,10 @@ ol,ul{list-style:none}
       <div class="title-block">
         <div class="kicker"><span class="sq"></span><span class="num">02</span>과정과 평가</div>
         <h2 class="headline">결과물은 같아도, <em>과정</em>은 다르다</h2>
+        <p class="deck">같은 보고서가 나와도, 그 사이에 한 일은 다르다. 차이는 작업 기록에 남는다.</p>
       </div>
 
+      <div class="label v3-lane-label">예시 · 같은 과제를 받은 두 사람</div>
       <div class="v3-lanes" role="img" aria-label="A는 파일을 직접 열어 AI가 놓친 충돌을 찾고, B는 메일을 AI에 붙여 넣고 말투만 고쳐 파일 일곱 개 중 다섯 개를 열지 않은 채 제출한다.">
         <span class="v3-who">A</span>
         <div class="v3-step">요청 메일 확인</div>
@@ -896,23 +997,46 @@ ol,ul{list-style:none}
         <div class="v3-step">제출</div>
       </div>
 
-      <div class="v3-split">
+      <div class="v3-split v3-split--assess">
         <div class="v3-col">
-          <p class="v3-lede v3-lede--sm"><b>산출물 점수로는 구분되지 않는다.</b> 격차는 작업 기록에서 드러난다.</p>
-          <p class="v3-lede v3-lede--sm">자기 평가도 근거가 되지 못한다. AI 실력 자기 평가는 평균 7.6점(10점 만점), 첫 과제에서 중간점 미만은 78%, 둘의 상관은 0에 가깝다. 점수는 구체적 피드백이 있을 때만 올랐다.</p>
-          <p class="v3-lede v3-lede--sm">단, 과정 평가는 감시가 되어서는 안 된다. 학생 정보와 산출물의 수집 범위부터 정한다.</p>
+          <div class="label v3-chart-label">과제 점수 · 첫 과제 → 둘째 과제 · 미국 성인 233명 무작위 실험</div>
+          <svg class="v3-dumbbell" viewBox="0 0 800 196" role="img" aria-label="점수만 받은 조건은 2.37에서 2.26으로 내려갔고, 피드백 조건은 2.31에서 2.61로, 피드백과 대화 조건은 2.14에서 2.66으로 올랐다.">
+            <text class="key" x="230" y="16">○ 첫 과제</text><text class="key" x="350" y="16">● 둘째 과제</text>
+            <text class="axis" x="0" y="66">점수만</text>
+            <line class="track" x1="402" y1="60" x2="475" y2="60"/>
+            <circle class="pre" cx="475" cy="60" r="10"/><circle class="post post--flat" cx="402" cy="60" r="10"/>
+            <text class="val" x="490" y="68">2.37</text><text class="val" x="388" y="68" text-anchor="end">2.26</text>
+            <text class="axis axis--hot" x="0" y="118">피드백</text>
+            <line class="track track--hot" x1="435" y1="112" x2="634" y2="112"/>
+            <circle class="pre" cx="435" cy="112" r="10"/><circle class="post" cx="634" cy="112" r="10"/>
+            <text class="val" x="421" y="120" text-anchor="end">2.31</text><text class="val val--hot" x="650" y="120">2.61</text>
+            <text class="axis axis--hot" x="0" y="170">피드백 + 대화</text>
+            <line class="track track--hot" x1="323" y1="164" x2="667" y2="164"/>
+            <circle class="pre" cx="323" cy="164" r="10"/><circle class="post" cx="667" cy="164" r="10"/>
+            <text class="val" x="309" y="172" text-anchor="end">2.14</text><text class="val val--hot" x="683" y="172">2.66</text>
+          </svg>
+          <p class="v3-take">점수는 구체적 피드백이 있을 때만 올랐다. <b>산출물 점수가 아니라, 다음 과제에서 달라진 행동이 배움의 증거다.</b></p>
+          <p class="v3-note">단, 과정 평가는 감시가 되어서는 안 된다. 학생 정보와 산출물의 수집 범위부터 정한다.</p>
         </div>
-        <aside class="v3-panel v3-panel--dark">
-          <span class="label">평가자의 자리</span>
-          <h3>평가자도 AI를 쓴다.<br>그 판단은 누가 검증하는가</h3>
-          <p>형식적인 클릭은 감독이 될 수 없다. 번복 권한과 정보, 충분한 시간, 번복 기록, 오류 유형 훈련이 실질적 감독의 조건이다. 평가에도 같은 기준이 필요하다.</p>
-        </aside>
+
+        <div class="v3-col">
+          <div class="v3-mini">
+            <div><strong>7.6<small>/10</small></strong><span>AI 실력 자기 평가 평균</span></div>
+            <div><strong>78<small>%</small></strong><span>첫 과제에서 중간점 미만</span></div>
+            <div class="v3-mini-hot"><strong>≈0</strong><span>자기 평가와 실제의 상관</span></div>
+          </div>
+          <aside class="v3-panel v3-panel--dark">
+            <span class="label">평가자의 자리</span>
+            <h3>평가자도 AI를 쓴다.<br>그 판단은 누가 검증하는가</h3>
+            <p>형식적인 클릭은 감독이 될 수 없다. 번복 권한과 정보, 충분한 시간, 번복 기록, 오류 유형 훈련이 실질적 감독의 조건이다. 평가에도 같은 기준이 필요하다.</p>
+          </aside>
+        </div>
       </div>
     </div>
 
     <footer class="folio">
       <span><b>04</b>과정과 평가</span>
-      <span class="src">출처: 키질체크, 강민구, 글로벌인재포럼 2026 발표자료(미국 성인 233명 실험)</span>
+      <span class="src">출처: 키질체크, 강민구, 글로벌인재포럼 2026 발표자료(미국 성인 233명 사전등록 실험, 그래프 값)</span>
       <span class="pg">04 / 10</span>
     </footer>
   </div>
@@ -939,19 +1063,22 @@ ol,ul{list-style:none}
         <article class="v3-tile">
           <span class="label">고교 수학 · 약 1,000명</span>
           <h3>힌트형 튜터</h3>
-          <p>챗GPT형 도구는 AI 없는 시험 성적을 17% 낮췄다. 답 대신 힌트를 주도록 설계하자 그 손실이 사라졌다.</p>
+          <div class="v3-tile-num"><strong>−17<small>%</small></strong><span>답을 주는 도구 · AI 없는 시험</span></div>
+          <p>챗GPT형 도구는 연습 점수를 48% 올렸지만, AI 없는 시험 성적은 17% 낮췄다. 답 대신 힌트를 주도록 설계하자 그 손실이 사라졌다.</p>
           <span class="v3-measure">측정 · AI 없는 시험</span>
         </article>
         <article class="v3-tile">
           <span class="label">대학 입문 물리 · 194명</span>
           <h3>단계형 튜터</h3>
-          <p>교수진의 풀이를 넣은 AI 튜터 차시에서, 학습 향상 중앙값이 교실 능동학습의 두 배를 넘었다.</p>
+          <div class="v3-tile-num v3-tile-num--ink"><strong>2<small>배+</small></strong><span>학습 향상 중앙값 · 교실 능동학습 대비</span></div>
+          <p>교수진의 단계별 풀이를 넣은 AI 튜터 차시에서, 학습 향상 중앙값이 교실 능동학습의 두 배를 넘었다(1.75 대 0.75). 학습 시간 중앙값은 49분이었다.</p>
           <span class="v3-measure">측정 · 수업 직후 퀴즈</span>
         </article>
         <article class="v3-tile">
           <span class="label">직장 · 약 800명</span>
           <h3>AI 협업자</h3>
-          <p>AI를 쓴 개인이 AI 없는 2인 팀에 필적하는 결과를 냈다. 직무에 따른 치우침도 줄었다.</p>
+          <div class="v3-tile-num v3-tile-num--ink"><strong>+0.37<small>SD</small></strong><span>AI를 쓴 개인 · 결과물 품질</span></div>
+          <p>AI를 쓴 개인이 AI 없는 2인 팀(+0.24 SD)에 필적하는 결과를 냈다. 직무에 따른 치우침도 줄었다.</p>
           <span class="v3-measure">측정 · 결과물의 품질</span>
         </article>
       </div>
@@ -1006,6 +1133,7 @@ ol,ul{list-style:none}
             <rect class="sr" x="660" y="4" width="16" height="16"/><text class="key" x="684" y="18">시니어</text>
           </svg>
           <p class="v3-take">AI와 함께일 때는 주니어가 더 올랐다. AI를 치우자, 향상은 시니어에게만 남았다.</p>
+          <p class="v3-note">석 달 뒤 AI와 함께 쓴 주니어의 초안은 AI 없는 시니어보다 좋아 보였다. 결과물만으로는 누가 전문성을 쌓았는지 가리기 어렵다.</p>
         </div>
 
         <div class="v3-col v3-stats">
@@ -1082,7 +1210,12 @@ ol,ul{list-style:none}
             <p>“잘 만든 게임은 튜토리얼에서는 자동 전투를 도입하지 않습니다.”</p>
             <cite>이고운, 크래프톤 · 글로벌인재포럼 2026 발표자료</cite>
           </blockquote>
-          <p><b>자동 모드 전에, 수동 모드.</b> 과제와 평가의 역설계는 선택이 아니라 필수다. 끝내 스스로 해야 할 일을 정하고, 확인할 증거를 정한 뒤, AI를 쓸 구간을 고른다. 평가는 무엇을 배울지 알려 주는 신호이기 때문이다.</p>
+          <p><b>자동 모드 전에, 수동 모드.</b> 과제와 평가의 역설계는 선택이 아니라 필수다. 평가는 무엇을 배울지 알려 주는 신호이기 때문이다.</p>
+          <ol class="v3-steps" aria-label="역설계의 순서">
+            <li><span>1</span>끝내 스스로 해야 할 일을 정한다</li>
+            <li><span>2</span>확인할 증거를 정한다</li>
+            <li><span>3</span>AI를 쓸 구간을 고른다</li>
+          </ol>
         </aside>
       </div>
     </div>
@@ -1109,11 +1242,13 @@ ol,ul{list-style:none}
       <div class="title-block">
         <div class="kicker"><span class="sq"></span><span class="num">06</span>노동 이후의 시간</div>
         <h2 class="headline">일이 줄어든 자리, <em>시간</em>은 무엇으로 채우는가</h2>
+        <p class="deck">생계를 위한 노동이 줄어든 삶은 어떤 모습인가. 보스트롬은 오래된 계층에서 단서를 찾는다.</p>
       </div>
 
       <div class="v3-cols">
         <div class="v3-col">
           <p class="v3-lede">닉 보스트롬은 노동 이후의 삶을 영국 귀족에 빗댄다. 생계를 위해 일할 필요가 없던 이들은 사교와 파티, 정원과 수집으로 시간을 채웠다.</p>
+          <ul class="v3-chips" aria-label="귀족이 시간을 채운 일"><li>사교</li><li>파티</li><li>정원</li><li>수집</li></ul>
           <p class="v3-lede">노동량이 귀족처럼 줄어든다면 <b>관계를 맺고, 자리를 만들고, 무언가를 기획하는 데 얼마만큼의 시간을 쓸 것인가.</b> 여가의 문제가 아니라 삶의 설계 문제다.</p>
           <p class="v3-note">닉 보스트롬: 철학자, 『슈퍼인텔리전스』·『딥 유토피아』 저자, 전 옥스퍼드대 교수.</p>
         </div>
@@ -1155,31 +1290,40 @@ ol,ul{list-style:none}
         <h2 class="headline">AI를 더 쓸수록, <em>사람 사이</em>가 중요해진다</h2>
       </div>
 
-      <p class="v3-statement">AI 의존과 인지적 항복을 줄이는 길은 사람 사이에 있다. 실제 팀워크와 대면 토론, 논쟁이 판단을 단련한다. 교류가 살아 있을 때, AI는 그 사이에서 효율적인 동료가 된다.</p>
+      <div class="v3-cols v3-cols--rel">
+        <div class="v3-col">
+          <p class="v3-statement">AI 의존과 인지적 항복을 줄이는 길은 사람 사이에 있다. 실제 팀워크와 대면 토론, 논쟁이 판단을 단련한다.</p>
+          <p class="v3-take">교류가 살아 있을 때, AI는 그 사이에서 효율적인 동료가 된다.</p>
+          <div class="v3-big v3-big--rel">
+            <strong>+9.2<small>%p</small></strong>
+            <p>AI를 쓴 2인 팀이 상위 10%에 드는 해결안을 낸 비율의 증가폭(대조군 5.8% 대비). AI를 쓴 개인에게서는 이 차이가 유의하지 않았다.</p>
+          </div>
+        </div>
 
-      <div class="v3-voices">
-        <article>
-          <h3>관계적 유창성</h3>
-          <p>갈등 조정, 설득, 팀워크. AI 유창성과 나란히 가치가 커지는 역량이다. <span class="v3-who-src">키질체크</span></p>
-        </article>
-        <article>
-          <h3>‘다른 학생들’</h3>
-          <p>MIT에서 가장 인상 깊은 것을 묻자 많은 신입생이 내놓은 답이다. <span class="v3-who-src">레이프</span></p>
-        </article>
-        <article>
-          <h3>함께 이긴 기억</h3>
-          <p>게이머가 기계에 끝까지 맡기지 않는 세 가지 가운데 하나다. <span class="v3-who-src">이고운</span></p>
-        </article>
-        <article>
-          <h3>줄어드는 만남</h3>
-          <p>오피스아워 출석이 줄고, 스터디 모임도 줄고 있다는 증언이 나온다. <span class="v3-who-src">MIT 보고서</span></p>
-        </article>
+        <div class="v3-voices v3-voices--grid">
+          <article>
+            <h3>관계적 유창성</h3>
+            <p>갈등 조정, 설득, 팀워크. AI 유창성과 나란히 가치가 커지는 역량이다. <span class="v3-who-src">키질체크</span></p>
+          </article>
+          <article>
+            <h3>‘다른 학생들’</h3>
+            <p>MIT에서 가장 인상 깊은 것을 묻자 많은 신입생이 내놓은 답이다. <span class="v3-who-src">레이프</span></p>
+          </article>
+          <article>
+            <h3>함께 이긴 기억</h3>
+            <p>게이머가 기계에 끝까지 맡기지 않는 세 가지 가운데 하나다. <span class="v3-who-src">이고운</span></p>
+          </article>
+          <article class="v3-voice-hot">
+            <h3>줄어드는 만남</h3>
+            <p>오피스아워 출석이 줄고, 스터디 모임도 줄고 있다는 증언이 나온다. <span class="v3-who-src">MIT 보고서</span></p>
+          </article>
+        </div>
       </div>
     </div>
 
     <footer class="folio">
       <span><b>09</b>관계의 역설</span>
-      <span class="src">출처: 글로벌인재포럼 2026 발표자료 · MIT 보고서 (2026)</span>
+      <span class="src">출처: 글로벌인재포럼 2026 발표자료 · MIT 보고서 (2026) · Dell'Acqua et al. (2026), <i>Organization Science</i></span>
       <span class="pg">09 / 10</span>
     </footer>
   </div>
@@ -1201,6 +1345,11 @@ ol,ul{list-style:none}
           <div class="kicker"><span class="sq"></span><span class="num">08</span>남는 질문</div>
           <p class="v3-final">AI가 답과 결과를 쉽게 만들어 주는 시대에, 능동적으로 사고하고 노력하는 태도와 과정은 어떻게 <em>정신적으로나 물질적으로</em> 보상받을 수 있는가.</p>
           <p class="v3-lede">학교의 평가에서, 일터의 사다리에서, 노동 이후의 삶에서 같은 물음이 돌아온다. 남는 과제는 답을 더 빨리 얻는 일이 아니라, <b>과정의 가치를 설계하는 일</b>이다.</p>
+          <ol class="v3-recap">
+            <li><span class="n">학습</span><div><h3>과정을 보는 평가</h3><p>결과물 점수로는 과정이 보이지 않는다. 작업 기록과 다음 과제의 변화를 본다.</p></div><em>04</em></li>
+            <li><span class="n">일터</span><div><h3>배움이 남는 사다리</h3><p>아래 칸의 일이 AI로 옮겨 갈 때, 피드백과 시행착오의 시간을 따로 둔다.</p></div><em>06·07</em></li>
+            <li><span class="n">사회</span><div><h3>사람 사이의 시간</h3><p>줄어든 노동의 자리를 관계와 기획으로 채운다.</p></div><em>08·09</em></li>
+          </ol>
         </div>
 
         <section class="v3-sources">
