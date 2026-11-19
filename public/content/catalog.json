@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 20,
+  "revision": 21,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -213,6 +213,16 @@
       "title": "늦가을 제주",
       "description": "서귀포 중심 6일 코스 · 식당 시간별 대안 · 노을·취향 팁과 네이버 지도",
       "href": "./jeju-travel-guide/index.html",
+      "section": "personal",
+      "placement": "base",
+      "status": "live"
+    },
+    {
+      "id": "kagoshima",
+      "kind": "link",
+      "title": "가고시마 작은 여행책",
+      "description": "겨울 3박 4일 · 사쿠라지마·이부스키 모래찜질 · 맥주·캐릭터 굿즈와 날짜별 동선",
+      "href": "./kagoshima-travel-guide/index.html",
       "section": "personal",
       "placement": "base",
       "status": "live"

@@ -1,5 +1,5 @@
 {
-  "revision": 20,
+  "revision": 21,
   "items": [
     {
       "id": "briefing",
@@ -56,6 +56,10 @@
     {
       "id": "jeju",
       "href": "./jeju-travel-guide/index.html"
+    },
+    {
+      "id": "kagoshima",
+      "href": "./kagoshima-travel-guide/index.html"
     },
     {
       "id": "proposal-roadmap",
