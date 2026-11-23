@@ -2008,3 +2008,373 @@ KW  - STEM 진로
 KW  - 아동 안전
 N1  - 연구 서고 A-15 · 프리프린트(심사 전) · AI 리터러시·시민성
 ER  - 
+
+TY  - UNPB
+AU  - Li, Jun
+AU  - Bray, Robert
+AU  - Martin, Sébastien
+AU  - Van den Steen, Nils
+AU  - Wu, Andrew
+AU  - Ni, Xiao
+AU  - Anderer, Arielle
+AU  - Astashkina, Ekaterina
+AU  - Babich, Volodymyr
+AU  - Baldwin, Jean-Paul
+AU  - Bastani, Hamsa
+AU  - Blanco, Christian
+AU  - Celebi, Oguzhan
+AU  - Chen, Christopher
+AU  - Chen, Shi
+AU  - Collier, Benjamin
+AU  - Cui, Yao
+AU  - Feldman, Pnina
+AU  - Flicker, Blair
+AU  - Han, Brian
+AU  - Hu, Yichun
+AU  - Hurtado-Lange, Daniela
+AU  - Jiang, Jane
+AU  - Jiang, Zhaohui
+AU  - Kirci, Ismail
+AU  - Köksalan, Murat
+AU  - Lian, Zhen
+AU  - Liang, Hongyan
+AU  - Lu, Mengshi
+AU  - Meng, Lesley
+AU  - Moon, Ken
+AU  - Newsom, Mi Kyong
+AU  - Park, Minje
+AU  - Parker, Chris
+AU  - Qi, Anyan
+AU  - Qi, Meng
+AU  - Roy, Debjit
+AU  - Sharma, Neha
+AU  - Sungu, Alp
+AU  - Tan, Tom
+AU  - Tereyagoglu, Necati
+AU  - Tyagi, Hanu
+AU  - Venkataraman, Sriram
+AU  - Wang, Guihua
+AU  - Wang, Yixin
+AU  - Wu, Owen
+AU  - Yang, Zonghao
+AU  - Yu, Qiuping
+AU  - Yu, Sophie
+AU  - Zhang, Jingwei
+AU  - Zhang, Wenchang
+AU  - Zhu, Ruihao
+TI  - Instructor-designed AI improves learning in a randomized trial across 19 universities
+PY  - 2026
+DA  - 2026/11/14
+PB  - arXiv
+M3  - arXiv:2611.19099
+DO  - 10.48550/arXiv.2611.19099
+UR  - https://arxiv.org/abs/2611.19099
+KW  - AI 튜터링
+KW  - 무작위 통제 실험
+KW  - 교수자 설계
+KW  - 학습 성과
+KW  - 고등교육
+N1  - 연구 서고 C-12 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Wang, Dan J.
+AU  - Jain, Neelam Modi
+AU  - Burbano, Vanessa
+AU  - Guzman, Jorge
+AU  - Keum, Daniel
+AU  - Kim, Soomi
+AU  - Kogut, Bruce
+AU  - Wright, Nataliya
+TI  - How assigned AI use before class shapes active student engagement in class
+PY  - 2026
+DA  - 2026/10/07
+PB  - arXiv
+M3  - arXiv:2610.10463
+DO  - 10.48550/arXiv.2610.10463
+UR  - https://arxiv.org/abs/2610.10463
+KW  - 음성 AI
+KW  - 수업 준비
+KW  - 학습 참여
+KW  - AI 토론 상대
+KW  - 현장 실험
+N1  - 연구 서고 C-13 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - JOUR
+AU  - Morano, M.
+AU  - Ifenthaler, D.
+AU  - Cesaretti, L.
+AU  - Nardo, F. D.
+AU  - Screpanti, I.
+AU  - Scaradozzi, D.
+TI  - Design and Evaluation of an AI-Based Conversational Agent for Adaptive Feedback in Educational Robotics
+T2  - IEEE Transactions on Learning Technologies
+PY  - 2026
+DA  - 2026
+PB  - IEEE
+SP  - 302
+EP  - 315
+DO  - 10.1109/TLT.2026.3676621
+UR  - https://doi.org/10.1109/TLT.2026.3676621
+KW  - 교육용 로봇
+KW  - 대화형 에이전트
+KW  - 적응형 피드백
+KW  - LLM
+KW  - 협력 학습
+N1  - 연구 서고 E-06 · 동료심사 저널 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - UNPB
+AU  - Li, Leyi
+AU  - Du, Chenyu
+AU  - Sun, Jiafei
+AU  - Purwanto, Erick
+AU  - Zhang, Qing
+TI  - RoboBlockly Studio: Conversational Block Programming with Embodied Robot Feedback for Computational Thinking
+PY  - 2026
+DA  - 2026/05/12
+PB  - arXiv
+M3  - arXiv:2605.12059
+DO  - 10.48550/arXiv.2605.12059
+UR  - https://arxiv.org/abs/2605.12059
+KW  - 블록 코딩
+KW  - 교육용 로봇
+KW  - 대화형 AI
+KW  - 컴퓨팅 사고력
+KW  - 체화된 피드백
+N1  - 연구 서고 E-07 · 동료심사 학회 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - JOUR
+AU  - Kırcaburun, Kağan
+AU  - Baştuğ, İbrahim
+AU  - Tosuntaş, Şule Betül
+TI  - Exploring the association between a vibe coding intervention and programming self-efficacy among middle school students: A single-group pretest–posttest study
+T2  - International Journal of Modern Education Studies
+PY  - 2026
+DA  - 2026
+PB  - IJONMES
+DO  - 10.51383/ijonmes.2026.483
+UR  - https://www.ijonmes.net/index.php/ijonmes/article/view/483
+KW  - 바이브코딩
+KW  - 프로그래밍 자기효능감
+KW  - 중학생
+KW  - AI 협업 코딩
+N1  - 연구 서고 D-14 · 동료심사 저널 · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Jaidka, Kokil
+AU  - Mujtahid, Insyirah Binte Imam
+AU  - Qi, Peng
+AU  - Aneja, Harshit
+AU  - Mukerjee, Subhayan
+AU  - Hsu, Wynne
+AU  - Lee, Mong Li
+AU  - Chen, Tsuhan
+TI  - Chatbot Engagement Does Not Always Beget Metalearning: Evidence from Three Countries
+PY  - 2026
+DA  - 2026/09/26
+PB  - arXiv
+M3  - arXiv:2609.32739
+DO  - 10.48550/arXiv.2609.32739
+UR  - https://arxiv.org/abs/2609.32739
+KW  - 허위정보
+KW  - 팩트체크 챗봇
+KW  - 메타학습
+KW  - AI 리터러시
+KW  - 지연 효과
+N1  - 연구 서고 A-16 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Xiao, Feiwen
+AU  - Wu, Ruiyang
+AU  - Cui, Xinyue
+AU  - Rajapaksha, Yasitha
+AU  - Tian, Xiaoyi
+AU  - Jiang, Shiyan
+AU  - Barnes, Tiffany
+TI  - If My Toy Could Talk: How Young Children Imagine, Design, and Test AI-Enabled Toys
+PY  - 2026
+DA  - 2026/10/05
+PB  - arXiv
+M3  - arXiv:2610.06619
+DO  - 10.48550/arXiv.2610.06619
+UR  - https://arxiv.org/abs/2610.06619
+KW  - AI 장난감
+KW  - 아동 설계자
+KW  - LLM 챗봇
+KW  - AI 리터러시
+KW  - 노코드
+N1  - 연구 서고 E-08 · 프리프린트(심사 전) · 교육용 로봇·피지컬 컴퓨팅
+ER  - 
+
+TY  - UNPB
+AU  - Xue, Haoning
+AU  - Qian, Sijia
+AU  - Calabrese, Christopher
+AU  - Shen, Cuihua
+AU  - Taylor, Laramie
+AU  - Wang, Yixuan
+TI  - Sure Enough to Share? Overconfidence in GenAI Video Discernment is Associated with Sharing Intentions
+PY  - 2026
+DA  - 2026/11/04
+PB  - arXiv
+M3  - arXiv:2611.05844
+DO  - 10.48550/arXiv.2611.05844
+UR  - https://arxiv.org/abs/2611.05844
+KW  - 딥페이크
+KW  - AI 생성 영상
+KW  - 과신
+KW  - 메타인지
+KW  - AI 리터러시
+N1  - 연구 서고 A-17 · 프리프린트(심사 전) · AI 리터러시·시민성
+ER  - 
+
+TY  - JOUR
+AU  - Xiu, Rosie Le
+AU  - Aguilar, Stephen J.
+AU  - Macías, Andrea Jackelyn
+AU  - Shikanova, Anastasia
+AU  - Al-Sulaiti, Reem
+AU  - Junjunia, Maimoona
+AU  - Jebril, Selma Talha
+TI  - K-12 in-service teachers' beliefs about generative AI in classrooms: insights from the United States, India, Qatar, Colombia, and the Philippines
+T2  - Frontiers in Education
+PY  - 2026
+DA  - 2026/09/25
+PB  - Frontiers Media
+SP  - 1929017
+DO  - 10.3389/feduc.2026.1929017
+UR  - https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1929017/full
+KW  - 교사 신념
+KW  - 생성형 AI
+KW  - AI 준비도
+KW  - 표절 우려
+KW  - 국제 비교
+N1  - 연구 서고 B-13 · 동료심사 저널 · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Chandrashekar, Nikitha Donekal
+AU  - Ellis, Margaret
+AU  - Nizamani, Sehrish Basir
+AU  - Ramakrishnan, Naren
+TI  - Who (or what) are they prompting? How CS students conceptualize and use LLMs
+PY  - 2026
+DA  - 2026/11/10
+PB  - arXiv
+M3  - arXiv:2611.14798
+DO  - 10.48550/arXiv.2611.14798
+UR  - https://arxiv.org/abs/2611.14798
+KW  - LLM 개념화
+KW  - 비유
+KW  - 프롬프트
+KW  - SOLO 분류
+KW  - 컴퓨팅 교육
+N1  - 연구 서고 A-18 · 동료심사 학회 · AI 리터러시·시민성
+ER  - 
+
+TY  - UNPB
+AU  - Jacobs, Sven
+AU  - Berning, Lukas
+AU  - Kiesler, Natalie
+TI  - Share your Screen and Talk to Gemini: How Young Learners Interact with Multimodal GenAI While Solving Scratch Tasks
+PY  - 2026
+DA  - 2026/11/16
+PB  - arXiv
+M3  - arXiv:2611.21306
+DO  - 10.48550/arXiv.2611.21306
+UR  - https://arxiv.org/abs/2611.21306
+KW  - 멀티모달 AI 튜터
+KW  - 스크래치
+KW  - 음성 상호작용
+KW  - 디버깅
+KW  - 과신
+N1  - 연구 서고 C-14 · 동료심사 학회 · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Farooq, Muhammad Saleh
+AU  - Khan, Muhammad Ahmad
+AU  - Raza, Muhammad Jon
+TI  - Standard-Anchored Delegation in Teachers' Use of Generative AI
+PY  - 2026
+DA  - 2026/11/20
+PB  - arXiv
+M3  - arXiv:2611.27533
+DO  - 10.48550/arXiv.2611.27533
+UR  - https://arxiv.org/abs/2611.27533
+KW  - 교사 AI 활용
+KW  - 업무 위임
+KW  - 루브릭
+KW  - 검증 가능성
+KW  - 책무성
+N1  - 연구 서고 B-14 · 프리프린트(심사 전) · 교사 AI 역량·연수
+ER  - 
+
+TY  - UNPB
+AU  - Memon, Shahan Ali
+AU  - Gueorguieva, Anna-Maria
+AU  - Kumar, Anukriti
+AU  - Wang, Lucy Lu
+AU  - West, Jevin D.
+AU  - Weber, Nic
+TI  - U.S. State Guidance on AI in K-12 Education: A Comparative Content and Citation Analysis
+PY  - 2026
+DA  - 2026/11/04
+PB  - arXiv
+M3  - arXiv:2611.06762
+DO  - 10.48550/arXiv.2611.06762
+UR  - https://arxiv.org/abs/2611.06762
+KW  - K-12 AI 지침
+KW  - 정책 문서 분석
+KW  - 인용 분석
+KW  - 형평성
+KW  - 거버넌스
+N1  - 연구 서고 F-12 · 프리프린트(심사 전) · 교육 정책·제도
+ER  - 
+
+TY  - UNPB
+AU  - Misra, Anika
+AU  - Okite, Chimaobi
+AU  - Mihalcea, Rada
+TI  - Beyond Prompt Heuristics: Assessing Child Safety Alignment in LLMs
+PY  - 2026
+DA  - 2026/11/20
+PB  - arXiv
+M3  - arXiv:2611.26965
+DO  - 10.48550/arXiv.2611.26965
+UR  - https://arxiv.org/abs/2611.26965
+KW  - 아동 안전
+KW  - LLM 정렬
+KW  - 안전성 평가
+KW  - 유해 범주
+KW  - 맥락 의존
+N1  - 연구 서고 H-03 · 학회 워크숍 · 책임 있는 AI·아동 안전
+ER  - 
+
+TY  - UNPB
+AU  - Elbaum, Ofri
+AU  - Malik, Amit
+AU  - Malkevich, Tomer
+AU  - Elyoseph, Zohar
+AU  - Solomon, Adir
+AU  - Dror, Rotem
+AU  - Ayalon, Oshrat
+TI  - Lilo: A Multi-Agent Conversational Sandbox for Children's Digital Communication
+PY  - 2026
+DA  - 2026/11/10
+PB  - arXiv
+M3  - arXiv:2611.14260
+DO  - 10.48550/arXiv.2611.14260
+UR  - https://arxiv.org/abs/2611.14260
+KW  - 다중 에이전트
+KW  - 또래 갈등
+KW  - 디지털 소통
+KW  - 자기효능감
+KW  - 아동
+N1  - 연구 서고 H-04 · 프리프린트(심사 전) · 책임 있는 AI·아동 안전
+ER  - 

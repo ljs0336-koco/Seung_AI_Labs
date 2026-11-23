@@ -1,39 +1,39 @@
 {
   "schemaVersion": 1,
-  "total": 100,
-  "reviewed": 50,
+  "total": 115,
+  "reviewed": 56,
   "special": 35,
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "shelves": [
     {
       "id": "A",
       "label": "AI 리터러시·시민성",
-      "count": 15
+      "count": 18
     },
     {
       "id": "B",
       "label": "교사 AI 역량·연수",
-      "count": 12
+      "count": 14
     },
     {
       "id": "C",
       "label": "AI 튜터링·학습 지원",
-      "count": 11
+      "count": 14
     },
     {
       "id": "D",
       "label": "바이브코딩·AI 협업 코딩",
-      "count": 13
+      "count": 14
     },
     {
       "id": "E",
       "label": "교육용 로봇·피지컬 컴퓨팅",
-      "count": 5
+      "count": 8
     },
     {
       "id": "F",
       "label": "교육 정책·제도",
-      "count": 11
+      "count": 12
     },
     {
       "id": "G",
@@ -43,7 +43,7 @@
     {
       "id": "H",
       "label": "책임 있는 AI·아동 안전",
-      "count": 2
+      "count": 4
     },
     {
       "id": "I",
@@ -58,114 +58,112 @@
   ],
   "recent": [
     {
-      "id": "100",
-      "code": "A-15",
-      "call": "A-15",
-      "title": "Gender Differences in AI Literacy Workshop Outcomes and Deepfake Engagement",
-      "titleKo": "AI 리터러시 워크숍 성과와 딥페이크 관여의 성별 차이",
-      "authors": "Jake Renzella; Christian Bergh; Natasha Banks; Alexandra Vassar",
+      "id": "115",
+      "code": "H-04",
+      "call": "H-04",
+      "title": "Lilo: A Multi-Agent Conversational Sandbox for Children's Digital Communication",
+      "titleKo": "Lilo: 아동의 디지털 소통을 위한 다중 에이전트 대화 연습장",
+      "authors": "Ofri Elbaum; Amit Malik; Tomer Malkevich; Zohar Elyoseph; Adir Solomon; Rotem Dror; Oshrat Ayalon",
       "year": 2026,
       "kind": "preprint",
-      "href": "./library/index.html#no-100",
+      "href": "./library/index.html#no-115",
       "keywords": [
-        "AI 리터러시",
-        "딥페이크",
-        "성별 차이",
-        "STEM 진로",
-        "아동 안전"
+        "다중 에이전트",
+        "또래 갈등",
+        "디지털 소통",
+        "자기효능감",
+        "아동"
       ],
       "shelves": [
-        "A",
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "114",
+      "code": "H-03",
+      "call": "H-03",
+      "title": "Beyond Prompt Heuristics: Assessing Child Safety Alignment in LLMs",
+      "titleKo": "프롬프트 단서 너머: LLM의 아동 안전 정렬 평가",
+      "authors": "Anika Misra; Chimaobi Okite; Rada Mihalcea",
+      "year": 2026,
+      "kind": "workshop",
+      "href": "./library/index.html#no-114",
+      "keywords": [
+        "아동 안전",
+        "LLM 정렬",
+        "안전성 평가",
+        "유해 범주",
+        "맥락 의존"
+      ],
+      "shelves": [
         "H"
       ]
     },
     {
-      "id": "099",
-      "code": "A-14",
-      "call": "A-14",
-      "title": "When AI Is—and Is Not—Needed: AI Literacy and Computational Thinking in Primary STEM",
-      "titleKo": "AI가 필요할 때와 필요하지 않을 때: 초등 STEM에서의 AI 리터러시와 컴퓨팅 사고",
-      "authors": "Ahmet Akif Erbaş; Tolga Topçubaşı",
+      "id": "113",
+      "code": "F-12",
+      "call": "F-12",
+      "title": "U.S. State Guidance on AI in K-12 Education: A Comparative Content and Citation Analysis",
+      "titleKo": "미국 주 정부의 K-12 AI 지침: 내용·인용 비교 분석",
+      "authors": "Shahan Ali Memon; Anna-Maria Gueorguieva; Anukriti Kumar; Lucy Lu Wang; Jevin D. West; Nic Weber",
       "year": 2026,
-      "kind": "journal",
-      "href": "./library/index.html#no-099",
+      "kind": "preprint",
+      "href": "./library/index.html#no-113",
       "keywords": [
-        "초등 AI 리터러시",
-        "컴퓨팅 사고",
-        "규칙 기반 대 기계학습",
-        "피지컬 컴퓨팅",
-        "수행평가"
+        "K-12 AI 지침",
+        "정책 문서 분석",
+        "인용 분석",
+        "형평성",
+        "거버넌스"
       ],
       "shelves": [
-        "A",
-        "E"
-      ]
-    },
-    {
-      "id": "098",
-      "code": "B-12",
-      "call": "B-12",
-      "title": "Generative AI Can Harm Teaching",
-      "titleKo": "생성형 AI는 가르침을 해칠 수 있다",
-      "authors": "Alp Sungu; Benjamin Lira; Angela Lee Duckworth",
-      "year": 2026,
-      "kind": "working-paper",
-      "href": "./library/index.html#no-098",
-      "keywords": [
-        "교사용 AI",
-        "수업 준비",
-        "내재적 동기",
-        "무작위 실험",
-        "교사 격차"
-      ],
-      "shelves": [
-        "B",
-        "G"
-      ]
-    },
-    {
-      "id": "097",
-      "code": "G-12",
-      "call": "G-12",
-      "title": "The Evidence Base on AI in K-12: A November 2026 Review",
-      "titleKo": "K-12 AI 근거 기반: 2026년 11월 검토",
-      "authors": "Seth Walker; Lily Fesler; JP Martinez Claeys; Chris Agnew; Susanna Loeb",
-      "year": 2026,
-      "kind": "report",
-      "href": "./library/index.html#no-097",
-      "keywords": [
-        "인과 근거",
-        "생성형 AI",
-        "K-12",
-        "근거 종합",
-        "교사용 AI"
-      ],
-      "shelves": [
-        "G",
         "F",
+        "H"
+      ]
+    },
+    {
+      "id": "112",
+      "code": "B-14",
+      "call": "B-14",
+      "title": "Standard-Anchored Delegation in Teachers' Use of Generative AI",
+      "titleKo": "교사의 생성형 AI 활용에서 나타나는 '기준에 닻을 내린 위임'",
+      "authors": "Muhammad Saleh Farooq; Muhammad Ahmad Khan; Muhammad Jon Raza",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-112",
+      "keywords": [
+        "교사 AI 활용",
+        "업무 위임",
+        "루브릭",
+        "검증 가능성",
+        "책무성"
+      ],
+      "shelves": [
         "B"
       ]
     },
     {
-      "id": "096",
-      "code": "F-11",
-      "call": "F-11",
-      "title": "Policies supporting responsible and systematic GenAI adoption in higher education",
-      "titleKo": "고등교육에서 책임 있고 체계적인 생성형 AI 도입을 지원하는 정책",
-      "authors": "OECD",
+      "id": "111",
+      "code": "C-14",
+      "call": "C-14",
+      "title": "Share your Screen and Talk to Gemini: How Young Learners Interact with Multimodal GenAI While Solving Scratch Tasks",
+      "titleKo": "화면을 공유하고 Gemini와 말하기: 어린 학습자는 스크래치 과제를 풀며 멀티모달 생성형 AI와 어떻게 상호작용하는가",
+      "authors": "Sven Jacobs; Lukas Berning; Natalie Kiesler",
       "year": 2026,
-      "kind": "report",
-      "href": "./library/index.html#no-096",
+      "kind": "conference",
+      "href": "./library/index.html#no-111",
       "keywords": [
-        "고등교육",
-        "생성형 AI 정책",
-        "거버넌스",
-        "조달",
-        "AI 역량"
+        "멀티모달 AI 튜터",
+        "스크래치",
+        "음성 상호작용",
+        "디버깅",
+        "과신"
       ],
       "shelves": [
-        "F",
-        "H"
+        "C",
+        "E",
+        "A"
       ]
     }
   ],
@@ -2315,6 +2313,337 @@
       "shelves": [
         "A",
         "H"
+      ]
+    },
+    {
+      "id": "101",
+      "code": "C-12",
+      "call": "C-12",
+      "title": "Instructor-designed AI improves learning in a randomized trial across 19 universities",
+      "titleKo": "강사가 설계한 AI가 학습을 높인다: 19개 대학 무작위 실험",
+      "authors": "Jun Li; Robert Bray; Sébastien Martin; Nils Van den Steen; Andrew Wu; Xiao Ni; Arielle Anderer; Ekaterina Astashkina; Volodymyr Babich; Jean-Paul Baldwin; Hamsa Bastani; Christian Blanco; Oguzhan Celebi; Christopher Chen; Shi Chen; Benjamin Collier; Yao Cui; Pnina Feldman; Blair Flicker; Brian Han; Yichun Hu; Daniela Hurtado-Lange; Jane Jiang; Zhaohui Jiang; Ismail Kirci; Murat Köksalan; Zhen Lian; Hongyan Liang; Mengshi Lu; Lesley Meng; Ken Moon; Mi Kyong Newsom; Minje Park; Chris Parker; Anyan Qi; Meng Qi; Debjit Roy; Neha Sharma; Alp Sungu; Tom Tan; Necati Tereyagoglu; Hanu Tyagi; Sriram Venkataraman; Guihua Wang; Yixin Wang; Owen Wu; Zonghao Yang; Qiuping Yu; Sophie Yu; Jingwei Zhang; Wenchang Zhang; Ruihao Zhu",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-101",
+      "keywords": [
+        "AI 튜터링",
+        "무작위 통제 실험",
+        "교수자 설계",
+        "학습 성과",
+        "고등교육"
+      ],
+      "shelves": [
+        "C",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "102",
+      "code": "C-13",
+      "call": "C-13",
+      "title": "How assigned AI use before class shapes active student engagement in class",
+      "titleKo": "수업 전 AI 사용 과제가 수업 중 능동적 참여에 미치는 영향",
+      "authors": "Dan J. Wang; Neelam Modi Jain; Vanessa Burbano; Jorge Guzman; Daniel Keum; Soomi Kim; Bruce Kogut; Nataliya Wright",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-102",
+      "keywords": [
+        "음성 AI",
+        "수업 준비",
+        "학습 참여",
+        "AI 토론 상대",
+        "현장 실험"
+      ],
+      "shelves": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "103",
+      "code": "E-06",
+      "call": "E-06",
+      "title": "Design and Evaluation of an AI-Based Conversational Agent for Adaptive Feedback in Educational Robotics",
+      "titleKo": "교육용 로봇 활동에서 적응형 피드백을 주는 AI 대화형 에이전트의 설계와 평가",
+      "authors": "M. Morano; D. Ifenthaler; L. Cesaretti; F. D. Nardo; I. Screpanti; D. Scaradozzi",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-103",
+      "keywords": [
+        "교육용 로봇",
+        "대화형 에이전트",
+        "적응형 피드백",
+        "LLM",
+        "협력 학습"
+      ],
+      "shelves": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "104",
+      "code": "E-07",
+      "call": "E-07",
+      "title": "RoboBlockly Studio: Conversational Block Programming with Embodied Robot Feedback for Computational Thinking",
+      "titleKo": "RoboBlockly Studio: 컴퓨팅 사고력을 위한, 로봇 실행 피드백이 있는 대화형 블록 프로그래밍",
+      "authors": "Leyi Li; Chenyu Du; Jiafei Sun; Erick Purwanto; Qing Zhang",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-104",
+      "keywords": [
+        "블록 코딩",
+        "교육용 로봇",
+        "대화형 AI",
+        "컴퓨팅 사고력",
+        "체화된 피드백"
+      ],
+      "shelves": [
+        "E",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "105",
+      "code": "D-14",
+      "call": "D-14",
+      "title": "Exploring the association between a vibe coding intervention and programming self-efficacy among middle school students: A single-group pretest–posttest study",
+      "titleKo": "바이브코딩 수업과 중학생 프로그래밍 자기효능감의 관계: 단일집단 사전–사후 연구",
+      "authors": "Kağan Kırcaburun; İbrahim Baştuğ; Şule Betül Tosuntaş",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-105",
+      "keywords": [
+        "바이브코딩",
+        "프로그래밍 자기효능감",
+        "중학생",
+        "AI 협업 코딩"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "106",
+      "code": "A-16",
+      "call": "A-16",
+      "title": "Chatbot Engagement Does Not Always Beget Metalearning: Evidence from Three Countries",
+      "titleKo": "챗봇 참여가 늘 메타학습으로 이어지지는 않는다: 세 나라 실험 근거",
+      "authors": "Kokil Jaidka; Insyirah Binte Imam Mujtahid; Peng Qi; Harshit Aneja; Subhayan Mukerjee; Wynne Hsu; Mong Li Lee; Tsuhan Chen",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-106",
+      "keywords": [
+        "허위정보",
+        "팩트체크 챗봇",
+        "메타학습",
+        "AI 리터러시",
+        "지연 효과"
+      ],
+      "shelves": [
+        "A",
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "107",
+      "code": "E-08",
+      "call": "E-08",
+      "title": "If My Toy Could Talk: How Young Children Imagine, Design, and Test AI-Enabled Toys",
+      "titleKo": "내 장난감이 말을 한다면: 어린이는 AI 장난감을 어떻게 상상하고 설계하고 시험하는가",
+      "authors": "Feiwen Xiao; Ruiyang Wu; Xinyue Cui; Yasitha Rajapaksha; Xiaoyi Tian; Shiyan Jiang; Tiffany Barnes",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-107",
+      "keywords": [
+        "AI 장난감",
+        "아동 설계자",
+        "LLM 챗봇",
+        "AI 리터러시",
+        "노코드"
+      ],
+      "shelves": [
+        "E",
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "108",
+      "code": "A-17",
+      "call": "A-17",
+      "title": "Sure Enough to Share? Overconfidence in GenAI Video Discernment is Associated with Sharing Intentions",
+      "titleKo": "공유할 만큼 확신하는가? 생성형 AI 영상 판별의 과신과 공유 의도",
+      "authors": "Haoning Xue; Sijia Qian; Christopher Calabrese; Cuihua Shen; Laramie Taylor; Yixuan Wang",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-108",
+      "keywords": [
+        "딥페이크",
+        "AI 생성 영상",
+        "과신",
+        "메타인지",
+        "AI 리터러시"
+      ],
+      "shelves": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "109",
+      "code": "B-13",
+      "call": "B-13",
+      "title": "K-12 in-service teachers' beliefs about generative AI in classrooms: insights from the United States, India, Qatar, Colombia, and the Philippines",
+      "titleKo": "교실 생성형 AI에 대한 K-12 현직 교사의 신념: 미국·인도·카타르·콜롬비아·필리핀 비교",
+      "authors": "Rosie Le Xiu; Stephen J. Aguilar; Andrea Jackelyn Macías; Anastasia Shikanova; Reem Al-Sulaiti; Maimoona Junjunia; Selma Talha Jebril",
+      "year": 2026,
+      "kind": "journal",
+      "href": "./library/index.html#no-109",
+      "keywords": [
+        "교사 신념",
+        "생성형 AI",
+        "AI 준비도",
+        "표절 우려",
+        "국제 비교"
+      ],
+      "shelves": [
+        "B"
+      ]
+    },
+    {
+      "id": "110",
+      "code": "A-18",
+      "call": "A-18",
+      "title": "Who (or what) are they prompting? How CS students conceptualize and use LLMs",
+      "titleKo": "학생들은 누구(무엇)에게 프롬프트를 쓰는가? 컴퓨터과학 학생의 LLM 개념화와 사용",
+      "authors": "Nikitha Donekal Chandrashekar; Margaret Ellis; Sehrish Basir Nizamani; Naren Ramakrishnan",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-110",
+      "keywords": [
+        "LLM 개념화",
+        "비유",
+        "프롬프트",
+        "SOLO 분류",
+        "컴퓨팅 교육"
+      ],
+      "shelves": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "111",
+      "code": "C-14",
+      "call": "C-14",
+      "title": "Share your Screen and Talk to Gemini: How Young Learners Interact with Multimodal GenAI While Solving Scratch Tasks",
+      "titleKo": "화면을 공유하고 Gemini와 말하기: 어린 학습자는 스크래치 과제를 풀며 멀티모달 생성형 AI와 어떻게 상호작용하는가",
+      "authors": "Sven Jacobs; Lukas Berning; Natalie Kiesler",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-111",
+      "keywords": [
+        "멀티모달 AI 튜터",
+        "스크래치",
+        "음성 상호작용",
+        "디버깅",
+        "과신"
+      ],
+      "shelves": [
+        "C",
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "112",
+      "code": "B-14",
+      "call": "B-14",
+      "title": "Standard-Anchored Delegation in Teachers' Use of Generative AI",
+      "titleKo": "교사의 생성형 AI 활용에서 나타나는 '기준에 닻을 내린 위임'",
+      "authors": "Muhammad Saleh Farooq; Muhammad Ahmad Khan; Muhammad Jon Raza",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-112",
+      "keywords": [
+        "교사 AI 활용",
+        "업무 위임",
+        "루브릭",
+        "검증 가능성",
+        "책무성"
+      ],
+      "shelves": [
+        "B"
+      ]
+    },
+    {
+      "id": "113",
+      "code": "F-12",
+      "call": "F-12",
+      "title": "U.S. State Guidance on AI in K-12 Education: A Comparative Content and Citation Analysis",
+      "titleKo": "미국 주 정부의 K-12 AI 지침: 내용·인용 비교 분석",
+      "authors": "Shahan Ali Memon; Anna-Maria Gueorguieva; Anukriti Kumar; Lucy Lu Wang; Jevin D. West; Nic Weber",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-113",
+      "keywords": [
+        "K-12 AI 지침",
+        "정책 문서 분석",
+        "인용 분석",
+        "형평성",
+        "거버넌스"
+      ],
+      "shelves": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "114",
+      "code": "H-03",
+      "call": "H-03",
+      "title": "Beyond Prompt Heuristics: Assessing Child Safety Alignment in LLMs",
+      "titleKo": "프롬프트 단서 너머: LLM의 아동 안전 정렬 평가",
+      "authors": "Anika Misra; Chimaobi Okite; Rada Mihalcea",
+      "year": 2026,
+      "kind": "workshop",
+      "href": "./library/index.html#no-114",
+      "keywords": [
+        "아동 안전",
+        "LLM 정렬",
+        "안전성 평가",
+        "유해 범주",
+        "맥락 의존"
+      ],
+      "shelves": [
+        "H"
+      ]
+    },
+    {
+      "id": "115",
+      "code": "H-04",
+      "call": "H-04",
+      "title": "Lilo: A Multi-Agent Conversational Sandbox for Children's Digital Communication",
+      "titleKo": "Lilo: 아동의 디지털 소통을 위한 다중 에이전트 대화 연습장",
+      "authors": "Ofri Elbaum; Amit Malik; Tomer Malkevich; Zohar Elyoseph; Adir Solomon; Rotem Dror; Oshrat Ayalon",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-115",
+      "keywords": [
+        "다중 에이전트",
+        "또래 갈등",
+        "디지털 소통",
+        "자기효능감",
+        "아동"
+      ],
+      "shelves": [
+        "H",
+        "C"
       ]
     }
   ]
