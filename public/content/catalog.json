@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 21,
+  "revision": 22,
   "publishedAt": null,
   "siteUrl": "https://ljs0336-koco.github.io/Seung_AI_Labs/",
   "items": [
@@ -278,6 +278,16 @@
       "status": "live"
     },
     {
+      "id": "party-world",
+      "kind": "link",
+      "title": "라운드 아일랜드",
+      "description": "게임과 대진을 뽑아 바로 겨루는 파티게임 월드. 개인전부터 3대1까지, 한 기기로 함께 플레이하세요.",
+      "href": "./apps/party-world/index.html",
+      "section": "playground",
+      "placement": "base",
+      "status": "live"
+    },
+    {
       "id": "playground",
       "kind": "router",
       "title": "AI 놀이터",
@@ -294,6 +304,10 @@
         {
           "title": "말랑런",
           "href": "./hub/apps/malang_run/index.html"
+        },
+        {
+          "title": "라운드 아일랜드",
+          "href": "./apps/party-world/index.html"
         }
       ]
     },
