@@ -147,9 +147,9 @@ window.PARTY_CATALOG = [
   },
   {
     id:'music', title:'전주 1초', genre:'음악', mode:'music', media:'music',
-    lead:'첫 단서는 곡의 첫 1초입니다.',
-    rules:['재생 후 먼저 손을 든 사람이 곡명을 답하십시오. 팀에서는 대표 한 명이 답합니다.', '정답이 없으면 같은 도입부를 3초, 5초로 늘려 들으십시오.', '곡마다 대표를 바꿉니다. 등록된 곡 중 최대 세 곡을 사용합니다.'],
-    win:'가장 많은 곡명을 맞힌 쪽이 승리합니다.', example:'가수만 맞힌 경우에는 곡명이 나올 때까지 이어갑니다.'
+    lead:'첫 단서는 단 1초의 선율입니다.',
+    rules:['내장 선율에서 무작위로 최대 세 곡을 뽑습니다. 추첨 설정에서 내 음원으로 바꿀 수도 있습니다.', '재생 후 먼저 손을 든 대표가 곡명을 답하십시오. 정답이 없으면 같은 구간을 3초, 5초로 늘립니다.', '정답을 공개하고 맞힌 쪽을 선택하십시오. 다음 곡에서는 대표를 교대합니다.'],
+    win:'가장 많은 곡명을 맞힌 쪽이 승리합니다.', example:'같은 선율에 익숙한 다른 제목이 있다면 시작 전에 정답으로 인정할지 정하십시오.'
   },
   {
     id:'sounds', title:'효과음만으로 맞혀라', genre:'소리', mode:'speed', duration:30,
@@ -235,6 +235,116 @@ interval=setInterval(flash,45)}
 function mount(root,id,names,s,save,done){if(ctx?.root===root&&stage)return;clean();ctx={root,id,names,s,save,done};s.values??=[];s.details??=[];root.replaceChildren(elem('h2',names[s.values.length].join(' · ')),elem('p','화면을 조작할 대표가 준비되면 시작하세요.','lead'));const btn=button('도전 시작',start);btn.className='primary draw';root.append(btn);if(s.details.length)root.append(elem('p',s.details.map((v,i)=>names[i].join(' · ')+'　'+v).join(' / '),'muted spaced'))}
 window.IslandChallenges={mount,stop:clean};
 })();
+</script><script>/* The short, transposed theme excerpts below are entered as note names and beat
+   lengths. All audio samples and the timbre are generated here. These references
+   document the underlying historical melodies and are never fetched at runtime. */
+(() => {
+  'use strict';
+
+  const melodies = [
+    // Traditional French tune, documented in Mozart's K.265, 18th century.
+    // https://dme.mozarteum.at/DME/objs/pdf/nma_199_49_57.pdf
+    ['반짝반짝 작은 별', 120, 'C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2'],
+    // Beethoven, Symphony No. 9, finale, 1824. Berlin autograph archive.
+    // https://staatsbibliothek-berlin.de/die-staatsbibliothek/abteilungen/musik/sammlungen/bestaende/l-van-beethoven-9-sinfonie/digitale-abbildungen
+    ['환희의 송가 (베토벤 교향곡 9번)', 132, 'E4 E4 F4 G4 G4 F4 E4 D4 C4 C4 D4 E4 E4:1.5 D4:0.5 D4:2'],
+    // Beethoven, WoO 59 (1810); sketches, Beethoven-Haus Bonn, BH 116.
+    // https://www.beethoven.de/en/media/view/5010945952710656/scan/0
+    ['엘리제를 위하여', 156, 'E5:0.5 D#5:0.5 E5:0.5 D#5:0.5 E5:0.5 B4:0.5 D5:0.5 C5:0.5 A4:1.5 C4:0.5 E4:0.5 A4:0.5 B4:1.5 E4:0.5 G#4:0.5 B4:0.5 C5:1.5 E4:0.5 E5:0.5 D#5:0.5 E5:0.5 D#5:0.5 E5'],
+    // Beethoven, Symphony No. 5, Op. 67, first movement (1808). Opening fermatas
+    // are given fixed lengths for the short quiz performance.
+    // https://www.beethoven.de/en/work/view/6260401733894144/Sinfonie%2BNr.%2B5%2B%28c-Moll%29%2Bop.%2B67
+    ['운명 교향곡 (베토벤 교향곡 5번)', 132, 'R:0.5 G4:0.5 G4:0.5 G4:0.5 Eb4:3.5 R:0.5 F4:0.5 F4:0.5 F4:0.5 D4:4.5 R:0.5 G4:0.5 G4:0.5 G4:0.5 Eb4:2'],
+    // Mozart, Serenade K.525, first movement (1787).
+    // https://kv.mozarteum.at/de/work/eine-kleine-nachtmusik-6049
+    ['아이네 클라이네 나흐트무지크 (모차르트 소야곡)', 144, 'G4 R:0.5 D4:0.5 G4 R:0.5 D4:0.5 G4:0.5 D4:0.5 G4:0.5 B4:0.5 D5:2 C5 R:0.5 A4:0.5 C5 R:0.5 A4:0.5 C5:0.5 A4:0.5 F#4:0.5 A4:0.5 D4:2'],
+    // Grieg, Peer Gynt Suite No. 1, Op.46, IV (1888 printed suite).
+    // https://imslp.org/wiki/Peer_Gynt_Suite_No.1%2C_Op.46_(Grieg%2C_Edvard)
+    ['산왕의 궁전에서 (페르 귄트)', 114, 'B3:0.5 C#4:0.5 D4:0.5 E4:0.5 F#4:0.5 D4:0.5 F#4 F4:0.5 C#4:0.5 F4 E4:0.5 C4:0.5 E4 B3:0.5 C#4:0.5 D4:0.5 E4:0.5 F#4:0.5 D4:0.5 F#4 B4:0.5 A4:0.5 F#4:0.5 D4:0.5 B3'],
+    // Brahms, Wiegenlied, Op.49 No.4, 1868. Transposed vocal line.
+    // https://imslp.org/wiki/5_Lieder%2C_Op.49_(Brahms%2C_Johannes)
+    ['브람스의 자장가', 124, 'E4:0.5 E4:0.5 G4:1.5 E4:0.5 E4 G4:2 E4:0.5 G4:0.5 C5 B4:1.5 A4:0.5 A4 G4:2 D4:0.5 E4:0.5 F4 D4:1.5 D4:0.5'],
+    // Franz Xaver Gruber, Stille Nacht (1818); historical autographs.
+    // https://www.stillenacht.at/assets/files/media/stille-nacht/Stille-Nacht.-Die-Autographe.pdf
+    ['고요한 밤 거룩한 밤', 154, 'G4:1.5 A4:0.5 G4 E4:3 G4:1.5 A4:0.5 G4 E4:3 D5:2 D5 B4:3 C5:2 C5 G4:3'],
+    // Traditional French round, collected in J.-B. Weckerlin's 19th-century
+    // Chansons et rondes enfantines. Common Korean title for the same tune.
+    // https://tof.kan.bzh/docs/TO-F-Pdf/TO-F-Ouvrages/Weckerlin-Rondes-Enfantines.pdf
+    ['프레르 자크 (종소리)', 128, 'D4 E4 F#4 D4 D4 E4 F#4 D4 F#4 G4 A4:2 F#4 G4 A4:2 A4:0.5 B4:0.5 A4:0.5 G4:0.5 F#4 D4'],
+    // Stephen Collins Foster, Oh! Susanna, 19th-century sheet music. Melody only.
+    // https://www.loc.gov/item/2023804218/
+    ['오, 수재너', 120, 'C4:0.5 D4:0.5 E4 G4 G4:1.5 A4:0.5 G4 E4 C4:1.5 D4:0.5 E4 E4 D4 C4 D4:2 C4:0.5 D4:0.5 E4 G4'],
+  ];
+
+  const sampleRate = 16000;
+  const seconds = 6;
+  const samples = sampleRate * seconds;
+  const pitchClasses = {C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11};
+
+  function frequency(pitch) {
+    const [, letter, accidental, octave] = /^([A-G])([#b]?)(\d)$/.exec(pitch);
+    const offset = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
+    const midi = 12 * (Number(octave) + 1) + pitchClasses[letter] + offset;
+    return 440 * 2 ** ((midi - 69) / 12);
+  }
+
+  function synthesize(bpm, score) {
+    // Mono 16-bit little-endian RIFF/WAVE. Samples are written directly rather
+    // than relying on a gesture-gated, browser-specific OfflineAudioContext.
+    const buffer = new ArrayBuffer(44 + samples * 2);
+    const view = new DataView(buffer);
+    function ascii(at, value) {
+      for (let i = 0; i < value.length; i++) view.setUint8(at + i, value.charCodeAt(i));
+    }
+    ascii(0, 'RIFF');
+    view.setUint32(4, buffer.byteLength - 8, true);
+    ascii(8, 'WAVE');
+    ascii(12, 'fmt ');
+    view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true);
+    view.setUint16(22, 1, true);
+    view.setUint32(24, sampleRate, true);
+    view.setUint32(28, sampleRate * 2, true);
+    view.setUint16(32, 2, true);
+    view.setUint16(34, 16, true);
+    ascii(36, 'data');
+    view.setUint32(40, samples * 2, true);
+
+    let beat = 0;
+    for (const token of score.split(' ')) {
+      const [pitch, length = '1'] = token.split(':');
+      const start = Math.round(beat * 60 * sampleRate / bpm);
+      if (start >= samples) break;
+      beat += Number(length);
+      const next = Math.round(beat * 60 * sampleRate / bpm);
+      if (pitch === 'R') continue;
+      const end = Math.min(samples, next - Math.round(Math.min(210, (next - start) * 0.05)));
+      const step = 2 * Math.PI * frequency(pitch) / sampleRate;
+      for (let i = start; i < end; i++) {
+        const dt = i - start;
+        const phase = dt * step;
+        const envelope = Math.min(1, dt / 110, (end - i) / 290);
+        const bell = Math.sin(phase) + 0.23 * Math.sin(phase * 2) + 0.09 * Math.sin(phase * 3);
+        const sample = 19000 * bell * envelope * Math.exp(-1.35 * dt / sampleRate);
+        view.setInt16(44 + i * 2, Math.round(sample), true);
+      }
+    }
+    return new Blob([buffer], { type: 'audio/wav' });
+  }
+
+  const library = melodies.map(([answer, bpm, score]) => {
+    let audio;
+    return Object.freeze({
+      answer,
+      get blob() {
+        audio ??= synthesize(bpm, score);
+        return audio;
+      }
+    });
+  });
+
+  window.IslandTunes = Object.freeze({ count: library.length, list: () => library.slice() });
+})();
 </script><script>(() => {
   'use strict';
 
@@ -265,6 +375,24 @@ window.IslandChallenges={mount,stop:clean};
   let mediaError = '';
   let session = 0;
   const checkpointKey = 'party-room-media-round-v1';
+  const sourceKey = 'round-island:music-source';
+  let musicSource = 'builtin';
+  try {
+    const stored = localStorage.getItem(sourceKey);
+    if (stored === 'local' || (!stored && savedRound()?.mode === 'music')) musicSource = 'local';
+  } catch { /* The built-in score book also works in a private session. */ }
+  function useMusicSource(source) {
+    if (!['local', 'builtin'].includes(source) || (source === 'local' && !libraries.music.length)) return;
+    musicSource = source;
+    try { localStorage.setItem(sourceKey, source); } catch { /* In-memory choice is sufficient. */ }
+    changed();
+  }
+  function ready(type) {
+    return type === 'music' && musicSource === 'builtin' ? window.IslandTunes.count : libraries[type]?.length || 0;
+  }
+  function fallbackIfEmpty() {
+    if (musicSource === 'local' && !libraries.music.length && !touched.has('music')) useMusicSource('builtin');
+  }
   let matchKey = '';
   let signature = '';
   let order = [];
@@ -322,16 +450,18 @@ window.IslandChallenges={mount,stop:clean};
   }
 
   dbPromise.then(db => {
-    if (!db) return;
+    if (!db) { fallbackIfEmpty(); return; }
     types.forEach(type => {
       try {
         const request = db.transaction('library').objectStore('library').get(type);
         request.onsuccess = () => {
-          if (touched.has(type) || !Array.isArray(request.result)) return;
-          libraries[type] = request.result.filter(item => item && typeof item.answer === 'string' && valid(type, item.blob));
+          if (touched.has(type)) return;
+          if (Array.isArray(request.result)) libraries[type] = request.result.filter(item => item && typeof item.answer === 'string' && valid(type, item.blob));
+          if (type === 'music') fallbackIfEmpty();
           changed();
         };
-      } catch { /* A blocked store still permits in-memory play. */ }
+        if (type === 'music') request.onerror = fallbackIfEmpty;
+      } catch { if (type === 'music') fallbackIfEmpty(); }
     });
   });
 
@@ -379,6 +509,7 @@ window.IslandChallenges={mount,stop:clean};
       touched.add(type);
       libraries[type] = selection;
       messages[type] = selection.length + '개 준비됨';
+      if (type === 'music') useMusicSource('local');
       changed();
       const saved = await persist(type, selection);
       if (!saved && libraries[type] === selection) {
@@ -447,8 +578,10 @@ window.IslandChallenges={mount,stop:clean};
   function start(type, matchId, completedCount) {
     mode = types.includes(type) ? type : '';
     matchKey = matchId == null ? '' : String(matchId);
-    const items = libraries[mode] || [];
-    signature = librarySignature(items);
+    const items = mode === 'music' && musicSource === 'builtin' ? window.IslandTunes.list() : libraries[mode] || [];
+    signature = mode === 'music' && musicSource === 'builtin'
+      ? 'scorebook-v1:' + items.map(item => item.answer).join('|')
+      : librarySignature(items);
     const previous = matchKey ? savedRound() : null;
     const sameMatch = !!previous && previous.mode === mode && previous.matchKey === matchKey;
     const usable = sameMatch && previous.signature === signature && Array.isArray(previous.order) &&
@@ -494,7 +627,14 @@ window.IslandChallenges={mount,stop:clean};
     };
     try {
       await player.play();
-      if (token === playToken) stopTimer = setTimeout(finish, seconds * 1000);
+      // A newly opened sound device can begin advancing noticeably after play() resolves.
+      function waitForClipEnd() {
+        if (token !== playToken) return;
+        const remaining = seconds - player.currentTime;
+        if (remaining <= 0) finish();
+        else stopTimer = setTimeout(waitForClipEnd, Math.min(100, Math.max(10, remaining * 1000)));
+      }
+      waitForClipEnd();
     } catch {
       if (token !== playToken) return;
       mediaError = '재생할 수 없어요. 소리를 켜고 다시 눌러 주세요.';
@@ -586,7 +726,8 @@ window.IslandChallenges={mount,stop:clean};
   }
 
   window.PartyMedia = {
-    openPicker, ready: type => libraries[type]?.length || 0,
+    openPicker, ready, useMusicSource,
+    musicOptions: () => ({ selected: musicSource, localCount: libraries.music.length, builtinCount: window.IslandTunes.count }),
     status: type => messages[type] || '',
     start, advance, act, current, stop,
     mount(el) { mounted = el || null; render(); }
@@ -1059,12 +1200,18 @@ function dialog(title,html){body.innerHTML=`<div class="toolbar"><h2>${esc(title
 function home(){clearInterval(manualInterval);const pool=eligible();const subset=filter==='전체'?games:games.filter(g=>bands.find(b=>b[0]===filter)?.[1].includes(g.genre));app.innerHTML=`<section class="hero"><div class="hero-copy"><div class="eyebrow">ROUND ISLAND</div><h1>라운드 아일랜드</h1><p>종목도, 오늘의 상대도 뽑기 전엔 모릅니다.</p><div class="controls">${bt('⚄  다음 라운드 뽑기','draw','','primary draw',pool.length?'':'disabled')}${bt('추첨 설정','prefs','','soft')}</div><small>추첨 가능 ${pool.length}종 &nbsp;·&nbsp; 참가 ${hub.names.length}명</small></div><div class="hero-art"><canvas id="map" aria-label="길을 따라 연결된 섬과 성, 현재 라운드의 위치"></canvas><div class="map-overlay">ROUND ${String(hub.history.length+1).padStart(2,'0')}</div></div></section>
 <section class="roster"><strong>참가자</strong><div class="pills">${standings().map(([n,x])=>`<span class="badge">${esc(n)} <b>${x}승</b></span>`).join('')}</div><div class="controls">${bt('인원 변경','names','','tiny')}${bt('전적','history','','tiny')}</div></section>
 <div class="secthead"><h2>게임 도감</h2><small>${games.length}개 종목 · 선택하면 규칙 보기</small></div><div class="pooltabs">${['전체',...bands.map(v=>v[0])].map(v=>bt(v,'filter',v,'',`aria-pressed="${v===filter}"`)).join('')}</div>
-<section class="grid">${subset.map((g,i)=>{const need=missing(g),off=hub.off.includes(g.id);return `<button class="tile" data-action="preview" data-arg="${g.id}" data-off="${!!need||off}" style="--tone:${['#c5f8b2','#ffcf91','#9bdfef','#edafd2'][i%4]}"><span class="tile-top"><i class="glyph" aria-hidden="true">${esc(iconMap[g.genre]||'✦')}</i><small>${esc(g.genre)}</small></span><span class="title">${esc(g.title)}</span><span class="status">${esc(need||(off?'추첨 꺼짐':g.gear?gearLabel[g.gear]+' 사용':g.media?'미디어 준비됨':'준비물 없음'))}</span></button>`}).join('')}</section>`;
+<section class="grid">${subset.map((g,i)=>{const need=missing(g),off=hub.off.includes(g.id);return `<button class="tile" data-action="preview" data-arg="${g.id}" data-off="${!!need||off}" style="--tone:${['#c5f8b2','#ffcf91','#9bdfef','#edafd2'][i%4]}"><span class="tile-top"><i class="glyph" aria-hidden="true">${esc(iconMap[g.genre]||'✦')}</i><small>${esc(g.genre)}</small></span><span class="title">${esc(g.title)}</span><span class="status">${esc(need||(off?'추첨 꺼짐':g.gear?gearLabel[g.gear]+' 사용':g.media==='music'&&PartyMedia.musicOptions().selected==='builtin'?'내장 선율 · 바로 시작':g.media?'미디어 준비됨':'준비물 없음'))}</span></button>`}).join('')}</section>`;
 window.paintWorld?.(document.getElementById('map'),hub.history.length%6)}
-function brief(g,active){const c=active?hub.current:null,why=missing(g);app.innerHTML=`<div class="screen"><div class="backrow">${bt(active?'월드로 돌아가기':'← 게임 도감',active?'abandon':'world','','soft tiny')}<span class="eyebrow">RULE BOOK / ${esc(g.genre)}</span></div><article class="brief"><div class="eyebrow">${active?'ROUND '+String(hub.history.length+1).padStart(2,'0')+'　·　MATCH REVEAL':'GAME DOSSIER'}</div><h1>${esc(g.title)}</h1><p class="lead">${esc(g.lead)}</p>${c?`<strong>${esc(modelabel(c.groups))}</strong>${tags(c.groups)}`:''}<ol class="rule-list">${g.rules.map(r=>`<li>${esc(r)}</li>`).join('')}</ol><div class="rulebox"><strong>승리 조건</strong>${esc(g.win)}</div><div class="rulebox"><strong>예시</strong>${esc(g.example)}</div>${active&&['speed','hint','order','taboo'].includes(g.mode)&&c.groups.some(a=>a.length===1)?'<div class="rulebox"><strong>1인 주자</strong>다음 상대 중 한 명이 설명을 맡습니다. 현재 주자는 화면을 등지고 맞히며, 득점은 현재 주자에게만 돌아갑니다.</div>':''}<div class="brief-foot">${active?bt('경기 준비 →','enter','','primary'):why?bt(why+' · 준비하기','prepare',g.id,'primary'):bt('이 종목으로 대진 뽑기','direct',g.id,'primary')}${active?bt('대진 다시 섞기','regroup','','soft'):bt(hub.off.includes(g.id)?'추첨에 포함':'추첨에서 빼기','toggle',g.id,'soft')}<small>${esc(g.gear?gearLabel[g.gear]+(g.gear==='sticks'?' + 종이컵':''):g.media?medLabel[g.media]:'별도 준비물 없음')}</small></div></article></div>`}
+function brief(g,active){const c=active?hub.current:null,why=missing(g);app.innerHTML=`<div class="screen"><div class="backrow">${bt(active?'월드로 돌아가기':'← 게임 도감',active?'abandon':'world','','soft tiny')}<span class="eyebrow">RULE BOOK / ${esc(g.genre)}</span></div><article class="brief"><div class="eyebrow">${active?'ROUND '+String(hub.history.length+1).padStart(2,'0')+'　·　MATCH REVEAL':'GAME DOSSIER'}</div><h1>${esc(g.title)}</h1><p class="lead">${esc(g.lead)}</p>${c?`<strong>${esc(modelabel(c.groups))}</strong>${tags(c.groups)}`:''}<ol class="rule-list">${g.rules.map(r=>`<li>${esc(r)}</li>`).join('')}</ol><div class="rulebox"><strong>승리 조건</strong>${esc(g.win)}</div><div class="rulebox"><strong>예시</strong>${esc(g.example)}</div>${active&&['speed','hint','order','taboo'].includes(g.mode)&&c.groups.some(a=>a.length===1)?'<div class="rulebox"><strong>1인 주자</strong>다음 상대 중 한 명이 설명을 맡습니다. 현재 주자는 화면을 등지고 맞히며, 득점은 현재 주자에게만 돌아갑니다.</div>':''}<div class="brief-foot">${active?bt('경기 준비 →','enter','','primary'):why?bt(why+' · 준비하기','prepare',g.id,'primary'):bt('이 종목으로 대진 뽑기','direct',g.id,'primary')}${active?bt('대진 다시 섞기','regroup','','soft'):bt(hub.off.includes(g.id)?'추첨에 포함':'추첨에서 빼기','toggle',g.id,'soft')}<small>${esc(g.gear?gearLabel[g.gear]+(g.gear==='sticks'?' + 종이컵':''):g.media==='music'&&PartyMedia.musicOptions().selected==='builtin'?'내장 선율 '+PartyMedia.ready('music')+'곡':g.media?medLabel[g.media]:'별도 준비물 없음')}</small></div></article></div>`}
 function roll(id){const allowed=eligible();let g=by(id);if(!g){let pool=allowed.filter(x=>!hub.past.includes(x.id));if(!pool.length){const last=hub.past.at(-1);hub.past=[];pool=allowed.length>1?allowed.filter(x=>x.id!==last):allowed}g=pool.length?drawOne(pool):null}if(!g||missing(g)){notify('추첨 설정에서 가능한 게임과 대진을 선택해 주세요.');return}hub.past.push(g.id);hub.current={id:g.id,groups:matchFor(g),step:'brief',stats:{}};save();page='rolling';app.innerHTML='<div class="wheel"><div class="die">⚄</div><h2>종목과 대진 추첨 중</h2></div>';beep();top();clearTimeout(shuffleTimer);shuffleTimer=setTimeout(()=>{checkpoint('brief');brief(g,true)},window.matchMedia('(prefers-reduced-motion:reduce)').matches?60:650)}
+function musicPrefs(){
+  const {selected,localCount,builtinCount}=PartyMedia.musicOptions();
+  const preset=bt('내장 선율 '+builtinCount+'곡','musicSource','builtin',selected==='builtin'?'tiny primary':'tiny',`aria-pressed="${selected==='builtin'}"`);
+  const own=localCount?bt('내 음원 '+localCount+'곡','musicSource','local',selected==='local'?'tiny primary':'tiny',`aria-pressed="${selected==='local'}"`):'';
+  return `<h3>전주 1초 · 출제 음원</h3><p class="muted">기본 선율은 이 기기에서 직접 연주합니다. 파일 없이 시작할 수 있어요.</p><div class="controls spaced">${preset}${own}${bt('내 음원 선택','upload','music','tiny soft')}</div>${selected==='local'?`<small>곡명은 파일 이름으로 표시됩니다. ${esc(PartyMedia.status('music'))}</small>`:''}`;
+}
 function prefs(){
-prefsPage='prefs';const checks=(values,active,type,labels)=>Object.keys(values).map(k=>`<label class="badge"><input type="checkbox" data-check="${type}" value="${esc(k)}" ${active(k)?'checked':''}>${esc(labels[k])}</label>`).join('');dialog('추첨 설정',`<h3>대진 방식</h3><div class="pills">${checks(fmtLabel,k=>hub.formats.includes(k),'format',fmtLabel)}</div><small>팀전은 가능한 한 고르게, 1 대 다수는 한 명과 나머지 인원으로 나눕니다.</small><h3>현장 준비물</h3><div class="pills">${checks(gearLabel,k=>hub.gear[k],'gear',gearLabel)}</div><h3>내 기기의 문제 자료</h3><small>파일은 이 기기의 브라우저에만 보관합니다. 인물은 이름, 명장면은 대사, 음원은 곡명을 파일 이름으로 써 주세요.</small>${Object.keys(medLabel).map(m=>`<div class="settingrow"><span>${medLabel[m]} <small>${esc(PartyMedia.status(m)||PartyMedia.ready(m)+'개 등록')}</small></span>${bt('파일 선택','upload',m,'tiny')}</div>`).join('')}<h3>추첨할 종목</h3>${games.map(g=>`<label class="prefrow"><span>${esc(g.title)}</span><input type="checkbox" data-check="game" value="${g.id}" ${hub.off.includes(g.id)?'':'checked'}></label>`).join('')}<div class="spaced">${bt('설정 완료','close','','primary')}</div>`)}
+prefsPage='prefs';const checks=(values,active,type,labels)=>Object.keys(values).map(k=>`<label class="badge"><input type="checkbox" data-check="${type}" value="${esc(k)}" ${active(k)?'checked':''}>${esc(labels[k])}</label>`).join('');dialog('추첨 설정',`<h3>대진 방식</h3><div class="pills">${checks(fmtLabel,k=>hub.formats.includes(k),'format',fmtLabel)}</div><small>팀전은 가능한 한 고르게, 1 대 다수는 한 명과 나머지 인원으로 나눕니다.</small><h3>현장 준비물</h3><div class="pills">${checks(gearLabel,k=>hub.gear[k],'gear',gearLabel)}</div>${musicPrefs()}<h3>사진 문제</h3><small>인물은 이름, 명장면은 대사를 파일 이름으로 써 주세요. 선택한 파일은 이 기기에만 저장됩니다.</small>${['photo','scene'].map(m=>`<div class="settingrow"><span>${medLabel[m]} <small>${esc(PartyMedia.status(m)||PartyMedia.ready(m)+'개 등록')}</small></span>${bt('파일 선택','upload',m,'tiny')}</div>`).join('')}<h3>추첨할 종목</h3>${games.map(g=>`<label class="prefrow"><span>${esc(g.title)}</span><input type="checkbox" data-check="game" value="${g.id}" ${hub.off.includes(g.id)?'':'checked'}></label>`).join('')}<div class="spaced">${bt('설정 완료','close','','primary')}</div>`)}
 let rosterDraft=[];
 function roster(){prefsPage='names';dialog('참가자 설정',`<p class="muted spaced">2~6명이 함께 플레이할 수 있어요. 같은 이름은 구분할 수 있게 적어 주세요.</p><div class="names">${rosterDraft.map((n,i)=>`<label><span>${i+1}</span><input type="text" maxlength="15" aria-label="참가자 ${i+1} 이름" value="${esc(n)}"></label>`).join('')}</div><div class="controls">${bt('− 한 명','less','','tiny',rosterDraft.length<=2?'disabled':'')}${bt('+ 한 명','more','','tiny',rosterDraft.length>=6?'disabled':'')}${bt('참가자 저장','saveNames','','primary')}</div>`)}
 function readDraft(){return [...body.querySelectorAll('.names input')].map(el=>el.value.trim())}
@@ -1129,7 +1276,7 @@ case 'close':closeModal();show();break;case 'prefs':case 'prepare':prefs();break
 case 'toggle':hub.off=hub.off.includes(v)?hub.off.filter(x=>x!==v):[...hub.off,v];save();show();break;
 case 'names':rosterDraft=[...hub.names];roster();break;case 'more':case 'less':rosterDraft=readDraft();if(a==='more')rosterDraft.push('플레이어 '+(rosterDraft.length+1));else rosterDraft.pop();roster();break;
 case 'saveNames':{const ns=readDraft();if(ns.some(n=>!n)||new Set(ns).size!==ns.length){notify('서로 다른 참가자 이름을 모두 입력해 주세요.');return}hub.names=ns;save();closeModal();show();break}
-case 'upload':PartyMedia.openPicker(v);break;case 'history':history();break;case 'resetAsk':dialog('전적을 초기화할까요?',`<p class="muted spaced">누적 승수와 라운드 기록이 지워집니다.</p><div class="controls spaced">${bt('취소','close')}${bt('초기화','reset','','danger')}</div>`);break;
+case 'musicSource':PartyMedia.useMusicSource(v);break;case 'upload':PartyMedia.openPicker(v);break;case 'history':history();break;case 'resetAsk':dialog('전적을 초기화할까요?',`<p class="muted spaced">누적 승수와 라운드 기록이 지워집니다.</p><div class="controls spaced">${bt('취소','close')}${bt('초기화','reset','','danger')}</div>`);break;
 case 'reset':hub.history=[];hub.past=[];save();closeModal();show();break}});
 document.addEventListener('change',e=>{const el=e.target;if(el.id==='category'){Game.action('category',el.value);return}const type=el.dataset.check;if(!type)return;const k=el.value;if(type==='format'){if(!el.checked&&hub.formats.length===1){el.checked=true;notify('대진은 하나 이상 선택해 주세요.');return}hub.formats=el.checked?[...new Set([...hub.formats,k])]:hub.formats.filter(x=>x!==k)}else if(type==='gear')hub.gear[k]=el.checked;else if(type==='game')hub.off=el.checked?hub.off.filter(x=>x!==k):[...new Set([...hub.off,k])];save();show()});
 document.getElementById('brand').onclick=()=>{if(page==='rolling')return;if(hub.current&&page!=='world'){if(Game.state().phase==='result'){leave();return}document.querySelector('[data-action=abandon]')?.click();return}page='world';show();top()};
