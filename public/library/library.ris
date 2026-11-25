@@ -2378,3 +2378,111 @@ KW  - 자기효능감
 KW  - 아동
 N1  - 연구 서고 H-04 · 프리프린트(심사 전) · 책임 있는 AI·아동 안전
 ER  - 
+
+TY  - UNPB
+AU  - Lin, Jiaju
+AU  - Zou, Ellen Wenting
+TI  - Managing Uncertainty in Teacher Vibe Coding: A Comparison of Teacher and Expert Workflows
+PY  - 2026
+DA  - 2026/11/22
+PB  - arXiv
+M3  - arXiv:2611.29698
+DO  - 10.48550/arXiv.2611.29698
+UR  - https://arxiv.org/abs/2611.29698
+KW  - 바이브코딩
+KW  - 교사
+KW  - 예비교사
+KW  - 불확실성 관리
+KW  - 사고구술
+N1  - 연구 서고 D-15 · 프리프린트(심사 전) · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Hinbest, Daniel
+AU  - Bradbury, Jeremy S.
+AU  - Miljanovic, Michael A.
+TI  - Outcome Over Learning? Evidence from Student Use of AI Code Assistants for Unit Test Writing
+PY  - 2026
+DA  - 2026/11/10
+PB  - arXiv
+M3  - arXiv:2611.14664
+DO  - 10.48550/arXiv.2611.14664
+UR  - https://arxiv.org/abs/2611.14664
+KW  - AI 코드 도우미
+KW  - 단위 테스트
+KW  - 원샷 프롬프트
+KW  - 비판적 검토
+KW  - 프로그래밍 교육
+N1  - 연구 서고 D-16 · 프리프린트(심사 전) · 바이브코딩·AI 협업 코딩
+ER  - 
+
+TY  - UNPB
+AU  - Park, Yeon Su
+AU  - Park, Chanyoung
+AU  - Kim, Tae Soo
+AU  - Kim, Seungju
+AU  - Kim, Hyunwoo
+AU  - Jung, Daho
+AU  - Yoon, Jinsung
+AU  - Kim, Juho
+TI  - TutorCaseBench: A Case-Grounded Benchmark for Evaluating LLM Tutors in Supporting Students with Challenging Behaviors
+PY  - 2026
+DA  - 2026/10/22
+PB  - arXiv
+M3  - arXiv:2610.30828
+DO  - 10.48550/arXiv.2610.30828
+UR  - https://arxiv.org/abs/2610.30828
+KW  - AI 튜터
+KW  - 벤치마크
+KW  - 어려운 행동
+KW  - 특수교육
+KW  - LLM 평가
+N1  - 연구 서고 C-15 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - UNPB
+AU  - Yang, Shihao
+AU  - Van Alstyne, Marshall
+AU  - Dellarocas, Chrysanthos
+TI  - When AI Tutors Speak: Evidence from a Randomized Field Experiment
+PY  - 2026
+DA  - 2026/09/21
+PB  - arXiv
+M3  - arXiv:2609.23958
+DO  - 10.48550/arXiv.2609.23958
+UR  - https://arxiv.org/abs/2609.23958
+KW  - AI 튜터
+KW  - 음성 인터페이스
+KW  - 교수 구조
+KW  - 무작위 실험
+KW  - 인지적 떠넘기기
+N1  - 연구 서고 C-16 · 프리프린트(심사 전) · AI 튜터링·학습 지원
+ER  - 
+
+TY  - CPAPER
+AU  - Mukherjee, Rishi
+AU  - Ruiz, Andrew
+AU  - Henderson, Travis
+AU  - Tejpaul, Resha
+AU  - Simonson, Kris
+AU  - Mulla, David
+AU  - McNeil, Brian
+AU  - Papanikolopoulos, Nikolaos
+AU  - Sattar, Junaed
+TI  - Leveraging Cost-effective Robotics for K-12 STEM Education through Water Quality Monitoring Tasks
+T2  - 2026 IEEE International Conference on Robotics and Automation (ICRA)
+PY  - 2026
+DA  - 2026/10/03
+PB  - IEEE
+SP  - 4643
+EP  - 4650
+M3  - arXiv:2610.04565
+DO  - 10.1109/ICRA57385.2026.11696593
+UR  - https://arxiv.org/abs/2610.04565
+KW  - 교육용 로봇
+KW  - 수중 로봇
+KW  - 시민 과학
+KW  - STEM
+KW  - 참여 격차
+N1  - 연구 서고 E-09 · 동료심사 학회 · 교육용 로봇·피지컬 컴퓨팅
+ER  - 

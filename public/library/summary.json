@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "total": 115,
-  "reviewed": 56,
+  "total": 120,
+  "reviewed": 57,
   "special": 35,
-  "updated": "2026-11-23",
+  "updated": "2026-11-25",
   "shelves": [
     {
       "id": "A",
@@ -18,17 +18,17 @@
     {
       "id": "C",
       "label": "AI 튜터링·학습 지원",
-      "count": 14
+      "count": 16
     },
     {
       "id": "D",
       "label": "바이브코딩·AI 협업 코딩",
-      "count": 14
+      "count": 16
     },
     {
       "id": "E",
       "label": "교육용 로봇·피지컬 컴퓨팅",
-      "count": 8
+      "count": 9
     },
     {
       "id": "F",
@@ -58,112 +58,112 @@
   ],
   "recent": [
     {
-      "id": "115",
-      "code": "H-04",
-      "call": "H-04",
-      "title": "Lilo: A Multi-Agent Conversational Sandbox for Children's Digital Communication",
-      "titleKo": "Lilo: 아동의 디지털 소통을 위한 다중 에이전트 대화 연습장",
-      "authors": "Ofri Elbaum; Amit Malik; Tomer Malkevich; Zohar Elyoseph; Adir Solomon; Rotem Dror; Oshrat Ayalon",
-      "year": 2026,
-      "kind": "preprint",
-      "href": "./library/index.html#no-115",
-      "keywords": [
-        "다중 에이전트",
-        "또래 갈등",
-        "디지털 소통",
-        "자기효능감",
-        "아동"
-      ],
-      "shelves": [
-        "H",
-        "C"
-      ]
-    },
-    {
-      "id": "114",
-      "code": "H-03",
-      "call": "H-03",
-      "title": "Beyond Prompt Heuristics: Assessing Child Safety Alignment in LLMs",
-      "titleKo": "프롬프트 단서 너머: LLM의 아동 안전 정렬 평가",
-      "authors": "Anika Misra; Chimaobi Okite; Rada Mihalcea",
-      "year": 2026,
-      "kind": "workshop",
-      "href": "./library/index.html#no-114",
-      "keywords": [
-        "아동 안전",
-        "LLM 정렬",
-        "안전성 평가",
-        "유해 범주",
-        "맥락 의존"
-      ],
-      "shelves": [
-        "H"
-      ]
-    },
-    {
-      "id": "113",
-      "code": "F-12",
-      "call": "F-12",
-      "title": "U.S. State Guidance on AI in K-12 Education: A Comparative Content and Citation Analysis",
-      "titleKo": "미국 주 정부의 K-12 AI 지침: 내용·인용 비교 분석",
-      "authors": "Shahan Ali Memon; Anna-Maria Gueorguieva; Anukriti Kumar; Lucy Lu Wang; Jevin D. West; Nic Weber",
-      "year": 2026,
-      "kind": "preprint",
-      "href": "./library/index.html#no-113",
-      "keywords": [
-        "K-12 AI 지침",
-        "정책 문서 분석",
-        "인용 분석",
-        "형평성",
-        "거버넌스"
-      ],
-      "shelves": [
-        "F",
-        "H"
-      ]
-    },
-    {
-      "id": "112",
-      "code": "B-14",
-      "call": "B-14",
-      "title": "Standard-Anchored Delegation in Teachers' Use of Generative AI",
-      "titleKo": "교사의 생성형 AI 활용에서 나타나는 '기준에 닻을 내린 위임'",
-      "authors": "Muhammad Saleh Farooq; Muhammad Ahmad Khan; Muhammad Jon Raza",
-      "year": 2026,
-      "kind": "preprint",
-      "href": "./library/index.html#no-112",
-      "keywords": [
-        "교사 AI 활용",
-        "업무 위임",
-        "루브릭",
-        "검증 가능성",
-        "책무성"
-      ],
-      "shelves": [
-        "B"
-      ]
-    },
-    {
-      "id": "111",
-      "code": "C-14",
-      "call": "C-14",
-      "title": "Share your Screen and Talk to Gemini: How Young Learners Interact with Multimodal GenAI While Solving Scratch Tasks",
-      "titleKo": "화면을 공유하고 Gemini와 말하기: 어린 학습자는 스크래치 과제를 풀며 멀티모달 생성형 AI와 어떻게 상호작용하는가",
-      "authors": "Sven Jacobs; Lukas Berning; Natalie Kiesler",
+      "id": "120",
+      "code": "E-09",
+      "call": "E-09",
+      "title": "Leveraging Cost-effective Robotics for K-12 STEM Education through Water Quality Monitoring Tasks",
+      "titleKo": "수질 측정 과제로 K-12 STEM 교육에 저비용 로봇 활용하기",
+      "authors": "Rishi Mukherjee; Andrew Ruiz; Travis Henderson; Resha Tejpaul; Kris Simonson; David Mulla; Brian McNeil; Nikolaos Papanikolopoulos; Junaed Sattar",
       "year": 2026,
       "kind": "conference",
-      "href": "./library/index.html#no-111",
+      "href": "./library/index.html#no-120",
       "keywords": [
-        "멀티모달 AI 튜터",
-        "스크래치",
-        "음성 상호작용",
-        "디버깅",
-        "과신"
+        "교육용 로봇",
+        "수중 로봇",
+        "시민 과학",
+        "STEM",
+        "참여 격차"
+      ],
+      "shelves": [
+        "E"
+      ]
+    },
+    {
+      "id": "119",
+      "code": "C-16",
+      "call": "C-16",
+      "title": "When AI Tutors Speak: Evidence from a Randomized Field Experiment",
+      "titleKo": "AI 튜터가 말할 때: 무작위 현장 실험의 근거",
+      "authors": "Shihao Yang; Marshall Van Alstyne; Chrysanthos Dellarocas",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-119",
+      "keywords": [
+        "AI 튜터",
+        "음성 인터페이스",
+        "교수 구조",
+        "무작위 실험",
+        "인지적 떠넘기기"
       ],
       "shelves": [
         "C",
-        "E",
-        "A"
+        "G"
+      ]
+    },
+    {
+      "id": "118",
+      "code": "C-15",
+      "call": "C-15",
+      "title": "TutorCaseBench: A Case-Grounded Benchmark for Evaluating LLM Tutors in Supporting Students with Challenging Behaviors",
+      "titleKo": "TutorCaseBench: 지도가 어려운 행동을 보이는 학생을 돕는 LLM 튜터 평가용 사례 기반 벤치마크",
+      "authors": "Yeon Su Park; Chanyoung Park; Tae Soo Kim; Seungju Kim; Hyunwoo Kim; Daho Jung; Jinsung Yoon; Juho Kim",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-118",
+      "keywords": [
+        "AI 튜터",
+        "벤치마크",
+        "어려운 행동",
+        "특수교육",
+        "LLM 평가"
+      ],
+      "shelves": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "117",
+      "code": "D-16",
+      "call": "D-16",
+      "title": "Outcome Over Learning? Evidence from Student Use of AI Code Assistants for Unit Test Writing",
+      "titleKo": "학습보다 결과? 단위 테스트 작성에서 학생의 AI 코드 도우미 사용 근거",
+      "authors": "Daniel Hinbest; Jeremy S. Bradbury; Michael A. Miljanovic",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-117",
+      "keywords": [
+        "AI 코드 도우미",
+        "단위 테스트",
+        "원샷 프롬프트",
+        "비판적 검토",
+        "프로그래밍 교육"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "116",
+      "code": "D-15",
+      "call": "D-15",
+      "title": "Managing Uncertainty in Teacher Vibe Coding: A Comparison of Teacher and Expert Workflows",
+      "titleKo": "교사 바이브코딩의 불확실성 관리: 교사와 전문가 작업 흐름 비교",
+      "authors": "Jiaju Lin; Ellen Wenting Zou",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-116",
+      "keywords": [
+        "바이브코딩",
+        "교사",
+        "예비교사",
+        "불확실성 관리",
+        "사고구술"
+      ],
+      "shelves": [
+        "D",
+        "B"
       ]
     }
   ],
@@ -2644,6 +2644,115 @@
       "shelves": [
         "H",
         "C"
+      ]
+    },
+    {
+      "id": "116",
+      "code": "D-15",
+      "call": "D-15",
+      "title": "Managing Uncertainty in Teacher Vibe Coding: A Comparison of Teacher and Expert Workflows",
+      "titleKo": "교사 바이브코딩의 불확실성 관리: 교사와 전문가 작업 흐름 비교",
+      "authors": "Jiaju Lin; Ellen Wenting Zou",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-116",
+      "keywords": [
+        "바이브코딩",
+        "교사",
+        "예비교사",
+        "불확실성 관리",
+        "사고구술"
+      ],
+      "shelves": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "117",
+      "code": "D-16",
+      "call": "D-16",
+      "title": "Outcome Over Learning? Evidence from Student Use of AI Code Assistants for Unit Test Writing",
+      "titleKo": "학습보다 결과? 단위 테스트 작성에서 학생의 AI 코드 도우미 사용 근거",
+      "authors": "Daniel Hinbest; Jeremy S. Bradbury; Michael A. Miljanovic",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-117",
+      "keywords": [
+        "AI 코드 도우미",
+        "단위 테스트",
+        "원샷 프롬프트",
+        "비판적 검토",
+        "프로그래밍 교육"
+      ],
+      "shelves": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "118",
+      "code": "C-15",
+      "call": "C-15",
+      "title": "TutorCaseBench: A Case-Grounded Benchmark for Evaluating LLM Tutors in Supporting Students with Challenging Behaviors",
+      "titleKo": "TutorCaseBench: 지도가 어려운 행동을 보이는 학생을 돕는 LLM 튜터 평가용 사례 기반 벤치마크",
+      "authors": "Yeon Su Park; Chanyoung Park; Tae Soo Kim; Seungju Kim; Hyunwoo Kim; Daho Jung; Jinsung Yoon; Juho Kim",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-118",
+      "keywords": [
+        "AI 튜터",
+        "벤치마크",
+        "어려운 행동",
+        "특수교육",
+        "LLM 평가"
+      ],
+      "shelves": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "119",
+      "code": "C-16",
+      "call": "C-16",
+      "title": "When AI Tutors Speak: Evidence from a Randomized Field Experiment",
+      "titleKo": "AI 튜터가 말할 때: 무작위 현장 실험의 근거",
+      "authors": "Shihao Yang; Marshall Van Alstyne; Chrysanthos Dellarocas",
+      "year": 2026,
+      "kind": "preprint",
+      "href": "./library/index.html#no-119",
+      "keywords": [
+        "AI 튜터",
+        "음성 인터페이스",
+        "교수 구조",
+        "무작위 실험",
+        "인지적 떠넘기기"
+      ],
+      "shelves": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "120",
+      "code": "E-09",
+      "call": "E-09",
+      "title": "Leveraging Cost-effective Robotics for K-12 STEM Education through Water Quality Monitoring Tasks",
+      "titleKo": "수질 측정 과제로 K-12 STEM 교육에 저비용 로봇 활용하기",
+      "authors": "Rishi Mukherjee; Andrew Ruiz; Travis Henderson; Resha Tejpaul; Kris Simonson; David Mulla; Brian McNeil; Nikolaos Papanikolopoulos; Junaed Sattar",
+      "year": 2026,
+      "kind": "conference",
+      "href": "./library/index.html#no-120",
+      "keywords": [
+        "교육용 로봇",
+        "수중 로봇",
+        "시민 과학",
+        "STEM",
+        "참여 격차"
+      ],
+      "shelves": [
+        "E"
       ]
     }
   ]
